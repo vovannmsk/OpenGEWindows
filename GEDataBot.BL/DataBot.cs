@@ -8,17 +8,17 @@ namespace GEDataBot.BL
 {
     public class DataBot
     {
-        private String Login { get; }
-        private String Password { get; }
-        private int x { get; }
-        private int y { get; }
-        private String param { get; }           //америка или европа или синг
-        private UIntPtr hwnd { get; set; }
-        private int Kanal { get; }
-        private int nomerTeleport { get; }
-        private int needToChange { get; set; }
-        private int[] triangleX { get; }
-        private int[] triangleY { get; }
+        public String Login { get; set; }
+        public String Password { get; set; }
+        public int x { get; set; }
+        public int y { get; set; }
+        public String param { get; set; }    
+        public UIntPtr hwnd { get; set; }
+        public int Kanal { get; set; }
+        public int nomerTeleport { get; set; }
+        public int needToChange { get; set; }
+        public int[] triangleX { get; set; }
+        public int[] triangleY { get; set; }
 
     }
 }

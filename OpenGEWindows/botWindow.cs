@@ -51,6 +51,7 @@ namespace OpenGEWindows
         // SELECT * FROM [Bots] WHERE Id = 1
         // SELECT X FROM Bots, coordinates WHERE Bots.Id = 1 AND Bots.Id = coordinates.IdBots   столбец с координатами X
         // SELECT Y FROM Bots, coordinates WHERE Bots.Id = 1 AND Bots.Id = coordinates.IdBots   столбец с координатами Y
+        
         private int x;
         private int y;
         private int numberWindow;       //номер окна
@@ -68,6 +69,7 @@ namespace OpenGEWindows
         private int NUMBER_OF_ACCOUNTS;
         private int needToChange;
 
+        
         private ServerInterface server;                 
         private ServerFactory serverFactory;
         private Town town;

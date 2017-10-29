@@ -7,14 +7,14 @@
     <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="OpenGEWindows.exe.manifest" size="9333">
+    <dependentAssembly dependencyType="install" codebase="OpenGEWindows.exe.manifest" size="10059">
       <assemblyIdentity name="OpenGEWindows.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>sJJTJ3B4L7xefm9t4wYeTp6nJueISH9mY+qipGqCUUA=</dsig:DigestValue>
+        <dsig:DigestValue>rcbJZ6xS0RwKG8/DEnmqGCfEP1eJ9Q3AkCkJERMKo3s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
