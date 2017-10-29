@@ -67,6 +67,7 @@ namespace OpenGEWindows
         private int nomerTeleport;
         private int NUMBER_OF_ACCOUNTS;
         private int needToChange;
+
         private ServerInterface server;                 
         private ServerFactory serverFactory;
         private Town town;
