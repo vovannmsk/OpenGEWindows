@@ -1,0 +1,62 @@
+c:\users\comp-2\documents\visual studio 2013\Projects\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.exe.config
+c:\users\comp-2\documents\visual studio 2013\Projects\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.exe
+c:\users\comp-2\documents\visual studio 2013\Projects\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.pdb
+c:\users\comp-2\documents\visual studio 2013\Projects\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.csprojResolveAssemblyReference.cache
+c:\users\comp-2\documents\visual studio 2013\Projects\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.Properties.Resources.resources
+c:\users\comp-2\documents\visual studio 2013\Projects\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.csproj.GenerateResource.Cache
+c:\users\comp-2\documents\visual studio 2013\Projects\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.exe
+c:\users\comp-2\documents\visual studio 2013\Projects\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.pdb
+c:\users\comp-2\documents\visual studio 2013\Projects\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.MainForm.resources
+C:\Users\Comp-2\documents\visual studio 2013\Projects\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.exe.manifest
+C:\Users\Comp-2\documents\visual studio 2013\Projects\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.application
+C:\Users\Comp-2\documents\visual studio 2013\Projects\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.TrustInfo.xml
+C:\Users\Comp-2\documents\visual studio 2013\Projects\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.exe.manifest
+C:\Users\Comp-2\documents\visual studio 2013\Projects\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.application
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка 27-01-2016\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.exe.config
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка 27-01-2016\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.exe
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка 27-01-2016\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.pdb
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка 27-01-2016\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.exe.manifest
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка 27-01-2016\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.application
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка 27-01-2016\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.exe
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка 27-01-2016\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.pdb
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка 27-01-2016\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.csprojResolveAssemblyReference.cache
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка 27-01-2016\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.MainForm.resources
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка 27-01-2016\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.Properties.Resources.resources
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка 27-01-2016\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.csproj.GenerateResource.Cache
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка 27-01-2016\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.TrustInfo.xml
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка 27-01-2016\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.exe.manifest
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка 27-01-2016\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.application
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.exe.config
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.exe
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.pdb
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.exe.manifest
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.application
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.exe
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.pdb
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.csprojResolveAssemblyReference.cache
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.MainForm.resources
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.Properties.Resources.resources
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.csproj.GenerateResource.Cache
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.TrustInfo.xml
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.exe.manifest
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.application
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.exe.config
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.exe
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.pdb
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.csprojResolveAssemblyReference.cache
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.MainForm.resources
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.Properties.Resources.resources
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.csproj.GenerateResource.Cache
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.exe.manifest
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.application
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.exe
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.pdb
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.TrustInfo.xml
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.exe.manifest
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.application
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\Database1.mdf
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\Database1_log.ldf
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\EntityFramework.dll
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\EntityFramework.xml
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\EntityFramework.SqlServer.xml
