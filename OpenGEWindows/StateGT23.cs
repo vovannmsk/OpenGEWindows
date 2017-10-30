@@ -83,7 +83,7 @@ namespace OpenGEWindows
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return !((botwindow.getTriangleX()[1] == 0) | (botwindow.getTriangleY()[1] == 0));                //проверяем, если ненулевые координаты, то переходим к расстановке(GT24). Иначе - GT27
+            return !((botwindow.getTriangleX()[0] == 0) | (botwindow.getTriangleY()[0] == 0));                //проверяем, если ненулевые координаты, то переходим к расстановке(GT24). Иначе - GT27
         }
 
         /// <summary>

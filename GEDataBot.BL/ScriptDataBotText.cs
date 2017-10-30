@@ -18,7 +18,7 @@ namespace GEDataBot.BL
         {
             this.numberOfWindow = numberOfWindow;
             this.databot = new DataBot();
-            databot.NumberOfAccaunts = KolvoAkk();
+            //databot.NumberOfAccaunts = KolvoAkk();
             databot.x = Koord_X();
             databot.y = Koord_Y();
             databot.Login = Login();
@@ -27,6 +27,7 @@ namespace GEDataBot.BL
             databot.param = Parametr();
             databot.Kanal = Channal();
             databot.nomerTeleport = NomerTeleporta();
+            databot.nameOfFamily = NameOfFamily();
             databot.triangleX = LoadTriangleX();
             databot.triangleY = LoadTriangleY();
         }
@@ -160,10 +161,24 @@ namespace GEDataBot.BL
         }
 
         /// <summary>
+        /// функция возвращает имя семьи для функции создания новых ботов
+        /// </summary>
+        /// <returns></returns>
+        public string NameOfFamily()                                                                                                    
+        { return File.ReadAllText(KATALOG_MY_PROGRAM + numberOfWindow + "\\Имя семьи.txt"); }                                          
+
+        ///// <summary>
+        ///// возвращает количесто аккаунтов ботов 
+        ///// </summary>
+        ///// <returns></returns>
+        //public int KolvoAkk()
+        //{ return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Аккаунтов всего.txt")); }
+
+        /// <summary>
         /// возвращает количесто аккаунтов ботов 
         /// </summary>
         /// <returns></returns>
-        public int KolvoAkk()
+        public static int KolvoAkk()
         { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Аккаунтов всего.txt")); }
 
     }

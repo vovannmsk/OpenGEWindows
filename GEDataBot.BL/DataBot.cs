@@ -16,9 +16,10 @@ namespace GEDataBot.BL
         public UIntPtr hwnd { get; set; }
         public int Kanal { get; set; }
         public int nomerTeleport { get; set; }
+        public String nameOfFamily { get; set; }
         public int[] triangleX { get; set; }
         public int[] triangleY { get; set; }
-        public int NumberOfAccaunts { get; set; }
+        //public int NumberOfAccaunts { get; set; }
 
     }
 }

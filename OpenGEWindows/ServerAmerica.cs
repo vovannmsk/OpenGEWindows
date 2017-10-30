@@ -273,7 +273,7 @@ namespace OpenGEWindows
             this.pointSecondBookmark = new Point(870 - 5 + xx, 150 - 5 + yy);                      //вторая закладка в кармане
 
             //кратер
-            this.pointWorkCrater = new Point(botwindow.getTriangleX()[1] + xx, botwindow.getTriangleY()[1] + yy);     //бежим на место работы
+            this.pointWorkCrater = new Point(botwindow.getTriangleX()[0] + xx, botwindow.getTriangleY()[0] + yy);     //бежим на место работы
             this.pointButtonSaveTeleport = new Point(440 -5 + xx, 570 -5 + yy);                   // нажимаем на кнопку сохранения телепорта в текущей позиции
             this.pointButtonOkSaveTeleport = new Point(660 - 5 + xx, 645 - 5 + yy);               // нажимаем на кнопку OK для подтверждения сохранения телепорта 
 

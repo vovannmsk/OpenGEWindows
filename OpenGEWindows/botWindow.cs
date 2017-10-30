@@ -50,25 +50,26 @@ namespace OpenGEWindows
         // SELECT X FROM Bots, coordinates WHERE Bots.Id = 1 AND Bots.Id = coordinates.IdBots   столбец с координатами X
         // SELECT Y FROM Bots, coordinates WHERE Bots.Id = 1 AND Bots.Id = coordinates.IdBots   столбец с координатами Y
         
-        private int x;
-        private int y;
         private int numberWindow;       //номер окна
-        private String param;           //америка или европа или синг
-        private String login;
-        private String password;
-        private UIntPtr hwnd;
-        private const String KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
         private const int WIDHT_WINDOW = 1024;
         private const int HIGHT_WINDOW = 700;
-        private int Kanal;
-        private int[] triangleX;
-        private int[] triangleY;
-        private int nomerTeleport;
-        private int NUMBER_OF_ACCOUNTS;
+        //private int x;
+        //private int y;
+        //private String param;           //америка или европа или синг
+        //private String login;
+        //private String password;
+        //private UIntPtr hwnd;
+        private const String KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
+        //private int Kanal;
+        //private int[] triangleX;
+        //private int[] triangleY;
+        //private int nomerTeleport;
+        //private int NUMBER_OF_ACCOUNTS;
         private int needToChange;
 
         private IScriptDataBot scriptDataBot;
         private DataBot databot;
+
         private ServerInterface server;                 
         private ServerFactory serverFactory;
         private Town town;
@@ -99,27 +100,27 @@ namespace OpenGEWindows
             // основные переменные класса
             this.numberWindow = number_Window;     // эта инфа поступает при создании объекта класса
             //всего количество ботов
-            this.NUMBER_OF_ACCOUNTS = KolvoAkk();  //из текстового файла
+            //this.NUMBER_OF_ACCOUNTS = KolvoAkk();  //из текстового файла
 
 
 
             scriptDataBot = new ScriptDataBotText(this.numberWindow);   //делаем объект репозитория с реализацией чтения из тестовых файлов (а можно организовать аналогичный класс с чтением из БД)
             databot = scriptDataBot.GetDataBot();  //в этом объекте все данные по данному окну бота
 
-            this.triangleX = new int[4];
-            this.triangleY = new int[4];
+            //this.triangleX = new int[4];
+            //this.triangleY = new int[4];
 
 
             #region Вариант 1. переменные класса подчитываются из текстовых файлов
-            this.login = Login();
-            this.password = Pass();
-            this.hwnd = Hwnd_in_file();
-            this.param = Parametr();
-            this.Kanal = Channal();
-            this.nomerTeleport = NomerTeleporta();
+            //this.login = Login();
+            //this.password = Pass();
+            //databot.hwnd = Hwnd_in_file();
+            //databot.param = Parametr();
+            //databot.Kanal = Channal();
+            //this.nomerTeleport = NomerTeleporta();
+            //this.triangleX = LoadTriangleX();
+            //this.triangleY = LoadTriangleY();
             this.needToChange = NeedToChange();
-            this.triangleX = LoadTriangleX();
-            this.triangleY = LoadTriangleY();
             #endregion
 
             #region Вариант 2. переменные класса подчитываются из текстовых файлов
@@ -127,9 +128,9 @@ namespace OpenGEWindows
             //var bots = GetBots(number_Window);  //подчитываем строку из БД BotsNew, соответствующую данному боту
             //this.login = bots.Login;
             //this.password = bots.Password;
-            //this.hwnd = (UIntPtr)uint.Parse(bots.HWND);
-            //this.param = bots.Server;
-            //this.Kanal = bots.Channel;
+            //databot.hwnd = (UIntPtr)uint.Parse(bots.HWND);
+            //databot.param = bots.Server;
+            //databot.Kanal = bots.Channel;
             //this.nomerTeleport = bots.TeleportForSale;
             //this.needToChange = bots.ChangeVis;
 
@@ -144,8 +145,8 @@ namespace OpenGEWindows
             #endregion
 
             //константы, считанные из массива (const)
-            this.x = Koord_X(); //координаты верхней левой точки окна
-            this.y = Koord_Y();
+            //databot.x = Koord_X(); //координаты верхней левой точки окна
+            //databot.y = Koord_Y();
 
             // эти объекты создаются на основании предыдущих переменных класса, а именно param (на каком сервере бот) и nomerTeleport (город продажи)
             this.serverFactory = new ServerFactory(this);
@@ -153,24 +154,26 @@ namespace OpenGEWindows
             this.town = server.getTown();
 
             // точки для тыканья. универсально для всех серверов
-            this.pointArrowUp = new Point(375 + x, 327 + y);   //375, 327);   //шаг = 27 пикселей на одну строчку магазина (на случай если добавят новые строчки)
-            this.pointButtonBUY = new Point(725 + x, 620 + y);   //725, 620);
-            this.pointButtonClose = new Point(848 + x, 620 + y);   //(848, 620);
-            this.pointButtonSell = new Point(725 + x, 620 + y);   //725, 620);
-            this.pointArrowUp2 = new Point(375 + x, 246 + y);   //375, 246);
-            this.pointBookmarkSell = new Point(226 + x, 196 + y);     //226, 196);
-            this.pointNewPlace = new Point(85 + x, 670 + y); //85, 670);
-            this.pointButtonSelectChannel = new Point(125 + x, 705 + y); //   125, 705);
-            this.pointButtonConnect = new Point(595 - 5 + x, 485 - 5 + y);    // кнопка коннект в логауте (экран еще до казармы)
-            this.pointButtonOk = new Point(525 - 5 + x, 425 - 5 + y);    // кнопка коннект в логауте
-            this.pointButtonOk2 = new Point(525 - 5 + x, 445 - 5 + y);    // кнопка коннект в логауте
+            this.pointArrowUp = new Point(375 + databot.x, 327 + databot.y);   //375, 327);   //шаг = 27 пикселей на одну строчку магазина (на случай если добавят новые строчки)
+            this.pointButtonBUY = new Point(725 + databot.x, 620 + databot.y);   //725, 620);
+            this.pointButtonClose = new Point(848 + databot.x, 620 + databot.y);   //(848, 620);
+            this.pointButtonSell = new Point(725 + databot.x, 620 + databot.y);   //725, 620);
+            this.pointArrowUp2 = new Point(375 + databot.x, 246 + databot.y);   //375, 246);
+            this.pointBookmarkSell = new Point(226 + databot.x, 196 + databot.y);     //226, 196);
+            this.pointNewPlace = new Point(85 + databot.x, 670 + databot.y); //85, 670);
+            this.pointButtonSelectChannel = new Point(125 + databot.x, 705 + databot.y); //   125, 705);
+            this.pointButtonConnect = new Point(595 - 5 + databot.x, 485 - 5 + databot.y);    // кнопка коннект в логауте (экран еще до казармы)
+            this.pointButtonOk = new Point(525 - 5 + databot.x, 425 - 5 + databot.y);    // кнопка коннект в логауте
+            this.pointButtonOk2 = new Point(525 - 5 + databot.x, 445 - 5 + databot.y);    // кнопка коннект в логауте
 
         }
 
         #region геттеры и сеттеры
         // сеттеры
         public void setHwnd(UIntPtr hwnd)
-        { this.hwnd = hwnd; }
+        { databot.hwnd = hwnd;
+          //databot.hwnd = hwnd; 
+        }
         public void setNeedToChange(int needToChange)
         { this.needToChange = needToChange; }
         public void setNeedToChangeForMainForm(bool checkBox)
@@ -186,36 +189,34 @@ namespace OpenGEWindows
             return this.server;
         }
         public UIntPtr getHwnd()
-        { return this.hwnd; }
+        { return databot.hwnd; }
         public int getNumberWindow()
         { return this.numberWindow; }
         public int getX()
-        { return this.x; }
+        { return databot.x; }
         public int getY()
-        { return this.y; }
+        { return databot.y; }
         public String getParam()
-        { return this.param; }
+        { return databot.param; }
         public int getKanal()
-        { return this.Kanal; }
+        { return databot.Kanal; }
         public int[] getTriangleX()
-        { return this.triangleX; }
+        { return databot.triangleX; }
         public int[] getTriangleY()
-        { return this.triangleY; }
+        { return databot.triangleY; }
         public int getNomerTeleport()
-        { return this.nomerTeleport; }
-        public bool getNeedToChangeForMainForm()
-        { return this.needToChange == 1 ? true : false; }
-
-        //private String getKATALOG_MY_PROGRAM()
-        //{ return KATALOG_MY_PROGRAM; }
+        { return databot.nomerTeleport; }
         public String getLogin()
         {
-            return this.login;
+            return databot.Login;
         }
         public String getPassword()
         {
-            return this.password;
+            return databot.Password;
         }
+        public bool getNeedToChangeForMainForm()
+        { return this.needToChange == 1 ? true : false; }
+
         //private int getNeedToChange()
         //{ return this.needToChange; }
         //public int getNumberOfACOOUNTS()
@@ -230,94 +231,75 @@ namespace OpenGEWindows
         /// <returns></returns>
         public bool isHwnd()
         {
-            return SetWindowPos(this.hwnd, 0, this.x, this.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);  //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
+            return SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);  //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
         }
         // ========== функция возвращает номер телепорта, по которому летим продаваться и берется из файла "ТелепортПродажа.txt"   =====================
-        private int NomerTeleporta()  
-        {  return int.Parse(Array_File_IO.Read_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\ТелепортПродажа.txt"));  }
+        //private int NomerTeleporta()  
+        //{  return int.Parse(Array_File_IO.Read_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\ТелепортПродажа.txt"));  }
+        //// ========== функция возвращает логин окна номер Number_Window ======================
+        //private String Login()   // каталог и номер окна
+        //{ return Array_File_IO.Read_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\Логины.txt"); }
+        //// ========== функция возвращает пароль окна номер Number_Window ======================
+        //private String Pass()   // каталог и номер окна
+        //{ return Array_File_IO.Read_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\Пароли.txt"); }
+        //// ========== функция возвращает hwnd в папке с номером Number_Window ======================
+        //private UIntPtr Hwnd_in_file()   
+        //{
+        //    UIntPtr ff;
+        //    String ss = Array_File_IO.Read_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\HWND.txt");
+        //    if (ss.Equals(""))
+        //    { ff = (UIntPtr)2222222; }   //если пусто в файле, то hwnd = 2222222;
+        //    else
+        //    {
+        //        uint dd = uint.Parse(ss);
+        //        ff = (UIntPtr)dd;
+        //    }
+        //    return ff;
+        //}
+        //// ========== функция возвращает смещение окна по оси Х ======================
+        //private int Koord_X()
+        //{
+        //    int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 875, 850, 825, 800, 775, 750, 725, 700 };
+        //    return koordX[this.numberWindow - 1];
+        //}
+        //// ========== функция возвращает смещение окна по оси Y ======================
+        //private int Koord_Y()   // каталог и номер окна
+        //{
+        //    int[] koordY = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 5, 30, 55, 80, 105, 130, 155, 180 };
+        //    return koordY[this.numberWindow - 1];
+        //}
+        //// ========== функция возвращает Параметр из файла Параметр.txt для окна номер number_Window ======================
+        //private String Parametr()
+        //{ return Array_File_IO.Read_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\Параметр.txt"); }
+        //private int Channal()
+        //{ return int.Parse(Array_File_IO.Read_File(KATALOG_MY_PROGRAM + numberWindow + "\\Каналы.txt")); }
+        ////========================== считываем из файла координаты Х расстановки треугольником =========================
+        //private int[] LoadTriangleX()
+        //{
+        //    int SIZE_OF_ARRAY = 4;
+        //    String[] Koord_X = new String[SIZE_OF_ARRAY];
+        //    int[] intKoord_X = new int[SIZE_OF_ARRAY];        //координаты для расстановки треугольником
+        //    Array_File_IO.Read_File_String(KATALOG_MY_PROGRAM + numberWindow + "\\РасстановкаX.txt", ref Koord_X); // Читаем файл с Координатами Х в папке с номером Number_Window
+        //    for (int i = 1; i < SIZE_OF_ARRAY; i++) { intKoord_X[i] = int.Parse(Koord_X[i]); }
+        //    return intKoord_X;
+        //}
+        ////========================== считываем из файла координаты Y расстановки треугольником =========================
+        //private int[] LoadTriangleY()
+        //{
+        //    int SIZE_OF_ARRAY = 4;
+        //    String[] Koord_Y = new String[SIZE_OF_ARRAY];
+        //    int[] intKoord_Y = new int[SIZE_OF_ARRAY];        //координаты для расстановки треугольником
+        //    Array_File_IO.Read_File_String(KATALOG_MY_PROGRAM + numberWindow + "\\РасстановкаY.txt", ref Koord_Y); // Читаем файл с Координатами Y в папке с номером Number_Window
+        //    for (int i = 1; i < SIZE_OF_ARRAY; i++) { intKoord_Y[i] = int.Parse(Koord_Y[i]); }
+        //    return intKoord_Y;
+        //}
+        ///// <summary>
+        ///// ========= функция возвращает количество аккаунтов, число берется из файла "Аккаунтов всего.txt" =====================
+        ///// </summary>
+        ///// <returns></returns>
+        //public static int KolvoAkk()
+        //{  return int.Parse(Array_File_IO.Read_File(KATALOG_MY_PROGRAM + "\\Аккаунтов всего.txt")); }
 
-        // ========== функция возвращает логин окна номер Number_Window ======================
-        private String Login()   // каталог и номер окна
-        { return Array_File_IO.Read_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\Логины.txt"); }
-        // ========== функция возвращает пароль окна номер Number_Window ======================
-        private String Pass()   // каталог и номер окна
-        { return Array_File_IO.Read_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\Пароли.txt"); }
-        // ========== функция возвращает hwnd в папке с номером Number_Window ======================
-        private UIntPtr Hwnd_in_file()   
-        {
-            UIntPtr ff;
-            String ss = Array_File_IO.Read_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\HWND.txt");
-            if (ss.Equals(""))
-            { ff = (UIntPtr)2222222; }   //если пусто в файле, то hwnd = 2222222;
-            else
-            {
-                uint dd = uint.Parse(ss);
-                ff = (UIntPtr)dd;
-            }
-            return ff;
-        }
-        // ========== функция возвращает смещение окна по оси Х ======================
-        private int Koord_X()
-        {
-            int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 875, 850, 825, 800, 775, 750, 725, 700 };
-            return koordX[this.numberWindow - 1];
-        }
-        // ========== функция возвращает смещение окна по оси Y ======================
-        private int Koord_Y()   // каталог и номер окна
-        {
-            int[] koordY = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 5, 30, 55, 80, 105, 130, 155, 180 };
-            return koordY[this.numberWindow - 1];
-        }
-        // ========== функция возвращает Параметр из файла Параметр.txt для окна номер number_Window ======================
-        private String Parametr()
-        { return Array_File_IO.Read_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\Параметр.txt"); }
-        ////  ====== возвращает путь к клиенту ГЕ Америка, который записан в файле America_path.txt ====================
-        //private String America_path()
-        //{ return Array_File_IO.Read_File(KATALOG_MY_PROGRAM + "\\America_path.txt"); }
-        ////  ====== возвращает путь к клиенту ГЕ Европа, который записан в файле Europa_path.txt ====================
-        //private String Europa_path()
-        //{ return Array_File_IO.Read_File(KATALOG_MY_PROGRAM + "\\America_path.txt"); }
-        ////  ====== возвращает путь к клиенту ГЕ Синг, который записан в файле ====================
-        //private String Sing_path()
-        //{ return Array_File_IO.Read_File(KATALOG_MY_PROGRAM + "\\America_path.txt"); }
-        //  ====== возвращает 1, если Америку надо грузить ====================
-        //private int America_active()
-        //{ return int.Parse(Array_File_IO.Read_File(KATALOG_MY_PROGRAM + "\\America_active.txt")); }
-        ////  ====== возвращает 1, если Европу надо грузить ====================
-        //private int Europa_active()
-        //{ return int.Parse(Array_File_IO.Read_File(KATALOG_MY_PROGRAM + "\\Europa_active.txt")); }
-        ////  ====== возвращает 1, если Сингапур надо грузить ====================
-        //private int Sing_active()
-        //{ return int.Parse(Array_File_IO.Read_File(KATALOG_MY_PROGRAM + "\\Singapoore_active.txt")); }
-        // ========== функция возвращает номер канала, где стоит окно номер Number_Window ==============================
-        private int Channal()
-        { return int.Parse(Array_File_IO.Read_File(KATALOG_MY_PROGRAM + numberWindow + "\\Каналы.txt")); }
-        //========================== считываем из файла координаты Х расстановки треугольником =========================
-        private int[] LoadTriangleX()
-        {
-            int SIZE_OF_ARRAY = 4;
-            String[] Koord_X = new String[SIZE_OF_ARRAY];
-            int[] intKoord_X = new int[SIZE_OF_ARRAY];        //координаты для расстановки треугольником
-            Array_File_IO.Read_File_String(KATALOG_MY_PROGRAM + numberWindow + "\\РасстановкаX.txt", ref Koord_X); // Читаем файл с Координатами Х в папке с номером Number_Window
-            for (int i = 1; i < SIZE_OF_ARRAY; i++) { intKoord_X[i] = int.Parse(Koord_X[i]); }
-            return intKoord_X;
-        }
-        //========================== считываем из файла координаты Y расстановки треугольником =========================
-        private int[] LoadTriangleY()
-        {
-            int SIZE_OF_ARRAY = 4;
-            String[] Koord_Y = new String[SIZE_OF_ARRAY];
-            int[] intKoord_Y = new int[SIZE_OF_ARRAY];        //координаты для расстановки треугольником
-            Array_File_IO.Read_File_String(KATALOG_MY_PROGRAM + numberWindow + "\\РасстановкаY.txt", ref Koord_Y); // Читаем файл с Координатами Y в папке с номером Number_Window
-            for (int i = 1; i < SIZE_OF_ARRAY; i++) { intKoord_Y[i] = int.Parse(Koord_Y[i]); }
-            return intKoord_Y;
-        }
-        /// <summary>
-        /// ========= функция возвращает количество аккаунтов, число берется из файла "Аккаунтов всего.txt" =====================
-        /// </summary>
-        /// <returns></returns>
-        public static int KolvoAkk()
-        {  return int.Parse(Array_File_IO.Read_File(KATALOG_MY_PROGRAM + "\\Аккаунтов всего.txt")); }
         /// <summary>
         /// функция возвращает имя семьи для функции создания новых ботов
         /// </summary>
@@ -502,7 +484,7 @@ namespace OpenGEWindows
         /// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
         public void PressMouseL(int x, int y)
         {
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x + this.x, y + this.y, 1);    
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x + databot.x, y + databot.y, 1);    
             Pause(200);
         } 
 
@@ -513,7 +495,7 @@ namespace OpenGEWindows
         /// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
         public void PressMouseR(int x, int y)
         {
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x + this.x, y + this.y, 8);
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x + databot.x, y + databot.y, 8);
             Pause(200);
         }
 
@@ -524,7 +506,7 @@ namespace OpenGEWindows
         /// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
         public void PressMouseWheelUp(int x, int y)
         {
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x + this.x, y + this.y, 9);
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x + databot.x, y + databot.y, 9);
             Pause(200);
         }
 
@@ -535,7 +517,7 @@ namespace OpenGEWindows
         /// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
         public void PressMouseWheelDown(int x, int y)
         {
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x + this.x, y + this.y, 3);
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x + databot.x, y + databot.y, 3);
             Pause(200);
         } 
 
@@ -548,7 +530,7 @@ namespace OpenGEWindows
         /// <param name="y2"> y2 - вторая координата точки, где нужно отпустить кнопку мыши </param>
         public void MouseMoveAndDrop(int x1, int y1, int x2, int y2)
         {
-            Click_Mouse_and_Keyboard.MMC(x1 + this.x, y1 + this.y, x2 + this.x, y2 + this.y);
+            Click_Mouse_and_Keyboard.MMC(x1 + databot.x, y1 + databot.y, x2 + databot.x, y2 + databot.y);
             Pause(200);
         } 
 
@@ -571,7 +553,7 @@ namespace OpenGEWindows
         public uint GetPixelColor(int x, int y)
         {
             IntPtr hwnd = GetDC(IntPtr.Zero);
-            uint pixel = GetPixel(hwnd, x + this.x, y + this.y);
+            uint pixel = GetPixel(hwnd, x + databot.x, y + databot.y);
             ReleaseDC(IntPtr.Zero, hwnd);
 
             return pixel;
@@ -897,15 +879,16 @@ namespace OpenGEWindows
         /// </summary>
         public bool ReOpenWindow()
         {
-            setHwnd(Hwnd_in_file());                  //написал 14.11.2016   нуждается в проверке. сначала читаем hwnd из файла, а потом присваиваем его текущему hwnd (this.hwnd)
+            //scriptDataBot.SetHwnd(databot.hwnd);       не нужно здесь вроде
+            ///setHwnd(Hwnd_in_file());                  //написал 14.11.2016   нуждается в проверке. сначала читаем hwnd из файла, а потом присваиваем его текущему hwnd (databot.hwnd)
             bool result = isHwnd();                                //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
             // 26.04.2017  if (!result) setHwnd(OpenWindow());                             //Если вылетело окно, то открываем новое окно с помощью метода OpenWindow и присваиваем новое hwnd 
             //hwnd_to_file();
             if (result)  //26.04.2017 эта строка
             {
-                ShowWindow(this.hwnd, 9);                                       // Разворачивает окно если свернуто
-                SetForegroundWindow(this.hwnd);                                 // Перемещает окно в верхний список Z порядка     
-                BringWindowToTop(this.hwnd);                                    // Делает окно активным                              
+                ShowWindow(databot.hwnd, 9);                                       // Разворачивает окно если свернуто
+                SetForegroundWindow(databot.hwnd);                                 // Перемещает окно в верхний список Z порядка     
+                BringWindowToTop(databot.hwnd);                                    // Делает окно активным                              
             }
             return result;
         }
@@ -933,7 +916,7 @@ namespace OpenGEWindows
                 Pause(25000);
 
                 //Перемещает вновь открывшиеся окно в заданные координаты, игнорирует размеры окна
-                SetWindowPos(New_HWND_GE, 0, this.x, this.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+                SetWindowPos(New_HWND_GE, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
                 Pause(1000);
 
                 EnterLoginAndPasword();
@@ -947,7 +930,7 @@ namespace OpenGEWindows
 
             hwnd_to_file();     //записали новый hwnd в файл
 
-            return this.hwnd;
+            return databot.hwnd;
         }//Конец метода OpenWindow
 
         /// <summary>
@@ -975,13 +958,13 @@ namespace OpenGEWindows
         /// </summary>
         private void hwnd_to_file()
         {
-            Array_File_IO.Write_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\HWND.txt", (uint)this.hwnd);
+            Array_File_IO.Write_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\HWND.txt", (uint)databot.hwnd);
 
             // обязательно прописать запись hwnd в базу данных Entity Framework
             //var context = new GEContext();
             //IQueryable<BotsNew> query = context.BotsNew.Where (c => c.NumberOfWindow == this.numberWindow);
             //BotsNew bots = query.Single<BotsNew>();
-            //bots.HWND = this.hwnd.ToString();
+            //bots.HWND = databot.hwnd.ToString();
             //context.SaveChanges();
         }
 
@@ -1026,7 +1009,7 @@ namespace OpenGEWindows
                     Pause(500);
 
                     currentColor = GetPixelColor(517, 413);
-                    if (currentColor == Win32.ColorTest(this.param))
+                    if (currentColor == Win32.ColorTest(databot.param))
                     {
                         pointButtonOk.PressMouse();  //кликаю в кнопку  "ОК"
 //                        PressMouse(520, 420);  //кликаю в кнопку  "ОК"    
@@ -1186,7 +1169,7 @@ namespace OpenGEWindows
             //} //END SWiTCH
 
             //            pointChoiceOfChannel = new Point(125 + x, 660 + server.sdvig() + y);              //выходим в город всегда на первом канале, переход на нужный канал на месте работы
-            pointChoiceOfChannel = new Point(125 + x, 660 + (this.Kanal - 1) * 15 + server.sdvig() + y);    //переход на нужный канал в казарме
+            pointChoiceOfChannel = new Point(125 + databot.x, 660 + (databot.Kanal - 1) * 15 + server.sdvig() + databot.y);    //переход на нужный канал в казарме
             pointChoiceOfChannel.PressMouseL();
         }
 

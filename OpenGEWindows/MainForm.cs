@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Threading;
+using GEDataBot.BL;
+
 
 
 namespace OpenGEWindows
@@ -32,7 +34,8 @@ namespace OpenGEWindows
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
         public static String DataVersion = "30.10.2017";
-        public static int numberOfAccounts = botWindow.KolvoAkk();        
+//        public static int numberOfAccounts = botWindow.KolvoAkk();
+        public static int numberOfAccounts = ScriptDataBotText.KolvoAkk();
 
         /// <summary>
         /// выполняется перез загружкой основной формы (меню)
