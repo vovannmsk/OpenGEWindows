@@ -13,10 +13,10 @@ namespace GEDataBot.BL
         /// </summary>
         /// <param name="numberOfWindow"> номер окна бота</param>
         /// <returns>данные, необходимые для создания бота в формате DataBot </returns>
-        public DataBot GetDataBot();
+        DataBot GetDataBot();
 
-        public void SetHwnd(UIntPtr hwnd);
+        void SetHwnd(UIntPtr hwnd);
 
-        public void SetChangeToTrade(string needToChange);
+        void SetChangeToTrade(string needToChange);
     }
 }

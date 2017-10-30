@@ -1,1 +1,4 @@
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\GEDataBot.BL\obj\Debug\GEDataBot.BL.csprojResolveAssemblyReference.cache
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\GEDataBot.BL\bin\Debug\GEDataBot.BL.dll
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\GEDataBot.BL\bin\Debug\GEDataBot.BL.pdb
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\GEDataBot.BL\obj\Debug\GEDataBot.BL.dll
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\GEDataBot.BL\obj\Debug\GEDataBot.BL.pdb

@@ -146,11 +146,11 @@ namespace GEDataBot.BL
         /// <returns></returns>
         private int[] LoadTriangleX()
         {
-            int SIZE_OF_ARRAY = 4;
+            int SIZE_OF_ARRAY = 3;
             String[] Koord_X = new String[SIZE_OF_ARRAY];
             int[] intKoord_X = new int[SIZE_OF_ARRAY];        //координаты для расстановки треугольником
             Koord_X = File.ReadAllLines(KATALOG_MY_PROGRAM + numberOfWindow + "\\РасстановкаX.txt"); // Читаем файл с Координатами Х в папке с номером Number_Window
-            for (int i = 1; i < SIZE_OF_ARRAY; i++) { intKoord_X[i] = int.Parse(Koord_X[i]); }
+            for (int i = 0; i < SIZE_OF_ARRAY; i++) { intKoord_X[i] = int.Parse(Koord_X[i]); }
             return intKoord_X;
         }
 
@@ -160,11 +160,11 @@ namespace GEDataBot.BL
         /// <returns></returns>
         private int[] LoadTriangleY()
         {
-            int SIZE_OF_ARRAY = 4;
+            int SIZE_OF_ARRAY = 3;
             String[] Koord_Y = new String[SIZE_OF_ARRAY];
             int[] intKoord_Y = new int[SIZE_OF_ARRAY];        //координаты для расстановки треугольником
             Koord_Y = File.ReadAllLines(KATALOG_MY_PROGRAM + numberOfWindow + "\\РасстановкаY.txt"); // Читаем файл с Координатами Y в папке с номером Number_Window
-            for (int i = 1; i < SIZE_OF_ARRAY; i++) { intKoord_Y[i] = int.Parse(Koord_Y[i]); }
+            for (int i = 0; i < SIZE_OF_ARRAY; i++) { intKoord_Y[i] = int.Parse(Koord_Y[i]); }
             return intKoord_Y;
         }
 

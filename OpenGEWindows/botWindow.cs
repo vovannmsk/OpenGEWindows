@@ -8,10 +8,8 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Threading;
-//using System.Data;
-//using System.Data.SqlClient;
-//using System.Configuration;
-//using System.Drawing;
+using GEDataBot.BL;
+
 
 namespace OpenGEWindows
 {
@@ -69,7 +67,8 @@ namespace OpenGEWindows
         private int NUMBER_OF_ACCOUNTS;
         private int needToChange;
 
-        
+        private IScriptDataBot scriptDataBot;
+        private DataBot databot;
         private ServerInterface server;                 
         private ServerFactory serverFactory;
         private Town town;
@@ -99,6 +98,9 @@ namespace OpenGEWindows
         {
             // основные переменные класса
             this.numberWindow = number_Window;     // эта инфа поступает при создании объекта класса
+
+            scriptDataBot = new ScriptDataBotText(this.numberWindow);   //делаем объект репозитория с реализацией чтения из тестовых файлов (а можно организовать аналогичный класс с чтением из БД)
+            databot = scriptDataBot.GetDataBot();  //в этом объекте все данные по данному окну бота
 
             //всего количество ботов
             this.NUMBER_OF_ACCOUNTS = KolvoAkk();

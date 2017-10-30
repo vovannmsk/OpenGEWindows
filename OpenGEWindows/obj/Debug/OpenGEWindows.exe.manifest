@@ -91,6 +91,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GEDataBot.BL.dll" size="9216">
+      <assemblyIdentity name="GEDataBot.BL" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Bc1jXkQY+vdFjqF0rjfogfrvmw+HY/CvRlt2fg72tvI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.QualityTools.Testing.Fakes.dll" size="302352">
       <assemblyIdentity name="Microsoft.QualityTools.Testing.Fakes" version="11.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -122,7 +134,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>qEwHHy6cQZUt8ZSbz4Gbj6IqIKmUapcBTuYADxq/Ogg=</dsig:DigestValue>
+        <dsig:DigestValue>7Cin0jDMh5aFr3CAleWFDK/dbmHnE0dGUWnVkUFEqYk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -144,13 +156,13 @@
       <dsig:DigestValue>sCswDme+kFCeXQVkBYNvSRJjcrtikR8dAgo3OgdpFKs=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="OpenGEWindows.exe.config" size="1391">
+  <file name="OpenGEWindows.exe.config" size="1387">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>yx3KLwo5gTgW5rG80NhLrbjWPOGUNil3fsBY5UTotLs=</dsig:DigestValue>
+      <dsig:DigestValue>KEB4+Y9iNOarES+ulrgDgIri3dneXHQimkRM0dn3sGQ=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

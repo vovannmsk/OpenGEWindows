@@ -4,17 +4,17 @@
   <description asmv2:publisher="MICROSOFT" asmv2:product="OpenGEWindows" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.5" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.5.1" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="OpenGEWindows.exe.manifest" size="10059">
+    <dependentAssembly dependencyType="install" codebase="OpenGEWindows.exe.manifest" size="10700">
       <assemblyIdentity name="OpenGEWindows.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>rcbJZ6xS0RwKG8/DEnmqGCfEP1eJ9Q3AkCkJERMKo3s=</dsig:DigestValue>
+        <dsig:DigestValue>u/Ntin130oeO0t8PzEbEr7ZvLFxqnMVPtQzVz5PKLVc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
