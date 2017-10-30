@@ -17,6 +17,5 @@ namespace GEDataBot.BL
 
         void SetHwnd(UIntPtr hwnd);
 
-        void SetChangeToTrade(string needToChange);
     }
 }

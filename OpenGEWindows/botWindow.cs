@@ -98,12 +98,14 @@ namespace OpenGEWindows
         {
             // основные переменные класса
             this.numberWindow = number_Window;     // эта инфа поступает при создании объекта класса
+            //всего количество ботов
+            this.NUMBER_OF_ACCOUNTS = KolvoAkk();  //из текстового файла
+
+
 
             scriptDataBot = new ScriptDataBotText(this.numberWindow);   //делаем объект репозитория с реализацией чтения из тестовых файлов (а можно организовать аналогичный класс с чтением из БД)
             databot = scriptDataBot.GetDataBot();  //в этом объекте все данные по данному окну бота
 
-            //всего количество ботов
-            this.NUMBER_OF_ACCOUNTS = KolvoAkk();
             this.triangleX = new int[4];
             this.triangleY = new int[4];
 
@@ -206,14 +208,14 @@ namespace OpenGEWindows
 
         //private String getKATALOG_MY_PROGRAM()
         //{ return KATALOG_MY_PROGRAM; }
-        //public String getLogin()
-        //{
-        //    return this.login;
-        //}
-        //public String getPassword()
-        //{
-        //    return this.password;
-        //}
+        public String getLogin()
+        {
+            return this.login;
+        }
+        public String getPassword()
+        {
+            return this.password;
+        }
         //private int getNeedToChange()
         //{ return this.needToChange; }
         //public int getNumberOfACOOUNTS()
@@ -322,20 +324,35 @@ namespace OpenGEWindows
         /// <returns></returns>
         public string NameOfFamily()                                                                                                     //07-09-2017
         { return Array_File_IO.Read_File(KATALOG_MY_PROGRAM + numberWindow + "\\Имя семьи.txt"); }                                          
+
+        ///// <summary>
+        ///// ========= метод возвращает значение 1, если нужно передавать песо торговцу. или 0, если не нужно ====================
+        ///// </summary>
+        ///// <returns></returns>
+        //private int NeedToChange()
+        //{
+        //    int result;
+        //    String LoadString = Array_File_IO.Read_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\НужноПередаватьПесо.txt");
+        //    if (LoadString.Equals("1"))
+        //    { result = 1; }   
+        //    else
+        //    {result = 0;  }
+        //    return result;
+        //}
+
         /// <summary>
-        /// ========= метод возвращает значение 1, если нужно передавать песо торговцу. или 0, если не нужно ====================
+        /// метод возвращает значение 1, если нужно передавать песо торговцу. или 0, если не нужно
         /// </summary>
         /// <returns></returns>
         private int NeedToChange()
         {
-            int result;
-            String LoadString = Array_File_IO.Read_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\НужноПередаватьПесо.txt");
-            if (LoadString.Equals("1"))
-            { result = 1; }   
-            else
-            {result = 0;  }
+            int result = 0;
+            String LoadString = File.ReadAllText(KATALOG_MY_PROGRAM + this.numberWindow + "\\НужноПередаватьПесо.txt");
+            if (LoadString.Equals("1")) result = 1;
             return result;
         }
+
+
         /// <summary>
         /// запись значения NeedToChange в файл 
         /// </summary>
@@ -945,11 +962,11 @@ namespace OpenGEWindows
             Pause(500);
             SendKeys.SendWait("{TAB}");
             Pause(500);
-            SendKeys.SendWait(this.login);
+            SendKeys.SendWait(getLogin());
             Pause(500);
             SendKeys.SendWait("{TAB}");
             Pause(500);
-            SendKeys.SendWait(this.password);
+            SendKeys.SendWait(getPassword());
             Pause(500);
         }
 

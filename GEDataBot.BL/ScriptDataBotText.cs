@@ -18,13 +18,15 @@ namespace GEDataBot.BL
         {
             this.numberOfWindow = numberOfWindow;
             this.databot = new DataBot();
+            databot.NumberOfAccaunts = KolvoAkk();
+            databot.x = Koord_X();
+            databot.y = Koord_Y();
             databot.Login = Login();
             databot.Password = Pass();
             databot.hwnd = Hwnd_in_file();
             databot.param = Parametr();
             databot.Kanal = Channal();
             databot.nomerTeleport = NomerTeleporta();
-            databot.needToChange = NeedToChange();
             databot.triangleX = LoadTriangleX();
             databot.triangleY = LoadTriangleY();
         }
@@ -36,7 +38,7 @@ namespace GEDataBot.BL
 
 
         /// <summary>
-        /// 
+        /// возвращает данные для бота, заданные пользователем
         /// </summary>
         /// <returns></returns>
         public DataBot GetDataBot()
@@ -44,14 +46,14 @@ namespace GEDataBot.BL
             return databot;
         }
 
+        /// <summary>
+        /// изменяем Hwnd окна и записываем в файл
+        /// </summary>
+        /// <param name="hwnd"></param>
         public void SetHwnd(UIntPtr hwnd)
         {
-            throw new NotImplementedException();
-        }
-
-        public void SetChangeToTrade(string needToChange)
-        {
-            throw new NotImplementedException();
+            databot.hwnd = hwnd;
+            File.WriteAllText(KATALOG_MY_PROGRAM + numberOfWindow + "\\HWND.txt", hwnd.ToString());
         }
 
         /// <summary>
@@ -127,17 +129,6 @@ namespace GEDataBot.BL
         private int Channal()
         { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + numberOfWindow + "\\Каналы.txt")); }
 
-        /// <summary>
-        /// метод возвращает значение 1, если нужно передавать песо торговцу. или 0, если не нужно
-        /// </summary>
-        /// <returns></returns>
-        private int NeedToChange()
-        {
-            int result = 0;
-            String LoadString = File.ReadAllText(KATALOG_MY_PROGRAM + this.numberOfWindow + "\\НужноПередаватьПесо.txt");
-            if (LoadString.Equals("1")) result = 1; 
-            return result;
-        }
 
 
         /// <summary>
@@ -168,7 +159,12 @@ namespace GEDataBot.BL
             return intKoord_Y;
         }
 
-
+        /// <summary>
+        /// возвращает количесто аккаунтов ботов 
+        /// </summary>
+        /// <returns></returns>
+        public int KolvoAkk()
+        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Аккаунтов всего.txt")); }
 
     }
 }
