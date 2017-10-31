@@ -1,6 +1,4 @@
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\OpenGEWindows.exe.config
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\Database1.mdf
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\Database1_log.ldf
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\OpenGEWindows.exe.manifest
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\OpenGEWindows.application
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\OpenGEWindows.exe

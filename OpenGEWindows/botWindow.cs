@@ -233,6 +233,7 @@ namespace OpenGEWindows
         {
             return SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);  //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
         }
+
         // ========== функция возвращает номер телепорта, по которому летим продаваться и берется из файла "ТелепортПродажа.txt"   =====================
         //private int NomerTeleporta()  
         //{  return int.Parse(Array_File_IO.Read_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\ТелепортПродажа.txt"));  }
@@ -345,40 +346,40 @@ namespace OpenGEWindows
 
         #region методы Entity Framework, которые читают из БД значения для последующего присваивания переменным класса
 
-        /// <summary>
-        /// читаем из таблицы параметры ботов
-        /// </summary>
-        /// <returns></returns>
-        private BotsNew GetBots(int i)
-        {
-            var context = new GEContext();
+        ///// <summary>
+        ///// читаем из таблицы параметры ботов
+        ///// </summary>
+        ///// <returns></returns>
+        //private BotsNew GetBots(int i)
+        //{
+        //    var context = new GEContext();
 
-            IQueryable<BotsNew> query = context.BotsNew.Where (c => c.NumberOfWindow == i);
+        //    IQueryable<BotsNew> query = context.BotsNew.Where (c => c.NumberOfWindow == i);
 
-            BotsNew bots = query.Single<BotsNew>();
+        //    BotsNew bots = query.Single<BotsNew>();
 
-            return bots;
-        }
+        //    return bots;
+        //}
 
-        /// <summary>
-        /// читаем из базы координаты расстановки ботов на карте
-        /// </summary>
-        /// <returns></returns>
-        private List<CoordinatesNew> GetCoordinates(int i)
-        {
-            var context = new GEContext();
+        ///// <summary>
+        ///// читаем из базы координаты расстановки ботов на карте
+        ///// </summary>
+        ///// <returns></returns>
+        //private List<CoordinatesNew> GetCoordinates(int i)
+        //{
+        //    var context = new GEContext();
 
-            //IQueryable<CoordinatesNew> query = context.CoordinatesNew.Where(c => c.Id_Bots == i);
+        //    //IQueryable<CoordinatesNew> query = context.CoordinatesNew.Where(c => c.Id_Bots == i);
 
-            var query = from c in context.CoordinatesNew
-                        where c.Id_Bots == i
-                        orderby c.NumberOfHeroes
-                        select c;
+        //    var query = from c in context.CoordinatesNew
+        //                where c.Id_Bots == i
+        //                orderby c.NumberOfHeroes
+        //                select c;
 
-            var coordinates = query.ToList();
+        //    var coordinates = query.ToList();
 
-            return coordinates;
-        }
+        //    return coordinates;
+        //}
 
 
         #endregion

@@ -127,35 +127,17 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OpenGEWindows.exe" size="132608">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OpenGEWindows.exe" size="122368">
       <assemblyIdentity name="OpenGEWindows" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Om36m2vzZTnjYeN1XBuV+RhIiG8cksBPVwW9PXu1j0c=</dsig:DigestValue>
+        <dsig:DigestValue>4wG39Z8GsjaXoVAvI3W13Gol8gr1SprD8MMqm8DMVfg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Database1.mdf" size="3211264" writeableType="applicationData">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>CBNokuKcfx5+uv6/eW7jMj8b2AbpUAQ5icLZvqt0YSA=</dsig:DigestValue>
-    </hash>
-  </file>
-  <file name="Database1_log.ldf" size="802816" writeableType="applicationData">
-    <hash>
-      <dsig:Transforms>
-        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-      </dsig:Transforms>
-      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>sCswDme+kFCeXQVkBYNvSRJjcrtikR8dAgo3OgdpFKs=</dsig:DigestValue>
-    </hash>
-  </file>
   <file name="OpenGEWindows.exe.config" size="1387">
     <hash>
       <dsig:Transforms>
