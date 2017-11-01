@@ -32,11 +32,15 @@ namespace OpenGEWindows
         protected int TELEPORT_N;   //номер городского телепорта
         protected const int NUMBER_OF_ITERATION = 10;
 
+        /// <summary>
+        /// выход из магазина путем нажатия кнопки Exit
+        /// </summary>
         public void PressExitFromShop()
         {
             pointOkOnMenu.PressMouseL();
             Pause(2500);
         }
+
         /// <summary>
         /// проверяет, открыт ли городской телепорт (Alt + F3)                             
         /// </summary>

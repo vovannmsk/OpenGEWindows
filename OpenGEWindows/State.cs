@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace OpenGEWindows
 {
+    /// <summary>
+    /// Интерфейс для создания всех состояний
+    /// </summary>
     public interface State : IEquatable<State>
 
     {

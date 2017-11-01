@@ -131,7 +131,6 @@
     <Compile Include="ServerEuropa.cs" />
     <Compile Include="ServerFactory.cs" />
     <Compile Include="ServerSing.cs" />
-    <Compile Include="ServerTest.cs" />
     <Compile Include="SingTownFactory.cs" />
     <Compile Include="SingTownReboldo.cs" />
     <Compile Include="State.cs" />

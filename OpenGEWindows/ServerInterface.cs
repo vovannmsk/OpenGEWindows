@@ -219,7 +219,7 @@ namespace OpenGEWindows
         protected int activeWindow;
 
 
-
+        #region методы для работы кнопок по созданию новых ботов и переходу в кратер
         /// <summary>
         /// перекладываем митридат в ячейку под цифрой 2
         /// </summary>
@@ -258,8 +258,6 @@ namespace OpenGEWindows
             botwindow.PressEscThreeTimes();
             Pause(1000);
         }
-
-
 
         /// <summary>
         /// сохраняем телепорт в месте работы
@@ -672,18 +670,6 @@ namespace OpenGEWindows
             Pause(1000);
         }
         
-        
-        ///// <summary>
-        ///// удаляем камеру (поднимаем максимально вверх)                           
-        ///// </summary>
-        //public void MaxHeight()
-        //{
-        //    for (int j = 1; j <= 10; j++)
-        //    {
-        //        pointMaxHeight.PressMouseWheelUp();
-        //    }
-        //}
-
         /// <summary>
         /// первый разговор с Линдоном после Стартонии
         /// </summary>
@@ -700,6 +686,7 @@ namespace OpenGEWindows
             }
             Pause(2000);
         }
+
         /// <summary>
         /// разговор с Нуьесом
         /// </summary>
@@ -775,6 +762,7 @@ namespace OpenGEWindows
             Pause(2500);
 
         }
+
         /// <summary>
         /// Ввод имени новой семьи
         /// </summary>
@@ -854,6 +842,7 @@ namespace OpenGEWindows
 
         }
 
+        #endregion
 
         /// <summary>
         /// нажимаем на кнопку логаут в казарме, тем самым покидаем казарму
@@ -866,7 +855,7 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// Останавливает поток на некоторый период
+        /// Останавливает поток на некоторый период (пауза)
         /// </summary>
         /// <param name="ms"> ms - период в милисекундах </param>
         protected void Pause(int ms)
@@ -899,8 +888,6 @@ namespace OpenGEWindows
         {
             pointCancelSummonPet.PressMouseL();   //Click Cancel Summon
             pointCancelSummonPet.PressMouseL();
-            //botwindow.PressMouseL(408, 390); //Click Cancel Summon
-            //botwindow.PressMouseL(408, 390);
             Pause(1000);
         }
 
@@ -962,9 +949,6 @@ namespace OpenGEWindows
             pointTeamSelection1.PressMouse();   // Нажимаем кнопку вызова списка групп
             pointTeamSelection2.PressMouseL();  // выбираем нужную группу персов (первую в списке)
             pointTeamSelection3.PressMouseL();  // Нажимаем кнопку выбора группы (Select Team) 
-            //PressMouse(135, 420); // Нажимаем кнопку вызова списка групп
-            //PressMouseL(65, 355); // выбираем нужную группу персов (первую в списке)
-            //PressMouseL(65, 620); // Нажимаем кнопку выбора группы (Select Team) 
         }
 
         /// <summary>
@@ -1110,25 +1094,6 @@ namespace OpenGEWindows
             return (bb || cc); 
         }
 
-//        /// <summary>
-//        /// метод проверяет, находится ли данное окно в городе (проверка по эксп. стойке с ружьем) 
-//        /// делаем проверку по двум точкам у каждого перса
-//        /// </summary>
-//        /// <returns> true, если бот находится в городе </returns>
-//        public bool isTown_3()
-//        {
-//            //uint ff11 = pointIsTown__11.GetPixelColor();
-//            //uint ff12 = pointIsTown__12.GetPixelColor();
-//            //uint ff21 = pointIsTown__21.GetPixelColor();
-//            //uint ff22 = pointIsTown__22.GetPixelColor();
-//            //uint ff31 = pointIsTown__31.GetPixelColor();
-//            //uint ff32 = pointIsTown__32.GetPixelColor();
-
-////            return (pointIsTown__11.isColor() && pointIsTown__12.isColor() && pointIsTown__21.isColor() && pointIsTown__22.isColor() && pointIsTown__31.isColor() && pointIsTown__32.isColor());
-//            return (pointIsTown__11.isColor() && pointIsTown__12.isColor() && pointIsTown__21.isColor() && pointIsTown__22.isColor()); //проверка по двум персам
-//        }
-
-
         /// <summary>
         /// метод проверяет, переполнился ли карман (выскочило ли уже сообщение о переполнении)
         /// </summary>
@@ -1246,12 +1211,6 @@ namespace OpenGEWindows
         public String getPathClient()
         { return this.pathClient; }
 
-
-        public abstract void TopMenu(int numberOfThePartitionMenu);
-        public abstract void TopMenu(int numberOfThePartitionMenu, int punkt);
-
-        public abstract void runClient();
-
         /// <summary>
         /// телепортируемся в город продажи по Alt+W (Америка)
         /// </summary>
@@ -1283,12 +1242,6 @@ namespace OpenGEWindows
                 Pause(15000);
             }
         }
-
-
-
-
-        public abstract uint colorTest();
-
 
         //=============================================================================================== кандидат в абстрактный класс server
         /// <summary>
@@ -1617,7 +1570,13 @@ namespace OpenGEWindows
             //if (rr == 1900000) result = true;     //если черный цвет, т.е. убит третий перс, то возвращаем true.
             //return result;
             return (pointisKillHero1.isColor() || pointisKillHero2.isColor() || pointisKillHero3.isColor());
-        } 
+        }
+
+
+        public abstract void TopMenu(int numberOfThePartitionMenu);
+        public abstract void TopMenu(int numberOfThePartitionMenu, int punkt);
+        public abstract void runClient();
+        public abstract uint colorTest();
 
 
     }
