@@ -100,6 +100,13 @@ namespace OpenGEWindows
         private iPoint pointFesoOk;
         private iPoint pointFesoOk2;
         private iPoint pointFesoObmen;
+        private iPoint pointFirstHeroL;
+        private iPoint pointFirstHeroR;
+        private iPoint pointSecondHeroL;
+        private iPoint pointSecondHeroR;
+        private iPoint pointThirdHeroL;
+        private iPoint pointThirdHeroR;
+        private iPoint pointMitridat;
 
 
         //private SqlConnection sqlconnection;
@@ -190,6 +197,13 @@ namespace OpenGEWindows
             this.pointFesoOk = new Point(610 - 5 + databot.x, 398 - 5 + databot.y);    // 1305 - 700, 573 - 180
             this.pointFesoOk2 = new Point(440 - 5 + databot.x, 502 - 5 + databot.y);    // 1135 - 700, 677 - 180
             this.pointFesoObmen = new Point(521 - 5 + databot.x, 502 - 5 + databot.y);    // 1216 - 700, 677 - 180
+            this.pointFirstHeroL = new Point(187 - 5 + databot.x, 640 - 5 + databot.y);    // 182, 635
+            this.pointFirstHeroR = new Point(187 - 5 + databot.x, 669 - 5 + databot.y);    // 182, 664
+            this.pointSecondHeroL = new Point(425 - 5 + databot.x, 640 - 5 + databot.y);    // 420, 635
+            this.pointSecondHeroR = new Point(425 - 5 + databot.x, 669 - 5 + databot.y);    // 420, 664
+            this.pointThirdHeroL = new Point(675 - 5 + databot.x, 640 - 5 + databot.y);    // 670, 635
+            this.pointThirdHeroR = new Point(675 - 5 + databot.x, 669 - 5 + databot.y);    // 670, 664
+            this.pointMitridat = new Point(38 - 5 + databot.x, 486 - 5 + databot.y);    // 33, 481
 
             
             
@@ -1004,9 +1018,13 @@ namespace OpenGEWindows
         /// </summary>
         public void FirstHero()
         {
-            PressMouseR(182, 664);
-            PressMouseR(182, 664);
-            PressMouseL(182, 635);
+            //PressMouseR(182, 664);
+            //PressMouseR(182, 664);
+            pointFirstHeroR.PressMouseR();
+            pointFirstHeroR.PressMouseR();
+            //PressMouseL(182, 635);
+            pointFirstHeroL.PressMouseL();
+            
         }
 
         /// <summary>
@@ -1014,9 +1032,12 @@ namespace OpenGEWindows
         /// </summary>
         public void SecondHero()
         {
-            PressMouseR(420, 664);
-            PressMouseR(420, 664);
-            PressMouseL(420, 635);
+            pointSecondHeroR.PressMouseR();
+            pointSecondHeroR.PressMouseR();
+//            PressMouseR(420, 664);
+  //          PressMouseR(420, 664);
+            pointSecondHeroL.PressMouseL();
+            //PressMouseL(420, 635);
         }
 
         /// <summary>
@@ -1024,9 +1045,12 @@ namespace OpenGEWindows
         /// </summary>
         public void ThirdHero()
         {
-            PressMouseR(670, 664);
-            PressMouseR(670, 664);
-            PressMouseL(670, 635);
+            pointThirdHeroR.PressMouseR();
+            pointThirdHeroR.PressMouseR();
+            pointThirdHeroL.PressMouseL();
+            //PressMouseR(670, 664);
+            //PressMouseR(670, 664);
+            //PressMouseL(670, 635);
         }
 
         /// <summary>
@@ -1131,11 +1155,12 @@ namespace OpenGEWindows
 
             if ((PeriodMitridatSeconds >= 360) | (counterMitridat == 0))
             {
-                PressMouseR(33, 481);                       // Кликаю правой кнопкой в панель с бытылками, чтобы сделать ее активной и поверх всех окон (группа может мешать)
+                pointMitridat.PressMouseR();             // Кликаю правой кнопкой в панель с бытылками, чтобы сделать ее активной и поверх всех окон (группа может мешать)
+                //PressMouseR(33, 481);                       // Кликаю правой кнопкой в панель с бытылками, чтобы сделать ее активной и поверх всех окон (группа может мешать)
                 //Pause(500);
                 PressMouseL(31 - 5, 140 - 5);                       // тыкаю в митридат (вторая ячейка)
                 //Pause(500);
-                PressMouseL(31 - 5, 170 - 5);                       // тыкаю в митридат (третья ячейка)
+                PressMouseL(31 - 5, 170 - 5);                       // тыкаю в  (третья ячейка)
                 //Pause(500);
 
                 SecondHero();                               //выбираю главным второго героя (это нужно, чтобы не было тормозов) типа надо нажать в экран после митридата
