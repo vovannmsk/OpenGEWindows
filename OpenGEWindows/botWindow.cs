@@ -90,6 +90,17 @@ namespace OpenGEWindows
         private iPoint pointButtonOk2;
         private iPoint pointOneMode;
         private iPoint pointBattleMode;
+        private iPoint pointPassword;
+        private iPoint pointMap;
+        private iPoint pointTrader;
+        private iPoint pointPersonalTrade;
+        private iPoint pointFeso1;
+        private iPoint pointFesoMove1;
+        private iPoint pointFesoMove2;
+        private iPoint pointFesoOk;
+        private iPoint pointFesoOk2;
+        private iPoint pointFesoObmen;
+
 
         //private SqlConnection sqlconnection;
         // ================ конструктор =================
@@ -169,7 +180,19 @@ namespace OpenGEWindows
             this.pointButtonOk2 = new Point(525 - 5 + databot.x, 445 - 5 + databot.y);    // кнопка коннект в логауте
             this.pointOneMode = new Point(123 - 5 + databot.x, 489 - 5 + databot.y);    // 118, 484
             this.pointBattleMode = new Point(190 - 5 + databot.x, 530 - 5 + databot.y);    //  185, 525
+            this.pointPassword = new Point(510 - 5 + databot.x, 355 - 5 + databot.y);    //  505, 350
+            this.pointMap = new Point(327 - 5 + databot.x, 355 - 5 + databot.y);    //  322, 350
+            this.pointTrader = new Point(382 - 5 + databot.x, 262 - 5 + databot.y);    // 377, 257
+            this.pointPersonalTrade = new Point(436 - 5 + databot.x, 280 - 5 + databot.y);    // 431, 275
+            this.pointFeso1 = new Point(971 - 5 + databot.x, 154 - 5 + databot.y);    // 1666 - 700, 329 - 180
+            this.pointFesoMove1 = new Point(801 - 5 + databot.x, 186 - 5 + databot.y);    // 1496 - 700, 361 - 180
+            this.pointFesoMove2 = new Point(395 - 5 + databot.x, 361 - 5 + databot.y);    // 1090 - 700, 536 - 180
+            this.pointFesoOk = new Point(610 - 5 + databot.x, 398 - 5 + databot.y);    // 1305 - 700, 573 - 180
+            this.pointFesoOk2 = new Point(440 - 5 + databot.x, 502 - 5 + databot.y);    // 1135 - 700, 677 - 180
+            this.pointFesoObmen = new Point(521 - 5 + databot.x, 502 - 5 + databot.y);    // 1216 - 700, 677 - 180
 
+            
+            
         }
 
         #region геттеры и сеттеры
@@ -452,18 +475,18 @@ namespace OpenGEWindows
 
         #endregion
 
-        /// <summary>
-        /// нажать мышью в конкретную точку
-        /// дважды будет нажиматься правая кнопка и однажды левая, также к координатам будет прибавляться смещение окна от края монитора getX и getY
-        /// </summary>
-        /// <param name="x"> x - первая координата точки, куда нужно ткнуть мышью </param>
-        /// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
-        public void PressMouse(int x, int y)
-        {
-            PressMouseR(x, y);
-            PressMouseR(x, y);
-            PressMouseL(x, y);
-        } //End PressMouse
+        ///// <summary>
+        ///// нажать мышью в конкретную точку
+        ///// дважды будет нажиматься правая кнопка и однажды левая, также к координатам будет прибавляться смещение окна от края монитора getX и getY
+        ///// </summary>
+        ///// <param name="x"> x - первая координата точки, куда нужно ткнуть мышью </param>
+        ///// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
+        //public void PressMouse(int x, int y)
+        //{
+        //    PressMouseR(x, y);
+        //    PressMouseR(x, y);
+        //    PressMouseL(x, y);
+        //} //End PressMouse
 
         /// <summary>
         /// нажать мышью в конкретную точку только левой кнопкой
@@ -653,11 +676,14 @@ namespace OpenGEWindows
         /// вводим логин и пароль в соответствующие поля
         /// </summary>
         public void EnterLoginAndPasword()
+
         {
             // окно открылось, надо вставить логин и пароль
-            PressMouseL(505, 350);       //Кликаю в строчку с паролем
+            pointPassword.PressMouseL();   //Кликаю в строчку с паролем
+            //PressMouseL(505, 350);       //Кликаю в строчку с паролем
             Pause(500);
-            PressMouseL(505, 350);       //Кликаю в строчку с паролем
+            pointPassword.PressMouseL();   //Кликаю в строчку с паролем
+            //PressMouseL(505, 350);       //Кликаю в строчку с паролем
             Pause(500);
             SendKeys.SendWait("{TAB}");
             Pause(500);
@@ -783,13 +809,14 @@ namespace OpenGEWindows
             town.MaxHeight();             //с учетом города и сервера
             Pause(500);
 
-            OpenMap2();             //открываем карту города
+            OpenMap2();                  //открываем карту города
             Pause(500);
 
-            PressMouseL(322, 350);
+            pointMap.PressMouseL();   //тыкаем в карту, чтобы добежать до нужного места
+            //PressMouseL(322, 350);
 
-            PressEscThreeTimes();      // закрываем карту
-            Pause(15000);               //ждем пока добежим
+            PressEscThreeTimes();       // закрываем карту
+            Pause(15000);               // ждем пока добежим
         }
 
         /// <summary>
@@ -810,14 +837,17 @@ namespace OpenGEWindows
             GoToChangePlaceForBot();
 
             //жмем правой на торговце
-            PressMouseL(377, 257);
+            pointTrader.PressMouseL();
+            //PressMouseL(377, 257);
             Pause(200);
 
-            PressMouseR(377, 257);
+            pointTrader.PressMouseL();
+            //PressMouseR(377, 257);
             Pause(500);
-
+            
             //жмем левой  на пункт "Personal Trade"
-            PressMouseL(431, 275);
+            pointPersonalTrade.PressMouseL();
+            //PressMouseL(431, 275);
         }
 
         /// <summary>
@@ -829,19 +859,26 @@ namespace OpenGEWindows
             server.TopMenu(8, 1);
 
             // открываем закладку кармана, там где фесо
-            PressMouseL(1666 - 700, 329 - 180);
+            
+            //PressMouseL(1666 - 700, 329 - 180);
+            pointFeso1.PressMouseL();
             Pause(500);
 
             // перетаскиваем песо
-            MouseMoveAndDrop(1496 - 700, 361 - 180, 1090 - 700, 536 - 180);                         // песо берется из первой ячейки на этой закладке  
+            pointFesoMove1.Drag(pointFesoMove2);                                             // песо берется из первой ячейки на этой закладке  
+            //MouseMoveAndDrop(1496 - 700, 361 - 180, 1090 - 700, 536 - 180);                         // песо берется из первой ячейки на этой закладке  
             Pause(500);
 
             // нажимаем Ок для подтверждения передаваемой суммы песо
-            PressMouseL(1305 - 700, 573 - 180);
+            pointFesoOk.PressMouseL();
+            //PressMouseL(1305 - 700, 573 - 180);
+            
 
             // нажимаем ок и обмен
-            PressMouseL(1135 - 700, 677 - 180);
-            PressMouseL(1216 - 700, 677 - 180);
+            pointFesoOk2.PressMouseL();
+            //PressMouseL(1135 - 700, 677 - 180);
+            pointFesoObmen.PressMouseL();
+            //PressMouseL(1216 - 700, 677 - 180);
             Pause(500);
         }
 
