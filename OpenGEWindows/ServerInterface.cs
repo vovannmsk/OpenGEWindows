@@ -897,8 +897,8 @@ namespace OpenGEWindows
         /// <returns> true, если открыто </returns>
         public bool isOpenMenuPet()
         {
-            //uint bb = pointisOpenMenuPet1.GetPixelColor();
-            //uint dd = pointisOpenMenuPet2.GetPixelColor();
+            uint bb = pointisOpenMenuPet1.GetPixelColor();
+            uint dd = pointisOpenMenuPet2.GetPixelColor();
             return (pointisOpenMenuPet1.isColor() && pointisOpenMenuPet2.isColor());
         }
 
@@ -1013,10 +1013,12 @@ namespace OpenGEWindows
         public bool isActivePet()
         {
             //return botwindow.isColor2(495 - 5, 310 - 5, 13200000, 496 - 5, 308 - 5, 13600000, 5);
-            uint bb = pointisActivePet1.GetPixelColor();
-            uint dd = pointisActivePet2.GetPixelColor();
-            uint ee = pointisActivePet3.GetPixelColor();
-            uint ff = pointisActivePet4.GetPixelColor();
+            //uint bb = pointisActivePet1.GetPixelColor();
+            //uint dd = pointisActivePet2.GetPixelColor();
+            //MessageBox.Show(" " + bb);
+            //MessageBox.Show(" " + dd);
+            //uint ee = pointisActivePet3.GetPixelColor();
+            //uint ff = pointisActivePet4.GetPixelColor();
             return ((pointisActivePet1.isColor() && pointisActivePet2.isColor()) || (pointisActivePet3.isColor() && pointisActivePet4.isColor()));
         }
 

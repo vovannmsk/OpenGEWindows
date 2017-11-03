@@ -343,12 +343,14 @@ namespace OpenGEWindows
             //this.pointisWork__2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
             PointColor pointisLogout1 = new PointColor(565 - 5 + xx, 530 - 5 + yy, 16400000, 5);       //не проверено   слово Leave Game
             PointColor pointisLogout2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 16400000, 5);       //не проверено
+            PointColor pointisOpenTopMenu121 = new PointColor(502 - 5 + xx, 140 - 5 + yy, 12440000, 4);      //507 - 5, 140 - 5, 12440000, 508 - 5, 140 - 5, 12440000, 4);        //проверено
+            PointColor pointisOpenTopMenu122 = new PointColor(502 - 5 + xx, 141 - 5 + yy, 12440000, 4);
 
-            PointColor pointisActivePet1 = new PointColor(828 - 5 + xx, 186 - 5 + yy, 13100000, 5);
-            PointColor pointisActivePet2 = new PointColor(829 - 5 + xx, 185 - 5 + yy, 13100000, 5);
+            PointColor pointisActivePet1 = new PointColor(493 - 5 + xx, 310 - 5 + yy, 13100000, 5);
+            PointColor pointisActivePet2 = new PointColor(494 - 5 + xx, 309 - 5 + yy, 13100000, 5);
 
-            color1 = pointisLogout1.GetPixelColor();
-            color2 = pointisLogout2.GetPixelColor();
+            color1 = pointisActivePet1.GetPixelColor();
+            color2 = pointisActivePet2.GetPixelColor();
 
             //color1 = Win32.Okruglenie(Win32.GetPixelColor(29 - 5 + xx, 697 - 5 + yy), 0);      //стойка на работе
             //color2 = Win32.Okruglenie(Win32.GetPixelColor(30 - 5 + xx, 697 - 5 + yy), 0);      
