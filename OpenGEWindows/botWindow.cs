@@ -107,6 +107,7 @@ namespace OpenGEWindows
         private iPoint pointThirdHeroL;
         private iPoint pointThirdHeroR;
         private iPoint pointMitridat;
+        private iPoint pointEnterBattleMode;
 
 
         //private SqlConnection sqlconnection;
@@ -204,6 +205,7 @@ namespace OpenGEWindows
             this.pointThirdHeroL = new Point(675 - 5 + databot.x, 640 - 5 + databot.y);    // 670, 635
             this.pointThirdHeroR = new Point(675 - 5 + databot.x, 669 - 5 + databot.y);    // 670, 664
             this.pointMitridat = new Point(38 - 5 + databot.x, 486 - 5 + databot.y);    // 33, 481
+            this.pointEnterBattleMode = new Point(205 - 5 + databot.x, 205 - 5 + databot.y);    // 200, 200
 
             
             
@@ -623,6 +625,32 @@ namespace OpenGEWindows
                 Pause(200);
 
             }
+            return New_HWND_GE;
+        }
+
+        /// <summary>
+        /// поиск новых окон с игрой для кнопки "Найти окна Sing"
+        /// </summary>
+        /// <returns></returns>
+        public UIntPtr FindWindow3()
+        {
+            UIntPtr New_HWND_GE;
+            New_HWND_GE = (UIntPtr)0;
+
+            while (New_HWND_GE == (UIntPtr)0)
+            {
+                Pause(500);
+                New_HWND_GE = FindWindow("Granado Espada", "Granado Espada");
+            }
+            setHwnd(New_HWND_GE);
+            hwnd_to_file();
+            //Перемещает вновь открывшиеся окно в заданные координаты, игнорирует размеры окна
+            //SetWindowPos(New_HWND_GE, 1, getX(), getY(), WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+            SetWindowPos(New_HWND_GE, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+            Pause(500);
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(350, 700, 8);
+            Pause(200);
+
             return New_HWND_GE;
         }
 
@@ -1137,8 +1165,11 @@ namespace OpenGEWindows
             Pause(1000);
 
             //=============================== выйти из боевого режима (бежим в сторону) ============================================
-            PressMouseL(200, 200);  //отбегаю ботами в сторону, чтобы они вышли из боевого режима
-            PressMouseL(200, 200);  //отбегаю ботами в сторону, чтобы они вышли из боевого режима
+
+            pointEnterBattleMode.PressMouseL();//отбегаю ботами в сторону, чтобы они вышли из боевого режима
+            pointEnterBattleMode.PressMouseL();
+            //PressMouseL(200, 200);  //отбегаю ботами в сторону, чтобы они вышли из боевого режима
+            //PressMouseL(200, 200);  //отбегаю ботами в сторону, чтобы они вышли из боевого режима
             Pause(2000);
 
             server.GoToEnd();

@@ -23,9 +23,6 @@ namespace OpenGEWindows
         public botWindow[] botWindowArray = new botWindow[MAX_NUMBER_OF_ACCOUNTS];
         public UIntPtr[] aa = new UIntPtr[21];   //используется в методе "Найти окна"
 
-        private Thread myThreadGreen;
-
-
         public MainForm()
         {
             InitializeComponent();
@@ -33,9 +30,9 @@ namespace OpenGEWindows
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "30.10.2017";
+        public static String DataVersion = "03-11-2017";
 //        public static int numberOfAccounts = botWindow.KolvoAkk();
-        public static int numberOfAccounts = ScriptDataBotText.KolvoAkk();
+        public static int numberOfAccounts = KolvoAkk();
 
         /// <summary>
         /// выполняется перез загружкой основной формы (меню)
@@ -94,8 +91,7 @@ namespace OpenGEWindows
         }
 
 
-
-        #region Кнопка "Найти окна"
+        #region Light Coral Button "Найти окна"
 
         /// <summary>
         /// найти окна
@@ -106,6 +102,17 @@ namespace OpenGEWindows
         {
             button5.Visible = false;
 
+            Thread myThreadCoral = new Thread(funcCoral);
+            myThreadCoral.Start();
+
+            button5.Visible = true;
+        }
+
+        /// <summary>
+        /// метод задает функционал для потока, организуемого Coral кнопкой
+        /// </summary>
+        private void funcCoral()
+        {
             for (int j = 1; j <= numberOfAccounts; j++)
             {
                 bool fff = true;
@@ -121,16 +128,15 @@ namespace OpenGEWindows
                     botWindowArray[j].Pause(500);
                 }
             }
-
-            button5.Visible = true;
         }
+
 
         /// <summary>
         /// возвращает true, если в массиве есть искомое число ddd
         /// </summary>
         /// <param name="ddd"></param>
         /// <returns></returns>
-        private bool funcArray(UIntPtr ddd)                                                                                   //
+        private bool funcArray(UIntPtr ddd)                                                                                  
         { 
             bool fff = false;
             for (int j = 1; j <= numberOfAccounts; j++)
@@ -178,6 +184,7 @@ namespace OpenGEWindows
         #endregion
         
         #region Оранжевая кнопка
+
         /// <summary>
         /// ВОССТАНОВЛЕНИЕ ОКОН                                                                                                                 
         /// </summary>
@@ -206,7 +213,6 @@ namespace OpenGEWindows
         {
             for (int j = 1; j <= numberOfAccounts; j++)
             {
-//                orangeButtonArray[j].run();
                 botWindowArray[j].ReOpenWindow();
                 botWindowArray[j].Pause(100);
                 if (botWindowArray[j].getserver().isLogout())
@@ -323,6 +329,8 @@ namespace OpenGEWindows
             //////uint ss, tt, rr,sss;
             xx = 5;
             yy = 5;
+            uint color1;
+            uint color2;
             //PointColor pointisSummonPet1 = new PointColor(149 - 5 + xx, 516 - 5 + yy, 12000000, 6);      //проверено
             //PointColor pointisSummonPet2 = new PointColor(475 - 5 + xx, 221 - 5 + yy, 12000000, 6);       //проверено
             //uint color1 = pointisSummonPet1.GetPixelColor();
@@ -333,11 +341,18 @@ namespace OpenGEWindows
             //this.pointisWork_2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 10919000, 3);
             //this.pointisWork__1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);              //проверка по обычной стойке с дробашем
             //this.pointisWork__2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
+            PointColor pointisLogout1 = new PointColor(565 - 5 + xx, 530 - 5 + yy, 16400000, 5);       //не проверено   слово Leave Game
+            PointColor pointisLogout2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 16400000, 5);       //не проверено
 
+            PointColor pointisActivePet1 = new PointColor(828 - 5 + xx, 186 - 5 + yy, 13100000, 5);
+            PointColor pointisActivePet2 = new PointColor(829 - 5 + xx, 185 - 5 + yy, 13100000, 5);
 
+            color1 = pointisLogout1.GetPixelColor();
+            color2 = pointisLogout2.GetPixelColor();
 
-            uint color1 = Win32.Okruglenie(Win32.GetPixelColor(29 - 5 + xx, 697 - 5 + yy), 0);      //стойка на работе
-            uint color2 = Win32.Okruglenie(Win32.GetPixelColor(30 - 5 + xx, 697 - 5 + yy), 0);      
+            //color1 = Win32.Okruglenie(Win32.GetPixelColor(29 - 5 + xx, 697 - 5 + yy), 0);      //стойка на работе
+            //color2 = Win32.Okruglenie(Win32.GetPixelColor(30 - 5 + xx, 697 - 5 + yy), 0);      
+
             //uint color1 = Win32.Okruglenie(Win32.GetPixelColor(829 - 5 + xx, 186 - 5 + yy), 6);      //для проверки периодической еды на месяц
 
             //uint color1 = Win32.Okruglenie(Win32.GetPixelColor(478 - 5 + xx, 93 - 5 + yy), 0);     
@@ -524,7 +539,7 @@ namespace OpenGEWindows
         private void button_StandUp_Click(object sender, EventArgs e)         
         {
             button_StandUp.Visible = false;
-            myThreadGreen = new Thread(funcGreen);
+            Thread myThreadGreen = new Thread(funcGreen);
             myThreadGreen.Start();
 
             button_StandUp.Visible = true;
@@ -830,7 +845,52 @@ namespace OpenGEWindows
         }
 
         #endregion
-        
+
+        /// <summary>
+        /// возвращаеи количество аккаунтов
+        /// </summary>
+        /// <returns>кол-во акков всего</returns>
+        public static int KolvoAkk()
+        { 
+            int dd = int.Parse(File.ReadAllText(KatalogMyProgram + "\\Аккаунтов всего.txt"));
+            return dd;
+        }
+
+
+        #region Silver button
+        private void findWindowSing_Click(object sender, EventArgs e)
+        {
+            findWindowSing.Visible = false;
+
+            Thread myThreadSilver = new Thread(funcSilver);
+            myThreadSilver.Start();
+
+            findWindowSing.Visible = true;
+        }
+
+        /// <summary>
+        /// метод задает функционал для потока, организуемого Silver кнопкой
+        /// </summary>
+        private void funcSilver()
+        {
+            for (int j = 1; j <= numberOfAccounts; j++)
+            {
+                bool fff = true;
+                while (fff)
+                {
+                    UIntPtr ddd = botWindowArray[j].FindWindow3();
+                    botWindowArray[j].Pause(500);
+                    if (!funcArray(ddd))
+                    {
+                        aa[j] = ddd;
+                        fff = false;
+                    }
+                    botWindowArray[j].Pause(500);
+                }
+            }
+        }
+
+        #endregion
 
 
 

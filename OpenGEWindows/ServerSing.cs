@@ -34,64 +34,64 @@ namespace OpenGEWindows
             this.town = townFactory.createTown();
             this.pathClient = path_Client();
             this.activeWindow = Sing_active();
-            this.pointIsSale1 = new PointColor(907 - 5 + xx, 678 - 5 + yy, 7850000, 4);          //проверено
-            this.pointIsSale2 = new PointColor(908 - 5 + xx, 678 - 5 + yy, 7720000, 4);          //проверено
-            this.pointIsSale21 = new PointColor(842 - 5 + xx, 665 - 5 + yy, 7920000, 4);         //проверено
-            this.pointIsSale22 = new PointColor(842 - 5 + xx, 668 - 5 + yy, 7920000, 4);         //проверено
-            this.pointIsClickSale1 = new PointColor(733 - 5 + xx, 665 - 5 + yy, 7920000, 4);     //проверено      
-            this.pointIsClickSale2 = new PointColor(733 - 5 + xx, 664 - 5 + yy, 7920000, 4);     //проверено
-            this.pointIsTown11 = new PointColor(24 + xx, 692 + yy, 11053000, 3);                 //проверено
-            this.pointIsTown12 = new PointColor(25 + xx, 692 + yy, 10921000, 3);                 //проверено
-            this.pointIsTown21 = new PointColor(279 + xx, 692 + yy, 11053000, 3);                //проверено
-            this.pointIsTown22 = new PointColor(280 + xx, 692 + yy, 10921000, 3);                //проверено
-            this.pointIsTown31 = new PointColor(534 + xx, 692 + yy, 11053000, 3);                //проверено
-            this.pointIsTown32 = new PointColor(535 + xx, 692 + yy, 10921000, 3);                //проверено
-            this.pointisBoxOverflow1 = new PointColor(523 - 5 + xx, 437 - 5 + yy, 7700000, 5);   //проверено
-            this.pointisBoxOverflow2 = new PointColor(522 - 5 + xx, 437 - 5 + yy, 7800000, 5);   //проверено
-            this.pointisSummonPet1 = new PointColor(401 - 5 + xx, 362 - 5 + yy, 7500000, 5);     //проверено
-            this.pointisSummonPet2 = new PointColor(401 - 5 + xx, 364 - 5 + yy, 7500000, 5);     //проверено
-            this.pointisActivePet1 = new PointColor(493 - 5 + xx, 310 - 5 + yy, 13000000, 6);    //проверено
-            this.pointisActivePet2 = new PointColor(494 - 5 + xx, 309 - 5 + yy, 13000000, 6);    //проверено
-            this.pointisLogout1 = new PointColor(611 - 5 + xx, 534 - 5 + yy, 16700000, 5);       //проверено
-            this.pointisLogout2 = new PointColor(611 - 5 + xx, 535 - 5 + yy, 16700000, 5);       //проверено
-            this.pointisBarack1 = new PointColor(64 - 5 + xx, 151 - 5 + yy, 2420000, 4);            //зеленый цвет в слове Barracks  // проверено
-            this.pointisBarack2 = new PointColor(64 - 5 + xx, 154 - 5 + yy, 2420000, 4);            // проверено
-            this.pointisBarack3 = new PointColor(81 - 5 + xx, 63 - 5 + yy, 7700000, 5);             //проверено
-            this.pointisBarack4 = new PointColor(81 - 5 + xx, 64 - 5 + yy, 7700000, 5);             //проверено
+            this.pointIsSale1 = new PointColor(907 - 5 + xx, 678 - 5 + yy, 7850000, 4);          //не проверено
+            this.pointIsSale2 = new PointColor(908 - 5 + xx, 678 - 5 + yy, 7720000, 4);          //не проверено
+            this.pointIsSale21 = new PointColor(842 - 5 + xx, 665 - 5 + yy, 7920000, 4);         //не проверено
+            this.pointIsSale22 = new PointColor(842 - 5 + xx, 668 - 5 + yy, 7920000, 4);         //не проверено
+            this.pointIsClickSale1 = new PointColor(733 - 5 + xx, 665 - 5 + yy, 7920000, 4);     //не проверено      
+            this.pointIsClickSale2 = new PointColor(733 - 5 + xx, 664 - 5 + yy, 7920000, 4);     //не проверено
+            this.pointIsTown11 = new PointColor(24 + xx, 692 + yy, 11053000, 3);                 //не проверено
+            this.pointIsTown12 = new PointColor(25 + xx, 692 + yy, 10921000, 3);                 //не проверено
+            this.pointIsTown21 = new PointColor(279 + xx, 692 + yy, 11053000, 3);                //не проверено
+            this.pointIsTown22 = new PointColor(280 + xx, 692 + yy, 10921000, 3);                //не проверено
+            this.pointIsTown31 = new PointColor(534 + xx, 692 + yy, 11053000, 3);                //не проверено
+            this.pointIsTown32 = new PointColor(535 + xx, 692 + yy, 10921000, 3);                //не проверено
+            this.pointisBoxOverflow1 = new PointColor(523 - 5 + xx, 437 - 5 + yy, 7700000, 5);   //не проверено
+            this.pointisBoxOverflow2 = new PointColor(522 - 5 + xx, 437 - 5 + yy, 7800000, 5);   //не проверено
+            this.pointisSummonPet1 = new PointColor(401 - 5 + xx, 362 - 5 + yy, 7500000, 5);     //не проверено
+            this.pointisSummonPet2 = new PointColor(401 - 5 + xx, 364 - 5 + yy, 7500000, 5);     //не проверено
+            this.pointisActivePet1 = new PointColor(493 - 5 + xx, 310 - 5 + yy, 13000000, 6);    //не проверено
+            this.pointisActivePet2 = new PointColor(494 - 5 + xx, 309 - 5 + yy, 13000000, 6);    //не проверено
+            this.pointisLogout1 = new PointColor(565 - 5 + xx, 530 - 5 + yy, 16400000, 5);       // проверено   слово Leave Game
+            this.pointisLogout2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 16400000, 5);       // проверено
+            this.pointisBarack1 = new PointColor(64 - 5 + xx, 151 - 5 + yy, 2420000, 4);            //зеленый цвет в слове Barracks  // не проверено
+            this.pointisBarack2 = new PointColor(64 - 5 + xx, 154 - 5 + yy, 2420000, 4);            // не проверено
+            this.pointisBarack3 = new PointColor(81 - 5 + xx, 63 - 5 + yy, 7700000, 5);             //не проверено
+            this.pointisBarack4 = new PointColor(81 - 5 + xx, 64 - 5 + yy, 7700000, 5);             //не проверено
             this.pointisWork1 = new PointColor(24 + xx, 692 + yy, 11051000, 3);      //29 - 5, 697 - 5, 11051000, 30 - 5, 697 - 5, 10919000, 3);
             this.pointisWork2 = new PointColor(25 + xx, 692 + yy, 10919000, 3);
-            this.pointisOpenMenuPet1 = new PointColor(475 - 5 + xx, 220 - 5 + yy, 12000000, 6);     //проверено
-            this.pointisOpenMenuPet2 = new PointColor(475 - 5 + xx, 221 - 5 + yy, 12000000, 6);     //проверено
+            this.pointisOpenMenuPet1 = new PointColor(475 - 5 + xx, 220 - 5 + yy, 12000000, 6);     //не проверено
+            this.pointisOpenMenuPet2 = new PointColor(475 - 5 + xx, 221 - 5 + yy, 12000000, 6);     //не проверено
 
-            this.pointisOpenTopMenu21 = new PointColor(328 + xx, 74 + yy, 13420000, 4);      //333 - 5, 79 - 5, 13420000, 334 - 5, 79 - 5, 13420000, 4);  //не проверено
+            this.pointisOpenTopMenu21 = new PointColor(328 + xx, 74 + yy, 13420000, 4);      //333 - 5, 79 - 5, 13420000, 334 - 5, 79 - 5, 13420000, 4);  //не не проверено
             this.pointisOpenTopMenu22 = new PointColor(329 + xx, 74 + yy, 13420000, 4);
-            this.pointisOpenTopMenu61 = new PointColor(455 + xx, 87 + yy, 13420000, 4);      //460 - 5, 92 - 5, 13420000, 461 - 5, 92 - 5, 13420000, 4);  //не проверено
+            this.pointisOpenTopMenu61 = new PointColor(455 + xx, 87 + yy, 13420000, 4);      //460 - 5, 92 - 5, 13420000, 461 - 5, 92 - 5, 13420000, 4);  //не не проверено
             this.pointisOpenTopMenu62 = new PointColor(456 + xx, 87 + yy, 13420000, 4);
-            this.pointisOpenTopMenu81 = new PointColor(553 + xx, 87 + yy, 13420000, 4);      //558 - 5, 92 - 5, 13420000, 559 - 5, 92 - 5, 13420000, 4);  //не проверено
+            this.pointisOpenTopMenu81 = new PointColor(553 + xx, 87 + yy, 13420000, 4);      //558 - 5, 92 - 5, 13420000, 559 - 5, 92 - 5, 13420000, 4);  //не не проверено
             this.pointisOpenTopMenu82 = new PointColor(554 + xx, 87 + yy, 13420000, 4);
-            this.pointisOpenTopMenu91 = new PointColor(601 + xx, 74 + yy, 13420000, 4);      //606 - 5, 79 - 5, 13420000, 607 - 5, 79 - 5, 13420000, 4);  //не проверено
+            this.pointisOpenTopMenu91 = new PointColor(601 + xx, 74 + yy, 13420000, 4);      //606 - 5, 79 - 5, 13420000, 607 - 5, 79 - 5, 13420000, 4);  //не не проверено
             this.pointisOpenTopMenu92 = new PointColor(602 + xx, 74 + yy, 13420000, 4);
-            this.pointisOpenTopMenu121 = new PointColor(503 - 5 + xx, 135 - 5 + yy, 12800000, 5);      //проверено
-            this.pointisOpenTopMenu122 = new PointColor(503 - 5 + xx, 136 - 5 + yy, 12800000, 5);      //проверено
-            this.pointisOpenTopMenu131 = new PointColor(409 - 5 + xx, 280 - 5 + yy, 16400000, 5);      // проверено
-            this.pointisOpenTopMenu132 = new PointColor(409 - 5 + xx, 281 - 5 + yy, 16400000, 5);      // проверено
+            this.pointisOpenTopMenu121 = new PointColor(503 - 5 + xx, 135 - 5 + yy, 12800000, 5);      //не проверено
+            this.pointisOpenTopMenu122 = new PointColor(503 - 5 + xx, 136 - 5 + yy, 12800000, 5);      //не проверено
+            this.pointisOpenTopMenu131 = new PointColor(409 - 5 + xx, 280 - 5 + yy, 16400000, 5);      // не проверено
+            this.pointisOpenTopMenu132 = new PointColor(409 - 5 + xx, 281 - 5 + yy, 16400000, 5);      // не проверено
 
 
-            this.pointBuyingMitridat1 = new Point(360 + xx, 537 + yy);          // проверено
-            this.pointBuyingMitridat2 = new Point(517 + xx, 433 + yy);          // проверено
-            this.pointBuyingMitridat3 = new Point(517 + xx, 423 + yy);          // проверено
+            this.pointBuyingMitridat1 = new Point(360 + xx, 537 + yy);          // не проверено
+            this.pointBuyingMitridat2 = new Point(517 + xx, 433 + yy);          // не проверено
+            this.pointBuyingMitridat3 = new Point(517 + xx, 423 + yy);          // не проверено
             this.pointGotoEnd = new Point(680 + xx, 462 + yy);                  //для чистого клиента - end programm
             //this.pointGotoEnd = new Point(680 + xx, 432 + yy);                  //для CatzMods - logout (только в том случае, если надо сохранять настройки бота)
             this.pointTeamSelection1 = new Point(140 - 5 + xx, 445 - 5 + yy);
             this.pointTeamSelection2 = new Point(70 - 5 + xx, 355 - 5 + yy);
             this.pointTeamSelection3 = new Point(40 - 5 + xx, 620 - 5 + yy);
 
-            this.pointTeleport1 = new Point(410 - 5 + xx, 195 - 5 + yy);        // проверено
-            this.pointTeleport2 = new Point(360 - 5 + xx, 572 - 5 + yy);         // проверено
-            this.pointCancelSummonPet = new Point(413 - 5 + xx, 386 - 5 + yy);          // проверено
-            this.pointSummonPet1 = new Point(540 - 5 + xx, 380 - 5 + yy);                   // 569, 375   //Click Pet                     // проверено
-            this.pointSummonPet2 = new Point(463 - 5 + xx, 361 - 5 + yy);                   // 408, 360   //Click кнопку "Summon"          // проверено
-            this.pointActivePet = new Point(413 - 5 + xx, 411 - 5 + yy);                   // 408, 405);  //Click Button Active Pet          // проверено
+            this.pointTeleport1 = new Point(410 - 5 + xx, 195 - 5 + yy);        // не проверено
+            this.pointTeleport2 = new Point(360 - 5 + xx, 572 - 5 + yy);         // не проверено
+            this.pointCancelSummonPet = new Point(413 - 5 + xx, 386 - 5 + yy);          // не проверено
+            this.pointSummonPet1 = new Point(540 - 5 + xx, 380 - 5 + yy);                   // 569, 375   //Click Pet                     // не проверено
+            this.pointSummonPet2 = new Point(463 - 5 + xx, 361 - 5 + yy);                   // 408, 360   //Click кнопку "Summon"          // не проверено
+            this.pointActivePet = new Point(413 - 5 + xx, 411 - 5 + yy);                   // 408, 405);  //Click Button Active Pet          // не проверено
 
             this.pointTeleportToTownAltW = new Point(801 + xx, 564 + yy + (botwindow.getNomerTeleport() - 1) * 17);  
 
@@ -669,29 +669,29 @@ namespace OpenGEWindows
             switch (numberOfThePartitionMenu)
             {
                 case 2:
-                    //                    result = botwindow.isColor2(333 - 5, 79 - 5, 13420000, 334 - 5, 79 - 5, 13420000, 4);  //не проверено
+                    //                    result = botwindow.isColor2(333 - 5, 79 - 5, 13420000, 334 - 5, 79 - 5, 13420000, 4);  //не не проверено
                     result = (pointisOpenTopMenu21.isColor() && pointisOpenTopMenu22.isColor());
                     break;
                 case 6:
-                    //                    result = botwindow.isColor2(460 - 5, 92 - 5, 13420000, 461 - 5, 92 - 5, 13420000, 4);  //не проверено
+                    //                    result = botwindow.isColor2(460 - 5, 92 - 5, 13420000, 461 - 5, 92 - 5, 13420000, 4);  //не не проверено
                     result = (pointisOpenTopMenu61.isColor() && pointisOpenTopMenu62.isColor());
                     break;
                 case 8:
-                    //result = botwindow.isColor2(558 - 5, 92 - 5, 13420000, 559 - 5, 92 - 5, 13420000, 4);  //не проверено
+                    //result = botwindow.isColor2(558 - 5, 92 - 5, 13420000, 559 - 5, 92 - 5, 13420000, 4);  //не не проверено
                     result = (pointisOpenTopMenu81.isColor() && pointisOpenTopMenu82.isColor());
                     break;
                 case 9:
-                    //result = botwindow.isColor2(606 - 5, 79 - 5, 13420000, 607 - 5, 79 - 5, 13420000, 4);  //не проверено
+                    //result = botwindow.isColor2(606 - 5, 79 - 5, 13420000, 607 - 5, 79 - 5, 13420000, 4);  //не не проверено
                     result = (pointisOpenTopMenu91.isColor() && pointisOpenTopMenu92.isColor());
                     break;
                 case 12:
-                    //result = botwindow.isColor2(507 - 5, 140 - 5, 12440000, 508 - 5, 140 - 5, 12440000, 4);  //проверено
+                    //result = botwindow.isColor2(507 - 5, 140 - 5, 12440000, 508 - 5, 140 - 5, 12440000, 4);  //не проверено
                     uint bb = pointisOpenTopMenu121.GetPixelColor();
                     uint dd = pointisOpenTopMenu122.GetPixelColor();
                     result = (pointisOpenTopMenu121.isColor() && pointisOpenTopMenu122.isColor());
                     break;
                 case 13:
-                    //result = botwindow.isColor2(371 - 5, 278 - 5, 16310000, 372 - 5, 278 - 5, 16510000, 4);  //не проверено
+                    //result = botwindow.isColor2(371 - 5, 278 - 5, 16310000, 372 - 5, 278 - 5, 16510000, 4);  //не не проверено
                     //uint bb = pointisOpenTopMenu131.GetPixelColor();
                     //uint dd = pointisOpenTopMenu132.GetPixelColor();
                     result = (pointisOpenTopMenu131.isColor() && pointisOpenTopMenu132.isColor());

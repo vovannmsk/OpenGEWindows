@@ -19,6 +19,7 @@ namespace OpenGEWindows
         private Town townDealer;
         private ServerInterface serverDealer;
 
+        
 
         public StateCV01()
         {
@@ -117,7 +118,7 @@ namespace OpenGEWindows
 
                 botwindow.PressMouseR(200, 570);     //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
 
-                dealer.GoToChangePlace();           //  торговец следует на место передачи песо
+                dealer.GoToChangePlace();            //  торговец следует на место передачи песо
             }
         }
 

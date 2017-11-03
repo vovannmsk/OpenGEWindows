@@ -174,12 +174,12 @@ namespace GEDataBot.BL
         //public int KolvoAkk()
         //{ return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Аккаунтов всего.txt")); }
 
-        /// <summary>
-        /// возвращает количесто аккаунтов ботов 
-        /// </summary>
-        /// <returns></returns>
-        public static int KolvoAkk()
-        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Аккаунтов всего.txt")); }
+        ///// <summary>
+        ///// возвращает количесто аккаунтов ботов 
+        ///// </summary>
+        ///// <returns></returns>
+        //public static int KolvoAkk()
+        //{ return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Аккаунтов всего.txt")); }
 
     }
 }

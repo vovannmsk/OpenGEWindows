@@ -63,6 +63,7 @@
             this.button5 = new System.Windows.Forms.Button();
             this.buttonNewAcc = new System.Windows.Forms.Button();
             this.RunToCrater = new System.Windows.Forms.Button();
+            this.findWindowSing = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonOpenWindowGE
@@ -423,12 +424,24 @@
             this.RunToCrater.UseVisualStyleBackColor = false;
             this.RunToCrater.Click += new System.EventHandler(this.RunToCrater_Click);
             // 
+            // findWindowSing
+            // 
+            this.findWindowSing.BackColor = System.Drawing.Color.Silver;
+            this.findWindowSing.Location = new System.Drawing.Point(178, 178);
+            this.findWindowSing.Name = "findWindowSing";
+            this.findWindowSing.Size = new System.Drawing.Size(198, 35);
+            this.findWindowSing.TabIndex = 51;
+            this.findWindowSing.Text = "Найти окна Sing";
+            this.findWindowSing.UseVisualStyleBackColor = false;
+            this.findWindowSing.Click += new System.EventHandler(this.findWindowSing_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(388, 219);
+            this.Controls.Add(this.findWindowSing);
             this.Controls.Add(this.RunToCrater);
             this.Controls.Add(this.buttonNewAcc);
             this.Controls.Add(this.button5);
@@ -511,6 +524,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button buttonNewAcc;
         private System.Windows.Forms.Button RunToCrater;
+        private System.Windows.Forms.Button findWindowSing;
     
     }
 }
