@@ -34,12 +34,12 @@ namespace OpenGEWindows
             this.town = townFactory.createTown();
             this.pathClient = path_Client();
             this.activeWindow = Sing_active();
-            this.pointIsSale1 = new PointColor(903 + xx, 674 + yy, 7590000, 4);
-            this.pointIsSale2 = new PointColor(904 + xx, 674 + yy, 7850000, 4);
-            this.pointIsSale21 = new PointColor(840 - 5 + xx, 665 - 5 + yy, 7720000, 4);
-            this.pointIsSale22 = new PointColor(840 - 5 + xx, 668 - 5 + yy, 7720000, 4);
-            this.pointIsClickSale1 = new PointColor(728 + xx, 660 + yy, 7720000, 4);
-            this.pointIsClickSale2 = new PointColor(728 + xx, 659 + yy, 7720000, 4);
+            this.pointIsSale1 = new PointColor(907 + xx, 675 + yy, 7200000, 5);
+            this.pointIsSale2 = new PointColor(907 + xx, 676 + yy, 7800000, 5);
+            this.pointIsSale21 = new PointColor(841 - 5 + xx, 665 - 5 + yy, 7900000, 5);
+            this.pointIsSale22 = new PointColor(841 - 5 + xx, 668 - 5 + yy, 7900000, 5);
+            this.pointIsClickSale1 = new PointColor(731 - 5 + xx, 662 - 5 + yy, 7900000, 5);
+            this.pointIsClickSale2 = new PointColor(731 - 5 + xx, 663 - 5 + yy, 7900000, 5);
 
             this.pointIsTown11 = new PointColor(24 + xx, 692 + yy, 11053000, 3);       //точки для проверки стойки с ружьем
             this.pointIsTown12 = new PointColor(25 + xx, 692 + yy, 10921000, 3);
@@ -106,14 +106,14 @@ namespace OpenGEWindows
             this.pointisOpenTopMenu92 = new PointColor(602 + xx, 74 + yy, 13420000, 4);
             this.pointisOpenTopMenu121 = new PointColor(502 - 5 + xx, 140 - 5 + yy, 12800000, 5);      //507 - 5, 140 - 5, 12440000, 508 - 5, 140 - 5, 12440000, 4);        //проверено
             this.pointisOpenTopMenu122 = new PointColor(502 - 5 + xx, 141 - 5 + yy, 12800000, 5);
-            this.pointisOpenTopMenu131 = new PointColor(539 - 5 + xx, 374 - 5 + yy, 16100000, 5);                                                                   //проверено
-            this.pointisOpenTopMenu132 = new PointColor(540 - 5 + xx, 374 - 5 + yy, 16500000, 5);
+            this.pointisOpenTopMenu131 = new PointColor(404 - 5 + xx, 278 - 5 + yy, 16500000, 5);          //Quest Name                                                         //проверено
+            this.pointisOpenTopMenu132 = new PointColor(404 - 5 + xx, 279 - 5 + yy, 16500000, 5);
 
             this.pointBuyingMitridat1 = new Point(360 + xx, 537 + yy);      //360, 537
             this.pointBuyingMitridat2 = new Point(517 + xx, 433 + yy);      //1392 - 875, 438 - 5
             this.pointBuyingMitridat3 = new Point(517 + xx, 423 + yy);      //1392 - 875, 428 - 5
 
-            this.pointGotoEnd = new Point(817 - 5 + xx, 542 - 5 + yy);                   //логаут
+            this.pointGotoEnd = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
             //this.pointGotoEnd = new Point(680 + xx, 432 + yy);                  //для CatzMods - logout (только в том случае, если надо сохранять настройки бота)
 
             this.pointTeamSelection1 = new Point(140 - 5 + xx, 470 - 5 + yy);                   //проверено
@@ -790,29 +790,24 @@ namespace OpenGEWindows
             }
         }
 
-        ///// <summary>
-        ///// телепортируемся в город продажи по Alt+W (Америка)
-        ///// </summary>
-        //public override void TeleportToTownAltW()
-        //{
-        //    //// отбегаю в сторону. чтобы боты не строили                     //размаркериваем, если опять будет бот, а для чистого клиента этот кусок не нужен
-        //    //botwindow.PressMouseL(150, 150);
-        //    //botwindow.Pause(15000);
-        //    //botwindow.PressMouseL(150, 150);
-        //    //botwindow.Pause(15000);
-        //    //botwindow.PressMouseL(150, 150);
-        //    //botwindow.Pause(15000);
+        /// <summary>
+        /// телепортируемся в город продажи по Alt+W (Америка)
+        /// </summary>
+        public override void TeleportToTownAltW()
+        {
+            // отбегаю в сторону. чтобы бот не стрелял               
+            botwindow.PressMouseL(150, 150);
+            botwindow.Pause(10000);
+            botwindow.PressMouseL(150, 150);
+            botwindow.Pause(10000);
+            botwindow.PressMouseL(150, 150);
+            botwindow.Pause(10000);
 
-        //    TopMenu(6, 1);
-        //    botwindow.Pause(1000);
-        //    //botwindow.PressMouseL(801, 564 + (botwindow.getNomerTeleport() - 1) * 17);
-        //    //botwindow.Pause(50);
-        //    //botwindow.PressMouseL(801, 564 + (botwindow.getNomerTeleport() - 1) * 17);
-        //    pointTeleportToTownAltW.PressMouse();           //было два нажатия левой, решил попробовать RRL
-        //    //pointTeleportToTownAltW.PressMouseL();
-        //    //pointTeleportToTownAltW.PressMouseL();
-        //    botwindow.Pause(2000);
-        //}                                                                                                               //override
+            TopMenu(6, 1);
+            botwindow.Pause(1000);
+            pointTeleportToTownAltW.PressMouse();           //было два нажатия левой, решил попробовать RRL
+            botwindow.Pause(2000);
+        }                                                                                                               
 
         ///// <summary>
         ///// проверяет, призван ли пет

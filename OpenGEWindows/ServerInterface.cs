@@ -1012,7 +1012,6 @@ namespace OpenGEWindows
         /// <returns></returns>
         public bool isActivePet()
         {
-            //return botwindow.isColor2(495 - 5, 310 - 5, 13200000, 496 - 5, 308 - 5, 13600000, 5);
             //uint bb = pointisActivePet1.GetPixelColor();
             //uint dd = pointisActivePet2.GetPixelColor();
             //MessageBox.Show(" " + bb);
@@ -1213,16 +1212,16 @@ namespace OpenGEWindows
         public String getPathClient()
         { return this.pathClient; }
 
-        /// <summary>
-        /// телепортируемся в город продажи по Alt+W (Америка)
-        /// </summary>
-        public void TeleportToTownAltW()
-        {
-            TopMenu(6, 1);
-            Pause(1000);
-            pointTeleportToTownAltW.PressMouse();           //было два нажатия левой, решил попробовать RRL
-            Pause(2000);
-        }
+        ///// <summary>
+        ///// телепортируемся в город продажи по Alt+W (Америка)
+        ///// </summary>
+        //public void TeleportToTownAltW()
+        //{
+        //    TopMenu(6, 1);
+        //    Pause(1000);
+        //    pointTeleportToTownAltW.PressMouse();           //было два нажатия левой, решил попробовать RRL
+        //    Pause(2000);
+        //}
 
         /// <summary>
         /// переход на нужный канал после телепорта на работу ===================================================================================================================
@@ -1579,6 +1578,7 @@ namespace OpenGEWindows
         public abstract void TopMenu(int numberOfThePartitionMenu, int punkt);
         public abstract void runClient();
         public abstract uint colorTest();
+        public abstract void TeleportToTownAltW();
 
 
     }

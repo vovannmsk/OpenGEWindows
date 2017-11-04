@@ -844,6 +844,16 @@ namespace OpenGEWindows
         //    botwindow.Pause(2000);
         //}
 
+        /// <summary>
+        /// телепортируемся в город продажи по Alt+W (Америка)
+        /// </summary>
+        public override void TeleportToTownAltW()
+        {
+            TopMenu(6, 1);
+            Pause(1000);
+            pointTeleportToTownAltW.PressMouse();           //было два нажатия левой, решил попробовать RRL
+            Pause(2000);
+        }
 
     }
 }

@@ -270,7 +270,7 @@ namespace OpenGEWindows
 
         /// <summary>
         /// метод задает функционал для потока, организуемого аква кнопкой
-        /// </summary>
+        /// </summary>*
         private void funcAqua()
         {
             for (int j = 1; j <= numberOfAccounts; j++)
@@ -346,11 +346,11 @@ namespace OpenGEWindows
             PointColor pointisOpenTopMenu121 = new PointColor(502 - 5 + xx, 140 - 5 + yy, 12440000, 4);      //507 - 5, 140 - 5, 12440000, 508 - 5, 140 - 5, 12440000, 4);        //проверено
             PointColor pointisOpenTopMenu122 = new PointColor(502 - 5 + xx, 141 - 5 + yy, 12440000, 4);
 
-            PointColor pointisActivePet1 = new PointColor(493 - 5 + xx, 310 - 5 + yy, 13100000, 5);
-            PointColor pointisActivePet2 = new PointColor(494 - 5 + xx, 309 - 5 + yy, 13100000, 5);
+            PointColor pointIsSale1 = new PointColor(404 - 5 + xx, 278 - 5 + yy, 7590000, 4);
+            PointColor pointIsSale2 = new PointColor(404 - 5 + xx, 279 - 5 + yy, 7850000, 4);
 
-            color1 = pointisActivePet1.GetPixelColor();
-            color2 = pointisActivePet2.GetPixelColor();
+            color1 = pointIsSale1.GetPixelColor();
+            color2 = pointIsSale2.GetPixelColor();
 
             //color1 = Win32.Okruglenie(Win32.GetPixelColor(29 - 5 + xx, 697 - 5 + yy), 0);      //стойка на работе
             //color2 = Win32.Okruglenie(Win32.GetPixelColor(30 - 5 + xx, 697 - 5 + yy), 0);      
@@ -654,6 +654,7 @@ namespace OpenGEWindows
         #endregion
 
         #region New white button (Sale)
+
         /// <summary>
         /// метод не работает, т.к. посылает на продажу не то окно. Он посылает на продажу первое же окно, в котором видны все стойки у персов. Если количество окон меньше или равно 12, то норм работает
         /// </summary>
@@ -663,16 +664,27 @@ namespace OpenGEWindows
         {
             buttonGotoTradeTest.Visible = false;
 
-            //ServerTest a = new ServerTest();
+            Thread mythreadNewWhite = new Thread(funcNewWhite);
+            mythreadNewWhite.Start();
+
+            buttonGotoTradeTest.Visible = true;
+
+        }
+
+        /// <summary>
+        /// метод задает функционал для потока, организуемого White Button (Sale)
+        /// </summary>*
+        private void funcNewWhite()
+        {
             for (int j = 1; j <= numberOfAccounts; j++)
             {
                 GotoTradeTest gototradetest = new GotoTradeTest(botWindowArray[j]);
                 gototradetest.gotoTradeTestDrive();
             }
-
-            buttonGotoTradeTest.Visible = true;
-
         }
+        
+
+
         #endregion
 
         #region checkbox

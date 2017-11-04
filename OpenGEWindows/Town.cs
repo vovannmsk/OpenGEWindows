@@ -49,6 +49,7 @@ namespace OpenGEWindows
         {
             uint ff = pointOpenTownTeleport1.GetPixelColor();
             uint gg = pointOpenTownTeleport2.GetPixelColor();
+
             return ((pointOpenTownTeleport1.isColor()) & (pointOpenTownTeleport2.isColor()));
         }
 

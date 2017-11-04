@@ -127,14 +127,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OpenGEWindows.exe" size="125440">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OpenGEWindows.exe" size="125952">
       <assemblyIdentity name="OpenGEWindows" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>CBbc4sXUuQBhZSXYTamcVdZKAMxzNXlUEWLWFl1nC/8=</dsig:DigestValue>
+        <dsig:DigestValue>TMf2MIdL3JIjo0xkEAuzPJXSlqaJAibuZTtQT0ID97U=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
