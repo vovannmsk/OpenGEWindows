@@ -70,8 +70,8 @@ namespace OpenGEWindows
             this.pointIsTown__31 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
             this.pointIsTown__32 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
 
-            this.pointisBoxOverflow1 = new PointColor(573 - 5 + xx, 488 - 5 + yy, 7500000, 5);          //это неправильные точки. сигнализация о наполненном кармане никогда не сработает
-            this.pointisBoxOverflow2 = new PointColor(574 - 5 + xx, 488 - 5 + yy, 7800000, 5);
+            this.pointisBoxOverflow1 = new PointColor(522 - 5 + xx, 434 - 5 + yy, 7800000, 5);          //
+            this.pointisBoxOverflow2 = new PointColor(522 - 5 + xx, 435 - 5 + yy, 7800000, 5);
             this.pointisSummonPet1 = new PointColor(494 - 5 + xx, 304 - 5 + yy, 13000000, 6);
             this.pointisSummonPet2 = new PointColor(494 - 5 + xx, 305 - 5 + yy, 13000000, 6);
             this.pointisActivePet1 = new PointColor(493 - 5 + xx, 310 - 5 + yy, 13000000, 6);
@@ -796,12 +796,12 @@ namespace OpenGEWindows
         public override void TeleportToTownAltW()
         {
             // отбегаю в сторону. чтобы бот не стрелял               
-            botwindow.PressMouseL(150, 150);
+            botwindow.PressMouseL(300, 300);
             botwindow.Pause(10000);
-            botwindow.PressMouseL(150, 150);
+            botwindow.PressMouseL(350, 350);
             botwindow.Pause(10000);
-            botwindow.PressMouseL(150, 150);
-            botwindow.Pause(10000);
+            //botwindow.PressMouseL(150, 150);
+            //botwindow.Pause(10000);
 
             TopMenu(6, 1);
             botwindow.Pause(1000);

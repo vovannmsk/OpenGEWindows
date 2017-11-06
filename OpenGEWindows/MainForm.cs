@@ -346,8 +346,8 @@ namespace OpenGEWindows
             PointColor pointisOpenTopMenu121 = new PointColor(502 - 5 + xx, 140 - 5 + yy, 12440000, 4);      //507 - 5, 140 - 5, 12440000, 508 - 5, 140 - 5, 12440000, 4);        //проверено
             PointColor pointisOpenTopMenu122 = new PointColor(502 - 5 + xx, 141 - 5 + yy, 12440000, 4);
 
-            PointColor pointIsSale1 = new PointColor(404 - 5 + xx, 278 - 5 + yy, 7590000, 4);
-            PointColor pointIsSale2 = new PointColor(404 - 5 + xx, 279 - 5 + yy, 7850000, 4);
+            PointColor pointIsSale1 = new PointColor(522 - 5 + xx, 434 - 5 + yy, 7800000, 5);
+            PointColor pointIsSale2 = new PointColor(522 - 5 + xx, 435 - 5 + yy, 7800000, 5);
 
             color1 = pointIsSale1.GetPixelColor();
             color2 = pointIsSale2.GetPixelColor();
