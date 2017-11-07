@@ -771,14 +771,14 @@ namespace OpenGEWindows
         /// </summary>
         /// <returns></returns>    
         private String path_Client()
-        { return Array_File_IO.Read_File(KATALOG_MY_PROGRAM + "\\America_path.txt"); }                                         //нужен
+        { return File.ReadAllText(KATALOG_MY_PROGRAM + "\\America_path.txt"); }                                    
 
         /// <summary>
         /// возвращает параметр, прочитанный из файла
         /// </summary>
         /// <returns></returns>
         private int active_window()
-        { return int.Parse(Array_File_IO.Read_File(KATALOG_MY_PROGRAM + "\\America_active.txt")); }                                          //нужен
+        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\America_active.txt")); }                                     
 
         /// <summary>
         /// нажмает на выбранный раздел верхнего меню 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
-
+using System.IO;
 namespace OpenGEWindows
 {
     public class ServerEuropa : ServerInterface 
@@ -720,14 +720,14 @@ namespace OpenGEWindows
         /// </summary>
         /// <returns></returns>
         private int Europa_active()
-        { return int.Parse(Array_File_IO.Read_File(KATALOG_MY_PROGRAM + "\\Europa_active.txt")); }
+        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Europa_active.txt")); }
 
         /// <summary>
         /// возвращает параметр, прочитанный из файла
         /// </summary>
         /// <returns></returns>
         private String path_Client()
-        { return Array_File_IO.Read_File(KATALOG_MY_PROGRAM + "\\Europa_path.txt"); }
+        { return File.ReadAllText(KATALOG_MY_PROGRAM + "\\Europa_path.txt"); }
 
         /// <summary>
         /// запуск клиента игры

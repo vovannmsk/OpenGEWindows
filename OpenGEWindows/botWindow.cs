@@ -346,8 +346,8 @@ namespace OpenGEWindows
         /// функция возвращает имя семьи для функции создания новых ботов
         /// </summary>
         /// <returns></returns>
-        public string NameOfFamily()                                                                                                     //07-09-2017
-        { return Array_File_IO.Read_File(KATALOG_MY_PROGRAM + numberWindow + "\\Имя семьи.txt"); }                                          
+        public string NameOfFamily()                                                                                                    
+        { return File.ReadAllText(KATALOG_MY_PROGRAM + numberWindow + "\\Имя семьи.txt"); }                                          
 
         /// <summary>
         /// метод возвращает значение 1, если нужно передавать песо торговцу. или 0, если не нужно
