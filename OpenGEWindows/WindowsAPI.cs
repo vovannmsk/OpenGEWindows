@@ -32,19 +32,19 @@ namespace OpenGEWindows
         public const int VK_F5 = 0x74;
         public const int VK_F6 = 0x75;
         public const int VK_F7 = 0x76;
- 
+
         /// The GetForegroundWindow function returns a handle to the foreground window.
-        
-        
+
+
         [DllImport("user32.dll")]
         public static extern byte VkKeyScan(char ch);
- 
+
         [DllImport("user32.dll")]
         public static extern uint MapVirtualKey(uint uCode, uint uMapType);
- 
+
         [DllImport("User32.dll")]
         public static extern uint SendInput(uint numberOfInputs, [MarshalAs(UnmanagedType.LPArray, SizeConst = 1)] INPUT[] input, int structSize);
- 
+
         public const int INPUT_MOUSE = 0;
         public const int INPUT_KEYBOARD = 1;
         public const int INPUT_HARDWARE = 2;
@@ -67,7 +67,7 @@ namespace OpenGEWindows
         public const uint MOUSEEVENTF_VIRTUALDESK = 0x4000;
         public const uint MOUSEEVENTF_ABSOLUTE = 0x8000;
     }
- 
+
     [StructLayout(LayoutKind.Sequential)]
     public struct MOUSEINPUT
     {
@@ -78,7 +78,7 @@ namespace OpenGEWindows
         uint time;
         IntPtr dwExtraInfo;
     }
- 
+
     [StructLayout(LayoutKind.Sequential)]
     public struct KEYBDINPUT
     {
@@ -88,7 +88,7 @@ namespace OpenGEWindows
         public uint time;
         public IntPtr dwExtraInfo;
     }
- 
+
     [StructLayout(LayoutKind.Sequential)]
     public struct HARDWAREINPUT
     {
@@ -96,7 +96,7 @@ namespace OpenGEWindows
         ushort wParamL;
         ushort wParamH;
     }
- 
+
     [StructLayout(LayoutKind.Explicit)]
     public struct INPUT
     {

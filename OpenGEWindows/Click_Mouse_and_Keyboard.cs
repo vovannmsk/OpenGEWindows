@@ -22,6 +22,7 @@ namespace OpenGEWindows
             [FieldOffset(4)]
             public HARDWAREINPUT hi;
         }
+
         [StructLayout(LayoutKind.Sequential)]
         struct MOUSEINPUT
         {
@@ -32,6 +33,7 @@ namespace OpenGEWindows
             public uint time;
             public IntPtr dwExtraInfo;
         }
+
         [StructLayout(LayoutKind.Sequential)]
         struct KEYBDINPUT
         {
@@ -41,6 +43,7 @@ namespace OpenGEWindows
             public uint time;
             public IntPtr dwExtraInfo;
         }
+
         [StructLayout(LayoutKind.Sequential)]
         struct HARDWAREINPUT
         {
@@ -48,6 +51,7 @@ namespace OpenGEWindows
             ushort wParamL;
             ushort wParamH;
         }
+
         const uint MOUSEEVENTF_MOVE = 0x0001;
         const uint MOUSEEVENTF_LEFTDOWN = 0x0002;
         const uint MOUSEEVENTF_LEFTUP = 0x0004;
@@ -72,6 +76,13 @@ namespace OpenGEWindows
         const uint KEYEVENTF_SCANCODE = 0x0008;
 
 
+        /// <summary>
+        /// перетаскиваем предмет из одних координат в другие
+        /// </summary>
+        /// <param name="dx1"></param>
+        /// <param name="dy1"></param>
+        /// <param name="dx2"></param>
+        /// <param name="dy2"></param>
         public static void MMC(int dx1, int dy1, int dx2, int dy2)
         {
             MOUSEINPUT m;
@@ -79,690 +90,150 @@ namespace OpenGEWindows
             INPUT[] inputs;
             int isize;
 
-            //============================== перетаскиваем предмет из одних координат в другие ===========================================================
-         
-                    // переместили мышь
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx1 * 34.1328);
-                    m.dy = (int)(dy1 * 60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
+            // переместили мышь в первые координаты
+            m = new MOUSEINPUT();
+            m.dx = (int)(dx1 * 34.1328);
+            m.dy = (int)(dy1 * 60.6805);
+            m.mouseData = 0;
+            m.time = 0;
+            m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
+            i = new INPUT();
+            i.type = INPUT_MOUSE;
+            i.mi = m;
 
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
+            inputs = new INPUT[] { i };
+            isize = Marshal.SizeOf(i);
 
-                    SendInput(1, inputs, isize);
+            SendInput(1, inputs, isize);
 
-                    // нажали левую
+            // нажали левую
 
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx1 * 34.1328);
-                    m.dy = (int)(dy1 * 60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
+            m = new MOUSEINPUT();
+            m.dx = (int)(dx1 * 34.1328);
+            m.dy = (int)(dy1 * 60.6805);
+            m.mouseData = 0;
+            m.time = 0;
+            m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN;
+            i = new INPUT();
+            i.type = INPUT_MOUSE;
+            i.mi = m;
 
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
+            inputs = new INPUT[] { i };
+            isize = Marshal.SizeOf(i);
 
-                    SendInput(1, inputs, isize);
-                    Class_Timer.Pause(100);
+            SendInput(1, inputs, isize);
+            Class_Timer.Pause(100);
 
-                    //  переместили в новые координаты **************************************
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx2 * 34.1328);
-                    m.dy = (int)(dy2 * 60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
+            //  переместили в новые координаты **************************************
+            m = new MOUSEINPUT();
+            m.dx = (int)(dx2 * 34.1328);
+            m.dy = (int)(dy2 * 60.6805);
+            m.mouseData = 0;
+            m.time = 0;
+            m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
+            i = new INPUT();
+            i.type = INPUT_MOUSE;
+            i.mi = m;
 
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
+            inputs = new INPUT[] { i };
+            isize = Marshal.SizeOf(i);
 
-                    SendInput(1, inputs, isize);
+            SendInput(1, inputs, isize);
 
-                    Class_Timer.Pause(500);
+            Class_Timer.Pause(500);
 
-                    //  отпустили левую  **********************************************************
+            //  отпустили левую  **********************************************************
 
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx2 * 34.1328);
-                    m.dy = (int)(dy2 * 60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
+            m = new MOUSEINPUT();
+            m.dx = (int)(dx2 * 34.1328);
+            m.dy = (int)(dy2 * 60.6805);
+            m.mouseData = 0;
+            m.time = 0;
+            m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP;
+            i = new INPUT();
+            i.type = INPUT_MOUSE;
+            i.mi = m;
 
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
+            inputs = new INPUT[] { i };
+            isize = Marshal.SizeOf(i);
 
-                    SendInput(1, inputs, isize);
+            SendInput(1, inputs, isize);
 
 
         }
 
+        /// <summary>
+        /// произвести действие с мышью
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="dwFlag"></param>
+        public static void runMouse(int x, int y, uint dwFlag, int mouseData)
+        {
+            MOUSEINPUT m = new MOUSEINPUT();
+            m.dx = (int)(x * 34.1328);
+            m.dy = (int)(y * 60.6805);
+            m.mouseData = mouseData;
+            m.time = 0;
+            m.dwFlags = dwFlag;
+            INPUT i = new INPUT();
+            i.type = INPUT_MOUSE;
+            i.mi = m;
+
+            INPUT[] inputs = new INPUT[] { i };
+            int isize = Marshal.SizeOf(i);
+
+            SendInput(1, inputs, isize);
+        }
 
         public static bool Mouse_Move_and_Click(int dx, int dy, uint Flag_)
         {
-            MOUSEINPUT m;
-            INPUT i;
-            INPUT[] inputs;
-            int isize;
             switch(Flag_)
             {
-                case 1: // Перемещение мыши и левый клик
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx*34.1328);
-                    m.dy = (int)(dy*60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-
-                    //**********************
-
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx*34.1328);
-                    m.dy = (int)(dy*60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-                    //**********************************
-                    Class_Timer.Pause(50);  //**********************************************************
-
-
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx*34.1328);
-                    m.dy = (int)(dy*60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-
-                    break;
-                case 2:// Перемещение мыши и Двойной левый клик
-                     m = new MOUSEINPUT();
-                    
-                    m.dx = (int)(dx*34.1328);
-                    m.dy = (int)(dy*60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-
-                    //**********************
-
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx*34.1328);
-                    m.dy = (int)(dy*60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-                    //**********************************
-                    Class_Timer.Pause(50);  //**********************************************************
-
-
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx*34.1328);
-                    m.dy = (int)(dy*60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-
-                    //**********************
-
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx * 34.1328);
-                    m.dy = (int)(dy * 60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-                    //**********************************
-                    Class_Timer.Pause(50);  //**********************************************************
-
-
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx * 34.1328);
-                    m.dy = (int)(dy * 60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-
-
-                    //**********************
-
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx * 34.1328);
-                    m.dy = (int)(dy * 60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-                    //**********************************
-                    Class_Timer.Pause(50);  //**********************************************************
-
-
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx * 34.1328);
-                    m.dy = (int)(dy * 60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-                    break;
-                case 3:// Вращаем колесиком       =======================================================================  3   =====================================
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx*34.1328);
-                    m.dy = (int)(dy*60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-                    //********************** крутим колесом вниз
-
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx * 34.1328);
-                    m.dy = (int)(dy * 60.6805);
-                    m.mouseData = -120;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_WHEEL;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-                    break;
-                
-            case 4:
-                   m = new MOUSEINPUT();
-                    m.dx = (int)(dx*34.1328);
-                    m.dy = (int)(dy*60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-                    //********************** крутим колесом вверх
-
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx * 34.1328);
-                    m.dy = (int)(dy * 60.6805);
-                    m.mouseData = 120;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_WHEEL;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-                    break;
-  
-                
-            
-          
-
-
-                case 5:// Кликаем мышкой и прокручиваем
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx*34.1328);
-                    m.dy = (int)(dy*60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-
-                    //**********************
-
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx*34.1328);
-                    m.dy = (int)(dy*60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-                    //**********************************
-                    Class_Timer.Pause(100);  
-                //**********************************************************
-
-
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx*34.1328);
-                    m.dy = (int)(dy*60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-                    
-                    //********************** крутим колесом вниз
-
-                    Class_Timer.Pause(100);  
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx * 34.1328);
-                    m.dy = (int)(dy * 60.6805);
-                    m.mouseData = -120;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_WHEEL;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
+                case 1:      // Перемещение мыши и левый клик
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, 0);
+                    Class_Timer.Pause(50);
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP, 0);
                     break;
 
+                case 3:     // Вращаем колесиком вниз
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_WHEEL, -120);
+                    break;
 
+                case 4:     // крутим колесом вверх
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_WHEEL, 120);
+                    break;
 
-         //============================== перетаскиваем предмет из одних координат в другие ===========================================================
-         
-                case 6:// Кликаем мышкой перемещаем и отпускаем мышь
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx * 34.1328);
-                    m.dy = (int)(dy * 60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-
-                    //**********************
-
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx * 34.1328);
-                    m.dy = (int)(dy * 60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
+                case 5:     // Кликаем мышкой и прокручиваем
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, 0);
+                    Class_Timer.Pause(50);
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP, 0);
                     Class_Timer.Pause(100);
-
-                //**********************************************************
-                    int dx2 = 1090; 
-                    int dy2 = 536;
-                    m = new MOUSEINPUT();
-                    dx = dx2;
-                    dy = dy2;
-                    m.dx = (int)(dx * 34.1328);
-                    m.dy = (int)(dy * 60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-
-                    Class_Timer.Pause(500);
-
-                    //**********************************************************
-
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx * 34.1328);
-                    m.dy = (int)(dy * 60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-
-                    break;
-                    //=========================================================================================================
-
-                case 7:// Кликаем мышкой перемещаем и отпускаем мышь
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx * 34.1328);
-                    m.dy = (int)(dy * 60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-
-                    //**********************
-
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx * 34.1328);
-                    m.dy = (int)(dy * 60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-                    //**********************************
-                    Class_Timer.Pause(100);
-                    //**********************************************************
-
-                    m = new MOUSEINPUT();
-                    dx = dx + 340;
-                    dy = dy - 205;
-                    m.dx = (int)(dx * 34.1328);
-                    m.dy = (int)(dy * 60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-
-                    Class_Timer.Pause(500);
-                    
-                    //**********************************************************
-
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx * 34.1328);
-                    m.dy = (int)(dy * 60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_WHEEL, -120);
                     break;
 
-                case 8:  // перемещаем мышь и нажимаем правую кнопку
-
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx*34.1328);
-                    m.dy = (int)(dy*60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);            // перемещение мыши
-
-                    //**********************
-
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx*34.1328);
-                    m.dy = (int)(dy*60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_RIGHTDOWN;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);    //**************   нажимаем правую кнопку  *************************************************************************************
-                    
-                    Class_Timer.Pause(50);  
-
-                    
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx*34.1328);
-                    m.dy = (int)(dy*60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_RIGHTUP;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);    //Отжимаем правую кнопку
-
-
+                case 8:     // перемещаем мышь и нажимаем правую кнопку
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_RIGHTDOWN, 0);
+                    Class_Timer.Pause(50);
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_RIGHTUP, 0);
                     break;
-                case 9:// перемещаем мышку в координаты и прокручиваем вверх
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx * 34.1328);
-                    m.dy = (int)(dy * 60.6805);
-                    m.mouseData = 0;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
 
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
+                case 9:     // перемещаем мышку в координаты и прокручиваем вверх
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
                     Class_Timer.Pause(200); 
-                    //**********************
-
-                    //m = new MOUSEINPUT();
-                    //m.dx = (int)(dx * 34.1328);
-                    //m.dy = (int)(dy * 60.6805);
-                    //m.mouseData = 0;
-                    //m.time = 0;
-                    //m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN;
-                    //i = new INPUT();
-                    //i.type = INPUT_MOUSE;
-                    //i.mi = m;
-
-                    //inputs = new INPUT[] { i };
-                    //isize = Marshal.SizeOf(i);
-
-                    //SendInput(1, inputs, isize);
-                    ////**********************************
-                    //Class_Timer.Pause(200);
-                    ////**********************************************************
-
-
-                    //m = new MOUSEINPUT();
-                    //m.dx = (int)(dx * 34.1328);
-                    //m.dy = (int)(dy * 60.6805);
-                    //m.mouseData = 0;
-                    //m.time = 0;
-                    //m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP;
-                    //i = new INPUT();
-                    //i.type = INPUT_MOUSE;
-                    //i.mi = m;
-
-                    //inputs = new INPUT[] { i };
-                    //isize = Marshal.SizeOf(i);
-
-                    //SendInput(1, inputs, isize);
-
-                    //Class_Timer.Pause(200);    
-                    //********************** крутим колесом вниз
-
-                    Class_Timer.Pause(100);
-                    m = new MOUSEINPUT();
-                    m.dx = (int)(dx * 34.1328);
-                    m.dy = (int)(dy * 60.6805);
-                    m.mouseData = 120;
-                    m.time = 0;
-                    m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_WHEEL;
-                    i = new INPUT();
-                    i.type = INPUT_MOUSE;
-                    i.mi = m;
-
-                    inputs = new INPUT[] { i };
-                    isize = Marshal.SizeOf(i);
-
-                    SendInput(1, inputs, isize);
-                    Class_Timer.Pause(200);  
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_WHEEL, 120);
                     break;
-            }//END Switch
-            return true;
-        }//End Mouse_Move_and_Click
 
+            }
+            return true;
+        }
+
+        #region неиспользованные методы
         public static bool ClickKey (ushort Key_)
         {
             KEYBDINPUT k;
@@ -882,6 +353,8 @@ namespace OpenGEWindows
         //        Marshal.GetLastWin32Error().ToString());
         //    }
         //}
+
+        #endregion
 
     }
 }
