@@ -19,6 +19,8 @@ namespace GEDataBot.BL
         public String nameOfFamily { get; set; }
         public int[] triangleX { get; set; }
         public int[] triangleY { get; set; }
+
+
         //public int NumberOfAccaunts { get; set; }
 
     }

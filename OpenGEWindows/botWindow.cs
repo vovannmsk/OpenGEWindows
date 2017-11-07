@@ -46,35 +46,21 @@ namespace OpenGEWindows
         public static extern bool SetForegroundWindow(UIntPtr hWnd); // Перемещает окно в верхний список Z порядка
 
         // ================ переменные класса =================
-        // SELECT * FROM [Bots] WHERE Id = 1
-        // SELECT X FROM Bots, coordinates WHERE Bots.Id = 1 AND Bots.Id = coordinates.IdBots   столбец с координатами X
-        // SELECT Y FROM Bots, coordinates WHERE Bots.Id = 1 AND Bots.Id = coordinates.IdBots   столбец с координатами Y
         
         private int numberWindow;       //номер окна
         private const int WIDHT_WINDOW = 1024;
         private const int HIGHT_WINDOW = 700;
-        //private int x;
-        //private int y;
-        //private String param;           //америка или европа или синг
-        //private String login;
-        //private String password;
-        //private UIntPtr hwnd;
         private const String KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
-        //private int Kanal;
-        //private int[] triangleX;
-        //private int[] triangleY;
-        //private int nomerTeleport;
-        //private int NUMBER_OF_ACCOUNTS;
         private int needToChange;
 
-        private IScriptDataBot scriptDataBot;
-        private DataBot databot;
+        private IScriptDataBot scriptDataBot;  
+        private DataBot databot;              //начальные данные для бота (заданные пользователем)
 
         private ServerInterface server;                 
         private ServerFactory serverFactory;
         private Town town;
         private int counterMitridat;
-        private System.DateTime timeMitridat = DateTime.Now;
+        private System.DateTime timeMitridat = System.DateTime.Now;
 
         private iPoint pointArrowUp;
         private iPoint pointArrowUp2; 
@@ -108,6 +94,9 @@ namespace OpenGEWindows
         private iPoint pointThirdHeroR;
         private iPoint pointMitridat;
         private iPoint pointEnterBattleMode;
+        private iPoint pointToMoveMouse;
+        private iPointColor point5050;
+        private iPointColor pointCommandMode;
 
 
         //private SqlConnection sqlconnection;
@@ -120,31 +109,16 @@ namespace OpenGEWindows
         {
             // основные переменные класса
             this.numberWindow = number_Window;     // эта инфа поступает при создании объекта класса
-            //всего количество ботов
-            //this.NUMBER_OF_ACCOUNTS = KolvoAkk();  //из текстового файла
-
-
 
             scriptDataBot = new ScriptDataBotText(this.numberWindow);   //делаем объект репозитория с реализацией чтения из тестовых файлов (а можно организовать аналогичный класс с чтением из БД)
             databot = scriptDataBot.GetDataBot();  //в этом объекте все данные по данному окну бота
 
-            //this.triangleX = new int[4];
-            //this.triangleY = new int[4];
-
 
             #region Вариант 1. переменные класса подчитываются из текстовых файлов
-            //this.login = Login();
-            //this.password = Pass();
-            //databot.hwnd = Hwnd_in_file();
-            //databot.param = Parametr();
-            //databot.Kanal = Channal();
-            //this.nomerTeleport = NomerTeleporta();
-            //this.triangleX = LoadTriangleX();
-            //this.triangleY = LoadTriangleY();
             this.needToChange = NeedToChange();
             #endregion
 
-            #region Вариант 2. переменные класса подчитываются из текстовых файлов
+            #region Вариант 2. переменные класса подчитываются из БД
 
             //var bots = GetBots(number_Window);  //подчитываем строку из БД BotsNew, соответствующую данному боту
             //this.login = bots.Login;
@@ -164,10 +138,6 @@ namespace OpenGEWindows
             //    ii++;
             //}
             #endregion
-
-            //константы, считанные из массива (const)
-            //databot.x = Koord_X(); //координаты верхней левой точки окна
-            //databot.y = Koord_Y();
 
             // эти объекты создаются на основании предыдущих переменных класса, а именно param (на каком сервере бот) и nomerTeleport (город продажи)
             this.serverFactory = new ServerFactory(this);
@@ -206,8 +176,12 @@ namespace OpenGEWindows
             this.pointThirdHeroR = new Point(675 - 5 + databot.x, 669 - 5 + databot.y);    // 670, 664
             this.pointMitridat = new Point(38 - 5 + databot.x, 486 - 5 + databot.y);    // 33, 481
             this.pointEnterBattleMode = new Point(205 - 5 + databot.x, 205 - 5 + databot.y);    // 200, 200
+            this.pointToMoveMouse = new Point(205 - 5 + databot.x, 575 - 5 + databot.y);    //
 
-            
+            //точки для проверки цвета
+            this.point5050 = new PointColor(55 - 5 + databot.x, 55 - 5 + databot.y, 7800000, 5);
+            this.pointCommandMode = new PointColor(123 - 5 + databot.x, 479 - 5 + databot.y, 8000000, 6);
+
             
         }
 
@@ -257,6 +231,10 @@ namespace OpenGEWindows
         }
         public bool getNeedToChangeForMainForm()
         { return this.needToChange == 1 ? true : false; }
+        public String getNameOfFamily()
+        {
+            return databot.nameOfFamily;
+        }
 
         //private int getNeedToChange()
         //{ return this.needToChange; }
@@ -274,80 +252,6 @@ namespace OpenGEWindows
         {
             return SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);  //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
         }
-
-        // ========== функция возвращает номер телепорта, по которому летим продаваться и берется из файла "ТелепортПродажа.txt"   =====================
-        //private int NomerTeleporta()  
-        //{  return int.Parse(Array_File_IO.Read_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\ТелепортПродажа.txt"));  }
-        //// ========== функция возвращает логин окна номер Number_Window ======================
-        //private String Login()   // каталог и номер окна
-        //{ return Array_File_IO.Read_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\Логины.txt"); }
-        //// ========== функция возвращает пароль окна номер Number_Window ======================
-        //private String Pass()   // каталог и номер окна
-        //{ return Array_File_IO.Read_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\Пароли.txt"); }
-        //// ========== функция возвращает hwnd в папке с номером Number_Window ======================
-        //private UIntPtr Hwnd_in_file()   
-        //{
-        //    UIntPtr ff;
-        //    String ss = Array_File_IO.Read_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\HWND.txt");
-        //    if (ss.Equals(""))
-        //    { ff = (UIntPtr)2222222; }   //если пусто в файле, то hwnd = 2222222;
-        //    else
-        //    {
-        //        uint dd = uint.Parse(ss);
-        //        ff = (UIntPtr)dd;
-        //    }
-        //    return ff;
-        //}
-        //// ========== функция возвращает смещение окна по оси Х ======================
-        //private int Koord_X()
-        //{
-        //    int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 875, 850, 825, 800, 775, 750, 725, 700 };
-        //    return koordX[this.numberWindow - 1];
-        //}
-        //// ========== функция возвращает смещение окна по оси Y ======================
-        //private int Koord_Y()   // каталог и номер окна
-        //{
-        //    int[] koordY = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 5, 30, 55, 80, 105, 130, 155, 180 };
-        //    return koordY[this.numberWindow - 1];
-        //}
-        //// ========== функция возвращает Параметр из файла Параметр.txt для окна номер number_Window ======================
-        //private String Parametr()
-        //{ return Array_File_IO.Read_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\Параметр.txt"); }
-        //private int Channal()
-        //{ return int.Parse(Array_File_IO.Read_File(KATALOG_MY_PROGRAM + numberWindow + "\\Каналы.txt")); }
-        ////========================== считываем из файла координаты Х расстановки треугольником =========================
-        //private int[] LoadTriangleX()
-        //{
-        //    int SIZE_OF_ARRAY = 4;
-        //    String[] Koord_X = new String[SIZE_OF_ARRAY];
-        //    int[] intKoord_X = new int[SIZE_OF_ARRAY];        //координаты для расстановки треугольником
-        //    Array_File_IO.Read_File_String(KATALOG_MY_PROGRAM + numberWindow + "\\РасстановкаX.txt", ref Koord_X); // Читаем файл с Координатами Х в папке с номером Number_Window
-        //    for (int i = 1; i < SIZE_OF_ARRAY; i++) { intKoord_X[i] = int.Parse(Koord_X[i]); }
-        //    return intKoord_X;
-        //}
-        ////========================== считываем из файла координаты Y расстановки треугольником =========================
-        //private int[] LoadTriangleY()
-        //{
-        //    int SIZE_OF_ARRAY = 4;
-        //    String[] Koord_Y = new String[SIZE_OF_ARRAY];
-        //    int[] intKoord_Y = new int[SIZE_OF_ARRAY];        //координаты для расстановки треугольником
-        //    Array_File_IO.Read_File_String(KATALOG_MY_PROGRAM + numberWindow + "\\РасстановкаY.txt", ref Koord_Y); // Читаем файл с Координатами Y в папке с номером Number_Window
-        //    for (int i = 1; i < SIZE_OF_ARRAY; i++) { intKoord_Y[i] = int.Parse(Koord_Y[i]); }
-        //    return intKoord_Y;
-        //}
-        ///// <summary>
-        ///// ========= функция возвращает количество аккаунтов, число берется из файла "Аккаунтов всего.txt" =====================
-        ///// </summary>
-        ///// <returns></returns>
-        //public static int KolvoAkk()
-        //{  return int.Parse(Array_File_IO.Read_File(KATALOG_MY_PROGRAM + "\\Аккаунтов всего.txt")); }
-
-        /// <summary>
-        /// функция возвращает имя семьи для функции создания новых ботов
-        /// </summary>
-        /// <returns></returns>
-        public string NameOfFamily()                                                                                                    
-        { return File.ReadAllText(KATALOG_MY_PROGRAM + numberWindow + "\\Имя семьи.txt"); }                                          
 
         /// <summary>
         /// метод возвращает значение 1, если нужно передавать песо торговцу. или 0, если не нужно
@@ -491,18 +395,7 @@ namespace OpenGEWindows
 
         #endregion
 
-        ///// <summary>
-        ///// нажать мышью в конкретную точку
-        ///// дважды будет нажиматься правая кнопка и однажды левая, также к координатам будет прибавляться смещение окна от края монитора getX и getY
-        ///// </summary>
-        ///// <param name="x"> x - первая координата точки, куда нужно ткнуть мышью </param>
-        ///// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
-        //public void PressMouse(int x, int y)
-        //{
-        //    PressMouseR(x, y);
-        //    PressMouseR(x, y);
-        //    PressMouseL(x, y);
-        //} //End PressMouse
+
 
         /// <summary>
         /// нажать мышью в конкретную точку только левой кнопкой
@@ -516,50 +409,12 @@ namespace OpenGEWindows
         } 
 
         /// <summary>
-        /// нажать мышью в конкретную точку только правой кнопкой
+        /// отодвинуть мышку в сторону, чтобы она не загораживала проверяемые точки
         /// </summary>
-        /// <param name="x"> x - первая координата точки, куда нужно ткнуть мышью </param>
-        /// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
-        public void PressMouseR(int x, int y)
+        public void ToMoveMouse()
         {
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x + databot.x, y + databot.y, 8);
-            Pause(200);
+            pointToMoveMouse.PressMouseR();
         }
-
-        /// <summary>
-        /// переместить мышь в координаты и покрутить колесо вверх
-        /// </summary>
-        /// <param name="x"> x - первая координата точки, куда нужно ткнуть мышью </param>
-        /// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
-        public void PressMouseWheelUp(int x, int y)
-        {
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x + databot.x, y + databot.y, 9);
-            Pause(200);
-        }
-
-        /// <summary>
-        /// переместить мышь в координаты и покрутить колесо вниз
-        /// </summary>
-        /// <param name="x"> x - первая координата точки, куда нужно ткнуть мышью </param>
-        /// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
-        public void PressMouseWheelDown(int x, int y)
-        {
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x + databot.x, y + databot.y, 3);
-            Pause(200);
-        } 
-
-        /// <summary>
-        /// перетаскивание мышью предмета из одних координат в другие (применяется при личной торговле)
-        /// </summary>
-        /// <param name="x1"> x1 - первая координата точки, куда нужно ткнуть мышью </param>
-        /// <param name="y1"> y1 - вторая координата точки, куда нужно ткнуть мышью </param>
-        /// <param name="x2"> x2 - первая координата точки, где нужно отпустить кнопку мыши </param>
-        /// <param name="y2"> y2 - вторая координата точки, где нужно отпустить кнопку мыши </param>
-        public void MouseMoveAndDrop(int x1, int y1, int x2, int y2)
-        {
-            Click_Mouse_and_Keyboard.MMC(x1 + databot.x, y1 + databot.y, x2 + databot.x, y2 + databot.y);
-            Pause(200);
-        } 
 
         /// <summary>
         /// Останавливает поток на некоторый период
@@ -571,21 +426,6 @@ namespace OpenGEWindows
             Thread.Sleep(ms);
         }
         
-        /// <summary>
-        /// возвращает цвет пикселя экрана, т.е. не в конкретном окне, а на общем экране 1920х1080.            
-        /// </summary>
-        /// <param name="x"> x - первая координата проверяемой точки </param>
-        /// <param name="y"> y - вторая координата проверяемой точки </param>
-        /// <returns> цвет пикселя экрана </returns>
-        public uint GetPixelColor(int x, int y)
-        {
-            IntPtr hwnd = GetDC(IntPtr.Zero);
-            uint pixel = GetPixel(hwnd, x + databot.x, y + databot.y);
-            ReleaseDC(IntPtr.Zero, hwnd);
-
-            return pixel;
-        }                                   //                    serverI
-
         /// <summary>
         /// эмулирует тройное нажатие кнопки "Esc", тем самым в окне бота убираются все лишние окна (в том числе реклама)
         /// </summary>
@@ -610,6 +450,8 @@ namespace OpenGEWindows
 
             if (server.isActive())
             {
+                Click_Mouse_and_Keyboard.Mouse_Move_and_Click(350, 700, 8);
+                Pause(200);
                 while (New_HWND_GE == (UIntPtr)0)                
                 {
                     Pause(500);
@@ -621,8 +463,6 @@ namespace OpenGEWindows
                 //SetWindowPos(New_HWND_GE, 1, getX(), getY(), WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
                 SetWindowPos(New_HWND_GE, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
                 Pause(500);
-                Click_Mouse_and_Keyboard.Mouse_Move_and_Click(350, 700, 8);
-                Pause(200);
 
             }
             return New_HWND_GE;
@@ -653,7 +493,6 @@ namespace OpenGEWindows
 
             return New_HWND_GE;
         }
-
 
         /// <summary>
         /// восстановливает окно (т.е. переводит из состояния "нет окна" в состояние "логаут", плюс из состояния свернутого окна в состояние развернутого и на нужном месте)
@@ -767,7 +606,8 @@ namespace OpenGEWindows
 
             bool aa = true;
 
-            Test_Color = GetPixelColor(50, 50);       //запоминаем цвет в координатах 50, 50 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
+//            Test_Color = GetPixelColor(50, 50);       //запоминаем цвет в координатах 50, 50 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
+            Test_Color = point5050.GetPixelColor();       //запоминаем цвет в координатах 50, 50 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
             Tek_Color1 = Test_Color;
 
             ColorBOOL = (Test_Color == Tek_Color1);
@@ -777,45 +617,39 @@ namespace OpenGEWindows
             {
                 counter++;  //счетчик
 
-                Tek_Color1 = GetPixelColor(50, 50);
+                Tek_Color1 = point5050.GetPixelColor();
                 ColorBOOL = (Test_Color == Tek_Color1);
                 pointButtonConnect.PressMouse();   // Кликаю в Connect
-                //PressMouse(590, 480);            // Кликаю в Connect
                 Pause(500);
 
                 //если есть ошибки в логине-пароле, то возникает сообщение с кнопкой "OK". 
 
-                currentColor = GetPixelColor(517, 413);
-
-                if (currentColor == server.colorTest())                                // Обработка Ошибок.  ColorTest - это цвет для сравнения. 
-                {
-                    pointButtonOk.PressMouse();  //кликаю в кнопку  "ОК"
-                    //PressMouse(520, 420);  //кликаю в кнопку  "ОК"
-                    Pause(500);
-
-                    currentColor = GetPixelColor(517, 413);
-                    if (currentColor == Win32.ColorTest(databot.param))
+                if (server.isPointConnect())                                         // Обработка Ошибок.
                     {
                         pointButtonOk.PressMouse();  //кликаю в кнопку  "ОК"
-//                        PressMouse(520, 420);  //кликаю в кнопку  "ОК"    
+                        Pause(500);
+                    
+                        if (server.isPointConnect())   //проверяем, выскочила ли форма с кнопкой ОК
+                        { 
+                            pointButtonOk.PressMouse();  //кликаю в кнопку  "ОК"
+                            Pause(500);
+                        }
+                        pointButtonOk.PressMouseL();  //кликаю в кнопку  "ОК"
+
+                        pointButtonOk2.PressMouseL();  //кликаю в кнопку  "ОК" 3 min
+
+                        EnterLoginAndPasword();
                     }
-                    pointButtonOk.PressMouseL();  //кликаю в кнопку  "ОК"
-//                    PressMouseL(520, 420);     //кликаю в кнопку  "ОК"
+                    else
+                    {
+                        aa = false;
+                    }
 
-                    pointButtonOk2.PressMouseL();  //кликаю в кнопку  "ОК" 3 min
-
-                    EnterLoginAndPasword();
-                }
-                else
-                {
-                    aa = false;
-                }
-
-            } //while
+            } 
 
             bool result = true;
             Pause(5000);
-            currentColor = GetPixelColor(50, 50);
+            currentColor = point5050.GetPixelColor();
             if (currentColor == Test_Color)      //проверка входа в казарму. 
             {
                 //тыкнуть в Quit 
@@ -1087,16 +921,7 @@ namespace OpenGEWindows
         /// <returns> true, если командный режим включен </returns>
         public bool isCommandMode()
         {
-            bool result = true;
-
-            uint color = GetPixelColor(118, 474);
-
-            const uint STANDART_COLOR = 8000000;
-            if (color > STANDART_COLOR)
-            { result = true; }
-            else
-            { result = false; }
-            return result;
+            return pointCommandMode.isColor2();
         } 
 
         /// <summary>

@@ -98,7 +98,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>E82ZcO1KZDjjlzwf+Gi7o9z4NXV50S9XxRZa4mkbgt0=</dsig:DigestValue>
+        <dsig:DigestValue>rDBnqU9V3Br8phoQE/0edBifLsvDpbcCWOT7BBSIdn4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -127,14 +127,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OpenGEWindows.exe" size="125952">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OpenGEWindows.exe" size="124416">
       <assemblyIdentity name="OpenGEWindows" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lmW1KaP/pydDwL/qWdi65eoIxgW3jqGv8b/FbAYSfdQ=</dsig:DigestValue>
+        <dsig:DigestValue>aXyNnMSzKnHtSfEOd1j+SUIOe6OLZLo5iEz5xGFx5GE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -19,6 +19,9 @@ namespace OpenGEWindows
             private botWindow botwindow;
             private ServerInterface server;
             private ServerFactory serverFactory;
+
+            private Point pointFesoBegin;
+            private Point pointFesoEnd;
         
         /// <summary>
         /// конструктор
@@ -37,6 +40,10 @@ namespace OpenGEWindows
             this.botwindow = botwindow;
             serverFactory = new ServerFactory(botwindow);
             server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            int x = botwindow.getX();  //смещешие окна на экране
+            int y = botwindow.getY();
+            pointFesoBegin = new Point(881 - 5 + x, 186 - 5 + y);    //1576 - 700, 361 - 180
+            pointFesoEnd   = new Point(395 - 5 + x, 361 - 5 + y);    //1090 - 700, 536 - 180
         }
 
         /// <summary>
@@ -69,42 +76,7 @@ namespace OpenGEWindows
             //            Pause(15000);
         }
 
-        ///// <summary>
-        ///// Открытие окна торговца (vovannmsk) и переход на место торговли 
-        ///// </summary>
-        //public void OpenTrader()
-        //{
-        //    botwindow.StateDriverRun(new StateGT14(botwindow), new StateGT17(botwindow));       //  (нет окна - казарма - город)
-        //    GoToChangePlace();           //  торговец следует на место передачи песо
-            
-        //    //botwindow.ReOpenWindow();
-        //    //botwindow.Pause(1000);                                 
-
-        //    ////=================== выполняем коннект с вводом логина и пароля  ============================
-        //    //bool result = botwindow.Connect();
-
-        //    //if (result)   // если получилось войти, то
-        //    //{
-        //    //    while (!server.isBarack())         //ожидание загрузки казармы
-        //    //    { botwindow.Pause(500); }
-
-        //    //    //============ выбор персонажей  ===========
-        //    //    server.TeamSelection();
-        //    //    botwindow.Pause(500);
-
-        //    //    //============ выбор канала ===========
-        //    //    botwindow.SelectChannel();
-        //    //    botwindow.Pause(500);
-
-        //    //    //============ выход в город  ===========
-        //    //    botwindow.NewPlace();                //начинаем в Юстиаре  
-
-        //    //    botwindow.PressMouseR(200, 570);     //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
-
-        //    //    GoToChangePlace();           //  торговец следует на место передачи песо
-        //    //}
-        //}
-
+  
         /// <summary>
         /// обмен песо на фесо (часть 1 со стороны торговца) 
         /// </summary>
@@ -120,7 +92,8 @@ namespace OpenGEWindows
             botwindow.PressMouseL(1666 - 700, 329 - 180);
 
             // перетаскиваем фесо на стол торговли
-            botwindow.MouseMoveAndDrop(1576 - 700, 361 - 180, 1090 - 700, 536 - 180);                         // фесо берется из третьей ячейки на этой закладке  
+            pointFesoBegin.Drag(pointFesoEnd);
+            //botwindow.MouseMoveAndDrop(1576 - 700, 361 - 180, 1090 - 700, 536 - 180);                         // фесо берется из третьей ячейки на этой закладке  
             botwindow.Pause(500);
 
             // нажимаем Ок для подтверждения передаваемой суммы фесо

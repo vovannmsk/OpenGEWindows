@@ -89,6 +89,16 @@ namespace OpenGEWindows
             return (currentColor == color);
         }
 
+        /// <summary>
+        /// проверяет цвет в указанных координатах и сверяет с эталонным (с переменной класса color)
+        /// </summary>
+        /// <returns> true, если цвет совпадает с указанной точностью </returns>
+        public bool isColor2()
+        {
+            return (GetPixelColor() > color);
+        }
+
+
 
 
     }

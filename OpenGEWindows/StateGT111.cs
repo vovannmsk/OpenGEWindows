@@ -69,7 +69,8 @@ namespace OpenGEWindows
             server.Button_Close();            // Нажимаем на кнопку Close
             //botwindow.Pause(1500);            пауза есть в самом town.ExitFromTrader
             town.ExitFromTrader();               // дополнительные нажатия при выходе из магазина
-            botwindow.PressMouseR(200, 570);     //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
+//          botwindow.PressMouseR(200, 570);     //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
+            botwindow.ToMoveMouse();             //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
             botwindow.Pause(2000);
         }
 

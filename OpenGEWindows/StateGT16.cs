@@ -71,8 +71,8 @@ namespace OpenGEWindows
 
             //============ выход в город  ===========
             botwindow.NewPlace();                //начинаем в ребольдо  
-            
-            botwindow.PressMouseR(200, 570);     //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
+
+            botwindow.ToMoveMouse();             //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
 
             botwindow.Pause(2000);
             int i = 0;

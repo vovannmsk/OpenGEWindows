@@ -157,7 +157,13 @@ namespace OpenGEWindows
 
             this.pointNewName = new Point(490 - 5 + 30 + xx, 280 - 5 + yy);                        //строчка, куда надо вводить имя семьи
             this.pointButtonCreateNewName = new Point(465 - 5 + xx, 510 - 5 + yy);                        //кнопка Create для создания новой семьи
-        }                          //конструктор
+
+            this.pointPetBegin = new Point(800 - 5 + xx, 220 - 5 + yy);    // 800-5, 220-5
+            this.pointPetEnd = new Point(520 - 5 + xx, 330 - 5 + yy);    // 520-5, 330-5
+
+            this.pointConnect = new PointColor(522 - 5 + xx, 418 - 5 + yy, 7800000, 5);   //тестовая кнопка для метода Connect
+
+        }        
 
         /// <summary>
         /// возвращаем тестовый цвет для сравнения в методе Connect

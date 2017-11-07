@@ -840,7 +840,7 @@ namespace OpenGEWindows
         /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
-            Win32.Pause(2000);
+            Thread.Sleep(2000);
             //Win32.PressMouseL(1000,500);
             //Win32.Pause(1000);
             //Win32.PressMouseL(1100, 600); 

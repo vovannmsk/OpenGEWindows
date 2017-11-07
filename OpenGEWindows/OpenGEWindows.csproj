@@ -96,7 +96,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AmericaTownFactory.cs" />
-    <Compile Include="Array_File_IO.cs" />
     <Compile Include="botMerchant.cs" />
     <Compile Include="botWindow.cs" />
     <Compile Include="iPointColor.cs" />
@@ -196,7 +195,6 @@
     <Compile Include="AmericaTownReboldo.cs" />
     <Compile Include="AmericaTownUstiar.cs" />
     <Compile Include="TownFactory.cs" />
-    <Compile Include="Win32.cs" />
     <Compile Include="Click_Mouse_and_Keyboard.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

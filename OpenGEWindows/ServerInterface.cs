@@ -146,6 +146,7 @@ namespace OpenGEWindows
         protected iPoint pointCure3;
         protected iPoint pointMana1;
 
+
         //создание нового бота
         protected iPoint pointNewName;
         protected iPoint pointButtonCreateNewName;
@@ -197,7 +198,11 @@ namespace OpenGEWindows
         protected iPoint pointWayPointMap;
         protected iPoint pointWayPoint;
         protected iPoint pointBookmarkField;
-        protected iPoint pointButtonLavaPlato; 
+        protected iPoint pointButtonLavaPlato;
+        protected Point pointPetBegin;  //для перетаскивания пета
+        protected Point pointPetEnd;
+
+
         //лавовое плато
         protected iPoint pointGateCrater;
         protected iPoint pointSecondBookmark;
@@ -212,6 +217,7 @@ namespace OpenGEWindows
         protected iPoint pointButtonSaveTeleport;
         protected iPoint pointButtonOkSaveTeleport;
 
+        protected iPointColor pointConnect;
 
 
         protected int sdvigY;
@@ -388,7 +394,8 @@ namespace OpenGEWindows
             pointThirdBookmark.PressMouseL();           //тыкнули в третью закладку в кармане
             Pause(1500);
 
-            botwindow.MouseMoveAndDrop(800-5, 220-5, 520-5, 330-5);            // берем коробку с кокошкой и переносим в куб для вылупления у петэксперта
+            pointPetBegin.Drag(pointPetEnd);            // берем коробку с кокошкой и переносим в куб для вылупления у петэксперта
+            //botwindow.MouseMoveAndDrop(800-5, 220-5, 520-5, 330-5);            // берем коробку с кокошкой и переносим в куб для вылупления у петэксперта
             botwindow.Pause(2500);
 
             pointNamePet.PressMouseL();                // Нажимаем на строчку, где надо написать имя пета
@@ -776,7 +783,7 @@ namespace OpenGEWindows
             temp = random.Next(9999);        //случайное число от 0 до 9999
             string sss = temp.ToString();    //число в строку
 
-            string sss2 = botwindow.NameOfFamily();
+            string sss2 = botwindow.getNameOfFamily();
             SendKeys.SendWait(sss2 + sss);
 
             Pause(500);
@@ -1573,12 +1580,22 @@ namespace OpenGEWindows
             return (pointisKillHero1.isColor() || pointisKillHero2.isColor() || pointisKillHero3.isColor());
         }
 
+        /// <summary>
+        /// проверяем, есть ли ошибки при нажатии кнопки Connect
+        /// </summary>
+        /// <returns></returns>
+        public bool isPointConnect()
+        {
+            return pointConnect.isColor();
+        }
 
         public abstract void TopMenu(int numberOfThePartitionMenu);
         public abstract void TopMenu(int numberOfThePartitionMenu, int punkt);
         public abstract void runClient();
         public abstract uint colorTest();
+
         public abstract void TeleportToTownAltW();
+
 
 
     }

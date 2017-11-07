@@ -65,7 +65,7 @@ namespace OpenGEWindows
             server.RunToNunez();        //бежим до Нуньеса
             server.TalkRunToNunez();    //говорим с Нуньесом
 
-            botwindow.PressMouseR(200, 570);     //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
+            botwindow.ToMoveMouse();             //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
 
             //ожидание загрузки города
             botwindow.Pause(2000);
