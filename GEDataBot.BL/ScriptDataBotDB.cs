@@ -95,34 +95,32 @@ namespace GEDataBot.BL
         /// <returns>пользовательские параметры бота</returns>
         private BotsNew GetBots()
         {
-            var context = new GEContext();
+            var context = new GEContext(); 
 
             IQueryable<BotsNew> query = context.BotsNew.Where(c => c.NumberOfWindow == this.numberOfWindow);
 
-            BotsNew singleBot = query.Single<BotsNew>();
+            BotsNew singleBot = query.Single();
+            
+            //List<BotsNew> bot1 = context.BotsNew.ToList();
+            //BotsNew [] bot = context.BotsNew.ToArray();
+
+            //int j = 0;
+            //int i = 0;
+
+            //foreach  (BotsNew bot_ in bot)
+            //{
+            //    if (bot_.NumberOfWindow == this.numberOfWindow)
+            //    {
+            //        j = i;
+            //    }
+            //    i++;
+            //}
+
+
+            //return bot[j];
 
             return singleBot;
         }
-
-        ///// <summary>
-        ///// читаем из базы координаты расстановки ботов на карте
-        ///// </summary>
-        ///// <returns></returns>
-        //private List<CoordinatesNew> GetCoordinates(int i)
-        //{
-        //    var context = new GEContext();
-
-        //    //IQueryable<CoordinatesNew> query = context.CoordinatesNew.Where(c => c.Id_Bots == i);
-
-        //    var query = from c in context.CoordinatesNew
-        //                where c.Id_Bots == i
-        //                orderby c.NumberOfHeroes
-        //                select c;
-
-        //    var coordinates = query.ToList();
-
-        //    return coordinates;
-        //}
 
         /// <summary>
         /// читаем из базы координаты X (икс) расстановки ботов на карте
@@ -164,6 +162,26 @@ namespace GEDataBot.BL
             return coordinates;
         }
 
+
+        ///// <summary>
+        ///// читаем из базы координаты расстановки ботов на карте
+        ///// </summary>
+        ///// <returns></returns>
+        //private List<CoordinatesNew> GetCoordinates(int i)
+        //{
+        //    var context = new GEContext();
+
+        //    //IQueryable<CoordinatesNew> query = context.CoordinatesNew.Where(c => c.Id_Bots == i);
+
+        //    var query = from c in context.CoordinatesNew
+        //                where c.Id_Bots == i
+        //                orderby c.NumberOfHeroes
+        //                select c;
+
+        //    var coordinates = query.ToList();
+
+        //    return coordinates;
+        //}
 
 
         #endregion

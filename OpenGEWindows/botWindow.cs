@@ -110,8 +110,8 @@ namespace OpenGEWindows
             // основные переменные класса
             this.numberWindow = number_Window;     // эта инфа поступает при создании объекта класса
 
-//            scriptDataBot = new ScriptDataBotText(this.numberWindow);   //делаем объект репозитория с реализацией чтения из тестовых файлов
-            scriptDataBot = new ScriptDataBotDB(this.numberWindow);       //делаем объект репозитория с реализацией чтения из базы данных
+            scriptDataBot = new ScriptDataBotText(this.numberWindow);   //делаем объект репозитория с реализацией чтения из тестовых файлов
+//            scriptDataBot = new ScriptDataBotDB(this.numberWindow);       //делаем объект репозитория с реализацией чтения из базы данных
             databot = scriptDataBot.GetDataBot();  //в этом объекте все данные по данному окну бота
 
 

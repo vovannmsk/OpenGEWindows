@@ -80,9 +80,7 @@
     <Compile Include="ScriptDataBotDB.cs" />
     <Compile Include="ScriptDataBotText.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <EntityDeploy Include="GEModel.edmx">
