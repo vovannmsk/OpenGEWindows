@@ -130,8 +130,6 @@ namespace GEDataBot.BL
         private int Channal()
         { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + numberOfWindow + "\\Каналы.txt")); }
 
-
-
         /// <summary>
         /// считываем из файла координаты Х расстановки треугольником
         /// </summary>

@@ -30,7 +30,7 @@ namespace OpenGEWindows
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "07-11-2017";
+        public static String DataVersion = "09-11-2017";
 //        public static int numberOfAccounts = botWindow.KolvoAkk();
         public static int numberOfAccounts = KolvoAkk();
 
@@ -118,11 +118,11 @@ namespace OpenGEWindows
                 bool fff = true;
                 while (fff)
                 {
-                    UIntPtr ddd = botWindowArray[j].FindWindow2();
+                    UIntPtr hwnd = botWindowArray[j].FindWindow2();
                     botWindowArray[j].Pause(500);
-                    if (!funcArray(ddd))
+                    if (!funcArray(hwnd))
                     {
-                        aa[j] = ddd;
+                        aa[j] = hwnd;
                         fff = false;
                     }
                     botWindowArray[j].Pause(500);

@@ -91,14 +91,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GEDataBot.BL.dll" size="8704">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GEDataBot.BL.dll" size="21504">
       <assemblyIdentity name="GEDataBot.BL" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>rDBnqU9V3Br8phoQE/0edBifLsvDpbcCWOT7BBSIdn4=</dsig:DigestValue>
+        <dsig:DigestValue>lNbuhJWS/lJUCM+84my0cS9GKjN8Bksq40S1cytQC/M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -134,7 +134,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ZMDKD2fUTV87+3LJh20lWSzBAvkX05CZrs5JIlYpJOo=</dsig:DigestValue>
+        <dsig:DigestValue>77v5+nnRG6NeGVXVOk6Ul2W4aZ430Z0RwOyXWd0TG4s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
