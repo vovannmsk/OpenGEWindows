@@ -1,0 +1,10 @@
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\ConsoleApplication1\bin\Release\ConsoleApplication1.exe.config
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\ConsoleApplication1\bin\Release\ConsoleApplication1.exe
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\ConsoleApplication1\bin\Release\ConsoleApplication1.pdb
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\ConsoleApplication1\bin\Release\EntityFramework.dll
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\ConsoleApplication1\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\ConsoleApplication1\bin\Release\EntityFramework.xml
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\ConsoleApplication1\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\ConsoleApplication1\obj\Release\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\ConsoleApplication1\obj\Release\ConsoleApplication1.exe
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\ConsoleApplication1\obj\Release\ConsoleApplication1.pdb

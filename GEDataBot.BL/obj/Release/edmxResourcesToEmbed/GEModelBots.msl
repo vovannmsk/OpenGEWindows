@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="GEModelBotsStoreContainer" CdmEntityContainer="GEContextBots">
+    <EntitySetMapping Name="BotsNew">
+      <EntityTypeMapping TypeName="GEModelBots.BotsNew">
+        <MappingFragment StoreEntitySet="BotsNew">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NumberOfWindow" ColumnName="NumberOfWindow" />
+          <ScalarProperty Name="HWND" ColumnName="HWND" />
+          <ScalarProperty Name="Family" ColumnName="Family" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Channel" ColumnName="Channel" />
+          <ScalarProperty Name="ChangeVis" ColumnName="ChangeVis" />
+          <ScalarProperty Name="Server" ColumnName="Server" />
+          <ScalarProperty Name="TeleportForSale" ColumnName="TeleportForSale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoordinatesNew">
+      <EntityTypeMapping TypeName="GEModelBots.CoordinatesNew">
+        <MappingFragment StoreEntitySet="CoordinatesNew">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_Bots" ColumnName="Id_Bots" />
+          <ScalarProperty Name="NumberOfHeroes" ColumnName="NumberOfHeroes" />
+          <ScalarProperty Name="X" ColumnName="X" />
+          <ScalarProperty Name="Y" ColumnName="Y" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

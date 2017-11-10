@@ -49,26 +49,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BotsNew.cs">
-      <DependentUpon>GEModel.tt</DependentUpon>
+      <DependentUpon>GEModelBots.tt</DependentUpon>
     </Compile>
     <Compile Include="CoordinatesNew.cs">
-      <DependentUpon>GEModel.tt</DependentUpon>
+      <DependentUpon>GEModelBots.tt</DependentUpon>
     </Compile>
     <Compile Include="DataBot.cs" />
-    <Compile Include="GEModel.Context.cs">
+    <Compile Include="GEModelBots.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GEModel.Context.tt</DependentUpon>
+      <DependentUpon>GEModelBots.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="GEModel.cs">
+    <Compile Include="GEModelBots.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GEModel.tt</DependentUpon>
+      <DependentUpon>GEModelBots.tt</DependentUpon>
     </Compile>
-    <Compile Include="GEModel.Designer.cs">
+    <Compile Include="GEModelBots.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>GEModel.edmx</DependentUpon>
+      <DependentUpon>GEModelBots.edmx</DependentUpon>
     </Compile>
     <Compile Include="IScriptDataBot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,22 +83,22 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
-    <EntityDeploy Include="GEModel.edmx">
+    <EntityDeploy Include="GEModelBots.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>GEModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>GEModelBots.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="GEModel.Context.tt">
+    <None Include="GEModelBots.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GEModel.edmx</DependentUpon>
-      <LastGenOutput>GEModel.Context.cs</LastGenOutput>
+      <DependentUpon>GEModelBots.edmx</DependentUpon>
+      <LastGenOutput>GEModelBots.Context.cs</LastGenOutput>
     </None>
-    <None Include="GEModel.edmx.diagram">
-      <DependentUpon>GEModel.edmx</DependentUpon>
+    <None Include="GEModelBots.edmx.diagram">
+      <DependentUpon>GEModelBots.edmx</DependentUpon>
     </None>
-    <None Include="GEModel.tt">
+    <None Include="GEModelBots.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>GEModel.edmx</DependentUpon>
-      <LastGenOutput>GEModel.cs</LastGenOutput>
+      <DependentUpon>GEModelBots.edmx</DependentUpon>
+      <LastGenOutput>GEModelBots.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

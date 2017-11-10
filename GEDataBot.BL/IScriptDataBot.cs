@@ -15,6 +15,10 @@ namespace GEDataBot.BL
         /// <returns>данные, необходимые для создания бота в формате DataBot </returns>
         DataBot GetDataBot();
 
+        /// <summary>
+        /// запись hwnd в текстовый файл или в БД
+        /// </summary>
+        /// <param name="hwnd"></param>
         void SetHwnd(UIntPtr hwnd);
 
     }

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="GEModelBots" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BotsNew">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumberOfWindow" Type="Int32" Nullable="false" />
+    <Property Name="HWND" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Family" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Channel" Type="Int32" Nullable="false" />
+    <Property Name="ChangeVis" Type="Int32" Nullable="false" />
+    <Property Name="Server" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TeleportForSale" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CoordinatesNew">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Bots" Type="Int32" Nullable="false" />
+    <Property Name="NumberOfHeroes" Type="Int32" Nullable="false" />
+    <Property Name="X" Type="Int32" Nullable="false" />
+    <Property Name="Y" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="GEContextBots" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BotsNew" EntityType="Self.BotsNew" />
+    <EntitySet Name="CoordinatesNew" EntityType="Self.CoordinatesNew" />
+  </EntityContainer>
+</Schema>

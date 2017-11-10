@@ -17,23 +17,19 @@ namespace GEDataBot.BL
         {
             this.numberOfWindow = numberOfWindow;
             this.databot = new DataBot();
-            BotsNew bot = new BotsNew();
-            bot = GetBots();
-            databot.x = Koord_X();
-            databot.y = Koord_Y();
-            databot.Login = bot.Login;
-            databot.Password = bot.Password;
-            databot.hwnd = (UIntPtr) uint.Parse(bot.HWND);
-            databot.param = bot.Server;
-            databot.Kanal = bot.Channel;
-            databot.nomerTeleport = bot.TeleportForSale;
-            databot.nameOfFamily = bot.Family;
+            BotsNew bot = GetBots();               //подчитываем из БД одну строку                                                   программа спотыкается на этом месте
+            this.databot.x = Koord_X();
+            this.databot.y = Koord_Y();
+            this.databot.Login = bot.Login;
+            this.databot.Password = bot.Password;
+            //this.databot.hwnd = (UIntPtr)uint.Parse(bot.HWND);
+            this.databot.param = bot.Server;
+            this.databot.Kanal = bot.Channel;
+            this.databot.nomerTeleport = bot.TeleportForSale;
+            this.databot.nameOfFamily = bot.Family;
 
-            databot.triangleX = GetCoordinatesX(this.numberOfWindow);
-            databot.triangleY = GetCoordinatesY(this.numberOfWindow);
-
-            int d = 1;
-
+            this.databot.triangleX = GetCoordinatesX();
+            this.databot.triangleY = GetCoordinatesY();
         }
 
         public ScriptDataBotDB()
@@ -47,7 +43,7 @@ namespace GEDataBot.BL
         /// <returns></returns>
         public DataBot GetDataBot()
         {
-            return databot;
+            return this.databot;
         }
 
         /// <summary>
@@ -58,7 +54,7 @@ namespace GEDataBot.BL
         {
             databot.hwnd = hwnd;
             // обязательно прописать запись hwnd в базу данных Entity Framework
-            var context = new GEContext();
+            var context = new GEContextBots();
             IQueryable<BotsNew> query = context.BotsNew.Where(c => c.NumberOfWindow == this.numberOfWindow);
             BotsNew bots = query.Single<BotsNew>();
             bots.HWND = databot.hwnd.ToString();
@@ -95,30 +91,20 @@ namespace GEDataBot.BL
         /// <returns>пользовательские параметры бота</returns>
         private BotsNew GetBots()
         {
-            var context = new GEContext(); 
+            GEContextBots context = new GEContextBots();
 
-            IQueryable<BotsNew> query = context.BotsNew.Where(c => c.NumberOfWindow == this.numberOfWindow);
+            BotsNew singleBot = new BotsNew();
 
-            BotsNew singleBot = query.Single();
-            
-            //List<BotsNew> bot1 = context.BotsNew.ToList();
-            //BotsNew [] bot = context.BotsNew.ToArray();
-
-            //int j = 0;
-            //int i = 0;
-
-            //foreach  (BotsNew bot_ in bot)
-            //{
-            //    if (bot_.NumberOfWindow == this.numberOfWindow)
-            //    {
-            //        j = i;
-            //    }
-            //    i++;
-            //}
-
-
-            //return bot[j];
-
+            try
+            {
+                IQueryable<BotsNew> query = context.BotsNew.Where(c => c.NumberOfWindow == this.numberOfWindow);
+                singleBot = query.Single();
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.ReadKey();
+            }
             return singleBot;
         }
 
@@ -126,14 +112,14 @@ namespace GEDataBot.BL
         /// читаем из базы координаты X (икс) расстановки ботов на карте
         /// </summary>
         /// <returns></returns>
-        private int[] GetCoordinatesX(int i)
+        private int[] GetCoordinatesX()
         {
-            var context = new GEContext();
+            var context = new GEContextBots();
 
             //IQueryable<CoordinatesNew> query = context.CoordinatesNew.Where(c => c.Id_Bots == i);
 
             var query = from c in context.CoordinatesNew
-                        where c.Id_Bots == i
+                        where c.Id_Bots == this.numberOfWindow
                         orderby c.NumberOfHeroes
                         select c.X;
 
@@ -146,14 +132,14 @@ namespace GEDataBot.BL
         /// читаем из базы координаты Y (игрек) расстановки ботов на карте
         /// </summary>
         /// <returns></returns>
-        private int[] GetCoordinatesY(int i)
+        private int[] GetCoordinatesY()
         {
-            var context = new GEContext();
+            var context = new GEContextBots();
 
             //IQueryable<CoordinatesNew> query = context.CoordinatesNew.Where(c => c.Id_Bots == i);
 
             var query = from c in context.CoordinatesNew
-                        where c.Id_Bots == i
+                        where c.Id_Bots == this.numberOfWindow
                         orderby c.NumberOfHeroes
                         select c.Y;
 

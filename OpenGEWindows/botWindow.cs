@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Threading;
-using GEDataBot.BL;
+using GEBot.Data;
 
 
 namespace OpenGEWindows
@@ -53,8 +53,8 @@ namespace OpenGEWindows
         private const String KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
         private int needToChange;
 
-        private IScriptDataBot scriptDataBot;  
         private DataBot databot;              //начальные данные для бота (заданные пользователем)
+        private IScriptDataBot scriptDataBot;
 
         private ServerInterface server;                 
         private ServerFactory serverFactory;
@@ -110,9 +110,9 @@ namespace OpenGEWindows
             // основные переменные класса
             this.numberWindow = number_Window;     // эта инфа поступает при создании объекта класса
 
-            scriptDataBot = new ScriptDataBotText(this.numberWindow);   //делаем объект репозитория с реализацией чтения из тестовых файлов
-//            scriptDataBot = new ScriptDataBotDB(this.numberWindow);       //делаем объект репозитория с реализацией чтения из базы данных
-            databot = scriptDataBot.GetDataBot();  //в этом объекте все данные по данному окну бота
+            this.scriptDataBot = new ScriptDataBotText(this.numberWindow);   //делаем объект репозитория с реализацией чтения из тестовых файлов
+//            this.scriptDataBot = new ScriptDataBotDB(this.numberWindow);       //делаем объект репозитория с реализацией чтения из базы данных
+            this.databot = scriptDataBot.GetDataBot();  //в этом объекте все данные по данному окну бота
 
 
             #region Вариант 1. переменные класса подчитываются из текстовых файлов

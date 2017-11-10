@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEDataBot.BL.Tests", "GEDat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "botwindow.tests", "botwindow.tests\botwindow.tests.csproj", "{AAA59266-C919-4ED2-933F-4A9E83491D27}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication2", "ConsoleApplication2\ConsoleApplication2.csproj", "{85F264E3-A243-4A1B-A6BF-A1DCBDAEA10D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GEBot.Data", "GEBot.Data\GEBot.Data.csproj", "{3E94057C-F406-4C7A-B12C-FC8EA064B141}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +39,14 @@ Global
 		{AAA59266-C919-4ED2-933F-4A9E83491D27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAA59266-C919-4ED2-933F-4A9E83491D27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAA59266-C919-4ED2-933F-4A9E83491D27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85F264E3-A243-4A1B-A6BF-A1DCBDAEA10D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85F264E3-A243-4A1B-A6BF-A1DCBDAEA10D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85F264E3-A243-4A1B-A6BF-A1DCBDAEA10D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85F264E3-A243-4A1B-A6BF-A1DCBDAEA10D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E94057C-F406-4C7A-B12C-FC8EA064B141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E94057C-F406-4C7A-B12C-FC8EA064B141}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E94057C-F406-4C7A-B12C-FC8EA064B141}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E94057C-F406-4C7A-B12C-FC8EA064B141}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
