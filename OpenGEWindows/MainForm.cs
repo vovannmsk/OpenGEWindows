@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Threading;
-using GEBot.Data;
+//using GEBot.Data;
 
 
 
@@ -31,7 +31,6 @@ namespace OpenGEWindows
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
         public static String DataVersion = "10-11-2017";
-//        public static int numberOfAccounts = botWindow.KolvoAkk();
         public static int numberOfAccounts = KolvoAkk();
 
         /// <summary>
@@ -86,7 +85,6 @@ namespace OpenGEWindows
         /// <param name="e"></param>
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //myThreadGreen.Abort();
             System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
 

@@ -10,7 +10,7 @@ namespace GEBot.Data
 {
     public class ScriptDataBotDB:IScriptDataBot
     {
-        private const String KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
+        //private const String KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
         private int numberOfWindow;
         private DataBot databot;
 
@@ -24,7 +24,7 @@ namespace GEBot.Data
             this.databot.y = Koord_Y();
             this.databot.Login = bot.Login;
             this.databot.Password = bot.Password;
-            //this.databot.hwnd = (UIntPtr)uint.Parse(bot.HWND);
+            this.databot.hwnd = (UIntPtr)uint.Parse(bot.HWND);
             this.databot.param = bot.Server;
             this.databot.Kanal = bot.Channel;
             this.databot.nomerTeleport = bot.TeleportForSale;
