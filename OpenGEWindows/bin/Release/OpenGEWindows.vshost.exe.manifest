@@ -91,14 +91,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GEDataBot.BL.dll" size="21504">
-      <assemblyIdentity name="GEDataBot.BL" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GEBot.Data.dll" size="20480">
+      <assemblyIdentity name="GEBot.Data" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>W70dgo7hDdqLDZ+TMmk03Q++XiVY9UXIvmu+qRgG/zM=</dsig:DigestValue>
+        <dsig:DigestValue>QuCLSzYT4LSqiXl8MFnOJt8TgnP81dtQ5oX8ClznftY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -127,24 +127,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OpenGEWindows.exe" size="119808">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="OpenGEWindows.exe" size="120320">
       <assemblyIdentity name="OpenGEWindows" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>61X2L+EHtmq6EJjamukgJPuj7umHGmCvyh81/QpTgIM=</dsig:DigestValue>
+        <dsig:DigestValue>TuaEmvYiybFRE/ieR6HhzgO64RxZOGJYeWwomivWq3k=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="OpenGEWindows.exe.config" size="893">
+  <file name="OpenGEWindows.exe.config" size="1289">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>hhRWqqJqJ6wKTsylliLiLxfqaCU1r7+lhIal7IDHcNs=</dsig:DigestValue>
+      <dsig:DigestValue>WydK7gDxkUw4nUd5VRkBdU1MwTY2CezgMWmeLtnK0gA=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

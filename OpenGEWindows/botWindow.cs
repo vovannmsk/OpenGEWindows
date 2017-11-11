@@ -98,6 +98,8 @@ namespace OpenGEWindows
         private iPointColor point5050;
         private iPointColor pointCommandMode;
 
+        enum TypeLoadUserData {txt, db}
+        
 
         //private SqlConnection sqlconnection;
         // ================ конструктор =================
@@ -110,10 +112,7 @@ namespace OpenGEWindows
             // основные переменные класса
             this.numberWindow = number_Window;     // эта инфа поступает при создании объекта класса
 
-//            this.scriptDataBot = new ScriptDataBotText(this.numberWindow);   //делаем объект репозитория с реализацией чтения из тестовых файлов
-           this.scriptDataBot = new ScriptDataBotDB(this.numberWindow);       //делаем объект репозитория с реализацией чтения из базы данных
-            this.databot = scriptDataBot.GetDataBot();  //в этом объекте все данные по данному окну бота
-
+            this.databot = LoadUserDataBot(TypeLoadUserData.txt);       
 
             #region Вариант 1. переменные класса подчитываются из текстовых файлов
             this.needToChange = NeedToChange();
@@ -396,7 +395,19 @@ namespace OpenGEWindows
 
         #endregion
 
+        /// <summary>
+        /// читаем данные о боте, заполненные пользователем, из БД или из текстовых файлов
+        /// </summary>
+        /// <returns></returns>
+        private DataBot LoadUserDataBot(TypeLoadUserData select)
+        {
+            if (select == TypeLoadUserData.txt)
+            { this.scriptDataBot = new ScriptDataBotText(this.numberWindow); }    //делаем объект репозитория с реализацией чтения из тестовых файлов
+            else
+            { this.scriptDataBot = new ScriptDataBotDB(this.numberWindow); }      //делаем объект репозитория с реализацией чтения из базы данных
 
+            return scriptDataBot.GetDataBot();                                    //в этом объекте все данные по данному окну бота
+        }
 
         /// <summary>
         /// нажать мышью в конкретную точку только левой кнопкой
@@ -477,6 +488,9 @@ namespace OpenGEWindows
             UIntPtr New_HWND_GE;
             New_HWND_GE = (UIntPtr)0;
 
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(350, 700, 8);
+            Pause(500);
+
             while (New_HWND_GE == (UIntPtr)0)
             {
                 Pause(500);
@@ -488,8 +502,6 @@ namespace OpenGEWindows
             //SetWindowPos(New_HWND_GE, 1, getX(), getY(), WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
             SetWindowPos(New_HWND_GE, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
             Pause(500);
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(350, 700, 8);
-            Pause(200);
 
             return New_HWND_GE;
         }
