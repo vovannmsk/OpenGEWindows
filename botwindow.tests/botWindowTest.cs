@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace botwindow.tests
 {
-    class botWindowTest
+    public class botWindowTest
     {
+
     }
 }

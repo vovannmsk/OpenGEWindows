@@ -15,23 +15,24 @@ namespace OpenGEWindows
 {
     public class botWindow
     {
-        [DllImport("user32.dll")]
-        private static extern UIntPtr FindWindow(String ClassName, String WindowName);
+
+        //[DllImport("user32.dll")]
+        //static extern IntPtr GetDC(IntPtr hwnd);
+
+        //[DllImport("user32.dll")]
+        //static extern Int32 ReleaseDC(IntPtr hwnd, IntPtr hdc);
+
+        //[DllImport("gdi32.dll")]
+        //static extern uint GetPixel(IntPtr hdc, int nXPos, int nYPos);
+
+        //[DllImport("user32.dll")]
+        //static extern bool PostMessage(UIntPtr hWnd, uint Msg, UIntPtr wParam, UIntPtr lParam);
+
+        //[DllImport("User32.dll", CharSet = CharSet.Auto)]
+        //public static extern UIntPtr FindWindowEx(UIntPtr hwndParent, UIntPtr hwndChildAfter, string className, string windowName);
 
         [DllImport("user32.dll")]
-        static extern IntPtr GetDC(IntPtr hwnd);
-
-        [DllImport("user32.dll")]
-        static extern Int32 ReleaseDC(IntPtr hwnd, IntPtr hdc);
-
-        [DllImport("gdi32.dll")]
-        static extern uint GetPixel(IntPtr hdc, int nXPos, int nYPos);
-
-        [DllImport("user32.dll")]
-        static extern bool PostMessage(UIntPtr hWnd, uint Msg, UIntPtr wParam, UIntPtr lParam);
-
-        [DllImport("User32.dll", CharSet = CharSet.Auto)]
-        public static extern UIntPtr FindWindowEx(UIntPtr hwndParent, UIntPtr hwndChildAfter, string className, string windowName);
+        private static extern UIntPtr FindWindow(String ClassName, String WindowName);  //ищет окно с заданным именем и классом
 
         [DllImport("user32.dll")]
         public static extern bool SetWindowPos(UIntPtr myhWnd, int myhwndoptional, int xx, int yy, int cxx, int cyy, uint flagus); // Перемещает окно в заданные координаты с заданным размером
@@ -40,7 +41,7 @@ namespace OpenGEWindows
         public static extern bool BringWindowToTop(UIntPtr hWnd); // Делает окно активным
 
         [DllImport("user32.dll")]
-        public static extern bool ShowWindow(UIntPtr hWnd, int nCmdShow);
+        public static extern bool ShowWindow(UIntPtr hWnd, int nCmdShow);  //раскрывает окно, если оно было скрыто в трей
 
         [DllImport("user32.dll")]
         public static extern bool SetForegroundWindow(UIntPtr hWnd); // Перемещает окно в верхний список Z порядка
@@ -101,12 +102,19 @@ namespace OpenGEWindows
         enum TypeLoadUserData {txt, db}
         
 
-        //private SqlConnection sqlconnection;
-        // ================ конструктор =================
+        
+        /// <summary>
+        /// конструктор с пустыми параметрами
+        /// </summary>
         public botWindow()
         {
             MessageBox.Show("НУЖНЫ ПАРАМЕТРЫ");
         }
+
+        /// <summary>
+        /// основной конструктор
+        /// </summary>
+        /// <param name="number_Window">номер бота (номер окна)</param>
         public botWindow(int number_Window)
         {
             // основные переменные класса
@@ -593,15 +601,7 @@ namespace OpenGEWindows
         /// </summary>
         private void hwnd_to_file()
         {
-//            Array_File_IO.Write_File(KATALOG_MY_PROGRAM + this.numberWindow + "\\HWND.txt", (uint)databot.hwnd);
             scriptDataBot.SetHwnd(databot.hwnd);
-
-            // обязательно прописать запись hwnd в базу данных Entity Framework
-            //var context = new GEContext();
-            //IQueryable<BotsNew> query = context.BotsNew.Where (c => c.NumberOfWindow == this.numberWindow);
-            //BotsNew bots = query.Single<BotsNew>();
-            //bots.HWND = databot.hwnd.ToString();
-            //context.SaveChanges();
         }
 
         /// <summary>
@@ -852,37 +852,14 @@ namespace OpenGEWindows
         public void NewPlace()
         {
             pointNewPlace.PressMouse();
-        }                                                              //метод не привязан к botwindow
+        }                                                              
 
         /// <summary>
         /// Нажимаем Выбор канала и группы персов в казарме    // ======================================================================================== по идее должен быть в server
         /// </summary>
         public void SelectChannel()
         {
-            //PressMouseL(125, 705);
             pointButtonSelectChannel.PressMouseL();
-
-            //===============================  Выбор канала для выхода в город ==============================
-            //switch (getKanal())
-            //{
-            //    case 1:
-            //        pointChoiceOfChannel = new Point(125 + x, 660 + server.sdvig() + y); 
-            //        //PressMouseL(125, 660 + server.sdvig());
-            //        break;
-            //    case 2:
-            //        pointChoiceOfChannel = new Point(125 + x, 675 + server.sdvig() + y); 
-            //        //PressMouseL(125, 675 + server.sdvig());
-            //        break;
-            //    case 3:
-            //        pointChoiceOfChannel = new Point(125 + x, 690 + server.sdvig() + y); 
-            //        //PressMouseL(125, 690 + server.sdvig());
-            //        break;
-            //    default:
-            //        pointChoiceOfChannel = new Point(125 + x, 660 + server.sdvig() + y); 
-            //        break;
-            //} //END SWiTCH
-
-            //            pointChoiceOfChannel = new Point(125 + x, 660 + server.sdvig() + y);              //выходим в город всегда на первом канале, переход на нужный канал на месте работы
             pointChoiceOfChannel = new Point(125 + databot.x, 660 + (databot.Kanal - 1) * 15 + server.sdvig() + databot.y);    //переход на нужный канал в казарме
             pointChoiceOfChannel.PressMouseL();
         }
@@ -892,13 +869,9 @@ namespace OpenGEWindows
         /// </summary>
         public void FirstHero()
         {
-            //PressMouseR(182, 664);
-            //PressMouseR(182, 664);
             pointFirstHeroR.PressMouseR();
             pointFirstHeroR.PressMouseR();
-            //PressMouseL(182, 635);
             pointFirstHeroL.PressMouseL();
-            
         }
 
         /// <summary>
@@ -908,10 +881,7 @@ namespace OpenGEWindows
         {
             pointSecondHeroR.PressMouseR();
             pointSecondHeroR.PressMouseR();
-//            PressMouseR(420, 664);
-  //          PressMouseR(420, 664);
             pointSecondHeroL.PressMouseL();
-            //PressMouseL(420, 635);
         }
 
         /// <summary>
@@ -922,9 +892,6 @@ namespace OpenGEWindows
             pointThirdHeroR.PressMouseR();
             pointThirdHeroR.PressMouseR();
             pointThirdHeroL.PressMouseL();
-            //PressMouseR(670, 664);
-            //PressMouseR(670, 664);
-            //PressMouseL(670, 635);
         }
 
         /// <summary>
@@ -1077,7 +1044,7 @@ namespace OpenGEWindows
                                 else
                                 {
                                     //=========================== если переполнение ==============================
-                                    if (server.isBoxOverflow())           // если карман переполнился
+                                    if ((server.isBoxOverflow()) && (this.databot.nomerTeleport > 0))  // если карман переполнился и нужно продавать(телепорт=0, тогда не нужно продавать)
                                     {
                                         StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
                                         Pause(2000);
