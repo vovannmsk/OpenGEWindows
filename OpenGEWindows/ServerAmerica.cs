@@ -17,72 +17,6 @@ namespace OpenGEWindows
     /// </summary>
     public class ServerAmerica : ServerInterface 
     {
-        //int xx;
-        //int yy;
-        //private Town town;
-        //private botWindow botwindow;
-        //private TownFactory townFactory;
-        //public const String KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
-        //private iPointColor pointIsSale1; 
-        //private iPointColor pointIsSale2;
-        //private iPointColor pointIsSale21;
-        //private iPointColor pointIsSale22;
-        //private iPointColor pointIsClickSale1; 
-        //private iPointColor pointIsClickSale2;
-        //private iPointColor pointIsTown11;
-        //private iPointColor pointIsTown12;
-        //private iPointColor pointIsTown21;
-        //private iPointColor pointIsTown22;
-        //private iPointColor pointIsTown31;
-        //private iPointColor pointIsTown32;
-        //private iPointColor pointisBoxOverflow1;
-        //private iPointColor pointisBoxOverflow2;
-        //private iPointColor pointisSummonPet1;
-        //private iPointColor pointisSummonPet2;
-        //private iPointColor pointisActivePet1;
-        //private iPointColor pointisActivePet2;
-        //private iPointColor pointisLogout1;
-        //private iPointColor pointisLogout2;
-        //private iPointColor pointisBarack1;
-        //private iPointColor pointisBarack2;
-        //private iPointColor pointisWork1;
-        //private iPointColor pointisWork2;
-        //private iPointColor pointisOpenMenuPet1;
-        //private iPointColor pointisOpenMenuPet2;
-        //private iPointColor pointisOpenTopMenu21;
-        //private iPointColor pointisOpenTopMenu22;
-        //private iPointColor pointisOpenTopMenu61;
-        //private iPointColor pointisOpenTopMenu62;
-        //private iPointColor pointisOpenTopMenu81;
-        //private iPointColor pointisOpenTopMenu82;
-        //private iPointColor pointisOpenTopMenu91;
-        //private iPointColor pointisOpenTopMenu92;
-        //private iPointColor pointisOpenTopMenu121;
-        //private iPointColor pointisOpenTopMenu122;
-        //private iPointColor pointisOpenTopMenu131;
-        //private iPointColor pointisOpenTopMenu132;
-
-
-        //private iPoint pointBuyingMitridat1;
-        //private iPoint pointBuyingMitridat2;
-        //private iPoint pointBuyingMitridat3;
-        //private iPoint pointGotoEnd;
-
-        //private iPoint pointTeamSelection1;
-        //private iPoint pointTeamSelection2;
-        //private iPoint pointTeamSelection3;
-        //private iPoint pointTeleport1;
-        //private iPoint pointTeleport2;
-        //private iPoint pointCancelSummonPet;
-        //private iPoint pointSummonPet1;
-        //private iPoint pointSummonPet2;
-        //private iPoint pointTeleportToTownAltW;
-        //private iPoint pointActivePet;
-
-        //private int sdvigY;
-
-        //private String pathClient;
-        //private int activeWindow;
 
         /// <summary>
         /// конструктор
@@ -106,33 +40,40 @@ namespace OpenGEWindows
             this.pointIsClickSale1 = new PointColor(735 - 5 + xx, 665 - 5 + yy, 7390000, 4); 
             this.pointIsClickSale2 = new PointColor(735 - 5 + xx, 664 - 5 + yy, 7390000, 4);
 
-            this.pointIsTown11 = new PointColor(24 + xx, 692 + yy, 11053000, 3);        //точки для проверки стойки с ружьем
-            this.pointIsTown12 = new PointColor(25 + xx, 692 + yy, 10921000, 3);
-            this.pointIsTown21 = new PointColor(279 + xx, 692 + yy, 11053000, 3);       
-            this.pointIsTown22 = new PointColor(280 + xx, 692 + yy, 10921000, 3);
-            this.pointIsTown31 = new PointColor(534 + xx, 692 + yy, 11053000, 3);      
-            this.pointIsTown32 = new PointColor(535 + xx, 692 + yy, 10921000, 3);
+            this.pointIsTown_RifleFirstDot1 = new PointColor(24 + xx, 692 + yy, 11053000, 3);        //точки для проверки стойки с ружьем
+            this.pointIsTown_RifleFirstDot2 = new PointColor(25 + xx, 692 + yy, 10921000, 3);
+            this.pointIsTown_RifleSecondDot1 = new PointColor(279 + xx, 692 + yy, 11053000, 3);       
+            this.pointIsTown_RifleSecondDot2 = new PointColor(280 + xx, 692 + yy, 10921000, 3);
+            this.pointIsTown_RifleThirdDot1 = new PointColor(534 + xx, 692 + yy, 11053000, 3);      
+            this.pointIsTown_RifleThirdDot2 = new PointColor(535 + xx, 692 + yy, 10921000, 3);
 
-            this.pointIsTown_11 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки эксп стойки с дробашом
-            this.pointIsTown_12 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_21 = new PointColor(279 + xx, 692 + yy, 7631000, 3);   
-            this.pointIsTown_22 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_31 = new PointColor(534 + xx, 692 + yy, 7631000, 3);   
-            this.pointIsTown_32 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
+            this.pointIsTown_ExpRifleFirstDot1 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки эксп стойки с ружьем
+            this.pointIsTown_ExpRifleFirstDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
+            this.pointIsTown_ExpRifleSecondDot1 = new PointColor(279 + xx, 692 + yy, 7631000, 3);
+            this.pointIsTown_ExpRifleSecondDot2 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
+            this.pointIsTown_ExpRifleThirdDot1 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
+            this.pointIsTown_ExpRifleThirdDot2 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
 
-            this.pointIsTown_11a = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки обычной стойки с дробашом в городе
-            this.pointIsTown_12a = new PointColor(25 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_21a = new PointColor(279 + xx, 692 + yy, 7631000, 3);
-            this.pointIsTown_22a = new PointColor(280 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_31a = new PointColor(534 + xx, 692 + yy, 7631000, 3);
-            this.pointIsTown_32a = new PointColor(535 + xx, 692 + yy, 16711000, 3);
+            this.pointIsTown_DrobFirstDot1 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки обычной стойки с дробашом в городе
+            this.pointIsTown_DrobFirstDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
+            this.pointIsTown_DrobSecondDot1 = new PointColor(279 + xx, 692 + yy, 7631000, 3);
+            this.pointIsTown_DrobSecondDot2 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
+            this.pointIsTown_DrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
+            this.pointIsTown_DrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
 
-            this.pointIsTown__11 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки эксп стойки с ружьем
-            this.pointIsTown__12 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown__21 = new PointColor(279 + xx, 692 + yy, 7631000, 3);
-            this.pointIsTown__22 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown__31 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
-            this.pointIsTown__32 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
+            this.pointIsTown_VetDrobFirstDot1 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки вет стойки с дробашом в городе            не проверено          
+            this.pointIsTown_VetDrobFirstDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
+            this.pointIsTown_VetDrobSecondDot1 = new PointColor(279 + xx, 692 + yy, 7631000, 3);
+            this.pointIsTown_VetDrobSecondDot2 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
+            this.pointIsTown_VetDrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
+            this.pointIsTown_VetDrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
+
+            this.pointIsTown_ExpDrobFirstDot1 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки эксп стойки с дробашом
+            this.pointIsTown_ExpDrobFirstDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
+            this.pointIsTown_ExpDrobSecondDot1 = new PointColor(279 + xx, 692 + yy, 7631000, 3);
+            this.pointIsTown_ExpDrobSecondDot2 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
+            this.pointIsTown_ExpDrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
+            this.pointIsTown_ExpDrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
 
             this.pointisBoxOverflow1 = new PointColor(518 + xx, 432 + yy, 7800000, 5);      //548 - 30, 462 - 30, 7800000, 547 - 30, 458 - 30, 7600000, 5);
             this.pointisBoxOverflow2 = new PointColor(517 + xx, 428 + yy, 7600000, 5);
@@ -148,12 +89,15 @@ namespace OpenGEWindows
             this.pointisBarack2 = new PointColor(56 + xx, 149 + yy, 2420000, 4);
             this.pointisBarack3 = new PointColor(81 - 5 + xx, 63 - 5 + yy, 7700000, 5);       //проверено
             this.pointisBarack4 = new PointColor(81 - 5 + xx, 64 - 5 + yy, 7700000, 5);
-            this.pointisWork1 = new PointColor(24 + xx, 692 + yy, 11051000, 3);               //проверка по стойке с ружьем
-            this.pointisWork2 = new PointColor(25 + xx, 692 + yy, 10919000, 3);
-            this.pointisWork_1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);              //проверка по эксп стойке с дробашем
-            this.pointisWork_2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
-            this.pointisWork__1 = new PointColor(24 + xx, 692 + yy, 7644000, 3);              //проверка по обычной стойке с дробашем
-            this.pointisWork__2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
+
+            this.pointisWork_RifleDot1 = new PointColor(24 + xx, 692 + yy, 11051000, 3);               //проверка по стойке с ружьем
+            this.pointisWork_RifleDot2 = new PointColor(25 + xx, 692 + yy, 10919000, 3);
+            this.pointisWork_DrobDot1 = new PointColor(24 + xx, 692 + yy, 7644000, 3);              //проверка по обычной стойке с дробашем
+            this.pointisWork_DrobDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
+            this.pointisWork_VetDrobDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);              //проверка по вет стойке с дробашем          не проверено
+            this.pointisWork_VetDrobDot2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
+            this.pointisWork_ExpDrobDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);              //проверка по эксп стойке с дробашем
+            this.pointisWork_ExpDrobDot2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
 
             this.pointisOpenMenuPet1 = new PointColor(466 + xx, 214 + yy, 12500000, 5);      //471 - 5, 219 - 5, 12500000, 472 - 5, 219 - 5, 12500000, 5);
             this.pointisOpenMenuPet2 = new PointColor(467 + xx, 214 + yy, 12500000, 5);

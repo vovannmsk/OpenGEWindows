@@ -48,33 +48,41 @@ namespace OpenGEWindows
         protected iPointColor pointIsSale22;
         protected iPointColor pointIsClickSale1;
         protected iPointColor pointIsClickSale2;
-        protected iPointColor pointIsTown11;   //проверка по обычному ружью
-        protected iPointColor pointIsTown12;
-        protected iPointColor pointIsTown21;
-        protected iPointColor pointIsTown22;
-        protected iPointColor pointIsTown31;
-        protected iPointColor pointIsTown32;
-        
-        protected iPointColor pointIsTown_11;   //проверка по эксп. дробовику
-        protected iPointColor pointIsTown_12;
-        protected iPointColor pointIsTown_21;
-        protected iPointColor pointIsTown_22;
-        protected iPointColor pointIsTown_31;
-        protected iPointColor pointIsTown_32;
 
-        protected iPointColor pointIsTown_11a;   //проверка по обычному дробовику
-        protected iPointColor pointIsTown_12a;
-        protected iPointColor pointIsTown_21a;
-        protected iPointColor pointIsTown_22a;
-        protected iPointColor pointIsTown_31a;
-        protected iPointColor pointIsTown_32a;
+        protected iPointColor pointIsTown_RifleFirstDot1;   //проверка по обычному ружью
+        protected iPointColor pointIsTown_RifleFirstDot2;
+        protected iPointColor pointIsTown_RifleSecondDot1;
+        protected iPointColor pointIsTown_RifleSecondDot2;
+        protected iPointColor pointIsTown_RifleThirdDot1;
+        protected iPointColor pointIsTown_RifleThirdDot2;
 
-        protected iPointColor pointIsTown__11;   //проверка по эксп. ружью (флинт)
-        protected iPointColor pointIsTown__12;
-        protected iPointColor pointIsTown__21;
-        protected iPointColor pointIsTown__22;
-        protected iPointColor pointIsTown__31;
-        protected iPointColor pointIsTown__32;
+        protected iPointColor pointIsTown_ExpRifleFirstDot1;   //проверка по эксп. ружью (флинт)
+        protected iPointColor pointIsTown_ExpRifleFirstDot2;
+        protected iPointColor pointIsTown_ExpRifleSecondDot1;
+        protected iPointColor pointIsTown_ExpRifleSecondDot2;
+        protected iPointColor pointIsTown_ExpRifleThirdDot1;
+        protected iPointColor pointIsTown_ExpRifleThirdDot2;
+
+        protected iPointColor pointIsTown_DrobFirstDot1;      //проверка по обычному дробовику
+        protected iPointColor pointIsTown_DrobFirstDot2;
+        protected iPointColor pointIsTown_DrobSecondDot1;
+        protected iPointColor pointIsTown_DrobSecondDot2;
+        protected iPointColor pointIsTown_DrobThirdDot1;
+        protected iPointColor pointIsTown_DrobThirdDot2;
+
+        protected iPointColor pointIsTown_VetDrobFirstDot1;    //проверка по вет. дробовику
+        protected iPointColor pointIsTown_VetDrobFirstDot2;
+        protected iPointColor pointIsTown_VetDrobSecondDot1;
+        protected iPointColor pointIsTown_VetDrobSecondDot2;
+        protected iPointColor pointIsTown_VetDrobThirdDot1;
+        protected iPointColor pointIsTown_VetDrobThirdDot2;
+
+        protected iPointColor pointIsTown_ExpDrobFirstDot1;    //проверка по эксп. дробовику
+        protected iPointColor pointIsTown_ExpDrobFirstDot2;
+        protected iPointColor pointIsTown_ExpDrobSecondDot1;
+        protected iPointColor pointIsTown_ExpDrobSecondDot2;
+        protected iPointColor pointIsTown_ExpDrobThirdDot1;
+        protected iPointColor pointIsTown_ExpDrobThirdDot2;
 
         protected iPointColor pointisBoxOverflow1;
         protected iPointColor pointisBoxOverflow2;
@@ -90,12 +98,17 @@ namespace OpenGEWindows
         protected iPointColor pointisBarack2;
         protected iPointColor pointisBarack3;
         protected iPointColor pointisBarack4;
-        protected iPointColor pointisWork1;         //проверка стойки с ружьем (проверяются две точки )
-        protected iPointColor pointisWork2;
-        protected iPointColor pointisWork_1;        //проверка стойки с эксп дробашом (проверяются две точки )
-        protected iPointColor pointisWork_2;
-        protected iPointColor pointisWork__1;       //проверка стойки с обычным дробашом (проверяются две точки )
-        protected iPointColor pointisWork__2;
+
+        protected iPointColor pointisWork_RifleDot1;          //проверка стойки с ружьем (проверяются две точки )
+        protected iPointColor pointisWork_RifleDot2;
+        protected iPointColor pointisWork_DrobDot1;           //проверка стойки с обычным дробашом (проверяются две точки )
+        protected iPointColor pointisWork_DrobDot2;
+        protected iPointColor pointisWork_VetDrobDot1;        //проверка стойки с вет дробашом (проверяются две точки )
+        protected iPointColor pointisWork_VetDrobDot2;
+        protected iPointColor pointisWork_ExpDrobDot1;        //проверка стойки с эксп дробашом (проверяются две точки )
+        protected iPointColor pointisWork_ExpDrobDot2;
+
+
         protected iPointColor pointisOpenMenuPet1;
         protected iPointColor pointisOpenMenuPet2;
         protected iPointColor pointisOpenTopMenu21;
@@ -1065,41 +1078,33 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// метод проверяет, находится ли данное окно в городе (проверка по стойке, работает только с ружьем) 
+        /// метод проверяет, находится ли данное окно в городе (проверка по стойкам с ружьем) 
         /// делаем проверку по двум точкам у каждого перса
         /// </summary>
         /// <returns> true, если бот находится в городе </returns>
         public bool isTown()
         {
-            //bool result1 = botwindow.isColor2(24, 692, 11053000, 25, 692, 10921000, 3);
-            //bool result2 = botwindow.isColor2(279, 692, 11053000, 280, 692, 10921000, 3);
-            //bool result3 = botwindow.isColor2(534, 692, 11053000, 535, 692, 10921000, 3);
-//            return (pointIsTown11.isColor() && pointIsTown12.isColor() && pointIsTown21.isColor() && pointIsTown22.isColor() && pointIsTown31.isColor() && pointIsTown32.isColor());  //проверка по трем персам
-            return (pointIsTown11.isColor() && pointIsTown12.isColor() && pointIsTown21.isColor() && pointIsTown22.isColor());  //проверка по двум персам
+            //проверка по двум персам обычная стойка
+            bool result = (pointIsTown_RifleFirstDot1.isColor() && pointIsTown_RifleFirstDot2.isColor() && pointIsTown_RifleSecondDot1.isColor() && pointIsTown_RifleSecondDot2.isColor());
+            //проверка по двум персам эксп стойка
+            bool resultExp = (pointIsTown_ExpRifleFirstDot1.isColor() && pointIsTown_ExpRifleFirstDot2.isColor() && pointIsTown_ExpRifleSecondDot1.isColor() && pointIsTown_ExpRifleSecondDot2.isColor());  
+
+            return (result || resultExp);  
         }
 
         /// <summary>
-        /// метод проверяет, находится ли данное окно в городе (проверка по эксп. стойке с дробашом и по обычной стойке с дробашём) 
+        /// метод проверяет, находится ли данное окно в городе (проверка по стойкам с дробовиком) 
         /// делаем проверку по двум точкам у каждого перса
         /// </summary>
         /// <returns> true, если бот находится в городе </returns>
         public bool isTown_2()
         {
-            //uint ff11 = pointIsTown_11.GetPixelColor();
-            //uint ff12 = pointIsTown_12.GetPixelColor();
-            //uint ff21 = pointIsTown_21.GetPixelColor();
-            //uint ff22 = pointIsTown_22.GetPixelColor();
-            //uint ff31 = pointIsTown_31.GetPixelColor();
-            //uint ff32 = pointIsTown_32.GetPixelColor();
 
-            //bool bb = (pointIsTown_11.isColor() && pointIsTown_12.isColor() && pointIsTown_21.isColor() && pointIsTown_22.isColor());  //проверка по двум персам эксп стойка
-            //bool cc = (pointIsTown_11a.isColor() && pointIsTown_12a.isColor() && pointIsTown_21a.isColor() && pointIsTown_22a.isColor());  //проверка по двум персам обычная стойка стойка
-
-            bool bb = (pointIsTown_11.isColor() && pointIsTown_12.isColor());  //проверка по одному персу эксп стойка
-            bool cc = (pointIsTown_11a.isColor() && pointIsTown_12a.isColor());  //проверка по одному персу обычная стойка
-
-//            return (pointIsTown_11.isColor() && pointIsTown_12.isColor() && pointIsTown_21.isColor() && pointIsTown_22.isColor() && pointIsTown_31.isColor() && pointIsTown_32.isColor());
-            return (bb || cc); 
+            bool result = (pointIsTown_DrobFirstDot1.isColor() && pointIsTown_DrobFirstDot2.isColor());           //проверка по первому персу обычная стойка
+            bool resultVet = (pointIsTown_VetDrobFirstDot1.isColor() && pointIsTown_VetDrobFirstDot2.isColor());  //проверка по первому персу вет стойка
+            bool resultExp = (pointIsTown_ExpDrobFirstDot1.isColor() && pointIsTown_ExpDrobFirstDot2.isColor());  //проверка по первому персу эксп стойка
+            
+            return ( result || resultVet || resultExp ); 
         }
 
         /// <summary>
@@ -1177,11 +1182,12 @@ namespace OpenGEWindows
         /// <returns> true, если сейчас на рабочей карте </returns>
         public bool isWork()
         {
-            //  return botwindow.isColor2(29 - 5, 697 - 5, 11051000, 30 - 5, 697 - 5, 10919000, 3);
-            //uint ff_1 = pointisWork_1.GetPixelColor();
-            //uint ff_2 = pointisWork_2.GetPixelColor();
+            bool resultRifle = (pointisWork_RifleDot1.isColor() && pointisWork_RifleDot2.isColor());
+            bool resultDrob = (pointisWork_DrobDot1.isColor() && pointisWork_DrobDot2.isColor());
+            bool resultVetDrob = (pointisWork_VetDrobDot1.isColor() && pointisWork_VetDrobDot2.isColor());
+            bool resultExpDrob = (pointisWork_ExpDrobDot1.isColor() && pointisWork_ExpDrobDot2.isColor());
 
-            return ((pointisWork1.isColor() && pointisWork2.isColor()) || (pointisWork_1.isColor() && pointisWork_2.isColor()) || (pointisWork__1.isColor() && pointisWork__2.isColor()));  //проверка только по первому персу
+            return (resultRifle || resultDrob || resultVetDrob || resultExpDrob);  //проверка только по первому персу
         }
 
         /// <summary>
