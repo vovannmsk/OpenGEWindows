@@ -175,12 +175,14 @@ namespace Main
         {
             for (int j = 1; j <= numberOfAccounts; j++)
             {
-                ////botWindowArray[j].ReOpenWindow();
-                ////botWindowArray[j].Pause(100);
-                ////if (botWindowArray[j].getserver().isLogout())
-                ////{
-                ////    botWindowArray[j].EnterLoginAndPasword();
-                ////}
+                Check check = new Check(j);
+
+                check.ReOpenWindow();
+                check.Pause(100);
+                if (check.isLogout())
+                {
+                    check.EnterLoginAndPasword();
+                }
             }   
         }
 

@@ -4,16 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenGEWindows;
-using System.Runtime.InteropServices;
 
 namespace States
 {
 
     public class Check
     {
-        [DllImport("user32.dll")]
-        private static extern UIntPtr FindWindow(String ClassName, String WindowName);  //ищет окно с заданным именем и классом
-
         private botWindow botwindow;
         DriversOfState driver;
 
@@ -134,10 +130,30 @@ namespace States
             botwindow.Pause(ms);
         }
 
+        /// <summary>
+        /// проверка открыто ли окно и перемещение его в заданные координаты 
+        /// </summary>
+        /// <returns></returns>
         public bool ReOpenWindow()
         {
             return botwindow.ReOpenWindow();
         }
 
+        /// <summary>
+        /// проверка, находится ли окно в состоянии Logout
+        /// </summary>
+        /// <returns></returns>
+        public bool isLogout()
+        {
+            return botwindow.getserver().isLogout();
+        }
+
+        /// <summary>
+        /// ввод в форму логина и пароля
+        /// </summary>
+        public void EnterLoginAndPasword()
+        {
+            botwindow.EnterLoginAndPasword();
+        }
     }
 }
