@@ -119,7 +119,6 @@
     <Compile Include="StateDriverTrader.cs" />
     <Compile Include="StateGT111.cs" />
     <Compile Include="StateGT03.cs" />
-    <Compile Include="Class_Timer.cs" />
     <Compile Include="EuropaTownAuch.cs" />
     <Compile Include="EuropaTownBagama.cs" />
     <Compile Include="EuropaTownCastilia.cs" />

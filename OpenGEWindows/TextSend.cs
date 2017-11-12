@@ -20,7 +20,7 @@ namespace OpenGEWindows
         public static void SendText2(ushort scanCode)
         {
             KeyDown(scanCode);
-            Class_Timer.Pause(100);
+            Thread.Sleep(100);
             KeyUp(scanCode);
         }
 

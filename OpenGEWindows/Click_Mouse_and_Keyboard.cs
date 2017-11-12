@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace OpenGEWindows
 {
     class Click_Mouse_and_Keyboard
     
     {
-
         [DllImport("user32.dll", SetLastError = true)]
         static extern uint SendInput(uint nInputs, INPUT[] pInputs, int cbSize);
 
@@ -85,81 +85,13 @@ namespace OpenGEWindows
         /// <param name="dy2"></param>
         public static void MMC(int dx1, int dy1, int dx2, int dy2)
         {
-            MOUSEINPUT m;
-            INPUT i;
-            INPUT[] inputs;
-            int isize;
+            runMouse(dx1, dy1, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
+            runMouse(dx1, dy1, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, 0);
+            Pause(100);
 
-            // переместили мышь в первые координаты
-            m = new MOUSEINPUT();
-            m.dx = (int)(dx1 * 34.1328);
-            m.dy = (int)(dy1 * 60.6805);
-            m.mouseData = 0;
-            m.time = 0;
-            m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
-            i = new INPUT();
-            i.type = INPUT_MOUSE;
-            i.mi = m;
-
-            inputs = new INPUT[] { i };
-            isize = Marshal.SizeOf(i);
-
-            SendInput(1, inputs, isize);
-
-            // нажали левую
-
-            m = new MOUSEINPUT();
-            m.dx = (int)(dx1 * 34.1328);
-            m.dy = (int)(dy1 * 60.6805);
-            m.mouseData = 0;
-            m.time = 0;
-            m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN;
-            i = new INPUT();
-            i.type = INPUT_MOUSE;
-            i.mi = m;
-
-            inputs = new INPUT[] { i };
-            isize = Marshal.SizeOf(i);
-
-            SendInput(1, inputs, isize);
-            Class_Timer.Pause(100);
-
-            //  переместили в новые координаты **************************************
-            m = new MOUSEINPUT();
-            m.dx = (int)(dx2 * 34.1328);
-            m.dy = (int)(dy2 * 60.6805);
-            m.mouseData = 0;
-            m.time = 0;
-            m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE;
-            i = new INPUT();
-            i.type = INPUT_MOUSE;
-            i.mi = m;
-
-            inputs = new INPUT[] { i };
-            isize = Marshal.SizeOf(i);
-
-            SendInput(1, inputs, isize);
-
-            Class_Timer.Pause(500);
-
-            //  отпустили левую  **********************************************************
-
-            m = new MOUSEINPUT();
-            m.dx = (int)(dx2 * 34.1328);
-            m.dy = (int)(dy2 * 60.6805);
-            m.mouseData = 0;
-            m.time = 0;
-            m.dwFlags = MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP;
-            i = new INPUT();
-            i.type = INPUT_MOUSE;
-            i.mi = m;
-
-            inputs = new INPUT[] { i };
-            isize = Marshal.SizeOf(i);
-
-            SendInput(1, inputs, isize);
-
-
+            runMouse(dx2, dy2, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
+            Pause(500);
+            runMouse(dx2, dy2, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP, 0);
         }
 
         /// <summary>
@@ -193,7 +125,7 @@ namespace OpenGEWindows
                 case 1:      // Перемещение мыши и левый клик
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, 0);
-                    Class_Timer.Pause(50);
+                    Pause(50);
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP, 0);
                     break;
 
@@ -210,22 +142,22 @@ namespace OpenGEWindows
                 case 5:     // Кликаем мышкой и прокручиваем
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, 0);
-                    Class_Timer.Pause(50);
+                    Pause(50);
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP, 0);
-                    Class_Timer.Pause(100);
+                    Pause(100);
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_WHEEL, -120);
                     break;
 
                 case 8:     // перемещаем мышь и нажимаем правую кнопку
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_RIGHTDOWN, 0);
-                    Class_Timer.Pause(50);
+                    Pause(50);
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_RIGHTUP, 0);
                     break;
 
                 case 9:     // перемещаем мышку в координаты и прокручиваем вверх
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
-                    Class_Timer.Pause(200); 
+                    Pause(200); 
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_WHEEL, 120);
                     break;
 
@@ -355,6 +287,12 @@ namespace OpenGEWindows
         //}
 
         #endregion
+
+        public static void Pause(int Ms)
+        {
+            Thread.Sleep(Ms);
+        }
+
 
     }
 }
