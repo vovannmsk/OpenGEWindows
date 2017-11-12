@@ -207,6 +207,9 @@ namespace OpenGEWindows
         
 
         // геттеры 
+        public DataBot getDataBot()
+        { return this.databot; }
+
         public ServerInterface getserver()
         {
             return this.server;
@@ -1006,216 +1009,216 @@ namespace OpenGEWindows
             }
         }
 
-        /// <summary>
-        /// проверяем, есть ли проблемы с ботом (убили, застряли, нужно продать)
-        /// </summary>
-        public void checkForProblems()
-        {
-            if (server.isActive())      //этот метод проверяет, нужно ли грузить или обрабатывать это окно (профа и прочее)
-            {
-                bool result = ReOpenWindow();    //если окно не вылетело, то будет true
-                Pause(1000);
-                if (result)      //если окно не вылетело
-                {
-                    if (server.isLogout())
-                    {
-                        StateRecovery();
-                    }
-                    else
-                    {
-                        if (server.isSale2())         //если зависли в магазине на любой закладке
-                        {
-                            StateExitFromShop();            //выход из магазина
-                        }
-                        else
-                        {
-                            if (server.isKillHero())                  // если убиты один или несколько персов   
-                            {
-                                CureOneWindow2();              // сделать End Programm
-                                Pause(2000);
-                                StateGotoWork();               // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
-                            }
-                            else
-                            {
-                                if (server.isBarack())                  //если стоят в бараке     
-                                {
-                                    server.buttonExitFromBarack();      //StateExitFromBarack();
-                                }
-                                else
-                                {
-                                    //=========================== если переполнение ==============================
-                                    if ((server.isBoxOverflow()) && (this.databot.nomerTeleport > 0))  // если карман переполнился и нужно продавать(телепорт=0, тогда не нужно продавать)
-                                    {
-                                        StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
-                                        Pause(2000);
-                                        StateGotoWork();                                           // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
-                                    }
-                                    else
-                                    {
-                                        //================== если в городе ========================================
-                                        if ((server.isTown()) || (server.isTown_2()))          //если стоят в городе (проверка по обоим стойкам - эксп.дробаш и ружье )         //**   было istown2()
-                                        {
-                                            StateExitFromTown();
-                                            PressEscThreeTimes();
-                                            Pause(2000);
-                                            StateGotoWork();                                    // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
-                                        }
-                                        else
-                                        {
-                                            if (server.isSale())                               // если застряли в магазине на странице входа
-                                            { StateExitFromShop2(); }
-                                            else
-                                            { PressMitridat(); }
+        ///// <summary>
+        ///// проверяем, есть ли проблемы с ботом (убили, застряли, нужно продать)
+        ///// </summary>
+        //public void checkForProblems()
+        //{
+        //    if (server.isActive())      //этот метод проверяет, нужно ли грузить или обрабатывать это окно (профа и прочее)
+        //    {
+        //        bool result = ReOpenWindow();    //если окно не вылетело, то будет true
+        //        Pause(1000);
+        //        if (result)      //если окно не вылетело
+        //        {
+        //            if (server.isLogout())
+        //            {
+        //                StateRecovery();
+        //            }
+        //            else
+        //            {
+        //                if (server.isSale2())         //если зависли в магазине на любой закладке
+        //                {
+        //                    StateExitFromShop();            //выход из магазина
+        //                }
+        //                else
+        //                {
+        //                    if (server.isKillHero())                  // если убиты один или несколько персов   
+        //                    {
+        //                        CureOneWindow2();              // сделать End Programm
+        //                        Pause(2000);
+        //                        StateGotoWork();               // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+        //                    }
+        //                    else
+        //                    {
+        //                        if (server.isBarack())                  //если стоят в бараке     
+        //                        {
+        //                            server.buttonExitFromBarack();      //StateExitFromBarack();
+        //                        }
+        //                        else
+        //                        {
+        //                            //=========================== если переполнение ==============================
+        //                            if ((server.isBoxOverflow()) && (this.databot.nomerTeleport > 0))  // если карман переполнился и нужно продавать(телепорт=0, тогда не нужно продавать)
+        //                            {
+        //                                StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
+        //                                Pause(2000);
+        //                                StateGotoWork();                                           // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+        //                            }
+        //                            else
+        //                            {
+        //                                //================== если в городе ========================================
+        //                                if ((server.isTown()) || (server.isTown_2()))          //если стоят в городе (проверка по обоим стойкам - эксп.дробаш и ружье )         //**   было istown2()
+        //                                {
+        //                                    StateExitFromTown();
+        //                                    PressEscThreeTimes();
+        //                                    Pause(2000);
+        //                                    StateGotoWork();                                    // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+        //                                }
+        //                                else
+        //                                {
+        //                                    if (server.isSale())                               // если застряли в магазине на странице входа
+        //                                    { StateExitFromShop2(); }
+        //                                    else
+        //                                    { PressMitridat(); }
 
-                                        } //else isTown2()
-                                    } //else isBoxOverflow()
-                                } //else isBarack()
-                            } // else isKillHero()
-                        } // else isSale2()
-                    } //else  isLogout()
-                } // если окно не вылетело, т.е. result = true
-            } //if  Active_or_not
-        }                                                                  //основной метод для зеленой кнопки
-
-
-        #region движки для запуска перехода по состояниям
-
-        /// <summary>
-        /// перевод из состояния 01 (на работе) в состояние 14 (нет окна). Цель  - продажа после переполнения инвентаря
-        /// </summary>
-        public void StateGotoTrade()
-        {
-            if (server.isActive())                                 //проверяем, нужно ли грузить окно
-            {
-                ReOpenWindow();
-                StateDriverRun(new StateGT01(this), new StateGT14(this));
-            }
-        }
-
-        /// <summary>
-        /// перевод из состояния 14 (нет окна бота) в состояние 01 (на работе)
-        /// </summary>
-        public void StateGotoWork()
-        {
-            if (server.isActive())                                 //проверяем, нужно ли грузить окно
-            {
-                StateDriverRun(new StateGT14(this), new StateGT01(this)); //
-            }
-        }
-
-        /// <summary>
-        /// перевод из состояния 15 (логаут) в состояние 01 (на работе)
-        /// </summary>
-        public void StateRecovery()
-        {
-            if (server.isActive())                                 //проверяем, нужно ли грузить окно
-            {
-                StateDriverRun(new StateGT15(this), new StateGT01(this));
-            }
-        }
-
-        /// <summary>
-        /// перевод из состояния 14 (нет окна) в состояние 15 (логаут)                 // оранжевая кнопка
-        /// </summary>
-        public void StateReOpen()
-        {
-            if (server.isActive())                                 //проверяем, нужно ли грузить окно
-            {
-                StateDriverRun(new StateGT14(this), new StateGT15(this));
-            }
-        }
-
-        /// <summary>
-        /// перевод из состояния 09 (в магазине) в состояние 12 (всё продано, в городе)                 // аква кнопка
-        /// </summary>
-        public void StateSelling()
-        {
-            if ((server.isActive()) && (server.isSale()))                                 //проверяем, нужно ли грузить окно и находимся ли в магазине
-                        StateDriverRun(new StateGT09(this), new StateGT12(this));
-        }
-
-        /// <summary>
-        /// создание новой семьи, выход в ребольдо, получение и надевание брони 35 лвл, выполнение квеста Доминго, разговор с Линдоном, получение Кокошки и еды 100 шт.
-        /// перевод из состояния 30 (логаут) в состояние 41 (пет Кокошка получен)          // розовая кнопка
-        /// </summary>
-        public void StateNewAcc()
-        {
-                StateDriverRun(new StateGT30(this), new StateGT41(this));
-        }
-
-        /// <summary>
-        /// вновь созданный аккаунт бежит через лавовое плато в кратер, становится на выделенное ему место, сохраняет телепорт и начинает ботить
-        /// </summary>
-        public void StateToCrater()
-        {
-            StateDriverRun(new StateGT42(this), new StateGT58(this));
-        }
-
-        /// <summary>
-        /// перевод из состояния 10 (в магазине) в состояние 14 (нет окна)
-        /// </summary>
-        public void StateExitFromShop()
-        {
-            if (server.isActive())                                 //проверяем, нужно ли грузить окно
-            {
-                StateDriverRun(new StateGT10(this), new StateGT14(this));
-            }
-        }
-
-        /// <summary>
-        /// перевод из состояния 09 (в магазине, на странице входа) в состояние 14 (нет окна)
-        /// </summary>
-        public void StateExitFromShop2()
-        {
-            if (server.isActive())                                 //проверяем, нужно ли грузить окно
-            {
-                StateDriverRun(new StateGT09(this), new StateGT14(this));
-            }
-        }
-
-        /// <summary>
-        /// перевод из состояния 12 (в городе) в состояние 14 (нет окна) 
-        /// </summary>
-        public void StateExitFromTown()
-        {
-            if (server.isActive())                                 //проверяем, нужно ли грузить окно
-            {
-                StateDriverRun(new StateGT12(this), new StateGT14(this));
-            }
-        }
-
-        /// <summary>
-        /// запускает движок состояний StateDriver от пункта stateBegin до stateEnd
-        /// </summary>
-        /// <param name="stateBegin"> начальное состояние </param>
-        /// <param name="stateEnd"> конечное состояние </param>
-        public void StateDriverRun(State stateBegin, State stateEnd)
-        {
-            StateDriver stateDriver = new StateDriver(this, stateBegin, stateEnd);    //this в данном случае есть экземпляр класса botWindow, здесь stateDriver - это начальное состояние движка
-            while (!stateDriver.Equals(stateEnd))
-            {
-                stateDriver.run();
-                stateDriver.setState();
-            }
-        }
-
-        /// <summary>
-        /// запускает движок состояний StateDriver от пункта stateBegin до stateEnd
-        /// </summary>
-        /// <param name="stateBegin"> начальное состояние </param>
-        /// <param name="stateEnd"> конечное состояние </param>
-        public void StateDriverDealerRun(State stateBegin, State stateEnd)
-        {
-            StateDriverTrader stateDriverTrader = new StateDriverTrader(stateBegin);
-            while (!stateDriverTrader.Equals(stateEnd))
-            {
-                stateDriverTrader.run();
-                stateDriverTrader.setState();
-            }
-        }
+        //                                } //else isTown2()
+        //                            } //else isBoxOverflow()
+        //                        } //else isBarack()
+        //                    } // else isKillHero()
+        //                } // else isSale2()
+        //            } //else  isLogout()
+        //        } // если окно не вылетело, т.е. result = true
+        //    } //if  Active_or_not
+        //}                                                                  //основной метод для зеленой кнопки
 
 
-        #endregion
+        //#region движки для запуска перехода по состояниям
+
+        ///// <summary>
+        ///// перевод из состояния 01 (на работе) в состояние 14 (нет окна). Цель  - продажа после переполнения инвентаря
+        ///// </summary>
+        //public void StateGotoTrade()
+        //{
+        //    if (server.isActive())                                 //проверяем, нужно ли грузить окно
+        //    {
+        //        ReOpenWindow();
+        //        StateDriverRun(new StateGT01(this), new StateGT14(this));
+        //    }
+        //}
+
+        ///// <summary>
+        ///// перевод из состояния 14 (нет окна бота) в состояние 01 (на работе)
+        ///// </summary>
+        //public void StateGotoWork()
+        //{
+        //    if (server.isActive())                                 //проверяем, нужно ли грузить окно
+        //    {
+        //        StateDriverRun(new StateGT14(this), new StateGT01(this)); //
+        //    }
+        //}
+
+        ///// <summary>
+        ///// перевод из состояния 15 (логаут) в состояние 01 (на работе)
+        ///// </summary>
+        //public void StateRecovery()
+        //{
+        //    if (server.isActive())                                 //проверяем, нужно ли грузить окно
+        //    {
+        //        StateDriverRun(new StateGT15(this), new StateGT01(this));
+        //    }
+        //}
+
+        ///// <summary>
+        ///// перевод из состояния 14 (нет окна) в состояние 15 (логаут)                 // оранжевая кнопка
+        ///// </summary>
+        //public void StateReOpen()
+        //{
+        //    if (server.isActive())                                 //проверяем, нужно ли грузить окно
+        //    {
+        //        StateDriverRun(new StateGT14(this), new StateGT15(this));
+        //    }
+        //}
+
+        ///// <summary>
+        ///// перевод из состояния 09 (в магазине) в состояние 12 (всё продано, в городе)                 // аква кнопка
+        ///// </summary>
+        //public void StateSelling()
+        //{
+        //    if ((server.isActive()) && (server.isSale()))                                 //проверяем, нужно ли грузить окно и находимся ли в магазине
+        //                StateDriverRun(new StateGT09(this), new StateGT12(this));
+        //}
+
+        ///// <summary>
+        ///// создание новой семьи, выход в ребольдо, получение и надевание брони 35 лвл, выполнение квеста Доминго, разговор с Линдоном, получение Кокошки и еды 100 шт.
+        ///// перевод из состояния 30 (логаут) в состояние 41 (пет Кокошка получен)          // розовая кнопка
+        ///// </summary>
+        //public void StateNewAcc()
+        //{
+        //        StateDriverRun(new StateGT30(this), new StateGT41(this));
+        //}
+
+        ///// <summary>
+        ///// вновь созданный аккаунт бежит через лавовое плато в кратер, становится на выделенное ему место, сохраняет телепорт и начинает ботить
+        ///// </summary>
+        //public void StateToCrater()
+        //{
+        //    StateDriverRun(new StateGT42(this), new StateGT58(this));
+        //}
+
+        ///// <summary>
+        ///// перевод из состояния 10 (в магазине) в состояние 14 (нет окна)
+        ///// </summary>
+        //public void StateExitFromShop()
+        //{
+        //    if (server.isActive())                                 //проверяем, нужно ли грузить окно
+        //    {
+        //        StateDriverRun(new StateGT10(this), new StateGT14(this));
+        //    }
+        //}
+
+        ///// <summary>
+        ///// перевод из состояния 09 (в магазине, на странице входа) в состояние 14 (нет окна)
+        ///// </summary>
+        //public void StateExitFromShop2()
+        //{
+        //    if (server.isActive())                                 //проверяем, нужно ли грузить окно
+        //    {
+        //        StateDriverRun(new StateGT09(this), new StateGT14(this));
+        //    }
+        //}
+
+        ///// <summary>
+        ///// перевод из состояния 12 (в городе) в состояние 14 (нет окна) 
+        ///// </summary>
+        //public void StateExitFromTown()
+        //{
+        //    if (server.isActive())                                 //проверяем, нужно ли грузить окно
+        //    {
+        //        StateDriverRun(new StateGT12(this), new StateGT14(this));
+        //    }
+        //}
+
+        ///// <summary>
+        ///// запускает движок состояний StateDriver от пункта stateBegin до stateEnd
+        ///// </summary>
+        ///// <param name="stateBegin"> начальное состояние </param>
+        ///// <param name="stateEnd"> конечное состояние </param>
+        //public void StateDriverRun(IState stateBegin, IState stateEnd)
+        //{
+        //    StateDriver stateDriver = new StateDriver(this, stateBegin, stateEnd);    //this в данном случае есть экземпляр класса botWindow, здесь stateDriver - это начальное состояние движка
+        //    while (!stateDriver.Equals(stateEnd))
+        //    {
+        //        stateDriver.run();
+        //        stateDriver.setState();
+        //    }
+        //}
+
+        ///// <summary>
+        ///// запускает движок состояний StateDriver от пункта stateBegin до stateEnd
+        ///// </summary>
+        ///// <param name="stateBegin"> начальное состояние </param>
+        ///// <param name="stateEnd"> конечное состояние </param>
+        //public void StateDriverDealerRun(IState stateBegin, IState stateEnd)
+        //{
+        //    StateDriverTrader stateDriverTrader = new StateDriverTrader(stateBegin);
+        //    while (!stateDriverTrader.Equals(stateEnd))
+        //    {
+        //        stateDriverTrader.run();
+        //        stateDriverTrader.setState();
+        //    }
+        //}
+
+
+        //#endregion
 
 
 
