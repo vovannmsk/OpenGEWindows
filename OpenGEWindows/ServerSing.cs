@@ -60,12 +60,12 @@ namespace OpenGEWindows
             this.pointIsTown_DrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
             this.pointIsTown_DrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
 
-            this.pointIsTown_VetDrobFirstDot1 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки вет стойки с дробашом в городе               не проверено            
-            this.pointIsTown_VetDrobFirstDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_VetDrobSecondDot1 = new PointColor(279 + xx, 692 + yy, 7631000, 3);
-            this.pointIsTown_VetDrobSecondDot2 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_VetDrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
-            this.pointIsTown_VetDrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
+            this.pointIsTown_VetDrobFirstDot1 = new PointColor(29-5 + xx, 697 - 5 + yy, 2763000, 3);       //точки для проверки вет стойки с дробашом в городе            
+            this.pointIsTown_VetDrobFirstDot2 = new PointColor(30-5 + xx, 697 - 5 + yy, 7237000, 3);
+            this.pointIsTown_VetDrobSecondDot1 = new PointColor(279 + xx, 692 + yy, 2763000, 3);
+            this.pointIsTown_VetDrobSecondDot2 = new PointColor(280 + xx, 692 + yy, 7237000, 3);
+            this.pointIsTown_VetDrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 2763000, 3);
+            this.pointIsTown_VetDrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 7237000, 3);
 
             this.pointIsTown_ExpDrobFirstDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);       //точки для проверки эксп стойки с дробашом
             this.pointIsTown_ExpDrobFirstDot2 = new PointColor(25 + xx, 692 + yy, 3552000, 3);
@@ -94,8 +94,8 @@ namespace OpenGEWindows
             this.pointisWork_RifleDot2 = new PointColor(25 + xx, 692 + yy, 10919000, 3);
             this.pointisWork_DrobDot1 = new PointColor(24 + xx, 692 + yy, 7644000, 3);              //проверка по обычной стойке с дробашем
             this.pointisWork_DrobDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
-            this.pointisWork_VetDrobDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);              //проверка по вет стойке с дробашем          не проверено
-            this.pointisWork_VetDrobDot2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
+            this.pointisWork_VetDrobDot1 = new PointColor(29-5 + xx, 697-5 + yy, 2764000, 3);           //проверка по вет стойке с дробашем        
+            this.pointisWork_VetDrobDot2 = new PointColor(30-5 + xx, 697-5 + yy, 7243000, 3);
             this.pointisWork_ExpDrobDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);              //проверка по эксп стойке с дробашем
             this.pointisWork_ExpDrobDot2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
 
@@ -135,7 +135,7 @@ namespace OpenGEWindows
 
             this.pointTeleportToTownAltW = new Point(801 + xx, 564 + yy + (botwindow.getNomerTeleport() - 1) * 17);   //801, 564 + (botwindow.getNomerTeleport() - 1) * 17);
 
-            this.sdvigY = 0;
+            this.sdvigY = -15;
 
             this.pointBookmarkSell = new Point(225 + xx, 163 + yy);
             this.pointSaleToTheRedBottle = new Point(335 + xx, 220 + yy);

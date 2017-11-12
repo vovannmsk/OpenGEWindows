@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using OpenGEWindows;
 
 namespace States
@@ -145,6 +146,26 @@ namespace States
         public void EnterLoginAndPasword()
         {
             botwindow.EnterLoginAndPasword();
+        }
+
+
+        public void TestButton()
+        {
+            int xx, yy;
+            xx = 5;
+            yy = 5;
+            uint color1;
+            uint color2;
+
+            PointColor point1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 7800000, 5);
+            PointColor point2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 7800000, 5);
+
+            color1 = point1.GetPixelColor();
+            color2 = point2.GetPixelColor();
+
+            MessageBox.Show(" " + color1);
+            MessageBox.Show(" " + color2);
+
         }
     }
 }

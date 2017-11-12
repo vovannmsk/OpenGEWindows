@@ -81,6 +81,7 @@ namespace States
             while (((!server.isTown()) && (!server.isTown_2())) && (i < 50))      //GT16 ожидание загрузки города, проверка по двум стойкам
             { botwindow.Pause(500); i++; }
 
+            botwindow.Pause(7000);       //поставил по Колиной просьбе
             botwindow.PressEscThreeTimes();
             botwindow.Pause(1000);
         }

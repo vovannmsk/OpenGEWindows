@@ -260,20 +260,10 @@ namespace Main
         {
             button1.Visible = false;
 
-            int xx, yy;
-            xx = 5;
-            yy = 5;
-            uint color1;
-            uint color2;
 
+            Check check = new Check(1);
 
-            ////PointColor pointIsSale1 = new PointColor(522 - 5 + xx, 434 - 5 + yy, 7800000, 5);
-            ////PointColor pointIsSale2 = new PointColor(522 - 5 + xx, 435 - 5 + yy, 7800000, 5);
-
-            ////color1 = pointIsSale1.GetPixelColor();
-            ////color2 = pointIsSale2.GetPixelColor();
-            ////MessageBox.Show(" " + color1);
-            ////MessageBox.Show(" " + color2);
+            check.TestButton();
 
 
             button1.Visible = true;
