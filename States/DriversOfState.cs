@@ -134,6 +134,20 @@ namespace States
         }
 
         /// <summary>
+        /// если бот стоит на работе, то он направляется на продажу, а потом обратно
+        /// </summary>
+        public void StateGotoTradeAndWork()
+        {
+            if (botwindow.getserver().isWork())
+            {
+                StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа - продажа - нет окна)
+                botwindow.Pause(2000);
+                StateGotoWork();                                           // по паттерну "Состояние".  14-01       (нет окна - логаут - казарма - город - работа)
+            }
+        }
+
+
+        /// <summary>
         /// запускает движок состояний StateDriver от пункта stateBegin до stateEnd
         /// </summary>
         /// <param name="stateBegin"> начальное состояние </param>
@@ -163,18 +177,6 @@ namespace States
             }
         }
 
-        /// <summary>
-        /// если бот стоит на работе, то он направляется на продажу, а потом обратно
-        /// </summary>
-        public void StateDriverGotoTrade()
-        {
-            if (botwindow.getserver().isWork())
-            {
-                StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа - продажа - нет окна)
-                botwindow.Pause(2000);
-                StateGotoWork();                                           // по паттерну "Состояние".  14-01       (нет окна - логаут - казарма - город - работа)
-            }
-        }
 
 
         #endregion

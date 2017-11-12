@@ -5,7 +5,6 @@ C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка но�
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Release\Main.exe
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Release\Main.pdb
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Release\States.dll
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Release\OpenGEWindows.exe
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Release\GEBot.Data.dll
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Release\EntityFramework.dll
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Release\States.pdb
@@ -15,3 +14,4 @@ C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка но�
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\obj\Release\Main.MainForm.resources
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\obj\Release\Main.exe
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\obj\Release\Main.pdb
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Release\OpenGEWindows.dll

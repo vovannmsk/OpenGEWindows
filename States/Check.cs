@@ -7,7 +7,6 @@ using OpenGEWindows;
 
 namespace States
 {
-
     public class Check
     {
         private botWindow botwindow;
@@ -21,14 +20,6 @@ namespace States
             botwindow = new botWindow(numberOfWindow);
             driver = new DriversOfState(numberOfWindow);
         }
-
-        /////// <summary>
-        /////// проверяем, есть ли проблемы с ботом (убили, застряли, нужно продать)
-        /////// </summary>
-        ////public void checkForProblems()
-        ////{
-        ////    botwindow.checkForProblems();
-        ////}
 
         /// <summary>
         /// проверяем, есть ли проблемы с ботом (убили, застряли, нужно продать)

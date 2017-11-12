@@ -1,7 +1,3 @@
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\OpenGEWindows.exe.config
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\OpenGEWindows.exe.manifest
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\OpenGEWindows.application
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\OpenGEWindows.exe
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\OpenGEWindows.pdb
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\EntityFramework.dll
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\EntityFramework.SqlServer.dll
@@ -10,11 +6,10 @@ C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка но�
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.csprojResolveAssemblyReference.cache
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.Properties.Resources.resources
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.csproj.GenerateResource.Cache
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.TrustInfo.xml
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.exe.manifest
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.application
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.exe
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.pdb
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\Microsoft.QualityTools.Testing.Fakes.dll
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\GEBot.Data.dll
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\GEBot.Data.pdb
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\OpenGEWindows.dll.config
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\OpenGEWindows.dll
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.dll
