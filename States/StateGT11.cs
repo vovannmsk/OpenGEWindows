@@ -68,7 +68,7 @@ namespace States
         {
             server.SaleToTheRedBottle();      // продажа до красной бутылки
             server.SaleOverTheRedBottle();    // продажа от красной бутылки до того момента, пока крутится список продажи
-            server.SaleToEnd();               // продажа до конца, когда список уже не крутится
+            server.SaleToEnd();               // продажа до конца, когда список уже не крутится 
             //server.Botton_Sell();             // Нажимаем на кнопку Sell
             //botwindow.Pause(1500);
             //server.Button_Close();            // Нажимаем на кнопку Close

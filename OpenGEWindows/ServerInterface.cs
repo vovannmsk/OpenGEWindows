@@ -237,6 +237,40 @@ namespace OpenGEWindows
         protected String pathClient;
         protected int activeWindow;
 
+        protected struct Product 
+        { 
+            public uint color1;
+            public uint color2;
+            public uint color3;
+
+            /// <summary>
+            /// создаем структуру объекта, состоящую из трех точек
+            /// </summary>
+            /// <param name="xx">сдвиг окна по оси X</param>
+            /// <param name="yy">сдвиг окна по оси Y</param>
+            /// <param name="numderOfString">номер строки в магазине, где берется товар</param>
+            public Product(int xx, int yy, int numderOfString)
+            {
+                color1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (numderOfString - 1) * 27, 3360337, 0).GetPixelColor();
+                color2 = new PointColor(146 - 5 + xx, 219 - 5 + yy + (numderOfString - 1) * 27, 3360337, 0).GetPixelColor();
+                color3 = new PointColor(165 - 5 + xx, 214 - 5 + yy + (numderOfString - 1) * 27, 3360337, 0).GetPixelColor();
+            }
+
+            /// <summary>
+            /// сравнение двух товаров по трем точкам
+            /// </summary>
+            /// <param name="product">товар для сравнения</param>
+            /// <returns>true, если два товара одинаковы</returns>
+            public bool EqualProduct(Product product)
+            {
+                return ((product.color1 == color1) && 
+                        (product.color2 == color2) && 
+                        (product.color3 == color3));
+            }
+
+
+
+        };
 
         #region методы для работы кнопок по созданию новых ботов и переходу в кратер
         /// <summary>
@@ -1298,50 +1332,37 @@ namespace OpenGEWindows
             Pause(1500);
         }
 
-        //=============================================================================================== кандидат в абстрактный класс server
         /// <summary>
-        /// Продажа товаров в магазине вплоть до маленькой красной бутылки 
+        /// проверяем, является ли товар в первой строке магазина маленькой красной бутылкой
         /// </summary>
-        public void SaleToTheRedBottle()
+        /// <param name="numberOfString">номер строки, в которой проверяем товар</param>
+        /// <returns> true, если в первой строке маленькая красная бутылка </returns>
+        public bool isRedBottle(int numberOfString)
         {
-            bool ff = true;
-            int ii = 0;
-            uint color1;
-            while (ff)
-            {
-                color1 = GetPixelColor(142, 219);                 // проверка цвета. бутылка или нет
-                if (color1 == 3360337) { ff = false; }            // Дошли до маленькой бутылки        
-                else
-                {
-                    ii++;
-                    if (ii >= 230) ff = false;     // Страховка против бесконечного цикла
-                    else
-                    {
-                        Click_Mouse_and_Keyboard.Mouse_Move_and_Click(345 + 30 + botwindow.getX(), 190 + 30 + botwindow.getY(), 5);        //тыканье в стрелочку вверх + колесо вниз (количество продаваемого товара увеличивается на 1)
-                    }
-                }
-            }//Конец цикла
-            Pause(150);
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(345 + 30 + botwindow.getX(), 190 + 30 + botwindow.getY(), 4); // колесо вверх
-            Pause(150);
-            //            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(305 + 30 + botwindow.getX(), 190 + 30 + botwindow.getY(), 1); // Делаем левый клик по стрелке количества товара(уменьшаем на один)
-            //            Pause(150);
-            //PressMouseL(305 + 30, 190 + 30);
-            //Click_Mouse_and_Keyboard.Mouse_Move_and_Click(305 + 30 + botwindow.getX(), 190 + 30 + botwindow.getY(), 1); // Делаем левый клик по стрелке количества товара(уменьшаем на один)
-            //Pause(150);
-            //PressMouseL(305 + 30, 190 + 30);
-            pointSaleToTheRedBottle.PressMouseL();            // Делаем левый клик по стрелке количества товара(уменьшаем на один)
-            pointSaleToTheRedBottle.PressMouseL();
+            PointColor pointFirstString = new PointColor(147 - 5 + xx, 224 - 5 + yy + (numberOfString - 1) * 27, 3360337, 0);
+            return pointFirstString.isColor();
         }
 
+        /// <summary>
+        /// добавляем товар из указанной строки в корзину 
+        /// </summary>
+        /// <param name="numberOfString">номер строки</param>
+        public void AddToCart(int numberOfString)
+        {
+            Point pointAddProduct = new Point(380 - 5 + botwindow.getX(), 220 - 5 + (numberOfString - 1) * 27 + botwindow.getY());
+            pointAddProduct.PressMouseL();
+            pointAddProduct.PressMouseWheelDown();
+        }
+
+          
         /// <summary>
         /// определяет, анализируется ли нужный товар либо данный товар можно продавать
         /// </summary>
         /// <param name="color"> цвет полностью определяет товар, который поступает на анализ </param>
         /// <returns> true, если анализируемый товар нужный и его нельзя продавать </returns>
-        public bool NeedTovarOrNot(uint color)
+        public bool NeedToSellProduct(uint color)
         {
-            bool result = false;
+            bool result = true;
 
             switch (color)                                             // Хорошая вещь или нет, сверяем по картотеке
             {
@@ -1389,9 +1410,8 @@ namespace OpenGEWindows
                 case 4143156:     // bulk of Coal                   **
                 case 9472397:     // Steel piece                 **
                 case 7187897:     // Mustang oree                 **
-                    //                case 7645105:     // Quartz                 **
-
-                result = true;
+//              case 7645105:     // Quartz                 **
+                result = false;
                 break;
             }
 
@@ -1447,74 +1467,81 @@ namespace OpenGEWindows
             }
         }
 
-        //=============================================================================================== кандидат в абстрактный класс server
+
+        /// <summary>
+        /// добавляем товар из указанной строки в корзину 
+        /// </summary>
+        /// <param name="numberOfString">номер строки</param>
+        public void GoToNextproduct(int numberOfString)
+        {
+            Point pointAddProduct = new Point(380 - 5 + botwindow.getX(), 225 - 5 + (numberOfString - 1) * 27 + botwindow.getY());
+            pointAddProduct.PressMouseWheelDown();   //прокручиваем список
+
+        }
+
+        /// <summary>
+        /// добавляем товар из указанной строки в корзину 
+        /// </summary>
+        /// <param name="numberOfString">номер строки</param>
+        public void AddToCartLotProduct(int numberOfString)
+        {
+            Point pointAddProduct = new Point(360 - 5 + botwindow.getX(), 220 - 5 + (numberOfString - 1) * 27 + botwindow.getY());  //305 + 30, 190 + 30)
+            pointAddProduct.PressMouseL();  //тыкаем в строчку с товаром
+            Pause(150);
+            Press44444();                   // пишем 444444 , чтобы максимальное количество данного товара попало в корзину 
+            pointAddProduct.PressMouseWheelDown();   //прокручиваем список
+        }
+
+        /// <summary>
+        /// Продажа товаров в магазине вплоть до маленькой красной бутылки 
+        /// </summary>
+        public void SaleToTheRedBottle()
+        {
+            uint count = 0;
+            while (!isRedBottle(1))
+            {
+                AddToCart(1);
+                count++;
+                if (count > 220) break;   // защита от бесконечного цикла
+            }
+        }
+
         /// <summary>
         /// Продажа товара после маленькой красной бутылки, до момента пока прокручивается список продажи
         /// </summary>
         public void SaleOverTheRedBottle()
         {
-            bool ff = true;
-            uint ss2 = 0;
-            uint ss3 = 0;
-            uint ss4 = 0;
+            Product previousProduct;
+            Product currentProduct;
 
-            uint sss2 = 0;
-            uint sss3 = 0;
-            uint sss4 = 0;
+            currentProduct = new Product(xx, yy, 1);  //создаем структуру "текущий товар" из трёх точек, которые мы берем у товара в первой строке магазина
 
-            while (ff)
+            do
             {
-                ss2 = GetPixelColor(149 - 5, 219 - 5);                 // проверка цвета первой точки текущего товара
-                ss3 = GetPixelColor(146 - 5, 219 - 5);                 // проверка цвета третьей точки текущего товара
-                ss4 = GetPixelColor(165 - 5, 214 - 5);                 // проверка цвета второй точки текущего товара
-                Pause(50);
-                if ((ss2 == sss2) & (ss3 == sss3) & (ss4 == sss4)) ff = false;           // если текущий цвет равен предыдущему текущему цвету, значит список не двигается и надо выходить из цикла
+                previousProduct = currentProduct;
+                if (NeedToSellProduct(currentProduct.color1))
+                    AddToCartLotProduct(1); 
                 else
-                {
-                    if (NeedTovarOrNot(ss2))   //если нужный товар
-                    {
-                    }
-                    else // товар не нужен, значит продаем
-                    {
-                        pointSaleOverTheRedBottle.PressMouseL();                               //кликаем левой кнопкой в ячейку, где надо написать количество продаваемого товара
-                        //PressMouseL(305 + 30, 190 + 30);                                      //кликаем левой кнопкой в ячейку, где надо написать количество продаваемого товара
-                        Pause(150);
-                        Press44444();
-                    }
-                    pointWheelDown.PressMouseWheelDown();
-                    //Click_Mouse_and_Keyboard.Mouse_Move_and_Click(345 + 30 + botwindow.getX(), 190 + 30 + botwindow.getY(), 3);        // колесо вниз
-                    Pause(200);  //пауза, чтобы ГЕ успела выполнить нажатие. Можно и увеличить     
-                    sss2 = ss2;
-                    sss3 = ss3;
-                    sss4 = ss4;
-                }
-            }//Конец цикла
+                    GoToNextproduct(1);
 
+                Pause(200);  //пауза, чтобы ГЕ успела выполнить нажатие. Можно и увеличить     
+                currentProduct = new Product(xx, yy, 1);
+            } while (!currentProduct.EqualProduct(previousProduct));          //идет проверка по трем точкам
         }
 
-        //=============================================================================================== кандидат в абстрактный класс server
         /// <summary>
         /// Продажа товара, когда список уже не прокручивается 
         /// </summary>
         public void SaleToEnd()
         {
-            uint color1;
-            int Y_tovar = 219 + 27;     //координата Y товара, у которого проверяем цвет
-            for (int j = 1; j <= 11; j++)
+            iPointColor pointCurrentProduct;
+            for (int j = 2; j <= 12; j++)
             {
-                color1 = GetPixelColor(149 - 5, Y_tovar - 5);                 // проверка цвета текущего товара
+                pointCurrentProduct = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 3360337, 0);   //проверяем цвет текущего продукта
                 Pause(50);
-                if (NeedTovarOrNot(color1))   //если нужный товар
-                {
-                }
-                else // товар не нужен, значит продаем
-                {
-                    botwindow.PressMouseL(360 - 5, Y_tovar - 5);              //кликаем левой кнопкой в ячейку, где надо написать количество продаваемого товара
-                    Pause(150);
-                    Press44444();
-                }
-                Y_tovar = Y_tovar + 27;   //переходим к следующей строке
-            }//Конец цикла
+                if (NeedToSellProduct(pointCurrentProduct.GetPixelColor()))       //если нужно продать товар
+                    AddToCartLotProduct(j);                                       //добавляем в корзину весь товар в строке j
+            }
         }
 
         //=============================================================================================== кандидат в абстрактный класс server
