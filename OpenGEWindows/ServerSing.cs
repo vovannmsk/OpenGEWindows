@@ -147,7 +147,7 @@ namespace OpenGEWindows
             this.pointisKillHero1 = new PointColor(75 + xx, 631 + yy, 1900000, 4);
             this.pointisKillHero2 = new PointColor(330 + xx, 631 + yy, 1900000, 4);
             this.pointisKillHero3 = new PointColor(585 + xx, 631 + yy, 1900000, 4);
-            this.pointButtonLogOut = new Point(955 - 5 + xx, 700 - 5 + yy);               //кнопка логаут в казарме
+            this.pointButtonLogOut = new Point(785 - 5 + xx, 700 - 5 + yy);               //кнопка логаут в казарме
 
             this.pointisToken1 = new PointColor(478 - 5 + xx, 92 - 5 + yy, 13000000, 5);  //проверяем открыто ли окно с токенами
             this.pointisToken2 = new PointColor(478 - 5 + xx, 93 - 5 + yy, 13000000, 5);

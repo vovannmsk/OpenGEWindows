@@ -1381,14 +1381,15 @@ namespace OpenGEWindows
                 case 1712711:     // Dragon Horn                   **
                 case 6719975:     // Wild Boar Meat                   **
                 case 4448154:     // Green ore                   **
-                case 13865807:     // blue ore                   **
+                case 13865807:    // blue ore                   **
                 case 4670431:     // Red ore                 **
-                case 13291199:     // Diamond Ore                   **
+                case 13291199:    // Diamond Ore                   **
                 case 1063140:     // Stone of Philos                   **
                 case 8486756:     // Ice Crystal                  **
                 case 4143156:     // bulk of Coal                   **
                 case 9472397:     // Steel piece                 **
-//                case 7645105:     // Quartz                 **
+                case 7187897:     // Mustang oree                 **
+                    //                case 7645105:     // Quartz                 **
 
                 result = true;
                 break;

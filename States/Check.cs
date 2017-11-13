@@ -11,6 +11,7 @@ namespace States
     public class Check
     {
         private botWindow botwindow;
+        private ServerInterface server;
         DriversOfState driver;
 
         public Check()
@@ -19,6 +20,7 @@ namespace States
         public Check(int numberOfWindow)
         {
             botwindow = new botWindow(numberOfWindow);
+            server = botwindow.getserver();
             driver = new DriversOfState(numberOfWindow);
         }
 
@@ -28,25 +30,25 @@ namespace States
         public void checkForProblems()
         {
             
-            if (botwindow.getserver().isActive())      //этот метод проверяет, нужно ли грузить или обрабатывать это окно (профа и прочее)
+            if (server.isActive())      //этот метод проверяет, нужно ли грузить или обрабатывать это окно (профа и прочее)
             {
                 bool result = ReOpenWindow();    //если окно не вылетело, то будет true
                 Pause(1000);
                 if (result)      //если окно не вылетело
                 {
-                    if (botwindow.getserver().isLogout())
+                    if (server.isLogout())
                     {
                         driver.StateRecovery();
                     }
                     else
                     {
-                        if (botwindow.getserver().isSale2())         //если зависли в магазине на любой закладке
+                        if (server.isSale2())         //если зависли в магазине на любой закладке
                         {
                             driver.StateExitFromShop();            //выход из магазина
                         }
                         else
                         {
-                            if (botwindow.getserver().isKillHero())                  // если убиты один или несколько персов   
+                            if (server.isKillHero())                  // если убиты один или несколько персов   
                             {
                                 botwindow.CureOneWindow2();              // сделать End Programm
                                 Pause(2000);
@@ -54,14 +56,14 @@ namespace States
                             }
                             else
                             {
-                                if (botwindow.getserver().isBarack())                  //если стоят в бараке     
+                                if (server.isBarack())                  //если стоят в бараке     
                                 {
-                                    botwindow.getserver().buttonExitFromBarack();      //StateExitFromBarack();
+                                    server.buttonExitFromBarack();      //StateExitFromBarack();
                                 }
                                 else
                                 {
                                     //=========================== если переполнение ==============================
-                                    if ((botwindow.getserver().isBoxOverflow()) && (botwindow.getNomerTeleport() > 0))  // если карман переполнился и нужно продавать(телепорт = 0, тогда не нужно продавать)
+                                    if ((server.isBoxOverflow()) && (botwindow.getNomerTeleport() > 0))  // если карман переполнился и нужно продавать(телепорт = 0, тогда не нужно продавать)
                                     {
                                         driver.StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
                                         Pause(2000);
@@ -70,7 +72,7 @@ namespace States
                                     else
                                     {
                                         //================== если в городе ========================================
-                                        if ((botwindow.getserver().isTown()) || (botwindow.getserver().isTown_2()))          //если стоят в городе (проверка по обоим стойкам - эксп.дробаш и ружье )         //**   было istown2()
+                                        if ((server.isTown()) || (server.isTown_2()))          //если стоят в городе (проверка по обоим стойкам - эксп.дробаш и ружье )         //**   было istown2()
                                         {
                                             driver.StateExitFromTown();
                                             botwindow.PressEscThreeTimes();
@@ -79,7 +81,7 @@ namespace States
                                         }
                                         else
                                         {
-                                            if (botwindow.getserver().isSale())                               // если застряли в магазине на странице входа
+                                            if (server.isSale())                               // если застряли в магазине на странице входа
                                             { driver.StateExitFromShop2(); }
                                             else
                                             { botwindow.PressMitridat(); }
@@ -149,6 +151,9 @@ namespace States
         }
 
 
+        /// <summary>
+        /// тестовая кнопка
+        /// </summary>
         public void TestButton()
         {
             int xx, yy;
@@ -157,7 +162,7 @@ namespace States
             uint color1;
             uint color2;
 
-            PointColor point1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 7800000, 5);
+            PointColor point1 = new PointColor(149 - 5 + xx, 516 - 5 + yy, 7800000, 5);
             PointColor point2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 7800000, 5);
 
             color1 = point1.GetPixelColor();
