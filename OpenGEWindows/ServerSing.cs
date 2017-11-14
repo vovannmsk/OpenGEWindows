@@ -85,10 +85,10 @@ namespace OpenGEWindows
 
             this.pointisLogout1 = new PointColor(565 - 5 + xx, 530 - 5 + yy, 16400000, 5);       // проверено   слово Leave Game
             this.pointisLogout2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 16400000, 5);       // проверено
-            this.pointisBarack1 = new PointColor(64 - 5 + xx, 151 - 5 + yy, 2420000, 4);            //зеленый цвет в слове Barracks  // не проверено
-            this.pointisBarack2 = new PointColor(64 - 5 + xx, 154 - 5 + yy, 2420000, 4);            // не проверено
-            this.pointisBarack3 = new PointColor(36 - 5 + xx, 53 - 5 + yy, 15100000, 5);             //проверено   Baack Mode
-            this.pointisBarack4 = new PointColor(36 - 5 + xx, 54 - 5 + yy, 15500000, 5);             //проверено
+            this.pointisBarack1 = new PointColor(67 - 5 + xx, 153 - 5 + yy, 2420000, 4);            //зеленый цвет в слове Barracks  // не проверено
+            this.pointisBarack2 = new PointColor(67 - 5 + xx, 154 - 5 + yy, 2420000, 4);            // проверено
+            this.pointisBarack3 = new PointColor(36 - 5 + xx, 56 - 5 + yy, 15100000, 5);             //проверено   Baack Mode
+            this.pointisBarack4 = new PointColor(36 - 5 + xx, 57 - 5 + yy, 15100000, 5);             //проверено
 
             this.pointisWork_RifleDot1 = new PointColor(24 + xx, 692 + yy, 11051000, 3);      //29 - 5, 697 - 5, 11051000, 30 - 5, 697 - 5, 10919000, 3);                    //проверено
             this.pointisWork_RifleDot2 = new PointColor(25 + xx, 692 + yy, 10919000, 3);

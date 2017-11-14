@@ -15,22 +15,6 @@ namespace OpenGEWindows
 {
     public class botWindow
     {
-
-        //[DllImport("user32.dll")]
-        //static extern IntPtr GetDC(IntPtr hwnd);
-
-        //[DllImport("user32.dll")]
-        //static extern Int32 ReleaseDC(IntPtr hwnd, IntPtr hdc);
-
-        //[DllImport("gdi32.dll")]
-        //static extern uint GetPixel(IntPtr hdc, int nXPos, int nYPos);
-
-        //[DllImport("user32.dll")]
-        //static extern bool PostMessage(UIntPtr hWnd, uint Msg, UIntPtr wParam, UIntPtr lParam);
-
-        //[DllImport("User32.dll", CharSet = CharSet.Auto)]
-        //public static extern UIntPtr FindWindowEx(UIntPtr hwndParent, UIntPtr hwndChildAfter, string className, string windowName);
-
         [DllImport("user32.dll")]
         private static extern UIntPtr FindWindow(String ClassName, String WindowName);  //ищет окно с заданным именем и классом
 
@@ -72,9 +56,6 @@ namespace OpenGEWindows
         private iPoint pointNewPlace;
         private iPoint pointChoiceOfChannel;
         private iPoint pointButtonSelectChannel;
-        private iPoint pointButtonConnect;
-        private iPoint pointButtonOk;
-        private iPoint pointButtonOk2;
         private iPoint pointOneMode;
         private iPoint pointBattleMode;
         private iPoint pointPassword;
@@ -96,7 +77,6 @@ namespace OpenGEWindows
         private iPoint pointMitridat;
         private iPoint pointEnterBattleMode;
         private iPoint pointToMoveMouse;
-        private iPointColor point5050;
         private iPointColor pointCommandMode;
 
         enum TypeLoadUserData {txt, db}
@@ -161,9 +141,6 @@ namespace OpenGEWindows
             this.pointBookmarkSell = new Point(226 + databot.x, 196 + databot.y);     //226, 196);
             this.pointNewPlace = new Point(85 + databot.x, 670 + databot.y); //85, 670);
             this.pointButtonSelectChannel = new Point(125 + databot.x, 705 + databot.y); //   125, 705);
-            this.pointButtonConnect = new Point(595 - 5 + databot.x, 485 - 5 + databot.y);    // кнопка коннект в логауте (экран еще до казармы)
-            this.pointButtonOk = new Point(525 - 5 + databot.x, 425 - 5 + databot.y);    // кнопка коннект в логауте
-            this.pointButtonOk2 = new Point(525 - 5 + databot.x, 445 - 5 + databot.y);    // кнопка коннект в логауте
             this.pointOneMode = new Point(123 - 5 + databot.x, 489 - 5 + databot.y);    // 118, 484
             this.pointBattleMode = new Point(190 - 5 + databot.x, 530 - 5 + databot.y);    //  185, 525
             this.pointPassword = new Point(510 - 5 + databot.x, 355 - 5 + databot.y);    //  505, 350
@@ -187,7 +164,6 @@ namespace OpenGEWindows
             this.pointToMoveMouse = new Point(205 - 5 + databot.x, 575 - 5 + databot.y);    //
 
             //точки для проверки цвета
-            this.point5050 = new PointColor(55 - 5 + databot.x, 55 - 5 + databot.y, 7800000, 5);
             this.pointCommandMode = new PointColor(123 - 5 + databot.x, 479 - 5 + databot.y, 8000000, 6);
 
             
@@ -608,71 +584,145 @@ namespace OpenGEWindows
         }
 
         /// <summary>
+        /// нажимаем на кнопку Connect (окно в логауте)
+        /// </summary>
+        private void PressConnectButton()
+        {
+            iPoint pointButtonConnect = new Point(595 - 5 + databot.x, 485 - 5 + databot.y);    // кнопка коннект в логауте (экран еще до казармы)
+
+            pointButtonConnect.PressMouse();   // Кликаю в Connect
+            Pause(500);
+        }
+
+        /// <summary>
+        /// исправление ошибок при нажатии кнопки Connect (бот в логауте)
+        /// </summary>
+        private void BugFixes()
+        {
+//            iPoint pointButtonOk = new Point(525 - 5 + databot.x, 425 - 5 + databot.y);    // кнопка коннект в логауте старый вариант
+            iPoint pointButtonOk  = new Point(525 - 5 + databot.x, 410 - 5 + databot.y);    // кнопка коннект в логауте
+            iPoint pointButtonOk2 = new Point(525 - 5 + databot.x, 445 - 5 + databot.y);    // кнопка коннект в логауте
+
+            pointButtonOk.PressMouse();   //кликаю в кнопку  "ОК"
+            Pause(500);
+
+            pointButtonOk.PressMouseL();  //кликаю в кнопку  "ОК"  второй раз (их может быть две)
+            Pause(500);
+
+            pointButtonOk2.PressMouseL();  //кликаю в кнопку  "ОК" другой формы (где написано про 3 min)
+
+            EnterLoginAndPasword();        //вводим логин и пароль заново
+        }
+
+        /// <summary>
+        /// проверяем, есть ли проблемы после нажатия кнопки Connect (выскачила форма с кнопкой ОК)
+        /// </summary>
+        /// <returns></returns>
+        private bool isCheckBugs()
+        {
+            return server.isPointConnect();
+        }
+
+        /// <summary>
+        /// проверяем, сменилось ли изображение на экране
+        /// </summary>
+        /// <param name="testColor">тестовая точка</param>
+        /// <returns>true, если сменился экран</returns>
+        private bool isChangeDisplay(iPointColor testColor)
+        {
+            iPointColor currentColor = new PointColor(55 - 5 + databot.x, 55 - 5 + databot.y, 7800000, 5);
+            return (testColor.GetPixelColor()==currentColor.GetPixelColor());
+        }
+
+
+        /// <summary>
         /// Нажимаем Коннект (переводим юота из состояния логаут в состояние казарма)
         /// </summary>
         /// <returns></returns>
         public bool Connect()    // возвращает true, если успешно вошли в казарму
         {
-            uint Tek_Color1;
-            uint Test_Color = 0;
-            bool ColorBOOL = true;
-            uint currentColor = 0;
-            const int MAX_NUMBER_ITERATION = 4;  //максимальное количество итераций
-
-            bool aa = true;
-
-//            Test_Color = GetPixelColor(50, 50);       //запоминаем цвет в координатах 50, 50 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
-            Test_Color = point5050.GetPixelColor();       //запоминаем цвет в координатах 50, 50 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
-            Tek_Color1 = Test_Color;
-
-            ColorBOOL = (Test_Color == Tek_Color1);
-            int counter = 0; //счетчик
-
-            while ((aa | (ColorBOOL)) & (counter < MAX_NUMBER_ITERATION))
-            {
-                counter++;  //счетчик
-
-                Tek_Color1 = point5050.GetPixelColor();
-                ColorBOOL = (Test_Color == Tek_Color1);
-                pointButtonConnect.PressMouse();   // Кликаю в Connect
-                Pause(500);
-
-                //если есть ошибки в логине-пароле, то возникает сообщение с кнопкой "OK". 
-
-                if (server.isPointConnect())                                         // Обработка Ошибок.
-                    {
-                        pointButtonOk.PressMouse();  //кликаю в кнопку  "ОК"
-                        Pause(500);
-                    
-                        if (server.isPointConnect())   //проверяем, выскочила ли форма с кнопкой ОК
-                        { 
-                            pointButtonOk.PressMouse();  //кликаю в кнопку  "ОК"
-                            Pause(500);
-                        }
-                        pointButtonOk.PressMouseL();  //кликаю в кнопку  "ОК"
-
-                        pointButtonOk2.PressMouseL();  //кликаю в кнопку  "ОК" 3 min
-
-                        EnterLoginAndPasword();
-                    }
-                    else
-                    {
-                        aa = false;
-                    }
-
-            } 
-
             bool result = true;
-            Pause(5000);
-            currentColor = point5050.GetPixelColor();
-            if (currentColor == Test_Color)      //проверка входа в казарму. 
+            const int MAX_NUMBER_ITERATION = 4;    //максимальное количество итераций
+            uint count = 0;
+
+            iPointColor testColor = new PointColor(55 - 5 + databot.x, 55 - 5 + databot.y, 7800000, 5);  //запоминаем цвет в координатах 55, 55 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
+
+            while (isChangeDisplay(testColor))
             {
-                //тыкнуть в Quit 
-                //PressMouseL(600, 530);          //если не вошли в казарму, то значит зависли и жмем кнопку Quit
-                //PressMouseL(600, 530);
-                result = false;
+                PressConnectButton();
+                if (isCheckBugs()) BugFixes();
+
+                count++;
+                if (count > MAX_NUMBER_ITERATION)
+                {
+                    result = false;
+                    break;
+                }
             }
+
             return result;
+
+            #region старый вариант
+            //uint Tek_Color1;
+            //uint Test_Color = 0;
+            //bool ColorBOOL = true;
+            //uint currentColor = 0;
+            //const int MAX_NUMBER_ITERATION = 4;  //максимальное количество итераций
+
+            //bool aa = true;
+
+            //Test_Color = point5050.GetPixelColor();       //запоминаем цвет в координатах 50, 50 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
+            //Tek_Color1 = Test_Color;
+
+            //ColorBOOL = (Test_Color == Tek_Color1);
+            //int counter = 0; //счетчик
+
+            //while ((aa | (ColorBOOL)) & (counter < MAX_NUMBER_ITERATION))
+            //{
+            //    counter++;  //счетчик
+
+            //    Tek_Color1 = point5050.GetPixelColor();
+            //    ColorBOOL = (Test_Color == Tek_Color1);
+            //    pointButtonConnect.PressMouse();   // Кликаю в Connect
+            //    Pause(500);
+
+            //    //если есть ошибки в логине-пароле, то возникает сообщение с кнопкой "OK". 
+
+            //    if (server.isPointConnect())                                         // Обработка Ошибок.
+            //    {
+            //        pointButtonOk.PressMouse();  //кликаю в кнопку  "ОК"
+            //        Pause(500);
+
+            //        if (server.isPointConnect())   //проверяем, выскочила ли форма с кнопкой ОК
+            //        {
+            //            pointButtonOk.PressMouse();  //кликаю в кнопку  "ОК"
+            //            Pause(500);
+            //        }
+            //        pointButtonOk.PressMouseL();  //кликаю в кнопку  "ОК"
+
+            //        pointButtonOk2.PressMouseL();  //кликаю в кнопку  "ОК" 3 min
+
+            //        EnterLoginAndPasword();
+            //    }
+            //    else
+            //    {
+            //        aa = false;
+            //    }
+
+            //}
+
+            //bool result = true;
+            //Pause(5000);
+            //currentColor = point5050.GetPixelColor();
+            //if (currentColor == Test_Color)      //проверка входа в казарму. 
+            //{
+            //    //тыкнуть в Quit 
+            //    //PressMouseL(600, 530);          //если не вошли в казарму, то значит зависли и жмем кнопку Quit
+            //    //PressMouseL(600, 530);
+            //    result = false;
+            //}
+            #endregion
+
         }
 
 
@@ -858,7 +908,7 @@ namespace OpenGEWindows
         }                                                              
 
         /// <summary>
-        /// Нажимаем Выбор канала и группы персов в казарме    // ======================================================================================== по идее должен быть в server
+        /// Нажимаем Выбор канала и группы персов в казарме 
         /// </summary>
         public void SelectChannel()
         {
@@ -911,7 +961,6 @@ namespace OpenGEWindows
         /// </summary>
         public void OneMode()
         {
-
             if (isCommandMode())
             {
                 // если включен командный режим, то надо нажать 1 раз
