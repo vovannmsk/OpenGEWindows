@@ -23,7 +23,7 @@ namespace Main
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "12-11-2017";
+        public static String DataVersion = "15-11-2017";
         public static int numberOfAccounts = KolvoAkk();
 
         /// <summary>
@@ -176,13 +176,14 @@ namespace Main
             for (int j = 1; j <= numberOfAccounts; j++)
             {
                 Check check = new Check(j);
+                check.OrangeButton();
 
-                check.ReOpenWindow();
-                check.Pause(100);
-                if (check.isLogout())
-                {
-                    check.EnterLoginAndPasword();
-                }
+                //check.ReOpenWindow();
+                //check.Pause(100);
+                ////if (check.isLogout())
+                ////{
+                ////    check.EnterLoginAndPasword();
+                ////}
             }   
         }
 
@@ -205,20 +206,35 @@ namespace Main
 
         #endregion
 
-        #region РОЗОВАЯ КНОПКА
+        #region РОЗОВАЯ КНОПКА (новые аккаунты)
+
         /// <summary>
-        /// создание новых аккаунтов                                                                                                    РОЗОВАЯ КНОПКА
+        /// создание новых аккаунтов (создание потока)              
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void buttonNewAcc_Click(object sender, EventArgs e)
         {
-            for (int j = 1; j <= numberOfAccounts; j++)
-            {
+            buttonNewAcc.Visible = false;
+            Thread myThreadPink = new Thread(funcPink);
+            myThreadPink.Start();
+            buttonNewAcc.Visible = true;
+        }
+
+
+        /// <summary>
+        /// создание новых аккаунтов
+        /// </summary>
+        private void funcPink()
+        {
+            //for (int j = 1; j <= numberOfAccounts; j++)
+            for (int j = 6; j <= 6; j++)
+                {
                 DriversOfState driver = new DriversOfState(j);
                 driver.StateNewAcc();
             }
         }
+
         #endregion
 
         #region AQUA кнопка

@@ -64,8 +64,8 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.RunToNunez();        //бежим до Нуньеса
-            server.TalkRunToNunez();    //говорим с Нуньесом
+            server.RunToNunez();         //бежим до Нуньеса
+            server.TalkRunToNunez();     //говорим с Нуньесом
 
             botwindow.ToMoveMouse();             //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
 
@@ -75,6 +75,9 @@ namespace States
             while ((!server.isTown()) && (i < 50))      //ожидание загрузки города
             { botwindow.Pause(500); i++; }
 
+            botwindow.Pause(5000);
+            botwindow.PressEscThreeTimes();
+            botwindow.Pause(1000);
             botwindow.PressEscThreeTimes();
             botwindow.Pause(5000);
 

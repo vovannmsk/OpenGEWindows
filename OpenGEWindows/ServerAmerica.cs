@@ -373,6 +373,18 @@ namespace OpenGEWindows
             Pause(2000);
         }
 
+        /// <summary>
+        /// действия для оранжевой кнопки
+        /// </summary>
+        public override void OrangeButton()
+        {
+            botwindow.ReOpenWindow();
+            Pause(100);
+            if (isLogout())
+            {
+                botwindow.EnterLoginAndPasword();
+            }
+        }
 
     }
 }

@@ -554,7 +554,7 @@ namespace OpenGEWindows
 
             
             botwindow.PressEscThreeTimes();
-            Pause(120000);
+            Pause(180000);
 
         }
 
@@ -729,14 +729,14 @@ namespace OpenGEWindows
         /// </summary>
         public void TalkToLindon1()
         {
-            Pause(2000);
+            Pause(4000);
             pointPressLindon1.PressMouseL();
             Pause(4000);
 
             for (int j = 1; j <= 4; j++)
             {
-                ButtonOkDialog.PressMouseL();    // Нажимаем на Ok в диалоге
-                Pause(1000);
+                ButtonOkDialog.PressMouse();    // Нажимаем на Ok в диалоге
+                Pause(2000);
             }
             Pause(2000);
         }
@@ -751,23 +751,25 @@ namespace OpenGEWindows
 
             for (int j = 1; j <= 7; j++)
             {
-                ButtonOkDialog.PressMouseL();    // Нажимаем на Ok в диалоге
-                Pause(1000);
+                ButtonOkDialog.PressMouse();    // Нажимаем на Ok в диалоге
+                Pause(2000);
             }
 
             PressMedal.DoubleClickL();        //нажимаем на медаль 1 (медаль новичка)  двойной щелчок
             Pause(1500);
 
-            ButtonCloseMedal.PressMouseL();    // Нажимаем на Close и закрываем медали
-            Pause(2500);
+            botwindow.PressEscThreeTimes();    //закрываем лишние окна
+            Pause(3000);
+            //ButtonCloseMedal.PressMouseL();    // Нажимаем на Close и закрываем медали
+            //Pause(2500);
 
             pointPressNunez2.PressMouseL();   // Нажимаем на Нуньеса
-            Pause(3000);
+            Pause(5000);
 
             for (int j = 1; j <= 5; j++)
             {
                 ButtonOkDialog.PressMouse();    // Нажимаем на Ok в диалоге
-                Pause(1500);
+                Pause(2500);
             }
 
             Pause(1500);
@@ -788,8 +790,8 @@ namespace OpenGEWindows
         public void RunToNunez()
         {
 //            pointRunNunies.PressMouseL();   // Нажимаем кнопку вызова списка групп
-            pointRunNunies.PressMouseL();   // Нажимаем кнопку вызова списка групп
-            Pause(20000);
+            pointRunNunies.PressMouse();   // Нажимаем кнопку вызова списка групп
+            Pause(25000);
         }
 
         /// <summary>
@@ -1630,9 +1632,8 @@ namespace OpenGEWindows
         public abstract void TopMenu(int numberOfThePartitionMenu, int punkt);
         public abstract void runClient();
         public abstract uint colorTest();
-
         public abstract void TeleportToTownAltW();
-
+        public abstract void OrangeButton();
 
 
     }

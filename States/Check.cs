@@ -150,6 +150,14 @@ namespace States
             botwindow.EnterLoginAndPasword();
         }
 
+        /// <summary>
+        /// действия для оранжевой кнопки
+        /// </summary>
+        public void OrangeButton()
+        {
+            server.OrangeButton();
+
+        }
 
         /// <summary>
         /// тестовая кнопка

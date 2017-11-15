@@ -64,11 +64,11 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.TalkToGM();
+            //server.TalkToGM();
 
-            server.TalkToSoldier();   //говорим с солдатом рядом с ГМ для получения оружия-брони
+            //server.TalkToSoldier();     //говорим с солдатом рядом с ГМ для получения оружия-брони
 
-            server.Arm();             //вооружаемся
+            //server.Arm();               //вооружаемся
         }
 
         /// <summary>

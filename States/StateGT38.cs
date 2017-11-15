@@ -68,9 +68,9 @@ namespace States
 
             server.DomingoDialog();
 
-            server.MissionDomingo();
+            server.MissionDomingo();             //до сюда вроде работает
 
-            server.RunToDomingo2();
+            server.RunToDomingo2();                  
 
             server.DomingoDialog2();
 

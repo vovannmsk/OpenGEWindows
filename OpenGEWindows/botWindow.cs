@@ -481,7 +481,8 @@ namespace OpenGEWindows
             while (New_HWND_GE == (UIntPtr)0)
             {
                 Pause(500);
-                New_HWND_GE = FindWindow("Granado Espada", "Granado Espada");
+                //New_HWND_GE = FindWindow("Granado Espada", "Granado Espada");33
+                New_HWND_GE = FindWindow("Sandbox:" + numberWindow.ToString() +":Granado Espada", "[#] Granado Espada [#]");
             }
             setHwnd(New_HWND_GE);
             hwnd_to_file();

@@ -68,8 +68,8 @@ namespace States
             server.TalkToLindon1();
 
             //бежим к персу для получения брони и оружия
-            server.RunToGetWeapons();
-            botwindow.Pause(500);
+            //server.RunToGetWeapons();
+            //botwindow.Pause(500);
             //town.GoToTraderMap();
 
         }
