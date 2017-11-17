@@ -498,7 +498,7 @@ namespace OpenGEWindows
             botwindow.PressEscThreeTimes();
             Pause(1000);
 
-            pointPressLindon2.PressMouseL();           //нажимаем на голову Доминго
+            pointPressLindon2.PressMouseL();           //нажимаем на голову Линдона
             Pause(3000);
 
 
@@ -790,7 +790,7 @@ namespace OpenGEWindows
         public void RunToNunez()
         {
 //            pointRunNunies.PressMouseL();   // Нажимаем кнопку вызова списка групп
-            pointRunNunies.PressMouse();   // Нажимаем кнопку вызова списка групп
+            pointRunNunies.DoubleClickL();   // Нажимаем кнопку вызова списка групп
             Pause(25000);
         }
 

@@ -36,7 +36,7 @@ namespace States
                 Pause(1000);
                 if (result)      //если окно не вылетело
                 {
-                    if (server.isLogout())
+                    if (server.isLogout())                // если окно в логауте
                     {
                         driver.StateRecovery();
                     }

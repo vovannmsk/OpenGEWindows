@@ -64,6 +64,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            botwindow.Pause(2000);
             server.RunToNunez();         //бежим до Нуньеса
             server.TalkRunToNunez();     //говорим с Нуньесом
 

@@ -78,6 +78,10 @@ namespace OpenGEWindows
         private iPoint pointEnterBattleMode;
         private iPoint pointToMoveMouse;
         private iPointColor pointCommandMode;
+        private iPointColor point5050;
+
+        private iPoint pointButtonOk; 
+        private iPoint pointButtonOk2;
 
         enum TypeLoadUserData {txt, db}
         
@@ -165,6 +169,10 @@ namespace OpenGEWindows
 
             //точки для проверки цвета
             this.pointCommandMode = new PointColor(123 - 5 + databot.x, 479 - 5 + databot.y, 8000000, 6);
+
+            point5050 = new PointColor(50 - 5 + databot.x, 50 - 5 + databot.y, 7800000, 5);  //запоминаем цвет в координатах 50, 50 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
+            pointButtonOk = new Point(525 - 5 + databot.x, 410 - 5 + databot.y);    // кнопка коннект в логауте
+            pointButtonOk2 = new Point(525 - 5 + databot.x, 445 - 5 + databot.y);    // кнопка коннект в логауте
 
             
         }
@@ -629,10 +637,12 @@ namespace OpenGEWindows
         /// </summary>
         /// <param name="testColor">тестовая точка</param>
         /// <returns>true, если сменился экран</returns>
-        private bool isChangeDisplay(iPointColor testColor)
+        private bool isChangeDisplay(uint testColor)
         {
-            iPointColor currentColor = new PointColor(55 - 5 + databot.x, 55 - 5 + databot.y, 7800000, 5);
-            return (testColor.GetPixelColor()==currentColor.GetPixelColor());
+            iPointColor currentColor = new PointColor(65 - 5 + databot.x, 55 - 5 + databot.y, 7800000, 5);
+            uint color = currentColor.GetPixelColor();
+            bool result = (color == testColor);
+            return !result;
         }
 
 
@@ -642,88 +652,104 @@ namespace OpenGEWindows
         /// <returns></returns>
         public bool Connect()    // возвращает true, если успешно вошли в казарму
         {
-            bool result = true;
-            const int MAX_NUMBER_ITERATION = 4;    //максимальное количество итераций
-            uint count = 0;
-
-            iPointColor testColor = new PointColor(55 - 5 + databot.x, 55 - 5 + databot.y, 7800000, 5);  //запоминаем цвет в координатах 55, 55 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
-
-            while (isChangeDisplay(testColor))
-            {
-                PressConnectButton();
-                if (isCheckBugs()) BugFixes();
-
-                count++;
-                if (count > MAX_NUMBER_ITERATION)
-                {
-                    result = false;
-                    break;
-                }
-            }
-
-            return result;
-
-            #region старый вариант
-            //uint Tek_Color1;
-            //uint Test_Color = 0;
-            //bool ColorBOOL = true;
-            //uint currentColor = 0;
-            //const int MAX_NUMBER_ITERATION = 4;  //максимальное количество итераций
-
-            //bool aa = true;
-
-            //Test_Color = point5050.GetPixelColor();       //запоминаем цвет в координатах 50, 50 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
-            //Tek_Color1 = Test_Color;
-
-            //ColorBOOL = (Test_Color == Tek_Color1);
-            //int counter = 0; //счетчик
-
-            //while ((aa | (ColorBOOL)) & (counter < MAX_NUMBER_ITERATION))
-            //{
-            //    counter++;  //счетчик
-
-            //    Tek_Color1 = point5050.GetPixelColor();
-            //    ColorBOOL = (Test_Color == Tek_Color1);
-            //    pointButtonConnect.PressMouse();   // Кликаю в Connect
-            //    Pause(500);
-
-            //    //если есть ошибки в логине-пароле, то возникает сообщение с кнопкой "OK". 
-
-            //    if (server.isPointConnect())                                         // Обработка Ошибок.
-            //    {
-            //        pointButtonOk.PressMouse();  //кликаю в кнопку  "ОК"
-            //        Pause(500);
-
-            //        if (server.isPointConnect())   //проверяем, выскочила ли форма с кнопкой ОК
-            //        {
-            //            pointButtonOk.PressMouse();  //кликаю в кнопку  "ОК"
-            //            Pause(500);
-            //        }
-            //        pointButtonOk.PressMouseL();  //кликаю в кнопку  "ОК"
-
-            //        pointButtonOk2.PressMouseL();  //кликаю в кнопку  "ОК" 3 min
-
-            //        EnterLoginAndPasword();
-            //    }
-            //    else
-            //    {
-            //        aa = false;
-            //    }
-
-            //}
-
+            #region новый вариант
             //bool result = true;
-            //Pause(5000);
-            //currentColor = point5050.GetPixelColor();
-            //if (currentColor == Test_Color)      //проверка входа в казарму. 
+            //const int MAX_NUMBER_ITERATION = 4;    //максимальное количество итераций
+            //uint count = 0;
+
+            //iPointColor testColor = new PointColor(65 - 5 + databot.x, 55 - 5 + databot.y, 7800000, 5);  //запоминаем цвет в координатах 55, 55 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
+            //Pause(500);
+
+            //do
             //{
-            //    //тыкнуть в Quit 
-            //    //PressMouseL(600, 530);          //если не вошли в казарму, то значит зависли и жмем кнопку Quit
-            //    //PressMouseL(600, 530);
-            //    result = false;
-            //}
+            //    PressConnectButton();
+            //    Pause(10000);
+            //    if (isCheckBugs()) BugFixes();
+
+            //    count++;
+            //    if (count > MAX_NUMBER_ITERATION)
+            //    {
+            //        result = false;
+            //        break;
+            //    }
+            //    //if (server.isBarack())
+            //    //{
+            //    //    result = true;
+            //    //    break;
+            //    //}
+            //} while (!isChangeDisplay(testColor.GetPixelColor()));
+
+            //return result;
+
             #endregion
 
+            #region старый вариант
+            
+
+            uint Tek_Color1;
+            uint Test_Color = 0;
+            bool ColorBOOL = true;
+            uint currentColor = 0;
+            const int MAX_NUMBER_ITERATION = 4;  //максимальное количество итераций
+
+            bool aa = true;
+
+            Test_Color = point5050.GetPixelColor();       //запоминаем цвет в координатах 50, 50 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
+            Tek_Color1 = Test_Color;
+
+            ColorBOOL = (Test_Color == Tek_Color1);
+            int counter = 0; //счетчик
+
+            while ((aa | (ColorBOOL)) & (counter < MAX_NUMBER_ITERATION))
+            {
+                counter++;  //счетчик
+
+                Tek_Color1 = point5050.GetPixelColor();
+                ColorBOOL = (Test_Color == Tek_Color1);
+                PressConnectButton();
+                //pointButtonConnect.PressMouse();   // Кликаю в Connect
+                Pause(500);
+
+                //если есть ошибки в логине-пароле, то возникает сообщение с кнопкой "OK". 
+
+                if (server.isPointConnect())                                         // Обработка Ошибок.
+                {
+                    pointButtonOk.PressMouse();  //кликаю в кнопку  "ОК"
+                    Pause(500);
+
+                    if (server.isPointConnect())   //проверяем, выскочила ли форма с кнопкой ОК
+                    {
+                        pointButtonOk.PressMouse();  //кликаю в кнопку  "ОК"
+                        Pause(500);
+                    }
+                    pointButtonOk.PressMouseL();  //кликаю в кнопку  "ОК"
+
+                    pointButtonOk2.PressMouseL();  //кликаю в кнопку  "ОК" 3 min
+
+                    EnterLoginAndPasword();
+                }
+                else
+                {
+                    aa = false;
+                }
+
+            }
+
+            bool result = true;
+            Pause(5000);
+            currentColor = point5050.GetPixelColor();
+            if (currentColor == Test_Color)      //проверка входа в казарму. 
+            {
+                //тыкнуть в Quit 
+                //PressMouseL(600, 530);          //если не вошли в казарму, то значит зависли и жмем кнопку Quit
+                //PressMouseL(600, 530);
+                result = false;
+            }
+            return true;
+
+            #endregion
+
+            
         }
 
 

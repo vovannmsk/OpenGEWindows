@@ -85,9 +85,9 @@ namespace OpenGEWindows
 
             this.pointisLogout1 = new PointColor(565 - 5 + xx, 530 - 5 + yy, 16400000, 5);       // проверено   слово Leave Game
             this.pointisLogout2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 16400000, 5);       // проверено
-            this.pointisBarack1 = new PointColor(67 - 5 + xx, 153 - 5 + yy, 2420000, 4);            //зеленый цвет в слове Barracks  // не проверено
-            this.pointisBarack2 = new PointColor(67 - 5 + xx, 154 - 5 + yy, 2420000, 4);            // проверено
-            this.pointisBarack3 = new PointColor(36 - 5 + xx, 56 - 5 + yy, 15100000, 5);             //проверено   Baack Mode
+            this.pointisBarack1 = new PointColor(65 - 5 + xx, 153 - 5 + yy, 2400000, 5);            //зеленый цвет в слове Barracks  // не проверено
+            this.pointisBarack2 = new PointColor(65 - 5 + xx, 154 - 5 + yy, 2400000, 5);            // проверено
+            this.pointisBarack3 = new PointColor(36 - 5 + xx, 56 - 5 + yy, 15500000, 5);             //проверено   Barrack Mode
             this.pointisBarack4 = new PointColor(36 - 5 + xx, 57 - 5 + yy, 15100000, 5);             //проверено
 
             this.pointisWork_RifleDot1 = new PointColor(24 + xx, 692 + yy, 11051000, 3);      //29 - 5, 697 - 5, 11051000, 30 - 5, 697 - 5, 10919000, 3);                    //проверено
@@ -197,7 +197,7 @@ namespace OpenGEWindows
             this.pointFirstStringDialog = new Point(520 - 5 + xx, 660 - 5 + yy);                   //нажимаем Yes в диалоге Доминго (нижняя строчка)
             this.pointSecondStringDialog = new Point(520 - 5 + xx, 640 - 5 + yy);                  //нажимаем Yes в диалоге Доминго второй раз (вторая строчка снизу)
             this.pointDomingoMiss = new Point(396 - 5 + xx, 206 - 5 + yy);                         //нажимаем правой кнопкой по карте миссии Доминго
-            this.pointPressDomingo2 = new Point(590 - 5 + xx, 215 - 5 + yy);                       //нажимаем на Доминго после миссии
+            this.pointPressDomingo2 = new Point(572 - 5 + xx, 237 - 5 + yy);                       //нажимаем на Доминго после миссии
             this.pointLindonOnMap = new Point(820 - 5 + xx, 370 - 5 + yy);                         //нажимаем на Линдона на карте Alt+Z
             this.pointPressLindon2 = new Point(655 - 5 + xx, 255 - 5 + yy);                        //нажимаем на Линдона
             this.pointPetExpert = new Point(910 - 5 + xx, 415 - 5 + yy);                           //нажимаем на петэксперта
@@ -322,10 +322,11 @@ namespace OpenGEWindows
         /// <param name="numberOfThePartitionMenu"> ноиер раздела верхнего меню </param>
         public override void TopMenu(int numberOfThePartitionMenu)
         {
-            int[] MenukoordX = { 300, 333, 365, 398, 431, 470, 518, 565, 606, 637, 669, 700, 733 };
+            //int[] MenukoordX = { 300, 333, 365, 398, 431, 470, 518, 565, 606, 637, 669, 700, 733 };
+            int[] MenukoordX = { 283, 316, 349, 382, 415, 453, 500, 547, 588, 620, 653, 683, 715, 748 };
             int x = MenukoordX[numberOfThePartitionMenu - 1];
             int y = 55;
-            iPoint pointMenu = new Point(x + botwindow.getX(), y + botwindow.getY());
+            iPoint pointMenu = new Point(x - 5 + botwindow.getX(), y - 5 + botwindow.getY());
 
             do
             {
@@ -342,17 +343,19 @@ namespace OpenGEWindows
         /// <param name="punkt"></param>
         public override void TopMenu(int numberOfThePartitionMenu, int punkt)
         {
-            int[] numberOfPunkt = { 0, 8, 4, 5, 0, 3, 2, 6, 9, 0, 0, 0, 0 };
-            int[] MenukoordX = { 300, 333, 365, 398, 431, 470, 518, 565, 606, 637, 669, 700, 733 };
-            int[] FirstPunktOfMenuKoordY = { 0, 80, 80, 80, 0, 92, 92, 92, 80, 0, 0, 0, 0 };
+//          int[] numberOfPunkt = { 0, 8, 4, 5, 0, 3, 2, 6, 9, 0, 0, 0, 0, 0 };
+            int[] numberOfPunkt = { 0, 8, 4, 2, 0, 3, 2, 6, 9, 0, 0, 0, 0, 0 };
+//          int[] MenukoordX = { 300, 333, 365, 398, 431, 470, 518, 565, 606, 637, 669, 700, 733 };
+            int[] MenukoordX = { 283, 316, 349, 382, 415, 453, 500, 547, 588, 620, 653, 683, 715, 748 };
+            int[] FirstPunktOfMenuKoordY = { 0, 85, 85, 85, 0, 97, 97, 97, 85, 0, 0, 0, 0 };
 
             if (punkt <= numberOfPunkt[numberOfThePartitionMenu - 1])
             {
-                int x = MenukoordX[numberOfThePartitionMenu - 1];
+                int x = MenukoordX[numberOfThePartitionMenu - 1] + 20;
                 int y = FirstPunktOfMenuKoordY[numberOfThePartitionMenu - 1] + 25 * (punkt - 1);
-                iPoint pointMenu = new Point(x + botwindow.getX(), y + botwindow.getY());
+                iPoint pointMenu = new Point(x - 5 + botwindow.getX(), y - 5 + botwindow.getY());
 
-                TopMenu(numberOfThePartitionMenu);   //сначала открываем раздел верхнего меню (1-13)
+                TopMenu(numberOfThePartitionMenu);   //сначала открываем раздел верхнего меню (1-14)
                 Pause(500);
                 pointMenu.PressMouse();  //выбираем конкретный пункт подменю (раскрывающийся список)
                 //PressMouse(x, y);  //выбираем конкретный пункт подменю (раскрывающийся список)

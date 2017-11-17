@@ -64,6 +64,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            
             //говорим с Линдоном
             server.TalkToLindon1();
 

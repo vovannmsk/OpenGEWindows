@@ -23,7 +23,7 @@ namespace Main
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "15-11-2017";
+        public static String DataVersion = "16-11-2017";
         public static int numberOfAccounts = KolvoAkk();
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Main
         /// </summary>
         private void funcCoral()
         {
-            for (int j = 1; j <= numberOfAccounts; j++)
+            for (int j = 1; j <= 1; j++)                //на европе и америке может быть только одно окно
             {
                 bool fff = true;
                 Check check = new Check(j);
@@ -178,12 +178,6 @@ namespace Main
                 Check check = new Check(j);
                 check.OrangeButton();
 
-                //check.ReOpenWindow();
-                //check.Pause(100);
-                ////if (check.isLogout())
-                ////{
-                ////    check.EnterLoginAndPasword();
-                ////}
             }   
         }
 
@@ -227,9 +221,9 @@ namespace Main
         /// </summary>
         private void funcPink()
         {
-            //for (int j = 1; j <= numberOfAccounts; j++)
-            for (int j = 6; j <= 6; j++)
-                {
+            for (int j = 1; j <= numberOfAccounts; j++)
+            //for (int j = 10; j <= 10; j++)
+            {
                 DriversOfState driver = new DriversOfState(j);
                 driver.StateNewAcc();
             }
@@ -309,11 +303,13 @@ namespace Main
         private void funcGreen()
         {
             for (int j = 1; j <= numberOfAccounts; j++)
+//            for (int j = 1; j <= 1; j++)
             {
                 Check check = new Check(j);
                 check.checkForProblems();
             }
             for (int j = 1; j <= numberOfAccounts; j++)
+//            for (int j = 1; j <= 1; j++)
             {
                 Check check = new Check(j);
                 check.ReOpenWindow();
