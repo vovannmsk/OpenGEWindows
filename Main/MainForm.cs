@@ -115,7 +115,7 @@ namespace Main
 
         #endregion
 
-        #region Silver button
+        #region Silver button Найти окна сингапур
         private void findWindowSing_Click(object sender, EventArgs e)
         {
             findWindowSing.Visible = false;
@@ -131,7 +131,7 @@ namespace Main
         /// </summary>
         private void funcSilver()
         {
-            for (int j = 1; j <= numberOfAccounts; j++)
+            for (int j = 2; j <= numberOfAccounts; j++)
             {
                 bool fff = true;
                 Check check = new Check(j);
