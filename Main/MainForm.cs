@@ -23,7 +23,7 @@ namespace Main
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "16-11-2017";
+        public static String DataVersion = "18-11-2017";
         public static int numberOfAccounts = KolvoAkk();
 
         /// <summary>
@@ -131,27 +131,28 @@ namespace Main
         /// </summary>
         private void funcSilver()
         {
-            for (int j = 2; j <= numberOfAccounts; j++)
+            int begin = BeginSing();
+            for (int j = begin; j <= numberOfAccounts; j++)
             {
-                bool fff = true;
+                //bool fff = true;
                 Check check = new Check(j);
-                while (fff)
-                {
+                //while (fff)
+                //{
                     UIntPtr ddd = check.FindWindowSing();
+                    //check.Pause(500);
+                    //if (!isfuncArray(ddd))
+                    //{
+                    //    aa[j] = ddd;
+                    //    fff = false;
+                    //}
                     check.Pause(500);
-                    if (!isfuncArray(ddd))
-                    {
-                        aa[j] = ddd;
-                        fff = false;
-                    }
-                    check.Pause(500);
-                }
+                //}
             }
         }
 
         #endregion
 
-        #region Оранжевая кнопка
+        #region Оранжевая кнопка (выравнивание окон)
 
         /// <summary>
         /// ВОССТАНОВЛЕНИЕ ОКОН                                                                                                                 
@@ -183,7 +184,8 @@ namespace Main
 
         #endregion
         
-        #region ЛАЙМ КНОПКА
+        #region ЛАЙМ КНОПКА (бежим до кратера)
+
         /// <summary>
         /// новый аккаунт бежит в кратер, сохраняет там телепорт                                                                         ЛАЙМ КНОПКА
         /// </summary>
@@ -191,12 +193,27 @@ namespace Main
         /// <param name="e"></param>
         private void RunToCrater_Click(object sender, EventArgs e)
         {
+            RunToCrater.Visible = false;
+            Thread myThreadLime = new Thread(funcLime);
+            myThreadLime.Start();
+
+            RunToCrater.Visible = true;
+
+        }
+
+        /// <summary>
+        /// метод задает функционал для потока, организуемого лайм кнопкой
+        /// </summary>
+        private void funcLime()
+        {
             for (int j = 1; j <= numberOfAccounts; j++)
+//            for (int j = 2; j <= 2; j++)
             {
                 DriversOfState driver = new DriversOfState(j);
                 driver.StateToCrater();
             }
         }
+
 
         #endregion
 
@@ -222,7 +239,7 @@ namespace Main
         private void funcPink()
         {
             for (int j = 1; j <= numberOfAccounts; j++)
-            //for (int j = 10; j <= 10; j++)
+//            for (int j = 2; j <= 2; j++)
             {
                 DriversOfState driver = new DriversOfState(j);
                 driver.StateNewAcc();
@@ -231,7 +248,7 @@ namespace Main
 
         #endregion
 
-        #region AQUA кнопка
+        #region AQUA кнопка (продажа одного окна)
 
         /// <summary>
         /// СУПЕР ПРОДАЖА
@@ -281,7 +298,7 @@ namespace Main
 
         #endregion
 
-        #region Green button
+        #region Green button (исправление проблем)
 
         /// <summary>
         /// проверка проблем у ботов и исправление
@@ -412,10 +429,17 @@ namespace Main
         /// <returns>кол-во акков всего</returns>
         public static int KolvoAkk()
         { 
-            int dd = int.Parse(File.ReadAllText(KatalogMyProgram + "\\Аккаунтов всего.txt"));
-            return dd;
+            return int.Parse(File.ReadAllText(KatalogMyProgram + "\\Аккаунтов всего.txt"));
         }
 
+        /// <summary>
+        /// читаем из файла значение
+        /// </summary>
+        /// <returns>с какого номера начинаются аккаунты Сингапура</returns>
+        public static int BeginSing()
+        {
+            return int.Parse(File.ReadAllText(KatalogMyProgram + "\\началоАкковСинга.txt"));
+        }
 
 
 

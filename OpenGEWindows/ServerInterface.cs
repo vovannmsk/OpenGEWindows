@@ -542,7 +542,7 @@ namespace OpenGEWindows
             //жмем Ок 9 раз
             for (int j = 1; j <= 9; j++)
             {
-                ButtonOkDialog.PressMouseL();           // Нажимаем на Ok в диалоге
+                ButtonOkDialog.PressMouse();           // Нажимаем на Ok в диалоге
                 Pause(1500);
             }
         }
@@ -572,20 +572,20 @@ namespace OpenGEWindows
             //жмем Ок 3 раза
             for (int j = 1; j <= 3; j++)
             {
-                ButtonOkDialog.PressMouseL();    // Нажимаем на Ok в диалоге
+                ButtonOkDialog.PressMouse();    // Нажимаем на Ok в диалоге
                 Pause(1500);
             }
 
-            pointFirstStringDialog.PressMouseL();   //YES
+            pointFirstStringDialog.PressMouse();   //YES
             Pause(1000);
 
-            ButtonOkDialog.PressMouseL();    // Нажимаем на Ok в диалоге
+            ButtonOkDialog.PressMouse();    // Нажимаем на Ok в диалоге
             Pause(1000);
 
-            pointSecondStringDialog.PressMouseL();   //YES во второй раз
+            pointSecondStringDialog.PressMouse();   //YES во второй раз
             Pause(1000);
 
-            ButtonOkDialog.PressMouseL();    // Нажимаем на Ok в диалоге
+            ButtonOkDialog.PressMouse();    // Нажимаем на Ok в диалоге
             Pause(10000);
 
 
@@ -735,8 +735,8 @@ namespace OpenGEWindows
         /// </summary>
         public void TalkToLindon1()
         {
-            Pause(4000);
-            pointPressLindon1.PressMouseL();
+            //Pause(4000);
+            pointPressLindon1.PressMouseL(); //нажимаем на Линдона
             Pause(4000);
 
             for (int j = 1; j <= 4; j++)
@@ -806,20 +806,20 @@ namespace OpenGEWindows
         public void CreateOfTeam()
         {
             pointTeamSelection1.PressMouse();   // Нажимаем кнопку вызова списка групп
-            Pause(500);
+            Pause(1500);
             pointUnselectMedik.PressMouseL();   // выкидывание медика из команды
-            Pause(500);
+            Pause(1500);
             pointSelectMusk.PressMouseL();       // выбор мушкетера в команду
-            Pause(500);
+            Pause(1500);
             pointNameOfTeam.PressMouseL();      //тыкаем в строку, где надо вводить имя группы героев
-            Pause(500);
+            Pause(1500);
 
             Random random = new Random();
             int temp;
             temp = random.Next(99999);        //случайное число от 0 до 9999
-            string sss = temp.ToString();     //число в строку
-            SendKeys.SendWait(sss);
-            Pause(500);
+            string randomNumber = temp.ToString();     //число в строку
+            SendKeys.SendWait(randomNumber);
+            Pause(1500);
             pointButtonSaveNewTeam.PressMouseL();
             Pause(2500);
 
@@ -830,20 +830,20 @@ namespace OpenGEWindows
         /// </summary>
         public void NewName()
         {
-            pointNewName.PressMouseL();
-            Pause(500);
+            pointNewName.PressMouse();   //тыкнули в строчку, где нужно вводить имя семьи
+            Pause(1500);
 
             Random random = new Random();
             int temp;
             temp = random.Next(9999);        //случайное число от 0 до 9999
-            string sss = temp.ToString();    //число в строку
+            string randomNumber = temp.ToString();    //число в строку
 
-            string sss2 = botwindow.getNameOfFamily();
-            SendKeys.SendWait(sss2 + sss);
+            string newFamily = botwindow.getNameOfFamily();
+            SendKeys.SendWait(newFamily + randomNumber);
 
-            Pause(500);
-            pointButtonCreateNewName.PressMouseL();
-            Pause(2000);
+            Pause(1500);
+            pointButtonCreateNewName.DoubleClickL();    //тыкнули в кнопку создания новой семьи
+            Pause(3000);
         }
 
         /// <summary>
@@ -853,54 +853,54 @@ namespace OpenGEWindows
         {
             //medik
             pointCreateHeroes.PressMouse();    //создали медика
-            Pause(500);
+            Pause(1500);
             pointButtonOkCreateHeroes.PressMouse(); //нажали Ок
-            Pause(500);
+            Pause(1500);
 
             //musketeer #1
             pointMenuSelectTypeHeroes.PressMouse();
-            Pause(500);
+            Pause(1500);
             pointSelectTypeHeroes.PressMouseL();
-            Pause(500);
+            Pause(1500);
             pointNameOfHeroes.PressMouseL();
-            Pause(500);
+            Pause(1500);
             SendKeys.SendWait("Musk1");
-            Pause(500);
+            Pause(1500);
             pointCreateHeroes.PressMouse();    //создали мушкетера
-            Pause(500);
+            Pause(1500);
             pointButtonOkCreateHeroes.PressMouse(); //нажали Ок
-            Pause(500);
+            Pause(1500);
 
             //musketeer #2
             pointMenuSelectTypeHeroes.PressMouse();
-            Pause(500);
+            Pause(1500);
             pointSelectTypeHeroes.PressMouseL();
-            Pause(500);
+            Pause(1500);
             pointNameOfHeroes.PressMouseL();
-            Pause(500);
+            Pause(1500);
             SendKeys.SendWait("Musk2");
-            Pause(500);
+            Pause(1500);
             pointCreateHeroes.PressMouse();    //создали мушкетера
-            Pause(500);
+            Pause(1500);
             pointButtonOkCreateHeroes.PressMouse(); //нажали Ок
-            Pause(500);
+            Pause(1500);
 
             //musketeer #3
 
             pointButtonCreateChar.PressMouseL();
-            Pause(500);
+            Pause(1500);
             pointMenuSelectTypeHeroes.PressMouse();
-            Pause(500);
+            Pause(1500);
             pointSelectTypeHeroes.PressMouseL();
-            Pause(500);
+            Pause(1500);
             pointNameOfHeroes.PressMouseL();
-            Pause(500);
+            Pause(1500);
             SendKeys.SendWait("Musk3");
-            Pause(500);
+            Pause(1500);
             pointCreateHeroes.PressMouse();    //создали мушкетера
-            Pause(500);
+            Pause(1500);
             pointButtonOkCreateHeroes.PressMouse(); //нажали Ок
-            Pause(500);
+            Pause(1500);
 
         }
 

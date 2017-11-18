@@ -483,8 +483,8 @@ namespace OpenGEWindows
             UIntPtr New_HWND_GE;
             New_HWND_GE = (UIntPtr)0;
 
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(350, 700, 8);
-            Pause(500);
+            //Click_Mouse_and_Keyboard.Mouse_Move_and_Click(350, 700, 8);
+            //Pause(500);
 
             while (New_HWND_GE == (UIntPtr)0)
             {
