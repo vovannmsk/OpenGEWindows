@@ -273,6 +273,8 @@ namespace OpenGEWindows
         };
 
         #region методы для работы кнопок по созданию новых ботов и переходу в кратер
+
+        #region методы для перемещения ботов в кратер
         /// <summary>
         /// перекладываем митридат в ячейку под цифрой 2
         /// </summary>
@@ -408,6 +410,10 @@ namespace OpenGEWindows
             Pause(1000);
         }
 
+#endregion
+
+        #region методы для создания новы ботов
+
         /// <summary>
         /// бежим к петэксперту
         /// </summary>
@@ -460,7 +466,7 @@ namespace OpenGEWindows
             //жмем Ок 3 раза
             for (int j = 1; j <= 3; j++)
             {
-                ButtonOkDialog.PressMouseL();           // Нажимаем на Ok в диалоге
+                ButtonOkDialog.PressMouse();           // Нажимаем на Ok в диалоге
                 Pause(1500);
             }
             Pause(2500);
@@ -475,7 +481,7 @@ namespace OpenGEWindows
             //жмем Ок 30 раз
             for (int j = 1; j <= 30; j++)
             {
-                ButtonOkDialog.PressMouseL();           // Нажимаем на Ok в диалоге
+                ButtonOkDialog.PressMouse();           // Нажимаем на Ok в диалоге
                 Pause(1500);
             }
         }
@@ -899,6 +905,10 @@ namespace OpenGEWindows
         }
 
         #endregion
+
+        #endregion
+
+        #region Методы для управления ботами
 
         /// <summary>
         /// нажимаем на кнопку логаут в казарме, тем самым покидаем казарму
@@ -1627,6 +1637,9 @@ namespace OpenGEWindows
         {
             return pointConnect.isColor();
         }
+
+        #endregion
+
 
         public abstract void TopMenu(int numberOfThePartitionMenu);
         public abstract void TopMenu(int numberOfThePartitionMenu, int punkt);

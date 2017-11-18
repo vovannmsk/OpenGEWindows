@@ -351,7 +351,7 @@ namespace OpenGEWindows
 
             if (punkt <= numberOfPunkt[numberOfThePartitionMenu - 1])
             {
-                int x = MenukoordX[numberOfThePartitionMenu - 1] + 20;
+                int x = MenukoordX[numberOfThePartitionMenu - 1] + 25;
                 int y = FirstPunktOfMenuKoordY[numberOfThePartitionMenu - 1] + 25 * (punkt - 1);
                 iPoint pointMenu = new Point(x - 5 + botwindow.getX(), y - 5 + botwindow.getY());
 

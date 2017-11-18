@@ -165,13 +165,13 @@ namespace States
         public void TestButton()
         {
             int xx, yy;
-            xx = 5;
-            yy = 5;
+            xx = 205;
+            yy = 205;
             uint color1;
             uint color2;
 
-            PointColor point1 = new PointColor(36 - 5 + xx, 56 - 5 + yy, 7800000, 5);
-            PointColor point2 = new PointColor(36 - 5 + xx, 57 - 5 + yy, 7800000, 5);
+            PointColor point1 = new PointColor(870 - 5 + xx, 47 - 5 + yy, 7800000, 5);
+            PointColor point2 = new PointColor(870 - 5 + xx, 48 - 5 + yy, 7800000, 5);
 
             color1 = point1.GetPixelColor();
             color2 = point2.GetPixelColor();

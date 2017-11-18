@@ -55,8 +55,8 @@ namespace OpenGEWindows
             //точки для проверки цвета
             this.pointOpenMap1 = new PointColor(795 - 5 + xx, 43 - 5 + yy, 16600000, 5);      //проверено
             this.pointOpenMap2 = new PointColor(795 - 5 + xx, 44 - 5 + yy, 16100000, 5);      //проверено
-            this.pointBookmark1 = new PointColor(850 - 5 + xx, 43 - 5 + yy, 15900000, 5);      //проверено
-            this.pointBookmark2 = new PointColor(851 - 5 + xx, 43 - 5 + yy, 16500000, 5);      //проверено
+            this.pointBookmark1 = new PointColor(870 - 5 + xx, 47 - 5 + yy, 16500000, 5);      //проверено
+            this.pointBookmark2 = new PointColor(870 - 5 + xx, 48 - 5 + yy, 16400000, 5);      //проверено
             this.pointOpenTownTeleport1 = new PointColor(100 - 5 + xx, 295 - 5 + yy, 13000000, 5);  //проверено
             this.pointOpenTownTeleport2 = new PointColor(100 - 5 + xx, 296 - 5 + yy, 13000000, 5);  //проверено
         }
