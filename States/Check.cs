@@ -110,9 +110,9 @@ namespace States
         /// поиск новых окон с игрой для кнопки "Найти окна Sing"
         /// </summary>
         /// <returns></returns>
-        public UIntPtr FindWindowSing()
+        public void FindWindowSing()
         {
-            return botwindow.FindWindow3();
+            botwindow.FindWindow3();
         }
 
         /// <summary>
@@ -158,6 +158,16 @@ namespace States
             server.OrangeButton();
 
         }
+
+        /// <summary>
+        /// определяет, нужно ли работать с этим окном (может быть отключено из-за профилактики на сервере)
+        /// </summary>
+        /// <returns></returns>
+        public bool isActive()
+        {
+            return server.isActive();
+        }
+
 
         /// <summary>
         /// тестовая кнопка

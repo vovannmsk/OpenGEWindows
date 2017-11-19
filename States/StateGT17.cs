@@ -113,7 +113,9 @@ namespace States
             }
             else
             {
-                return this;
+                if (server.isKillHero())                  // если убиты один или несколько персов   
+                { return new StateGT28(botwindow); }     //последнее состояние движка, чтобы движок сразу тормознулся}
+                else return this;
             }
         }
 

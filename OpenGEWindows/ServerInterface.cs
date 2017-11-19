@@ -235,7 +235,7 @@ namespace OpenGEWindows
 
         protected int sdvigY;
         protected String pathClient;
-        protected int activeWindow;
+//        protected int activeWindow;
 
         protected struct Product 
         { 
@@ -1246,23 +1246,6 @@ namespace OpenGEWindows
             Pause(2500);
         }
 
-        /// <summary>
-        /// Определяет, надо ли грузить данное окно с ботом
-        /// </summary>
-        /// <returns> true означает, что это окно (данный бот) должно быть активно и его надо грузить </returns>
-        public bool isActive()
-        {
-            bool result = false;
-            if (getActiveWindow() == 1) result = true;
-            return result;
-        }
-
-        /// <summary>
-        /// геттер
-        /// </summary>
-        /// <returns></returns>
-        public int getActiveWindow()
-        { return this.activeWindow; }
 
         /// <summary>
         /// геттер
@@ -1647,7 +1630,7 @@ namespace OpenGEWindows
         public abstract uint colorTest();
         public abstract void TeleportToTownAltW();
         public abstract void OrangeButton();
-
+        public abstract bool isActive();
 
     }
 }

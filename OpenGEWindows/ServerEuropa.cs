@@ -22,7 +22,7 @@ namespace OpenGEWindows
             TownFactory townFactory = new EuropaTownFactory(botwindow);                      // здесь выбирается конкретная реализация для фабрики Town
             this.town = townFactory.createTown();                                            // выбирается город с помощью фабрики
             this.pathClient = path_Client();
-            this.activeWindow = Europa_active();
+//            this.activeWindow = Europa_active();
             this.pointIsSale1 = new PointColor(903 + xx, 674 + yy, 7590000, 4);          
             this.pointIsSale2 = new PointColor(904 + xx, 674 + yy, 7850000, 4);
             this.pointIsSale21 = new PointColor(840 - 5 + xx, 665 - 5 + yy, 7720000, 4); 
@@ -179,7 +179,7 @@ namespace OpenGEWindows
         /// возвращает параметр, прочитанный из файла
         /// </summary>
         /// <returns></returns>
-        private int Europa_active()
+        private int EuropaActive()
         { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Europa_active.txt")); }
 
         /// <summary>
@@ -326,6 +326,17 @@ namespace OpenGEWindows
             {
                 botwindow.EnterLoginAndPasword();
             }
+        }
+
+        /// <summary>
+        /// Определяет, надо ли грузить данное окно с ботом
+        /// </summary>
+        /// <returns> true означает, что это окно (данный бот) должно быть активно и его надо грузить </returns>
+        public override bool isActive()
+        {
+            bool result = false;
+            if (EuropaActive() == 1) result = true;
+            return result;
         }
 
     }

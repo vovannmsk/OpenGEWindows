@@ -31,7 +31,7 @@ namespace OpenGEWindows
             this.townFactory = new SingTownFactory(botwindow);                                     // здесь выбирается конкретная реализация для фабрики Town
             this.town = townFactory.createTown();
             this.pathClient = path_Client();
-            this.activeWindow = Sing_active();
+//            this.activeWindow = Sing_active();
             this.pointIsSale1 = new PointColor(907 + xx, 675 + yy, 7200000, 5);
             this.pointIsSale2 = new PointColor(907 + xx, 676 + yy, 7800000, 5);
             this.pointIsSale21 = new PointColor(841 - 5 + xx, 665 - 5 + yy, 7900000, 5);
@@ -251,7 +251,7 @@ namespace OpenGEWindows
         /// считываем параметр, отвечающий за то, надо ли загружать окна на сервере сингапур
         /// </summary>
         /// <returns></returns>
-        private int Sing_active()
+        private int SingActive()
         { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Singapoore_active.txt")); }
 
         /// <summary>
@@ -393,6 +393,18 @@ namespace OpenGEWindows
             //    botwindow.EnterLoginAndPasword();
             //}
         }
+
+        /// <summary>
+        /// Определяет, надо ли грузить данное окно с ботом
+        /// </summary>
+        /// <returns> true означает, что это окно (данный бот) должно быть активно и его надо грузить </returns>
+        public override bool isActive()
+        {
+            bool result = false;
+            if (SingActive() == 1) result = true;
+            return result;
+        }
+
 
     }
 }

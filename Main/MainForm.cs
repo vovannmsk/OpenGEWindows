@@ -14,7 +14,7 @@ namespace Main
         public const int MAX_NUMBER_OF_ACCOUNTS = 20;
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
         
-        public UIntPtr[] aa = new UIntPtr[21];   //используется в методе "Найти окна"
+        public UIntPtr[] arrayOfHwnd = new UIntPtr[21];   //используется в методе "Найти окна"
 
         public MainForm()
         {
@@ -23,7 +23,7 @@ namespace Main
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "18-11-2017";
+        public static String DataVersion = "20-11-2017";
         public static int numberOfAccounts = KolvoAkk();
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Main
 
             for (int i = 0; i <= 20; i++)
             {
-                aa[i] = (UIntPtr)0;
+                arrayOfHwnd[i] = (UIntPtr)0;
             }
 
         }
@@ -79,38 +79,24 @@ namespace Main
         {
             for (int j = 1; j <= 1; j++)                //на европе и америке может быть только одно окно
             {
-                bool fff = true;
                 Check check = new Check(j);
 
-                while (fff)
+                if (check.isActive())
                 {
-                    UIntPtr hwnd = check.FindWindow();
-                    check.Pause(500);
-                    if (!isfuncArray(hwnd))
+                    bool result = true;
+                    while (result)
                     {
-                        aa[j] = hwnd;
-                        fff = false;
+                        UIntPtr hwnd = check.FindWindow();
+                        check.Pause(500);
+                        
+                        if (Array.IndexOf(arrayOfHwnd,hwnd) == -1)     //если нет в массиве такого hwnd
+                        {
+                            arrayOfHwnd[j] = hwnd;           //добавляем в массив
+                            result = false;
+                        }
                     }
-                    check.Pause(500);
                 }
             }
-        }
-
-
-        /// <summary>
-        /// возвращает true, если в массиве есть искомое число ddd
-        /// </summary>
-        /// <param name="ddd"></param>
-        /// <returns></returns>
-        private bool isfuncArray(UIntPtr ddd)                                                                                  
-        { 
-            bool fff = false;
-            for (int j = 1; j <= numberOfAccounts; j++)
-            { 
-                if (aa[j] == ddd) fff = true;
-            }
-
-            return fff;
         }
 
         #endregion
@@ -134,19 +120,11 @@ namespace Main
             int begin = BeginSing();
             for (int j = begin; j <= numberOfAccounts; j++)
             {
-                //bool fff = true;
                 Check check = new Check(j);
-                //while (fff)
-                //{
-                    UIntPtr ddd = check.FindWindowSing();
-                    //check.Pause(500);
-                    //if (!isfuncArray(ddd))
-                    //{
-                    //    aa[j] = ddd;
-                    //    fff = false;
-                    //}
-                    check.Pause(500);
-                //}
+                if (check.isActive())
+                {
+                    check.FindWindowSing();
+                }
             }
         }
 
@@ -177,8 +155,8 @@ namespace Main
             for (int j = 1; j <= numberOfAccounts; j++)
             {
                 Check check = new Check(j);
-                check.OrangeButton();
-
+                if (check.isActive())
+                    check.OrangeButton();
             }   
         }
 
@@ -209,8 +187,12 @@ namespace Main
             for (int j = 1; j <= numberOfAccounts; j++)
 //            for (int j = 2; j <= 2; j++)
             {
-                DriversOfState driver = new DriversOfState(j);
-                driver.StateToCrater();
+                Check check = new Check(j);
+                if (check.isActive())
+                {
+                    DriversOfState driver = new DriversOfState(j);
+                    driver.StateToCrater();
+                }
             }
         }
 
@@ -241,8 +223,12 @@ namespace Main
             for (int j = 1; j <= numberOfAccounts; j++)
 //            for (int j = 2; j <= 2; j++)
             {
-                DriversOfState driver = new DriversOfState(j);
-                driver.StateNewAcc();
+                Check check = new Check(j);
+                if (check.isActive())
+                {
+                    DriversOfState driver = new DriversOfState(j);
+                    driver.StateNewAcc();
+                }
             }
         }
 
@@ -270,8 +256,12 @@ namespace Main
         {
             for (int j = 1; j <= numberOfAccounts; j++)
             {
-                DriversOfState driver = new DriversOfState(j);
-                driver.StateSelling();             // продаёт бота, который стоит в данный момент в магазине (через движок состояний). окно должно быть активным
+                Check check = new Check(j);
+                if (check.isActive())
+                {
+                    DriversOfState driver = new DriversOfState(j);
+                    driver.StateSelling();             // продаёт бота, который стоит в данный момент в магазине (через движок состояний). окно должно быть активным
+                }
             }
         }
         
@@ -320,22 +310,20 @@ namespace Main
         private void funcGreen()
         {
             for (int j = 1; j <= numberOfAccounts; j++)
-//            for (int j = 1; j <= 1; j++)
             {
                 Check check = new Check(j);
-                check.checkForProblems();
+                if (check.isActive())  check.checkForProblems();
             }
             for (int j = 1; j <= numberOfAccounts; j++)
-//            for (int j = 1; j <= 1; j++)
             {
                 Check check = new Check(j);
-                check.ReOpenWindow();
+                if (check.isActive())   check.ReOpenWindow();
             }   
         }
 
         #endregion
 
-        #region Blue button
+        #region Blue button  (запускает по таймеру проверку состояния ботов)
 
         /// <summary>
         /// Процедура периодически (раз в минуту) запускает проверку (зеленую кнопку)
@@ -382,7 +370,10 @@ namespace Main
         {
             myTimer.Stop();
 
-            funcGreen();
+            //funcGreen();
+            Thread myThreadGreen = new Thread(funcGreen);    //запускаем новый процесс
+            myThreadGreen.Start();
+
 
             myTimer.Enabled = true;
         }
@@ -414,14 +405,19 @@ namespace Main
         {
             for (int j = 1; j <= numberOfAccounts; j++)
             {
-                DriversOfState drive = new DriversOfState(j);
-                drive.StateGotoTradeAndWork();
+                Check check = new Check(j);
+                if (check.isActive())
+                {
+                    DriversOfState drive = new DriversOfState(j);
+                    drive.StateGotoTradeAndWork();
+                }
             }
         }
         
-
-
         #endregion
+
+
+        #region дополнительные методы
 
         /// <summary>
         /// возвращаеи количество аккаунтов
@@ -441,7 +437,7 @@ namespace Main
             return int.Parse(File.ReadAllText(KatalogMyProgram + "\\началоАкковСинга.txt"));
         }
 
-
+        #endregion
 
     }// END class MainForm : Form
 }// END namespace OpenGEWindows

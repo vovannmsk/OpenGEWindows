@@ -34,11 +34,8 @@ namespace States
         /// </summary>
         public void StateGotoTrade()
         {
-            if (botwindow.getserver().isActive())                                 //проверяем, нужно ли грузить окно
-            {
-                botwindow.ReOpenWindow();
-                StateDriverRun(new StateGT01(botwindow), new StateGT14(botwindow));
-            }
+            botwindow.ReOpenWindow();
+            StateDriverRun(new StateGT01(botwindow), new StateGT14(botwindow));
         }
 
         /// <summary>
@@ -46,10 +43,7 @@ namespace States
         /// </summary>
         public void StateGotoWork()
         {
-            if (botwindow.getserver().isActive())                                 //проверяем, нужно ли грузить окно
-            {
-                StateDriverRun(new StateGT14(botwindow), new StateGT01(botwindow)); //
-            }
+            StateDriverRun(new StateGT14(botwindow), new StateGT01(botwindow)); //
         }
 
         /// <summary>
@@ -57,21 +51,15 @@ namespace States
         /// </summary>
         public void StateRecovery()
         {
-            if (botwindow.getserver().isActive())                                 //проверяем, нужно ли грузить окно
-            {
-                StateDriverRun(new StateGT15(botwindow), new StateGT01(botwindow));
-            }
+            StateDriverRun(new StateGT15(botwindow), new StateGT01(botwindow));
         }
 
         /// <summary>
-        /// перевод из состояния 14 (нет окна) в состояние 15 (логаут)                 // оранжевая кнопка
+        /// перевод из состояния 14 (нет окна) в состояние 15 (логаут)              
         /// </summary>
         public void StateReOpen()
         {
-            if (botwindow.getserver().isActive())                                 //проверяем, нужно ли грузить окно
-            {
-                StateDriverRun(new StateGT14(botwindow), new StateGT15(botwindow));
-            }
+            StateDriverRun(new StateGT14(botwindow), new StateGT15(botwindow));
         }
 
         /// <summary>
@@ -79,7 +67,7 @@ namespace States
         /// </summary>
         public void StateSelling()
         {
-            if ((botwindow.getserver().isActive()) && (botwindow.getserver().isSale()))                                 //проверяем, нужно ли грузить окно и находимся ли в магазине
+            if (botwindow.getserver().isSale())                                 //проверяем, находимся ли в магазине
                 StateDriverRun(new StateGT09(botwindow), new StateGT12(botwindow));
         }
 
@@ -105,10 +93,7 @@ namespace States
         /// </summary>
         public void StateExitFromShop()
         {
-            if (botwindow.getserver().isActive())                                 //проверяем, нужно ли грузить окно
-            {
-                StateDriverRun(new StateGT10(botwindow), new StateGT14(botwindow));
-            }
+            StateDriverRun(new StateGT10(botwindow), new StateGT14(botwindow));
         }
 
         /// <summary>
@@ -116,10 +101,7 @@ namespace States
         /// </summary>
         public void StateExitFromShop2()
         {
-            if (botwindow.getserver().isActive())                                 //проверяем, нужно ли грузить окно
-            {
-                StateDriverRun(new StateGT09(botwindow), new StateGT14(botwindow));
-            }
+            StateDriverRun(new StateGT09(botwindow), new StateGT14(botwindow));
         }
 
         /// <summary>
@@ -127,10 +109,7 @@ namespace States
         /// </summary>
         public void StateExitFromTown()
         {
-            if (botwindow.getserver().isActive())                                 //проверяем, нужно ли грузить окно
-            {
-                StateDriverRun(new StateGT12(botwindow), new StateGT14(botwindow));
-            }
+            StateDriverRun(new StateGT12(botwindow), new StateGT14(botwindow));
         }
 
         /// <summary>
