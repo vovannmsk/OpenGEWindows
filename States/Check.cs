@@ -83,8 +83,8 @@ namespace States
                                         {
                                             if (server.isSale())                               // если застряли в магазине на странице входа
                                             { driver.StateExitFromShop2(); }
-                                            else
-                                            { botwindow.PressMitridat(); }
+                                            //else
+                                            //{ botwindow.PressMitridat(); }
 
                                         } //else isTown2()
                                     } //else isBoxOverflow()
