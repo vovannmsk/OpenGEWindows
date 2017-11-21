@@ -1,0 +1,17 @@
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Debug\Main.exe.config
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Debug\Main.exe
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Debug\Main.pdb
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Debug\States.dll
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Debug\OpenGEWindows.dll
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Debug\GEBot.Data.dll
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Debug\EntityFramework.dll
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Debug\States.pdb
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Debug\OpenGEWindows.pdb
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Debug\GEBot.Data.pdb
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\bin\Debug\EntityFramework.xml
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\obj\Debug\Main.csprojResolveAssemblyReference.cache
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\obj\Debug\Main.MainForm.resources
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\obj\Debug\Main.Properties.Resources.resources
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\obj\Debug\Main.csproj.GenerateResource.Cache
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\obj\Debug\Main.exe
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\Main\obj\Debug\Main.pdb

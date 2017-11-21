@@ -18,6 +18,9 @@ namespace OpenGEWindows
     public class ServerAmerica : ServerInterface 
     {
         [DllImport("user32.dll")]
+        private static extern bool ShowWindow(UIntPtr hWnd, int nCmdShow);
+
+        [DllImport("user32.dll")]
         private static extern UIntPtr FindWindow(String ClassName, String WindowName);  //ищет окно с заданным именем и классом
 
         [DllImport("user32.dll")]
@@ -421,7 +424,9 @@ namespace OpenGEWindows
 
             botwindow.setHwnd(HWND);
 
-            SetWindowPos(HWND, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+//            SetWindowPos(HWND, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+            ShowWindow(HWND, 2);   //скрыть окно в трей
+
             Pause(500);
 
 

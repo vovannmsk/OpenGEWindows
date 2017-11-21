@@ -18,6 +18,9 @@ namespace OpenGEWindows
     public class ServerSing : ServerInterface
     {
         [DllImport("user32.dll")]
+        private static extern bool ShowWindow(UIntPtr hWnd, int nCmdShow);
+
+        [DllImport("user32.dll")]
         private static extern UIntPtr FindWindow(String ClassName, String WindowName);  //ищет окно с заданным именем и классом
 
         [DllImport("user32.dll")]
@@ -276,28 +279,28 @@ namespace OpenGEWindows
 
             //для песочницы
             int[] y = { 0, 1, 5, 6, 7, 8, 9, 10, 11, 12, 2, 3, 4 };
-            iPoint pointSteam = new Point(1862 - 5 + xx, 862 - 5 + yy);
-            iPoint pointSandboxie = new Point(1661 - 5 + xx, SandboxieY() - 5 + yy);
-            iPoint pointListSandboxie = new Point(876 - 5 + xx, 455 - 5 + y[botwindow.getNumberWindow()] * 13 + yy);   //у первой песочницы сдвиг 13 от контрольной точки
-            iPoint pointOkSafeIP = new Point(966 - 5 + xx, 582 - 5 + yy);
-            iPoint pointOkReklamaSteam = new Point(1251 - 5 + xx, 894 - 5 + yy);
-            iPoint pointRunGE = new Point(1263 - 5 + xx, 584 - 5 + yy);
-            iPoint pointCloseSteam = new Point(1897 - 5 + xx, 397 - 5 + yy);
+            iPoint pointSteam = new Point(1862, 862);
+            iPoint pointSandboxie = new Point(1661, SandboxieY());
+            iPoint pointListSandboxie = new Point(876, 455 + y[botwindow.getNumberWindow()] * 13);   //у первой песочницы сдвиг 13 от контрольной точки
+            iPoint pointOkSafeIP = new Point(966, 582);
+            iPoint pointOkReklamaSteam = new Point(1251, 894);
+            iPoint pointRunGE = new Point(1263, 584);
+            iPoint pointCloseSteam = new Point(1897, 397);
 
             pointSteam.PressMouseR();   //тыкаем правой в ярлык стим
-            Pause(500);
+            Pause(1500);
 
             pointSandboxie.PressMouseL(); //тыкаем в строку "запустить в песочнице"
             Pause(2000);
 
             pointListSandboxie.DoubleClickL();  //тыкаем дважды в строчку с номером песочницы
-            Pause(20000);
+            Pause(30000);
 
             pointOkSafeIP.PressMouseL();       //тыкаем в Ок и закрываем сообщение об ошибке
             Pause(15000);
 
             pointOkReklamaSteam.PressMouseL();   //закрываем рекламу стим
-            Pause(2000);
+            Pause(5000);
 
             pointRunGE.PressMouseL();            //нажимаем на кнопку запуска ГЭ
             Pause(1000);
@@ -473,7 +476,8 @@ namespace OpenGEWindows
 
             botwindow.setHwnd(HWND);
 
-            SetWindowPos(HWND, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+            //SetWindowPos(HWND, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+            ShowWindow(HWND, 2);   //скрыть окно в трей
             Pause(500);
 
             #region старый вариант метода

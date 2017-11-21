@@ -40,20 +40,11 @@ C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка эк�
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.TrustInfo.xml
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.exe.manifest
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.application
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.exe.config
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.exe
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.pdb
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.csprojResolveAssemblyReference.cache
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.MainForm.resources
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.Properties.Resources.resources
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.csproj.GenerateResource.Cache
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.exe.manifest
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.application
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.exe
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.pdb
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.TrustInfo.xml
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.exe.manifest
-C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.application
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\EntityFramework.dll
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\EntityFramework.xml
@@ -61,3 +52,6 @@ C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка но�
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\Microsoft.QualityTools.Testing.Fakes.dll
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\GEBot.Data.dll
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\GEBot.Data.pdb
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.dll.config
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Debug\OpenGEWindows.dll
+C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Debug\OpenGEWindows.dll

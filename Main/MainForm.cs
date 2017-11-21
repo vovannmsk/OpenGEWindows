@@ -446,7 +446,9 @@ namespace Main
             {
                 Check check = new Check(j);
                 if (check.isActive()) check.OpenWindow();
+                check.Pause(5000);
             }
+            
             for (int j = 1; j <= numberOfAccounts; j++)
             {
                 Check check = new Check(j);

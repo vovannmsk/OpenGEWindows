@@ -93,7 +93,7 @@
             this.button_StandUp.Name = "button_StandUp";
             this.button_StandUp.Size = new System.Drawing.Size(170, 35);
             this.button_StandUp.TabIndex = 20;
-            this.button_StandUp.Text = "Восстановить окна после вылета. Универсальный помощник";
+            this.button_StandUp.Text = "Исправление проблем с ботами";
             this.button_StandUp.UseVisualStyleBackColor = false;
             this.button_StandUp.Click += new System.EventHandler(this.button_StandUp_Click);
             // 
@@ -196,7 +196,6 @@
             this.Location = new System.Drawing.Point(1650, 740);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Америка  V 6.3";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);

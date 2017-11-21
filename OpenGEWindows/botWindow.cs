@@ -752,7 +752,7 @@ namespace OpenGEWindows
                 //PressMouseL(600, 530);
                 result = false;
             }
-            return true;
+            return result;
 
             #endregion
 
