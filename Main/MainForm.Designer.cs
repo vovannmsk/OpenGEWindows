@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.buttonReOpenWindowGE = new System.Windows.Forms.Button();
             this.labelInformation = new System.Windows.Forms.Label();
             this.buttonSuperSell = new System.Windows.Forms.Button();
@@ -47,7 +48,7 @@
             // buttonReOpenWindowGE
             // 
             this.buttonReOpenWindowGE.BackColor = System.Drawing.Color.Orange;
-            this.buttonReOpenWindowGE.Location = new System.Drawing.Point(9, 53);
+            this.buttonReOpenWindowGE.Location = new System.Drawing.Point(10, 50);
             this.buttonReOpenWindowGE.Name = "buttonReOpenWindowGE";
             this.buttonReOpenWindowGE.Size = new System.Drawing.Size(170, 35);
             this.buttonReOpenWindowGE.TabIndex = 1;
@@ -68,7 +69,7 @@
             // buttonSuperSell
             // 
             this.buttonSuperSell.BackColor = System.Drawing.Color.Aqua;
-            this.buttonSuperSell.Location = new System.Drawing.Point(9, 94);
+            this.buttonSuperSell.Location = new System.Drawing.Point(10, 90);
             this.buttonSuperSell.Name = "buttonSuperSell";
             this.buttonSuperSell.Size = new System.Drawing.Size(170, 35);
             this.buttonSuperSell.TabIndex = 3;
@@ -89,18 +90,18 @@
             // button_StandUp
             // 
             this.button_StandUp.BackColor = System.Drawing.Color.PaleGreen;
-            this.button_StandUp.Location = new System.Drawing.Point(192, 53);
+            this.button_StandUp.Location = new System.Drawing.Point(190, 50);
             this.button_StandUp.Name = "button_StandUp";
             this.button_StandUp.Size = new System.Drawing.Size(170, 35);
             this.button_StandUp.TabIndex = 20;
-            this.button_StandUp.Text = "Исправление проблем с ботами";
+            this.button_StandUp.Text = "Решение проблем с ботами";
             this.button_StandUp.UseVisualStyleBackColor = false;
             this.button_StandUp.Click += new System.EventHandler(this.button_StandUp_Click);
             // 
             // buttonWarning
             // 
             this.buttonWarning.BackColor = System.Drawing.Color.SkyBlue;
-            this.buttonWarning.Location = new System.Drawing.Point(192, 12);
+            this.buttonWarning.Location = new System.Drawing.Point(190, 10);
             this.buttonWarning.Name = "buttonWarning";
             this.buttonWarning.Size = new System.Drawing.Size(170, 35);
             this.buttonWarning.TabIndex = 22;
@@ -110,7 +111,7 @@
             // 
             // buttonGotoTradeTest
             // 
-            this.buttonGotoTradeTest.Location = new System.Drawing.Point(192, 94);
+            this.buttonGotoTradeTest.Location = new System.Drawing.Point(190, 90);
             this.buttonGotoTradeTest.Name = "buttonGotoTradeTest";
             this.buttonGotoTradeTest.Size = new System.Drawing.Size(170, 35);
             this.buttonGotoTradeTest.TabIndex = 45;
@@ -121,7 +122,7 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.LightCoral;
-            this.button5.Location = new System.Drawing.Point(192, 137);
+            this.button5.Location = new System.Drawing.Point(190, 130);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(170, 74);
             this.button5.TabIndex = 48;
@@ -132,7 +133,7 @@
             // buttonNewAcc
             // 
             this.buttonNewAcc.BackColor = System.Drawing.Color.Pink;
-            this.buttonNewAcc.Location = new System.Drawing.Point(9, 137);
+            this.buttonNewAcc.Location = new System.Drawing.Point(10, 130);
             this.buttonNewAcc.Name = "buttonNewAcc";
             this.buttonNewAcc.Size = new System.Drawing.Size(170, 35);
             this.buttonNewAcc.TabIndex = 49;
@@ -143,7 +144,7 @@
             // RunToCrater
             // 
             this.RunToCrater.BackColor = System.Drawing.Color.Lime;
-            this.RunToCrater.Location = new System.Drawing.Point(9, 178);
+            this.RunToCrater.Location = new System.Drawing.Point(10, 170);
             this.RunToCrater.Name = "RunToCrater";
             this.RunToCrater.Size = new System.Drawing.Size(170, 35);
             this.RunToCrater.TabIndex = 50;
@@ -165,7 +166,7 @@
             // ButtonOpenWindow
             // 
             this.ButtonOpenWindow.BackColor = System.Drawing.Color.Gold;
-            this.ButtonOpenWindow.Location = new System.Drawing.Point(12, 12);
+            this.ButtonOpenWindow.Location = new System.Drawing.Point(10, 10);
             this.ButtonOpenWindow.Name = "ButtonOpenWindow";
             this.ButtonOpenWindow.Size = new System.Drawing.Size(170, 35);
             this.ButtonOpenWindow.TabIndex = 52;
@@ -178,7 +179,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(374, 223);
+            this.ClientSize = new System.Drawing.Size(369, 214);
             this.Controls.Add(this.ButtonOpenWindow);
             this.Controls.Add(this.findWindowSing);
             this.Controls.Add(this.RunToCrater);
@@ -192,6 +193,7 @@
             this.Controls.Add(this.labelInformation);
             this.Controls.Add(this.buttonReOpenWindowGE);
             this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Location = new System.Drawing.Point(1650, 740);
             this.Name = "MainForm";

@@ -47,41 +47,8 @@ namespace OpenGEWindows
         private int counterMitridat;
         private System.DateTime timeMitridat = System.DateTime.Now;
 
-        private iPoint pointArrowUp;
-        private iPoint pointArrowUp2; 
-        private iPoint pointButtonBUY;
         private iPoint pointButtonClose;
-        private iPoint pointButtonSell;
-        private iPoint pointBookmarkSell;
-        private iPoint pointNewPlace;
-        private iPoint pointChoiceOfChannel;
-        private iPoint pointButtonSelectChannel;
         private iPoint pointOneMode;
-        private iPoint pointBattleMode;
-        private iPoint pointPassword;
-        private iPoint pointMap;
-        private iPoint pointTrader;
-        private iPoint pointPersonalTrade;
-        private iPoint pointFeso1;
-        private iPoint pointFesoMove1;
-        private iPoint pointFesoMove2;
-        private iPoint pointFesoOk;
-        private iPoint pointFesoOk2;
-        private iPoint pointFesoObmen;
-        private iPoint pointFirstHeroL;
-        private iPoint pointFirstHeroR;
-        private iPoint pointSecondHeroL;
-        private iPoint pointSecondHeroR;
-        private iPoint pointThirdHeroL;
-        private iPoint pointThirdHeroR;
-        private iPoint pointMitridat;
-        private iPoint pointEnterBattleMode;
-        private iPoint pointToMoveMouse;
-        private iPointColor pointCommandMode;
-        private iPointColor point5050;
-
-        private iPoint pointButtonOk; 
-        private iPoint pointButtonOk2;
 
         enum TypeLoadUserData {txt, db}
         
@@ -137,44 +104,8 @@ namespace OpenGEWindows
             this.town = server.getTown();
 
             // точки для тыканья. универсально для всех серверов
-            this.pointArrowUp = new Point(375 + databot.x, 327 + databot.y);   //375, 327);   //шаг = 27 пикселей на одну строчку магазина (на случай если добавят новые строчки)
-            this.pointButtonBUY = new Point(725 + databot.x, 620 + databot.y);   //725, 620);
             this.pointButtonClose = new Point(848 + databot.x, 620 + databot.y);   //(848, 620);
-            this.pointButtonSell = new Point(725 + databot.x, 620 + databot.y);   //725, 620);
-            this.pointArrowUp2 = new Point(375 + databot.x, 246 + databot.y);   //375, 246);
-            this.pointBookmarkSell = new Point(226 + databot.x, 196 + databot.y);     //226, 196);
-            this.pointNewPlace = new Point(85 + databot.x, 670 + databot.y); //85, 670);
-            this.pointButtonSelectChannel = new Point(125 + databot.x, 705 + databot.y); //   125, 705);
             this.pointOneMode = new Point(123 - 5 + databot.x, 489 - 5 + databot.y);    // 118, 484
-            this.pointBattleMode = new Point(190 - 5 + databot.x, 530 - 5 + databot.y);    //  185, 525
-            this.pointPassword = new Point(510 - 5 + databot.x, 355 - 5 + databot.y);    //  505, 350
-            this.pointMap = new Point(327 - 5 + databot.x, 355 - 5 + databot.y);    //  322, 350
-            this.pointTrader = new Point(382 - 5 + databot.x, 262 - 5 + databot.y);    // 377, 257
-            this.pointPersonalTrade = new Point(436 - 5 + databot.x, 280 - 5 + databot.y);    // 431, 275
-            this.pointFeso1 = new Point(971 - 5 + databot.x, 154 - 5 + databot.y);    // 1666 - 700, 329 - 180
-            this.pointFesoMove1 = new Point(801 - 5 + databot.x, 186 - 5 + databot.y);    // 1496 - 700, 361 - 180
-            this.pointFesoMove2 = new Point(395 - 5 + databot.x, 361 - 5 + databot.y);    // 1090 - 700, 536 - 180
-            this.pointFesoOk = new Point(610 - 5 + databot.x, 398 - 5 + databot.y);    // 1305 - 700, 573 - 180
-            this.pointFesoOk2 = new Point(440 - 5 + databot.x, 502 - 5 + databot.y);    // 1135 - 700, 677 - 180
-            this.pointFesoObmen = new Point(521 - 5 + databot.x, 502 - 5 + databot.y);    // 1216 - 700, 677 - 180
-            this.pointFirstHeroL = new Point(187 - 5 + databot.x, 640 - 5 + databot.y);    // 182, 635
-            this.pointFirstHeroR = new Point(187 - 5 + databot.x, 669 - 5 + databot.y);    // 182, 664
-            this.pointSecondHeroL = new Point(425 - 5 + databot.x, 640 - 5 + databot.y);    // 420, 635
-            this.pointSecondHeroR = new Point(425 - 5 + databot.x, 669 - 5 + databot.y);    // 420, 664
-            this.pointThirdHeroL = new Point(675 - 5 + databot.x, 640 - 5 + databot.y);    // 670, 635
-            this.pointThirdHeroR = new Point(675 - 5 + databot.x, 669 - 5 + databot.y);    // 670, 664
-            this.pointMitridat = new Point(38 - 5 + databot.x, 486 - 5 + databot.y);    // 33, 481
-            this.pointEnterBattleMode = new Point(205 - 5 + databot.x, 205 - 5 + databot.y);    // 200, 200
-            this.pointToMoveMouse = new Point(205 - 5 + databot.x, 575 - 5 + databot.y);    //
-
-            //точки для проверки цвета
-            this.pointCommandMode = new PointColor(123 - 5 + databot.x, 479 - 5 + databot.y, 8000000, 6);
-
-            point5050 = new PointColor(50 - 5 + databot.x, 50 - 5 + databot.y, 7800000, 5);  //запоминаем цвет в координатах 50, 50 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
-            pointButtonOk = new Point(525 - 5 + databot.x, 410 - 5 + databot.y);    // кнопка коннект в логауте
-            pointButtonOk2 = new Point(525 - 5 + databot.x, 445 - 5 + databot.y);    // кнопка коннект в логауте
-
-            
         }
 
         #region геттеры и сеттеры
@@ -423,6 +354,7 @@ namespace OpenGEWindows
         /// </summary>
         public void ToMoveMouse()
         {
+            iPoint pointToMoveMouse = new Point(205 - 5 + databot.x, 575 - 5 + databot.y);    //
             pointToMoveMouse.PressMouseR();
         }
 
@@ -574,6 +506,7 @@ namespace OpenGEWindows
         public void EnterLoginAndPasword()
 
         {
+            iPoint pointPassword = new Point(510 - 5 + databot.x, 355 - 5 + databot.y);    //  505, 350
             // окно открылось, надо вставить логин и пароль
             pointPassword.PressMouseL();   //Кликаю в строчку с паролем
             //PressMouseL(505, 350);       //Кликаю в строчку с паролем
@@ -605,7 +538,6 @@ namespace OpenGEWindows
         private void PressConnectButton()
         {
             iPoint pointButtonConnect = new Point(595 - 5 + databot.x, 485 - 5 + databot.y);    // кнопка коннект в логауте (экран еще до казармы)
-
             pointButtonConnect.PressMouse();   // Кликаю в Connect
             Pause(500);
         }
@@ -615,9 +547,8 @@ namespace OpenGEWindows
         /// </summary>
         private void BugFixes()
         {
-//            iPoint pointButtonOk = new Point(525 - 5 + databot.x, 425 - 5 + databot.y);    // кнопка коннект в логауте старый вариант
-            iPoint pointButtonOk  = new Point(525 - 5 + databot.x, 410 - 5 + databot.y);    // кнопка коннект в логауте
-            iPoint pointButtonOk2 = new Point(525 - 5 + databot.x, 445 - 5 + databot.y);    // кнопка коннект в логауте
+            iPoint pointButtonOk  = new Point(525 - 5 + databot.x, 410 - 5 + databot.y);    // кнопка Ok в логауте
+            iPoint pointButtonOk2 = new Point(525 - 5 + databot.x, 445 - 5 + databot.y);    // кнопка Ok в логауте
 
             pointButtonOk.PressMouse();   //кликаю в кнопку  "ОК"
             Pause(500);
@@ -659,6 +590,7 @@ namespace OpenGEWindows
         /// <returns></returns>
         public bool Connect()    // возвращает true, если успешно вошли в казарму
         {
+            
             #region новый вариант
             //bool result = true;
             //const int MAX_NUMBER_ITERATION = 4;    //максимальное количество итераций
@@ -691,7 +623,10 @@ namespace OpenGEWindows
             #endregion
 
             #region старый вариант
-            
+
+            iPointColor point5050 = new PointColor(50 - 5 + databot.x, 50 - 5 + databot.y, 7800000, 5);  //запоминаем цвет в координатах 50, 50 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
+            iPoint pointButtonOk = new Point(525 - 5 + databot.x, 410 - 5 + databot.y);    // кнопка Ok в логауте
+            iPoint pointButtonOk2 = new Point(525 - 5 + databot.x, 445 - 5 + databot.y);    // кнопка Ok в логауте
 
             uint Tek_Color1;
             uint Test_Color = 0;
@@ -775,6 +710,7 @@ namespace OpenGEWindows
         /// </summary>
         public void GoToChangePlaceForBot()
         {
+            iPoint pointMap = new Point(327 - 5 + databot.x, 355 - 5 + databot.y);    //  322, 350
             while (!server.isTown())         //ожидание загрузки города (передача песо торговцу)
             { Pause(500); }
 
@@ -808,6 +744,8 @@ namespace OpenGEWindows
         /// </summary>
         public void ChangeVis1()
         {
+            iPoint pointTrader = new Point(382 - 5 + databot.x, 262 - 5 + databot.y);    // 377, 257
+            iPoint pointPersonalTrade = new Point(436 - 5 + databot.x, 280 - 5 + databot.y);    // 431, 275
             //идем на место передачи песо
             GoToChangePlaceForBot();
 
@@ -830,6 +768,12 @@ namespace OpenGEWindows
         /// </summary>
         public void ChangeVis2()
         {
+            iPoint pointFeso1 = new Point(971 - 5 + databot.x, 154 - 5 + databot.y);    // 1666 - 700, 329 - 180
+            iPoint pointFesoMove1 = new Point(801 - 5 + databot.x, 186 - 5 + databot.y);    // 1496 - 700, 361 - 180
+            iPoint pointFesoMove2 = new Point(395 - 5 + databot.x, 361 - 5 + databot.y);    // 1090 - 700, 536 - 180
+            iPoint pointFesoOk = new Point(610 - 5 + databot.x, 398 - 5 + databot.y);    // 1305 - 700, 573 - 180
+            iPoint pointFesoOk2 = new Point(440 - 5 + databot.x, 502 - 5 + databot.y);    // 1135 - 700, 677 - 180
+            iPoint pointFesoObmen = new Point(521 - 5 + databot.x, 502 - 5 + databot.y);    // 1216 - 700, 677 - 180
             // открываем инвентарь
             server.TopMenu(8, 1);
 
@@ -877,6 +821,9 @@ namespace OpenGEWindows
         /// </summary>
         public void Buy400PetFood()
         {
+            iPoint pointArrowUp = new Point(375 + databot.x, 327 + databot.y);   //375, 327);   //шаг = 27 пикселей на одну строчку магазина (на случай если добавят новые строчки)
+            iPoint pointButtonBUY = new Point(725 + databot.x, 620 + databot.y);   //725, 620);
+
             // тыкаем два раза в стрелочку вверх
             //PressMouseL(375, 327);
             pointArrowUp.PressMouseL();
@@ -901,6 +848,9 @@ namespace OpenGEWindows
         /// </summary>
         public void SellGrowthStone10()
         {
+            iPoint pointArrowUp2 = new Point(375 + databot.x, 246 + databot.y);   //375, 246);
+            iPoint pointButtonSell = new Point(725 + databot.x, 620 + databot.y);   //725, 620);
+
             // 10 раз нажимаем на стрелку вверх, чтобы отсчитать 10 ВК
             for (int i = 1; i <= 10; i++)
             {
@@ -925,8 +875,8 @@ namespace OpenGEWindows
         /// </summary>
         public void OpenBookmarkSell()
         {
+            iPoint pointBookmarkSell = new Point(226 + databot.x, 196 + databot.y);     //226, 196);
             pointBookmarkSell.PressMouseL();
-            //PressMouseL(226, 196);
             Pause(1500);
         }                                                                            //заменил все точки
 
@@ -938,6 +888,7 @@ namespace OpenGEWindows
         /// </summary>
         public void NewPlace()
         {
+            iPoint pointNewPlace = new Point(85 + databot.x, 670 + databot.y); //85, 670);
             pointNewPlace.PressMouse();
         }                                                              
 
@@ -946,8 +897,9 @@ namespace OpenGEWindows
         /// </summary>
         public void SelectChannel()
         {
+            iPoint pointChoiceOfChannel = new Point(125 + databot.x, 660 + (databot.Kanal - 1) * 15 + server.sdvig() + databot.y);    //переход на нужный канал в казарме
+            iPoint pointButtonSelectChannel = new Point(125 + databot.x, 705 + databot.y); //   125, 705);
             pointButtonSelectChannel.PressMouseL();
-            pointChoiceOfChannel = new Point(125 + databot.x, 660 + (databot.Kanal - 1) * 15 + server.sdvig() + databot.y);    //переход на нужный канал в казарме
             pointChoiceOfChannel.PressMouseL();
         }
 
@@ -956,6 +908,8 @@ namespace OpenGEWindows
         /// </summary>
         public void FirstHero()
         {
+            iPoint pointFirstHeroL = new Point(187 - 5 + databot.x, 640 - 5 + databot.y);    // 182, 635
+            iPoint pointFirstHeroR = new Point(187 - 5 + databot.x, 669 - 5 + databot.y);    // 182, 664
             pointFirstHeroR.PressMouseR();
             pointFirstHeroR.PressMouseR();
             pointFirstHeroL.PressMouseL();
@@ -966,6 +920,8 @@ namespace OpenGEWindows
         /// </summary>
         public void SecondHero()
         {
+            iPoint pointSecondHeroL = new Point(425 - 5 + databot.x, 640 - 5 + databot.y);    // 420, 635
+            iPoint pointSecondHeroR = new Point(425 - 5 + databot.x, 669 - 5 + databot.y);    // 420, 664
             pointSecondHeroR.PressMouseR();
             pointSecondHeroR.PressMouseR();
             pointSecondHeroL.PressMouseL();
@@ -976,6 +932,8 @@ namespace OpenGEWindows
         /// </summary>
         public void ThirdHero()
         {
+            iPoint pointThirdHeroL = new Point(675 - 5 + databot.x, 640 - 5 + databot.y);    // 670, 635
+            iPoint pointThirdHeroR = new Point(675 - 5 + databot.x, 669 - 5 + databot.y);    // 670, 664
             pointThirdHeroR.PressMouseR();
             pointThirdHeroR.PressMouseR();
             pointThirdHeroL.PressMouseL();
@@ -987,6 +945,7 @@ namespace OpenGEWindows
         /// <returns> true, если командный режим включен </returns>
         public bool isCommandMode()
         {
+            iPointColor pointCommandMode = new PointColor(123 - 5 + databot.x, 479 - 5 + databot.y, 8000000, 6);
             return pointCommandMode.isColor2();
         } 
 
@@ -1037,7 +996,7 @@ namespace OpenGEWindows
         /// </summary>
         public void ClickSpace()
         {
-            //PressMouse(185, 525);   // Кликаю на кнопку "боевой режим"
+            iPoint pointBattleMode = new Point(190 - 5 + databot.x, 530 - 5 + databot.y);    //  185, 525
             pointBattleMode.PressMouse();  // Кликаю на кнопку "боевой режим"
         }
 
@@ -1046,6 +1005,7 @@ namespace OpenGEWindows
         /// </summary>
         public void CureOneWindow2()
         {
+            iPoint pointEnterBattleMode = new Point(205 - 5 + databot.x, 205 - 5 + databot.y);    // 200, 200
             // ================================= убирает все лишние окна с экрана =========================================
             PressEscThreeTimes();
             Pause(1000);
@@ -1070,6 +1030,7 @@ namespace OpenGEWindows
         /// </summary>
         public void PressMitridat()
         {
+            iPoint pointMitridat = new Point(38 - 5 + databot.x, 486 - 5 + databot.y);    // 33, 481
             System.DateTime timeNow = DateTime.Now;  //текущее время
             System.TimeSpan PeriodMitridat = timeNow.Subtract(timeMitridat);   //сколько времени прошло с последнего применения митридата
             uint PeriodMitridatSeconds = (uint)PeriodMitridat.TotalSeconds;          //сколько времени прошло с последнего применения митридата в секундах

@@ -17,9 +17,6 @@ namespace OpenGEWindows
         [DllImport("user32.dll")]
         private static extern UIntPtr FindWindow(String ClassName, String WindowName);  //ищет окно с заданным именем и классом
 
-        [DllImport("user32.dll")]
-        public static extern bool SetWindowPos(UIntPtr myhWnd, int myhwndoptional, int xx, int yy, int cxx, int cyy, uint flagus); // Перемещает окно в заданные координаты с заданным размером
-
         /// <summary>
         /// конструктор
         /// </summary>
@@ -33,7 +30,6 @@ namespace OpenGEWindows
             TownFactory townFactory = new EuropaTownFactory(botwindow);                      // здесь выбирается конкретная реализация для фабрики Town
             this.town = townFactory.createTown();                                            // выбирается город с помощью фабрики
             this.pathClient = path_Client();
-//            this.activeWindow = Europa_active();
             this.pointIsSale1 = new PointColor(903 + xx, 674 + yy, 7590000, 4);          
             this.pointIsSale2 = new PointColor(904 + xx, 674 + yy, 7850000, 4);
             this.pointIsSale21 = new PointColor(840 - 5 + xx, 665 - 5 + yy, 7720000, 4); 

@@ -23,9 +23,6 @@ namespace OpenGEWindows
         [DllImport("user32.dll")]
         private static extern UIntPtr FindWindow(String ClassName, String WindowName);  //ищет окно с заданным именем и классом
 
-        [DllImport("user32.dll")]
-        public static extern bool SetWindowPos(UIntPtr myhWnd, int myhwndoptional, int xx, int yy, int cxx, int cyy, uint flagus); // Перемещает окно в заданные координаты с заданным размером
-
         /// <summary>
         /// конструктор
         /// town отвечает за методы для конкретного города (паттерн Стратегия). Все различия в действиях, зависящих от города, инкапсулированы в семействе классов Town (в т.ч. AmericaTown)
