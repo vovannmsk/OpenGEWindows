@@ -17,6 +17,11 @@ namespace OpenGEWindows
     /// </summary>
     public class ServerAmerica : ServerInterface 
     {
+        [DllImport("user32.dll")]
+        private static extern UIntPtr FindWindow(String ClassName, String WindowName);  //ищет окно с заданным именем и классом
+
+        [DllImport("user32.dll")]
+        public static extern bool SetWindowPos(UIntPtr myhWnd, int myhwndoptional, int xx, int yy, int cxx, int cyy, uint flagus); // Перемещает окно в заданные координаты с заданным размером
 
         /// <summary>
         /// конструктор
@@ -228,14 +233,14 @@ namespace OpenGEWindows
 
         }                           //конструктор
 
-        /// <summary>
-        /// возвращаем тестовый цвет для сравнения в методе Connect
-        /// </summary>
-        /// <returns> номер цвета </returns>
-        public override uint colorTest()
-        {
-            return 7859187;
-        }
+        ///// <summary>
+        ///// возвращаем тестовый цвет для сравнения в методе Connect
+        ///// </summary>
+        ///// <returns> номер цвета </returns>
+        //public override uint colorTest()
+        //{
+        //    return 7859187;
+        //}
 
          
         /// <summary>
@@ -394,6 +399,49 @@ namespace OpenGEWindows
             bool result = false;
             if (AmericaActive() == 1) result = true;
             return result;
+        }
+
+
+        /// <summary>
+        /// поиск новых окон с игрой для кнопки "Найти окна"
+        /// </summary>
+        /// <returns></returns>
+        public override UIntPtr FindWindowGE()
+        {
+            UIntPtr HWND = (UIntPtr)0;
+
+            int count = 0;
+            while (HWND == (UIntPtr)0)
+            {
+                Pause(500);
+                HWND = FindWindow("Granado Espada", "Granado Espada Online");
+
+                count++; if (count > 5) return (UIntPtr)0;
+            }
+
+            botwindow.setHwnd(HWND);
+
+            SetWindowPos(HWND, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+            Pause(500);
+
+
+            #region старый вариант метода
+            //Click_Mouse_and_Keyboard.Mouse_Move_and_Click(350, 700, 8);
+            //Pause(200);
+            //while (New_HWND_GE == (UIntPtr)0)                
+            //{
+            //    Pause(500);
+            //    New_HWND_GE = FindWindow("Granado Espada", "Granado Espada Online");
+            //}
+            //setHwnd(New_HWND_GE);
+            //hwnd_to_file();
+            ////Перемещает вновь открывшиеся окно в заданные координаты, игнорирует размеры окна
+            ////SetWindowPos(New_HWND_GE, 1, getX(), getY(), WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+            //SetWindowPos(New_HWND_GE, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+            //Pause(500);
+            #endregion
+
+            return HWND;
         }
 
 

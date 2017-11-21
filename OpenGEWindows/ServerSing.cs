@@ -17,6 +17,12 @@ namespace OpenGEWindows
     /// </summary>
     public class ServerSing : ServerInterface
     {
+        [DllImport("user32.dll")]
+        private static extern UIntPtr FindWindow(String ClassName, String WindowName);  //ищет окно с заданным именем и классом
+
+        [DllImport("user32.dll")]
+        public static extern bool SetWindowPos(UIntPtr myhWnd, int myhwndoptional, int xx, int yy, int cxx, int cyy, uint flagus); // Перемещает окно в заданные координаты с заданным размером
+
         /// <summary>
         /// конструктор
         /// town отвечает за методы для конкретного города (паттерн Стратегия). Все различия в действиях, зависящих от города, инкапсулированы в семействе классов Town (в т.ч. AmericaTown)
@@ -231,14 +237,14 @@ namespace OpenGEWindows
 
         }        
 
-        /// <summary>
-        /// возвращаем тестовый цвет для сравнения в методе Connect
-        /// </summary>
-        /// <returns> номер цвета </returns>
-        public override uint colorTest()
-        {
-            return 7859187;
-        }
+        ///// <summary>
+        ///// возвращаем тестовый цвет для сравнения в методе Connect
+        ///// </summary>
+        ///// <returns> номер цвета </returns>
+        //public override uint colorTest()
+        //{
+        //    return 7859187;
+        //}
 
         /// <summary>
         /// путь к исполняемому файлу игры (сервер сингапур)
@@ -255,20 +261,63 @@ namespace OpenGEWindows
         { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Singapoore_active.txt")); }
 
         /// <summary>
+        /// читаем из файла координату Y строчки, где расположена надпись "запустить в песочнице"
+        /// </summary>
+        /// <returns>координата Y</returns>
+        private int SandboxieY()
+        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\КоординатаПесочницы.txt")); }
+
+
+        /// <summary>
         /// запуск клиента игры
         /// </summary>
         public override void runClient()
         {
+
+            //для песочницы
+            int[] y = { 0, 1, 5, 6, 7, 8, 9, 10, 11, 12, 2, 3, 4 };
+            iPoint pointSteam = new Point(1862 - 5 + xx, 862 - 5 + yy);
+            iPoint pointSandboxie = new Point(1661 - 5 + xx, SandboxieY() - 5 + yy);
+            iPoint pointListSandboxie = new Point(876 - 5 + xx, 455 - 5 + y[botwindow.getNumberWindow()] * 13 + yy);   //у первой песочницы сдвиг 13 от контрольной точки
+            iPoint pointOkSafeIP = new Point(966 - 5 + xx, 582 - 5 + yy);
+            iPoint pointOkReklamaSteam = new Point(1251 - 5 + xx, 894 - 5 + yy);
+            iPoint pointRunGE = new Point(1263 - 5 + xx, 584 - 5 + yy);
+            iPoint pointCloseSteam = new Point(1897 - 5 + xx, 397 - 5 + yy);
+
+            pointSteam.PressMouseR();   //тыкаем правой в ярлык стим
+            Pause(500);
+
+            pointSandboxie.PressMouseL(); //тыкаем в строку "запустить в песочнице"
+            Pause(2000);
+
+            pointListSandboxie.DoubleClickL();  //тыкаем дважды в строчку с номером песочницы
+            Pause(20000);
+
+            pointOkSafeIP.PressMouseL();       //тыкаем в Ок и закрываем сообщение об ошибке
+            Pause(15000);
+
+            pointOkReklamaSteam.PressMouseL();   //закрываем рекламу стим
+            Pause(2000);
+
+            pointRunGE.PressMouseL();            //нажимаем на кнопку запуска ГЭ
+            Pause(1000);
+
+            pointCloseSteam.PressMouseL();      //закрываем крестиком окно Steam и ждем открытия окна ГЭ
+            Pause(60000);
+
+
+
+
             //для чистого окна
             //Process.Start(getPathClient());                             //запускаем саму игру или бот Catzmods
             //botwindow.Pause(10000);
 
             //если CatzMods
-            Process.Start(getPathClient());                                    //запускаем саму игру или бот Catzmods
-            Pause(10000);
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(1110, 705, 1);        //нажимаем кнопку "старт" в боте      
-            Pause(500);
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(1222, 705, 1);        //нажимаем кнопку "Close" в боте
+            //Process.Start(getPathClient());                                    //запускаем саму игру или бот Catzmods
+            //Pause(10000);
+            //Click_Mouse_and_Keyboard.Mouse_Move_and_Click(1110, 705, 1);        //нажимаем кнопку "старт" в боте      
+            //Pause(500);
+            //Click_Mouse_and_Keyboard.Mouse_Move_and_Click(1222, 705, 1);        //нажимаем кнопку "Close" в боте
         }
 
         /// <summary>
@@ -403,6 +452,47 @@ namespace OpenGEWindows
             bool result = false;
             if (SingActive() == 1) result = true;
             return result;
+        }
+
+        /// <summary>
+        /// поиск новых окон с игрой для кнопки "Найти окна"
+        /// </summary>
+        /// <returns></returns>
+        public override UIntPtr FindWindowGE()
+        {
+            UIntPtr HWND = (UIntPtr)0;
+
+            int count = 0;
+            while (HWND == (UIntPtr)0)
+            {
+                Pause(500);
+                HWND = FindWindow("Sandbox:" + botwindow.getNumberWindow().ToString() + ":Granado Espada", "[#] Granado Espada [#]");
+
+                count++; if (count > 5) return (UIntPtr)0;
+            }
+
+            botwindow.setHwnd(HWND);
+
+            SetWindowPos(HWND, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+            Pause(500);
+
+            #region старый вариант метода
+            //Click_Mouse_and_Keyboard.Mouse_Move_and_Click(350, 700, 8);
+            //Pause(200);
+            //while (New_HWND_GE == (UIntPtr)0)                
+            //{
+            //    Pause(500);
+            //    New_HWND_GE = FindWindow("Granado Espada", "Granado Espada Online");
+            //}
+            //setHwnd(New_HWND_GE);
+            //hwnd_to_file();
+            ////Перемещает вновь открывшиеся окно в заданные координаты, игнорирует размеры окна
+            ////SetWindowPos(New_HWND_GE, 1, getX(), getY(), WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+            //SetWindowPos(New_HWND_GE, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+            //Pause(500);
+            #endregion
+
+            return HWND;
         }
 
 

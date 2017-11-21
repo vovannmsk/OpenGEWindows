@@ -180,7 +180,10 @@ namespace OpenGEWindows
         #region геттеры и сеттеры
         // сеттеры
         public void setHwnd(UIntPtr hwnd)
-        { databot.hwnd = hwnd;  }
+        { 
+            databot.hwnd = hwnd; 
+            hwnd_to_file(); 
+        }
         public void setNeedToChange(int needToChange)
         { this.needToChange = needToChange; }
         public void setNeedToChangeForMainForm(bool checkBox)
@@ -446,36 +449,50 @@ namespace OpenGEWindows
             Thread.Sleep(200);
         }
 
-        /// <summary>
-        /// поиск новых окон с игрой для кнопки "Найти окна"
-        /// </summary>
-        /// <returns></returns>
-        public UIntPtr FindWindow2()
-        {
-            UIntPtr New_HWND_GE = (UIntPtr)0;
+//        /// <summary>
+//        /// поиск новых окон с игрой для кнопки "Найти окна"
+//        /// </summary>
+//        /// <returns></returns>
+//        public UIntPtr FindWindowEuropa()
+//        {
+//            UIntPtr HWND = (UIntPtr)0;
 
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(350, 700, 8);
-            Pause(200);
-            while (New_HWND_GE == (UIntPtr)0)                
-            {
-                Pause(500);
-                New_HWND_GE = FindWindow("Granado Espada", "Granado Espada Online");
-            }
-            setHwnd(New_HWND_GE);
-            hwnd_to_file();
-            //Перемещает вновь открывшиеся окно в заданные координаты, игнорирует размеры окна
-            //SetWindowPos(New_HWND_GE, 1, getX(), getY(), WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
-            SetWindowPos(New_HWND_GE, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
-            Pause(500);
+//            int count = 0;
+//            while (HWND == (UIntPtr)0)
+//            {
+//                Pause(500);
+//                HWND = FindWindow("Granado Espada", "Granado Espada Online");
 
-            return New_HWND_GE;
-        }
+//                count++; if (count > 5) return (UIntPtr)0;
+//            }
+
+//            setHwnd(HWND);
+////            hwnd_to_file();
+
+//            #region старый вариант
+//            //Click_Mouse_and_Keyboard.Mouse_Move_and_Click(350, 700, 8);
+//            //Pause(200);
+//            //while (New_HWND_GE == (UIntPtr)0)                
+//            //{
+//            //    Pause(500);
+//            //    New_HWND_GE = FindWindow("Granado Espada", "Granado Espada Online");
+//            //}
+//            //setHwnd(New_HWND_GE);
+//            //hwnd_to_file();
+//            ////Перемещает вновь открывшиеся окно в заданные координаты, игнорирует размеры окна
+//            ////SetWindowPos(New_HWND_GE, 1, getX(), getY(), WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+//            //SetWindowPos(New_HWND_GE, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+//            //Pause(500);
+//            #endregion
+
+//            return HWND;
+//        }
 
         /// <summary>
         /// поиск новых окон с игрой для кнопки "Найти окна Sing"
         /// </summary>
         /// <returns></returns>
-        public void FindWindow3()
+        public void FindWindowSing()
         {
             UIntPtr New_HWND_GE;
             New_HWND_GE = (UIntPtr)0;
@@ -486,7 +503,7 @@ namespace OpenGEWindows
                 New_HWND_GE = FindWindow("Sandbox:" + numberWindow.ToString() +":Granado Espada", "[#] Granado Espada [#]");
             }
             setHwnd(New_HWND_GE);
-            hwnd_to_file();
+//            hwnd_to_file();
             SetWindowPos(New_HWND_GE, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
             Pause(500);
         }
@@ -514,33 +531,42 @@ namespace OpenGEWindows
         /// открывает новое окно бота (т.е. переводит из состояния "нет окна" в состояние "логаут")
         /// </summary>
         /// <returns> hwnd окна </returns>
-        public UIntPtr OpenWindow()
+        public void OpenWindow()
         {
-            UIntPtr New_HWND_GE, current_HWND_GE;
-            Pause(500);
-            current_HWND_GE = FindWindow("Granado Espada", "Granado Espada Online");    //hwnd старого окна ге
-            server.runClient();  //запускаем нужный клиент игры
-            Pause(5000);
-            //current_HWND_GE = FindWindow("Granado Espada", "Granado Espada");    //hwnd вновь загруженного окна
-            New_HWND_GE = current_HWND_GE;
-            while (New_HWND_GE == current_HWND_GE)                             //убрал 09-01-2017. восстановить, если не будет работать америка
+            server.runClient();
+            while (true)
             {
-                Pause(500);
-                New_HWND_GE = FindWindow("Granado Espada", "Granado Espada Online");
+                Pause(5000);
+                UIntPtr hwnd = server.FindWindowGE();
+                if (hwnd != (UIntPtr)0) break;
             }
-            Pause(25000);
 
-            //Перемещает вновь открывшиеся окно в заданные координаты, игнорирует размеры окна
-            SetWindowPos(New_HWND_GE, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
-            Pause(1000);
+            #region старый вариант метода
+            //UIntPtr New_HWND_GE, current_HWND_GE;
+            //Pause(500);
+            //current_HWND_GE = FindWindow("Granado Espada", "Granado Espada Online");    //hwnd старого окна ге
+            //server.runClient();  //запускаем нужный клиент игры
+            //Pause(5000);
+            ////current_HWND_GE = FindWindow("Granado Espada", "Granado Espada");    //hwnd вновь загруженного окна
+            //New_HWND_GE = current_HWND_GE;
+            //while (New_HWND_GE == current_HWND_GE)                             //убрал 09-01-2017. восстановить, если не будет работать америка
+            //{
+            //    Pause(500);
+            //    New_HWND_GE = FindWindow("Granado Espada", "Granado Espada Online");
+            //}
+            //Pause(25000);
 
-            EnterLoginAndPasword();
+            ////Перемещает вновь открывшиеся окно в заданные координаты, игнорирует размеры окна
+            //SetWindowPos(New_HWND_GE, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+            //Pause(1000);
 
-            setHwnd(New_HWND_GE);
-            hwnd_to_file();     //записали новый hwnd в файл
+            //EnterLoginAndPasword();
 
-            return databot.hwnd;
-        }//Конец метода OpenWindow
+            //setHwnd(New_HWND_GE);
+            ////            hwnd_to_file();     //записали новый hwnd в файл
+            //return databot.hwnd;
+            #endregion
+        }
 
         /// <summary>
         /// вводим логин и пароль в соответствующие поля

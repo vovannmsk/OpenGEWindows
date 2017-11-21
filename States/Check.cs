@@ -24,6 +24,15 @@ namespace States
             driver = new DriversOfState(numberOfWindow);
         }
 
+
+        /// <summary>
+        /// выполняет действия по открытию окна с игрой
+        /// </summary>
+        public void OpenWindow ()
+        {
+            botwindow.OpenWindow();
+        }
+
         /// <summary>
         /// проверяем, есть ли проблемы с ботом (убили, застряли, нужно продать)
         /// </summary>
@@ -103,7 +112,8 @@ namespace States
         /// <returns></returns>
         public UIntPtr FindWindow()
         {
-            return botwindow.FindWindow2();
+//            return botwindow.FindWindowEuropa();
+            return server.FindWindowGE();
         }
 
         /// <summary>
@@ -112,7 +122,7 @@ namespace States
         /// <returns></returns>
         public void FindWindowSing()
         {
-            botwindow.FindWindow3();
+            botwindow.FindWindowSing();
         }
 
         /// <summary>

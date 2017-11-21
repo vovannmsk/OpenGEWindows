@@ -35,6 +35,9 @@ namespace OpenGEWindows
         [DllImport("user32.dll", EntryPoint = "DestroyWindow")]
         public static extern UIntPtr DestroyWindow(UIntPtr hWnd);
 
+        protected const int WIDHT_WINDOW = 1024;
+        protected const int HIGHT_WINDOW = 700;
+
         protected int xx;
         protected int yy;
         protected Town town;
@@ -911,6 +914,17 @@ namespace OpenGEWindows
         #region Методы для управления ботами
 
         /// <summary>
+        /// открывает новое окно бота (т.е. переводит из состояния "нет окна" в состояние "логаут")
+        /// </summary>
+        /// <returns> hwnd окна </returns>
+        public void OpenWindow()
+        {
+            runClient();
+            FindWindowGE();
+        }
+
+
+        /// <summary>
         /// нажимаем на кнопку логаут в казарме, тем самым покидаем казарму
         /// </summary>
         public void buttonExitFromBarack()
@@ -1627,10 +1641,13 @@ namespace OpenGEWindows
         public abstract void TopMenu(int numberOfThePartitionMenu);
         public abstract void TopMenu(int numberOfThePartitionMenu, int punkt);
         public abstract void runClient();
-        public abstract uint colorTest();
         public abstract void TeleportToTownAltW();
         public abstract void OrangeButton();
         public abstract bool isActive();
+//        public abstract void OpenWindow();
+        public abstract UIntPtr FindWindowGE();
+
+        //        public abstract uint colorTest();
 
     }
 }

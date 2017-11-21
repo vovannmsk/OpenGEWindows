@@ -77,24 +77,28 @@ namespace Main
         /// </summary>
         private void funcCoral()
         {
-            for (int j = 1; j <= 1; j++)                //на европе и америке может быть только одно окно
+            for (int j = 1; j <= numberOfAccounts; j++)                //на европе и америке может быть только одно окно
             {
                 Check check = new Check(j);
 
                 if (check.isActive())
                 {
-                    bool result = true;
-                    while (result)
-                    {
-                        UIntPtr hwnd = check.FindWindow();
-                        check.Pause(500);
+                    UIntPtr hwnd = check.FindWindow();
+                    if (hwnd == (UIntPtr)0)  MessageBox.Show("Не найдено окно ГЕ с номером " + j); 
+                    check.Pause(500);
+
+                    //bool result = true;
+                    //while (result)
+                    //{
+                    //    UIntPtr hwnd = check.FindWindow();
+                    //    check.Pause(500);
                         
-                        if (Array.IndexOf(arrayOfHwnd,hwnd) == -1)     //если нет в массиве такого hwnd
-                        {
-                            arrayOfHwnd[j] = hwnd;           //добавляем в массив
-                            result = false;
-                        }
-                    }
+                    //    if (Array.IndexOf(arrayOfHwnd,hwnd) == -1)     //если нет в массиве такого hwnd
+                    //    {
+                    //        arrayOfHwnd[j] = hwnd;           //добавляем в массив
+                    //        result = false;
+                    //    }
+                    //}
                 }
             }
         }
@@ -370,9 +374,9 @@ namespace Main
         {
             myTimer.Stop();
 
-            //funcGreen();
-            Thread myThreadGreen = new Thread(funcGreen);    //запускаем новый процесс
-            myThreadGreen.Start();
+            funcGreen();
+            //Thread myThreadGreen = new Thread(funcGreen);    //запускаем новый процесс
+            //myThreadGreen.Start();
 
 
             myTimer.Enabled = true;
@@ -416,6 +420,43 @@ namespace Main
         
         #endregion
 
+        #region золотая кнопка (открыть окна ге)
+
+        /// <summary>
+        /// Золотая кнопка
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonOpenWindow_Click(object sender, EventArgs e)
+        {
+            ButtonOpenWindow.Visible = false;
+
+            Thread myThreadGold = new Thread(funcGold);
+            myThreadGold.Start();
+
+            ButtonOpenWindow.Visible = true;
+        }
+
+        /// <summary>
+        /// метод задает функционал для потока, организуемого gold кнопкой
+        /// </summary>
+        private void funcGold()
+        {
+            for (int j = 1; j <= numberOfAccounts; j++)
+            {
+                Check check = new Check(j);
+                if (check.isActive()) check.OpenWindow();
+            }
+            for (int j = 1; j <= numberOfAccounts; j++)
+            {
+                Check check = new Check(j);
+                if (check.isActive()) check.ReOpenWindow();
+            }
+        }
+
+        #endregion
+
+
 
         #region дополнительные методы
 
@@ -438,7 +479,6 @@ namespace Main
         }
 
         #endregion
-
     }// END class MainForm : Form
 }// END namespace OpenGEWindows
 
