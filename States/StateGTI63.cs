@@ -8,26 +8,28 @@ using OpenGEWindows;
 
 namespace States
 {
-    public class StateGT68 : IState
+    public class StateGTI63 : IState
     {
         private botWindow botwindow;
         private ServerInterface server;
         //private Town town;
         private ServerFactory serverFactory;
         private int tekStateInt;
+        private int numberOfEquipvent;
 
-        public StateGT68()
+        public StateGTI63()
         {
 
         }
 
-        public StateGT68(botWindow botwindow)   //, GotoTrade gototrade)
+        public StateGTI63(botWindow botwindow, int numberOfEquipvent)   //, GotoTrade gototrade)
         {
+            this.numberOfEquipvent = numberOfEquipvent;
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             //this.town = server.getTown();
-            this.tekStateInt = 68;
+            this.tekStateInt = 63;
         }
 
         /// <summary>
@@ -64,6 +66,19 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            server.AddShinyCrystall();  //кладем шайники (с проверкой)
+            botwindow.Pause(2000);
+
+            //for (int i = 1; i <= 2; i++)
+            //{
+            //    while (!server.isAddShinyCrystall())
+            //    {
+            //        server.AddShinyCrystall();  //кладем шайники (с проверкой)
+            //        botwindow.Pause(1000);
+            //    }
+            //    server.PressButtonEnhance();
+            //    botwindow.Pause(3000);
+            //}
         }
 
         /// <summary>
@@ -79,7 +94,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return true;                                                                                //считаем, что осечек не будет на этом этапе, и мы 100% переёдем к следующему пункту
+            return server.isAddShinyCrystall();
         }
 
         /// <summary>
@@ -88,7 +103,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT69(botwindow);
+            return new StateGTI64(botwindow, this.numberOfEquipvent);
         }
 
         /// <summary>
@@ -97,7 +112,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGT68(botwindow);
+            return new StateGTI63(botwindow, this.numberOfEquipvent);
         }
 
         /// <summary>

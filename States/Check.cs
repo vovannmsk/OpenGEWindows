@@ -178,6 +178,15 @@ namespace States
             return server.isActive();
         }
 
+        /// <summary>
+        /// проверяем, находимся ли в магазине у Иды (заточка)
+        /// </summary>
+        /// <returns></returns>
+        public bool isIda()
+        {
+            return server.isIda();
+        }
+
 
         /// <summary>
         /// тестовая кнопка
@@ -190,8 +199,8 @@ namespace States
             uint color1;
             uint color2;
 
-            PointColor point1 = new PointColor(493 - 5 + xx, 281 - 5 + yy, 7800000, 5);
-            PointColor point2 = new PointColor(493 - 5 + xx, 282 - 5 + yy, 7800000, 5);
+            PointColor point1 = new PointColor(487 - 5 + xx, 143 - 5 + yy, 7800000, 5);
+            PointColor point2 = new PointColor(487 - 5 + xx, 144 - 5 + yy, 7800000, 5);
 
             color1 = point1.GetPixelColor();
             color2 = point2.GetPixelColor();

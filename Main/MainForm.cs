@@ -476,13 +476,17 @@ namespace Main
         /// </summary>*
         private void funcMagenta()
         {
-            for (int j = 1; j <= 1; j++)
+            for (int j = 1; j <= numberOfAccounts; j++)
             {
                 Check check = new Check(j);
                 if (check.isActive())
                 {
-                    DriversOfState drive = new DriversOfState(j);
-                    drive.StateSharpening();
+                    check.ReOpenWindow();
+                    if (check.isIda())   //если окно находится в магазине Иды
+                    {
+                        DriversOfState drive = new DriversOfState(j);
+                        drive.StateSharpening();
+                    }
                 }
             }
             MessageBox.Show("Всё!!!");

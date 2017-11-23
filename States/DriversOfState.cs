@@ -35,7 +35,10 @@ namespace States
         /// </summary>
         public void StateSharpening()
         {
-            StateDriverRun(new StateGT60(botwindow), new StateGT70(botwindow));
+            for (int numberOfEquipment = 1; numberOfEquipment <= 6; numberOfEquipment++)
+            {
+                StateDriverRun(new StateGTI60(botwindow, numberOfEquipment), new StateGTI67(botwindow, numberOfEquipment));
+            }
         }
 
         /// <summary>

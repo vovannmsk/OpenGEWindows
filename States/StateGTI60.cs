@@ -8,26 +8,28 @@ using OpenGEWindows;
 
 namespace States
 {
-    public class StateGT67 : IState
+    public class StateGTI60 : IState
     {
         private botWindow botwindow;
         private ServerInterface server;
         //private Town town;
         private ServerFactory serverFactory;
         private int tekStateInt;
+        private int numberOfEquipvent;
 
-        public StateGT67()
+        public StateGTI60()
         {
 
         }
 
-        public StateGT67(botWindow botwindow)   //, GotoTrade gototrade)
+        public StateGTI60(botWindow botwindow, int numberOfEquipvent)   //, GotoTrade gototrade)
         {
+            this.numberOfEquipvent = numberOfEquipvent;
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             //this.town = server.getTown();
-            this.tekStateInt = 67;
+            this.tekStateInt = 60;
         }
 
         /// <summary>
@@ -64,6 +66,10 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            //тыкаем в инвентарь правой кнопкой (делаем его активным)
+            server.InventoryActive();
+            botwindow.Pause(500);
+            
         }
 
         /// <summary>
@@ -79,7 +85,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return true;                                                                                //считаем, что осечек не будет на этом этапе, и мы 100% переёдем к следующему пункту
+            return server.isActiveInventory();  
         }
 
         /// <summary>
@@ -88,7 +94,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT68(botwindow);
+            return new StateGTI61(botwindow, this.numberOfEquipvent);
         }
 
         /// <summary>
@@ -97,7 +103,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGT67(botwindow);
+            return new StateGTI60(botwindow, this.numberOfEquipvent);
         }
 
         /// <summary>

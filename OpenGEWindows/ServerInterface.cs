@@ -252,6 +252,8 @@ namespace OpenGEWindows
         protected iPointColor pointIsAddShinyCrystall1;
         protected iPointColor pointIsAddShinyCrystall2;
 
+        protected iPointColor pointIsIda1;
+        protected iPointColor pointIsIda2;
 
 
 
@@ -1723,6 +1725,15 @@ namespace OpenGEWindows
             return (pointIsAddShinyCrystall1.isColor() && pointIsAddShinyCrystall2.isColor());
         }
 
+
+        /// <summary>
+        /// проверяем, находимся ли в магазине у Иды (заточка)
+        /// </summary>
+        /// <returns></returns>
+        public bool isIda()
+        {
+            return (pointIsIda1.isColor() && pointIsIda2.isColor());
+        }
 
 
 

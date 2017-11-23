@@ -8,21 +8,23 @@ using OpenGEWindows;
 
 namespace States
 {
-    public class StateGT61 : IState
+    public class StateGTI61 : IState
     {
         private botWindow botwindow;
         private ServerInterface server;
         //private Town town;
         private ServerFactory serverFactory;
         private int tekStateInt;
+        private int numberOfEquipvent;
 
-        public StateGT61()
+        public StateGTI61()
         {
 
         }
 
-        public StateGT61(botWindow botwindow)   //, GotoTrade gototrade)
+        public StateGTI61(botWindow botwindow, int numberOfEquipvent)   //, GotoTrade gototrade)
         {
+            this.numberOfEquipvent = numberOfEquipvent;
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
@@ -64,8 +66,8 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            //переносим на место для заточки первую вещь
-            server.MoveToSharpening(2);
+            //переносим на место для заточки вещь с номером numberOfEquipvent п/п
+            server.MoveToSharpening(this.numberOfEquipvent);
             botwindow.ToMoveMouse();
             botwindow.Pause(500);
 
@@ -93,7 +95,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT62(botwindow);
+            return new StateGTI62(botwindow, this.numberOfEquipvent);
         }
 
         /// <summary>
