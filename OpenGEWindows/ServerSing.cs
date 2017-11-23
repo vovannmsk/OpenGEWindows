@@ -227,11 +227,30 @@ namespace OpenGEWindows
             this.pointWorkCrater = new Point(botwindow.getTriangleX()[0] + xx, botwindow.getTriangleY()[0] + yy);     //бежим на место работы
             this.pointButtonSaveTeleport = new Point(440 - 5 + xx, 570 - 5 + yy);                   // нажимаем на кнопку сохранения телепорта в текущей позиции
             this.pointButtonOkSaveTeleport = new Point(660 - 5 + xx, 645 - 5 + yy);               // нажимаем на кнопку OK для подтверждения сохранения телепорта 
-
             this.pointPetBegin = new Point(855 - 5 + xx, 180 - 5 + yy);    // 800-5, 220-5
             this.pointPetEnd = new Point(520 - 5 + xx, 330 - 5 + yy);    // 520-5, 330-5
 
-            this.pointConnect = new PointColor(522 - 5 + xx, 418 - 5 + yy, 7800000, 5);
+            //Ида
+            this.pointAcriveInventory = new Point(905 - 5 + xx, 425 - 5 + yy);
+            this.pointIsActiveInventory = new PointColor(696 - 5 + xx, 146 - 5 + yy, 16500000, 5);
+            //this.pointisMoveEquipment1 = new PointColor(504 - 5 + xx, 264 - 5 + yy, 15000000, 6);
+            //this.pointisMoveEquipment2 = new PointColor(504 - 5 + xx, 265 - 5 + yy, 15000000, 6);
+            this.pointisMoveEquipment1 = new PointColor(493 - 5 + xx, 281 - 5 + yy, 7790000, 4);
+            this.pointisMoveEquipment2 = new PointColor(493 - 5 + xx, 282 - 5 + yy, 7790000, 4);
+            this.pointButtonEnhance = new Point(525 - 5 + xx, 625 - 5 + yy);
+            this.pointIsPlus41 = new PointColor(469 - 5 + xx, 461 - 5 + yy, 15700000, 5);
+            this.pointIsPlus42 = new PointColor(470 - 5 + xx, 462 - 5 + yy, 16700000, 5);
+            this.pointIsPlus43 = new PointColor(469 - 5 + xx, 489 - 5 + yy, 15700000, 5);
+            this.pointIsPlus44 = new PointColor(470 - 5 + xx, 490 - 5 + yy, 16700000, 5);
+            this.pointAddShinyCrystall = new Point(472 - 5 + xx, 487 - 5 + yy);                                   //max button
+            this.pointIsAddShinyCrystall1 = new PointColor(653 - 5 + xx, 316 - 5 + yy, 15000000, 5);
+            this.pointIsAddShinyCrystall2 = new PointColor(654 - 5 + xx, 316 - 5 + yy, 15000000, 5);
+            
+
+            //конец Иды
+
+
+            this.pointConnect = new PointColor(696 - 5 + xx, 148 - 5 + yy, 7800000, 5);
 
 
         }        
@@ -494,6 +513,20 @@ namespace OpenGEWindows
 
             return HWND;
         }
+
+
+        /// <summary>
+        /// переносим (DragAndDrop) одну из частей экипировки на место для заточки
+        /// </summary>
+        /// <param name="numberOfEquipment">номер экипировки п/п</param>
+        public override void MoveToSharpening(int numberOfEquipment)
+        {
+            iPoint pointEquipmentBegin = new Point(701 - 5 + xx + (numberOfEquipment - 1) * 39, 183 - 5 + yy);
+            iPoint pointEquipmentEnd = new Point(521 - 5 + xx, 208 - 5 + yy);
+            pointEquipmentBegin.Drag(pointEquipmentEnd);
+        }
+
+
 
 
     }

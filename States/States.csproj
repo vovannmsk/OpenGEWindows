@@ -54,6 +54,7 @@
     <Compile Include="StateCV08.cs" />
     <Compile Include="StateCV09.cs" />
     <Compile Include="StateCV10.cs" />
+    <Compile Include="StateDriverSharpening.cs" />
     <Compile Include="StateDriver.cs" />
     <Compile Include="StateDriverTrader.cs" />
     <Compile Include="StateGT01.cs" />
@@ -110,6 +111,17 @@
     <Compile Include="StateGT55.cs" />
     <Compile Include="StateGT56.cs" />
     <Compile Include="StateGT57.cs" />
+    <Compile Include="StateGT63.cs" />
+    <Compile Include="StateGT70.cs" />
+    <Compile Include="StateGT69.cs" />
+    <Compile Include="StateGT68.cs" />
+    <Compile Include="StateGT67.cs" />
+    <Compile Include="StateGT66.cs" />
+    <Compile Include="StateGT65.cs" />
+    <Compile Include="StateGT64.cs" />
+    <Compile Include="StateGT62.cs" />
+    <Compile Include="StateGT61.cs" />
+    <Compile Include="StateGT60.cs" />
     <Compile Include="StateGT58.cs" />
   </ItemGroup>
   <ItemGroup>

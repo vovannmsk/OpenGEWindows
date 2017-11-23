@@ -23,7 +23,7 @@ namespace Main
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "22-11-2017";
+        public static String DataVersion = "23-11-2017";
         public static int numberOfAccounts = KolvoAkk();
 
         /// <summary>
@@ -458,6 +458,38 @@ namespace Main
 
         #endregion
 
+        #region Magenta button (Sharpening)
+
+        /// <summary>
+        /// запускает новый процесс по обработке Фиолетовой кнопки (заточка оружия и брони на +6 у Иды)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void sharpening_Click(object sender, EventArgs e)
+        {
+            Thread mythreadMagenta = new Thread(funcMagenta);
+            mythreadMagenta.Start();
+        }
+
+        /// <summary>
+        /// метод задает функционал для потока, организуемого Magenta Button (Sharpening)
+        /// </summary>*
+        private void funcMagenta()
+        {
+            for (int j = 1; j <= 1; j++)
+            {
+                Check check = new Check(j);
+                if (check.isActive())
+                {
+                    DriversOfState drive = new DriversOfState(j);
+                    drive.StateSharpening();
+                }
+            }
+            MessageBox.Show("Всё!!!");
+        }
+
+        #endregion
+
 
 
         #region дополнительные методы
@@ -481,6 +513,9 @@ namespace Main
         }
 
         #endregion
+
+
+
     }// END class MainForm : Form
 }// END namespace OpenGEWindows
 

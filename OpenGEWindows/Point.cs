@@ -122,6 +122,7 @@ namespace OpenGEWindows
         public void Drag(iPoint point)
         {
             Click_Mouse_and_Keyboard.MMC(x, y, point.getX(), point.getY());
+            Pause(200);
         }
     }
 }

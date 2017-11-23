@@ -29,6 +29,15 @@ namespace States
 
         #region движки для запуска перехода по состояниям
 
+
+        /// <summary>
+        /// перевод из состояния 60 () в состояние 70 (). Цель  - заточка оружия и брони на +6 у Иды в Ребольдо
+        /// </summary>
+        public void StateSharpening()
+        {
+            StateDriverRun(new StateGT60(botwindow), new StateGT70(botwindow));
+        }
+
         /// <summary>
         /// перевод из состояния 01 (на работе) в состояние 14 (нет окна). Цель  - продажа после переполнения инвентаря
         /// </summary>

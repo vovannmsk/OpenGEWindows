@@ -233,6 +233,30 @@ namespace OpenGEWindows
         protected iPoint pointButtonSaveTeleport;
         protected iPoint pointButtonOkSaveTeleport;
 
+        //Ида заточка
+        protected iPoint pointAcriveInventory;
+        protected iPointColor pointIsActiveInventory;
+
+        protected iPoint pointEquipmentBegin;
+        protected iPoint pointEquipmentEnd;
+        protected iPointColor pointisMoveEquipment1;
+        protected iPointColor pointisMoveEquipment2;
+
+        protected iPoint pointButtonEnhance;
+        protected iPointColor pointIsPlus41;
+        protected iPointColor pointIsPlus42;
+        protected iPointColor pointIsPlus43;
+        protected iPointColor pointIsPlus44;
+
+        protected iPoint pointAddShinyCrystall;
+        protected iPointColor pointIsAddShinyCrystall1;
+        protected iPointColor pointIsAddShinyCrystall2;
+
+
+
+
+
+
         protected iPointColor pointConnect;
 
 
@@ -1637,6 +1661,72 @@ namespace OpenGEWindows
 
         #endregion
 
+        #region методы для работы кнопки "Заточка у Иды" 
+
+        /// <summary>
+        /// делаем активным инвентарь
+        /// </summary>
+        public void InventoryActive()
+        {
+            pointAcriveInventory.PressMouseR();
+        }
+
+        /// <summary>
+        /// проверяем, стал ли активным инвентарь (по слову Equip)
+        /// </summary>
+        /// <returns></returns>
+        public bool isActiveInventory()
+        {
+            return pointIsActiveInventory.isColor();
+        }
+        
+        /// <summary>
+        /// проверяем, был ли переложен предмет экипировки на место для заточки
+        /// </summary>
+        /// <returns></returns>
+        public bool isMoveEquipment()
+        {
+            return (pointisMoveEquipment1.isColor() && pointisMoveEquipment2.isColor());
+        }
+
+        /// <summary>
+        /// нажимаем на кнопку Enhance
+        /// </summary>
+        public void PressButtonEnhance()
+        {
+            pointButtonEnhance.PressMouseL();
+        }
+
+        /// <summary>
+        /// проверяем, заточилась ли вещь на +4
+        /// </summary>
+        /// <returns></returns>
+        public bool isPlus4()
+        {
+            return ((pointIsPlus41.isColor() && pointIsPlus42.isColor()) || (pointIsPlus43.isColor() && pointIsPlus44.isColor()));  //либо одни две точки либо другие две
+        }
+
+        /// <summary>
+        /// нажимаем на кнопку Max (добавляем Shiny Crystal для заточки на +5 или +6)
+        /// </summary>
+        public void AddShinyCrystall()
+        {
+            pointAddShinyCrystall.PressMouseL();
+        }
+
+        /// <summary>
+        /// проверяем, прибавились ли шайники к заточке на +6 (проверка по голубой полоске)
+        /// </summary>
+        /// <returns></returns>
+        public bool isAddShinyCrystall()
+        {
+            return (pointIsAddShinyCrystall1.isColor() && pointIsAddShinyCrystall2.isColor());
+        }
+
+
+
+
+        #endregion
 
         public abstract void TopMenu(int numberOfThePartitionMenu);
         public abstract void TopMenu(int numberOfThePartitionMenu, int punkt);
@@ -1644,10 +1734,7 @@ namespace OpenGEWindows
         public abstract void TeleportToTownAltW();
         public abstract void OrangeButton();
         public abstract bool isActive();
-//        public abstract void OpenWindow();
         public abstract UIntPtr FindWindowGE();
-
-        //        public abstract uint colorTest();
-
+        public abstract void MoveToSharpening(int numberOfEquipment);
     }
 }

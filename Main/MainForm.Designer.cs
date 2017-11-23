@@ -43,6 +43,7 @@
             this.RunToCrater = new System.Windows.Forms.Button();
             this.findWindowSing = new System.Windows.Forms.Button();
             this.ButtonOpenWindow = new System.Windows.Forms.Button();
+            this.sharpening = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonReOpenWindowGE
@@ -122,9 +123,9 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.LightCoral;
-            this.button5.Location = new System.Drawing.Point(190, 130);
+            this.button5.Location = new System.Drawing.Point(190, 171);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(170, 74);
+            this.button5.Size = new System.Drawing.Size(170, 34);
             this.button5.TabIndex = 48;
             this.button5.Text = "Найти окна";
             this.button5.UseVisualStyleBackColor = false;
@@ -174,12 +175,25 @@
             this.ButtonOpenWindow.UseVisualStyleBackColor = false;
             this.ButtonOpenWindow.Click += new System.EventHandler(this.ButtonOpenWindow_Click);
             // 
+            // sharpening
+            // 
+            this.sharpening.BackColor = System.Drawing.Color.BlueViolet;
+            this.sharpening.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.sharpening.Location = new System.Drawing.Point(190, 130);
+            this.sharpening.Name = "sharpening";
+            this.sharpening.Size = new System.Drawing.Size(170, 35);
+            this.sharpening.TabIndex = 49;
+            this.sharpening.Text = "Заточка у Иды на +6";
+            this.sharpening.UseVisualStyleBackColor = false;
+            this.sharpening.Click += new System.EventHandler(this.sharpening_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(369, 214);
+            this.Controls.Add(this.sharpening);
             this.Controls.Add(this.ButtonOpenWindow);
             this.Controls.Add(this.findWindowSing);
             this.Controls.Add(this.RunToCrater);
@@ -220,6 +234,7 @@
         private System.Windows.Forms.Button RunToCrater;
         private System.Windows.Forms.Button findWindowSing;
         private System.Windows.Forms.Button ButtonOpenWindow;
+        private System.Windows.Forms.Button sharpening;
     
     }
 }
