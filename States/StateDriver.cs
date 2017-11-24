@@ -85,8 +85,10 @@ namespace States
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
             IState result = currentState.StatePrev();
-            if (counterState[getTekStateInt()] >= 5)    //если счетчик этого состояния больше или равен пяти, то значит мы застряли на этом состоянии 
-                result = this.endState;                 // и тогда присваиваем движку конечное состояние, чтобы остановить его
+             
+            if (counterState[getTekStateInt()] >= 5) //если счетчик этого состояния больше или равен пяти, то значит мы застряли на этом состоянии
+                if ((getTekStateInt() != 72) && (getTekStateInt() != 73))    //(на состоянии 72 и 73 не делать ничего (там долгая чиповка))
+                    result = this.endState;                 // тогда присваиваем движку конечное состояние, чтобы остановить его
             return result;
 //            return currentState.StatePrev();
         }

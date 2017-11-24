@@ -457,6 +457,17 @@ namespace OpenGEWindows
             pointEquipmentBegin.Drag(pointEquipmentEnd);
         }
 
+        /// <summary>
+        /// переносим (DragAndDrop) одну из частей экипировки на место для чиповки
+        /// </summary>
+        /// <param name="numberOfEquipment">номер экипировки п/п</param>
+        public override void MoveToNintendo(int numberOfEquipment)
+        {
+            iPoint pointEquipmentBegin = new Point(701 - 5 + xx + (numberOfEquipment - 1) * 39, 183 - 5 + yy);
+            iPoint pointEquipmentEnd = new Point(631 - 5 + xx, 367 - 5 + yy);
+            pointEquipmentBegin.Drag(pointEquipmentEnd);
+        }
+
     }
 }
 

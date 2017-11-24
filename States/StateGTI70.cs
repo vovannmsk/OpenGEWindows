@@ -66,6 +66,20 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            server.InventoryActive();
+            botwindow.Pause(1500);
+
+            //if (numberOfEquipvent == 1)        //переносим левую панель только если это первая вещь
+            //{
+            //    server.MoveLeftPanel();
+            //    botwindow.Pause(1000);
+            //}
+
+            server.MoveToNintendo(this.numberOfEquipvent);
+            botwindow.Pause(500);
+
+            botwindow.ToMoveMouse();
+            botwindow.Pause(500);
         }
 
         /// <summary>
@@ -81,7 +95,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return true;                                                                                //считаем, что осечек не будет на этом этапе, и мы 100% переёдем к следующему пункту
+            return (server.isWeapon() || server.isArmor());
         }
 
         /// <summary>

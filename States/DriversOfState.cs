@@ -42,11 +42,11 @@ namespace States
         }
 
         /// <summary>
-        /// перевод из состояния 60 () в состояние 67 (). Цель  - заточка оружия и брони на +6 у Иды в Ребольдо
+        /// перевод из состояния 70 () в состояние 80 (). Цель  - заточка оружия и брони на +6 у Иды в Ребольдо
         /// </summary>
         public void StateNintendo()
         {
-            for (int numberOfEquipment = 1; numberOfEquipment <= 6; numberOfEquipment++)
+            for (int numberOfEquipment = 1; numberOfEquipment <= 3; numberOfEquipment++)
             {
                 StateDriverRun(new StateGTI70(botwindow, numberOfEquipment), new StateGTI80(botwindow, numberOfEquipment));
             }

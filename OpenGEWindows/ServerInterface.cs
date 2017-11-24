@@ -268,7 +268,25 @@ namespace OpenGEWindows
         #region чиповка
         protected iPointColor pointIsEnchant1;
         protected iPointColor pointIsEnchant2;
-        
+        protected iPointColor pointisWeapon1;
+        protected iPointColor pointisWeapon2;
+        protected iPointColor pointisArmor1;
+        protected iPointColor pointisArmor2;
+        protected iPoint pointMoveLeftPanelBegin;
+        protected iPoint pointMoveLeftPanelEnd;
+        protected iPoint pointButtonEnchance;
+        protected iPointColor pointisDef15;
+        protected iPointColor pointisHP1;
+        protected iPointColor pointisHP2;
+        protected iPointColor pointisHP3;
+        protected iPointColor pointisHP4;
+
+        protected iPointColor pointisAtk401;
+        protected iPointColor pointisAtk402;
+
+        protected iPointColor pointisSpeed30;
+
+
         #endregion
 
 
@@ -1734,7 +1752,6 @@ namespace OpenGEWindows
             return (pointIsAddShinyCrystall1.isColor() && pointIsAddShinyCrystall2.isColor());
         }
 
-
         /// <summary>
         /// проверяем, находимся ли в магазине у Иды (заточка)
         /// </summary>
@@ -1743,8 +1760,6 @@ namespace OpenGEWindows
         {
             return (pointIsIda1.isColor() && pointIsIda2.isColor());
         }
-
-
 
         #endregion
 
@@ -1760,6 +1775,155 @@ namespace OpenGEWindows
             return (pointIsEnchant1.isColor() && pointIsEnchant2.isColor());
         }
 
+        /// <summary>
+        /// проверяем, является ли предмет для чиповки оружием
+        /// </summary>
+        /// <returns></returns>
+        public bool isWeapon()
+        {
+            return (pointisWeapon1.isColor() && pointisWeapon2.isColor());
+        }
+
+        /// <summary>
+        /// проверяем, является ли предмет для чиповки брони
+        /// </summary>
+        /// <returns></returns>
+        public bool isArmor()
+        {
+            return (pointisArmor1.isColor() && pointisArmor2.isColor());
+        }
+
+        /// <summary>
+        /// переносим (DragAndDrop) левую панель, чтобы она не мешала
+        /// </summary>
+        /// <param name="numberOfEquipment">номер экипировки п/п</param>
+        public void MoveLeftPanel()
+        {
+            pointMoveLeftPanelBegin.Drag(pointMoveLeftPanelEnd);
+        }
+
+        /// <summary>
+        /// нажимаем на кнопку Enchance для чипования
+        /// </summary>
+        public void PressButtonEnchance()
+        {
+            pointButtonEnchance.PressMouseL();
+        }
+
+        /// <summary>
+        /// проверяем, является ли предмет для чиповки брони
+        /// </summary>
+        /// <returns></returns>
+        public bool isGoodChipArmor()
+        {
+            bool result = false;
+
+            if (isDef15() && isHP()) result = true;
+//            if (isDef15()) result = true;
+//            if (isHP()) result = true;
+
+
+            return result;
+        }
+
+        /// <summary>
+        /// проверяем, зачиповалась ли броня на +15 def
+        /// </summary>
+        /// <returns></returns>
+        public bool isDef15()
+        {
+            return pointisDef15.isColor();
+        }
+
+        /// <summary>
+        /// проверяем, зачиповалась ли броня на +15 def
+        /// </summary>
+        /// <returns></returns>
+        public bool isHP()
+        {
+            return (pointisHP1.isColor() || pointisHP2.isColor() || pointisHP3.isColor() || pointisHP4.isColor());
+        }
+
+        /// <summary>
+        /// проверяем, является ли предмет для чиповки брони
+        /// </summary>
+        /// <returns></returns>
+        public bool isGoodChipWeapon()
+        {
+            bool result = false;
+            if (isAtk40() && isAtkSpeed30()) result = true;
+            //if (isAtk40() && isAtkSpeed30() && isWild()) result = true;
+            //if (isAtk40() && isAtkSpeed30() && isHuman()) result = true;
+            //if (isAtk40() && isAtkSpeed30() && isUndeed()) result = true;
+            //if (isAtk40() && isAtkSpeed30() && isLifeless()) result = true;
+            //if (isAtk40() && isAtkSpeed30() && isDemon()) result = true;
+            return result;
+        }
+
+        /// <summary>
+        /// проверяем, зачиповалось ли оружие на АТК + 40%
+        /// </summary>
+        /// <returns></returns>
+        public bool isAtk40()
+        {
+            return (pointisAtk401.isColor() && pointisAtk402.isColor());
+        }
+
+        /// <summary>
+        /// проверяем, зачиповалось ли оружие на АТК + 40%
+        /// </summary>
+        /// <returns></returns>
+        public bool isAtkSpeed30()
+        {
+            return pointisSpeed30.isColor();
+        }
+
+        /// <summary>
+        /// проверяем, зачиповалось ли оружие на атаку по животным
+        /// </summary>
+        /// <returns></returns>
+        public bool isWild()
+        {
+            return (pointisHP1.isColor() || pointisHP2.isColor() || pointisHP3.isColor() || pointisHP4.isColor());
+        }
+
+        /// <summary>
+        /// проверяем, зачиповалось ли оружие на атаку по животным
+        /// </summary>
+        /// <returns></returns>
+        public bool isHuman()
+        {
+            return (pointisHP1.isColor() || pointisHP2.isColor() || pointisHP3.isColor() || pointisHP4.isColor());
+        }
+
+        /// <summary>
+        /// проверяем, зачиповалось ли оружие на атаку по животным
+        /// </summary>
+        /// <returns></returns>
+        public bool isUndeed()
+        {
+            return (pointisHP1.isColor() || pointisHP2.isColor() || pointisHP3.isColor() || pointisHP4.isColor());
+        }
+
+        /// <summary>
+        /// проверяем, зачиповалось ли оружие на атаку по животным
+        /// </summary>
+        /// <returns></returns>
+        public bool isLifeless()
+        {
+            return (pointisHP1.isColor() || pointisHP2.isColor() || pointisHP3.isColor() || pointisHP4.isColor());
+        }
+
+        /// <summary>
+        /// проверяем, зачиповалось ли оружие на атаку по животным
+        /// </summary>
+        /// <returns></returns>
+        public bool isDemon()
+        {
+            return (pointisHP1.isColor() || pointisHP2.isColor() || pointisHP3.isColor() || pointisHP4.isColor());
+        }
+
+
         #endregion
 
         public abstract void TopMenu(int numberOfThePartitionMenu);
@@ -1770,5 +1934,7 @@ namespace OpenGEWindows
         public abstract bool isActive();
         public abstract UIntPtr FindWindowGE();
         public abstract void MoveToSharpening(int numberOfEquipment);
+        public abstract void MoveToNintendo(int numberOfEquipment);
+
     }
 }

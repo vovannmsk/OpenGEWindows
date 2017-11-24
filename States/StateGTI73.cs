@@ -66,6 +66,8 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            server.PressButtonEnchance();
+            botwindow.Pause(2000);
         }
 
         /// <summary>
@@ -81,7 +83,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return true;                                                                                //считаем, что осечек не будет на этом этапе, и мы 100% переёдем к следующему пункту
+            return server.isGoodChipWeapon();         //если получился хороший чип, то идём далее 
         }
 
         /// <summary>
@@ -90,7 +92,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGTI74(botwindow, this.numberOfEquipvent);
+            return new StateGTI80(botwindow, this.numberOfEquipvent);
         }
 
         /// <summary>

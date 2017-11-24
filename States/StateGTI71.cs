@@ -81,7 +81,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return true;                                                                                //считаем, что осечек не будет на этом этапе, и мы 100% переёдем к следующему пункту
+            return server.isArmor();
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGTI72(botwindow, this.numberOfEquipvent);
+            return new StateGTI72(botwindow, this.numberOfEquipvent);        //если чипуем броню, то идём сюда
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGTI71(botwindow, this.numberOfEquipvent);
+            return new StateGTI73(botwindow, this.numberOfEquipvent);        //если чипуем оружие, то нам сюда
         }
 
         /// <summary>

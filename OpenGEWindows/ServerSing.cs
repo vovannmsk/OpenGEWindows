@@ -37,6 +37,12 @@ namespace OpenGEWindows
             this.townFactory = new SingTownFactory(botwindow);                                     // здесь выбирается конкретная реализация для фабрики Town
             this.town = townFactory.createTown();
             this.pathClient = path_Client();
+            this.sdvigY = -15;
+
+
+            #region  переменные для основных методов
+            this.pointConnect = new PointColor(696 - 5 + xx, 148 - 5 + yy, 7800000, 5);
+
             this.pointIsSale1 = new PointColor(907 + xx, 675 + yy, 7200000, 5);
             this.pointIsSale2 = new PointColor(907 + xx, 676 + yy, 7800000, 5);
             this.pointIsSale21 = new PointColor(841 - 5 + xx, 665 - 5 + yy, 7900000, 5);
@@ -140,7 +146,6 @@ namespace OpenGEWindows
 
             this.pointTeleportToTownAltW = new Point(801 + xx, 564 + yy + (botwindow.getNomerTeleport() - 1) * 17);   //801, 564 + (botwindow.getNomerTeleport() - 1) * 17);
 
-            this.sdvigY = -15;
 
             this.pointBookmarkSell = new Point(225 + xx, 163 + yy);
             this.pointSaleToTheRedBottle = new Point(335 + xx, 220 + yy);
@@ -177,14 +182,18 @@ namespace OpenGEWindows
             this.pointUnselectMedik = new Point(450 - 5 + xx, 250 - 5 + yy);                       //нажимаем на медика и выкидываем из команды
             this.pointNameOfTeam = new Point(30 - 5 + xx, 660 - 5 + yy);                           //нажимаем на строчку, где вводится имя команды героев (в казарме)
             this.pointButtonSaveNewTeam = new Point(190 - 5 + xx, 660 - 5 + yy);                   //нажимаем на кнопку сохранения команды (в казарме)
-            //стартония
+            #endregion
+
+            #region  стартония
             this.pointRunNunies = new Point(920 - 5 + xx, 170 - 5 + yy);                           //нажимаем на зеленую стрелку, чтобы бежать к Нуньесу в Стартонии
             this.pointPressNunez = new Point(830 - 5 + xx, 340 - 5 + yy);                          //нажимаем на Нуньеса
             this.ButtonOkDialog = new Point(910 - 5 + xx, 680 - 5 + yy);                           //нажимаем на Ок в диалоге
             this.PressMedal = new Point(300 - 5 + xx, 210 - 5 + yy);                               //нажимаем на медаль
             this.ButtonCloseMedal = new Point(740 - 5 + xx, 600 - 5 + yy);                         //нажимаем на кнопку Close и закрываем медали
             this.pointPressNunez2 = new Point(700 - 5 + xx, 360 - 5 + yy);                         //нажимаем на Нуньеса после надевания медали
-            //ребольдо
+            #endregion
+
+            #region  ребольдо
             this.town_begin = new AmericaTownReboldo(botwindow);                                   //город взят по умолчанию, как Ребольдо. 
             this.pointPressLindon1 = new Point(590 - 5 + xx, 210 - 5 + yy);                        //нажимаем на Линдона
             this.pointPressGMonMap = new Point(840 - 5 + xx, 235 - 5 + yy);                        //нажимаем на строчку GM на карте Alt+Z
@@ -215,22 +224,26 @@ namespace OpenGEWindows
             this.pointWayPoint = new Point(665 - 5 + xx, 345 - 5 + yy);                            //тыкнули в телепорт
             this.pointBookmarkField = new Point(220 - 5 + xx, 200 - 5 + yy);                       //закладка Field в телепорте
             this.pointButtonLavaPlato = new Point(820 - 5 + xx, 320 - 5 + yy);                     //кнопка лавовое плато в телепорте
-            //лавовое плато             
+            #endregion
+            
+            #region лавовое плато
             this.pointGateCrater = new Point(373 - 5 + xx, 605 - 5 + yy);                          //переход (ворота) из лавового плато в кратер
             this.pointMitridat = new Point(800 - 5 + xx, 180 - 5 + yy);                            //митридат в кармане
             this.pointMitridatTo2 = new Point(30 - 5 + xx, 140 - 5 + yy);                          //ячейка, где должен лежать митридат
             this.pointBookmark3 = new Point(155 - 5 + xx, 180 - 5 + yy);                           //третья закладка в спецкармане
             this.pointButtonYesPremium = new Point(470 - 5 + xx, 415 - 5 + yy);                    //третья закладка в спецкармане
             this.pointSecondBookmark = new Point(870 - 5 + xx, 150 - 5 + yy);                      //вторая закладка в кармане
+            #endregion
 
-            //кратер
+            #region кратер
             this.pointWorkCrater = new Point(botwindow.getTriangleX()[0] + xx, botwindow.getTriangleY()[0] + yy);     //бежим на место работы
             this.pointButtonSaveTeleport = new Point(440 - 5 + xx, 570 - 5 + yy);                   // нажимаем на кнопку сохранения телепорта в текущей позиции
             this.pointButtonOkSaveTeleport = new Point(660 - 5 + xx, 645 - 5 + yy);               // нажимаем на кнопку OK для подтверждения сохранения телепорта 
             this.pointPetBegin = new Point(855 - 5 + xx, 180 - 5 + yy);    // 800-5, 220-5
             this.pointPetEnd = new Point(520 - 5 + xx, 330 - 5 + yy);    // 520-5, 330-5
+            #endregion
 
-            //Ида
+            #region Ида
             this.pointAcriveInventory = new Point(905 - 5 + xx, 425 - 5 + yy);
             this.pointIsActiveInventory = new PointColor(696 - 5 + xx, 146 - 5 + yy, 16500000, 5);
             this.pointisMoveEquipment1 = new PointColor(493 - 5 + xx, 281 - 5 + yy, 7790000, 4);
@@ -245,12 +258,29 @@ namespace OpenGEWindows
             this.pointIsAddShinyCrystall2 = new PointColor(654 - 5 + xx, 316 - 5 + yy, 15000000, 5);
             this.pointIsIda1 = new PointColor(487 - 5 + xx, 143 - 5 + yy, 16700000, 5);
             this.pointIsIda2 = new PointColor(487 - 5 + xx, 144 - 5 + yy, 16700000, 5);
-            
+            #endregion
 
-            //конец Иды
+            #region чиповка
+            this.pointIsEnchant1 = new PointColor(513 - 5 + xx, 189 - 5 + yy, 13000000, 5);
+            this.pointIsEnchant2 = new PointColor(514 - 5 + xx, 189 - 5 + yy, 13000000, 5);
+            this.pointisWeapon1 = new PointColor(584 - 5 + xx, 365 - 5 + yy, 10700000, 5);
+            this.pointisWeapon2 = new PointColor(585 - 5 + xx, 366 - 5 + yy, 10700000, 5);
+            this.pointisArmor1 = new PointColor(586 - 5 + xx, 367 - 5 + yy, 6100000, 5);
+            this.pointisArmor2 = new PointColor(586 - 5 + xx, 373 - 5 + yy, 6100000, 5);
+            this.pointMoveLeftPanelBegin = new Point(161 - 5 + xx, 130 - 5 + yy);
+            this.pointMoveLeftPanelEnd = new Point(161 - 5 + xx, 592 - 5 + yy);
+            this.pointButtonEnchance = new Point(630 - 5 + xx, 490 - 5 + yy);
+            this.pointisDef15 = new PointColor(388 - 5 + xx, 247 - 5 + yy, 13400000, 5);
+            this.pointisHP1 = new PointColor(355 - 5 + xx, 277 - 5 + yy, 7600000, 5);
+            this.pointisHP2 = new PointColor(355 - 5 + xx, 292 - 5 + yy, 7600000, 5);
+            this.pointisHP3 = new PointColor(355 - 5 + xx, 307 - 5 + yy, 7600000, 5);
+            this.pointisHP4 = new PointColor(355 - 5 + xx, 322 - 5 + yy, 7600000, 5);
+            this.pointisAtk401 = new PointColor(373 - 5 + xx, 247 - 5 + yy, 14300000, 5);
+            this.pointisAtk402 = new PointColor(373 - 5 + xx, 256 - 5 + yy, 14500000, 5);
+            this.pointisSpeed30 = new PointColor(390 - 5 + xx, 269 - 5 + yy, 15500000, 5);
 
+            #endregion
 
-            this.pointConnect = new PointColor(696 - 5 + xx, 148 - 5 + yy, 7800000, 5);
 
 
         }        
@@ -526,6 +556,16 @@ namespace OpenGEWindows
             pointEquipmentBegin.Drag(pointEquipmentEnd);
         }
 
+        /// <summary>
+        /// переносим (DragAndDrop) одну из частей экипировки на место для чиповки
+        /// </summary>
+        /// <param name="numberOfEquipment">номер экипировки п/п</param>
+        public override void MoveToNintendo(int numberOfEquipment)
+        {
+            iPoint pointEquipmentBegin = new Point(701 - 5 + xx + (numberOfEquipment - 1) * 39, 183 - 5 + yy);
+            iPoint pointEquipmentEnd = new Point(631 - 5 + xx, 367 - 5 + yy);
+            pointEquipmentBegin.Drag(pointEquipmentEnd);
+        }
 
 
 
