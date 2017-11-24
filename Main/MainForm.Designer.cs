@@ -44,6 +44,7 @@
             this.findWindowSing = new System.Windows.Forms.Button();
             this.ButtonOpenWindow = new System.Windows.Forms.Button();
             this.sharpening = new System.Windows.Forms.Button();
+            this.Nintendo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonReOpenWindowGE
@@ -134,7 +135,7 @@
             // buttonNewAcc
             // 
             this.buttonNewAcc.BackColor = System.Drawing.Color.Pink;
-            this.buttonNewAcc.Location = new System.Drawing.Point(10, 130);
+            this.buttonNewAcc.Location = new System.Drawing.Point(10, 170);
             this.buttonNewAcc.Name = "buttonNewAcc";
             this.buttonNewAcc.Size = new System.Drawing.Size(170, 35);
             this.buttonNewAcc.TabIndex = 49;
@@ -145,7 +146,7 @@
             // RunToCrater
             // 
             this.RunToCrater.BackColor = System.Drawing.Color.Lime;
-            this.RunToCrater.Location = new System.Drawing.Point(10, 170);
+            this.RunToCrater.Location = new System.Drawing.Point(12, 287);
             this.RunToCrater.Name = "RunToCrater";
             this.RunToCrater.Size = new System.Drawing.Size(170, 35);
             this.RunToCrater.TabIndex = 50;
@@ -187,12 +188,25 @@
             this.sharpening.UseVisualStyleBackColor = false;
             this.sharpening.Click += new System.EventHandler(this.sharpening_Click);
             // 
+            // Nintendo
+            // 
+            this.Nintendo.BackColor = System.Drawing.Color.Chocolate;
+            this.Nintendo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Nintendo.Location = new System.Drawing.Point(10, 130);
+            this.Nintendo.Name = "Nintendo";
+            this.Nintendo.Size = new System.Drawing.Size(170, 35);
+            this.Nintendo.TabIndex = 53;
+            this.Nintendo.Text = "Чиповка оружия и брони";
+            this.Nintendo.UseVisualStyleBackColor = false;
+            this.Nintendo.Click += new System.EventHandler(this.Nintendo_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(369, 214);
+            this.Controls.Add(this.Nintendo);
             this.Controls.Add(this.sharpening);
             this.Controls.Add(this.ButtonOpenWindow);
             this.Controls.Add(this.findWindowSing);
@@ -235,6 +249,7 @@
         private System.Windows.Forms.Button findWindowSing;
         private System.Windows.Forms.Button ButtonOpenWindow;
         private System.Windows.Forms.Button sharpening;
+        private System.Windows.Forms.Button Nintendo;
     
     }
 }

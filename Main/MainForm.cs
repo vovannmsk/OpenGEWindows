@@ -494,7 +494,42 @@ namespace Main
 
         #endregion
 
+        #region Chocolate button (чиповка)
 
+        /// <summary>
+        /// Шоколадная кнопка (чиповка экипировки)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Nintendo_Click(object sender, EventArgs e)
+        {
+            Thread myThreadChocolate = new Thread(funcChoco);
+            myThreadChocolate.Start();
+        }
+
+        /// <summary>
+        /// метод задает функционал для потока, организуемого gold кнопкой
+        /// </summary>
+        private void funcChoco()
+        {
+            for (int j = 1; j <= numberOfAccounts; j++)
+            {
+                Check check = new Check(j);
+                if (check.isActive())
+                {
+                    check.ReOpenWindow();
+                    if (check.isEnchant())   //если окно находится в магазине Иды
+                    {
+                        DriversOfState drive = new DriversOfState(j);
+                        drive.StateNintendo();
+                    }
+                }
+            }
+            MessageBox.Show("Всё!!!");
+        }
+
+
+        #endregion
 
         #region дополнительные методы
 
@@ -517,6 +552,7 @@ namespace Main
         }
 
         #endregion
+
 
 
 

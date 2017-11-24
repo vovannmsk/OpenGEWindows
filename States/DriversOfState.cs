@@ -31,13 +31,24 @@ namespace States
 
 
         /// <summary>
-        /// перевод из состояния 60 () в состояние 70 (). Цель  - заточка оружия и брони на +6 у Иды в Ребольдо
+        /// перевод из состояния 60 () в состояние 67 (). Цель  - заточка оружия и брони на +6 у Иды в Ребольдо
         /// </summary>
         public void StateSharpening()
         {
             for (int numberOfEquipment = 1; numberOfEquipment <= 6; numberOfEquipment++)
             {
                 StateDriverRun(new StateGTI60(botwindow, numberOfEquipment), new StateGTI67(botwindow, numberOfEquipment));
+            }
+        }
+
+        /// <summary>
+        /// перевод из состояния 60 () в состояние 67 (). Цель  - заточка оружия и брони на +6 у Иды в Ребольдо
+        /// </summary>
+        public void StateNintendo()
+        {
+            for (int numberOfEquipment = 1; numberOfEquipment <= 6; numberOfEquipment++)
+            {
+                StateDriverRun(new StateGTI70(botwindow, numberOfEquipment), new StateGTI80(botwindow, numberOfEquipment));
             }
         }
 

@@ -187,6 +187,16 @@ namespace States
             return server.isIda();
         }
 
+        /// <summary>
+        /// проверяем, находимся ли в магазине у Чиповщицы
+        /// </summary>
+        /// <returns></returns>
+        public bool isEnchant()
+        {
+            return server.isEnchant();
+        }
+
+
 
         /// <summary>
         /// тестовая кнопка

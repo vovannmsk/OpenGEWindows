@@ -111,6 +111,17 @@
     <Compile Include="StateGT56.cs" />
     <Compile Include="StateGT57.cs" />
     <Compile Include="StateGTI63.cs" />
+    <Compile Include="StateGTI70.cs" />
+    <Compile Include="StateGTI71.cs" />
+    <Compile Include="StateGTI72.cs" />
+    <Compile Include="StateGTI73.cs" />
+    <Compile Include="StateGTI74.cs" />
+    <Compile Include="StateGTI75.cs" />
+    <Compile Include="StateGTI76.cs" />
+    <Compile Include="StateGTI77.cs" />
+    <Compile Include="StateGTI78.cs" />
+    <Compile Include="StateGTI79.cs" />
+    <Compile Include="StateGTI80.cs" />
     <Compile Include="StateGTI67.cs" />
     <Compile Include="StateGTI66.cs" />
     <Compile Include="StateGTI65.cs" />

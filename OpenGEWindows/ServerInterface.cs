@@ -45,6 +45,12 @@ namespace OpenGEWindows
         protected botWindow botwindow;
         protected TownFactory townFactory;
         protected const String KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
+        protected int sdvigY;
+        protected String pathClient;
+
+        #region переменные для основных методов
+        protected iPointColor pointConnect;
+
         protected iPointColor pointIsSale1;
         protected iPointColor pointIsSale2;
         protected iPointColor pointIsSale21;
@@ -161,9 +167,9 @@ namespace OpenGEWindows
         protected iPoint pointCure2;
         protected iPoint pointCure3;
         protected iPoint pointMana1;
+        #endregion
 
-
-        //создание нового бота
+        #region создание нового бота
         protected iPoint pointNewName;
         protected iPoint pointButtonCreateNewName;
         protected iPoint pointCreateHeroes;
@@ -176,16 +182,18 @@ namespace OpenGEWindows
         protected iPoint pointUnselectMedik;
         protected iPoint pointNameOfTeam;
         protected iPoint pointButtonSaveNewTeam;
+        #endregion
 
-        //Стартония
+        #region Стартония
         protected iPoint pointRunNunies;
         protected iPoint pointPressNunez;
         protected iPoint ButtonOkDialog;
         protected iPoint PressMedal;
         protected iPoint ButtonCloseMedal;
         protected iPoint pointPressNunez2;
+        #endregion
 
-        //ребольдо
+        #region ребольдо
         protected iPoint pointPressLindon1;
         protected iPoint pointPressGMonMap;
         protected iPoint pointPressGM_1;
@@ -217,23 +225,24 @@ namespace OpenGEWindows
         protected iPoint pointButtonLavaPlato;
         protected Point pointPetBegin;  //для перетаскивания пета
         protected Point pointPetEnd;
+        #endregion
 
-
-        //лавовое плато
+        #region лавовое плато
         protected iPoint pointGateCrater;
         protected iPoint pointSecondBookmark;
         protected iPoint pointMitridat;
         protected iPoint pointMitridatTo2;
         protected iPoint pointBookmark3;
         protected iPoint pointButtonYesPremium;
+        #endregion
 
-
-        //кратер
+        #region кратер
         protected iPoint pointWorkCrater;
         protected iPoint pointButtonSaveTeleport;
         protected iPoint pointButtonOkSaveTeleport;
+        #endregion
 
-        //Ида заточка
+        #region Ида заточка
         protected iPoint pointAcriveInventory;
         protected iPointColor pointIsActiveInventory;
 
@@ -254,17 +263,17 @@ namespace OpenGEWindows
 
         protected iPointColor pointIsIda1;
         protected iPointColor pointIsIda2;
+        #endregion
+
+        #region чиповка
+        protected iPointColor pointIsEnchant1;
+        protected iPointColor pointIsEnchant2;
+        
+        #endregion
 
 
 
 
-
-        protected iPointColor pointConnect;
-
-
-        protected int sdvigY;
-        protected String pathClient;
-//        protected int activeWindow;
 
         protected struct Product 
         { 
@@ -1736,6 +1745,20 @@ namespace OpenGEWindows
         }
 
 
+
+        #endregion
+
+
+        #region чиповка
+
+        /// <summary>
+        /// проверяем, находимся ли в магазине у Чиповщицы
+        /// </summary>
+        /// <returns></returns>
+        public bool isEnchant()
+        {
+            return (pointIsEnchant1.isColor() && pointIsEnchant2.isColor());
+        }
 
         #endregion
 
