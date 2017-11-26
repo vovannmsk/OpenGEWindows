@@ -18,6 +18,9 @@ namespace OpenGEWindows
     public class ServerSing : ServerInterface
     {
         [DllImport("user32.dll")]
+        public static extern bool SetWindowPos(UIntPtr myhWnd, int myhwndoptional, int xx, int yy, int cxx, int cyy, uint flagus); // Перемещает окно в заданные координаты с заданным размером
+
+        [DllImport("user32.dll")]
         private static extern bool ShowWindow(UIntPtr hWnd, int nCmdShow);
 
         [DllImport("user32.dll")]
@@ -261,6 +264,7 @@ namespace OpenGEWindows
             #endregion
 
             #region чиповка
+
             this.pointIsEnchant1 = new PointColor(513 - 5 + xx, 189 - 5 + yy, 13000000, 5);
             this.pointIsEnchant2 = new PointColor(514 - 5 + xx, 189 - 5 + yy, 13000000, 5);
             this.pointisWeapon1 = new PointColor(584 - 5 + xx, 365 - 5 + yy, 10700000, 5);
@@ -275,9 +279,60 @@ namespace OpenGEWindows
             this.pointisHP2 = new PointColor(355 - 5 + xx, 292 - 5 + yy, 7600000, 5);
             this.pointisHP3 = new PointColor(355 - 5 + xx, 307 - 5 + yy, 7600000, 5);
             this.pointisHP4 = new PointColor(355 - 5 + xx, 322 - 5 + yy, 7600000, 5);
+
             this.pointisAtk401 = new PointColor(373 - 5 + xx, 247 - 5 + yy, 14300000, 5);
             this.pointisAtk402 = new PointColor(373 - 5 + xx, 256 - 5 + yy, 14500000, 5);
             this.pointisSpeed30 = new PointColor(390 - 5 + xx, 269 - 5 + yy, 15500000, 5);
+
+            this.pointisAtk391 = new PointColor(378 - 5 + xx, 252 - 5 + yy, 15200000, 5);
+            this.pointisAtk392 = new PointColor(381 - 5 + xx, 252 - 5 + yy, 14100000, 5);
+            this.pointisSpeed291 = new PointColor(394 - 5 + xx, 267 - 5 + yy, 15200000, 5);
+            this.pointisSpeed292 = new PointColor(397 - 5 + xx, 267 - 5 + yy, 14100000, 5);
+
+            this.pointisAtk381 = new PointColor(378 - 5 + xx, 251 - 5 + yy, 15100000, 5);
+            this.pointisAtk382 = new PointColor(381 - 5 + xx, 251 - 5 + yy, 14300000, 5);
+            this.pointisSpeed281 = new PointColor(394 - 5 + xx, 266 - 5 + yy, 15100000, 5);
+            this.pointisSpeed282 = new PointColor(397 - 5 + xx, 266 - 5 + yy, 14300000, 5);
+
+            this.pointisAtk371 = new PointColor(377 - 5 + xx, 247 - 5 + yy, 15000000, 5);
+            this.pointisAtk372 = new PointColor(382 - 5 + xx, 247 - 5 + yy, 15100000, 5);
+            this.pointisSpeed271 = new PointColor(393 - 5 + xx, 262 - 5 + yy, 15000000, 5);
+            this.pointisSpeed272 = new PointColor(398 - 5 + xx, 262 - 5 + yy, 15100000, 5);
+
+            this.pointisWild41 = new PointColor(415 - 5 + xx, 292 - 5 + yy, 7900000, 5);
+            this.pointisWild42 = new PointColor(415 - 5 + xx, 301 - 5 + yy, 7900000, 5);
+            this.pointisWild51 = new PointColor(415 - 5 + xx, 307 - 5 + yy, 7900000, 5);
+            this.pointisWild52 = new PointColor(415 - 5 + xx, 316 - 5 + yy, 7900000, 5);
+            this.pointisWild61 = new PointColor(415 - 5 + xx, 322 - 5 + yy, 7900000, 5);
+            this.pointisWild62 = new PointColor(415 - 5 + xx, 331 - 5 + yy, 7900000, 5);
+
+            this.pointisHuman41 = new PointColor(403 - 5 + xx, 292 - 5 + yy, 7800000, 5);
+            this.pointisHuman42 = new PointColor(403 - 5 + xx, 301 - 5 + yy, 7800000, 5);
+            this.pointisHuman51 = new PointColor(403 - 5 + xx, 307 - 5 + yy, 7800000, 5);
+            this.pointisHuman52 = new PointColor(403 - 5 + xx, 316 - 5 + yy, 7800000, 5);
+            this.pointisHuman61 = new PointColor(403 - 5 + xx, 322 - 5 + yy, 7800000, 5);
+            this.pointisHuman62 = new PointColor(403 - 5 + xx, 331 - 5 + yy, 7800000, 5);
+
+            this.pointisDemon41 = new PointColor(398 - 5 + xx, 292 - 5 + yy, 7900000, 5);
+            this.pointisDemon42 = new PointColor(399 - 5 + xx, 292 - 5 + yy, 7900000, 5);
+            this.pointisDemon51 = new PointColor(398 - 5 + xx, 307 - 5 + yy, 7900000, 5);
+            this.pointisDemon52 = new PointColor(399 - 5 + xx, 307 - 5 + yy, 7900000, 5);
+            this.pointisDemon61 = new PointColor(398 - 5 + xx, 322 - 5 + yy, 7900000, 5);
+            this.pointisDemon62 = new PointColor(399 - 5 + xx, 322 - 5 + yy, 7900000, 5);
+
+            this.pointisUndead41 = new PointColor(397 - 5 + xx, 292 - 5 + yy, 7700000, 5);
+            this.pointisUndead42 = new PointColor(397 - 5 + xx, 293 - 5 + yy, 7700000, 5);
+            this.pointisUndead51 = new PointColor(397 - 5 + xx, 307 - 5 + yy, 7700000, 5);
+            this.pointisUndead52 = new PointColor(397 - 5 + xx, 308 - 5 + yy, 7700000, 5);
+            this.pointisUndead61 = new PointColor(397 - 5 + xx, 322 - 5 + yy, 7700000, 5);
+            this.pointisUndead62 = new PointColor(397 - 5 + xx, 323 - 5 + yy, 7700000, 5);
+
+            this.pointisLifeless41 = new PointColor(398 - 5 + xx, 292 - 5 + yy, 7800000, 5);
+            this.pointisLifeless42 = new PointColor(398 - 5 + xx, 301 - 5 + yy, 7800000, 5);
+            this.pointisLifeless51 = new PointColor(398 - 5 + xx, 307 - 5 + yy, 7800000, 5);
+            this.pointisLifeless52 = new PointColor(398 - 5 + xx, 316 - 5 + yy, 7800000, 5);
+            this.pointisLifeless61 = new PointColor(398 - 5 + xx, 322 - 5 + yy, 7800000, 5);
+            this.pointisLifeless62 = new PointColor(398 - 5 + xx, 331 - 5 + yy, 7800000, 5);
 
             #endregion
 
@@ -315,14 +370,36 @@ namespace OpenGEWindows
         private int SandboxieY()
         { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\КоординатаПесочницы.txt")); }
 
+        /// <summary>
+        /// проверяем, выскочило ли сообщение о несовместимости версии SafeIPs.dll
+        /// </summary>
+        /// <returns></returns>
+        private bool isSafeIP()
+        {
+            iPointColor pointSafeIP1 = new PointColor(941 - 5 + xx, 579 - 5 + yy, 13600000, 5);
+            iPointColor pointSafeIP2 = new PointColor(942 - 5 + xx, 579 - 5 + yy, 13600000, 5);
+            return (pointSafeIP1.isColor() && pointSafeIP2.isColor());
+        }
+
+        /// <summary>
+        /// проверяем, выскочила ли реклама Steam
+        /// </summary>
+        /// <returns></returns>
+        private bool isReklamaSteam()
+        {
+            //iPointColor pointSafeIP1 = new PointColor(941 - 5 + xx, 579 - 5 + yy, 13600000, 5);
+            //iPointColor pointSafeIP2 = new PointColor(942 - 5 + xx, 579 - 5 + yy, 13600000, 5);
+            //return (pointSafeIP1.isColor() && pointSafeIP2.isColor());
+            return true;
+        }
 
         /// <summary>
         /// запуск клиента игры
         /// </summary>
         public override void runClient()
         {
+            #region для песочницы
 
-            //для песочницы
             int[] y = { 0, 1, 5, 6, 7, 8, 9, 10, 11, 12, 2, 3, 4 };
             iPoint pointSteam = new Point(1862, 862);
             iPoint pointSandboxie = new Point(1661, SandboxieY());
@@ -341,11 +418,17 @@ namespace OpenGEWindows
             pointListSandboxie.DoubleClickL();  //тыкаем дважды в строчку с номером песочницы
             Pause(30000);
 
-            pointOkSafeIP.PressMouseL();       //тыкаем в Ок и закрываем сообщение об ошибке
-            Pause(15000);
+            if (isSafeIP())
+            {
+                pointOkSafeIP.PressMouseL();       //тыкаем в Ок и закрываем сообщение об ошибке
+                Pause(15000);
+            }
 
-            pointOkReklamaSteam.PressMouseL();   //закрываем рекламу стим
-            Pause(5000);
+            if (isReklamaSteam())
+            {
+                pointOkReklamaSteam.PressMouseL();   //закрываем рекламу стим
+                Pause(5000);
+            }
 
             pointRunGE.PressMouseL();            //нажимаем на кнопку запуска ГЭ
             Pause(1000);
@@ -353,19 +436,21 @@ namespace OpenGEWindows
             pointCloseSteam.PressMouseL();      //закрываем крестиком окно Steam и ждем открытия окна ГЭ
             Pause(60000);
 
+            #endregion
 
-
-
-            //для чистого окна
+            #region для чистого окна
             //Process.Start(getPathClient());                             //запускаем саму игру или бот Catzmods
             //botwindow.Pause(10000);
+            #endregion
 
-            //если CatzMods
+            #region если CatzMods
             //Process.Start(getPathClient());                                    //запускаем саму игру или бот Catzmods
             //Pause(10000);
             //Click_Mouse_and_Keyboard.Mouse_Move_and_Click(1110, 705, 1);        //нажимаем кнопку "старт" в боте      
             //Pause(500);
             //Click_Mouse_and_Keyboard.Mouse_Move_and_Click(1222, 705, 1);        //нажимаем кнопку "Close" в боте
+            #endregion
+
         }
 
         /// <summary>
@@ -521,8 +606,8 @@ namespace OpenGEWindows
 
             botwindow.setHwnd(HWND);
 
-            //SetWindowPos(HWND, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
-            ShowWindow(HWND, 2);   //скрыть окно в трей
+            SetWindowPos(HWND, 1, xx, yy, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+//            ShowWindow(HWND, 2);   //скрыть окно в трей
             Pause(500);
 
             #region старый вариант метода

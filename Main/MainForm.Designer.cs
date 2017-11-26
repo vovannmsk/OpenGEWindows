@@ -41,7 +41,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.buttonNewAcc = new System.Windows.Forms.Button();
             this.RunToCrater = new System.Windows.Forms.Button();
-            this.findWindowSing = new System.Windows.Forms.Button();
             this.ButtonOpenWindow = new System.Windows.Forms.Button();
             this.sharpening = new System.Windows.Forms.Button();
             this.Nintendo = new System.Windows.Forms.Button();
@@ -83,7 +82,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(12, 246);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(167, 35);
+            this.button1.Size = new System.Drawing.Size(167, 60);
             this.button1.TabIndex = 5;
             this.button1.Text = "T E S T";
             this.button1.UseVisualStyleBackColor = true;
@@ -146,24 +145,13 @@
             // RunToCrater
             // 
             this.RunToCrater.BackColor = System.Drawing.Color.Lime;
-            this.RunToCrater.Location = new System.Drawing.Point(12, 287);
+            this.RunToCrater.Location = new System.Drawing.Point(177, 338);
             this.RunToCrater.Name = "RunToCrater";
             this.RunToCrater.Size = new System.Drawing.Size(170, 35);
             this.RunToCrater.TabIndex = 50;
             this.RunToCrater.Text = "Бежим до кратера";
             this.RunToCrater.UseVisualStyleBackColor = false;
             this.RunToCrater.Click += new System.EventHandler(this.RunToCrater_Click);
-            // 
-            // findWindowSing
-            // 
-            this.findWindowSing.BackColor = System.Drawing.Color.Silver;
-            this.findWindowSing.Location = new System.Drawing.Point(192, 246);
-            this.findWindowSing.Name = "findWindowSing";
-            this.findWindowSing.Size = new System.Drawing.Size(170, 35);
-            this.findWindowSing.TabIndex = 51;
-            this.findWindowSing.Text = "Найти окна Sing";
-            this.findWindowSing.UseVisualStyleBackColor = false;
-            this.findWindowSing.Click += new System.EventHandler(this.findWindowSing_Click);
             // 
             // ButtonOpenWindow
             // 
@@ -205,11 +193,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(369, 214);
+            this.ClientSize = new System.Drawing.Size(369, 216);
             this.Controls.Add(this.Nintendo);
             this.Controls.Add(this.sharpening);
             this.Controls.Add(this.ButtonOpenWindow);
-            this.Controls.Add(this.findWindowSing);
             this.Controls.Add(this.RunToCrater);
             this.Controls.Add(this.buttonNewAcc);
             this.Controls.Add(this.button5);
@@ -246,7 +233,6 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button buttonNewAcc;
         private System.Windows.Forms.Button RunToCrater;
-        private System.Windows.Forms.Button findWindowSing;
         private System.Windows.Forms.Button ButtonOpenWindow;
         private System.Windows.Forms.Button sharpening;
         private System.Windows.Forms.Button Nintendo;

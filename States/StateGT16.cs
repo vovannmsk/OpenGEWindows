@@ -78,10 +78,14 @@ namespace States
 
             botwindow.Pause(2000);
             int i = 0;
-            while (((!server.isTown()) && (!server.isTown_2())) && (i < 50))      //GT16 ожидание загрузки города, проверка по двум стойкам
-            { botwindow.Pause(500); i++; }
-
+            while (i < 50)      // ожидание загрузки города, проверка по двум стойкам
+            { 
+                botwindow.Pause(500); 
+                i++;
+                if ((server.isTown()) || (server.isTown_2())) break;    // проверяем успешный переход в город, проверка по ружью и дробовику
+            }
             botwindow.Pause(7000);       //поставил по Колиной просьбе
+
             botwindow.PressEscThreeTimes();
             botwindow.Pause(1000);
         }
@@ -100,7 +104,8 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return ((server.isTown()) || (server.isTown_2()));   //GT16   проверка по двум стойкам
+//            return ((server.isTown()) || (server.isTown_2()));   //GT16   проверка по двум стойкам
+            return !server.isBarack();
         }
 
         /// <summary>

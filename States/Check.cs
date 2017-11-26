@@ -116,14 +116,6 @@ namespace States
             return server.FindWindowGE();
         }
 
-        /// <summary>
-        /// поиск новых окон с игрой для кнопки "Найти окна Sing"
-        /// </summary>
-        /// <returns></returns>
-        public void FindWindowSing()
-        {
-            botwindow.FindWindowSing();
-        }
 
         /// <summary>
         /// пауза в милисекундах
@@ -209,8 +201,8 @@ namespace States
             uint color1;
             uint color2;
 
-            PointColor point1 = new PointColor(390 - 5 + xx, 269 - 5 + yy, 13000000, 5);
-            PointColor point2 = new PointColor(373 - 5 + xx, 256 - 5 + yy, 13000000, 5);
+            PointColor point1 = new PointColor(941 - 5 + xx, 579 - 5 + yy, 13000000, 5);
+            PointColor point2 = new PointColor(942 - 5 + xx, 579 - 5 + yy, 13000000, 5);
 
             color1 = point1.GetPixelColor();
             color2 = point2.GetPixelColor();
@@ -218,6 +210,14 @@ namespace States
             MessageBox.Show(" " + color1);
             MessageBox.Show(" " + color2);
 
+            //string str = "";
+            //if (server.isHuman()) str += "Human ";
+            //if (server.isWild()) str += "Wild ";
+            //if (server.isLifeless()) str += "Life ";
+            //if (server.isUndead()) str += "Undead ";
+            //if (server.isDemon()) str += "Demon ";
+
+            //MessageBox.Show(str);
         }
     }
 }

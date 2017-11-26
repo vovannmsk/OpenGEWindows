@@ -283,15 +283,60 @@ namespace OpenGEWindows
 
         protected iPointColor pointisAtk401;
         protected iPointColor pointisAtk402;
-
         protected iPointColor pointisSpeed30;
+
+        protected iPointColor pointisAtk391;
+        protected iPointColor pointisAtk392;
+        protected iPointColor pointisSpeed291;
+        protected iPointColor pointisSpeed292;
+
+        protected iPointColor pointisAtk381;
+        protected iPointColor pointisAtk382;
+        protected iPointColor pointisSpeed281;
+        protected iPointColor pointisSpeed282;
+
+        protected iPointColor pointisAtk371;
+        protected iPointColor pointisAtk372;
+        protected iPointColor pointisSpeed271;
+        protected iPointColor pointisSpeed272;
+
+        protected iPointColor pointisWild41;  //строка 4
+        protected iPointColor pointisWild42;
+        protected iPointColor pointisWild51;  //строка 5
+        protected iPointColor pointisWild52;
+        protected iPointColor pointisWild61;  //строка 6
+        protected iPointColor pointisWild62;
+
+        protected iPointColor pointisHuman41;  //строка 4
+        protected iPointColor pointisHuman42;
+        protected iPointColor pointisHuman51;  //строка 5
+        protected iPointColor pointisHuman52;
+        protected iPointColor pointisHuman61;  //строка 6
+        protected iPointColor pointisHuman62;
+
+        protected iPointColor pointisDemon41;  //строка 4
+        protected iPointColor pointisDemon42;
+        protected iPointColor pointisDemon51;  //строка 5
+        protected iPointColor pointisDemon52;
+        protected iPointColor pointisDemon61;  //строка 6
+        protected iPointColor pointisDemon62;
+
+        protected iPointColor pointisUndead41;  //строка 4
+        protected iPointColor pointisUndead42;
+        protected iPointColor pointisUndead51;  //строка 5
+        protected iPointColor pointisUndead52;
+        protected iPointColor pointisUndead61;  //строка 6
+        protected iPointColor pointisUndead62;
+
+        protected iPointColor pointisLifeless41;  //строка 4
+        protected iPointColor pointisLifeless42;
+        protected iPointColor pointisLifeless51;  //строка 5
+        protected iPointColor pointisLifeless52;
+        protected iPointColor pointisLifeless61;  //строка 6
+        protected iPointColor pointisLifeless62;
 
 
         #endregion
-
-
-
-
 
         protected struct Product 
         { 
@@ -1763,7 +1808,6 @@ namespace OpenGEWindows
 
         #endregion
 
-
         #region чиповка
 
         /// <summary>
@@ -1844,21 +1888,13 @@ namespace OpenGEWindows
             return (pointisHP1.isColor() || pointisHP2.isColor() || pointisHP3.isColor() || pointisHP4.isColor());
         }
 
+
         /// <summary>
-        /// проверяем, является ли предмет для чиповки брони
+        /// метод возвращает параметр, отвечающий за тип чиповки оружия
         /// </summary>
         /// <returns></returns>
-        public bool isGoodChipWeapon()
-        {
-            bool result = false;
-            if (isAtk40() && isAtkSpeed30()) result = true;
-            //if (isAtk40() && isAtkSpeed30() && isWild()) result = true;
-            //if (isAtk40() && isAtkSpeed30() && isHuman()) result = true;
-            //if (isAtk40() && isAtkSpeed30() && isUndeed()) result = true;
-            //if (isAtk40() && isAtkSpeed30() && isLifeless()) result = true;
-            //if (isAtk40() && isAtkSpeed30() && isDemon()) result = true;
-            return result;
-        }
+        private int TypeOfNintendo()
+        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Чиповка.txt")); }
 
         /// <summary>
         /// проверяем, зачиповалось ли оружие на АТК + 40%
@@ -1870,7 +1906,34 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// проверяем, зачиповалось ли оружие на АТК + 40%
+        /// проверяем, зачиповалось ли оружие на АТК + 39%
+        /// </summary>
+        /// <returns></returns>
+        public bool isAtk39()
+        {
+            return (pointisAtk391.isColor() && pointisAtk392.isColor());
+        }
+
+        /// <summary>
+        /// проверяем, зачиповалось ли оружие на АТК + 38%
+        /// </summary>
+        /// <returns></returns>
+        public bool isAtk38()
+        {
+            return (pointisAtk381.isColor() && pointisAtk382.isColor());
+        }
+
+        /// <summary>
+        /// проверяем, зачиповалось ли оружие на АТК + 37%
+        /// </summary>
+        /// <returns></returns>
+        public bool isAtk37()
+        {
+            return (pointisAtk371.isColor() && pointisAtk372.isColor());
+        }
+
+        /// <summary>
+        /// проверяем, зачиповалось ли оружие на скорость + 30%
         /// </summary>
         /// <returns></returns>
         public bool isAtkSpeed30()
@@ -1879,48 +1942,131 @@ namespace OpenGEWindows
         }
 
         /// <summary>
+        /// проверяем, зачиповалось ли оружие на скорость + 29%
+        /// </summary>
+        /// <returns></returns>
+        public bool isAtkSpeed29()
+        {
+            return (pointisSpeed291.isColor() && pointisSpeed292.isColor());
+        }
+
+        /// <summary>
+        /// проверяем, зачиповалось ли оружие на скорость + 28%
+        /// </summary>
+        /// <returns></returns>
+        public bool isAtkSpeed28()
+        {
+            return (pointisSpeed281.isColor() && pointisSpeed282.isColor());
+        }
+
+        /// <summary>
+        /// проверяем, зачиповалось ли оружие на скорость + 28%
+        /// </summary>
+        /// <returns></returns>
+        public bool isAtkSpeed27()
+        {
+            return (pointisSpeed271.isColor() && pointisSpeed272.isColor());
+        }
+
+        /// <summary>
         /// проверяем, зачиповалось ли оружие на атаку по животным
         /// </summary>
         /// <returns></returns>
         public bool isWild()
         {
-            return (pointisHP1.isColor() || pointisHP2.isColor() || pointisHP3.isColor() || pointisHP4.isColor());
+            return (
+                    (pointisWild41.isColor() && pointisWild42.isColor()) ||
+                    (pointisWild51.isColor() && pointisWild52.isColor()) || 
+                    (pointisWild61.isColor() && pointisWild62.isColor())
+                   );
         }
 
         /// <summary>
-        /// проверяем, зачиповалось ли оружие на атаку по животным
+        /// проверяем, зачиповалось ли оружие на атаку по людям
         /// </summary>
         /// <returns></returns>
         public bool isHuman()
         {
-            return (pointisHP1.isColor() || pointisHP2.isColor() || pointisHP3.isColor() || pointisHP4.isColor());
+            return (
+                    (pointisHuman41.isColor() && pointisHuman42.isColor()) ||
+                    (pointisHuman51.isColor() && pointisHuman52.isColor()) ||
+                    (pointisHuman61.isColor() && pointisHuman62.isColor())
+                    );
         }
 
         /// <summary>
-        /// проверяем, зачиповалось ли оружие на атаку по животным
-        /// </summary>
-        /// <returns></returns>
-        public bool isUndeed()
-        {
-            return (pointisHP1.isColor() || pointisHP2.isColor() || pointisHP3.isColor() || pointisHP4.isColor());
-        }
-
-        /// <summary>
-        /// проверяем, зачиповалось ли оружие на атаку по животным
-        /// </summary>
-        /// <returns></returns>
-        public bool isLifeless()
-        {
-            return (pointisHP1.isColor() || pointisHP2.isColor() || pointisHP3.isColor() || pointisHP4.isColor());
-        }
-
-        /// <summary>
-        /// проверяем, зачиповалось ли оружие на атаку по животным
+        /// проверяем, зачиповалось ли оружие на атаку по демонам
         /// </summary>
         /// <returns></returns>
         public bool isDemon()
         {
-            return (pointisHP1.isColor() || pointisHP2.isColor() || pointisHP3.isColor() || pointisHP4.isColor());
+            return (
+                    (pointisDemon41.isColor() && pointisDemon42.isColor()) ||
+                    (pointisDemon51.isColor() && pointisDemon52.isColor()) ||
+                    (pointisDemon61.isColor() && pointisDemon62.isColor())
+                    );
+        }
+
+        /// <summary>
+        /// проверяем, зачиповалось ли оружие на атаку по Undead
+        /// </summary>
+        /// <returns></returns>
+        public bool isUndead()
+        {
+            return (
+                    (pointisUndead41.isColor() && pointisUndead42.isColor()) ||
+                    (pointisUndead51.isColor() && pointisUndead52.isColor()) ||
+                    (pointisUndead61.isColor() && pointisUndead62.isColor())
+                    );
+        }
+
+        /// <summary>
+        /// проверяем, зачиповалось ли оружие на атаку по Lifeless
+        /// </summary>
+        /// <returns></returns>
+        public bool isLifeless()
+        {
+            return (
+                    (pointisLifeless41.isColor() && pointisLifeless42.isColor()) ||
+                    (pointisLifeless51.isColor() && pointisLifeless52.isColor()) ||
+                    (pointisLifeless61.isColor() && pointisLifeless62.isColor())
+                    );
+        }
+
+        /// <summary>
+        /// проверяем, является ли предмет для чиповки брони
+        /// </summary>
+        /// <returns></returns>
+        public bool isGoodChipWeapon()
+        {
+            bool result = false;
+            int parametr = TypeOfNintendo();
+            switch (parametr)
+            {
+                case 1:
+                    if ((isAtk40() || isAtk39()) && (isAtkSpeed30() || isAtkSpeed29())) result = true;
+                    break;
+                case 2:
+                    if ((isAtk40() || isAtk39() || isAtk38() || isAtk37()) && (isAtkSpeed30() || isAtkSpeed29() || isAtkSpeed28() || isAtkSpeed27()) && (isWild())) result = true;
+                    break;
+                case 3:
+                    if ((isAtk40() || isAtk39() || isAtk38() || isAtk37()) && (isAtkSpeed30() || isAtkSpeed29() || isAtkSpeed28() || isAtkSpeed27()) && (isLifeless())) result = true;
+                    break;
+                case 4:
+                    if ((isAtk40() || isAtk39() || isAtk38() || isAtk37()) && (isAtkSpeed30() || isAtkSpeed29() || isAtkSpeed28() || isAtkSpeed27()) && (isWild() || isHuman())) result = true;
+                    if ((isAtk40() || isAtk39()) && (isAtkSpeed30() || isAtkSpeed29())) result = true;
+                    break;
+                case 5:
+                    if ((isAtk40() || isAtk39() || isAtk38() || isAtk37()) && (isAtkSpeed30() || isAtkSpeed29() || isAtkSpeed28() || isAtkSpeed27()) && (isUndead())) result = true;
+                    break;
+                case 6:
+                    if ((isAtk40() || isAtk39() || isAtk38() || isAtk37()) && (isAtkSpeed30() || isAtkSpeed29() || isAtkSpeed28() || isAtkSpeed27()) && (isDemon())) result = true;
+                    break;
+                case 7:
+                    if ((isAtk40() || isAtk39() || isAtk38() || isAtk37()) && (isAtkSpeed30() || isAtkSpeed29() || isAtkSpeed28() || isAtkSpeed27()) && (isHuman())) result = true;
+                    break;
+            }
+            return result;
         }
 
 

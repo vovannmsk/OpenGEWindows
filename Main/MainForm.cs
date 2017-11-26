@@ -105,35 +105,6 @@ namespace Main
 
         #endregion
 
-        #region Silver button Найти окна сингапур
-        private void findWindowSing_Click(object sender, EventArgs e)
-        {
-            findWindowSing.Visible = false;
-
-            Thread myThreadSilver = new Thread(funcSilver);
-            myThreadSilver.Start();
-
-            findWindowSing.Visible = true;
-        }
-
-        /// <summary>
-        /// метод задает функционал для потока, организуемого Silver кнопкой
-        /// </summary>
-        private void funcSilver()
-        {
-            int begin = BeginSing();
-            for (int j = begin; j <= numberOfAccounts; j++)
-            {
-                Check check = new Check(j);
-                if (check.isActive())
-                {
-                    check.FindWindowSing();
-                }
-            }
-        }
-
-        #endregion
-
         #region Оранжевая кнопка (выравнивание окон)
 
         /// <summary>

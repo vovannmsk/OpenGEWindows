@@ -420,41 +420,23 @@ namespace OpenGEWindows
 //            return HWND;
 //        }
 
-        /// <summary>
-        /// поиск новых окон с игрой для кнопки "Найти окна Sing"
-        /// </summary>
-        /// <returns></returns>
-        public void FindWindowSing()
-        {
-            UIntPtr New_HWND_GE;
-            New_HWND_GE = (UIntPtr)0;
-
-            while (New_HWND_GE == (UIntPtr)0)
-            {
-                Pause(500);
-                New_HWND_GE = FindWindow("Sandbox:" + numberWindow.ToString() +":Granado Espada", "[#] Granado Espada [#]");
-            }
-            setHwnd(New_HWND_GE);
-//            hwnd_to_file();
-            SetWindowPos(New_HWND_GE, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
-            Pause(500);
-        }
 
         /// <summary>
         /// восстановливает окно (т.е. переводит из состояния "нет окна" в состояние "логаут", плюс из состояния свернутого окна в состояние развернутого и на нужном месте)
         /// </summary>
         public bool ReOpenWindow()
         {
-            //scriptDataBot.SetHwnd(databot.hwnd);       не нужно здесь вроде
-            ///setHwnd(Hwnd_in_file());                  //написал 14.11.2016   нуждается в проверке. сначала читаем hwnd из файла, а потом присваиваем его текущему hwnd (databot.hwnd)
-            bool result = isHwnd();                                //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
-            // 26.04.2017  if (!result) setHwnd(OpenWindow());                             //Если вылетело окно, то открываем новое окно с помощью метода OpenWindow и присваиваем новое hwnd 
-            //hwnd_to_file();
-            if (result)  //26.04.2017 эта строка
+            bool result = isHwnd();                           //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
+            if (result) 
             {
                 ShowWindow(databot.hwnd, 9);                                       // Разворачивает окно если свернуто
                 SetForegroundWindow(databot.hwnd);                                 // Перемещает окно в верхний список Z порядка     
                 BringWindowToTop(databot.hwnd);                                    // Делает окно активным                              
+                SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001); //перемещаем окно в заданные для него координаты
+            }
+            else
+            {
+                OpenWindow();
             }
             return result;
         }
@@ -469,7 +451,7 @@ namespace OpenGEWindows
             while (true)
             {
                 Pause(5000);
-                UIntPtr hwnd = server.FindWindowGE();
+                UIntPtr hwnd = server.FindWindowGE();          //ищем окно ГЭ с нужными параметрами
                 if (hwnd != (UIntPtr)0) break;
             }
 

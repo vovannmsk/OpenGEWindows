@@ -66,9 +66,11 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.PressButtonEnchance();
-            botwindow.Pause(2000);
-
+            if (!server.isGoodChipArmor())
+            {
+                server.PressButtonEnchance();
+                botwindow.Pause(2000);
+            }
         }
 
         /// <summary>

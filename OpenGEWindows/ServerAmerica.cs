@@ -18,6 +18,9 @@ namespace OpenGEWindows
     public class ServerAmerica : ServerInterface 
     {
         [DllImport("user32.dll")]
+        public static extern bool SetWindowPos(UIntPtr myhWnd, int myhwndoptional, int xx, int yy, int cxx, int cyy, uint flagus); // Перемещает окно в заданные координаты с заданным размером
+
+        [DllImport("user32.dll")]
         private static extern bool ShowWindow(UIntPtr hWnd, int nCmdShow);
 
         [DllImport("user32.dll")]
@@ -421,8 +424,8 @@ namespace OpenGEWindows
 
             botwindow.setHwnd(HWND);
 
-//            SetWindowPos(HWND, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
-            ShowWindow(HWND, 2);   //скрыть окно в трей
+            SetWindowPos(HWND, 1, xx, yy, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+//            ShowWindow(HWND, 2);   //скрыть окно в трей
 
             Pause(500);
 

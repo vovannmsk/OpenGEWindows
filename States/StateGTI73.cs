@@ -66,8 +66,11 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.PressButtonEnchance();
-            botwindow.Pause(2000);
+            if (!server.isGoodChipWeapon())
+            {
+                server.PressButtonEnchance();
+                botwindow.Pause(2000);
+            }
         }
 
         /// <summary>

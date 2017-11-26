@@ -46,7 +46,7 @@ namespace States
         /// </summary>
         public void StateNintendo()
         {
-            for (int numberOfEquipment = 1; numberOfEquipment <= 3; numberOfEquipment++)
+            for (int numberOfEquipment = 1; numberOfEquipment <= 6; numberOfEquipment++)
             {
                 StateDriverRun(new StateGTI70(botwindow, numberOfEquipment), new StateGTI80(botwindow, numberOfEquipment));
             }
