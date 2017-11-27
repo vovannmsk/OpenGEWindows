@@ -167,6 +167,7 @@ namespace OpenGEWindows
         protected iPoint pointCure2;
         protected iPoint pointCure3;
         protected iPoint pointMana1;
+
         #endregion
 
         #region создание нового бота
@@ -337,6 +338,10 @@ namespace OpenGEWindows
 
 
         #endregion
+
+        protected iPointColor pointSafeIP1;
+        protected iPointColor pointSafeIP2;
+
 
         protected struct Product 
         { 
@@ -1049,11 +1054,7 @@ namespace OpenGEWindows
         {
             pointSummonPet1.PressMouseL();      //Click Pet
             pointSummonPet1.PressMouseL();
-            //botwindow.PressMouseL(569, 375);  //Click Pet
-            //botwindow.PressMouseL(569, 375);
             Pause(500);
-            //botwindow.PressMouseL(408, 360);  //Click кнопку "Summon"
-            //botwindow.PressMouseL(408, 360);
             pointSummonPet2.PressMouseL();      //Click кнопку "Summon"
             pointSummonPet2.PressMouseL();
             Pause(1000);
@@ -2071,6 +2072,18 @@ namespace OpenGEWindows
 
 
         #endregion
+
+        /// <summary>
+        /// проверяем, выскочило ли сообщение о несовместимости версии SafeIPs.dll
+        /// </summary>
+        /// <returns></returns>
+        public bool isSafeIP()
+        {
+            //iPointColor pointSafeIP1 = new PointColor(941, 579, 13600000, 5);
+            //iPointColor pointSafeIP2 = new PointColor(942, 579, 13600000, 5);
+            return (pointSafeIP1.isColor() && pointSafeIP2.isColor());
+        }
+
 
         public abstract void TopMenu(int numberOfThePartitionMenu);
         public abstract void TopMenu(int numberOfThePartitionMenu, int punkt);

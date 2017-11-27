@@ -427,17 +427,13 @@ namespace OpenGEWindows
         public bool ReOpenWindow()
         {
             bool result = isHwnd();                           //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
-            if (result) 
-            {
-                ShowWindow(databot.hwnd, 9);                                       // Разворачивает окно если свернуто
-                SetForegroundWindow(databot.hwnd);                                 // Перемещает окно в верхний список Z порядка     
-                BringWindowToTop(databot.hwnd);                                    // Делает окно активным                              
-                SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001); //перемещаем окно в заданные для него координаты
-            }
-            else
-            {
-                OpenWindow();
-            }
+            if (!result) OpenWindow(); 
+
+            ShowWindow(databot.hwnd, 9);                                       // Разворачивает окно если свернуто
+            SetForegroundWindow(databot.hwnd);                                 // Перемещает окно в верхний список Z порядка     
+            BringWindowToTop(databot.hwnd);                                    // Делает окно активным                              
+            SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001); //перемещаем окно в заданные для него координаты
+            
             return result;
         }
 

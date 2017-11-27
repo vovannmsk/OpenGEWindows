@@ -133,8 +133,8 @@ namespace OpenGEWindows
             this.pointBuyingMitridat2 = new Point(517 + xx, 433 + yy);      //1392 - 875, 438 - 5
             this.pointBuyingMitridat3 = new Point(517 + xx, 423 + yy);      //1392 - 875, 428 - 5
 
-            this.pointGotoEnd = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
-            //this.pointGotoEnd = new Point(680 + xx, 432 + yy);                  //для CatzMods - logout (только в том случае, если надо сохранять настройки бота)
+//            this.pointGotoEnd = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
+            this.pointGotoEnd = new Point(685 - 5 + xx, 470 - 5 + yy);            //end
 
             this.pointTeamSelection1 = new Point(140 - 5 + xx, 470 - 5 + yy);                   //проверено
             this.pointTeamSelection2 = new Point(70 - 5 + xx, 355 - 5 + yy);                   //проверено
@@ -337,6 +337,8 @@ namespace OpenGEWindows
             #endregion
 
 
+            this.pointSafeIP1 = new PointColor(941, 579, 13600000, 5);
+            this.pointSafeIP2 = new PointColor(942, 579, 13600000, 5);
 
         }        
 
@@ -368,18 +370,25 @@ namespace OpenGEWindows
         /// </summary>
         /// <returns>координата Y</returns>
         private int SandboxieY()
-        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\КоординатаПесочницы.txt")); }
-
-        /// <summary>
-        /// проверяем, выскочило ли сообщение о несовместимости версии SafeIPs.dll
-        /// </summary>
-        /// <returns></returns>
-        private bool isSafeIP()
         {
-            iPointColor pointSafeIP1 = new PointColor(941 - 5 + xx, 579 - 5 + yy, 13600000, 5);
-            iPointColor pointSafeIP2 = new PointColor(942 - 5 + xx, 579 - 5 + yy, 13600000, 5);
-            return (pointSafeIP1.isColor() && pointSafeIP2.isColor());
+            //int y = 370;
+            //while (true)
+            //{
+            //    iPointColor pointSandboxie = new PointColor(1586, y, 333,5);
+
+            //    if (pointSandboxie.isColor()) break;
+
+            //    y++; if (y > 455) break;
+            //}
+
+            //if (y > 455)
+            //{
+            //    y = 0;
+            //}
+            //return y;  
+            return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\КоординатаПесочницы.txt")); 
         }
+
 
         /// <summary>
         /// проверяем, выскочила ли реклама Steam
@@ -400,41 +409,47 @@ namespace OpenGEWindows
         {
             #region для песочницы
 
-            int[] y = { 0, 1, 5, 6, 7, 8, 9, 10, 11, 12, 2, 3, 4 };
-            iPoint pointSteam = new Point(1862, 862);
-            iPoint pointSandboxie = new Point(1661, SandboxieY());
-            iPoint pointListSandboxie = new Point(876, 455 + y[botwindow.getNumberWindow()] * 13);   //у первой песочницы сдвиг 13 от контрольной точки
             iPoint pointOkSafeIP = new Point(966, 582);
             iPoint pointOkReklamaSteam = new Point(1251, 894);
             iPoint pointRunGE = new Point(1263, 584);
             iPoint pointCloseSteam = new Point(1897, 397);
 
-            pointSteam.PressMouseR();   //тыкаем правой в ярлык стим
-            Pause(1500);
-
-            pointSandboxie.PressMouseL(); //тыкаем в строку "запустить в песочнице"
-            Pause(2000);
-
-            pointListSandboxie.DoubleClickL();  //тыкаем дважды в строчку с номером песочницы
+            //запускаем steam в песочнице
+            Process process = new Process();
+            process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
+            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + path_Client() +" -applaunch 663090 -silent";
+            process.Start();
             Pause(30000);
 
             if (isSafeIP())
             {
-                pointOkSafeIP.PressMouseL();       //тыкаем в Ок и закрываем сообщение об ошибке
-                Pause(15000);
+                pointOkSafeIP.PressMouse();       //тыкаем в Ок и закрываем сообщение об ошибке
             }
 
-            if (isReklamaSteam())
-            {
-                pointOkReklamaSteam.PressMouseL();   //закрываем рекламу стим
-                Pause(5000);
-            }
+            //int i = 0;
+            //while (true)
+            //{
+            //    Pause(2000);
+            //    if (isSafeIP()) 
+            //    {
+            //        pointOkSafeIP.PressMouseL();       //тыкаем в Ок и закрываем сообщение об ошибке
+            //        break;
+            //    }
+            //    i++; if (i > 20) break;
+            //}
 
-            pointRunGE.PressMouseL();            //нажимаем на кнопку запуска ГЭ
-            Pause(1000);
 
-            pointCloseSteam.PressMouseL();      //закрываем крестиком окно Steam и ждем открытия окна ГЭ
-            Pause(60000);
+            //if (isReklamaSteam())
+            //{
+            //    pointOkReklamaSteam.PressMouseL();   //закрываем рекламу стим
+            //    Pause(5000);
+            //}
+
+            //pointRunGE.PressMouseL();            //нажимаем на кнопку запуска ГЭ
+            //Pause(1000);
+
+            //pointCloseSteam.PressMouseL();      //закрываем крестиком окно Steam и ждем открытия окна ГЭ
+            //Pause(60000);
 
             #endregion
 

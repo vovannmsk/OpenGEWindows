@@ -125,8 +125,9 @@ namespace OpenGEWindows
             this.pointBuyingMitridat1 = new Point(360 + xx, 537 + yy);
             this.pointBuyingMitridat2 = new Point(517 + xx, 433 + yy);
             this.pointBuyingMitridat3 = new Point(517 + xx, 423 + yy);
-            //this.pointGotoEnd = new Point(680 + xx, 462 + yy);
-            this.pointGotoEnd = new Point(680 + xx, 442 - 5 + yy);          //логаут
+//            this.pointGotoEnd = new Point(680 + xx, 442 - 5 + yy);          //логаут
+            this.pointGotoEnd = new Point(680 + xx, 472 - 5 + yy);          //end
+
             this.pointTeamSelection1 = new Point(135 + xx, 450 + yy);    //кнопка выбора групп в бараке
             this.pointTeamSelection2 = new Point(65 + xx, 355 + yy);
             this.pointTeamSelection3 = new Point(65 + xx, 620 + yy);
