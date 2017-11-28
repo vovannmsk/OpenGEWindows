@@ -70,7 +70,7 @@ namespace OpenGEWindows
             botwindow.Pause(1000);
 
             //PressMouseL(322, 132);
-            botwindow.PressMouseL(322, 344);
+            botwindow.PressMouseL(322, 344);       //указываем конкретное место на карте
 
             botwindow.PressEscThreeTimes();      // закрываем карту
             //            Pause(15000);

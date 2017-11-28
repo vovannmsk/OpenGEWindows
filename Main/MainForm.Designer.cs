@@ -44,6 +44,7 @@
             this.ButtonOpenWindow = new System.Windows.Forms.Button();
             this.sharpening = new System.Windows.Forms.Button();
             this.Nintendo = new System.Windows.Forms.Button();
+            this.TransferVis = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonReOpenWindowGE
@@ -74,7 +75,7 @@
             this.buttonSuperSell.Name = "buttonSuperSell";
             this.buttonSuperSell.Size = new System.Drawing.Size(170, 35);
             this.buttonSuperSell.TabIndex = 3;
-            this.buttonSuperSell.Text = "Продажа одного окна";
+            this.buttonSuperSell.Text = "Продажа всех окон, стоящих в магазине";
             this.buttonSuperSell.UseVisualStyleBackColor = false;
             this.buttonSuperSell.Click += new System.EventHandler(this.buttonSuperSell_Click);
             // 
@@ -116,7 +117,7 @@
             this.buttonGotoTradeTest.Name = "buttonGotoTradeTest";
             this.buttonGotoTradeTest.Size = new System.Drawing.Size(170, 35);
             this.buttonGotoTradeTest.TabIndex = 45;
-            this.buttonGotoTradeTest.Text = "Направить окно на продажу";
+            this.buttonGotoTradeTest.Text = "Направить все окна на продажу";
             this.buttonGotoTradeTest.UseVisualStyleBackColor = true;
             this.buttonGotoTradeTest.Click += new System.EventHandler(this.buttonGotoTradeTest_Click);
             // 
@@ -134,7 +135,7 @@
             // buttonNewAcc
             // 
             this.buttonNewAcc.BackColor = System.Drawing.Color.Pink;
-            this.buttonNewAcc.Location = new System.Drawing.Point(10, 170);
+            this.buttonNewAcc.Location = new System.Drawing.Point(10, 338);
             this.buttonNewAcc.Name = "buttonNewAcc";
             this.buttonNewAcc.Size = new System.Drawing.Size(170, 35);
             this.buttonNewAcc.TabIndex = 49;
@@ -145,7 +146,7 @@
             // RunToCrater
             // 
             this.RunToCrater.BackColor = System.Drawing.Color.Lime;
-            this.RunToCrater.Location = new System.Drawing.Point(177, 338);
+            this.RunToCrater.Location = new System.Drawing.Point(190, 338);
             this.RunToCrater.Name = "RunToCrater";
             this.RunToCrater.Size = new System.Drawing.Size(170, 35);
             this.RunToCrater.TabIndex = 50;
@@ -188,12 +189,25 @@
             this.Nintendo.UseVisualStyleBackColor = false;
             this.Nintendo.Click += new System.EventHandler(this.Nintendo_Click);
             // 
+            // TransferVis
+            // 
+            this.TransferVis.BackColor = System.Drawing.Color.Green;
+            this.TransferVis.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.TransferVis.Location = new System.Drawing.Point(10, 170);
+            this.TransferVis.Name = "TransferVis";
+            this.TransferVis.Size = new System.Drawing.Size(170, 35);
+            this.TransferVis.TabIndex = 54;
+            this.TransferVis.Text = "передача песо торговцу";
+            this.TransferVis.UseVisualStyleBackColor = false;
+            this.TransferVis.Click += new System.EventHandler(this.TransferVis_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(369, 216);
+            this.ClientSize = new System.Drawing.Size(369, 224);
+            this.Controls.Add(this.TransferVis);
             this.Controls.Add(this.Nintendo);
             this.Controls.Add(this.sharpening);
             this.Controls.Add(this.ButtonOpenWindow);
@@ -236,6 +250,7 @@
         private System.Windows.Forms.Button ButtonOpenWindow;
         private System.Windows.Forms.Button sharpening;
         private System.Windows.Forms.Button Nintendo;
+        private System.Windows.Forms.Button TransferVis;
     
     }
 }

@@ -111,13 +111,12 @@ namespace States
                 botwindowDealer.Pause(500);
 
                 //============ выбор канала ===========
-                botwindowDealer.SelectChannel();
+                botwindowDealer.SelectChannel(4);            //идем на 4 канал
                 botwindowDealer.Pause(500);
 
                 //============ выход в город  ===========
-                botwindowDealer.NewPlace();                //начинаем в Юстиаре  
+                botwindowDealer.NewPlace();                //начинаем в Ребольдо
 
-                //botwindow.PressMouseR(200, 570);     //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
                 botwindow.ToMoveMouse();             //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
 
                 dealer.GoToChangePlace();            //  торговец следует на место передачи песо

@@ -882,6 +882,17 @@ namespace OpenGEWindows
         }
 
         /// <summary>
+        /// Нажимаем Выбор канала и группы персов в казарме 
+        /// </summary>
+        public void SelectChannel(int channel)
+        {
+            iPoint pointChoiceOfChannel = new Point(125 + databot.x, 660 + (channel - 1) * 15 + server.sdvig() + databot.y);    //переход на указанный канал
+            iPoint pointButtonSelectChannel = new Point(125 + databot.x, 705 + databot.y); //   125, 705);
+            pointButtonSelectChannel.PressMouseL();
+            pointChoiceOfChannel.PressMouseL();
+        }
+
+        /// <summary>
         /// выбрать первого (левого) бойца из тройки
         /// </summary>
         public void FirstHero()

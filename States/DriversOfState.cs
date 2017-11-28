@@ -140,7 +140,7 @@ namespace States
         /// </summary>
         public void StateGotoTradeAndWork()
         {
-            if (botwindow.getserver().isWork())
+            if (botwindow.getserver().isWork())   //если бот на работе
             {
                 StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа - продажа - нет окна)
                 botwindow.Pause(2000);
@@ -148,6 +148,24 @@ namespace States
             }
         }
 
+        /// <summary>
+        /// передача песо торговцу
+        /// </summary>
+        public void StateTransferVis()
+        {
+            ServerInterface server;                 
+            ServerFactory serverFactory;
+            serverFactory = new ServerFactory(botwindow);
+            server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+
+            if (server.isLogout())
+            {
+//                StateDriverDealerRun(new StateCV01(botwindow, new botMerchant(new botWindow(20))), new StateCV10(botwindow, new botMerchant(new botWindow(20))));
+                StateDriverDealerRun(new StateCV01(botwindow, new botWindow(20)), new StateCV10(botwindow, new botWindow(20)));
+            }
+        }
+
+        
 
         /// <summary>
         /// запускает движок состояний StateDriver от пункта stateBegin до stateEnd

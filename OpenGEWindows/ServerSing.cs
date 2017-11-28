@@ -60,12 +60,12 @@ namespace OpenGEWindows
             this.pointIsTown_RifleThirdDot1 = new PointColor(534 + xx, 692 + yy, 11053000, 3);
             this.pointIsTown_RifleThirdDot2 = new PointColor(535 + xx, 692 + yy, 10921000, 3);
 
-            this.pointIsTown_ExpRifleFirstDot1 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки эксп стойки с ружьем
-            this.pointIsTown_ExpRifleFirstDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_ExpRifleSecondDot1 = new PointColor(279 + xx, 692 + yy, 7631000, 3);
-            this.pointIsTown_ExpRifleSecondDot2 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_ExpRifleThirdDot1 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
-            this.pointIsTown_ExpRifleThirdDot2 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
+            this.pointIsTown_ExpRifleFirstDot1 = new PointColor(24 + xx, 692 + yy, 1710000, 4);       //точки для проверки эксп стойки с ружьем
+            this.pointIsTown_ExpRifleFirstDot2 = new PointColor(25 + xx, 692 + yy, 2100000, 4);
+            this.pointIsTown_ExpRifleSecondDot1 = new PointColor(279 + xx, 692 + yy, 1710000, 4);
+            this.pointIsTown_ExpRifleSecondDot2 = new PointColor(280 + xx, 692 + yy, 2100000, 4);
+            this.pointIsTown_ExpRifleThirdDot1 = new PointColor(534 + xx, 692 + yy, 1710000, 4);
+            this.pointIsTown_ExpRifleThirdDot2 = new PointColor(535 + xx, 692 + yy, 2100000, 4);
 
             this.pointIsTown_DrobFirstDot1 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки обычной стойки с дробашом в городе               
             this.pointIsTown_DrobFirstDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
@@ -133,8 +133,8 @@ namespace OpenGEWindows
             this.pointBuyingMitridat2 = new Point(517 + xx, 433 + yy);      //1392 - 875, 438 - 5
             this.pointBuyingMitridat3 = new Point(517 + xx, 423 + yy);      //1392 - 875, 428 - 5
 
-//            this.pointGotoEnd = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
-            this.pointGotoEnd = new Point(685 - 5 + xx, 470 - 5 + yy);            //end
+            this.pointGotoEnd = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
+//            this.pointGotoEnd = new Point(685 - 5 + xx, 470 - 5 + yy);            //end
 
             this.pointTeamSelection1 = new Point(140 - 5 + xx, 470 - 5 + yy);                   //проверено
             this.pointTeamSelection2 = new Point(70 - 5 + xx, 355 - 5 + yy);                   //проверено
@@ -496,8 +496,8 @@ namespace OpenGEWindows
                     break;
                 case 12:
                     //result = botwindow.isColor2(507 - 5, 140 - 5, 12440000, 508 - 5, 140 - 5, 12440000, 4);  //не проверено
-                    uint bb = pointisOpenTopMenu121.GetPixelColor();
-                    uint dd = pointisOpenTopMenu122.GetPixelColor();
+                    //uint bb = pointisOpenTopMenu121.GetPixelColor();
+                    //uint dd = pointisOpenTopMenu122.GetPixelColor();
                     result = (pointisOpenTopMenu121.isColor() && pointisOpenTopMenu122.isColor());
                     break;
                 case 13:
@@ -525,11 +525,13 @@ namespace OpenGEWindows
             int y = 55;
             iPoint pointMenu = new Point(x - 5 + botwindow.getX(), y - 5 + botwindow.getY());
 
+            int count = 0;
             do
             {
                 pointMenu.PressMouse();
                 //PressMouse(x, y);
-                botwindow.Pause(1000);
+                botwindow.Pause(2000);
+                count++; if (count > 3) break;
             } while (!isOpenTopMenu(numberOfThePartitionMenu));
         }
 

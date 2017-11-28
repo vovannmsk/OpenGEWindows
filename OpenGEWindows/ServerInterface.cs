@@ -1109,12 +1109,8 @@ namespace OpenGEWindows
             Pause(400);
             TopMenu(12); //Click Teleport menu
             //            botwindow.PressMouseL(400, 190 );
-            pointTeleport1.PressMouseL();
-            Pause(50);
-            //botwindow.PressMouseL(400, 190 );
-            pointTeleport1.PressMouseL();
+            pointTeleport1.DoubleClickL();
             Pause(200);
-            //botwindow.PressMouseL(355, 570); //Click on button Execute in Teleport menu
             pointTeleport2.PressMouseL();   //Click on button Execute in Teleport menu
             Pause(2000);
         }

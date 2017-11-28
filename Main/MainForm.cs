@@ -23,7 +23,7 @@ namespace Main
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "26-11-2017";
+        public static String DataVersion = "28-11-2017";
         public static int numberOfAccounts = KolvoAkk();
 
         /// <summary>
@@ -234,8 +234,9 @@ namespace Main
                 Check check = new Check(j);
                 if (check.isActive())
                 {
+                    check.ReOpenWindow();
                     DriversOfState driver = new DriversOfState(j);
-                    driver.StateSelling();             // продаёт бота, который стоит в данный момент в магазине (через движок состояний). окно должно быть активным
+                    driver.StateSelling();             // продаёт всех ботов, которые стоят в данный момент в магазине (через движок состояний)
                 }
             }
         }
@@ -358,7 +359,7 @@ namespace Main
         #region New white button (Sale)
 
         /// <summary>
-        /// метод не работает, т.к. посылает на продажу не то окно. Он посылает на продажу первое же окно, в котором видны все стойки у персов. Если количество окон меньше или равно 12, то норм работает
+        /// метод продаёт все окна по очереди и потом каждое окно выставляет опят на работу
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -383,6 +384,7 @@ namespace Main
                 Check check = new Check(j);
                 if (check.isActive())
                 {
+                    check.ReOpenWindow();
                     DriversOfState drive = new DriversOfState(j);
                     drive.StateGotoTradeAndWork();
                 }
@@ -460,7 +462,6 @@ namespace Main
                     }
                 }
             }
-            MessageBox.Show("Всё!!!");
         }
 
         #endregion
@@ -496,9 +497,42 @@ namespace Main
                     }
                 }
             }
-            MessageBox.Show("Всё!!!");
         }
 
+
+        #endregion
+
+        #region Green Button (TransferVis)
+
+        /// <summary>
+        /// передача песо торговцу
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TransferVis_Click(object sender, EventArgs e)
+        {
+            Thread myThreadTransfer = new Thread(funcTransfer);
+            myThreadTransfer.Start();
+
+        }
+
+        /// <summary>
+        /// метод задает функционал для потока, организуемого gold кнопкой
+        /// </summary>
+        private void funcTransfer()
+        {
+            //for (int j = 1; j <= numberOfAccounts; j++)
+            for (int j = 1; j <= 1; j++)
+                {
+                Check check = new Check(j);
+                if (check.isActive())
+                {
+                    check.ReOpenWindow();
+                    DriversOfState drive = new DriversOfState(j);
+                    drive.StateTransferVis();
+                }
+            }
+        }
 
         #endregion
 
@@ -509,7 +543,7 @@ namespace Main
         /// </summary>
         /// <returns>кол-во акков всего</returns>
         public static int KolvoAkk()
-        { 
+        {
             return int.Parse(File.ReadAllText(KatalogMyProgram + "\\Аккаунтов всего.txt"));
         }
 

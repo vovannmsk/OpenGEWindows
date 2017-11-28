@@ -195,23 +195,27 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            bool iscolor1 = server.isSafeIP();
-            MessageBox.Show(" " + iscolor1);
+            botWindow botwindow = new botWindow(11);
+            ServerInterface server = new ServerSing(botwindow);
+            MessageBox.Show(" " + server.isTown() + " " + server.isTown_2());
 
-            //int xx, yy;
-            //xx = 5;
-            //yy = 5;
-            //uint color1;
-            //uint color2;
+            //bool iscolor1 = server.isSafeIP();
+            //MessageBox.Show(" " + iscolor1);
 
-            //PointColor point1 = new PointColor(941, 579, 13000000, 5);
-            //PointColor point2 = new PointColor(942, 579, 13000000, 5);
+            int xx, yy;
+            xx = 255;
+            yy = 255;
+            uint color1;
+            uint color2;
 
-            //color1 = point1.GetPixelColor();
-            //color2 = point2.GetPixelColor();
+            PointColor point1 = new PointColor(24 + xx, 692 + yy, 13000000, 5);
+            PointColor point2 = new PointColor(25 + xx, 692 + yy, 13000000, 5);
 
-            //MessageBox.Show(" " + color1);
-            //MessageBox.Show(" " + color2);
+            color1 = point1.GetPixelColor();
+            color2 = point2.GetPixelColor();
+
+            MessageBox.Show(" " + color1);
+            MessageBox.Show(" " + color2);
 
             //string str = "";
             //if (server.isHuman()) str += "Human ";
