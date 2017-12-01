@@ -64,8 +64,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            //botwindow.setHwnd(botwindow.OpenWindow());                             //Если вылетело окно, то открываем новое окно с помощью метода OpenWindow и присваиваем новое hwnd 
-            bool result = botwindow.ReOpenWindow();       //если вылетело окно, то false
+            botwindow.ReOpenWindow();       
         }
 
         /// <summary>

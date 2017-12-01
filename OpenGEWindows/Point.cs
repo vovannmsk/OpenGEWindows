@@ -53,7 +53,7 @@ namespace OpenGEWindows
         /// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
         public void PressMouseR()
         {
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 8);
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 2);
             Pause(200);
         }
 

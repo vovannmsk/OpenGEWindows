@@ -21,13 +21,29 @@ namespace States
 
         public DriversOfState(int numberOfWindow)
         {
-            botwindow = new botWindow(numberOfWindow);
+            this.botwindow = new botWindow(numberOfWindow);
 
         }
 
 
 
         #region движки для запуска перехода по состояниям
+
+        /// <summary>
+        /// перевод из состояния 60 в состояние 80. Цель  - передача песо торговцу
+        /// </summary>
+        public void StateTransferVis()
+        {
+            ServerInterface server;                 
+            ServerFactory serverFactory;
+            serverFactory = new ServerFactory(this.botwindow);
+            server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+
+            if (server.isLogout())
+            {
+                StateDriverRun(new StateGT60(this.botwindow), new StateGT80(this.botwindow));
+            }
+        }
 
 
         /// <summary>
@@ -148,22 +164,22 @@ namespace States
             }
         }
 
-        /// <summary>
-        /// передача песо торговцу
-        /// </summary>
-        public void StateTransferVis()
-        {
-            ServerInterface server;                 
-            ServerFactory serverFactory;
-            serverFactory = new ServerFactory(botwindow);
-            server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+//        /// <summary>
+//        /// передача песо торговцу
+//        /// </summary>
+//        public void StateTransferVis()
+//        {
+//            ServerInterface server;                 
+//            ServerFactory serverFactory;
+//            serverFactory = new ServerFactory(botwindow);
+//            server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
 
-            if (server.isLogout())
-            {
-//                StateDriverDealerRun(new StateCV01(botwindow, new botMerchant(new botWindow(20))), new StateCV10(botwindow, new botMerchant(new botWindow(20))));
-                StateDriverDealerRun(new StateCV01(botwindow, new botWindow(20)), new StateCV10(botwindow, new botWindow(20)));
-            }
-        }
+//            if (server.isLogout())
+//            {
+////                StateDriverDealerRun(new StateCV01(botwindow, new botMerchant(new botWindow(20))), new StateCV10(botwindow, new botMerchant(new botWindow(20))));
+//                StateDriverDealerRun(new StateCV01(botwindow, new botWindow(20)), new StateCV10(botwindow, new botWindow(20)));
+//            }
+//        }
 
         
 

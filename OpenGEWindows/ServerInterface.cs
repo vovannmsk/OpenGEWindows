@@ -110,6 +110,8 @@ namespace OpenGEWindows
 
         protected iPointColor pointisWork_RifleDot1;          //проверка стойки с ружьем (проверяются две точки )
         protected iPointColor pointisWork_RifleDot2;
+        protected iPointColor pointisWork_ExpRifleDot1;       //проверка стойки с эксп ружьем (проверяются две точки )
+        protected iPointColor pointisWork_ExpRifleDot2;
         protected iPointColor pointisWork_DrobDot1;           //проверка стойки с обычным дробашом (проверяются две точки )
         protected iPointColor pointisWork_DrobDot2;
         protected iPointColor pointisWork_VetDrobDot1;        //проверка стойки с вет дробашом (проверяются две точки )
@@ -342,6 +344,8 @@ namespace OpenGEWindows
         protected iPointColor pointSafeIP1;
         protected iPointColor pointSafeIP2;
 
+        protected iPointColor pointTrade1;
+        protected iPointColor pointTrade2;
 
         protected struct Product 
         { 
@@ -1206,6 +1210,15 @@ namespace OpenGEWindows
         }
 
         /// <summary>
+        /// определяет открыто ли окно для персональной торговли
+        /// </summary>
+        /// <returns></returns>
+        public bool isPersonalTrade()
+        {
+            return (pointTrade1.isColor() && pointTrade2.isColor());
+        }
+
+        /// <summary>
         /// геттер
         /// </summary>
         /// <returns></returns>
@@ -1338,11 +1351,12 @@ namespace OpenGEWindows
         public bool isWork()
         {
             bool resultRifle = (pointisWork_RifleDot1.isColor() && pointisWork_RifleDot2.isColor());
+            bool resultExpRifle = (pointisWork_ExpRifleDot1.isColor() && pointisWork_ExpRifleDot2.isColor());
             bool resultDrob = (pointisWork_DrobDot1.isColor() && pointisWork_DrobDot2.isColor());
             bool resultVetDrob = (pointisWork_VetDrobDot1.isColor() && pointisWork_VetDrobDot2.isColor());
             bool resultExpDrob = (pointisWork_ExpDrobDot1.isColor() && pointisWork_ExpDrobDot2.isColor());
 
-            return (resultRifle || resultDrob || resultVetDrob || resultExpDrob);  //проверка только по первому персу
+            return (resultRifle || resultExpRifle || resultDrob || resultVetDrob || resultExpDrob);  //проверка только по первому персу
         }
 
         /// <summary>

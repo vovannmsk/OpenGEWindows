@@ -48,7 +48,8 @@ namespace States
         {
             this.botwindow = botwindow;                 //бот
             this.botwindowDealer = botwindowDealer;     //торговец
-            this.dealer = new botMerchant(botwindowDealer);  //делаем торговца
+            this.dealer = new botMerchant(20);  //делаем торговца
+//            this.dealer = new botMerchant(botwindowDealer);  //делаем торговца
             //this.dealer = dealer;
 
             this.serverFactory = new ServerFactory(botwindow);

@@ -47,7 +47,8 @@ namespace States
         {
             this.botwindow = botwindow;                 //бот
             this.botwindowDealer = botwindowDealer;     //торговец
-            this.dealer = new botMerchant(botwindowDealer);  //делаем торговца
+//            this.dealer = new botMerchant(botwindowDealer);  //делаем торговца
+            this.dealer = new botMerchant(20);  //делаем торговца
 
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();                // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)

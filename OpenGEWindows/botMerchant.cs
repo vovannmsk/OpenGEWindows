@@ -13,15 +13,15 @@ namespace OpenGEWindows
         /// <summary>
         ///  это класс для торговца 
         /// </summary>
-        public class botMerchant 
+        public class botMerchant : botWindow
         {
             static Timer myTimer = new Timer();
             private botWindow botwindow;
             private ServerInterface server;
             private ServerFactory serverFactory;
 
-            private Point pointFesoBegin;
-            private Point pointFesoEnd;
+            //private Point pointFesoBegin;
+            //private Point pointFesoEnd;
         
         /// <summary>
         /// конструктор
@@ -35,15 +35,15 @@ namespace OpenGEWindows
         /// конструктор
         /// </summary>
         /// <param name="botwindow"></param>
-        public botMerchant(botWindow botwindow ) 
+        public botMerchant(int numberOfWindow ) : base (numberOfWindow)
         {
-            this.botwindow = botwindow;
+            this.botwindow = new botWindow(numberOfWindow);
             serverFactory = new ServerFactory(botwindow);
             server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            int x = botwindow.getX();  //смещешие окна на экране
-            int y = botwindow.getY();
-            pointFesoBegin = new Point(881 - 5 + x, 186 - 5 + y);    //1576 - 700, 361 - 180
-            pointFesoEnd   = new Point(395 - 5 + x, 361 - 5 + y);    //1090 - 700, 536 - 180
+            //int x = botwindow.getX();  //смещешие окна на экране
+            //int y = botwindow.getY();
+            //pointFesoBegin = new Point(881 - 5 + x, 186 - 5 + y);    //1576 - 700, 361 - 180
+            //pointFesoEnd   = new Point(395 - 5 + x, 361 - 5 + y);    //1090 - 700, 536 - 180
         }
 
         /// <summary>
@@ -60,20 +60,8 @@ namespace OpenGEWindows
         /// </summary>
         public void GoToChangePlace()
         {
-            while (!server.isTown())         //ожидание загрузки города
-            { botwindow.Pause(500); }
-
-            botwindow.PressEscThreeTimes();
-            botwindow.Pause(1000);
-
-            botwindow.OpenMap2();             //открываем карту города
-            botwindow.Pause(1000);
-
-            //PressMouseL(322, 132);
-            botwindow.PressMouseL(322, 344);       //указываем конкретное место на карте
-
-            botwindow.PressEscThreeTimes();      // закрываем карту
-            //            Pause(15000);
+            iPoint pointDealer = new Point(405 - 5 + getDataBot().x , 210 - 5 + getDataBot().y);
+            pointDealer.DoubleClickL();
         }
 
   
@@ -83,45 +71,35 @@ namespace OpenGEWindows
         public void ChangeVisTrader1()
         {
             // наживаем Yes, подтверждая торговлю
-            botwindow.PressMouseL(1161 - 700, 595 - 180);
+            iPoint pointYesTrade = new Point(1161 - 700 + getDataBot().x, 595 - 180 + getDataBot().y);
+            pointYesTrade.DoubleClickL();
 
             // открываем сундук (карман)
             server.TopMenu(8, 1);
 
             // открываем закладку кармана, там где фесо
-            botwindow.PressMouseL(1666 - 700, 329 - 180);
+            iPoint pointBookmark4 = new Point(903 - 5 + getDataBot().x, 151 - 5 + getDataBot().y);
+            pointBookmark4.DoubleClickL();
 
             // перетаскиваем фесо на стол торговли
-            pointFesoBegin.Drag(pointFesoEnd);
-            //botwindow.MouseMoveAndDrop(1576 - 700, 361 - 180, 1090 - 700, 536 - 180);                         // фесо берется из третьей ячейки на этой закладке  
+            iPoint pointFesoBegin = new Point(740 - 5 + getDataBot().x, 186 - 5 + getDataBot().y);
+            iPoint pointFesoEnd = new Point(388 - 5 + getDataBot().x, 343 - 5 + getDataBot().y);
+            pointFesoBegin.Drag(pointFesoEnd);                                                
             botwindow.Pause(500);
 
             // нажимаем Ок для подтверждения передаваемой суммы фесо
-            botwindow.PressMouseL(1305 - 700, 573 - 180);
+            iPoint pointOkFeso = new Point(611 - 5 + getDataBot().x, 397 - 5 + getDataBot().y);
+            pointOkFeso.DoubleClickL();    
 
+            // нажимаем ок
+            iPoint pointOk = new Point(441 - 5 + getDataBot().x, 502 - 5 + getDataBot().y);
+            pointOk.DoubleClickL();
 
-            // нажимаем ок и обмен
-            botwindow.PressMouseL(1135 - 700, 677 - 180);
-            botwindow.PressMouseL(1216 - 700, 677 - 180);
+            // нажимаем обмен
+            iPoint pointTrade = new Point(522 - 5 + getDataBot().x, 502 - 5 + getDataBot().y);
+            pointTrade.DoubleClickL();
         }
 
-        /// <summary>
-        /// обмен песо на фесо (часть 2 со стороны торговца). Нажать согласие на торговлю у торговца, положить фесо, нажать "ок" и "обмен"
-        /// </summary>
-        public void ToTradePartOne()
-        {
-            //делаем окно торговца активным
-            botwindow.ReOpenWindow();
-            botwindow.Pause(500);
-
-            //// наживаем Yes
-            //// открываем карман (инвентарь)
-            //// открываем закладку кармана, там где фесо
-            //// перетаскиваем фесо
-            //// нажимаем Ок для подтверждения передаваемой суммы фесо
-            //// нажимаем ок и обмен
-            ChangeVisTrader1();
-        }
 
         /// <summary>
         /// обмен песо на фесо (часть 3 со стороны торговца). продаём 10 ВК в фесо шопе, чтобы было что отдать следующему боту

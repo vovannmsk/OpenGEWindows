@@ -59,7 +59,7 @@ namespace OpenGEWindows
         /// </summary>
         public botWindow()
         {
-            MessageBox.Show("НУЖНЫ ПАРАМЕТРЫ");
+            MessageBox.Show("НУЖНЫ ПАРАМЕТРЫ в botwindow");
         }
 
         /// <summary>
@@ -420,21 +420,34 @@ namespace OpenGEWindows
 //            return HWND;
 //        }
 
-
         /// <summary>
-        /// восстановливает окно (т.е. переводит из состояния "нет окна" в состояние "логаут", плюс из состояния свернутого окна в состояние развернутого и на нужном месте)
+        /// активируем окно
         /// </summary>
-        public bool ReOpenWindow()
+        private void ActiveWindow()
         {
-            bool result = isHwnd();                           //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
-            if (!result) OpenWindow(); 
-
             ShowWindow(databot.hwnd, 9);                                       // Разворачивает окно если свернуто
             SetForegroundWindow(databot.hwnd);                                 // Перемещает окно в верхний список Z порядка     
             BringWindowToTop(databot.hwnd);                                    // Делает окно активным                              
             SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001); //перемещаем окно в заданные для него координаты
-            
-            return result;
+        }
+        /// <summary>
+        /// восстановливает окно (т.е. переводит из состояния "нет окна" в состояние "логаут", плюс из состояния свернутого окна в состояние развернутого и на нужном месте)
+        /// </summary>
+        public void ReOpenWindow()
+        {
+            bool result = isHwnd();                           //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
+            if (!result)
+            {
+                OpenWindow();
+
+                ActiveWindow();
+
+                while (!server.isLogout())  Pause(1000);    //ожидание логаута
+            }
+            else
+            {
+                ActiveWindow();
+            }
         }
 
         /// <summary>
@@ -450,6 +463,7 @@ namespace OpenGEWindows
                 UIntPtr hwnd = server.FindWindowGE();          //ищем окно ГЭ с нужными параметрами
                 if (hwnd != (UIntPtr)0) break;
             }
+            Pause(10000);
 
             #region старый вариант метода
             //UIntPtr New_HWND_GE, current_HWND_GE;
@@ -674,40 +688,9 @@ namespace OpenGEWindows
 
 
         #region методы для перекладывания песо в торговца
-        /// <summary>
-        /// открыть карту Alt+Z  через верхнее меню (без проверок)
-        /// </summary>
-        public void OpenMap2()
-        {
-            server.TopMenu(6, 2);
-            Pause(1000);
-        }
 
-        /// <summary>
-        /// переход бота к месту передачи песо (для фиолетовой кнопки)
-        /// </summary>
-        public void GoToChangePlaceForBot()
-        {
-            iPoint pointMap = new Point(327 - 5 + databot.x, 355 - 5 + databot.y);    //  322, 350
-            while (!server.isTown())         //ожидание загрузки города (передача песо торговцу)
-            { Pause(500); }
 
-            PressEscThreeTimes();
-            Pause(1000);
-
-            town.MaxHeight();             //с учетом города и сервера
-            Pause(500);
-
-            OpenMap2();                  //открываем карту города
-            Pause(500);
-
-            pointMap.PressMouseL();   //тыкаем в карту, чтобы добежать до нужного места
-            //PressMouseL(322, 350);
-
-            PressEscThreeTimes();       // закрываем карту
-            Pause(15000);               // ждем пока добежим
-        }
-
+        
         /// <summary>
         /// открыть фесо шоп
         /// </summary>
@@ -722,23 +705,36 @@ namespace OpenGEWindows
         /// </summary>
         public void ChangeVis1()
         {
-            iPoint pointTrader = new Point(382 - 5 + databot.x, 262 - 5 + databot.y);    // 377, 257
-            iPoint pointPersonalTrade = new Point(436 - 5 + databot.x, 280 - 5 + databot.y);    // 431, 275
+            iPoint pointTrader = new Point(472 - 5 + databot.x, 175 - 5 + databot.y);    
+            iPoint pointPersonalTrade = new Point(536 - 5 + databot.x, 203 - 5 + databot.y);
+            iPoint pointMap = new Point(405 - 5 + databot.x, 220 - 5 + databot.y);    
+
             //идем на место передачи песо
-            GoToChangePlaceForBot();
+            PressEscThreeTimes();
+            Pause(1000);
 
-            //жмем правой на торговце
-            pointTrader.PressMouseL();
-            //PressMouseL(377, 257);
-            Pause(200);
-
-            pointTrader.PressMouseL();
-            //PressMouseR(377, 257);
+            town.MaxHeight();             //с учетом города и сервера
             Pause(500);
-            
+
+            server.OpenMapForState();                  //открываем карту города
+            Pause(500);
+
+            pointMap.DoubleClickL();   //тыкаем в карту, чтобы добежать до нужного места
+
+            PressEscThreeTimes();       // закрываем карту
+            Pause(25000);               // ждем пока добежим
+
+            iPointColor pointMenuTrade = new PointColor(588 - 5 + databot.x, 230 - 5 + databot.y, 1710000 , 4);
+            while (!pointMenuTrade.isColor())
+            {
+                //жмем правой на торговце
+                pointTrader.PressMouseR();
+                Pause(1000);
+            }
+
             //жмем левой  на пункт "Personal Trade"
             pointPersonalTrade.PressMouseL();
-            //PressMouseL(431, 275);
+            Pause(500);
         }
 
         /// <summary>
@@ -746,36 +742,33 @@ namespace OpenGEWindows
         /// </summary>
         public void ChangeVis2()
         {
-            iPoint pointFeso1 = new Point(971 - 5 + databot.x, 154 - 5 + databot.y);    // 1666 - 700, 329 - 180
-            iPoint pointFesoMove1 = new Point(801 - 5 + databot.x, 186 - 5 + databot.y);    // 1496 - 700, 361 - 180
-            iPoint pointFesoMove2 = new Point(395 - 5 + databot.x, 361 - 5 + databot.y);    // 1090 - 700, 536 - 180
-            iPoint pointFesoOk = new Point(610 - 5 + databot.x, 398 - 5 + databot.y);    // 1305 - 700, 573 - 180
-            iPoint pointFesoOk2 = new Point(440 - 5 + databot.x, 502 - 5 + databot.y);    // 1135 - 700, 677 - 180
-            iPoint pointFesoObmen = new Point(521 - 5 + databot.x, 502 - 5 + databot.y);    // 1216 - 700, 677 - 180
+            iPoint pointVis1 = new Point(903 - 5 + databot.x, 151 - 5 + databot.y);    
+            iPoint pointVisMove1 = new Point(701 - 5 + databot.x, 186 - 5 + databot.y);
+            iPoint pointVisMove2 = new Point(395 - 5 + databot.x, 361 - 5 + databot.y);
+            iPoint pointVisOk = new Point(611 - 5 + databot.x, 397 - 5 + databot.y);   
+            iPoint pointVisOk2 = new Point(442 - 5 + databot.x, 502 - 5 + databot.y);  
+            iPoint pointVisTrade = new Point(523 - 5 + databot.x, 502 - 5 + databot.y);  
+
             // открываем инвентарь
             server.TopMenu(8, 1);
 
-            // открываем закладку кармана, там где фесо
-            
-            //PressMouseL(1666 - 700, 329 - 180);
-            pointFeso1.PressMouseL();
+            // открываем закладку кармана, там где песо
+            pointVis1.DoubleClickL();
             Pause(500);
 
             // перетаскиваем песо
-            pointFesoMove1.Drag(pointFesoMove2);                                             // песо берется из первой ячейки на этой закладке  
-            //MouseMoveAndDrop(1496 - 700, 361 - 180, 1090 - 700, 536 - 180);                         // песо берется из первой ячейки на этой закладке  
+            pointVisMove1.Drag(pointVisMove2);                                             // песо берется из первой ячейки на 4-й закладке  
             Pause(500);
 
             // нажимаем Ок для подтверждения передаваемой суммы песо
-            pointFesoOk.PressMouseL();
-            //PressMouseL(1305 - 700, 573 - 180);
-            
+            pointVisOk.DoubleClickL();
 
-            // нажимаем ок и обмен
-            pointFesoOk2.PressMouseL();
-            //PressMouseL(1135 - 700, 677 - 180);
-            pointFesoObmen.PressMouseL();
-            //PressMouseL(1216 - 700, 677 - 180);
+            // нажимаем ок
+            pointVisOk2.DoubleClickL();
+            Pause(500);
+
+            // нажимаем обмен
+            pointVisTrade.DoubleClickL();
             Pause(500);
         }
 

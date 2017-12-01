@@ -40,7 +40,7 @@ namespace OpenGEWindows
             this.townFactory = new SingTownFactory(botwindow);                                     // здесь выбирается конкретная реализация для фабрики Town
             this.town = townFactory.createTown();
             this.pathClient = path_Client();
-            this.sdvigY = -15;
+            this.sdvigY = 0;
 
 
             #region  переменные для основных методов
@@ -106,6 +106,8 @@ namespace OpenGEWindows
 
             this.pointisWork_RifleDot1 = new PointColor(24 + xx, 692 + yy, 11051000, 3);      //29 - 5, 697 - 5, 11051000, 30 - 5, 697 - 5, 10919000, 3);                    //проверено
             this.pointisWork_RifleDot2 = new PointColor(25 + xx, 692 + yy, 10919000, 3);
+            this.pointisWork_ExpRifleDot1 = new PointColor(24 + xx, 692 + yy, 1721000, 3);      //29 - 5, 697 - 5, 11051000, 30 - 5, 697 - 5, 10919000, 3);                    //проверено
+            this.pointisWork_ExpRifleDot2 = new PointColor(25 + xx, 692 + yy, 2106000, 3);
             this.pointisWork_DrobDot1 = new PointColor(24 + xx, 692 + yy, 7644000, 3);              //проверка по обычной стойке с дробашем
             this.pointisWork_DrobDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
             this.pointisWork_VetDrobDot1 = new PointColor(29-5 + xx, 697-5 + yy, 2764000, 3);           //проверка по вет стойке с дробашем        
@@ -133,8 +135,8 @@ namespace OpenGEWindows
             this.pointBuyingMitridat2 = new Point(517 + xx, 433 + yy);      //1392 - 875, 438 - 5
             this.pointBuyingMitridat3 = new Point(517 + xx, 423 + yy);      //1392 - 875, 428 - 5
 
-            this.pointGotoEnd = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
-//            this.pointGotoEnd = new Point(685 - 5 + xx, 470 - 5 + yy);            //end
+//            this.pointGotoEnd = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
+            this.pointGotoEnd = new Point(685 - 5 + xx, 470 - 5 + yy);            //end
 
             this.pointTeamSelection1 = new Point(140 - 5 + xx, 470 - 5 + yy);                   //проверено
             this.pointTeamSelection2 = new Point(70 - 5 + xx, 355 - 5 + yy);                   //проверено
@@ -209,13 +211,13 @@ namespace OpenGEWindows
             this.pointButtonCloseSoldier = new Point(860 - 5 + xx, 590 - 5 + yy);                  //нажимаем на кнопку Close
             this.pointButtonYesSoldier = new Point(470 - 5 + xx, 430 - 5 + yy);                    //нажимаем на кнопку Yes
             this.pointFirstItem = new Point(35 - 5 + xx, 210 - 5 + yy);                            //нажимаем дважды на первую вещь в спецкармане
-            this.pointDomingoOnMap = new Point(810 - 5 + xx, 115 - 5 + yy);                        //нажимаем на Доминго на карте Alt+Z
+            this.pointDomingoOnMap = new Point(810 - 5 + xx, 130 - 5 + yy);                        //нажимаем на Доминго на карте Alt+Z
             this.pointPressDomingo = new Point(510 - 5 + xx, 425 - 5 + yy);                        //нажимаем на Доминго
             this.pointFirstStringDialog = new Point(520 - 5 + xx, 660 - 5 + yy);                   //нажимаем Yes в диалоге Доминго (нижняя строчка)
             this.pointSecondStringDialog = new Point(520 - 5 + xx, 640 - 5 + yy);                  //нажимаем Yes в диалоге Доминго второй раз (вторая строчка снизу)
             this.pointDomingoMiss = new Point(396 - 5 + xx, 206 - 5 + yy);                         //нажимаем правой кнопкой по карте миссии Доминго
             this.pointPressDomingo2 = new Point(572 - 5 + xx, 237 - 5 + yy);                       //нажимаем на Доминго после миссии
-            this.pointLindonOnMap = new Point(820 - 5 + xx, 370 - 5 + yy);                         //нажимаем на Линдона на карте Alt+Z
+            this.pointLindonOnMap = new Point(820 - 5 + xx, 385 - 5 + yy);                         //нажимаем на Линдона на карте Alt+Z
             this.pointPressLindon2 = new Point(655 - 5 + xx, 255 - 5 + yy);                        //нажимаем на Линдона
             this.pointPetExpert = new Point(910 - 5 + xx, 415 - 5 + yy);                           //нажимаем на петэксперта
             this.pointPetExpert2 = new Point(815 - 5 + xx, 425 - 5 + yy);                          //нажимаем на петэксперта второй раз 
@@ -339,6 +341,13 @@ namespace OpenGEWindows
 
             this.pointSafeIP1 = new PointColor(941, 579, 13600000, 5);
             this.pointSafeIP2 = new PointColor(942, 579, 13600000, 5);
+
+            #region передача песо торговцу
+            this.pointTrade1 = new PointColor(472 - 5 + xx, 251 - 5 + yy, 12800000, 5);
+            this.pointTrade2 = new PointColor(472 - 5 + xx, 252 - 5 + yy, 12800000, 5);
+
+            #endregion
+
 
         }        
 
@@ -623,7 +632,7 @@ namespace OpenGEWindows
 
             botwindow.setHwnd(HWND);
 
-            SetWindowPos(HWND, 1, xx, yy, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+            SetWindowPos(HWND, 0, xx, yy, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
 //            ShowWindow(HWND, 2);   //скрыть окно в трей
             Pause(500);
 

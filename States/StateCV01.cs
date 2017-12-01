@@ -49,7 +49,8 @@ namespace States
         {
             this.botwindow = botwindow;                 //бот
             this.botwindowDealer = botwindowDealer;     //торговец
-            this.dealer = new botMerchant(botwindowDealer);  //делаем торговца
+            this.dealer = new botMerchant(20);  //делаем торговца
+//            this.dealer = new botMerchant(botwindowDealer);  //делаем торговца
             //this.dealer = dealer;
 
             this.serverFactory = new ServerFactory(botwindow);
@@ -111,7 +112,7 @@ namespace States
                 botwindowDealer.Pause(500);
 
                 //============ выбор канала ===========
-                botwindowDealer.SelectChannel(4);            //идем на 4 канал
+                botwindowDealer.SelectChannel(3);            //идем на 4 канал
                 botwindowDealer.Pause(500);
 
                 //============ выход в город  ===========
@@ -138,7 +139,7 @@ namespace States
         /// <returns> true, если получилось перейти к состоянию GT02 </returns>
         public bool isAllCool()          // получилось ли перейти к следующему состоянию. true, если получилось
         {
-            return true;
+            return (server.isTown() || server.isTown_2());
         }
 
         /// <summary>

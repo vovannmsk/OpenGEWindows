@@ -46,7 +46,7 @@ namespace OpenGEWindows
             //точки для нажимания на них
             this.pointMaxHeight = new Point(545 - 5 + xx, 500 - 5 + yy);                      //проверено
             this.pointBookmark = new Point(880 - 5 + xx, 48 - 5 + yy);                        //вторая закладка карты   //проверено
-            this.pointTraderOnMap = new Point(880 - 5 + xx, 280 - 5 + yy);                    //торговец на карте                          ===========постоянная коррекция
+            this.pointTraderOnMap = new Point(880 - 5 + xx, 295- 5 + yy);                    //торговец на карте                          ===========постоянная коррекция
             this.pointButtonMoveOnMap = new Point(930 - 5 + xx, 728 - 5 + yy);                //кнопка Move на карте
             this.pointHeadTrader = new Point(365 - 5 + xx, 474 - 5 + yy);                     //голова торговца          //проверено
             this.pointSellOnMenu = new Point(520 + xx, 654 + yy);

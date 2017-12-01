@@ -102,7 +102,8 @@ namespace GEBot.Data
         /// <returns></returns>
         private int Koord_X()
         {
-            int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 875, 850, 825, 800, 775, 750, 725, 700 };
+            int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305,  875, 850, 825, 800, 775, 750, 5 };
+            
             return koordX[this.numberOfWindow - 1];
         }
 
@@ -112,7 +113,7 @@ namespace GEBot.Data
         /// <returns></returns>
         private int Koord_Y()   // каталог и номер окна
         {
-            int[] koordY = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 5, 30, 55, 80, 105, 130, 155, 180 };
+            int[] koordY = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305,  5, 30, 55, 80, 105, 130, 5};
             return koordY[this.numberOfWindow - 1];
         }
 

@@ -41,67 +41,65 @@ namespace States
             
             if (server.isActive())      //этот метод проверяет, нужно ли грузить или обрабатывать это окно (профа и прочее)
             {
-                bool result = ReOpenWindow();    //если окно не вылетело, то будет true
+                ReOpenWindow();    
                 Pause(1000);
-                if (result)      //если окно не вылетело
+                if (server.isLogout())                // если окно в логауте
                 {
-                    if (server.isLogout())                // если окно в логауте
+                    driver.StateRecovery();
+                }
+                else
+                {
+                    if (server.isSale2())         //если зависли в магазине на любой закладке
                     {
-                        driver.StateRecovery();
+                        driver.StateExitFromShop();            //выход из магазина
                     }
                     else
                     {
-                        if (server.isSale2())         //если зависли в магазине на любой закладке
+                        if (server.isKillHero())                  // если убиты один или несколько персов   
                         {
-                            driver.StateExitFromShop();            //выход из магазина
+                            botwindow.CureOneWindow2();              // сделать End Programm
+                            Pause(2000);
+                            driver.StateGotoWork();               // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
                         }
                         else
                         {
-                            if (server.isKillHero())                  // если убиты один или несколько персов   
+                            if (server.isBarack())                  //если стоят в бараке     
                             {
-                                botwindow.CureOneWindow2();              // сделать End Programm
-                                Pause(2000);
-                                driver.StateGotoWork();               // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                                server.buttonExitFromBarack();      //StateExitFromBarack();
                             }
                             else
                             {
-                                if (server.isBarack())                  //если стоят в бараке     
+                                //=========================== если переполнение ==============================
+                                if ((server.isBoxOverflow()) && (botwindow.getNomerTeleport() > 0))  // если карман переполнился и нужно продавать(телепорт = 0, тогда не нужно продавать)
                                 {
-                                    server.buttonExitFromBarack();      //StateExitFromBarack();
+                                    driver.StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
+                                    Pause(2000);
+                                    driver.StateGotoWork();                                           // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
                                 }
                                 else
                                 {
-                                    //=========================== если переполнение ==============================
-                                    if ((server.isBoxOverflow()) && (botwindow.getNomerTeleport() > 0))  // если карман переполнился и нужно продавать(телепорт = 0, тогда не нужно продавать)
+                                    //================== если в городе ========================================
+                                    if ((server.isTown()) || (server.isTown_2()))          //если стоят в городе (проверка по обоим стойкам - эксп.дробаш и ружье )         //**   было istown2()
                                     {
-                                        driver.StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
+                                        driver.StateExitFromTown();
+                                        botwindow.PressEscThreeTimes();
                                         Pause(2000);
-                                        driver.StateGotoWork();                                           // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                                        driver.StateGotoWork();                                    // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
                                     }
                                     else
                                     {
-                                        //================== если в городе ========================================
-                                        if ((server.isTown()) || (server.isTown_2()))          //если стоят в городе (проверка по обоим стойкам - эксп.дробаш и ружье )         //**   было istown2()
-                                        {
-                                            driver.StateExitFromTown();
-                                            botwindow.PressEscThreeTimes();
-                                            Pause(2000);
-                                            driver.StateGotoWork();                                    // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
-                                        }
-                                        else
-                                        {
-                                            if (server.isSale())                               // если застряли в магазине на странице входа
-                                            { driver.StateExitFromShop2(); }
-                                            //else
-                                            //{ botwindow.PressMitridat(); }
+                                        if (server.isSale())                               // если застряли в магазине на странице входа
+                                        { driver.StateExitFromShop2(); }
+                                        //else
+                                        //{ botwindow.PressMitridat(); }
 
-                                        } //else isTown2()
-                                    } //else isBoxOverflow()
-                                } //else isBarack()
-                            } // else isKillHero()
-                        } // else isSale2()
-                    } //else  isLogout()
-                } // если окно не вылетело, т.е. result = true
+                                    } //else isTown2()
+                                } //else isBoxOverflow()
+                            } //else isBarack()
+                        } // else isKillHero()
+                    } // else isSale2()
+                } //else  isLogout()
+                
             } //if  Active_or_not
         }                                                                  //основной метод для зеленой кнопки
                                              
@@ -130,9 +128,9 @@ namespace States
         /// проверка открыто ли окно и перемещение его в заданные координаты 
         /// </summary>
         /// <returns></returns>
-        public bool ReOpenWindow()
+        public void ReOpenWindow()
         {
-            return botwindow.ReOpenWindow();
+            botwindow.ReOpenWindow();
         }
 
         /// <summary>
@@ -195,21 +193,21 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            botWindow botwindow = new botWindow(11);
-            ServerInterface server = new ServerSing(botwindow);
-            MessageBox.Show(" " + server.isTown() + " " + server.isTown_2());
+            //botWindow botwindow = new botWindow(11);
+            //ServerInterface server = new ServerSing(botwindow);
+            //MessageBox.Show(" " + server.isWork());
 
             //bool iscolor1 = server.isSafeIP();
             //MessageBox.Show(" " + iscolor1);
 
             int xx, yy;
-            xx = 255;
-            yy = 255;
+            xx = 5;
+            yy = 5;
             uint color1;
             uint color2;
 
-            PointColor point1 = new PointColor(24 + xx, 692 + yy, 13000000, 5);
-            PointColor point2 = new PointColor(25 + xx, 692 + yy, 13000000, 5);
+            PointColor point1 = new PointColor(588 - 5 + xx, 230 - 5 + yy, 1710000, 4);
+            PointColor point2 = new PointColor(588 - 5 + xx, 231 - 5 + yy, 1710000, 4);
 
             color1 = point1.GetPixelColor();
             color2 = point2.GetPixelColor();

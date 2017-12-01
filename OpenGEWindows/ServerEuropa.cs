@@ -86,10 +86,6 @@ namespace OpenGEWindows
             this.pointisActivePet3 = new PointColor(829 - 5 + xx, 186 - 5 + yy, 12000000, 6); // для проверки периодической еды на месяц                                      //проверено
             this.pointisActivePet4 = new PointColor(829 - 5 + xx, 185 - 5 + yy, 12000000, 6); // для проверки периодической еды на месяц
 
-            //this.pointisLogout1 = new PointColor(211 - 5 + xx, 93 - 5 + yy, 14400000, 5);                                                                           //проверено
-            //this.pointisLogout2 = new PointColor(220 - 5 + xx, 93 - 5 + yy, 14400000, 5);
-            //this.pointisLogout1 = new PointColor(240 - 5 + xx, 133 - 5 + yy, 13600000, 5);    
-            //this.pointisLogout2 = new PointColor(245 - 5 + xx, 133 - 5 + yy, 13600000, 5);
             this.pointisLogout1 = new PointColor(362 - 5 + xx, 315 - 5 + yy, 15000000, 6);    //проверено
             this.pointisLogout2 = new PointColor(362 - 5 + xx, 317 - 5 + yy, 15000000, 6);
             this.pointisBarack1 = new PointColor(104 - 5 + xx, 152 - 5 + yy, 2420000, 4);       //проверено
@@ -99,6 +95,8 @@ namespace OpenGEWindows
 
             this.pointisWork_RifleDot1 = new PointColor(24 + xx, 692 + yy, 11051000, 3);      //29 - 5, 697 - 5, 11051000, 30 - 5, 697 - 5, 10919000, 3);                    //проверено
             this.pointisWork_RifleDot2 = new PointColor(25 + xx, 692 + yy, 10919000, 3);
+            this.pointisWork_ExpRifleDot1 = new PointColor(24 + xx, 692 + yy, 1721000, 3);      //29 - 5, 697 - 5, 11051000, 30 - 5, 697 - 5, 10919000, 3);                    //не проверено
+            this.pointisWork_ExpRifleDot2 = new PointColor(25 + xx, 692 + yy, 2106000, 3);
             this.pointisWork_DrobDot1 = new PointColor(24 + xx, 692 + yy, 7644000, 3);              //проверка по обычной стойке с дробашем
             this.pointisWork_DrobDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
             this.pointisWork_VetDrobDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);              //проверка по вет стойке с дробашем          не проверено
@@ -108,6 +106,7 @@ namespace OpenGEWindows
 
             this.pointisOpenMenuPet1 = new PointColor(829 + xx, 93 + yy, 12000000, 6);      //834 - 5, 98 - 5, 12400000, 835 - 5, 98 - 5, 12400000, 5);             //проверено
             this.pointisOpenMenuPet2 = new PointColor(830 + xx, 93 + yy, 12000000, 6);
+
             this.pointisOpenTopMenu21 = new PointColor(328 + xx, 74 + yy, 13420000, 4);      //333 - 5, 79 - 5, 13420000, 334 - 5, 79 - 5, 13420000, 4);            //не проверено
             this.pointisOpenTopMenu22 = new PointColor(329 + xx, 74 + yy, 13420000, 4);
             this.pointisOpenTopMenu61 = new PointColor(455 + xx, 87 + yy, 13420000, 4);      //460 - 5, 92 - 5, 13420000, 461 - 5, 92 - 5, 13420000, 4);            //не проверено
@@ -125,8 +124,8 @@ namespace OpenGEWindows
             this.pointBuyingMitridat2 = new Point(517 + xx, 433 + yy);      //1392 - 875, 438 - 5
             this.pointBuyingMitridat3 = new Point(517 + xx, 423 + yy);      //1392 - 875, 428 - 5
 
-//            this.pointGotoEnd = new Point(817 - 5 + xx, 542 - 5 + yy);                              //логаут
-            this.pointGotoEnd = new Point(817 - 5 + xx, 572 - 5 + yy);                              //end
+            this.pointGotoEnd = new Point(817 - 5 + xx, 542 - 5 + yy);                              //логаут
+//            this.pointGotoEnd = new Point(817 - 5 + xx, 572 - 5 + yy);                              //end
 
             this.pointTeamSelection1 = new Point(140 - 5 + xx, 470 - 5 + yy);                   //проверено
             this.pointTeamSelection2 = new Point(70 - 5 + xx, 355 - 5 + yy);                   //проверено
