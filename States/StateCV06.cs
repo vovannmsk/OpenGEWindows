@@ -107,7 +107,7 @@ namespace States
             botwindowDealer.OpenBookmarkSell();
 
             // продаем 10 ВК в фесо шопе
-            botwindowDealer.SellGrowthStone10();
+            botwindowDealer.SellGrowthStone3pcs();
 
             //убираем лишнее с экрана торговца
             botwindowDealer.PressEscThreeTimes();

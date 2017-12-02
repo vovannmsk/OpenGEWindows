@@ -94,18 +94,6 @@ namespace States
         /// </summary>
         public void run()
         {
-            //Нажать согласие на торговлю у торговца, положить фесо, нажать "ок" и "обмен"
-            //делаем окно торговца активным
-            botwindowDealer.ReOpenWindow();
-            botwindowDealer.Pause(500);
-
-            //// наживаем Yes
-            //// открываем карман (инвентарь)
-            //// открываем закладку кармана, там где фесо
-            //// перетаскиваем фесо
-            //// нажимаем Ок для подтверждения передаваемой суммы фесо
-            //// нажимаем ок и обмен
-            dealer.ChangeVisTrader1();
         }
 
         /// <summary>
@@ -132,7 +120,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateCV08(botwindow, dealer);
+            return new StateCV07(botwindow, dealer);
         }
 
         /// <summary>

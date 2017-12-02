@@ -144,6 +144,7 @@ namespace OpenGEWindows
         protected iPoint pointBuyingMitridat2;
         protected iPoint pointBuyingMitridat3;
         protected iPoint pointGotoEnd;
+        protected iPoint pointLogout;
         protected iPoint pointTeamSelection1;
         protected iPoint pointTeamSelection2;
         protected iPoint pointTeamSelection3;
@@ -1230,19 +1231,21 @@ namespace OpenGEWindows
         /// </summary>
         public void GoToEnd()
         {
-            botwindow.PressEscThreeTimes();
-            Pause(1000);
+            //botwindow.PressEscThreeTimes();
+            //Pause(1000);
 
             TopMenu(13);
             Pause(1000);
             pointGotoEnd.PressMouse();
-            //pointGotoEnd.PressMouse();      //добавил 01-12-2016
-            //botwindow.PressMouse(680, 462);   //выбираем пункт end Programm
-
-            //пробуем окончательно убить окно
-            //Pause(2000);
-            //UIntPtr ddd = botwindow.getHwnd();
-            //DestroyWindow(ddd);
+        }
+        /// <summary>
+        /// Выгружаем окно через верхнее меню 
+        /// </summary>
+        public void Logout()
+        {
+            TopMenu(13);
+            Pause(1000);
+            pointLogout.PressMouse();
         }
 
         /// <summary>
@@ -1590,6 +1593,7 @@ namespace OpenGEWindows
         }
 
 
+
         /// <summary>
         /// добавляем товар из указанной строки в корзину 
         /// </summary>
@@ -1610,7 +1614,8 @@ namespace OpenGEWindows
             Point pointAddProduct = new Point(360 - 5 + botwindow.getX(), 220 - 5 + (numberOfString - 1) * 27 + botwindow.getY());  //305 + 30, 190 + 30)
             pointAddProduct.PressMouseL();  //тыкаем в строчку с товаром
             Pause(150);
-            Press44444();                   // пишем 444444 , чтобы максимальное количество данного товара попало в корзину 
+            SendKeys.SendWait("33000");
+            //Press44444();                   // пишем 444444 , чтобы максимальное количество данного товара попало в корзину 
             pointAddProduct.PressMouseWheelDown();   //прокручиваем список
         }
 
@@ -1723,15 +1728,6 @@ namespace OpenGEWindows
         /// <returns></returns>
         public bool isKillHero()
         {
-            //bool result = false;
-            //uint ss, tt, rr = 0;
-            //ss = Okruglenie(GetPixelColor(80 - 5, 636 - 5), 4);  //  проверяем точку в портрете первого героя 
-            //tt = Okruglenie(GetPixelColor(335 - 5, 636 - 5), 4);  //  проверяем точку в портрете второго героя 
-            //rr = Okruglenie(GetPixelColor(590 - 5, 636 - 5), 4);  //  проверяем точку в портрете третьего героя
-            //if (ss == 1900000) result = true;     //если черный цвет, т.е. убит первый перс, то возвращаем true.
-            //if (tt == 1900000) result = true;     //если черный цвет, т.е. убит второй перс, то возвращаем true.
-            //if (rr == 1900000) result = true;     //если черный цвет, т.е. убит третий перс, то возвращаем true.
-            //return result;
             return (pointisKillHero1.isColor() || pointisKillHero2.isColor() || pointisKillHero3.isColor());
         }
 

@@ -126,6 +126,7 @@ namespace OpenGEWindows
 
             this.pointGotoEnd = new Point(817 - 5 + xx, 542 - 5 + yy);                              //логаут
 //            this.pointGotoEnd = new Point(817 - 5 + xx, 572 - 5 + yy);                              //end
+            this.pointLogout = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
 
             this.pointTeamSelection1 = new Point(140 - 5 + xx, 470 - 5 + yy);                   //проверено
             this.pointTeamSelection2 = new Point(70 - 5 + xx, 355 - 5 + yy);                   //проверено

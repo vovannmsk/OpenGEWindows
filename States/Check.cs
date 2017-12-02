@@ -90,6 +90,17 @@ namespace States
                                     {
                                         if (server.isSale())                               // если застряли в магазине на странице входа
                                         { driver.StateExitFromShop2(); }
+                                        else
+                                        {
+                                            if (server.isOpenMenuPet())                  //если открыто меню с петом, значит пет не выпущен
+                                            {
+                                                driver.StateActivePet();
+                                            }
+                                            else
+                                            {
+
+                                            }
+                                        }
                                         //else
                                         //{ botwindow.PressMitridat(); }
 
@@ -193,27 +204,27 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            //botWindow botwindow = new botWindow(11);
-            //ServerInterface server = new ServerSing(botwindow);
-            //MessageBox.Show(" " + server.isWork());
+            botWindow botwindow = new botWindow(1);
+            ServerInterface server = new ServerSing(botwindow);
+            MessageBox.Show(" " + server.isKillHero());
 
             //bool iscolor1 = server.isSafeIP();
             //MessageBox.Show(" " + iscolor1);
 
-            int xx, yy;
-            xx = 5;
-            yy = 5;
-            uint color1;
-            uint color2;
+            //int xx, yy;
+            //xx = 5;
+            //yy = 5;
+            //uint color1;
+            //uint color2;
 
-            PointColor point1 = new PointColor(588 - 5 + xx, 230 - 5 + yy, 1710000, 4);
-            PointColor point2 = new PointColor(588 - 5 + xx, 231 - 5 + yy, 1710000, 4);
+            //PointColor point1 = new PointColor(588 - 5 + xx, 230 - 5 + yy, 1710000, 4);
+            //PointColor point2 = new PointColor(588 - 5 + xx, 231 - 5 + yy, 1710000, 4);
 
-            color1 = point1.GetPixelColor();
-            color2 = point2.GetPixelColor();
+            //color1 = point1.GetPixelColor();
+            //color2 = point2.GetPixelColor();
 
-            MessageBox.Show(" " + color1);
-            MessageBox.Show(" " + color2);
+            //MessageBox.Show(" " + color1);
+            //MessageBox.Show(" " + color2);
 
             //string str = "";
             //if (server.isHuman()) str += "Human ";

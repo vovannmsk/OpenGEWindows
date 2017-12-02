@@ -51,9 +51,6 @@
     <Compile Include="StateCV05.cs" />
     <Compile Include="StateCV06.cs" />
     <Compile Include="StateCV07.cs" />
-    <Compile Include="StateCV08.cs" />
-    <Compile Include="StateCV09.cs" />
-    <Compile Include="StateCV10.cs" />
     <Compile Include="StateDriver.cs" />
     <Compile Include="StateDriverTrader.cs" />
     <Compile Include="StateGT01.cs" />

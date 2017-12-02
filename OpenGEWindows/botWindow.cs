@@ -104,7 +104,7 @@ namespace OpenGEWindows
             this.town = server.getTown();
 
             // точки для тыканья. универсально для всех серверов
-            this.pointButtonClose = new Point(848 + databot.x, 620 + databot.y);   //(848, 620);
+            this.pointButtonClose = new Point(850 - 5 + databot.x, 625 - 5 + databot.y);   //(848, 620);
             this.pointOneMode = new Point(123 - 5 + databot.x, 489 - 5 + databot.y);    // 118, 484
         }
 
@@ -790,66 +790,61 @@ namespace OpenGEWindows
         /// <summary>
         /// купить 400 еды в фесо шопе                    вообще-то метод должен находится в ServerInterface
         /// </summary>
-        public void Buy400PetFood()
+        public void Buy44PetFood()
         {
-            iPoint pointArrowUp = new Point(375 + databot.x, 327 + databot.y);   //375, 327);   //шаг = 27 пикселей на одну строчку магазина (на случай если добавят новые строчки)
-            iPoint pointButtonBUY = new Point(725 + databot.x, 620 + databot.y);   //725, 620);
+            iPoint pointFood = new Point(361 - 5 + databot.x, 331 - 5 + databot.y);     //шаг = 27 пикселей на одну строчку магазина (на случай если добавят новые строчки)
+            iPoint pointButtonBUY = new Point(730 - 5 + databot.x, 625 - 5 + databot.y);   //725, 620);
 
             // тыкаем два раза в стрелочку вверх
-            //PressMouseL(375, 327);
-            pointArrowUp.PressMouseL();
-            Pause(500);
-            //PressMouseL(375, 327);
-            pointArrowUp.PressMouseL();
+            pointFood.DoubleClickL();
             Pause(500);
 
+            //нажимаем 44
+            //server.Press44();
+            SendKeys.SendWait("125");
+
             // жмем кнопку купить
-            pointButtonBUY.PressMouseL();
-            //PressMouseL(725, 620);
+            pointButtonBUY.DoubleClickL();
             Pause(1500);
 
             //нажимаем кнопку Close
-            pointButtonClose.PressMouseL();
-            //PressMouseL(848, 620);
+            pointButtonClose.DoubleClickL();
             Pause(1500);
-        }                                                                         //заменил все точки
+        }                                                                        
 
         /// <summary>
-        /// продать 10 ВК в фесо шопе 
+        /// продать 3 ВК (GS) в фесо шопе 
         /// </summary>
-        public void SellGrowthStone10()
+        public void SellGrowthStone3pcs()
         {
-            iPoint pointArrowUp2 = new Point(375 + databot.x, 246 + databot.y);   //375, 246);
-            iPoint pointButtonSell = new Point(725 + databot.x, 620 + databot.y);   //725, 620);
+            iPoint pointArrowUp2 = new Point(379 - 5 + databot.x, 250 - 5 + databot.y); 
+            iPoint pointButtonSell = new Point(730 - 5 + databot.x, 625 - 5 + databot.y);   
 
-            // 10 раз нажимаем на стрелку вверх, чтобы отсчитать 10 ВК
-            for (int i = 1; i <= 10; i++)
+            // 3 раза нажимаем на стрелку вверх, чтобы отсчитать 3 ВК
+            for (int i = 1; i <= 3; i++)
             {
                 pointArrowUp2.PressMouseL();
-                //PressMouseL(375, 246);
-                Pause(500);
+                Pause(700);
             }
 
             //нажимаем кнопку Sell
             pointButtonSell.PressMouseL();
-            //PressMouseL(725, 620);
-            Pause(500);
+            Pause(1000);
 
             //нажимаем кнопку Close
             pointButtonClose.PressMouseL();
-            //PressMouseL(848, 620);
-            Pause(500);
-        }                                                                               //заменил все точки
+            Pause(2500);
+        }                                 
 
         /// <summary>
         /// открыть вкладку Sell в фесо шопе
         /// </summary>
         public void OpenBookmarkSell()
         {
-            iPoint pointBookmarkSell = new Point(226 + databot.x, 196 + databot.y);     //226, 196);
-            pointBookmarkSell.PressMouseL();
+            iPoint pointBookmarkSell = new Point(245 - 5 + databot.x, 201 - 5 + databot.y); 
+            pointBookmarkSell.DoubleClickL();
             Pause(1500);
-        }                                                                            //заменил все точки
+        }                                 
 
         #endregion
 

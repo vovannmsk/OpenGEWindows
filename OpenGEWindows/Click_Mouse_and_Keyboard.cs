@@ -124,6 +124,7 @@ namespace OpenGEWindows
             {
                 case 1:      // Перемещение мыши и левый клик
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
+                    Pause(200);
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, 0);
                     Pause(50);
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP, 0);
@@ -155,6 +156,19 @@ namespace OpenGEWindows
                 //    Pause(100);
                 //    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_WHEEL, -120);
                 //    break;
+
+                case 6:      // Перемещение мыши и двойной клик
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
+                    Pause(200);
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, 0);
+                    Pause(50);
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP, 0);
+                    Pause(50);
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, 0);
+                    Pause(50);
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP, 0);
+
+                    break;
 
                 case 9:     // перемещаем мышку в координаты и прокручиваем вверх
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);

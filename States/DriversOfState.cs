@@ -30,6 +30,14 @@ namespace States
         #region движки для запуска перехода по состояниям
 
         /// <summary>
+        /// перевод из состояния 20 (пет не выпущен) в состояние 01 (на работе). Цель  - выпустить пета и расставить треугольником
+        /// </summary>
+        public void StateActivePet()
+        {
+            StateDriverRun(new StateGT20(botwindow), new StateGT01(botwindow));
+        }
+
+        /// <summary>
         /// перевод из состояния 60 в состояние 80. Цель  - передача песо торговцу
         /// </summary>
         public void StateTransferVis()

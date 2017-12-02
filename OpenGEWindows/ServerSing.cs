@@ -137,6 +137,7 @@ namespace OpenGEWindows
 
 //            this.pointGotoEnd = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
             this.pointGotoEnd = new Point(685 - 5 + xx, 470 - 5 + yy);            //end
+            this.pointLogout = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
 
             this.pointTeamSelection1 = new Point(140 - 5 + xx, 470 - 5 + yy);                   //проверено
             this.pointTeamSelection2 = new Point(70 - 5 + xx, 355 - 5 + yy);                   //проверено
@@ -159,9 +160,9 @@ namespace OpenGEWindows
             this.pointButtonBUY = new Point(725 + xx, 663 + yy);   //725, 663);
             this.pointButtonSell = new Point(725 + xx, 663 + yy);   //725, 663);
             this.pointButtonClose = new Point(847 + xx, 663 + yy);   //847, 663);
-            this.pointisKillHero1 = new PointColor(75 + xx, 631 + yy, 1900000, 4);
-            this.pointisKillHero2 = new PointColor(330 + xx, 631 + yy, 1900000, 4);
-            this.pointisKillHero3 = new PointColor(585 + xx, 631 + yy, 1900000, 4);
+            this.pointisKillHero1 = new PointColor(80 - 5 + xx, 636 - 5 + yy, 1900000, 5);
+            this.pointisKillHero2 = new PointColor(335 - 5 + xx, 636 - 5 + yy, 1900000, 5);
+            this.pointisKillHero3 = new PointColor(590 - 5 + xx, 636 - 5 + yy, 1900000, 5);
             this.pointButtonLogOut = new Point(785 - 5 + xx, 700 - 5 + yy);               //кнопка логаут в казарме
 
             this.pointisToken1 = new PointColor(478 - 5 + xx, 92 - 5 + yy, 13000000, 5);  //проверяем открыто ли окно с токенами
@@ -595,7 +596,6 @@ namespace OpenGEWindows
         public override void OrangeButton()
         {
             botwindow.ReOpenWindow();
-            Pause(100);
             //if (isLogout())
             //{
             //    botwindow.EnterLoginAndPasword();

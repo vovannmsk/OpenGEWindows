@@ -43,6 +43,26 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            //продаём 10 ВК в фесо шопе, чтобы было что отдать следующему боту
+
+            //делаем окно торговца активным
+            dealer.ReOpenWindow();
+            dealer.Pause(500);
+
+            //открываем магазин фесо
+            dealer.OpenFesoShop();
+
+            //нажимаем на закладку sell
+            dealer.OpenBookmarkSell();
+
+            // продаем 3 ВК в фесо шопе для передачи следующему боту
+            dealer.SellGrowthStone3pcs();
+
+            //убираем лишнее с экрана торговца
+            dealer.PressEscThreeTimes();
+            dealer.Pause(500);
+
+            server.Logout();    //выгружаем окно с торговцем
 
 
         }

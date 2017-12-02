@@ -103,7 +103,7 @@ namespace States
 
 
             // покупаем 400 еды в фесо шопе
-            botwindow.Buy400PetFood();
+            botwindow.Buy44PetFood();
 
             // обнуляем переменную и записываем ее в файл
             botwindow.setNeedToChange(0);     //делаем параметр NeedToChange равным нулю, т.е. передавать не надо

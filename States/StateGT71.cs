@@ -43,6 +43,19 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            //покупаем еду для пета и закрываем окно бота
+            botwindow.ReOpenWindow();          //делаем окно активным
+            botwindow.Pause(1000);
+
+            // открываем фесо шоп
+            botwindow.OpenFesoShop();
+
+
+            // покупаем 400 еды в фесо шопе
+            botwindow.Buy44PetFood();
+
+            //server.GoToEnd();              //выгружаем окно с ботом (поправка на сервер)
+            server.Logout();
 
 
         }

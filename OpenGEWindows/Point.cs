@@ -100,7 +100,7 @@ namespace OpenGEWindows
         public void PressMouseWheelDown()
         {
             Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 3);
-            Pause(200);
+            //Pause(200);
         }
 
         /// <summary>
@@ -108,9 +108,10 @@ namespace OpenGEWindows
         /// </summary>
         public void DoubleClickL()
         {
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 1);
-            Pause(50);
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 1);
+            //Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 1);
+            //Pause(50);
+            //Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 1);
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 6);
             Pause(200);
 
         }
