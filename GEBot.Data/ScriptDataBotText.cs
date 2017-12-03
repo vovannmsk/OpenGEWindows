@@ -102,7 +102,7 @@ namespace GEBot.Data
         /// <returns></returns>
         private int Koord_X()
         {
-            int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305,  875, 850, 825, 800, 775, 750, 5 };
+            int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305,  875, 850, 825, 800, 775, 750, 875 };
             
             return koordX[this.numberOfWindow - 1];
         }

@@ -35,6 +35,7 @@ namespace States
         public void StateActivePet()
         {
             StateDriverRun(new StateGT20(botwindow), new StateGT01(botwindow));
+//            StateDriverRun(new StateGT20(botwindow), new StateGT28(botwindow));
         }
 
         /// <summary>
@@ -83,6 +84,7 @@ namespace States
         {
             botwindow.ReOpenWindow();
             StateDriverRun(new StateGT01(botwindow), new StateGT14(botwindow));
+//            StateDriverRun(new StateGT01(botwindow), new StateGT12(botwindow));
         }
 
         /// <summary>
@@ -90,7 +92,8 @@ namespace States
         /// </summary>
         public void StateGotoWork()
         {
-            StateDriverRun(new StateGT14(botwindow), new StateGT01(botwindow)); //
+            StateDriverRun(new StateGT14(botwindow), new StateGT01(botwindow)); 
+//            StateDriverRun(new StateGT14(botwindow), new StateGT28(botwindow));
         }
 
         /// <summary>
@@ -99,6 +102,7 @@ namespace States
         public void StateRecovery()
         {
             StateDriverRun(new StateGT15(botwindow), new StateGT01(botwindow));
+//            StateDriverRun(new StateGT15(botwindow), new StateGT28(botwindow));
         }
 
         /// <summary>
@@ -107,6 +111,7 @@ namespace States
         public void StateReOpen()
         {
             StateDriverRun(new StateGT14(botwindow), new StateGT15(botwindow));
+            //StateDriverRun(new StateGT14(botwindow), new StateGT14(botwindow));
         }
 
         /// <summary>
@@ -116,6 +121,7 @@ namespace States
         {
             if (botwindow.getserver().isSale())                                 //проверяем, находимся ли в магазине
                 StateDriverRun(new StateGT09(botwindow), new StateGT12(botwindow));
+            //StateDriverRun(new StateGT09(botwindow), new StateGT12(botwindow));
         }
 
         /// <summary>
@@ -140,7 +146,8 @@ namespace States
         /// </summary>
         public void StateExitFromShop()
         {
-            StateDriverRun(new StateGT10(botwindow), new StateGT14(botwindow));
+            StateDriverRun(new StateGT111(botwindow), new StateGT14(botwindow));
+            //StateDriverRun(new StateGT111(botwindow), new StateGT12(botwindow));
         }
 
         /// <summary>
@@ -149,6 +156,7 @@ namespace States
         public void StateExitFromShop2()
         {
             StateDriverRun(new StateGT09(botwindow), new StateGT14(botwindow));
+            //StateDriverRun(new StateGT09(botwindow), new StateGT12(botwindow));
         }
 
         /// <summary>
@@ -157,6 +165,7 @@ namespace States
         public void StateExitFromTown()
         {
             StateDriverRun(new StateGT12(botwindow), new StateGT14(botwindow));
+            //StateDriverRun(new StateGT12(botwindow), new StateGT12(botwindow));
         }
 
         /// <summary>
@@ -172,22 +181,6 @@ namespace States
             }
         }
 
-//        /// <summary>
-//        /// передача песо торговцу
-//        /// </summary>
-//        public void StateTransferVis()
-//        {
-//            ServerInterface server;                 
-//            ServerFactory serverFactory;
-//            serverFactory = new ServerFactory(botwindow);
-//            server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-
-//            if (server.isLogout())
-//            {
-////                StateDriverDealerRun(new StateCV01(botwindow, new botMerchant(new botWindow(20))), new StateCV10(botwindow, new botMerchant(new botWindow(20))));
-//                StateDriverDealerRun(new StateCV01(botwindow, new botWindow(20)), new StateCV10(botwindow, new botWindow(20)));
-//            }
-//        }
 
         
 
@@ -198,28 +191,19 @@ namespace States
         /// <param name="stateEnd"> конечное состояние </param>
         public void StateDriverRun(IState stateBegin, IState stateEnd)
         {
-            StateDriver stateDriver = new StateDriver(botwindow, stateBegin, stateEnd);    //botwindow в данном случае есть экземпляр класса botWindow, здесь stateDriver - это начальное состояние движка
+            StateDriver stateDriver = new StateDriver(botwindow, stateBegin, stateEnd);
             while (!stateDriver.Equals(stateEnd))
             {
                 stateDriver.run();
                 stateDriver.setState();
             }
+            //do
+            //{
+            //    stateDriver.run();
+            //    stateDriver.setState();
+            //} while (!stateDriver.Equals(stateEnd));
         }
 
-        /// <summary>
-        /// запускает движок состояний StateDriver от пункта stateBegin до stateEnd
-        /// </summary>
-        /// <param name="stateBegin"> начальное состояние </param>
-        /// <param name="stateEnd"> конечное состояние </param>
-        public void StateDriverDealerRun(IState stateBegin, IState stateEnd)
-        {
-            StateDriverTrader stateDriverTrader = new StateDriverTrader(stateBegin);
-            while (!stateDriverTrader.Equals(stateEnd))
-            {
-                stateDriverTrader.run();
-                stateDriverTrader.setState();
-            }
-        }
 
 
 

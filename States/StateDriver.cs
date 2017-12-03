@@ -12,7 +12,7 @@ namespace States
         private botWindow botwindow;
         private IState currentState;    //текущее состояние
         private IState endState;        //конечное состояние
-        private int[] counterState = new int[150];
+        private int[] counterState = new int[10000];
 
         /// <summary>
         /// конструктор
@@ -39,7 +39,7 @@ namespace States
             //if (!(other == null))            //если other не null, то проверяем на равенство
             //    if (this.getTekStateInt() == other.getTekStateInt()) result = true;
             //return result;
-            return currentState.Equals(other);
+            return currentState.Equals(other);      //делегируем сравнение состояний в текущее состояние (в нем переопределён метод Equals)
         }
 
         /// <summary>

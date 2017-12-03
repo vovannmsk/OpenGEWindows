@@ -140,10 +140,23 @@ namespace OpenGEWindows
         protected iPointColor pointisToken1;      //при входе в город проверяем, открыто ли окно с подарочными токенами.
         protected iPointColor pointisToken2;
         protected iPoint pointToken;            //если окно с подарочными токенами открыто, то закрываем его нажатием на эту точку
+
+        #region Shop
+
+        protected iPoint pointBookmarkSell;
+        protected iPoint pointSaleToTheRedBottle;
+        protected iPoint pointSaleOverTheRedBottle;
+        protected iPoint pointWheelDown;
+        protected iPoint pointButtonBUY;
+        protected iPoint pointButtonSell;
+        protected iPoint pointButtonClose;
         protected iPoint pointBuyingMitridat1;
         protected iPoint pointBuyingMitridat2;
         protected iPoint pointBuyingMitridat3;
         protected iPoint pointGotoEnd;
+
+        #endregion
+
         protected iPoint pointLogout;
         protected iPoint pointTeamSelection1;
         protected iPoint pointTeamSelection2;
@@ -155,21 +168,18 @@ namespace OpenGEWindows
         protected iPoint pointSummonPet2;
         protected iPoint pointTeleportToTownAltW;
         protected iPoint pointActivePet;
-        protected iPoint pointBookmarkSell;
-        protected iPoint pointSaleToTheRedBottle;
-        protected iPoint pointSaleOverTheRedBottle;
-        protected iPoint pointWheelDown;
-        protected iPoint pointButtonBUY;
-        protected iPoint pointButtonSell;
-        protected iPoint pointButtonClose;
         protected iPoint pointButtonLogOut;
-        protected iPoint pointChooseChannel;
-        protected iPoint pointEnterChannel;
-        protected iPoint pointMoveNow;
         protected iPoint pointCure1;
         protected iPoint pointCure2;
         protected iPoint pointCure3;
         protected iPoint pointMana1;
+
+        #region Barack
+        protected iPoint pointChooseChannel;
+        protected iPoint pointEnterChannel;
+        protected iPoint pointMoveNow;
+
+        #endregion
 
         #endregion
 
@@ -1131,28 +1141,6 @@ namespace OpenGEWindows
             pointTeamSelection3.PressMouseL();  // Нажимаем кнопку выбора группы (Select Team) 
         }
 
-        /// <summary>
-        /// Покупка митридата в количестве 333 штук
-        /// </summary>
-        public void BuyingMitridat()
-        {
-            //botwindow.PressMouseL(360, 537);          //кликаем левой кнопкой в ячейку, где надо написать количество продаваемого товара
-            pointBuyingMitridat1.PressMouseL();             //кликаем левой кнопкой в ячейку, где надо написать количество продаваемого товара
-            Pause(150);
-
-            Press333();
-
-            Botton_BUY();                             // Нажимаем на кнопку BUY 
-
-
-            pointBuyingMitridat2.PressMouseL();           //кликаем левой кнопкой мыши в кнопку Ок, если переполнение митридата
-            //botwindow.PressMouseL(1392 - 875, 438 - 5);         
-            Pause(500);
-
-            pointBuyingMitridat3.PressMouseL();           //кликаем левой кнопкой мыши в кнопку Ок, если нет денег на покупку митридата
-            //botwindow.PressMouseL(1392 - 875, 428 - 5);          
-            Pause(500);
-        }
 
         /// <summary>
         /// Открыть городской телепорт (Alt + F3) без проверок и while (для паттерна Состояние)  StateGT
@@ -1438,18 +1426,35 @@ namespace OpenGEWindows
 
         }
 
-        //=============================================================================================== кандидат в абстрактный класс server
+        /// <summary>
+        /// функция проверяет, убит ли хоть один герой из пати (проверка проходит на карте)
+        /// </summary>
+        /// <returns></returns>
+        public bool isKillHero()
+        {
+            return (pointisKillHero1.isColor() || pointisKillHero2.isColor() || pointisKillHero3.isColor());
+        }
+
+        /// <summary>
+        /// проверяем, есть ли ошибки при нажатии кнопки Connect
+        /// </summary>
+        /// <returns></returns>
+        public bool isPointConnect()
+        {
+            return pointConnect.isColor();
+        }
+
+        #endregion
+
+
+        #region магазин
+
         /// <summary>
         /// Кликаем в закладку Sell  в магазине 
         /// </summary>
         public void Bookmark_Sell()
         {
-            //PressMouseL(225, 163);
-            //PressMouseL(225, 163);
-            //PressMouseL(225, 163);
-            pointBookmarkSell.PressMouseL();
-            pointBookmarkSell.PressMouseL();
-            pointBookmarkSell.PressMouseL();
+            pointBookmarkSell.DoubleClickL();
             Pause(1500);
         }
 
@@ -1475,7 +1480,6 @@ namespace OpenGEWindows
             pointAddProduct.PressMouseWheelDown();
         }
 
-          
         /// <summary>
         /// определяет, анализируется ли нужный товар либо данный товар можно продавать
         /// </summary>
@@ -1536,9 +1540,9 @@ namespace OpenGEWindows
                 case 2569782:     // дробь эксп
                 case 5137276:     // сундук деревянный как у сфер древней звезды
 
-//              case 7645105:     // Quartz                 **
-                result = false;
-                break;
+                    //              case 7645105:     // Quartz                 **
+                    result = false;
+                    break;
             }
 
             return result;
@@ -1592,8 +1596,6 @@ namespace OpenGEWindows
             }
         }
 
-
-
         /// <summary>
         /// добавляем товар из указанной строки в корзину 
         /// </summary>
@@ -1615,6 +1617,7 @@ namespace OpenGEWindows
             pointAddProduct.PressMouseL();  //тыкаем в строчку с товаром
             Pause(150);
             SendKeys.SendWait("33000");
+            Pause(100);
             //Press44444();                   // пишем 444444 , чтобы максимальное количество данного товара попало в корзину 
             pointAddProduct.PressMouseWheelDown();   //прокручиваем список
         }
@@ -1647,7 +1650,7 @@ namespace OpenGEWindows
             {
                 previousProduct = currentProduct;
                 if (NeedToSellProduct(currentProduct.color1))
-                    AddToCartLotProduct(1); 
+                    AddToCartLotProduct(1);
                 else
                     GoToNextproduct(1);
 
@@ -1676,8 +1679,6 @@ namespace OpenGEWindows
         /// </summary>
         public void Botton_BUY()
         {
-            //PressMouseL(725, 663);
-            //PressMouseL(725, 663);
             pointButtonBUY.PressMouseL();
             pointButtonBUY.PressMouseL();
             Pause(2000);
@@ -1689,8 +1690,6 @@ namespace OpenGEWindows
         /// </summary>
         public void Botton_Sell()
         {
-            //PressMouseL(725, 663);
-            //PressMouseL(725, 663);
             pointButtonSell.PressMouseL();
             pointButtonSell.PressMouseL();
             Pause(2000);
@@ -1708,36 +1707,26 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// возвращает цвет пикселя экрана, т.е. не в конкретном окне, а на общем экране 1920х1080.            
+        /// Покупка митридата в количестве 333 штук
         /// </summary>
-        /// <param name="x"> x - первая координата проверяемой точки </param>
-        /// <param name="y"> y - вторая координата проверяемой точки </param>
-        /// <returns> цвет пикселя экрана </returns>
-        public uint GetPixelColor(int x, int y)
+        public void BuyingMitridat()
         {
-            IntPtr hwnd = GetDC(IntPtr.Zero);
-            uint pixel = GetPixel(hwnd, x + botwindow.getX(), y + botwindow.getY());
-            ReleaseDC(IntPtr.Zero, hwnd);
+            //botwindow.PressMouseL(360, 537);          //кликаем левой кнопкой в ячейку, где надо написать количество продаваемого товара
+            pointBuyingMitridat1.PressMouseL();             //кликаем левой кнопкой в ячейку, где надо написать количество продаваемого товара
+            Pause(150);
 
-            return pixel;
-        }
+            Press333();
 
-        /// <summary>
-        /// функция проверяет, убит ли хоть один герой из пати (проверка проходит на карте)
-        /// </summary>
-        /// <returns></returns>
-        public bool isKillHero()
-        {
-            return (pointisKillHero1.isColor() || pointisKillHero2.isColor() || pointisKillHero3.isColor());
-        }
+            Botton_BUY();                             // Нажимаем на кнопку BUY 
 
-        /// <summary>
-        /// проверяем, есть ли ошибки при нажатии кнопки Connect
-        /// </summary>
-        /// <returns></returns>
-        public bool isPointConnect()
-        {
-            return pointConnect.isColor();
+
+            pointBuyingMitridat2.PressMouseL();           //кликаем левой кнопкой мыши в кнопку Ок, если переполнение митридата
+            //botwindow.PressMouseL(1392 - 875, 438 - 5);         
+            Pause(500);
+
+            pointBuyingMitridat3.PressMouseL();           //кликаем левой кнопкой мыши в кнопку Ок, если нет денег на покупку митридата
+            //botwindow.PressMouseL(1392 - 875, 428 - 5);          
+            Pause(500);
         }
 
         #endregion

@@ -204,9 +204,9 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            botWindow botwindow = new botWindow(1);
+            botWindow botwindow = new botWindow(10);
             ServerInterface server = new ServerSing(botwindow);
-            MessageBox.Show(" " + server.isKillHero());
+            MessageBox.Show(" " + server.isOpenMenuPet());
 
             //bool iscolor1 = server.isSafeIP();
             //MessageBox.Show(" " + iscolor1);

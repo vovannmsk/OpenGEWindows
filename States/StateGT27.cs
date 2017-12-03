@@ -67,6 +67,8 @@ namespace States
         {
             //============== перевод в командный режим  ============
             botwindow.CommandMode();
+            botwindow.Pause(500);
+
         }
 
         /// <summary>
