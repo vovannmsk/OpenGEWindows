@@ -17,7 +17,7 @@ namespace States
         private Town townDealer;
         private ServerFactory serverFactory;
         private int tekStateInt;
-        private botMerchant dealer;
+        private botWindow dealer;
 
 
         public StateGT63()
@@ -32,7 +32,7 @@ namespace States
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             //this.town = server.getTown();
 //            this.botwindowDealer = new botWindow(20);         // здесь методы торговца как у обычного бота
-            this.dealer = new botMerchant(20);   // здесь уникальные методы, присущие только торговцу
+            this.dealer = new botWindow(20);   // здесь уникальные методы, присущие только торговцу
             this.serverFactory = new ServerFactory(dealer);
             this.serverDealer = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.townDealer = serverDealer.getTown();    //город продажи торговца

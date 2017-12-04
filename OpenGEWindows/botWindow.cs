@@ -89,18 +89,19 @@ namespace OpenGEWindows
             this.pointOneMode = new Point(123 - 5 + databot.x, 489 - 5 + databot.y);    // 118, 484
         }
 
+        // ============================== методы ============================================
+
+
+
         #region геттеры и сеттеры
-        // сеттеры
+
         public void setHwnd(UIntPtr hwnd)
         { 
             databot.hwnd = hwnd; 
             hwnd_to_file(); 
         }
-
-        // геттеры 
         public DataBot getDataBot()
         { return this.databot; }
-
         public ServerInterface getserver()
         {
             return this.server;
@@ -136,13 +137,152 @@ namespace OpenGEWindows
             return databot.nameOfFamily;
         }
 
-        //private int getNeedToChange()
-        //{ return this.needToChange; }
-        //public int getNumberOfACOOUNTS()
-        //{ return this.NUMBER_OF_ACCOUNTS; }
         #endregion
 
-        #region  М Е Т О Д Ы, которые присваивают начальные значения переменным класса (чтение из текстового файла)
+        //#region методы для перекладывания песо в торговца
+        
+        ///// <summary>
+        ///// открыть фесо шоп
+        ///// </summary>
+        //public void OpenFesoShop()
+        //{
+        //    server.TopMenu(2, 2);
+        //    Pause(1000);
+        //}
+
+        ///// <summary>
+        ///// для передачи песо торговцу. Идем на место и предложение персональной торговли                                          ////////////// перенести в Server
+        ///// </summary>
+        //public void ChangeVis1()
+        //{
+        //    iPoint pointTrader = new Point(472 - 5 + databot.x, 175 - 5 + databot.y);    
+        //    iPoint pointPersonalTrade = new Point(536 - 5 + databot.x, 203 - 5 + databot.y);
+        //    iPoint pointMap = new Point(405 - 5 + databot.x, 220 - 5 + databot.y);    
+
+        //    //идем на место передачи песо
+        //    PressEscThreeTimes();
+        //    Pause(1000);
+
+        //    town.MaxHeight();             //с учетом города и сервера
+        //    Pause(500);
+
+        //    server.OpenMapForState();                  //открываем карту города
+        //    Pause(500);
+
+        //    pointMap.DoubleClickL();   //тыкаем в карту, чтобы добежать до нужного места
+
+        //    PressEscThreeTimes();       // закрываем карту
+        //    Pause(25000);               // ждем пока добежим
+
+        //    iPointColor pointMenuTrade = new PointColor(588 - 5 + databot.x, 230 - 5 + databot.y, 1710000 , 4);
+        //    while (!pointMenuTrade.isColor())
+        //    {
+        //        //жмем правой на торговце
+        //        pointTrader.PressMouseR();
+        //        Pause(1000);
+        //    }
+
+        //    //жмем левой  на пункт "Personal Trade"
+        //    pointPersonalTrade.PressMouseL();
+        //    Pause(500);
+        //}
+
+        ///// <summary>
+        ///// обмен песо (часть 2) закрываем сделку со стороны бота
+        ///// </summary>
+        //public void ChangeVis2()
+        //{
+        //    iPoint pointVis1 = new Point(903 - 5 + databot.x, 151 - 5 + databot.y);    
+        //    iPoint pointVisMove1 = new Point(701 - 5 + databot.x, 186 - 5 + databot.y);
+        //    iPoint pointVisMove2 = new Point(395 - 5 + databot.x, 361 - 5 + databot.y);
+        //    iPoint pointVisOk = new Point(611 - 5 + databot.x, 397 - 5 + databot.y);   
+        //    iPoint pointVisOk2 = new Point(442 - 5 + databot.x, 502 - 5 + databot.y);  
+        //    iPoint pointVisTrade = new Point(523 - 5 + databot.x, 502 - 5 + databot.y);  
+
+        //    // открываем инвентарь
+        //    server.TopMenu(8, 1);
+
+        //    // открываем закладку кармана, там где песо
+        //    pointVis1.DoubleClickL();
+        //    Pause(500);
+
+        //    // перетаскиваем песо
+        //    pointVisMove1.Drag(pointVisMove2);                                             // песо берется из первой ячейки на 4-й закладке  
+        //    Pause(500);
+
+        //    // нажимаем Ок для подтверждения передаваемой суммы песо
+        //    pointVisOk.DoubleClickL();
+
+        //    // нажимаем ок
+        //    pointVisOk2.DoubleClickL();
+        //    Pause(500);
+
+        //    // нажимаем обмен
+        //    pointVisTrade.DoubleClickL();
+        //    Pause(500);
+        //}
+
+        ///// <summary>
+        ///// купить 400 еды в фесо шопе                    вообще-то метод должен находится в ServerInterface
+        ///// </summary>
+        //public void Buy44PetFood()
+        //{
+        //    iPoint pointFood = new Point(361 - 5 + databot.x, 331 - 5 + databot.y);     //шаг = 27 пикселей на одну строчку магазина (на случай если добавят новые строчки)
+        //    iPoint pointButtonBUY = new Point(730 - 5 + databot.x, 625 - 5 + databot.y);   //725, 620);
+
+        //    // тыкаем два раза в стрелочку вверх
+        //    pointFood.DoubleClickL();
+        //    Pause(500);
+
+        //    //нажимаем 125
+        //    SendKeys.SendWait("125");
+
+        //    // жмем кнопку купить
+        //    pointButtonBUY.DoubleClickL();
+        //    Pause(1500);
+
+        //    //нажимаем кнопку Close
+        //    pointButtonClose.DoubleClickL();
+        //    Pause(1500);
+        //}                                                                        
+
+        ///// <summary>
+        ///// продать 3 ВК (GS) в фесо шопе 
+        ///// </summary>
+        //public void SellGrowthStone3pcs()
+        //{
+        //    iPoint pointArrowUp2 = new Point(379 - 5 + databot.x, 250 - 5 + databot.y); 
+        //    iPoint pointButtonSell = new Point(730 - 5 + databot.x, 625 - 5 + databot.y);   
+
+        //    // 3 раза нажимаем на стрелку вверх, чтобы отсчитать 3 ВК
+        //    for (int i = 1; i <= 3; i++)
+        //    {
+        //        pointArrowUp2.PressMouseL();
+        //        Pause(700);
+        //    }
+
+        //    //нажимаем кнопку Sell
+        //    pointButtonSell.PressMouseL();
+        //    Pause(1000);
+
+        //    //нажимаем кнопку Close
+        //    pointButtonClose.PressMouseL();
+        //    Pause(2500);
+        //}                                 
+
+        ///// <summary>
+        ///// открыть вкладку Sell в фесо шопе
+        ///// </summary>
+        //public void OpenBookmarkSell()
+        //{
+        //    iPoint pointBookmarkSell = new Point(245 - 5 + databot.x, 201 - 5 + databot.y); 
+        //    pointBookmarkSell.DoubleClickL();
+        //    Pause(1500);
+        //}                                 
+
+        //#endregion
+
+        #region Общие методы
 
         /// <summary>
         /// Перемещает окно с ботом в заданные координаты. Если окно есть, то result = true, а если вылетело окно, то result = false.
@@ -152,130 +292,6 @@ namespace OpenGEWindows
         {
             return SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);  //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
         }
-
-
-        #endregion
-
-        #region методы Entity Framework, которые читают из БД значения для последующего присваивания переменным класса
-
-        ///// <summary>
-        ///// читаем из таблицы параметры ботов
-        ///// </summary>
-        ///// <returns></returns>
-        //private BotsNew GetBots(int i)
-        //{
-        //    var context = new GEContext();
-
-        //    IQueryable<BotsNew> query = context.BotsNew.Where (c => c.NumberOfWindow == i);
-
-        //    BotsNew bots = query.Single<BotsNew>();
-
-        //    return bots;
-        //}
-
-        ///// <summary>
-        ///// читаем из базы координаты расстановки ботов на карте
-        ///// </summary>
-        ///// <returns></returns>
-        //private List<CoordinatesNew> GetCoordinates(int i)
-        //{
-        //    var context = new GEContext();
-
-        //    //IQueryable<CoordinatesNew> query = context.CoordinatesNew.Where(c => c.Id_Bots == i);
-
-        //    var query = from c in context.CoordinatesNew
-        //                where c.Id_Bots == i
-        //                orderby c.NumberOfHeroes
-        //                select c;
-
-        //    var coordinates = query.ToList();
-
-        //    return coordinates;
-        //}
-
-
-        #endregion
-
-        #region неиспользуемые методы
-
-        ///// <summary>
-        ///// проверяет цвет двух пикселей и сверяет их с заданными
-        ///// </summary>
-        ///// <param name="x1"> абсцисса первого пикселя </param>
-        ///// <param name="y1"> ордината первого пикселя </param>
-        ///// <param name="color1"> цвет для проверки №1 </param>
-        ///// <param name="x2"> абсцисса второго пикселя </param>
-        ///// <param name="y2"> ордината второго пикселя </param>
-        ///// <param name="color2">  цвет для проверки №2 </param>
-        ///// <param name="accuracy"> точность для округления цвета пикселя </param>
-        ///// <returns> true, если цвета обоих пикселей совпадают с указанными цветами с заданной точностью </returns>
-        //public bool isColor2(int x1, int y1, uint color1, int x2, int y2, uint color2, int accuracy)  
-        //{
-        //    bool result = false;
-        //    uint ss, tt;
-        //    ss = Okruglenie(GetPixelColor(x1, y1), accuracy);  //  
-        //    if (ss == color1)
-        //    {  
-        //        tt = Okruglenie(GetPixelColor(x2, y2), accuracy);  //  
-        //        if (tt == color2) result = true;
-        //    }
-        //    return result;
-        //} 
-
-        ///// <summary>
-        ///// нажмает на выбранный раздел верхнего меню 
-        ///// </summary>
-        ///// <param name="numberOfThePartitionMenu"> ноиер раздела верхнего меню </param>
-        //public void TopMenu(int numberOfThePartitionMenu)
-        //{
-        //    int[] MenukoordX = { 300, 333, 365, 398, 431, 470, 518, 565, 606, 637, 669, 700, 733 };
-        //    int x = MenukoordX[numberOfThePartitionMenu - 1];
-        //    int y = 55;
-        //    do {
-        //    PressMouse(x, y);
-        //    Pause(1000);
-        //    } while (!isOpenTopMenu(numberOfThePartitionMenu));
-        //}
-
-        ///// <summary>
-        ///// нажать на выбранный раздел верхнего меню, а далее на пункт раскрывшегося списка
-        ///// </summary>
-        ///// <param name="numberOfThePartitionMenu"></param>
-        ///// <param name="punkt"></param>
-        //public void TopMenu(int numberOfThePartitionMenu, int punkt)
-        //{
-        //    int[] numberOfPunkt = { 0, 8, 4, 5, 0, 3, 2, 6, 9, 0, 0, 0, 0 };
-        //    int[] MenukoordX = { 300, 333, 365, 398, 431, 470, 518, 565, 606, 637, 669, 700, 733 };
-        //    int[] FirstPunktOfMenuKoordY = { 0, 80, 80, 80, 0, 92, 92, 92, 80, 0, 0, 0, 0 };
-
-        //    if (punkt <= numberOfPunkt[numberOfThePartitionMenu - 1])
-        //    {
-        //        int x = MenukoordX[numberOfThePartitionMenu - 1];
-        //        int y = FirstPunktOfMenuKoordY[numberOfThePartitionMenu - 1] + 25 * (punkt - 1);
-
-        //        server.TopMenu(numberOfThePartitionMenu);   //сначала открываем раздел верхнего меню (1-13)
-        //        Pause(500);
-        //        PressMouse(x, y);  //выбираем конкретный пункт подменю (раскрывающийся список)
-        //    }
-        //}
- 
-        ///// <summary>
-        ///// округление вверх числа a на количество разрядов b
-        ///// если a = 1655, b = 2, то результат равен 1600
-        ///// </summary>
-        ///// <param name="a"> округляемое число </param>
-        ///// <param name="b"> количество разрядов для округления </param>
-        ///// <returns> если a = 1655, b = 2, то результат равен 1600 </returns>
-        //public uint Okruglenie(uint a, int b)
-        //{
-        //    uint bb = 1;
-        //    for (int j = 1; j <= b; j++) bb = bb * 10;
-        //    uint result = a - a % bb;
-        //    //result = result * bb;
-        //    return result;
-        //}
-
-        #endregion
 
         /// <summary>
         /// читаем данные о боте, заполненные пользователем, из БД или из текстовых файлов
@@ -292,23 +308,11 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// нажать мышью в конкретную точку только левой кнопкой
+        /// запись HWND в файл
         /// </summary>
-        /// <param name="x"> x - первая координата точки, куда нужно ткнуть мышью </param>
-        /// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
-        public void PressMouseL(int x, int y)
+        private void hwnd_to_file()
         {
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x + databot.x, y + databot.y, 1);    
-            Pause(200);
-        } 
-
-        /// <summary>
-        /// отодвинуть мышку в сторону, чтобы она не загораживала проверяемые точки
-        /// </summary>
-        public void ToMoveMouse()
-        {
-            iPoint pointToMoveMouse = new Point(205 - 5 + databot.x, 575 - 5 + databot.y);    //
-            pointToMoveMouse.PressMouseR();
+            scriptDataBot.SetHwnd(databot.hwnd);
         }
 
         /// <summary>
@@ -320,7 +324,7 @@ namespace OpenGEWindows
             //Class_Timer.Pause(ms);
             Thread.Sleep(ms);
         }
-        
+
         /// <summary>
         /// эмулирует тройное нажатие кнопки "Esc", тем самым в окне бота убираются все лишние окна (в том числе реклама)
         /// </summary>
@@ -334,44 +338,9 @@ namespace OpenGEWindows
             Thread.Sleep(200);
         }
 
-//        /// <summary>
-//        /// поиск новых окон с игрой для кнопки "Найти окна"
-//        /// </summary>
-//        /// <returns></returns>
-//        public UIntPtr FindWindowEuropa()
-//        {
-//            UIntPtr HWND = (UIntPtr)0;
+        #endregion
 
-//            int count = 0;
-//            while (HWND == (UIntPtr)0)
-//            {
-//                Pause(500);
-//                HWND = FindWindow("Granado Espada", "Granado Espada Online");
-
-//                count++; if (count > 5) return (UIntPtr)0;
-//            }
-
-//            setHwnd(HWND);
-////            hwnd_to_file();
-
-//            #region старый вариант
-//            //Click_Mouse_and_Keyboard.Mouse_Move_and_Click(350, 700, 8);
-//            //Pause(200);
-//            //while (New_HWND_GE == (UIntPtr)0)                
-//            //{
-//            //    Pause(500);
-//            //    New_HWND_GE = FindWindow("Granado Espada", "Granado Espada Online");
-//            //}
-//            //setHwnd(New_HWND_GE);
-//            //hwnd_to_file();
-//            ////Перемещает вновь открывшиеся окно в заданные координаты, игнорирует размеры окна
-//            ////SetWindowPos(New_HWND_GE, 1, getX(), getY(), WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
-//            //SetWindowPos(New_HWND_GE, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
-//            //Pause(500);
-//            #endregion
-
-//            return HWND;
-//        }
+        #region No Window
 
         /// <summary>
         /// активируем окно
@@ -383,6 +352,7 @@ namespace OpenGEWindows
             BringWindowToTop(databot.hwnd);                                    // Делает окно активным                              
             SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001); //перемещаем окно в заданные для него координаты
         }
+
         /// <summary>
         /// восстановливает окно (т.е. переводит из состояния "нет окна" в состояние "логаут", плюс из состояния свернутого окна в состояние развернутого и на нужном месте)
         /// </summary>
@@ -395,7 +365,7 @@ namespace OpenGEWindows
 
                 ActiveWindow();
 
-                while (!server.isLogout())  Pause(1000);    //ожидание логаута
+                while (!server.isLogout()) Pause(1000);    //ожидание логаута
             }
             else
             {
@@ -445,11 +415,15 @@ namespace OpenGEWindows
             #endregion
         }
 
+
+        #endregion
+
+        #region Logout
+
         /// <summary>
         /// вводим логин и пароль в соответствующие поля
         /// </summary>
         public void EnterLoginAndPasword()
-
         {
             iPoint pointPassword = new Point(510 - 5 + databot.x, 355 - 5 + databot.y);    //  505, 350
             // окно открылось, надо вставить логин и пароль
@@ -470,14 +444,6 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// запись HWND в файл
-        /// </summary>
-        private void hwnd_to_file()
-        {
-            scriptDataBot.SetHwnd(databot.hwnd);
-        }
-
-        /// <summary>
         /// нажимаем на кнопку Connect (окно в логауте)
         /// </summary>
         private void PressConnectButton()
@@ -492,7 +458,7 @@ namespace OpenGEWindows
         /// </summary>
         private void BugFixes()
         {
-            iPoint pointButtonOk  = new Point(525 - 5 + databot.x, 410 - 5 + databot.y);    // кнопка Ok в логауте
+            iPoint pointButtonOk = new Point(525 - 5 + databot.x, 410 - 5 + databot.y);    // кнопка Ok в логауте
             iPoint pointButtonOk2 = new Point(525 - 5 + databot.x, 445 - 5 + databot.y);    // кнопка Ok в логауте
 
             pointButtonOk.PressMouse();   //кликаю в кнопку  "ОК"
@@ -535,7 +501,7 @@ namespace OpenGEWindows
         /// <returns></returns>
         public bool Connect()    // возвращает true, если успешно вошли в казарму
         {
-            
+
             #region новый вариант
             //bool result = true;
             //const int MAX_NUMBER_ITERATION = 4;    //максимальное количество итераций
@@ -636,183 +602,10 @@ namespace OpenGEWindows
 
             #endregion
 
-            
+
         }
 
 
-        #region методы для перекладывания песо в торговца
-
-
-        
-        /// <summary>
-        /// открыть фесо шоп
-        /// </summary>
-        public void OpenFesoShop()
-        {
-            server.TopMenu(2, 2);
-            Pause(1000);
-        }
-
-        /// <summary>
-        /// для передачи песо торговцу. Идем на место и предложение персональной торговли                                          ////////////// перенести в Server
-        /// </summary>
-        public void ChangeVis1()
-        {
-            iPoint pointTrader = new Point(472 - 5 + databot.x, 175 - 5 + databot.y);    
-            iPoint pointPersonalTrade = new Point(536 - 5 + databot.x, 203 - 5 + databot.y);
-            iPoint pointMap = new Point(405 - 5 + databot.x, 220 - 5 + databot.y);    
-
-            //идем на место передачи песо
-            PressEscThreeTimes();
-            Pause(1000);
-
-            town.MaxHeight();             //с учетом города и сервера
-            Pause(500);
-
-            server.OpenMapForState();                  //открываем карту города
-            Pause(500);
-
-            pointMap.DoubleClickL();   //тыкаем в карту, чтобы добежать до нужного места
-
-            PressEscThreeTimes();       // закрываем карту
-            Pause(25000);               // ждем пока добежим
-
-            iPointColor pointMenuTrade = new PointColor(588 - 5 + databot.x, 230 - 5 + databot.y, 1710000 , 4);
-            while (!pointMenuTrade.isColor())
-            {
-                //жмем правой на торговце
-                pointTrader.PressMouseR();
-                Pause(1000);
-            }
-
-            //жмем левой  на пункт "Personal Trade"
-            pointPersonalTrade.PressMouseL();
-            Pause(500);
-        }
-
-        /// <summary>
-        /// обмен песо (часть 2) закрываем сделку со стороны бота
-        /// </summary>
-        public void ChangeVis2()
-        {
-            iPoint pointVis1 = new Point(903 - 5 + databot.x, 151 - 5 + databot.y);    
-            iPoint pointVisMove1 = new Point(701 - 5 + databot.x, 186 - 5 + databot.y);
-            iPoint pointVisMove2 = new Point(395 - 5 + databot.x, 361 - 5 + databot.y);
-            iPoint pointVisOk = new Point(611 - 5 + databot.x, 397 - 5 + databot.y);   
-            iPoint pointVisOk2 = new Point(442 - 5 + databot.x, 502 - 5 + databot.y);  
-            iPoint pointVisTrade = new Point(523 - 5 + databot.x, 502 - 5 + databot.y);  
-
-            // открываем инвентарь
-            server.TopMenu(8, 1);
-
-            // открываем закладку кармана, там где песо
-            pointVis1.DoubleClickL();
-            Pause(500);
-
-            // перетаскиваем песо
-            pointVisMove1.Drag(pointVisMove2);                                             // песо берется из первой ячейки на 4-й закладке  
-            Pause(500);
-
-            // нажимаем Ок для подтверждения передаваемой суммы песо
-            pointVisOk.DoubleClickL();
-
-            // нажимаем ок
-            pointVisOk2.DoubleClickL();
-            Pause(500);
-
-            // нажимаем обмен
-            pointVisTrade.DoubleClickL();
-            Pause(500);
-        }
-
-        /// <summary>
-        /// телепортируемся по номеру телепорта Америка Alt+W 
-        /// </summary>
-        /// <param name="numberTeleport"></param>
-        public void TeleportWA(int numberTeleport)
-        {
-            server.TopMenu(6, 1);
-            Pause(1000);
-
-            PressMouseL(801, 564 + (numberTeleport - 1) * 17);
-            Pause(50);
-            PressMouseL(801, 564 + (numberTeleport - 1) * 17);
-            Pause(200);
-        }                                      // по идее должен быть в server
-
-        /// <summary>
-        /// купить 400 еды в фесо шопе                    вообще-то метод должен находится в ServerInterface
-        /// </summary>
-        public void Buy44PetFood()
-        {
-            iPoint pointFood = new Point(361 - 5 + databot.x, 331 - 5 + databot.y);     //шаг = 27 пикселей на одну строчку магазина (на случай если добавят новые строчки)
-            iPoint pointButtonBUY = new Point(730 - 5 + databot.x, 625 - 5 + databot.y);   //725, 620);
-
-            // тыкаем два раза в стрелочку вверх
-            pointFood.DoubleClickL();
-            Pause(500);
-
-            //нажимаем 44
-            //server.Press44();
-            SendKeys.SendWait("125");
-
-            // жмем кнопку купить
-            pointButtonBUY.DoubleClickL();
-            Pause(1500);
-
-            //нажимаем кнопку Close
-            pointButtonClose.DoubleClickL();
-            Pause(1500);
-        }                                                                        
-
-        /// <summary>
-        /// продать 3 ВК (GS) в фесо шопе 
-        /// </summary>
-        public void SellGrowthStone3pcs()
-        {
-            iPoint pointArrowUp2 = new Point(379 - 5 + databot.x, 250 - 5 + databot.y); 
-            iPoint pointButtonSell = new Point(730 - 5 + databot.x, 625 - 5 + databot.y);   
-
-            // 3 раза нажимаем на стрелку вверх, чтобы отсчитать 3 ВК
-            for (int i = 1; i <= 3; i++)
-            {
-                pointArrowUp2.PressMouseL();
-                Pause(700);
-            }
-
-            //нажимаем кнопку Sell
-            pointButtonSell.PressMouseL();
-            Pause(1000);
-
-            //нажимаем кнопку Close
-            pointButtonClose.PressMouseL();
-            Pause(2500);
-        }                                 
-
-        /// <summary>
-        /// открыть вкладку Sell в фесо шопе
-        /// </summary>
-        public void OpenBookmarkSell()
-        {
-            iPoint pointBookmarkSell = new Point(245 - 5 + databot.x, 201 - 5 + databot.y); 
-            pointBookmarkSell.DoubleClickL();
-            Pause(1500);
-        }                                 
-
-        #endregion
-
-
-
-        #region Общие методы
-        #endregion
-
-        #region Getters
-        #endregion
-
-        #region No Window
-        #endregion
-
-        #region Logout
         #endregion
 
         #region Pet
@@ -825,6 +618,38 @@ namespace OpenGEWindows
         #endregion
 
         #region atWork
+
+        /// <summary>
+        /// расстановка героев треугольником
+        /// </summary>
+        public void Placement()
+        {
+            iPoint pointFirstHero = new Point(databot.triangleX[0] + databot.x, databot.triangleY[0] + databot.y);
+            iPoint pointSecondHero = new Point(databot.triangleX[1] + databot.x, databot.triangleY[1] + databot.y);
+            iPoint pointThirdHero = new Point(databot.triangleX[2] + databot.x, databot.triangleY[2] + databot.y);
+
+            // ============= нажимаем на первого перса (обязательно на точку ниже открытой карты)
+            FirstHero();
+            pointFirstHero.PressMouseL();
+            Pause(200);
+            //PressMouseL(databot.triangleX[0], databot.triangleY[0]);
+
+            // ============= нажимаем на третьего перса (обязательно на точку ниже открытой карты)
+            ThirdHero();
+            pointThirdHero.PressMouseL();
+            Pause(200);
+            //PressMouseL(databot.triangleX[2], databot.triangleY[2]);
+
+            // ============= нажимаем на второго перса (обязательно на точку ниже открытой карты)
+            SecondHero();
+            pointSecondHero.PressMouseL();
+            Pause(200);
+            //PressMouseL(databot.triangleX[1], databot.triangleY[1]);
+
+            // ============= закрыть карту через верхнее меню
+            CloseMap();
+            Pause(1500);
+        }
 
         /// <summary>
         /// выбрать первого (левого) бойца из тройки
@@ -978,9 +803,20 @@ namespace OpenGEWindows
         #endregion
 
         #region inTown
+
+        /// <summary>
+        /// отодвинуть мышку в сторону, чтобы она не загораживала проверяемые точки
+        /// </summary>
+        public void ToMoveMouse()
+        {
+            iPoint pointToMoveMouse = new Point(205 - 5 + databot.x, 575 - 5 + databot.y);    //
+            pointToMoveMouse.PressMouseR();
+        }
+
         #endregion
 
         #region Barack
+
         /// <summary>
         /// начать с выхода в город (нажать на кнопку "начать с нового места")
         /// </summary>
@@ -1012,7 +848,6 @@ namespace OpenGEWindows
             pointChoiceOfChannel.PressMouseL();
         }
 
-
         #endregion
 
         #region новые боты
@@ -1027,7 +862,7 @@ namespace OpenGEWindows
         #region чиповка
         #endregion
 
-        #region Personal Trade
+        #region Personal Trade 
         #endregion
 
 

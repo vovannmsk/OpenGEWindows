@@ -99,7 +99,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AmericaTownFactory.cs" />
-    <Compile Include="botMerchant.cs" />
     <Compile Include="botWindow.cs" />
     <Compile Include="iPointColor.cs" />
     <Compile Include="Point.cs" />

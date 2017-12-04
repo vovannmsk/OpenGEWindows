@@ -474,6 +474,195 @@ namespace OpenGEWindows
             pointEquipmentBegin.Drag(pointEquipmentEnd);
         }
 
+
+        #region методы для перекладывания песо в торговца
+
+        /// <summary>
+        /// открыть фесо шоп
+        /// </summary>
+        public override void OpenFesoShop()
+        {
+            TopMenu(2, 2);
+            Pause(1000);
+        }
+
+        /// <summary>
+        /// для передачи песо торговцу. Идем на место и предложение персональной торговли                                          ////////////// перенести в Server
+        /// </summary>
+        public override void ChangeVis1()
+        {
+            iPoint pointTrader = new Point(472 - 5 + xx, 175 - 5 + yy);
+            iPoint pointPersonalTrade = new Point(536 - 5 + xx, 203 - 5 + yy);
+            iPoint pointMap = new Point(405 - 5 + xx, 220 - 5 + yy);
+
+            //идем на место передачи песо
+            botwindow.PressEscThreeTimes();
+            Pause(1000);
+
+            town.MaxHeight();             //с учетом города и сервера
+            Pause(500);
+
+            OpenMapForState();                  //открываем карту города
+            Pause(500);
+
+            pointMap.DoubleClickL();   //тыкаем в карту, чтобы добежать до нужного места
+
+            botwindow.PressEscThreeTimes();       // закрываем карту
+            Pause(25000);               // ждем пока добежим
+
+            iPointColor pointMenuTrade = new PointColor(588 - 5 + xx, 230 - 5 + yy, 1710000, 4);
+            while (!pointMenuTrade.isColor())
+            {
+                //жмем правой на торговце
+                pointTrader.PressMouseR();
+                Pause(1000);
+            }
+
+            //жмем левой  на пункт "Personal Trade"
+            pointPersonalTrade.PressMouseL();
+            Pause(500);
+        }
+
+        /// <summary>
+        /// обмен песо (часть 2) закрываем сделку со стороны бота
+        /// </summary>
+        public override void ChangeVis2()
+        {
+            iPoint pointVis1 = new Point(903 - 5 + xx, 151 - 5 + yy);
+            iPoint pointVisMove1 = new Point(701 - 5 + xx, 186 - 5 + yy);
+            iPoint pointVisMove2 = new Point(395 - 5 + xx, 361 - 5 + yy);
+            iPoint pointVisOk = new Point(611 - 5 + xx, 397 - 5 + yy);
+            iPoint pointVisOk2 = new Point(442 - 5 + xx, 502 - 5 + yy);
+            iPoint pointVisTrade = new Point(523 - 5 + xx, 502 - 5 + yy);
+
+            // открываем инвентарь
+            TopMenu(8, 1);
+
+            // открываем закладку кармана, там где песо
+            pointVis1.DoubleClickL();
+            Pause(500);
+
+            // перетаскиваем песо
+            pointVisMove1.Drag(pointVisMove2);                                             // песо берется из первой ячейки на 4-й закладке  
+            Pause(500);
+
+            // нажимаем Ок для подтверждения передаваемой суммы песо
+            pointVisOk.DoubleClickL();
+
+            // нажимаем ок
+            pointVisOk2.DoubleClickL();
+            Pause(500);
+
+            // нажимаем обмен
+            pointVisTrade.DoubleClickL();
+            Pause(500);
+        }
+
+        /// <summary>
+        /// купить 400 еды в фесо шопе                    вообще-то метод должен находится в ServerInterface
+        /// </summary>
+        public override void Buy125PetFood()
+        {
+            iPoint pointFood = new Point(361 - 5 + xx, 331 - 5 + yy);     //шаг = 27 пикселей на одну строчку магазина (на случай если добавят новые строчки)
+            iPoint pointButtonBUY = new Point(730 - 5 + xx, 625 - 5 + yy);
+
+            // тыкаем два раза в стрелочку вверх
+            pointFood.DoubleClickL();
+            Pause(500);
+
+            //нажимаем 125
+            SendKeys.SendWait("125");
+
+            // жмем кнопку купить
+            pointButtonBUY.DoubleClickL();
+            Pause(1500);
+
+            //нажимаем кнопку Close
+            pointButtonClose.DoubleClickL();
+            Pause(1500);
+        }
+
+        /// <summary>
+        /// продать 3 ВК (GS) в фесо шопе 
+        /// </summary>
+        public override void SellGrowthStone3pcs()
+        {
+            iPoint pointArrowUp2 = new Point(379 - 5 + xx, 250 - 5 + yy);
+            iPoint pointButtonSell = new Point(730 - 5 + xx, 625 - 5 + yy);
+
+            // 3 раза нажимаем на стрелку вверх, чтобы отсчитать 3 ВК
+            for (int i = 1; i <= 3; i++)
+            {
+                pointArrowUp2.PressMouseL();
+                Pause(700);
+            }
+
+            //нажимаем кнопку Sell
+            pointButtonSell.PressMouseL();
+            Pause(1000);
+
+            //нажимаем кнопку Close
+            pointButtonClose.PressMouseL();
+            Pause(2500);
+        }
+
+        /// <summary>
+        /// открыть вкладку Sell в фесо шопе
+        /// </summary>
+        public override void OpenBookmarkSell()
+        {
+            iPoint pointBookmarkSell = new Point(245 - 5 + xx, 201 - 5 + yy);
+            pointBookmarkSell.DoubleClickL();
+            Pause(1500);
+        }
+
+        /// <summary>
+        /// переход торговца к месту передачи песо (внутри города)
+        /// </summary>
+        public override void GoToChangePlace()
+        {
+            iPoint pointDealer = new Point(405 - 5 + xx, 210 - 5 + yy);
+            pointDealer.DoubleClickL();
+        }
+
+        /// <summary>
+        /// обмен песо на фесо (часть 1 со стороны торговца) 
+        /// </summary>
+        public override void ChangeVisTrader1()
+        {
+            // наживаем Yes, подтверждая торговлю
+            iPoint pointYesTrade = new Point(1161 - 700 + xx, 595 - 180 + yy);
+            pointYesTrade.DoubleClickL();
+
+            // открываем сундук (карман)
+            TopMenu(8, 1);
+
+            // открываем закладку кармана, там где фесо
+            iPoint pointBookmark4 = new Point(903 - 5 + xx, 151 - 5 + yy);
+            pointBookmark4.DoubleClickL();
+
+            // перетаскиваем фесо на стол торговли
+            iPoint pointFesoBegin = new Point(740 - 5 + xx, 186 - 5 + yy);
+            iPoint pointFesoEnd = new Point(388 - 5 + xx, 343 - 5 + yy);
+            pointFesoBegin.Drag(pointFesoEnd);
+            Pause(500);
+
+            // нажимаем Ок для подтверждения передаваемой суммы фесо
+            iPoint pointOkFeso = new Point(611 - 5 + xx, 397 - 5 + yy);
+            pointOkFeso.DoubleClickL();
+
+            // нажимаем ок
+            iPoint pointOk = new Point(441 - 5 + xx, 502 - 5 + yy);
+            pointOk.DoubleClickL();
+
+            // нажимаем обмен
+            iPoint pointTrade = new Point(522 - 5 + xx, 502 - 5 + yy);
+            pointTrade.DoubleClickL();
+        }
+
+        #endregion
+
+
     }
 }
 

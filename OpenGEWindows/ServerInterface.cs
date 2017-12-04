@@ -2048,6 +2048,14 @@ namespace OpenGEWindows
         public abstract UIntPtr FindWindowGE();
         public abstract void MoveToSharpening(int numberOfEquipment);
         public abstract void MoveToNintendo(int numberOfEquipment);
+        public abstract void OpenFesoShop();
+        public abstract void ChangeVis1();
+        public abstract void ChangeVis2();
+        public abstract void Buy125PetFood();
+        public abstract void SellGrowthStone3pcs();
+        public abstract void OpenBookmarkSell();
+        public abstract void GoToChangePlace();
+        public abstract void ChangeVisTrader1();
 
         ///// <summary>
         ///// переход на нужный канал после телепорта на работу 

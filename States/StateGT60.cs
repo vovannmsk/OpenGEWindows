@@ -16,7 +16,7 @@ namespace States
         //private Town town;
         private ServerFactory serverFactory;
         private int tekStateInt;
-        private botMerchant dealer;
+        private botWindow dealer;
 
         public StateGT60()
         {
@@ -29,7 +29,7 @@ namespace States
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
 
-            this.dealer = new botMerchant(20);   // здесь уникальные методы, присущие только торговцу
+            this.dealer = new botWindow(20);   // здесь уникальные методы, присущие только торговцу
             this.serverFactory = new ServerFactory(dealer);
             this.serverDealer = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
 
