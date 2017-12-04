@@ -16,9 +16,6 @@ namespace OpenGEWindows
     public class botWindow
     {
         [DllImport("user32.dll")]
-        private static extern UIntPtr FindWindow(String ClassName, String WindowName);  //ищет окно с заданным именем и классом
-
-        [DllImport("user32.dll")]
         public static extern bool SetWindowPos(UIntPtr myhWnd, int myhwndoptional, int xx, int yy, int cxx, int cyy, uint flagus); // Перемещает окно в заданные координаты с заданным размером
 
         [DllImport("user32.dll")]
@@ -30,13 +27,14 @@ namespace OpenGEWindows
         [DllImport("user32.dll")]
         public static extern bool SetForegroundWindow(UIntPtr hWnd); // Перемещает окно в верхний список Z порядка
 
+
         // ================ переменные класса =================
         
         private int numberWindow;       //номер окна
         private const int WIDHT_WINDOW = 1024;
         private const int HIGHT_WINDOW = 700;
         private const String KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
-        private int needToChange;
+//        private int needToChange;
 
         private DataBot databot;              //начальные данные для бота (заданные пользователем)
         private IScriptDataBot scriptDataBot;
@@ -44,8 +42,8 @@ namespace OpenGEWindows
         private ServerInterface server;                 
         private ServerFactory serverFactory;
         private Town town;
-        private int counterMitridat;
-        private System.DateTime timeMitridat = System.DateTime.Now;
+        //private int counterMitridat;
+        //private System.DateTime timeMitridat = System.DateTime.Now;
 
         private iPoint pointButtonClose;
         private iPoint pointOneMode;
@@ -71,31 +69,14 @@ namespace OpenGEWindows
             // основные переменные класса
             this.numberWindow = number_Window;     // эта инфа поступает при создании объекта класса
 
-            this.databot = LoadUserDataBot(TypeLoadUserData.txt);       
 
             #region Вариант 1. переменные класса подчитываются из текстовых файлов
-            this.needToChange = NeedToChange();
+                this.databot = LoadUserDataBot(TypeLoadUserData.txt);
             #endregion
 
             #region Вариант 2. переменные класса подчитываются из БД
+                //this.databot = LoadUserDataBot(TypeLoadUserData.db);
 
-            //var bots = GetBots(number_Window);  //подчитываем строку из БД BotsNew, соответствующую данному боту
-            //this.login = bots.Login;
-            //this.password = bots.Password;
-            //databot.hwnd = (UIntPtr)uint.Parse(bots.HWND);
-            //databot.param = bots.Server;
-            //databot.Kanal = bots.Channel;
-            //this.nomerTeleport = bots.TeleportForSale;
-            //this.needToChange = bots.ChangeVis;
-
-            //var coord = GetCoordinates(number_Window);  //подчитываем список строк из БД CoordinatesNew с координатами расстановки, соответствующих данному боту
-            //int ii = 1;
-            //foreach (CoordinatesNew c in coord)
-            //{
-            //    triangleX[ii] = c.X;
-            //    triangleY[ii] = c.Y;
-            //    ii++;
-            //}
             #endregion
 
             // эти объекты создаются на основании предыдущих переменных класса, а именно param (на каком сервере бот) и nomerTeleport (город продажи)
@@ -115,14 +96,6 @@ namespace OpenGEWindows
             databot.hwnd = hwnd; 
             hwnd_to_file(); 
         }
-        public void setNeedToChange(int needToChange)
-        { this.needToChange = needToChange; }
-        public void setNeedToChangeForMainForm(bool checkBox)
-        {
-            this.needToChange = checkBox ? 1 : 0;
-            NeedToChangeToFile();
-        }
-        
 
         // геттеры 
         public DataBot getDataBot()
@@ -158,8 +131,6 @@ namespace OpenGEWindows
         {
             return databot.Password;
         }
-        public bool getNeedToChangeForMainForm()
-        { return this.needToChange == 1 ? true : false; }
         public String getNameOfFamily()
         {
             return databot.nameOfFamily;
@@ -182,24 +153,6 @@ namespace OpenGEWindows
             return SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);  //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
         }
 
-        /// <summary>
-        /// метод возвращает значение 1, если нужно передавать песо торговцу. или 0, если не нужно
-        /// </summary>
-        /// <returns></returns>
-        private int NeedToChange()
-        {
-            int result = 0;
-            String LoadString = File.ReadAllText(KATALOG_MY_PROGRAM + this.numberWindow + "\\НужноПередаватьПесо.txt");
-            if (LoadString.Equals("1")) result = 1;
-            return result;
-        }
-
-
-        /// <summary>
-        /// запись значения NeedToChange в файл 
-        /// </summary>
-        public void NeedToChangeToFile()
-        { File.WriteAllText(KATALOG_MY_PROGRAM + this.numberWindow + "\\НужноПередаватьПесо.txt", this.needToChange.ToString()); }
 
         #endregion
 
@@ -701,7 +654,7 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// для передачи песо торговцу. Идем на место и предложение персональной торговли
+        /// для передачи песо торговцу. Идем на место и предложение персональной торговли                                          ////////////// перенести в Server
         /// </summary>
         public void ChangeVis1()
         {
@@ -849,36 +802,29 @@ namespace OpenGEWindows
         #endregion
 
 
-        /// <summary>
-        /// начать с выхода в город (нажать на кнопку "начать с нового места")
-        /// </summary>
-        public void NewPlace()
-        {
-            iPoint pointNewPlace = new Point(85 + databot.x, 670 + databot.y); //85, 670);
-            pointNewPlace.PressMouse();
-        }                                                              
 
-        /// <summary>
-        /// Нажимаем Выбор канала и группы персов в казарме 
-        /// </summary>
-        public void SelectChannel()
-        {
-            iPoint pointChoiceOfChannel = new Point(125 + databot.x, 660 + (databot.Kanal - 1) * 15 + server.sdvig() + databot.y);    //переход на нужный канал в казарме
-            iPoint pointButtonSelectChannel = new Point(125 + databot.x, 705 + databot.y); //   125, 705);
-            pointButtonSelectChannel.PressMouseL();
-            pointChoiceOfChannel.PressMouseL();
-        }
+        #region Общие методы
+        #endregion
 
-        /// <summary>
-        /// Нажимаем Выбор канала и группы персов в казарме 
-        /// </summary>
-        public void SelectChannel(int channel)
-        {
-            iPoint pointChoiceOfChannel = new Point(125 + databot.x, 660 + (channel - 1) * 15 + server.sdvig() + databot.y);    //переход на указанный канал
-            iPoint pointButtonSelectChannel = new Point(125 + databot.x, 705 + databot.y); //   125, 705);
-            pointButtonSelectChannel.PressMouseL();
-            pointChoiceOfChannel.PressMouseL();
-        }
+        #region Getters
+        #endregion
+
+        #region No Window
+        #endregion
+
+        #region Logout
+        #endregion
+
+        #region Pet
+        #endregion
+
+        #region TopMenu
+        #endregion
+
+        #region Shop
+        #endregion
+
+        #region atWork
 
         /// <summary>
         /// выбрать первого (левого) бойца из тройки
@@ -924,7 +870,7 @@ namespace OpenGEWindows
         {
             iPointColor pointCommandMode = new PointColor(123 - 5 + databot.x, 479 - 5 + databot.y, 8000000, 6);
             return pointCommandMode.isColor2();
-        } 
+        }
 
         /// <summary>
         /// перевод бота в одиночный режим 
@@ -995,11 +941,10 @@ namespace OpenGEWindows
 
             pointEnterBattleMode.PressMouseL();//отбегаю ботами в сторону, чтобы они вышли из боевого режима
             pointEnterBattleMode.PressMouseL();
-            //PressMouseL(200, 200);  //отбегаю ботами в сторону, чтобы они вышли из боевого режима
-            //PressMouseL(200, 200);  //отбегаю ботами в сторону, чтобы они вышли из боевого режима
             Pause(2000);
 
-            server.GoToEnd();
+            //server.GoToEnd();
+            server.Logout();
         }
 
         /// <summary>
@@ -1007,30 +952,83 @@ namespace OpenGEWindows
         /// </summary>
         public void PressMitridat()
         {
-            iPoint pointMitridat = new Point(38 - 5 + databot.x, 486 - 5 + databot.y);    // 33, 481
-            System.DateTime timeNow = DateTime.Now;  //текущее время
-            System.TimeSpan PeriodMitridat = timeNow.Subtract(timeMitridat);   //сколько времени прошло с последнего применения митридата
-            uint PeriodMitridatSeconds = (uint)PeriodMitridat.TotalSeconds;          //сколько времени прошло с последнего применения митридата в секундах
+            iPoint pointPanel = new Point(38 - 5 + databot.x, 486 - 5 + databot.y);    // 33, 481
+            iPoint pointSecondBox = new Point(31 - 5 + databot.x, 140 - 5 + databot.y);
+            iPoint pointThirdBox = new Point(31 - 5 + databot.x, 170 - 5 + databot.y);
 
-            if ((PeriodMitridatSeconds >= 360) | (counterMitridat == 0))
-            {
-                pointMitridat.PressMouseR();             // Кликаю правой кнопкой в панель с бытылками, чтобы сделать ее активной и поверх всех окон (группа может мешать)
-                //PressMouseR(33, 481);                       // Кликаю правой кнопкой в панель с бытылками, чтобы сделать ее активной и поверх всех окон (группа может мешать)
-                //Pause(500);
-                PressMouseL(31 - 5, 140 - 5);                       // тыкаю в митридат (вторая ячейка)
-                //Pause(500);
-                PressMouseL(31 - 5, 170 - 5);                       // тыкаю в  (третья ячейка)
-                //Pause(500);
+            //System.DateTime timeNow = DateTime.Now;  //текущее время
+            //System.TimeSpan PeriodMitridat = timeNow.Subtract(timeMitridat);   //сколько времени прошло с последнего применения митридата
+            //uint PeriodMitridatSeconds = (uint)PeriodMitridat.TotalSeconds;          //сколько времени прошло с последнего применения митридата в секундах
+            //if ((PeriodMitridatSeconds >= 360) | (counterMitridat == 0))
+            //{
 
-                SecondHero();                               //выбираю главным второго героя (это нужно, чтобы не было тормозов) типа надо нажать в экран после митридата
-                //Pause(1000);
-                Pause(500);
-                timeMitridat = DateTime.Now;              //обновляю время, когда был применен митридат
-                counterMitridat++;
-            }
+            pointPanel.PressMouseR();                   // Кликаю правой кнопкой в панель с бытылками, чтобы сделать ее активной и поверх всех окон (группа может мешать)
+            pointSecondBox.PressMouseL();               // тыкаю в митридат (вторая ячейка)
+            pointThirdBox.PressMouseL();                // тыкаю в  (третья ячейка)
+
+            SecondHero();                               //выбираю главным второго героя (это нужно, чтобы не было тормозов) типа надо нажать в экран после митридата
+            Pause(500);
+
+            //timeMitridat = DateTime.Now;              //обновляю время, когда был применен митридат
+            //counterMitridat++;
+            //}
         }
 
 
+        #endregion
+
+        #region inTown
+        #endregion
+
+        #region Barack
+        /// <summary>
+        /// начать с выхода в город (нажать на кнопку "начать с нового места")
+        /// </summary>
+        public void NewPlace()
+        {
+            iPoint pointNewPlace = new Point(85 + databot.x, 670 + databot.y); //85, 670);
+            pointNewPlace.PressMouse();
+        }
+
+        /// <summary>
+        /// Нажимаем Выбор канала и группы персов в казарме 
+        /// </summary>
+        public void SelectChannel()
+        {
+            iPoint pointChoiceOfChannel = new Point(125 + databot.x, 660 + (databot.Kanal - 1) * 15 + server.sdvig() + databot.y);    //переход на нужный канал в казарме
+            iPoint pointButtonSelectChannel = new Point(125 + databot.x, 705 + databot.y); //   125, 705);
+            pointButtonSelectChannel.PressMouseL();
+            pointChoiceOfChannel.PressMouseL();
+        }
+
+        /// <summary>
+        /// Нажимаем Выбор канала и группы персов в казарме 
+        /// </summary>
+        public void SelectChannel(int channel)
+        {
+            iPoint pointChoiceOfChannel = new Point(125 + databot.x, 660 + (channel - 1) * 15 + server.sdvig() + databot.y);    //переход на указанный канал
+            iPoint pointButtonSelectChannel = new Point(125 + databot.x, 705 + databot.y); //   125, 705);
+            pointButtonSelectChannel.PressMouseL();
+            pointChoiceOfChannel.PressMouseL();
+        }
+
+
+        #endregion
+
+        #region новые боты
+        #endregion
+
+        #region кратер
+        #endregion
+
+        #region заточка
+        #endregion
+
+        #region чиповка
+        #endregion
+
+        #region Personal Trade
+        #endregion
 
 
     }

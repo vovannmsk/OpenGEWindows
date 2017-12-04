@@ -20,8 +20,8 @@ namespace OpenGEWindows
         [DllImport("user32.dll")]
         public static extern bool SetWindowPos(UIntPtr myhWnd, int myhwndoptional, int xx, int yy, int cxx, int cyy, uint flagus); // Перемещает окно в заданные координаты с заданным размером
 
-        [DllImport("user32.dll")]
-        private static extern bool ShowWindow(UIntPtr hWnd, int nCmdShow);
+        //[DllImport("user32.dll")]
+        //private static extern bool ShowWindow(UIntPtr hWnd, int nCmdShow);
 
         [DllImport("user32.dll")]
         private static extern UIntPtr FindWindow(String ClassName, String WindowName);  //ищет окно с заданным именем и классом
@@ -150,7 +150,6 @@ namespace OpenGEWindows
             this.pointSummonPet2 = new Point(410 - 5 + xx, 360 - 5 + yy);                   // 748, 238   //Click кнопку "Summon"
             this.pointActivePet  = new Point(410 - 5 + xx, 410 - 5 + yy);                   // //Click Button Active Pet                            //проверено
 
-            this.pointTeleportToTownAltW = new Point(801 + xx, 564 + yy + (botwindow.getNomerTeleport() - 1) * 17);   //801, 564 + (botwindow.getNomerTeleport() - 1) * 17);
 
 
             this.pointBookmarkSell = new Point(225 + xx, 163 + yy);
@@ -163,7 +162,7 @@ namespace OpenGEWindows
             this.pointisKillHero1 = new PointColor(80 - 5 + xx, 636 - 5 + yy, 1900000, 5);
             this.pointisKillHero2 = new PointColor(335 - 5 + xx, 636 - 5 + yy, 1900000, 5);
             this.pointisKillHero3 = new PointColor(590 - 5 + xx, 636 - 5 + yy, 1900000, 5);
-            this.pointButtonLogOut = new Point(785 - 5 + xx, 700 - 5 + yy);               //кнопка логаут в казарме
+            this.pointButtonLogoutFromBarack = new Point(785 - 5 + xx, 700 - 5 + yy);               //кнопка логаут в казарме
 
             this.pointisToken1 = new PointColor(478 - 5 + xx, 92 - 5 + yy, 13000000, 5);  //проверяем открыто ли окно с токенами
             this.pointisToken2 = new PointColor(478 - 5 + xx, 93 - 5 + yy, 13000000, 5);
@@ -344,22 +343,18 @@ namespace OpenGEWindows
             this.pointSafeIP2 = new PointColor(942, 579, 13600000, 5);
 
             #region передача песо торговцу
-            this.pointTrade1 = new PointColor(472 - 5 + xx, 251 - 5 + yy, 12800000, 5);
-            this.pointTrade2 = new PointColor(472 - 5 + xx, 252 - 5 + yy, 12800000, 5);
+            this.pointPersonalTrade1 = new PointColor(472 - 5 + xx, 251 - 5 + yy, 12800000, 5);
+            this.pointPersonalTrade2 = new PointColor(472 - 5 + xx, 252 - 5 + yy, 12800000, 5);
 
             #endregion
 
 
-        }        
+        }
 
-        ///// <summary>
-        ///// возвращаем тестовый цвет для сравнения в методе Connect
-        ///// </summary>
-        ///// <returns> номер цвета </returns>
-        //public override uint colorTest()
-        //{
-        //    return 7859187;
-        //}
+
+        //==================================== Методы ===================================================
+
+        #region общие методы
 
         /// <summary>
         /// путь к исполняемому файлу игры (сервер сингапур)
@@ -376,40 +371,53 @@ namespace OpenGEWindows
         { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Singapoore_active.txt")); }
 
         /// <summary>
-        /// читаем из файла координату Y строчки, где расположена надпись "запустить в песочнице"
+        /// Определяет, надо ли грузить данное окно с ботом
         /// </summary>
-        /// <returns>координата Y</returns>
-        private int SandboxieY()
+        /// <returns> true означает, что это окно (данный бот) должно быть активно и его надо грузить </returns>
+        public override bool isActive()
         {
-            //int y = 370;
-            //while (true)
-            //{
-            //    iPointColor pointSandboxie = new PointColor(1586, y, 333,5);
+            bool result = false;
+            if (SingActive() == 1) result = true;
+            return result;
+        }
 
-            //    if (pointSandboxie.isColor()) break;
+        #endregion
 
-            //    y++; if (y > 455) break;
-            //}
+        #region No window
 
-            //if (y > 455)
-            //{
-            //    y = 0;
-            //}
-            //return y;  
-            return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\КоординатаПесочницы.txt")); 
+        /// <summary>
+        /// действия для оранжевой кнопки
+        /// </summary>
+        public override void OrangeButton()
+        {
+            botwindow.ReOpenWindow();
         }
 
 
         /// <summary>
-        /// проверяем, выскочила ли реклама Steam
+        /// поиск новых окон с игрой для кнопки "Найти окна"
         /// </summary>
         /// <returns></returns>
-        private bool isReklamaSteam()
+        public override UIntPtr FindWindowGE()
         {
-            //iPointColor pointSafeIP1 = new PointColor(941 - 5 + xx, 579 - 5 + yy, 13600000, 5);
-            //iPointColor pointSafeIP2 = new PointColor(942 - 5 + xx, 579 - 5 + yy, 13600000, 5);
-            //return (pointSafeIP1.isColor() && pointSafeIP2.isColor());
-            return true;
+            UIntPtr HWND = (UIntPtr)0;
+
+            int count = 0;
+            while (HWND == (UIntPtr)0)
+            {
+                Pause(500);
+                HWND = FindWindow("Sandbox:" + botwindow.getNumberWindow().ToString() + ":Granado Espada", "[#] Granado Espada [#]");
+
+                count++; if (count > 5) return (UIntPtr)0;
+            }
+
+            botwindow.setHwnd(HWND);
+
+            SetWindowPos(HWND, 0, xx, yy, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+            //            ShowWindow(HWND, 2);   //скрыть окно в трей
+            Pause(500);
+
+            return HWND;
         }
 
         /// <summary>
@@ -427,25 +435,25 @@ namespace OpenGEWindows
             //запускаем steam в песочнице
             Process process = new Process();
             process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
-            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + path_Client() +" -applaunch 663090 -silent";
+            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + path_Client() + " -applaunch 663090 -silent";
             process.Start();
             Pause(30000);
 
-            if (isSafeIP())
-            {
-                pointOkSafeIP.PressMouse();       //тыкаем в Ок и закрываем сообщение об ошибке
-            }
+            //if (isSafeIP())
+            //{
+            //    pointOkSafeIP.PressMouse();       //тыкаем в Ок и закрываем сообщение об ошибке
+            //}
 
             //int i = 0;
             //while (true)
             //{
             //    Pause(2000);
-            //    if (isSafeIP()) 
+            //    if (this.isSafeIP())
             //    {
             //        pointOkSafeIP.PressMouseL();       //тыкаем в Ок и закрываем сообщение об ошибке
             //        break;
             //    }
-            //    i++; if (i > 20) break;
+            //    i++; if (i > 50) break;
             //}
 
 
@@ -478,6 +486,9 @@ namespace OpenGEWindows
 
         }
 
+        #endregion
+
+        #region Top Menu
         /// <summary>
         /// метод проверяет, открылось ли верхнее меню 
         /// </summary>
@@ -489,31 +500,21 @@ namespace OpenGEWindows
             switch (numberOfThePartitionMenu)
             {
                 case 2:
-                    //                    result = botwindow.isColor2(333 - 5, 79 - 5, 13420000, 334 - 5, 79 - 5, 13420000, 4);  //не не проверено
                     result = (pointisOpenTopMenu21.isColor() && pointisOpenTopMenu22.isColor());
                     break;
                 case 6:
-                    //                    result = botwindow.isColor2(460 - 5, 92 - 5, 13420000, 461 - 5, 92 - 5, 13420000, 4);  //не не проверено
                     result = (pointisOpenTopMenu61.isColor() && pointisOpenTopMenu62.isColor());
                     break;
                 case 8:
-                    //result = botwindow.isColor2(558 - 5, 92 - 5, 13420000, 559 - 5, 92 - 5, 13420000, 4);  //не не проверено
                     result = (pointisOpenTopMenu81.isColor() && pointisOpenTopMenu82.isColor());
                     break;
                 case 9:
-                    //result = botwindow.isColor2(606 - 5, 79 - 5, 13420000, 607 - 5, 79 - 5, 13420000, 4);  //не не проверено
                     result = (pointisOpenTopMenu91.isColor() && pointisOpenTopMenu92.isColor());
                     break;
                 case 12:
-                    //result = botwindow.isColor2(507 - 5, 140 - 5, 12440000, 508 - 5, 140 - 5, 12440000, 4);  //не проверено
-                    //uint bb = pointisOpenTopMenu121.GetPixelColor();
-                    //uint dd = pointisOpenTopMenu122.GetPixelColor();
                     result = (pointisOpenTopMenu121.isColor() && pointisOpenTopMenu122.isColor());
                     break;
                 case 13:
-                    //result = botwindow.isColor2(371 - 5, 278 - 5, 16310000, 372 - 5, 278 - 5, 16510000, 4);  //не не проверено
-                    //uint bb = pointisOpenTopMenu131.GetPixelColor();
-                    //uint dd = pointisOpenTopMenu132.GetPixelColor();
                     result = (pointisOpenTopMenu131.isColor() && pointisOpenTopMenu132.isColor());
                     break;
                 default:
@@ -533,13 +534,12 @@ namespace OpenGEWindows
             int[] MenukoordX = { 283, 316, 349, 382, 415, 453, 500, 547, 588, 620, 653, 683, 715, 748 };
             int x = MenukoordX[numberOfThePartitionMenu - 1];
             int y = 55;
-            iPoint pointMenu = new Point(x - 5 + botwindow.getX(), y - 5 + botwindow.getY());
+            iPoint pointMenu = new Point(x - 5 + xx, y - 5 + yy);
 
             int count = 0;
             do
             {
                 pointMenu.PressMouse();
-                //PressMouse(x, y);
                 botwindow.Pause(2000);
                 count++; if (count > 3) break;
             } while (!isOpenTopMenu(numberOfThePartitionMenu));
@@ -552,9 +552,9 @@ namespace OpenGEWindows
         /// <param name="punkt"></param>
         public override void TopMenu(int numberOfThePartitionMenu, int punkt)
         {
-//          int[] numberOfPunkt = { 0, 8, 4, 5, 0, 3, 2, 6, 9, 0, 0, 0, 0, 0 };
+            //          int[] numberOfPunkt = { 0, 8, 4, 5, 0, 3, 2, 6, 9, 0, 0, 0, 0, 0 };
             int[] numberOfPunkt = { 0, 8, 4, 2, 0, 3, 2, 6, 9, 0, 0, 0, 0, 0 };
-//          int[] MenukoordX = { 300, 333, 365, 398, 431, 470, 518, 565, 606, 637, 669, 700, 733 };
+            //          int[] MenukoordX = { 300, 333, 365, 398, 431, 470, 518, 565, 606, 637, 669, 700, 733 };
             int[] MenukoordX = { 283, 316, 349, 382, 415, 453, 500, 547, 588, 620, 653, 683, 715, 748 };
             int[] FirstPunktOfMenuKoordY = { 0, 85, 85, 85, 0, 97, 97, 97, 85, 0, 0, 0, 0 };
 
@@ -562,12 +562,11 @@ namespace OpenGEWindows
             {
                 int x = MenukoordX[numberOfThePartitionMenu - 1] + 25;
                 int y = FirstPunktOfMenuKoordY[numberOfThePartitionMenu - 1] + 25 * (punkt - 1);
-                iPoint pointMenu = new Point(x - 5 + botwindow.getX(), y - 5 + botwindow.getY());
+                iPoint pointMenu = new Point(x - 5 + xx, y - 5 + yy);
 
                 TopMenu(numberOfThePartitionMenu);   //сначала открываем раздел верхнего меню (1-14)
                 Pause(500);
                 pointMenu.PressMouse();  //выбираем конкретный пункт подменю (раскрывающийся список)
-                //PressMouse(x, y);  //выбираем конкретный пункт подменю (раскрывающийся список)
             }
         }
 
@@ -576,85 +575,25 @@ namespace OpenGEWindows
         /// </summary>
         public override void TeleportToTownAltW()
         {
-            // отбегаю в сторону. чтобы бот не стрелял               
-            botwindow.PressMouseL(300, 300);
-            botwindow.Pause(10000);
-            botwindow.PressMouseL(350, 350);
-            botwindow.Pause(10000);
-            //botwindow.PressMouseL(150, 150);
-            //botwindow.Pause(10000);
+            iPoint pointNotToShoot = new Point(300 - 5 + xx, 300 - 5 + yy);
+            iPoint pointNotToShoot2 = new Point(350 - 5 + xx, 350 - 5 + yy);
+            iPoint pointTeleportToTownAltW = new Point(801 + xx, 564 + yy + (botwindow.getNomerTeleport() - 1) * 17);
+
+            // отбегаю в сторону. чтобы бот не стрелял  
+            pointNotToShoot.DoubleClickL();
+            botwindow.Pause(3000);
+            pointNotToShoot2.DoubleClickL();
+            botwindow.Pause(3000);
 
             TopMenu(6, 1);
-            botwindow.Pause(1000);
+            Pause(1000);
             pointTeleportToTownAltW.PressMouse();           //было два нажатия левой, решил попробовать RRL
             botwindow.Pause(2000);
         }
 
-        /// <summary>
-        /// действия для оранжевой кнопки
-        /// </summary>
-        public override void OrangeButton()
-        {
-            botwindow.ReOpenWindow();
-            //if (isLogout())
-            //{
-            //    botwindow.EnterLoginAndPasword();
-            //}
-        }
+        #endregion
 
-        /// <summary>
-        /// Определяет, надо ли грузить данное окно с ботом
-        /// </summary>
-        /// <returns> true означает, что это окно (данный бот) должно быть активно и его надо грузить </returns>
-        public override bool isActive()
-        {
-            bool result = false;
-            if (SingActive() == 1) result = true;
-            return result;
-        }
-
-        /// <summary>
-        /// поиск новых окон с игрой для кнопки "Найти окна"
-        /// </summary>
-        /// <returns></returns>
-        public override UIntPtr FindWindowGE()
-        {
-            UIntPtr HWND = (UIntPtr)0;
-
-            int count = 0;
-            while (HWND == (UIntPtr)0)
-            {
-                Pause(500);
-                HWND = FindWindow("Sandbox:" + botwindow.getNumberWindow().ToString() + ":Granado Espada", "[#] Granado Espada [#]");
-
-                count++; if (count > 5) return (UIntPtr)0;
-            }
-
-            botwindow.setHwnd(HWND);
-
-            SetWindowPos(HWND, 0, xx, yy, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
-//            ShowWindow(HWND, 2);   //скрыть окно в трей
-            Pause(500);
-
-            #region старый вариант метода
-            //Click_Mouse_and_Keyboard.Mouse_Move_and_Click(350, 700, 8);
-            //Pause(200);
-            //while (New_HWND_GE == (UIntPtr)0)                
-            //{
-            //    Pause(500);
-            //    New_HWND_GE = FindWindow("Granado Espada", "Granado Espada Online");
-            //}
-            //setHwnd(New_HWND_GE);
-            //hwnd_to_file();
-            ////Перемещает вновь открывшиеся окно в заданные координаты, игнорирует размеры окна
-            ////SetWindowPos(New_HWND_GE, 1, getX(), getY(), WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
-            //SetWindowPos(New_HWND_GE, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
-            //Pause(500);
-            #endregion
-
-            return HWND;
-        }
-
+        #region заточка
 
         /// <summary>
         /// переносим (DragAndDrop) одну из частей экипировки на место для заточки
@@ -667,6 +606,10 @@ namespace OpenGEWindows
             pointEquipmentBegin.Drag(pointEquipmentEnd);
         }
 
+        #endregion
+
+        #region чиповка
+
         /// <summary>
         /// переносим (DragAndDrop) одну из частей экипировки на место для чиповки
         /// </summary>
@@ -678,6 +621,7 @@ namespace OpenGEWindows
             pointEquipmentBegin.Drag(pointEquipmentEnd);
         }
 
+        #endregion
 
 
     }

@@ -14,8 +14,8 @@ namespace OpenGEWindows
         [DllImport("user32.dll")]
         public static extern bool SetWindowPos(UIntPtr myhWnd, int myhwndoptional, int xx, int yy, int cxx, int cyy, uint flagus); // Перемещает окно в заданные координаты с заданным размером
 
-        [DllImport("user32.dll")]
-        private static extern bool ShowWindow(UIntPtr hWnd, int nCmdShow);
+        //[DllImport("user32.dll")]
+        //private static extern bool ShowWindow(UIntPtr hWnd, int nCmdShow);
 
         [DllImport("user32.dll")]
         private static extern UIntPtr FindWindow(String ClassName, String WindowName);  //ищет окно с заданным именем и классом
@@ -139,7 +139,6 @@ namespace OpenGEWindows
             this.pointSummonPet2 = new Point(748 + xx, 238 + yy);                   // 748, 238   //Click кнопку "Summon"
             this.pointActivePet = new Point(748 + xx, 288 + yy);                   // //Click Button Active Pet                            //проверено
 
-            this.pointTeleportToTownAltW = new Point(801 + xx, 564 + yy + (botwindow.getNomerTeleport() - 1) * 17);   //801, 564 + (botwindow.getNomerTeleport() - 1) * 17);
 
             this.sdvigY = 15;
 
@@ -153,7 +152,7 @@ namespace OpenGEWindows
             this.pointisKillHero1 = new PointColor(75 + xx, 631 + yy, 1900000, 4);
             this.pointisKillHero2 = new PointColor(330 + xx, 631 + yy, 1900000, 4);
             this.pointisKillHero3 = new PointColor(585 + xx, 631 + yy, 1900000, 4);
-            this.pointButtonLogOut = new Point(955 - 5 + xx, 700 - 5 + yy);               //кнопка логаут в казарме
+            this.pointButtonLogoutFromBarack = new Point(955 - 5 + xx, 700 - 5 + yy);               //кнопка логаут в казарме
 
             this.pointisToken1 = new PointColor(478 - 5 + xx, 92 - 5 + yy, 13000000, 5);  //проверяем открыто ли окно с токенами
             this.pointisToken2 = new PointColor(478 - 5 + xx, 93 - 5 + yy, 13000000, 5);
@@ -206,9 +205,7 @@ namespace OpenGEWindows
         /// </summary>
         public override void runClient()
         {
-            Process.Start(getPathClient());
-            //UIntPtr result = botwindow.FindWindowEuropa();           
-
+            Process.Start(this.pathClient);
         }
 
         /// <summary>
@@ -323,6 +320,8 @@ namespace OpenGEWindows
         /// </summary>
         public override void TeleportToTownAltW()
         {
+            iPoint pointTeleportToTownAltW = new Point(801 + xx, 564 + yy + (botwindow.getNomerTeleport() - 1) * 17);  
+
             TopMenu(6, 1);
             Pause(1000);
             pointTeleportToTownAltW.PressMouse();           //было два нажатия левой, решил попробовать RRL

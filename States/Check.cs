@@ -59,7 +59,7 @@ namespace States
                         {
                             botwindow.CureOneWindow2();              // сделать End Programm
                             Pause(2000);
-                            driver.StateGotoWork();               // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                            //driver.StateGotoWork();               // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
                         }
                         else
                         {
@@ -113,7 +113,6 @@ namespace States
                 
             } //if  Active_or_not
         }                                                                  //основной метод для зеленой кнопки
-                                             
 
         /// <summary>
         /// поиск новых окон с игрой для кнопки "Найти окна"
@@ -206,7 +205,7 @@ namespace States
         {
             botWindow botwindow = new botWindow(10);
             ServerInterface server = new ServerSing(botwindow);
-            MessageBox.Show(" " + server.isOpenMenuPet());
+            MessageBox.Show(" " + server.isSafeIP());
 
             //bool iscolor1 = server.isSafeIP();
             //MessageBox.Show(" " + iscolor1);
