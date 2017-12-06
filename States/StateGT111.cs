@@ -14,7 +14,8 @@ namespace States
         private ServerInterface server;
         private Town town;
         private ServerFactory serverFactory;
-        //        GotoTrade gototrade;
+        private Market market;
+        private MarketFactory marketFactory;
         private int tekStateInt;
 
         public StateGT111()
@@ -28,7 +29,8 @@ namespace States
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.town = server.getTown();
-            //            this.gototrade = gototrade;
+            this.marketFactory = new MarketFactory(botwindow);
+            this.market = marketFactory.createMarket();
             this.tekStateInt = 11;
         }
 
@@ -66,14 +68,20 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.Botton_Sell();             // Нажимаем на кнопку Sell
+            //server.Botton_Sell();             // Нажимаем на кнопку Sell
+            //botwindow.Pause(1500);
+            //server.Button_Close();            // Нажимаем на кнопку Close
+            //town.ExitFromTrader();               // дополнительные нажатия при выходе из магазина
+            //botwindow.ToMoveMouse();             //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
+            //botwindow.Pause(2000);
+
+            market.Botton_Sell();             // Нажимаем на кнопку Sell
             botwindow.Pause(1500);
-            server.Button_Close();            // Нажимаем на кнопку Close
-            //botwindow.Pause(1500);            пауза есть в самом town.ExitFromTrader
+            market.Button_Close();            // Нажимаем на кнопку Close
             town.ExitFromTrader();               // дополнительные нажатия при выходе из магазина
-//          botwindow.PressMouseR(200, 570);     //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
             botwindow.ToMoveMouse();             //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
             botwindow.Pause(2000);
+
         }
 
         /// <summary>
@@ -91,7 +99,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return ((server.isTown()) || (server.isTown_2()));   //GT111   проверка по двум стойкам
+            return ((server.isTown()) || (server.isTown_2()));   //GT111   проверка по двум видам оружия
         }
 
         /// <summary>

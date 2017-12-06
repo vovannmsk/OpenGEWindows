@@ -14,7 +14,6 @@ namespace States
         private ServerInterface server;
         private Town town;
         private ServerFactory serverFactory;
-        //        GotoTrade gototrade;
         private int tekStateInt;
 
         public StateGT12()

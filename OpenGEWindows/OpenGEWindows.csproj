@@ -101,6 +101,11 @@
     <Compile Include="AmericaTownFactory.cs" />
     <Compile Include="botWindow.cs" />
     <Compile Include="iPointColor.cs" />
+    <Compile Include="Market.cs" />
+    <Compile Include="MarketAmerica.cs" />
+    <Compile Include="MarketEuropa.cs" />
+    <Compile Include="MarketFactory.cs" />
+    <Compile Include="MarketSing.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="iPoint.cs" />
     <Compile Include="PointColor.cs" />

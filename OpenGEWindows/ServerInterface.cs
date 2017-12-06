@@ -21,15 +21,21 @@ namespace OpenGEWindows
         public static extern UIntPtr FindWindowEx(UIntPtr hwndParent, UIntPtr hwndChildAfter, string className, string windowName);
 
 
+
+        #region общие
+
+        protected const String KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
+        protected botWindow botwindow;
         protected int xx;
         protected int yy;
         protected Town town;
         protected Town town_begin;
-        protected botWindow botwindow;
         protected TownFactory townFactory;
+        protected String pathClient;
+
+        #endregion
 
         #region No Window
-        protected String pathClient;
         protected iPointColor pointSafeIP1;
         protected iPointColor pointSafeIP2;
         protected const int WIDHT_WINDOW = 1024;
@@ -38,6 +44,7 @@ namespace OpenGEWindows
         #endregion
 
         #region Logout
+
         protected iPointColor pointConnect;
         protected iPointColor pointisLogout1;
         protected iPointColor pointisLogout2;
@@ -45,21 +52,23 @@ namespace OpenGEWindows
         #endregion
 
         #region Pet
+
         protected iPointColor pointisSummonPet1;
         protected iPointColor pointisSummonPet2;
         protected iPointColor pointisActivePet1;
         protected iPointColor pointisActivePet2;
         protected iPointColor pointisActivePet3;  //3 и 4 сделаны для европы для проверки корма на месяц
         protected iPointColor pointisActivePet4;
+        protected iPointColor pointisOpenMenuPet1;
+        protected iPointColor pointisOpenMenuPet2;
         protected iPoint pointCancelSummonPet;
         protected iPoint pointSummonPet1;
         protected iPoint pointSummonPet2;
         protected iPoint pointActivePet;
+
         #endregion
 
         #region Top Menu
-        protected iPointColor pointisOpenMenuPet1;
-        protected iPointColor pointisOpenMenuPet2;
         protected iPointColor pointisOpenTopMenu21;
         protected iPointColor pointisOpenTopMenu22;
         protected iPointColor pointisOpenTopMenu61;
@@ -73,6 +82,7 @@ namespace OpenGEWindows
         protected iPointColor pointisOpenTopMenu131;
         protected iPointColor pointisOpenTopMenu132;
         protected iPoint pointLogout;
+        protected iPoint pointGotoEnd;
         protected iPoint pointTeleport1;
         protected iPoint pointTeleport2;
 
@@ -96,7 +106,6 @@ namespace OpenGEWindows
         protected iPoint pointBuyingMitridat1;
         protected iPoint pointBuyingMitridat2;
         protected iPoint pointBuyingMitridat3;
-        protected iPoint pointGotoEnd;
 
         /// <summary>
         /// структура для сравнения товаров в магазине
@@ -136,9 +145,7 @@ namespace OpenGEWindows
         #endregion
 
         #region atWork
-        protected iPoint pointTeamSelection1;
-        protected iPoint pointTeamSelection2;
-        protected iPoint pointTeamSelection3;
+
         protected iPointColor pointisKillHero1;
         protected iPointColor pointisKillHero2;
         protected iPointColor pointisKillHero3;
@@ -154,7 +161,7 @@ namespace OpenGEWindows
         protected iPointColor pointisWork_VetDrobDot2;
         protected iPointColor pointisWork_ExpDrobDot1;        //проверка стойки с эксп дробашом (проверяются две точки )
         protected iPointColor pointisWork_ExpDrobDot2;
-//        protected iPoint pointTeleportToTownAltW;
+        //        protected iPoint pointTeleportToTownAltW;
 
         #endregion
 
@@ -163,40 +170,34 @@ namespace OpenGEWindows
         protected iPointColor pointisToken1;      //при входе в город проверяем, открыто ли окно с подарочными токенами.
         protected iPointColor pointisToken2;
         protected iPoint pointToken;            //если окно с подарочными токенами открыто, то закрываем его нажатием на эту точку
-
         protected iPoint pointCure1;
         protected iPoint pointCure2;
         protected iPoint pointCure3;
         protected iPoint pointMana1;
-
         protected iPointColor pointIsTown_RifleFirstDot1;   //проверка по обычному ружью
         protected iPointColor pointIsTown_RifleFirstDot2;
         protected iPointColor pointIsTown_RifleSecondDot1;
         protected iPointColor pointIsTown_RifleSecondDot2;
         protected iPointColor pointIsTown_RifleThirdDot1;
         protected iPointColor pointIsTown_RifleThirdDot2;
-
         protected iPointColor pointIsTown_ExpRifleFirstDot1;   //проверка по эксп. ружью (флинт)
         protected iPointColor pointIsTown_ExpRifleFirstDot2;
         protected iPointColor pointIsTown_ExpRifleSecondDot1;
         protected iPointColor pointIsTown_ExpRifleSecondDot2;
         protected iPointColor pointIsTown_ExpRifleThirdDot1;
         protected iPointColor pointIsTown_ExpRifleThirdDot2;
-
         protected iPointColor pointIsTown_DrobFirstDot1;      //проверка по обычному дробовику
         protected iPointColor pointIsTown_DrobFirstDot2;
         protected iPointColor pointIsTown_DrobSecondDot1;
         protected iPointColor pointIsTown_DrobSecondDot2;
         protected iPointColor pointIsTown_DrobThirdDot1;
         protected iPointColor pointIsTown_DrobThirdDot2;
-
         protected iPointColor pointIsTown_VetDrobFirstDot1;    //проверка по вет. дробовику
         protected iPointColor pointIsTown_VetDrobFirstDot2;
         protected iPointColor pointIsTown_VetDrobSecondDot1;
         protected iPointColor pointIsTown_VetDrobSecondDot2;
         protected iPointColor pointIsTown_VetDrobThirdDot1;
         protected iPointColor pointIsTown_VetDrobThirdDot2;
-
         protected iPointColor pointIsTown_ExpDrobFirstDot1;    //проверка по эксп. дробовику
         protected iPointColor pointIsTown_ExpDrobFirstDot2;
         protected iPointColor pointIsTown_ExpDrobSecondDot1;
@@ -208,6 +209,9 @@ namespace OpenGEWindows
 
         #region Barack
 
+        protected iPoint pointTeamSelection1;
+        protected iPoint pointTeamSelection2;
+        protected iPoint pointTeamSelection3;
         protected iPoint pointButtonLogoutFromBarack;
         protected iPoint pointChooseChannel;
         protected iPoint pointEnterChannel;
@@ -313,7 +317,6 @@ namespace OpenGEWindows
         #endregion
 
         #region чиповка
-        protected const String KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
         protected iPointColor pointIsEnchant1;
         protected iPointColor pointIsEnchant2;
         protected iPointColor pointisWeapon1;
@@ -386,9 +389,32 @@ namespace OpenGEWindows
 
         #endregion
 
-        #region PersonalTrade
+        #region для перекладывания песо в торговца
         protected iPointColor pointPersonalTrade1;
         protected iPointColor pointPersonalTrade2;
+        protected iPoint pointTrader;
+        protected iPoint pointPersonalTrade;
+        protected iPoint pointMap;
+        protected iPoint pointVis1;
+        protected iPoint pointVisMove1;
+        protected iPoint pointVisMove2;
+        protected iPoint pointVisOk;
+        protected iPoint pointVisOk2;
+        protected iPoint pointVisTrade;
+        protected iPoint pointFood;
+        protected iPoint pointButtonFesoBUY;
+        protected iPoint pointArrowUp2;
+        protected iPoint pointButtonFesoSell;
+        protected iPoint pointBookmarkFesoSell;
+        protected iPoint pointDealer;
+        protected iPoint pointYesTrade;
+        protected iPoint pointBookmark4;
+        protected iPoint pointFesoBegin;
+        protected iPoint pointFesoEnd;
+        protected iPoint pointOkFeso;
+        protected iPoint pointOk;
+        protected iPoint pointTrade;
+
         #endregion
 
         // ===========================================  Методы ==========================================
@@ -428,6 +454,11 @@ namespace OpenGEWindows
             return (pointSafeIP1.isColor() && pointSafeIP2.isColor());
         }
 
+        public abstract void runClient();
+        public abstract bool isActive();
+        public abstract UIntPtr FindWindowGE();
+        public abstract void OrangeButton();
+
         #endregion
 
         #region Logout
@@ -437,9 +468,6 @@ namespace OpenGEWindows
         /// <returns></returns>
         public bool isLogout()
         {
-            //return botwindow.isColor2(121, 62, 7460000, 135, 61, 7590000, 4);
-            //uint ff = pointisLogout1.GetPixelColor();
-            //uint gg = pointisLogout2.GetPixelColor();
             return (pointisLogout1.isColor() && pointisLogout2.isColor());
         }
 
@@ -520,6 +548,41 @@ namespace OpenGEWindows
         #region Top Menu (только точки)
 
         /// <summary>
+        /// метод проверяет, открылось ли верхнее меню 
+        /// </summary>
+        /// <param name="numberOfThePartitionMenu"></param>
+        /// <returns> true, если меню открылось </returns>
+        public bool isOpenTopMenu(int numberOfThePartitionMenu)
+        {
+            bool result = false;
+            switch (numberOfThePartitionMenu)
+            {
+                case 2:
+                    result = (pointisOpenTopMenu21.isColor() && pointisOpenTopMenu22.isColor());
+                    break;
+                case 6:
+                    result = (pointisOpenTopMenu61.isColor() && pointisOpenTopMenu62.isColor());
+                    break;
+                case 8:
+                    result = (pointisOpenTopMenu81.isColor() && pointisOpenTopMenu82.isColor());
+                    break;
+                case 9:
+                    result = (pointisOpenTopMenu91.isColor() && pointisOpenTopMenu92.isColor());
+                    break;
+                case 12:
+                    result = (pointisOpenTopMenu121.isColor() && pointisOpenTopMenu122.isColor());
+                    break;
+                case 13:
+                    result = (pointisOpenTopMenu131.isColor() && pointisOpenTopMenu132.isColor());
+                    break;
+                default:
+                    result = true;
+                    break;
+            }
+            return result;
+        }
+
+        /// <summary>
         /// вызываем телепорт через верхнее меню и телепортируемся по первому телепорту
         /// </summary>
         public void Teleport()
@@ -570,6 +633,10 @@ namespace OpenGEWindows
             Pause(1000);
             pointLogout.PressMouse();
         }
+
+        public abstract void TopMenu(int numberOfThePartitionMenu);
+        public abstract void TopMenu(int numberOfThePartitionMenu, int punkt);
+        public abstract void TeleportToTownAltW();
 
         #endregion
 
@@ -1759,6 +1826,8 @@ namespace OpenGEWindows
             return (pointIsIda1.isColor() && pointIsIda2.isColor());
         }
 
+        public abstract void MoveToSharpening(int numberOfEquipment);
+
         #endregion
 
         #region чиповка
@@ -2022,6 +2091,7 @@ namespace OpenGEWindows
             return result;
         }
 
+        public abstract void MoveToNintendo(int numberOfEquipment);
 
         #endregion
 
@@ -2038,24 +2108,167 @@ namespace OpenGEWindows
 
         #endregion
 
+        #region методы для перекладывания песо в торговца
 
-        public abstract void TopMenu(int numberOfThePartitionMenu);
-        public abstract void TopMenu(int numberOfThePartitionMenu, int punkt);
-        public abstract void runClient();
-        public abstract void TeleportToTownAltW();
-        public abstract void OrangeButton();
-        public abstract bool isActive();
-        public abstract UIntPtr FindWindowGE();
-        public abstract void MoveToSharpening(int numberOfEquipment);
-        public abstract void MoveToNintendo(int numberOfEquipment);
-        public abstract void OpenFesoShop();
-        public abstract void ChangeVis1();
-        public abstract void ChangeVis2();
-        public abstract void Buy125PetFood();
-        public abstract void SellGrowthStone3pcs();
-        public abstract void OpenBookmarkSell();
-        public abstract void GoToChangePlace();
-        public abstract void ChangeVisTrader1();
+        /// <summary>
+        /// открыть фесо шоп
+        /// </summary>
+        public void OpenFesoShop()
+        {
+            TopMenu(2, 2);
+            Pause(1000);
+        }
+
+        /// <summary>
+        /// обмен песо (часть 2) закрываем сделку со стороны бота
+        /// </summary>
+        public void ChangeVis2()
+        {
+            // открываем инвентарь
+            TopMenu(8, 1);
+
+            // открываем закладку кармана, там где песо
+            pointVis1.DoubleClickL();
+            Pause(500);
+
+            // перетаскиваем песо
+            pointVisMove1.Drag(pointVisMove2);                                             // песо берется из первой ячейки на 4-й закладке  
+            Pause(500);
+
+            // нажимаем Ок для подтверждения передаваемой суммы песо
+            pointVisOk.DoubleClickL();
+
+            // нажимаем ок
+            pointVisOk2.DoubleClickL();
+            Pause(500);
+
+            // нажимаем обмен
+            pointVisTrade.DoubleClickL();
+            Pause(500);
+        }
+
+        /// <summary>
+        /// для передачи песо торговцу. Идем на место и предложение персональной торговли                        
+        /// </summary>
+        public void ChangeVis1()
+        {
+            //идем на место передачи песо
+            botwindow.PressEscThreeTimes();
+            Pause(1000);
+
+            town.MaxHeight();             //с учетом города и сервера
+            Pause(500);
+
+            OpenMapForState();                  //открываем карту города
+            Pause(500);
+
+            pointMap.DoubleClickL();   //тыкаем в карту, чтобы добежать до нужного места
+
+            botwindow.PressEscThreeTimes();       // закрываем карту
+            Pause(25000);               // ждем пока добежим
+
+            iPointColor pointMenuTrade = new PointColor(588 - 5 + xx, 230 - 5 + yy, 1710000, 4);
+            while (!pointMenuTrade.isColor())
+            {
+                //жмем правой на торговце
+                pointTrader.PressMouseR();
+                Pause(1000);
+            }
+
+            //жмем левой  на пункт "Personal Trade"
+            pointPersonalTrade.PressMouseL();
+            Pause(500);
+        }
+
+        /// <summary>
+        /// купить 400 еды в фесо шопе                    
+        /// </summary>
+        public void Buy125PetFood()
+        {
+            // тыкаем два раза в стрелочку вверх
+            pointFood.DoubleClickL();
+            Pause(500);
+
+            //нажимаем 125
+            SendKeys.SendWait("125");
+
+            // жмем кнопку купить
+            pointButtonFesoBUY.DoubleClickL();
+            Pause(1500);
+
+            //нажимаем кнопку Close
+            pointButtonClose.DoubleClickL();
+            Pause(1500);
+        }
+
+        /// <summary>
+        /// продать 3 ВК (GS) в фесо шопе 
+        /// </summary>
+        public void SellGrowthStone3pcs()
+        {
+            // 3 раза нажимаем на стрелку вверх, чтобы отсчитать 3 ВК
+            for (int i = 1; i <= 3; i++)
+            {
+                pointArrowUp2.PressMouseL();
+                Pause(700);
+            }
+
+            //нажимаем кнопку Sell
+            pointButtonFesoSell.PressMouseL();
+            Pause(1000);
+
+            //нажимаем кнопку Close
+            pointButtonClose.PressMouseL();
+            Pause(2500);
+        }
+
+        /// <summary>
+        /// открыть вкладку Sell в фесо шопе
+        /// </summary>
+        public  void OpenBookmarkSell()
+        {
+            pointBookmarkFesoSell.DoubleClickL();
+            Pause(1500);
+        }
+
+        /// <summary>
+        /// переход торговца к месту передачи песо (внутри города)
+        /// </summary>
+        public void GoToChangePlace()
+        {
+            pointDealer.DoubleClickL();
+        }
+
+        /// <summary>
+        /// обмен песо на фесо (часть 1 со стороны торговца) 
+        /// </summary>
+        public void ChangeVisTrader1()
+        {
+            // наживаем Yes, подтверждая торговлю
+            pointYesTrade.DoubleClickL();
+
+            // открываем сундук (карман)
+            TopMenu(8, 1);
+
+            // открываем закладку кармана, там где фесо
+            pointBookmark4.DoubleClickL();
+
+            // перетаскиваем фесо на стол торговли
+            pointFesoBegin.Drag(pointFesoEnd);
+            Pause(500);
+
+            // нажимаем Ок для подтверждения передаваемой суммы фесо
+            pointOkFeso.DoubleClickL();
+
+            // нажимаем ок
+            pointOk.DoubleClickL();
+
+            // нажимаем обмен
+            pointTrade.DoubleClickL();
+        }
+
+        #endregion
+
 
         ///// <summary>
         ///// переход на нужный канал после телепорта на работу 

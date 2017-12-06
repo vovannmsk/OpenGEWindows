@@ -365,6 +365,7 @@ namespace OpenGEWindows
 
                 ActiveWindow();
 
+                //Pause(3000);
                 while (!server.isLogout()) Pause(1000);    //ожидание логаута
             }
             else

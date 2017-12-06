@@ -14,6 +14,9 @@ namespace States
         private ServerInterface server;
         private Town town;
         private ServerFactory serverFactory;
+        private Market market;
+        private MarketFactory marketFactory;
+
         //        GotoTrade gototrade;
         private int tekStateInt;
 
@@ -28,7 +31,8 @@ namespace States
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.town = server.getTown();
-            //            this.gototrade = gototrade;
+            this.marketFactory = new MarketFactory(botwindow);
+            this.market = marketFactory.createMarket();
             this.tekStateInt = 11;
         }
 
@@ -66,14 +70,12 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.SaleToTheRedBottle();      // продажа до красной бутылки
-            server.SaleOverTheRedBottle();    // продажа от красной бутылки до того момента, пока крутится список продажи
-            server.SaleToEnd();               // продажа до конца, когда список уже не крутится 
-            //server.Botton_Sell();             // Нажимаем на кнопку Sell
-            //botwindow.Pause(1500);
-            //server.Button_Close();            // Нажимаем на кнопку Close
-            //town.ExitFromTrader();               // дополнительные нажатия при выходе из магазина
-            //botwindow.Pause(2000);
+            //server.SaleToTheRedBottle();      // продажа до красной бутылки
+            //server.SaleOverTheRedBottle();    // продажа от красной бутылки до того момента, пока крутится список продажи
+            //server.SaleToEnd();               // продажа до конца, когда список уже не крутится 
+            market.SaleToTheRedBottle();      // продажа до красной бутылки
+            market.SaleOverTheRedBottle();    // продажа от красной бутылки до того момента, пока крутится список продажи
+            market.SaleToEnd();               // продажа до конца, когда список уже не крутится 
         }
 
         /// <summary>

@@ -33,90 +33,49 @@ namespace OpenGEWindows
         /// <param name="nomerOfWindow"> номер окна по порядку </param>
         public ServerSing(botWindow botwindow)
         {
+
+            #region общие
+
             this.botwindow = botwindow;
             this.xx = botwindow.getX();
             this.yy = botwindow.getY();
-
             this.townFactory = new SingTownFactory(botwindow);                                     // здесь выбирается конкретная реализация для фабрики Town
             this.town = townFactory.createTown();
             this.pathClient = path_Client();
-            this.sdvigY = 0;
 
+            #endregion
 
-            #region  переменные для основных методов
+            #region No Window
+            this.pointSafeIP1 = new PointColor(941, 579, 13600000, 5);
+            this.pointSafeIP2 = new PointColor(942, 579, 13600000, 5);
+            #endregion
+
+            #region Logout
+
             this.pointConnect = new PointColor(696 - 5 + xx, 148 - 5 + yy, 7800000, 5);
+            this.pointisLogout1 = new PointColor(565 - 5 + xx, 530 - 5 + yy, 16000000, 6);       // проверено   слово Leave Game
+            this.pointisLogout2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 16000000, 6);       // проверено
 
-            this.pointIsSale1 = new PointColor(907 + xx, 675 + yy, 7200000, 5);
-            this.pointIsSale2 = new PointColor(907 + xx, 676 + yy, 7800000, 5);
-            this.pointIsSale21 = new PointColor(841 - 5 + xx, 665 - 5 + yy, 7900000, 5);
-            this.pointIsSale22 = new PointColor(841 - 5 + xx, 668 - 5 + yy, 7900000, 5);
-            this.pointIsClickSale1 = new PointColor(731 - 5 + xx, 662 - 5 + yy, 7900000, 5);
-            this.pointIsClickSale2 = new PointColor(731 - 5 + xx, 663 - 5 + yy, 7900000, 5);
+            #endregion
 
-            this.pointIsTown_RifleFirstDot1 = new PointColor(24 + xx, 692 + yy, 11053000, 3);        //точки для проверки обычной стойки с ружьем
-            this.pointIsTown_RifleFirstDot2 = new PointColor(25 + xx, 692 + yy, 10921000, 3);
-            this.pointIsTown_RifleSecondDot1 = new PointColor(279 + xx, 692 + yy, 11053000, 3);
-            this.pointIsTown_RifleSecondDot2 = new PointColor(280 + xx, 692 + yy, 10921000, 3);
-            this.pointIsTown_RifleThirdDot1 = new PointColor(534 + xx, 692 + yy, 11053000, 3);
-            this.pointIsTown_RifleThirdDot2 = new PointColor(535 + xx, 692 + yy, 10921000, 3);
+            #region Pet
 
-            this.pointIsTown_ExpRifleFirstDot1 = new PointColor(24 + xx, 692 + yy, 1710000, 4);       //точки для проверки эксп стойки с ружьем
-            this.pointIsTown_ExpRifleFirstDot2 = new PointColor(25 + xx, 692 + yy, 2100000, 4);
-            this.pointIsTown_ExpRifleSecondDot1 = new PointColor(279 + xx, 692 + yy, 1710000, 4);
-            this.pointIsTown_ExpRifleSecondDot2 = new PointColor(280 + xx, 692 + yy, 2100000, 4);
-            this.pointIsTown_ExpRifleThirdDot1 = new PointColor(534 + xx, 692 + yy, 1710000, 4);
-            this.pointIsTown_ExpRifleThirdDot2 = new PointColor(535 + xx, 692 + yy, 2100000, 4);
-
-            this.pointIsTown_DrobFirstDot1 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки обычной стойки с дробашом в городе               
-            this.pointIsTown_DrobFirstDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_DrobSecondDot1 = new PointColor(279 + xx, 692 + yy, 7631000, 3);
-            this.pointIsTown_DrobSecondDot2 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_DrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
-            this.pointIsTown_DrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
-
-            this.pointIsTown_VetDrobFirstDot1 = new PointColor(29-5 + xx, 697 - 5 + yy, 2763000, 3);       //точки для проверки вет стойки с дробашом в городе            
-            this.pointIsTown_VetDrobFirstDot2 = new PointColor(30-5 + xx, 697 - 5 + yy, 7237000, 3);
-            this.pointIsTown_VetDrobSecondDot1 = new PointColor(279 + xx, 692 + yy, 2763000, 3);
-            this.pointIsTown_VetDrobSecondDot2 = new PointColor(280 + xx, 692 + yy, 7237000, 3);
-            this.pointIsTown_VetDrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 2763000, 3);
-            this.pointIsTown_VetDrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 7237000, 3);
-
-            this.pointIsTown_ExpDrobFirstDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);       //точки для проверки эксп стойки с дробашом
-            this.pointIsTown_ExpDrobFirstDot2 = new PointColor(25 + xx, 692 + yy, 3552000, 3);
-            this.pointIsTown_ExpDrobSecondDot1 = new PointColor(279 + xx, 692 + yy, 16777000, 3);
-            this.pointIsTown_ExpDrobSecondDot2 = new PointColor(280 + xx, 692 + yy, 3552000, 3);
-            this.pointIsTown_ExpDrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 16777000, 3);
-            this.pointIsTown_ExpDrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 3552000, 3);
-
-            this.pointisBoxOverflow1 = new PointColor(522 - 5 + xx, 434 - 5 + yy, 7800000, 5);          //
-            this.pointisBoxOverflow2 = new PointColor(522 - 5 + xx, 435 - 5 + yy, 7800000, 5);
             this.pointisSummonPet1 = new PointColor(494 - 5 + xx, 304 - 5 + yy, 13000000, 6);
             this.pointisSummonPet2 = new PointColor(494 - 5 + xx, 305 - 5 + yy, 13000000, 6);
             this.pointisActivePet1 = new PointColor(493 - 5 + xx, 310 - 5 + yy, 13000000, 6);
             this.pointisActivePet2 = new PointColor(494 - 5 + xx, 309 - 5 + yy, 13000000, 6);
             this.pointisActivePet3 = new PointColor(829 - 5 + xx, 186 - 5 + yy, 12000000, 6); // для проверки периодической еды на месяц                                      //не проверено
             this.pointisActivePet4 = new PointColor(829 - 5 + xx, 185 - 5 + yy, 12000000, 6); // для проверки периодической еды на месяц
-
-            this.pointisLogout1 = new PointColor(565 - 5 + xx, 530 - 5 + yy, 16400000, 5);       // проверено   слово Leave Game
-            this.pointisLogout2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 16400000, 5);       // проверено
-            this.pointisBarack1 = new PointColor(65 - 5 + xx, 153 - 5 + yy, 2400000, 5);            //зеленый цвет в слове Barracks  // не проверено
-            this.pointisBarack2 = new PointColor(65 - 5 + xx, 154 - 5 + yy, 2400000, 5);            // проверено
-            this.pointisBarack3 = new PointColor(36 - 5 + xx, 56 - 5 + yy, 15500000, 5);             //проверено   Barrack Mode
-            this.pointisBarack4 = new PointColor(36 - 5 + xx, 57 - 5 + yy, 15100000, 5);             //проверено
-
-            this.pointisWork_RifleDot1 = new PointColor(24 + xx, 692 + yy, 11051000, 3);      //29 - 5, 697 - 5, 11051000, 30 - 5, 697 - 5, 10919000, 3);                    //проверено
-            this.pointisWork_RifleDot2 = new PointColor(25 + xx, 692 + yy, 10919000, 3);
-            this.pointisWork_ExpRifleDot1 = new PointColor(24 + xx, 692 + yy, 1721000, 3);      //29 - 5, 697 - 5, 11051000, 30 - 5, 697 - 5, 10919000, 3);                    //проверено
-            this.pointisWork_ExpRifleDot2 = new PointColor(25 + xx, 692 + yy, 2106000, 3);
-            this.pointisWork_DrobDot1 = new PointColor(24 + xx, 692 + yy, 7644000, 3);              //проверка по обычной стойке с дробашем
-            this.pointisWork_DrobDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
-            this.pointisWork_VetDrobDot1 = new PointColor(29-5 + xx, 697-5 + yy, 2764000, 3);           //проверка по вет стойке с дробашем        
-            this.pointisWork_VetDrobDot2 = new PointColor(30-5 + xx, 697-5 + yy, 7243000, 3);
-            this.pointisWork_ExpDrobDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);              //проверка по эксп стойке с дробашем
-            this.pointisWork_ExpDrobDot2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
-
             this.pointisOpenMenuPet1 = new PointColor(474 - 5 + xx, 219 - 5 + yy, 12000000, 6);      //834 - 5, 98 - 5, 12400000, 835 - 5, 98 - 5, 12400000, 5);             //проверено
             this.pointisOpenMenuPet2 = new PointColor(474 - 5 + xx, 220 - 5 + yy, 12000000, 6);
+            this.pointCancelSummonPet = new Point(410 - 5 + xx, 390 - 5 + yy);   //750, 265                    //проверено
+            this.pointSummonPet1 = new Point(540 - 5 + xx, 380 - 5 + yy);                   // 868, 258   //Click Pet
+            this.pointSummonPet2 = new Point(410 - 5 + xx, 360 - 5 + yy);                   // 748, 238   //Click кнопку "Summon"
+            this.pointActivePet = new Point(410 - 5 + xx, 410 - 5 + yy);                   // //Click Button Active Pet                            //проверено
+
+            #endregion
+
+            #region Top Menu
 
             this.pointisOpenTopMenu21 = new PointColor(328 + xx, 74 + yy, 13420000, 4);      //333 - 5, 79 - 5, 13420000, 334 - 5, 79 - 5, 13420000, 4);            //не проверено
             this.pointisOpenTopMenu22 = new PointColor(329 + xx, 74 + yy, 13420000, 4);
@@ -130,27 +89,22 @@ namespace OpenGEWindows
             this.pointisOpenTopMenu122 = new PointColor(502 - 5 + xx, 141 - 5 + yy, 12800000, 5);
             this.pointisOpenTopMenu131 = new PointColor(404 - 5 + xx, 278 - 5 + yy, 16500000, 5);          //Quest Name                                                         //проверено
             this.pointisOpenTopMenu132 = new PointColor(404 - 5 + xx, 279 - 5 + yy, 16500000, 5);
-
-            this.pointBuyingMitridat1 = new Point(360 + xx, 537 + yy);      //360, 537
-            this.pointBuyingMitridat2 = new Point(517 + xx, 433 + yy);      //1392 - 875, 438 - 5
-            this.pointBuyingMitridat3 = new Point(517 + xx, 423 + yy);      //1392 - 875, 428 - 5
-
 //            this.pointGotoEnd = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
             this.pointGotoEnd = new Point(685 - 5 + xx, 470 - 5 + yy);            //end
             this.pointLogout = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
-
-            this.pointTeamSelection1 = new Point(140 - 5 + xx, 470 - 5 + yy);                   //проверено
-            this.pointTeamSelection2 = new Point(70 - 5 + xx, 355 - 5 + yy);                   //проверено
-            this.pointTeamSelection3 = new Point(50 - 5 + xx, 620 - 5 + yy);                   //проверено
-
             this.pointTeleport1 = new Point(400 + xx, 193 + yy);   //400, 193               тыкаем в первую строчку телепорта                          //проверено
             this.pointTeleport2 = new Point(355 + xx, 570 + yy);   //355, 570               тыкаем в кнопку Execute                   //проверено
-            this.pointCancelSummonPet = new Point(410 - 5 + xx, 390 - 5 + yy);   //750, 265                    //проверено
-            this.pointSummonPet1 = new Point(540 - 5 + xx, 380 - 5 + yy);                   // 868, 258   //Click Pet
-            this.pointSummonPet2 = new Point(410 - 5 + xx, 360 - 5 + yy);                   // 748, 238   //Click кнопку "Summon"
-            this.pointActivePet  = new Point(410 - 5 + xx, 410 - 5 + yy);                   // //Click Button Active Pet                            //проверено
 
+            #endregion
 
+            #region Shop
+
+            this.pointIsSale1 = new PointColor(907 + xx, 675 + yy, 7200000, 5);
+            this.pointIsSale2 = new PointColor(907 + xx, 676 + yy, 7800000, 5);
+            this.pointIsSale21 = new PointColor(841 - 5 + xx, 665 - 5 + yy, 7900000, 5);
+            this.pointIsSale22 = new PointColor(841 - 5 + xx, 668 - 5 + yy, 7900000, 5);
+            this.pointIsClickSale1 = new PointColor(731 - 5 + xx, 662 - 5 + yy, 7900000, 5);
+            this.pointIsClickSale2 = new PointColor(731 - 5 + xx, 663 - 5 + yy, 7900000, 5);
 
             this.pointBookmarkSell = new Point(225 + xx, 163 + yy);
             this.pointSaleToTheRedBottle = new Point(335 + xx, 220 + yy);
@@ -159,21 +113,92 @@ namespace OpenGEWindows
             this.pointButtonBUY = new Point(725 + xx, 663 + yy);   //725, 663);
             this.pointButtonSell = new Point(725 + xx, 663 + yy);   //725, 663);
             this.pointButtonClose = new Point(847 + xx, 663 + yy);   //847, 663);
+            this.pointBuyingMitridat1 = new Point(360 + xx, 537 + yy);      //360, 537
+            this.pointBuyingMitridat2 = new Point(517 + xx, 433 + yy);      //1392 - 875, 438 - 5
+            this.pointBuyingMitridat3 = new Point(517 + xx, 423 + yy);      //1392 - 875, 428 - 5
+
+            #endregion
+
+            #region atWork
+
+            this.pointisBoxOverflow1 = new PointColor(522 - 5 + xx, 434 - 5 + yy, 7800000, 5);          //
+            this.pointisBoxOverflow2 = new PointColor(522 - 5 + xx, 435 - 5 + yy, 7800000, 5);
+            this.pointisWork_RifleDot1 = new PointColor(24 + xx, 692 + yy, 11051000, 3);      //29 - 5, 697 - 5, 11051000, 30 - 5, 697 - 5, 10919000, 3);                    //проверено
+            this.pointisWork_RifleDot2 = new PointColor(25 + xx, 692 + yy, 10919000, 3);
+            this.pointisWork_ExpRifleDot1 = new PointColor(24 + xx, 692 + yy, 1721000, 3);      //29 - 5, 697 - 5, 11051000, 30 - 5, 697 - 5, 10919000, 3);                    //проверено
+            this.pointisWork_ExpRifleDot2 = new PointColor(25 + xx, 692 + yy, 2106000, 3);
+            this.pointisWork_DrobDot1 = new PointColor(24 + xx, 692 + yy, 7644000, 3);              //проверка по обычной стойке с дробашем
+            this.pointisWork_DrobDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
+            this.pointisWork_VetDrobDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 2764000, 3);           //проверка по вет стойке с дробашем        
+            this.pointisWork_VetDrobDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 7243000, 3);
+            this.pointisWork_ExpDrobDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);              //проверка по эксп стойке с дробашем
+            this.pointisWork_ExpDrobDot2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
             this.pointisKillHero1 = new PointColor(80 - 5 + xx, 636 - 5 + yy, 1900000, 5);
             this.pointisKillHero2 = new PointColor(335 - 5 + xx, 636 - 5 + yy, 1900000, 5);
             this.pointisKillHero3 = new PointColor(590 - 5 + xx, 636 - 5 + yy, 1900000, 5);
-            this.pointButtonLogoutFromBarack = new Point(785 - 5 + xx, 700 - 5 + yy);               //кнопка логаут в казарме
+
+            #endregion
+
+            #region inTown
 
             this.pointisToken1 = new PointColor(478 - 5 + xx, 92 - 5 + yy, 13000000, 5);  //проверяем открыто ли окно с токенами
             this.pointisToken2 = new PointColor(478 - 5 + xx, 93 - 5 + yy, 13000000, 5);
             this.pointToken = new Point(755 - 5 + xx, 94 - 5 + yy);                       //крестик в углу окошка с токенами
-            this.pointChooseChannel = new Point(820 - 5 + xx, 382 - 5 + yy);                       //переход из меню Alt+Q в меню Alt+F2 (нажатие кнопки Choose a channel)
-            this.pointEnterChannel = new Point(646 - 5 + xx, 409 - 5 + yy + (botwindow.getKanal() - 2) * 15);                        //выбор канала в меню Alt+F2
-            this.pointMoveNow = new Point(651 - 5 + xx, 591 - 5 + yy);                        //выбор канала в меню Alt+F2
             this.pointCure1 = new Point(215 - 5 + xx, 705 - 5 + yy);                        //бутылка лечения под буквой U
             this.pointCure2 = new Point(215 - 5 + 255 + xx, 705 - 5 + yy);                        //бутылка лечения под буквой J
             this.pointCure3 = new Point(215 - 5 + 255 * 2 + xx, 705 - 5 + yy);                        //бутылка лечения под буквой M
             this.pointMana1 = new Point(215 - 5 + 30 + xx, 705 - 5 + yy);                        //бутылка маны под буквой I
+            this.pointIsTown_RifleFirstDot1 = new PointColor(24 + xx, 692 + yy, 11053000, 3);        //точки для проверки обычной стойки с ружьем
+            this.pointIsTown_RifleFirstDot2 = new PointColor(25 + xx, 692 + yy, 10921000, 3);
+            this.pointIsTown_RifleSecondDot1 = new PointColor(279 + xx, 692 + yy, 11053000, 3);
+            this.pointIsTown_RifleSecondDot2 = new PointColor(280 + xx, 692 + yy, 10921000, 3);
+            this.pointIsTown_RifleThirdDot1 = new PointColor(534 + xx, 692 + yy, 11053000, 3);
+            this.pointIsTown_RifleThirdDot2 = new PointColor(535 + xx, 692 + yy, 10921000, 3);
+            this.pointIsTown_ExpRifleFirstDot1 = new PointColor(24 + xx, 692 + yy, 1710000, 4);       //точки для проверки эксп стойки с ружьем
+            this.pointIsTown_ExpRifleFirstDot2 = new PointColor(25 + xx, 692 + yy, 2100000, 4);
+            this.pointIsTown_ExpRifleSecondDot1 = new PointColor(279 + xx, 692 + yy, 1710000, 4);
+            this.pointIsTown_ExpRifleSecondDot2 = new PointColor(280 + xx, 692 + yy, 2100000, 4);
+            this.pointIsTown_ExpRifleThirdDot1 = new PointColor(534 + xx, 692 + yy, 1710000, 4);
+            this.pointIsTown_ExpRifleThirdDot2 = new PointColor(535 + xx, 692 + yy, 2100000, 4);
+            this.pointIsTown_DrobFirstDot1 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки обычной стойки с дробашом в городе               
+            this.pointIsTown_DrobFirstDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
+            this.pointIsTown_DrobSecondDot1 = new PointColor(279 + xx, 692 + yy, 7631000, 3);
+            this.pointIsTown_DrobSecondDot2 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
+            this.pointIsTown_DrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
+            this.pointIsTown_DrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
+            this.pointIsTown_VetDrobFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 2763000, 3);       //точки для проверки вет стойки с дробашом в городе            
+            this.pointIsTown_VetDrobFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 7237000, 3);
+            this.pointIsTown_VetDrobSecondDot1 = new PointColor(279 + xx, 692 + yy, 2763000, 3);
+            this.pointIsTown_VetDrobSecondDot2 = new PointColor(280 + xx, 692 + yy, 7237000, 3);
+            this.pointIsTown_VetDrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 2763000, 3);
+            this.pointIsTown_VetDrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 7237000, 3);
+            this.pointIsTown_ExpDrobFirstDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);       //точки для проверки эксп стойки с дробашом
+            this.pointIsTown_ExpDrobFirstDot2 = new PointColor(25 + xx, 692 + yy, 3552000, 3);
+            this.pointIsTown_ExpDrobSecondDot1 = new PointColor(279 + xx, 692 + yy, 16777000, 3);
+            this.pointIsTown_ExpDrobSecondDot2 = new PointColor(280 + xx, 692 + yy, 3552000, 3);
+            this.pointIsTown_ExpDrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 16777000, 3);
+            this.pointIsTown_ExpDrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 3552000, 3);
+
+            #endregion
+
+            #region Barack
+
+            this.sdvigY = 0;
+            this.pointMoveNow = new Point(651 - 5 + xx, 591 - 5 + yy);                        //выбор канала в меню Alt+F2
+            this.pointisBarack1 = new PointColor(65 - 5 + xx, 153 - 5 + yy, 2400000, 5);            //зеленый цвет в слове Barracks  // не проверено
+            this.pointisBarack2 = new PointColor(65 - 5 + xx, 154 - 5 + yy, 2400000, 5);            // проверено
+            this.pointisBarack3 = new PointColor(36 - 5 + xx, 56 - 5 + yy, 15500000, 5);             //проверено   Barrack Mode
+            this.pointisBarack4 = new PointColor(36 - 5 + xx, 57 - 5 + yy, 15100000, 5);             //проверено
+            this.pointTeamSelection1 = new Point(140 - 5 + xx, 470 - 5 + yy);                   //проверено
+            this.pointTeamSelection2 = new Point(70 - 5 + xx, 355 - 5 + yy);                   //проверено
+            this.pointTeamSelection3 = new Point(50 - 5 + xx, 620 - 5 + yy);                   //проверено
+            this.pointButtonLogoutFromBarack = new Point(785 - 5 + xx, 700 - 5 + yy);               //кнопка логаут в казарме
+            this.pointChooseChannel = new Point(820 - 5 + xx, 382 - 5 + yy);                       //переход из меню Alt+Q в меню Alt+F2 (нажатие кнопки Choose a channel)
+            this.pointEnterChannel = new Point(646 - 5 + xx, 409 - 5 + yy + (botwindow.getKanal() - 2) * 15);                        //выбор канала в меню Alt+F2
+
+            #endregion
+
+            #region  новые боты
 
             this.pointNewName = new Point(490 - 5 + xx, 280 - 5 + yy);                             //строчка, куда надо вводить имя семьи
             this.pointButtonCreateNewName = new Point(465 - 5 + xx, 510 - 5 + yy);                 //кнопка Create для создания новой семьи
@@ -187,18 +212,14 @@ namespace OpenGEWindows
             this.pointUnselectMedik = new Point(450 - 5 + xx, 250 - 5 + yy);                       //нажимаем на медика и выкидываем из команды
             this.pointNameOfTeam = new Point(30 - 5 + xx, 660 - 5 + yy);                           //нажимаем на строчку, где вводится имя команды героев (в казарме)
             this.pointButtonSaveNewTeam = new Point(190 - 5 + xx, 660 - 5 + yy);                   //нажимаем на кнопку сохранения команды (в казарме)
-            #endregion
 
-            #region  стартония
             this.pointRunNunies = new Point(920 - 5 + xx, 170 - 5 + yy);                           //нажимаем на зеленую стрелку, чтобы бежать к Нуньесу в Стартонии
             this.pointPressNunez = new Point(830 - 5 + xx, 340 - 5 + yy);                          //нажимаем на Нуньеса
             this.ButtonOkDialog = new Point(910 - 5 + xx, 680 - 5 + yy);                           //нажимаем на Ок в диалоге
             this.PressMedal = new Point(300 - 5 + xx, 210 - 5 + yy);                               //нажимаем на медаль
             this.ButtonCloseMedal = new Point(740 - 5 + xx, 600 - 5 + yy);                         //нажимаем на кнопку Close и закрываем медали
             this.pointPressNunez2 = new Point(700 - 5 + xx, 360 - 5 + yy);                         //нажимаем на Нуньеса после надевания медали
-            #endregion
 
-            #region  ребольдо
             this.town_begin = new AmericaTownReboldo(botwindow);                                   //город взят по умолчанию, как Ребольдо. 
             this.pointPressLindon1 = new Point(590 - 5 + xx, 210 - 5 + yy);                        //нажимаем на Линдона
             this.pointPressGMonMap = new Point(840 - 5 + xx, 235 - 5 + yy);                        //нажимаем на строчку GM на карте Alt+Z
@@ -229,18 +250,17 @@ namespace OpenGEWindows
             this.pointWayPoint = new Point(665 - 5 + xx, 345 - 5 + yy);                            //тыкнули в телепорт
             this.pointBookmarkField = new Point(220 - 5 + xx, 200 - 5 + yy);                       //закладка Field в телепорте
             this.pointButtonLavaPlato = new Point(820 - 5 + xx, 320 - 5 + yy);                     //кнопка лавовое плато в телепорте
-            #endregion
             
-            #region лавовое плато
+            #endregion
+
+            #region кратер
             this.pointGateCrater = new Point(373 - 5 + xx, 605 - 5 + yy);                          //переход (ворота) из лавового плато в кратер
             this.pointMitridat = new Point(800 - 5 + xx, 180 - 5 + yy);                            //митридат в кармане
             this.pointMitridatTo2 = new Point(30 - 5 + xx, 140 - 5 + yy);                          //ячейка, где должен лежать митридат
             this.pointBookmark3 = new Point(155 - 5 + xx, 180 - 5 + yy);                           //третья закладка в спецкармане
             this.pointButtonYesPremium = new Point(470 - 5 + xx, 415 - 5 + yy);                    //третья закладка в спецкармане
             this.pointSecondBookmark = new Point(870 - 5 + xx, 150 - 5 + yy);                      //вторая закладка в кармане
-            #endregion
 
-            #region кратер
             this.pointWorkCrater = new Point(botwindow.getTriangleX()[0] + xx, botwindow.getTriangleY()[0] + yy);     //бежим на место работы
             this.pointButtonSaveTeleport = new Point(440 - 5 + xx, 570 - 5 + yy);                   // нажимаем на кнопку сохранения телепорта в текущей позиции
             this.pointButtonOkSaveTeleport = new Point(660 - 5 + xx, 645 - 5 + yy);               // нажимаем на кнопку OK для подтверждения сохранения телепорта 
@@ -248,7 +268,7 @@ namespace OpenGEWindows
             this.pointPetEnd = new Point(520 - 5 + xx, 330 - 5 + yy);    // 520-5, 330-5
             #endregion
 
-            #region Ида
+            #region заточка Ида 
             this.pointAcriveInventory = new Point(905 - 5 + xx, 425 - 5 + yy);
             this.pointIsActiveInventory = new PointColor(696 - 5 + xx, 146 - 5 + yy, 16500000, 5);
             this.pointisMoveEquipment1 = new PointColor(493 - 5 + xx, 281 - 5 + yy, 7790000, 4);
@@ -338,16 +358,37 @@ namespace OpenGEWindows
 
             #endregion
 
-
-            this.pointSafeIP1 = new PointColor(941, 579, 13600000, 5);
-            this.pointSafeIP2 = new PointColor(942, 579, 13600000, 5);
-
             #region передача песо торговцу
             this.pointPersonalTrade1 = new PointColor(472 - 5 + xx, 251 - 5 + yy, 12800000, 5);
             this.pointPersonalTrade2 = new PointColor(472 - 5 + xx, 252 - 5 + yy, 12800000, 5);
 
-            #endregion
+            this.pointTrader = new Point(472 - 5 + xx, 175 - 5 + yy);
+            this.pointPersonalTrade = new Point(536 - 5 + xx, 203 - 5 + yy);
+            this.pointMap = new Point(405 - 5 + xx, 220 - 5 + yy);
 
+            this.pointVis1 = new Point(903 - 5 + xx, 151 - 5 + yy);
+            this.pointVisMove1 = new Point(701 - 5 + xx, 186 - 5 + yy);
+            this.pointVisMove2 = new Point(395 - 5 + xx, 361 - 5 + yy);
+            this.pointVisOk = new Point(611 - 5 + xx, 397 - 5 + yy);
+            this.pointVisOk2 = new Point(442 - 5 + xx, 502 - 5 + yy);
+            this.pointVisTrade = new Point(523 - 5 + xx, 502 - 5 + yy);
+
+            this.pointFood = new Point(361 - 5 + xx, 331 - 5 + yy);     //шаг = 27 пикселей на одну строчку магазина (на случай если добавят новые строчки)
+            this.pointButtonFesoBUY = new Point(730 - 5 + xx, 625 - 5 + yy);
+            this.pointArrowUp2 = new Point(379 - 5 + xx, 250 - 5 + yy);
+            this.pointButtonFesoSell = new Point(730 - 5 + xx, 625 - 5 + yy);
+            this.pointBookmarkFesoSell = new Point(245 - 5 + xx, 201 - 5 + yy);
+            this.pointDealer = new Point(405 - 5 + xx, 210 - 5 + yy);
+
+            this.pointYesTrade = new Point(1161 - 700 + xx, 595 - 180 + yy);
+            this.pointBookmark4 = new Point(903 - 5 + xx, 151 - 5 + yy);
+            this.pointFesoBegin = new Point(740 - 5 + xx, 186 - 5 + yy);
+            this.pointFesoEnd = new Point(388 - 5 + xx, 343 - 5 + yy);
+            this.pointOkFeso = new Point(611 - 5 + xx, 397 - 5 + yy);
+            this.pointOk = new Point(441 - 5 + xx, 502 - 5 + yy);
+            this.pointTrade = new Point(522 - 5 + xx, 502 - 5 + yy);
+
+            #endregion
 
         }
 
@@ -370,6 +411,11 @@ namespace OpenGEWindows
         private int SingActive()
         { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Singapoore_active.txt")); }
 
+
+        #endregion
+
+        #region No window
+
         /// <summary>
         /// Определяет, надо ли грузить данное окно с ботом
         /// </summary>
@@ -380,10 +426,6 @@ namespace OpenGEWindows
             if (SingActive() == 1) result = true;
             return result;
         }
-
-        #endregion
-
-        #region No window
 
         /// <summary>
         /// действия для оранжевой кнопки
@@ -489,40 +531,6 @@ namespace OpenGEWindows
         #endregion
 
         #region Top Menu
-        /// <summary>
-        /// метод проверяет, открылось ли верхнее меню 
-        /// </summary>
-        /// <param name="numberOfThePartitionMenu"></param>
-        /// <returns> true, если меню открылось </returns>
-        private bool isOpenTopMenu(int numberOfThePartitionMenu)
-        {
-            bool result = false;
-            switch (numberOfThePartitionMenu)
-            {
-                case 2:
-                    result = (pointisOpenTopMenu21.isColor() && pointisOpenTopMenu22.isColor());
-                    break;
-                case 6:
-                    result = (pointisOpenTopMenu61.isColor() && pointisOpenTopMenu62.isColor());
-                    break;
-                case 8:
-                    result = (pointisOpenTopMenu81.isColor() && pointisOpenTopMenu82.isColor());
-                    break;
-                case 9:
-                    result = (pointisOpenTopMenu91.isColor() && pointisOpenTopMenu92.isColor());
-                    break;
-                case 12:
-                    result = (pointisOpenTopMenu121.isColor() && pointisOpenTopMenu122.isColor());
-                    break;
-                case 13:
-                    result = (pointisOpenTopMenu131.isColor() && pointisOpenTopMenu132.isColor());
-                    break;
-                default:
-                    result = true;
-                    break;
-            }
-            return result;
-        }
 
         /// <summary>
         /// нажмает на выбранный раздел верхнего меню 
@@ -622,194 +630,6 @@ namespace OpenGEWindows
         }
 
         #endregion
-
-        #region методы для перекладывания песо в торговца
-
-        /// <summary>
-        /// открыть фесо шоп
-        /// </summary>
-        public override void OpenFesoShop()
-        {
-            TopMenu(2, 2);
-            Pause(1000);
-        }
-
-        /// <summary>
-        /// для передачи песо торговцу. Идем на место и предложение персональной торговли                                          ////////////// перенести в Server
-        /// </summary>
-        public override void ChangeVis1()
-        {
-            iPoint pointTrader = new Point(472 - 5 + xx, 175 - 5 + yy);
-            iPoint pointPersonalTrade = new Point(536 - 5 + xx, 203 - 5 + yy);
-            iPoint pointMap = new Point(405 - 5 + xx, 220 - 5 + yy);
-
-            //идем на место передачи песо
-            botwindow.PressEscThreeTimes();
-            Pause(1000);
-
-            town.MaxHeight();             //с учетом города и сервера
-            Pause(500);
-
-            OpenMapForState();                  //открываем карту города
-            Pause(500);
-
-            pointMap.DoubleClickL();   //тыкаем в карту, чтобы добежать до нужного места
-
-            botwindow.PressEscThreeTimes();       // закрываем карту
-            Pause(25000);               // ждем пока добежим
-
-            iPointColor pointMenuTrade = new PointColor(588 - 5 + xx, 230 - 5 + yy, 1710000, 4);
-            while (!pointMenuTrade.isColor())
-            {
-                //жмем правой на торговце
-                pointTrader.PressMouseR();
-                Pause(1000);
-            }
-
-            //жмем левой  на пункт "Personal Trade"
-            pointPersonalTrade.PressMouseL();
-            Pause(500);
-        }
-
-        /// <summary>
-        /// обмен песо (часть 2) закрываем сделку со стороны бота
-        /// </summary>
-        public override void ChangeVis2()
-        {
-            iPoint pointVis1 = new Point(903 - 5 + xx, 151 - 5 + yy);
-            iPoint pointVisMove1 = new Point(701 - 5 + xx, 186 - 5 + yy);
-            iPoint pointVisMove2 = new Point(395 - 5 + xx, 361 - 5 + yy);
-            iPoint pointVisOk = new Point(611 - 5 + xx, 397 - 5 + yy);
-            iPoint pointVisOk2 = new Point(442 - 5 + xx, 502 - 5 + yy);
-            iPoint pointVisTrade = new Point(523 - 5 + xx, 502 - 5 + yy);
-
-            // открываем инвентарь
-            TopMenu(8, 1);
-
-            // открываем закладку кармана, там где песо
-            pointVis1.DoubleClickL();
-            Pause(500);
-
-            // перетаскиваем песо
-            pointVisMove1.Drag(pointVisMove2);                                             // песо берется из первой ячейки на 4-й закладке  
-            Pause(500);
-
-            // нажимаем Ок для подтверждения передаваемой суммы песо
-            pointVisOk.DoubleClickL();
-
-            // нажимаем ок
-            pointVisOk2.DoubleClickL();
-            Pause(500);
-
-            // нажимаем обмен
-            pointVisTrade.DoubleClickL();
-            Pause(500);
-        }
-
-        /// <summary>
-        /// купить 400 еды в фесо шопе                    вообще-то метод должен находится в ServerInterface
-        /// </summary>
-        public override void Buy125PetFood()
-        {
-            iPoint pointFood = new Point(361 - 5 + xx, 331 - 5 + yy);     //шаг = 27 пикселей на одну строчку магазина (на случай если добавят новые строчки)
-            iPoint pointButtonBUY = new Point(730 - 5 + xx, 625 - 5 + yy);  
-
-            // тыкаем два раза в стрелочку вверх
-            pointFood.DoubleClickL();
-            Pause(500);
-
-            //нажимаем 125
-            SendKeys.SendWait("125");
-
-            // жмем кнопку купить
-            pointButtonBUY.DoubleClickL();
-            Pause(1500);
-
-            //нажимаем кнопку Close
-            pointButtonClose.DoubleClickL();
-            Pause(1500);
-        }
-
-        /// <summary>
-        /// продать 3 ВК (GS) в фесо шопе 
-        /// </summary>
-        public override void SellGrowthStone3pcs()
-        {
-            iPoint pointArrowUp2 = new Point(379 - 5 + xx, 250 - 5 + yy);
-            iPoint pointButtonSell = new Point(730 - 5 + xx, 625 - 5 + yy);
-
-            // 3 раза нажимаем на стрелку вверх, чтобы отсчитать 3 ВК
-            for (int i = 1; i <= 3; i++)
-            {
-                pointArrowUp2.PressMouseL();
-                Pause(700);
-            }
-
-            //нажимаем кнопку Sell
-            pointButtonSell.PressMouseL();
-            Pause(1000);
-
-            //нажимаем кнопку Close
-            pointButtonClose.PressMouseL();
-            Pause(2500);
-        }
-
-        /// <summary>
-        /// открыть вкладку Sell в фесо шопе
-        /// </summary>
-        public override void OpenBookmarkSell()
-        {
-            iPoint pointBookmarkSell = new Point(245 - 5 + xx, 201 - 5 + yy);
-            pointBookmarkSell.DoubleClickL();
-            Pause(1500);
-        }
-
-        /// <summary>
-        /// переход торговца к месту передачи песо (внутри города)
-        /// </summary>
-        public override void GoToChangePlace()
-        {
-            iPoint pointDealer = new Point(405 - 5 + xx, 210 - 5 + yy);
-            pointDealer.DoubleClickL();
-        }
-
-        /// <summary>
-        /// обмен песо на фесо (часть 1 со стороны торговца) 
-        /// </summary>
-        public override void ChangeVisTrader1()
-        {
-            // наживаем Yes, подтверждая торговлю
-            iPoint pointYesTrade = new Point(1161 - 700 + xx, 595 - 180 + yy);
-            pointYesTrade.DoubleClickL();
-
-            // открываем сундук (карман)
-            TopMenu(8, 1);
-
-            // открываем закладку кармана, там где фесо
-            iPoint pointBookmark4 = new Point(903 - 5 + xx, 151 - 5 + yy);
-            pointBookmark4.DoubleClickL();
-
-            // перетаскиваем фесо на стол торговли
-            iPoint pointFesoBegin = new Point(740 - 5 + xx, 186 - 5 + yy);
-            iPoint pointFesoEnd = new Point(388 - 5 + xx, 343 - 5 + yy);
-            pointFesoBegin.Drag(pointFesoEnd);
-            Pause(500);
-
-            // нажимаем Ок для подтверждения передаваемой суммы фесо
-            iPoint pointOkFeso = new Point(611 - 5 + xx, 397 - 5 + yy);
-            pointOkFeso.DoubleClickL();
-
-            // нажимаем ок
-            iPoint pointOk = new Point(441 - 5 + xx, 502 - 5 + yy);
-            pointOk.DoubleClickL();
-
-            // нажимаем обмен
-            iPoint pointTrade = new Point(522 - 5 + xx, 502 - 5 + yy);
-            pointTrade.DoubleClickL();
-        }
-
-        #endregion
-
 
     }
 }

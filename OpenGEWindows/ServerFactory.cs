@@ -28,8 +28,6 @@ namespace OpenGEWindows
             switch (botwindow.getParam())    
             {
                 case "C:\\America\\":
-                case "C:\\America2\\":
-                case "C:\\America3\\":
                     server = new ServerAmerica(botwindow);
                     break;
                 case "C:\\Europa\\":

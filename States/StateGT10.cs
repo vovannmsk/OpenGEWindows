@@ -12,8 +12,10 @@ namespace States
     {
         private botWindow botwindow;
         private ServerInterface server;
-        private Town town;
         private ServerFactory serverFactory;
+        private Town town;
+        private Market market;
+        private MarketFactory marketFactory;
         //        GotoTrade gototrade;
         private int tekStateInt;
 
@@ -28,7 +30,8 @@ namespace States
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.town = server.getTown();
-            //            this.gototrade = gototrade;
+            this.marketFactory = new MarketFactory(botwindow);
+            this.market = marketFactory.createMarket();
             this.tekStateInt = 10;
         }
 
@@ -68,7 +71,8 @@ namespace States
         {
             //server.BuyingMitridat();                 // покупка митридата
 
-            server.Bookmark_Sell();               //========= тыкаем в закладку SELL =======================
+//            server.Bookmark_Sell();               //========= тыкаем в закладку SELL =======================
+            market.Bookmark_Sell();               //========= тыкаем в закладку SELL =======================
         }
 
         /// <summary>
@@ -86,7 +90,8 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return server.isClickSell();   // провряет, что находимся в магазине на закладке SELL
+//            return server.isClickSell();   // провряет, что находимся в магазине на закладке SELL
+            return market.isClickSell();   // проверяет, что находимся в магазине на закладке SELL
         }
 
         /// <summary>

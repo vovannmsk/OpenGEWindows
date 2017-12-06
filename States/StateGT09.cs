@@ -14,7 +14,8 @@ namespace States
         private ServerInterface server;
         private Town town;
         private ServerFactory serverFactory;
-        //        GotoTrade gototrade;
+        private Market market;
+        private MarketFactory marketFactory;
         private int tekStateInt;
 
         public StateGT09()
@@ -28,7 +29,8 @@ namespace States
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.town = server.getTown();
-            //            this.gototrade = gototrade;
+            this.marketFactory = new MarketFactory(botwindow);
+            this.market = marketFactory.createMarket();
             this.tekStateInt = 9;
         }
 
@@ -85,6 +87,7 @@ namespace States
         public bool isAllCool()
         {
             return server.isSale2();   // провряет, что находимся в магазине на любой закладке (приемлемо)
+//            return market.isSale2();   // провряет, что находимся в магазине на любой закладке (приемлемо)
         }
 
         /// <summary>
