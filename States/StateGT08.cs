@@ -11,10 +11,11 @@ namespace States
     public class StateGT08 : IState
     {
         private botWindow botwindow;
-        private ServerInterface server;
+        private Server server;
         private Town town;
         private ServerFactory serverFactory;
-        //        GotoTrade gototrade;
+        private Market market;
+        private MarketFactory marketFactory;
         private int tekStateInt;
 
         public StateGT08()
@@ -28,7 +29,8 @@ namespace States
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.town = server.getTown();
-            //            this.gototrade = gototrade;
+            this.marketFactory = new MarketFactory(botwindow);
+            this.market = marketFactory.createMarket();
             this.tekStateInt = 8;
         }
 
@@ -70,7 +72,7 @@ namespace States
             town.Click_ToHeadTrader();
 
             int i = 0;
-            while ((!server.isSale()) && (i < 30))        //время, чтобы загрузился магазин
+            while ((!market.isSale()) && (i < 30))        //время, чтобы загрузился магазин
             { botwindow.Pause(500); i++; }
 
             //botwindow.Pause(5000);   //время, чтобы загрузился магазин
@@ -92,7 +94,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()     
         {
-            return server.isSale();    
+            return market.isSale();    
         }
 
         /// <summary>

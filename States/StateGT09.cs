@@ -11,7 +11,7 @@ namespace States
     public class StateGT09 : IState
     {
         private botWindow botwindow;
-        private ServerInterface server;
+        private Server server;
         private Town town;
         private ServerFactory serverFactory;
         private Market market;
@@ -86,8 +86,8 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return server.isSale2();   // провряет, что находимся в магазине на любой закладке (приемлемо)
-//            return market.isSale2();   // провряет, что находимся в магазине на любой закладке (приемлемо)
+//            return server.isSale2();   // провряет, что находимся в магазине на любой закладке (приемлемо)
+            return market.isSale2();   // провряет, что находимся в магазине на любой закладке (приемлемо)
         }
 
         /// <summary>

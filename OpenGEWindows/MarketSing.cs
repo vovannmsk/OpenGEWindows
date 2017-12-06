@@ -19,9 +19,6 @@ namespace OpenGEWindows
             this.botwindow = botwindow;
             this.xx = botwindow.getX();
             this.yy = botwindow.getY();
-            this.townFactory = new SingTownFactory(botwindow);                                     // здесь выбирается конкретная реализация для фабрики Town
-            this.town = townFactory.createTown();
-            this.pathClient = path_Client();
 
             #endregion
 
@@ -47,26 +44,5 @@ namespace OpenGEWindows
 
             #endregion
         }
-
-
-        #region общие методы
-
-        /// <summary>
-        /// путь к исполняемому файлу игры (сервер сингапур)
-        /// </summary>
-        /// <returns></returns>
-        private String path_Client()
-        { return File.ReadAllText(KATALOG_MY_PROGRAM + "\\Singapoore_path.txt"); }
-
-        /// <summary>
-        /// считываем параметр, отвечающий за то, надо ли загружать окна на сервере сингапур
-        /// </summary>
-        /// <returns></returns>
-        private int SingActive()
-        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Singapoore_active.txt")); }
-
-
-        #endregion
-
     }
 }

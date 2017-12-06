@@ -11,7 +11,7 @@ namespace States
     public class StateGT62 : IState
     {
         private botWindow botwindow;
-        private ServerInterface serverDealer;
+        private Server serverDealer;
         private ServerFactory serverFactory;
         private int tekStateInt;
         private botWindow dealer;

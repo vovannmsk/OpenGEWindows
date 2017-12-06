@@ -11,7 +11,7 @@ using System.Threading;
 
 namespace OpenGEWindows
 {
-    public abstract class ServerInterface
+    public abstract class Server
 
     {
         [DllImport("user32.dll")]
@@ -24,10 +24,15 @@ namespace OpenGEWindows
 
         #region общие
 
-        protected const String KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
         protected botWindow botwindow;
         protected int xx;
         protected int yy;
+
+        #endregion
+
+        #region общие 2
+
+        protected const String KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
         protected Town town;
         protected Town town_begin;
         protected TownFactory townFactory;

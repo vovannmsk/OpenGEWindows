@@ -11,7 +11,7 @@ namespace States
     public class StateGT48 : IState
     {
         private botWindow botwindow;
-        private ServerInterface server;
+        private Server server;
 //        private Town town;
         private ServerFactory serverFactory;
         //        GotoTrade gototrade;

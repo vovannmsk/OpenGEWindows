@@ -43,7 +43,7 @@ namespace States
         /// </summary>
         public void StateTransferVis()
         {
-            ServerInterface server;                 
+            Server server;                 
             ServerFactory serverFactory;
             serverFactory = new ServerFactory(this.botwindow);
             server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
@@ -119,7 +119,7 @@ namespace States
         /// </summary>
         public void StateSelling()
         {
-            if (botwindow.getserver().isSale())                                 //проверяем, находимся ли в магазине
+            if (botwindow.getMarket().isSale())                                 //проверяем, находимся ли в магазине
                 StateDriverRun(new StateGT09(botwindow), new StateGT12(botwindow));
             //StateDriverRun(new StateGT09(botwindow), new StateGT12(botwindow));
         }

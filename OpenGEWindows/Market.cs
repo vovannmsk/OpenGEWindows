@@ -16,14 +16,9 @@ namespace OpenGEWindows
 
         #region общие
 
-        protected const String KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
         protected botWindow botwindow;
         protected int xx;
         protected int yy;
-        protected Town town;
-        protected Town town_begin;
-        protected TownFactory townFactory;
-        protected String pathClient;
 
         #endregion
 
@@ -98,7 +93,6 @@ namespace OpenGEWindows
         }
 
         #endregion
-
 
         #region Shop
 

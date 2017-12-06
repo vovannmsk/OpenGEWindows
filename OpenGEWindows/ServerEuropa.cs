@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace OpenGEWindows
 {
-    public class ServerEuropa : ServerInterface 
+    public class ServerEuropa : Server 
     {
         [DllImport("user32.dll")]
         public static extern bool SetWindowPos(UIntPtr myhWnd, int myhwndoptional, int xx, int yy, int cxx, int cyy, uint flagus); // Перемещает окно в заданные координаты с заданным размером
@@ -33,6 +33,11 @@ namespace OpenGEWindows
             this.botwindow = botwindow;
             this.xx = botwindow.getX();
             this.yy = botwindow.getY();
+
+            #endregion
+
+            #region общие 2
+
             TownFactory townFactory = new EuropaTownFactory(botwindow);                      // здесь выбирается конкретная реализация для фабрики Town
             this.town = townFactory.createTown();                                            // выбирается город с помощью фабрики
             this.pathClient = path_Client();
@@ -272,7 +277,7 @@ namespace OpenGEWindows
 
         // ===============================  Методы ==================================================
 
-        #region Общие методы
+        #region Общие методы 2
 
         /// <summary>
         /// возвращает параметр, прочитанный из файла

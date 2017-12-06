@@ -12,7 +12,7 @@ namespace OpenGEWindows
     public class ServerFactory
 
     {
-        private ServerInterface server;
+        private Server server;
         private botWindow botwindow;
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace OpenGEWindows
         {
             this.botwindow = botwindow;
         }
-        public ServerInterface createServer()
+        public Server createServer()
         { 
             switch (botwindow.getParam())    
             {

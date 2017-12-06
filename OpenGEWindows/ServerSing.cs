@@ -15,7 +15,7 @@ namespace OpenGEWindows
     /// <summary>
     /// Класс описывает процесс перехода к торговле от фарма , начиная от проверки необходимости продажи и заканчивая закрытием окна с ботом (для сервера Сингапур (Avalon))
     /// </summary>
-    public class ServerSing : ServerInterface
+    public class ServerSing : Server
     {
         [DllImport("user32.dll")]
         public static extern bool SetWindowPos(UIntPtr myhWnd, int myhwndoptional, int xx, int yy, int cxx, int cyy, uint flagus); // Перемещает окно в заданные координаты с заданным размером
@@ -39,6 +39,11 @@ namespace OpenGEWindows
             this.botwindow = botwindow;
             this.xx = botwindow.getX();
             this.yy = botwindow.getY();
+
+            #endregion
+
+            #region общие 2
+
             this.townFactory = new SingTownFactory(botwindow);                                     // здесь выбирается конкретная реализация для фабрики Town
             this.town = townFactory.createTown();
             this.pathClient = path_Client();
@@ -395,7 +400,7 @@ namespace OpenGEWindows
 
         //==================================== Методы ===================================================
 
-        #region общие методы
+        #region общие методы 2
 
         /// <summary>
         /// путь к исполняемому файлу игры (сервер сингапур)

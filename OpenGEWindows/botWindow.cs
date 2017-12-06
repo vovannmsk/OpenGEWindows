@@ -39,9 +39,11 @@ namespace OpenGEWindows
         private DataBot databot;              //начальные данные для бота (заданные пользователем)
         private IScriptDataBot scriptDataBot;
 
-        private ServerInterface server;                 
+        private Server server;                 
         private ServerFactory serverFactory;
         private Town town;
+        private Market market;
+        private MarketFactory marketFactory;
         //private int counterMitridat;
         //private System.DateTime timeMitridat = System.DateTime.Now;
 
@@ -83,6 +85,8 @@ namespace OpenGEWindows
             this.serverFactory = new ServerFactory(this);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.town = server.getTown();
+            this.marketFactory = new MarketFactory(this);
+            this.market = marketFactory.createMarket();
 
             // точки для тыканья. универсально для всех серверов
             this.pointButtonClose = new Point(850 - 5 + databot.x, 625 - 5 + databot.y);   //(848, 620);
@@ -102,9 +106,13 @@ namespace OpenGEWindows
         }
         public DataBot getDataBot()
         { return this.databot; }
-        public ServerInterface getserver()
+        public Server getserver()
         {
             return this.server;
+        }
+        public Market getMarket()
+        {
+            return this.market;
         }
         public UIntPtr getHwnd()
         { return databot.hwnd; }

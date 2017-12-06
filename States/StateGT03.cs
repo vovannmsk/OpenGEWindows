@@ -10,7 +10,7 @@ namespace States
     public class StateGT03 : IState
     {
         private botWindow botwindow;
-        private ServerInterface server;
+        private Server server;
         private Town town;
         private ServerFactory serverFactory;
         private int tekStateInt;

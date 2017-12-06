@@ -116,7 +116,7 @@
     <Compile Include="EuropaTownFactory.cs" />
     <Compile Include="EuropaTownReboldo.cs" />
     <Compile Include="EuropaTownUstiar.cs" />
-    <Compile Include="ServerInterface.cs" />
+    <Compile Include="Server.cs" />
     <Compile Include="ServerAmerica.cs" />
     <Compile Include="ServerEuropa.cs" />
     <Compile Include="ServerFactory.cs" />

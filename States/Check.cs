@@ -11,7 +11,8 @@ namespace States
     public class Check
     {
         private botWindow botwindow;
-        private ServerInterface server;
+        private Server server;
+        private Market market;
         DriversOfState driver;
 
         public Check()
@@ -21,6 +22,7 @@ namespace States
         {
             botwindow = new botWindow(numberOfWindow);
             server = botwindow.getserver();
+            market = botwindow.getMarket();
             driver = new DriversOfState(numberOfWindow);
         }
 
@@ -49,7 +51,7 @@ namespace States
                 }
                 else
                 {
-                    if (server.isSale2())         //если зависли в магазине на любой закладке
+                    if (market.isSale2())         //если зависли в магазине на любой закладке
                     {
                         driver.StateExitFromShop();            //выход из магазина
                     }
@@ -88,7 +90,7 @@ namespace States
                                     }
                                     else
                                     {
-                                        if (server.isSale())                               // если застряли в магазине на странице входа
+                                        if (market.isSale())                               // если застряли в магазине на странице входа
                                         { driver.StateExitFromShop2(); }
                                         else
                                         {
@@ -204,9 +206,8 @@ namespace States
         public void TestButton()
         {
             botWindow botwindow = new botWindow(2);
-            ServerInterface server = new ServerSing(botwindow);
+            Server server = new ServerSing(botwindow);
             Market market = new MarketSing(botwindow);
-            MessageBox.Show(" " + server.isSale2());
             MessageBox.Show(" " + market.isSale2());
 
             //bool iscolor1 = server.isSafeIP();

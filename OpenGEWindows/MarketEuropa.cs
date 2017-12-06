@@ -20,9 +20,6 @@ namespace OpenGEWindows
             this.botwindow = botwindow;
             this.xx = botwindow.getX();
             this.yy = botwindow.getY();
-            TownFactory townFactory = new EuropaTownFactory(botwindow);                      // здесь выбирается конкретная реализация для фабрики Town
-            this.town = townFactory.createTown();                                            // выбирается город с помощью фабрики
-            this.pathClient = path_Client();
 
             #endregion
 
@@ -47,24 +44,6 @@ namespace OpenGEWindows
         }
 
         // ===============================  Методы ==================================================
-
-        #region Общие методы
-
-        /// <summary>
-        /// возвращает параметр, прочитанный из файла
-        /// </summary>
-        /// <returns></returns>
-        private int EuropaActive()
-        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Europa_active.txt")); }
-
-        /// <summary>
-        /// возвращает параметр, прочитанный из файла
-        /// </summary>
-        /// <returns></returns>
-        private String path_Client()
-        { return File.ReadAllText(KATALOG_MY_PROGRAM + "\\Europa_path.txt"); }
-
-        #endregion
 
 
 
