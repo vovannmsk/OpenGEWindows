@@ -44,6 +44,9 @@ namespace OpenGEWindows
         private Town town;
         private Market market;
         private MarketFactory marketFactory;
+        private Pet pet;
+        private PetFactory petFactory;
+
         //private int counterMitridat;
         //private System.DateTime timeMitridat = System.DateTime.Now;
 
@@ -87,6 +90,8 @@ namespace OpenGEWindows
             this.town = server.getTown();
             this.marketFactory = new MarketFactory(this);
             this.market = marketFactory.createMarket();
+            this.petFactory = new PetFactory(this);
+            this.pet = petFactory.createPet();
 
             // точки для тыканья. универсально для всех серверов
             this.pointButtonClose = new Point(850 - 5 + databot.x, 625 - 5 + databot.y);   //(848, 620);
@@ -114,6 +119,11 @@ namespace OpenGEWindows
         {
             return this.market;
         }
+        public Pet getPet()
+        {
+            return this.pet;
+        }
+
         public UIntPtr getHwnd()
         { return databot.hwnd; }
         public int getNumberWindow()

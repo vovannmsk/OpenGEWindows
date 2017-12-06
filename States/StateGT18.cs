@@ -12,9 +12,9 @@ namespace States
     {
         private botWindow botwindow;
         private Server server;
-//        private Town town;
         private ServerFactory serverFactory;
-        //        GotoTrade gototrade;
+        private Pet pet;
+        private PetFactory petFactory;
         private int tekStateInt;
 
         public StateGT18()
@@ -27,7 +27,8 @@ namespace States
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-//            this.town = server.getTown();
+            this.petFactory = new PetFactory(botwindow);
+            this.pet = petFactory.createPet();
             this.tekStateInt = 18;
         }
 
@@ -95,7 +96,7 @@ namespace States
         public bool isAllCool()
         {
 //            return botwindow.isOpenMenuPet();     //сделать проверку, открыто ли окно с петом Alt+P
-            return server.isOpenMenuPet();     //сделать проверку, открыто ли окно с петом Alt+P
+            return pet.isOpenMenuPet();     //сделать проверку, открыто ли окно с петом Alt+P
         }
 
         /// <summary>

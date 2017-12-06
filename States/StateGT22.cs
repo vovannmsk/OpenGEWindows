@@ -14,7 +14,8 @@ namespace States
         private Server server;
         private Town town;
         private ServerFactory serverFactory;
-        //        GotoTrade gototrade;
+        private Pet pet;
+        private PetFactory petFactory;
         private int tekStateInt;
 
         public StateGT22()
@@ -28,7 +29,8 @@ namespace States
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.town = server.getTown();
-            //            this.gototrade = gototrade;
+            this.petFactory = new PetFactory(botwindow);
+            this.pet = petFactory.createPet();
             this.tekStateInt = 22;
         }
 
@@ -66,7 +68,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            if (!server.isActivePet()) server.ActivePet();
+            if (!pet.isActivePet()) pet.ActivePet();
             //botwindow.PressMouse(408, 405);  //Click Active Pet
             //botwindow.Pause(2500);
         }
@@ -84,7 +86,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return (!server.isKillHero() && server.isActivePet());     //если никто не убит и активирован пет, то дальше
+            return (!server.isKillHero() && pet.isActivePet());     //если никто не убит и активирован пет, то дальше
             // botwindow.isColor2(495 - 5, 310 - 5, 13200000, 496 - 5, 308 - 5, 13600000, 5);
         }
 

@@ -14,6 +14,8 @@ namespace States
         private Server server;
         private ServerFactory serverFactory;
         private Town town;
+        private Pet pet;
+        private PetFactory petFactory;
 
         private int tekStateInt;
 
@@ -28,7 +30,8 @@ namespace States
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.town = server.getTown();
-            //            this.gototrade = gototrade;
+            this.petFactory = new PetFactory(botwindow);
+            this.pet = petFactory.createPet();
             this.tekStateInt = 21;
         }
 
@@ -52,7 +55,6 @@ namespace States
             return result;
         }
 
-
         /// <summary>
         /// геттер, возвращает текущее состояние
         /// </summary>
@@ -68,14 +70,7 @@ namespace States
         public void run()                // переход к следующему состоянию
         {
             if (!server.isKillHero())             //если никто не убит, то можно призывать пета
-                server.buttonSummonPet();
-
-            //botwindow.PressMouseL(569, 375);  //Click Pet
-            //botwindow.PressMouseL(569, 375);
-            //botwindow.Pause(500);
-            //botwindow.PressMouseL(408, 360);  //Click кнопку "Summon"
-            //botwindow.PressMouseL(408, 360);
-            //botwindow.Pause(1000);
+                pet.buttonSummonPet();
         }
 
         /// <summary>
@@ -91,9 +86,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            bool r1 = server.isSummonPet();
-            bool r2 = !server.isKillHero();
-            return (server.isSummonPet() && !server.isKillHero());     //пет призван и никто не убит
+            return (pet.isSummonPet() && !server.isKillHero());     //пет призван и никто не убит
         }
 
         /// <summary>

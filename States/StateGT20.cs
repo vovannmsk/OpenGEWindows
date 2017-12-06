@@ -13,7 +13,8 @@ namespace States
         private botWindow botwindow;
         private Server server;
         private ServerFactory serverFactory;
-        //private Town town;
+        private Pet pet;
+        private PetFactory petFactory;
         private int tekStateInt;
 
         public StateGT20()
@@ -27,6 +28,8 @@ namespace States
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             //this.town = server.getTown();
+            this.petFactory = new PetFactory(botwindow);
+            this.pet = petFactory.createPet();
             this.tekStateInt = 20;
         }
 
@@ -64,7 +67,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.buttonCancelSummonPet();
+            pet.buttonCancelSummonPet();
             //botwindow.PressMouseL(408, 390); //Click Cancel Summon
             //botwindow.PressMouseL(408, 390);
             //botwindow.Pause(1000);
@@ -85,7 +88,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            bool ff = !server.isSummonPet();
+            bool ff = !pet.isSummonPet();
             return ff;
         }
 

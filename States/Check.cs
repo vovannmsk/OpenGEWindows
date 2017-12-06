@@ -13,6 +13,7 @@ namespace States
         private botWindow botwindow;
         private Server server;
         private Market market;
+        private Pet pet;
         DriversOfState driver;
 
         public Check()
@@ -23,6 +24,7 @@ namespace States
             botwindow = new botWindow(numberOfWindow);
             server = botwindow.getserver();
             market = botwindow.getMarket();
+            pet = botwindow.getPet();
             driver = new DriversOfState(numberOfWindow);
         }
 
@@ -94,7 +96,7 @@ namespace States
                                         { driver.StateExitFromShop2(); }
                                         else
                                         {
-                                            if (server.isOpenMenuPet())                  //если открыто меню с петом, значит пет не выпущен
+                                            if (pet.isOpenMenuPet())                  //если открыто меню с петом, значит пет не выпущен
                                             {
                                                 driver.StateActivePet();
                                             }

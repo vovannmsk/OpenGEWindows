@@ -9,18 +9,18 @@ using System.Threading;
 
 namespace OpenGEWindows
 {
-    public abstract class Market 
+    public abstract class Market : Server2
     {
 
         // ============ переменные ======================
 
-        #region общие
+        //#region общие
 
-        protected botWindow botwindow;
-        protected int xx;
-        protected int yy;
+        //protected botWindow botwindow;
+        //protected int xx;
+        //protected int yy;
 
-        #endregion
+        //#endregion
 
         #region Shop
 
@@ -81,18 +81,18 @@ namespace OpenGEWindows
 
         // ============  методы  ========================
 
-        #region общие методы
+        //#region общие методы
 
-        /// <summary>
-        /// Останавливает поток на некоторый период (пауза)
-        /// </summary>
-        /// <param name="ms"> ms - период в милисекундах </param>
-        protected void Pause(int ms)
-        {
-            Thread.Sleep(ms);
-        }
+        ///// <summary>
+        ///// Останавливает поток на некоторый период (пауза)
+        ///// </summary>
+        ///// <param name="ms"> ms - период в милисекундах </param>
+        //protected void Pause(int ms)
+        //{
+        //    Thread.Sleep(ms);
+        //}
 
-        #endregion
+        //#endregion
 
         #region Shop
 
