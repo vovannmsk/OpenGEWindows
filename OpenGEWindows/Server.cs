@@ -1622,6 +1622,10 @@ namespace OpenGEWindows
 
         #endregion
 
+        #region dialog
+
+        #endregion
+
         #region кратер
         /// <summary>
         /// перекладываем митридат в ячейку под цифрой 2

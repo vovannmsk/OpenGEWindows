@@ -29,11 +29,9 @@ namespace OpenGEWindows
 
         #endregion
 
-
         // ============  методы  ========================
 
-
-        #region Pet (только точки)
+        #region Pet
 
         /// <summary>
         /// выбираем первого пета и нажимаем кнопку Summon в меню пет
@@ -95,7 +93,6 @@ namespace OpenGEWindows
         }
 
         #endregion
-
 
     }
 }

@@ -101,7 +101,11 @@
     <Compile Include="AmericaTownFactory.cs" />
     <Compile Include="botWindow.cs" />
     <Compile Include="iPointColor.cs" />
+    <Compile Include="Dialog.cs" />
+    <Compile Include="DialogAmerica.cs" />
+    <Compile Include="DialogEuropa.cs" />
     <Compile Include="PetFactory.cs" />
+    <Compile Include="DialogSing.cs" />
     <Compile Include="PetSing.cs" />
     <Compile Include="PetEuropa.cs" />
     <Compile Include="PetAmerica.cs" />
