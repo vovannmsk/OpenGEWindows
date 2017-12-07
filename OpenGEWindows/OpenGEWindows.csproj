@@ -104,8 +104,13 @@
     <Compile Include="Dialog.cs" />
     <Compile Include="DialogAmerica.cs" />
     <Compile Include="DialogEuropa.cs" />
+    <Compile Include="Otit.cs" />
+    <Compile Include="OtitAmerica.cs" />
+    <Compile Include="OtitEuropa.cs" />
+    <Compile Include="OtitFactory.cs" />
     <Compile Include="PetFactory.cs" />
     <Compile Include="DialogSing.cs" />
+    <Compile Include="OtitSing.cs" />
     <Compile Include="PetSing.cs" />
     <Compile Include="PetEuropa.cs" />
     <Compile Include="PetAmerica.cs" />
