@@ -558,6 +558,30 @@ namespace Main
 
         #endregion
 
+        #region
+
+        private void PureOtite_Click(object sender, EventArgs e)
+        {
+            Thread myThreadSilver = new Thread(funcSilver);
+            myThreadSilver.Start();
+
+        }
+
+        /// <summary>
+        /// метод задает функционал для потока, организуемого аква кнопкой
+        /// </summary>
+        private void funcSilver()
+        {
+            Check check = new Check(19);
+            check.ReOpenWindow();
+            if (check.isLogout())   //если окно находится в логауте
+            {
+                DriversOfState drive = new DriversOfState(19);
+                drive.StateOtitRun();
+            }
+        }
+        #endregion
+
 
 
 

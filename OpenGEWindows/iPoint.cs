@@ -10,6 +10,7 @@ namespace OpenGEWindows
     {
         void PressMouseR();  
         void PressMouseL();
+        void PressMouseLL();
         void PressMouse();
         void PressMouseWheelUp();
         void PressMouseWheelDown();

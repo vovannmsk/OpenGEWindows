@@ -8,28 +8,28 @@ using OpenGEWindows;
 
 namespace States
 {
-    public class StateGT76 : IState
+    public class StateGT83 : IState
     {
         private botWindow botwindow;
         private Server server;
-        private Otit otit;
-        //private Town town;
         private int tekStateInt;
+        private Otit otit;
 
-        public StateGT76()
+
+        public StateGT83()
         {
 
         }
 
-        public StateGT76(botWindow botwindow)   //, GotoTrade gototrade)
+        public StateGT83(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
-            this.server = botwindow.getserver();
-            this.otit = botwindow.getOtit();
+            ServerFactory serverFactory = new ServerFactory(botwindow);
+            this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            OtitFactory otitFactory = new OtitFactory(botwindow);
+            this.otit = otitFactory.createOtit();
 
-            //this.town = server.getTown();
-
-            this.tekStateInt = 76;
+            this.tekStateInt = 83;
         }
 
 
@@ -38,8 +38,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            otit.GetTask();
-            botwindow.Pause(1000); //ожидаем город
+            otit.TakePureOtite();
         }
 
         /// <summary>
@@ -55,7 +54,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return (server.isTown() || server.isTown_2());
+            return (server.isTown() && server.isTown_2());
         }
 
         /// <summary>
@@ -64,7 +63,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT77(botwindow);
+            return new StateGT84(botwindow);
         }
 
         /// <summary>

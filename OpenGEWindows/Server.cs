@@ -467,6 +467,7 @@ namespace OpenGEWindows
         #endregion
 
         #region Logout
+
         /// <summary>
         /// метод проверяет, находится ли данное окно в режиме логаута, т.е. на стадии ввода логина-пароля
         /// </summary>

@@ -30,6 +30,17 @@ namespace States
         #region движки для запуска перехода по состояниям
 
         /// <summary>
+        /// перевод из состояния 75 в состояние 90. Цель  - добыча отита
+        /// </summary>
+        public void StateOtitRun()
+        {
+            StateDriverRun(new StateGT15(this.botwindow), new StateGT17(this.botwindow));  // переход из состояния "Логаут" в состояние "В городе" (Los Toldos)
+            StateDriverRun(new StateGT75(this.botwindow), new StateGT82(this.botwindow));  // до выполнения задания на мертвых землях
+            StateDriverRun(new StateGT15(this.botwindow), new StateGT17(this.botwindow));  // переход из состояния "Логаут" в состояние "В городе" (Los Toldos)
+            StateDriverRun(new StateGT82(this.botwindow), new StateGT85(this.botwindow));  // получаем отит и логаут
+        }
+
+        /// <summary>
         /// перевод из состояния 20 (пет не выпущен) в состояние 01 (на работе). Цель  - выпустить пета и расставить треугольником
         /// </summary>
         public void StateActivePet()
@@ -50,7 +61,7 @@ namespace States
 
             if (server.isLogout())
             {
-                StateDriverRun(new StateGT60(this.botwindow), new StateGT80(this.botwindow));
+                StateDriverRun(new StateGT60(this.botwindow), new StateGT74(this.botwindow));
             }
         }
 

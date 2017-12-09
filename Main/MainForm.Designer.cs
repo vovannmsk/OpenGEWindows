@@ -45,6 +45,7 @@
             this.sharpening = new System.Windows.Forms.Button();
             this.Nintendo = new System.Windows.Forms.Button();
             this.TransferVis = new System.Windows.Forms.Button();
+            this.PureOtite = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonReOpenWindowGE
@@ -201,12 +202,24 @@
             this.TransferVis.UseVisualStyleBackColor = false;
             this.TransferVis.Click += new System.EventHandler(this.TransferVis_Click);
             // 
+            // PureOtite
+            // 
+            this.PureOtite.BackColor = System.Drawing.Color.Silver;
+            this.PureOtite.Location = new System.Drawing.Point(190, 211);
+            this.PureOtite.Name = "PureOtite";
+            this.PureOtite.Size = new System.Drawing.Size(170, 34);
+            this.PureOtite.TabIndex = 55;
+            this.PureOtite.Text = "Добыча Чистого Отита";
+            this.PureOtite.UseVisualStyleBackColor = false;
+            this.PureOtite.Click += new System.EventHandler(this.PureOtite_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(369, 224);
+            this.ClientSize = new System.Drawing.Size(369, 211);
+            this.Controls.Add(this.PureOtite);
             this.Controls.Add(this.TransferVis);
             this.Controls.Add(this.Nintendo);
             this.Controls.Add(this.sharpening);
@@ -251,6 +264,7 @@
         private System.Windows.Forms.Button sharpening;
         private System.Windows.Forms.Button Nintendo;
         private System.Windows.Forms.Button TransferVis;
+        private System.Windows.Forms.Button PureOtite;
     
     }
 }

@@ -26,6 +26,9 @@ namespace OpenGEWindows
         protected iPointColor pointOpenTownTeleport1;
         protected iPointColor pointOpenTownTeleport2;
 
+        protected iPoint pointOldManOnMap;
+        protected iPoint pointOldMan1;
+
         protected int xx;
         protected int yy;
         protected int PAUSE_TIME;
@@ -78,8 +81,6 @@ namespace OpenGEWindows
         /// <returns> true, если карта уже открыта </returns>
         public bool isOpenMap()
         {
-            uint ff = pointOpenMap1.GetPixelColor();
-            uint gg = pointOpenMap2.GetPixelColor();
             return ((pointOpenMap1.isColor()) && (pointOpenMap2.isColor()));
         }
 
@@ -172,6 +173,21 @@ namespace OpenGEWindows
             Thread.Sleep(ms);
         }
 
+        /// <summary>
+        /// тыкаем на открытой карте в строчку со старым мужиком
+        /// </summary>
+        public void PressOldManonMap()
+        {
+            pointOldManOnMap.DoubleClickL();
+        }
+
+        /// <summary>
+        /// тыкаем на старого мужика
+        /// </summary>
+        public void PressOldMan1()
+        {
+            pointOldMan1.PressMouseL();
+        }
 
     }
 }

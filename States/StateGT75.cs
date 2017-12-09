@@ -11,12 +11,8 @@ namespace States
     public class StateGT75 : IState
     {
         private botWindow botwindow;
-        private Server server;
-        private Server serverDealer;
-        //private Town town;
-        private ServerFactory serverFactory;
         private int tekStateInt;
-        private botWindow dealer;
+        private Otit otit;
 
         public StateGT75()
         {
@@ -26,25 +22,17 @@ namespace States
         public StateGT75(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
-            this.serverFactory = new ServerFactory(botwindow);
-            this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            //this.town = server.getTown();
-//            this.botwindowDealer = new botWindow(20);         // здесь методы торговца как у обычного бота
-            this.dealer = new botWindow(20);   // здесь уникальные методы, присущие только торговцу
-            this.serverFactory = new ServerFactory(dealer);
-            this.serverDealer = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-
+            OtitFactory otitFactory = new OtitFactory(botwindow);
+            this.otit = otitFactory.createOtit();
             this.tekStateInt = 75;
         }
-
 
         /// <summary>
         /// метод осуществляет действия для перехода в следующее состояние
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-
-
+            otit.GoToOldMan();
         }
 
         /// <summary>
@@ -60,7 +48,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return true;                                                                                //считаем, что осечек не будет на этом этапе, и мы 100% переёдем к следующему пункту
+            return otit.isOldMan();
         }
 
         /// <summary>
@@ -78,7 +66,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGT75(botwindow);
+            return new StateGT84(botwindow);
         }
 
         #region стандартные служебные методы для паттерна Состояния

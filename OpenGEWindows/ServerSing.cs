@@ -590,7 +590,15 @@ namespace OpenGEWindows
         {
             iPoint pointNotToShoot = new Point(300 - 5 + xx, 300 - 5 + yy);
             iPoint pointNotToShoot2 = new Point(350 - 5 + xx, 350 - 5 + yy);
-            iPoint pointTeleportToTownAltW = new Point(801 + xx, 564 + yy + (botwindow.getNomerTeleport() - 1) * 17);
+            iPoint pointTeleportToTownAltW;
+            if (botwindow.getNomerTeleport() < 11)
+            {
+                pointTeleportToTownAltW = new Point(801 + xx, 564 + yy + (botwindow.getNomerTeleport() - 1) * 17);
+            }
+            else
+            {
+                pointTeleportToTownAltW = new Point(801 + xx, 564 + yy);   //ребольдо
+            }
 
             // отбегаю в сторону. чтобы бот не стрелял  
             pointNotToShoot.DoubleClickL();

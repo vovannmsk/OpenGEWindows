@@ -69,6 +69,19 @@ namespace OpenGEWindows
         }
 
         /// <summary>
+        /// два последовательных нажатия левой кнопкой мыши через паузу
+        /// </summary>
+        /// <param name="x"> x - первая координата точки, куда нужно ткнуть мышью </param>
+        /// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
+        public void PressMouseLL()
+        {
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 1);
+            Pause(500);
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 1);
+            Pause(200);
+        }
+
+        /// <summary>
         /// нажать мышью в конкретную точку
         /// дважды будет нажиматься правая кнопка и однажды левая, также к координатам будет прибавляться смещение окна от края монитора getX и getY
         /// </summary>

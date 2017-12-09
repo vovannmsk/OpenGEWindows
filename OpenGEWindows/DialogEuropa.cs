@@ -36,7 +36,7 @@ namespace OpenGEWindows
         public override void PressStringDialog(int number)
         {
             iPoint pointString = new Point(520 - 5 + xx, 660 - 5 + yy - (number - 1) * 20);
-            pointString.PressMouse();
+            pointString.PressMouseLL();
             Pause(1000);
         }
 

@@ -34,18 +34,23 @@ namespace OpenGEWindows
         private const int WIDHT_WINDOW = 1024;
         private const int HIGHT_WINDOW = 700;
         private const String KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
-//        private int needToChange;
 
         private DataBot databot;              //начальные данные для бота (заданные пользователем)
         private IScriptDataBot scriptDataBot;
 
         private Server server;                 
         private ServerFactory serverFactory;
-        private Town town;
+//        private Town town;
         private Market market;
         private MarketFactory marketFactory;
         private Pet pet;
         private PetFactory petFactory;
+        private Otit otit;
+        private OtitFactory otitFactory;
+        private Dialog dialog;
+        private DialogFactory dialogFactory;
+
+
 
         //private int counterMitridat;
         //private System.DateTime timeMitridat = System.DateTime.Now;
@@ -87,11 +92,15 @@ namespace OpenGEWindows
             // эти объекты создаются на основании предыдущих переменных класса, а именно param (на каком сервере бот) и nomerTeleport (город продажи)
             this.serverFactory = new ServerFactory(this);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            this.town = server.getTown();
+//            this.town = server.getTown();
             this.marketFactory = new MarketFactory(this);
             this.market = marketFactory.createMarket();
             this.petFactory = new PetFactory(this);
             this.pet = petFactory.createPet();
+            this.otitFactory = new OtitFactory(this);
+            this.otit = otitFactory.createOtit();
+            this.dialogFactory = new DialogFactory(this);
+            this.dialog = dialogFactory.createDialog();
 
             // точки для тыканья. универсально для всех серверов
             this.pointButtonClose = new Point(850 - 5 + databot.x, 625 - 5 + databot.y);   //(848, 620);
@@ -123,6 +132,15 @@ namespace OpenGEWindows
         {
             return this.pet;
         }
+        public Otit getOtit()
+        {
+            return this.otit;
+        }
+        public Dialog getDialog()
+        {
+            return this.dialog;
+        }
+
 
         public UIntPtr getHwnd()
         { return databot.hwnd; }

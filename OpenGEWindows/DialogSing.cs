@@ -23,7 +23,6 @@ namespace OpenGEWindows
             #endregion
 
             this.ButtonOkDialog = new Point(910 - 5 + xx, 680 - 5 + yy);                           //нажимаем на Ок в диалоге
-
         }
 
         // ===============================  Методы ==================================================
@@ -35,7 +34,7 @@ namespace OpenGEWindows
         public override void PressStringDialog(int number)
         {
             iPoint pointString = new Point(520 - 5 + xx, 660 - 5 + yy - (number - 1) * 20);
-            pointString.PressMouse();
+            pointString.PressMouseLL();
             Pause(1000);
         }
 

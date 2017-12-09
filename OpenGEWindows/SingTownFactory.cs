@@ -54,6 +54,10 @@ namespace OpenGEWindows
                 //    //=================== Кастилия=======================================
                 //    town = new SingTownCastilia(nomerOfWindow);
                 //    break;
+                case 11:
+                    //=================== лос толдос ======================================
+                    town = new SingTownLosToldos(botwindow);
+                    break;
                 default:
                     //=================== такого быть не должно, но пусть будет Ребольдо =======================================
                     town = new SingTownReboldo(botwindow);

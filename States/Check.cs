@@ -14,6 +14,7 @@ namespace States
         private Server server;
         private Market market;
         private Pet pet;
+        private Otit otit;
         DriversOfState driver;
 
         public Check()
@@ -25,6 +26,7 @@ namespace States
             server = botwindow.getserver();
             market = botwindow.getMarket();
             pet = botwindow.getPet();
+            otit = botwindow.getOtit();
             driver = new DriversOfState(numberOfWindow);
         }
 
@@ -153,7 +155,7 @@ namespace States
         /// <returns></returns>
         public bool isLogout()
         {
-            return botwindow.getserver().isLogout();
+            return server.isLogout();
         }
 
         /// <summary>
@@ -200,6 +202,13 @@ namespace States
             return server.isEnchant();
         }
 
+        /// <summary>
+        /// проверяем, находимся ли мы в диалоге со старым мужиком в Лос Толдосе
+        /// </summary>
+        public bool isOldMan()
+        {
+            return otit.isOldMan();
+        }
 
 
         /// <summary>
@@ -207,10 +216,11 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            botWindow botwindow = new botWindow(2);
+            botWindow botwindow = new botWindow(19);
             Server server = new ServerSing(botwindow);
             Market market = new MarketSing(botwindow);
-            MessageBox.Show(" " + market.isSale2());
+            Otit otit = new OtitSing(botwindow);
+            MessageBox.Show(" " + otit.isTaskDone());
 
             //bool iscolor1 = server.isSafeIP();
             //MessageBox.Show(" " + iscolor1);
@@ -221,8 +231,8 @@ namespace States
             uint color1;
             uint color2;
 
-            PointColor point1 = new PointColor(565 - 5 + xx, 530 - 5 + yy, 1710000, 4);
-            PointColor point2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 1710000, 4);
+            PointColor point1 = new PointColor(928 - 5 + xx, 360 - 5 + yy, 7800000, 5);
+            PointColor point2 = new PointColor(928 - 5 + xx, 361 - 5 + yy, 7800000, 5);
 
             color1 = point1.GetPixelColor();
             color2 = point2.GetPixelColor();

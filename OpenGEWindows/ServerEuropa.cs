@@ -64,8 +64,8 @@ namespace OpenGEWindows
             this.pointisOpenMenuPet2 = new PointColor(830 + xx, 93 + yy, 12000000, 6);
             this.pointisSummonPet1 = new PointColor(740 - 5 + xx, 237 - 5 + yy, 7400000, 5);
             this.pointisSummonPet2 = new PointColor(741 - 5 + xx, 237 - 5 + yy, 7400000, 5);
-            this.pointisActivePet1 = new PointColor(828 - 5 + xx, 186 - 5 + yy, 13100000, 5);
-            this.pointisActivePet2 = new PointColor(829 - 5 + xx, 185 - 5 + yy, 13100000, 5);
+            this.pointisActivePet1 = new PointColor(828 - 5 + xx, 186 - 5 + yy, 13000000, 6);
+            this.pointisActivePet2 = new PointColor(829 - 5 + xx, 185 - 5 + yy, 13000000, 6);
             this.pointisActivePet3 = new PointColor(829 - 5 + xx, 186 - 5 + yy, 12000000, 6); // для проверки периодической еды на месяц                                      //проверено
             this.pointisActivePet4 = new PointColor(829 - 5 + xx, 185 - 5 + yy, 12000000, 6); // для проверки периодической еды на месяц
             this.pointCancelSummonPet = new Point(750 + xx, 265 + yy);   //750, 265                    //проверено
@@ -77,9 +77,9 @@ namespace OpenGEWindows
 
             #region Top Menu
 
-            this.pointGotoEnd = new Point(817 - 5 + xx, 542 - 5 + yy);                              //логаут
+            this.pointGotoEnd = new Point(820 - 5 + xx, 532 - 5 + yy);                              //логаут
 //            this.pointGotoEnd = new Point(817 - 5 + xx, 572 - 5 + yy);                              //end
-            this.pointLogout = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
+            this.pointLogout = new Point(820 - 5 + xx, 532 - 5 + yy);            //логаут
             this.pointTeleport1 = new Point(400 + xx, 193 + yy);   //400, 193               тыкаем в первую строчку телепорта                          //проверено
             this.pointTeleport2 = new Point(355 + xx, 570 + yy);   //355, 570              тыкаем в кнопку Execute                   //проверено
             this.pointisOpenTopMenu21 = new PointColor(328 + xx, 74 + yy, 13420000, 4);      //333 - 5, 79 - 5, 13420000, 334 - 5, 79 - 5, 13420000, 4);            //не проверено

@@ -107,6 +107,7 @@
     <Compile Include="Otit.cs" />
     <Compile Include="OtitAmerica.cs" />
     <Compile Include="OtitEuropa.cs" />
+    <Compile Include="DialogFactory.cs" />
     <Compile Include="OtitFactory.cs" />
     <Compile Include="PetFactory.cs" />
     <Compile Include="DialogSing.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="ServerFactory.cs" />
     <Compile Include="ServerSing.cs" />
     <Compile Include="SingTownFactory.cs" />
+    <Compile Include="SingTownLosToldos.cs" />
     <Compile Include="SingTownReboldo.cs" />
     <Compile Include="TextSend.cs" />
     <Compile Include="Town.cs" />
