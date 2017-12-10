@@ -12,6 +12,7 @@ namespace States
     {
         private botWindow botwindow;
         private Server server;
+        private Otit otit;
         private int tekStateInt;
 
         public StateGT81()
@@ -24,6 +25,8 @@ namespace States
             this.botwindow = botwindow;
             ServerFactory serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            OtitFactory otitFactory = new OtitFactory(botwindow);
+            this.otit = otitFactory.createOtit();
 
             this.tekStateInt = 81;
         }
@@ -34,6 +37,9 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            otit.RouteNextPoint().PressMouseL();    // отбегаем в сторону, чтобы сделать логаут
+            botwindow.Pause(1000);
+
             server.Logout();
 
             int i = 0;

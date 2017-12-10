@@ -23,7 +23,7 @@ namespace Main
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "07-12-2017";
+        public static String DataVersion = "09-12-2017";
         public static int numberOfAccounts = KolvoAkk();
 
         /// <summary>
@@ -558,7 +558,7 @@ namespace Main
 
         #endregion
 
-        #region
+        #region Silver Button (Pure Otite)
 
         private void PureOtite_Click(object sender, EventArgs e)
         {
@@ -573,11 +573,14 @@ namespace Main
         private void funcSilver()
         {
             Check check = new Check(19);
-            check.ReOpenWindow();
-            if (check.isLogout())   //если окно находится в логауте
+            for (int i = 1; i <= 1; i++)
             {
-                DriversOfState drive = new DriversOfState(19);
-                drive.StateOtitRun();
+                check.ReOpenWindow();
+                if (check.isLogout())   //если окно находится в логауте
+                {
+                    DriversOfState drive = new DriversOfState(19);
+                    drive.StateOtitRun();
+                }
             }
         }
         #endregion

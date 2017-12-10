@@ -49,7 +49,7 @@ namespace OpenGEWindows
                                new Point(492 - 5 + xx, 437 - 5 + yy), 
                                new Point(539 - 5 + xx, 486 - 5 + yy), 
                                new Point(462 - 5 + xx, 468 - 5 + yy),
-                               new Point(539 - 5 + xx, 486 - 5 + yy), 
+                               new Point(492 - 5 + xx, 437 - 5 + yy), 
                                new Point(539 - 5 + xx, 486 - 5 + yy)                            
                              };
 
@@ -65,7 +65,7 @@ namespace OpenGEWindows
         /// <returns>время в мс</returns>
         public override int RouteNextPointTime() 
         {
-            int[] routeTime = { 20000, 40000, 40000, 40000, 40000, 40000 };
+            int[] routeTime = { 25000, 38000, 30000, 40000, 40000, 30000, 40000 };
 
             int result = routeTime[counterRoute];
 

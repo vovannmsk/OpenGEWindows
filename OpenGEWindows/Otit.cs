@@ -121,9 +121,10 @@ namespace OpenGEWindows
         public void GotoNextPointRoute()
         {
             RouteNextPoint().PressMouseR();
+            Pause(500);
+            RouteNextPoint().PressMouseR();
             Pause(RouteNextPointTime());
-            counterRoute++; if (counterRoute > 4) counterRoute = 1;
-
+            counterRoute++; if (counterRoute > 5) counterRoute = 1;
         }
 
 
