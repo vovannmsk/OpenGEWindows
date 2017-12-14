@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.IO;
 
 
 namespace OpenGEWindows
@@ -18,18 +19,58 @@ namespace OpenGEWindows
         protected iPointColor pointTask2;
         protected Dialog dialog;
         protected Server server;
-        protected static int counterRoute;
+        protected static int counterRouteNode;
+        protected iPoint pointMamons;
 
 
         // ============  методы  ========================
 
+        ///// <summary>
+        ///// проверяем, находимся ли мы в диалоге со старым мужиком в Лос Толдосе
+        ///// </summary>
+        //public bool isOldMan()
+        //{
+        //    return (pointOldMan1.isColor() && pointOldMan2.isColor());
+        //}
+
         /// <summary>
-        /// проверяем, находимся ли мы в диалоге со старым мужиком в Лос Толдосе
+        /// меняем маршрут на дополнительный
         /// </summary>
-        public bool isOldMan()
+        public void ChangeNumberOfRoute() 
         {
-            return (pointOldMan1.isColor() && pointOldMan2.isColor());
+            int result = 0;
+            switch (NumberOfRoute())
+            {
+                case 0:
+                    result = 1;
+                    break;
+                case 1:
+                    result = 0;
+                    break;
+                case 2:
+                    result = 3;
+                    break;
+                case 3:
+                    result = 2;
+                    break;
+            }
+            SaveNumberOfRoute(result);
         }
+
+        /// <summary>
+        /// метод записывает в файл номер маршрута для фарма чистого отита
+        /// </summary>
+        protected void SaveNumberOfRoute(int number)
+        { 
+            File.WriteAllText(KATALOG_MY_PROGRAM + botwindow.getNumberWindow() + "\\Номер маршрута.txt", number.ToString()); 
+        }
+
+        /// <summary>
+        /// функция возвращает номер маршрута для фарма чистого отита
+        /// </summary>
+        /// <returns>номер маршрута от 0 до 3</returns>
+        protected int NumberOfRoute()
+        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + botwindow.getNumberWindow() + "\\Номер маршрута.txt")); }
 
         /// <summary>
         /// получить задачу у старого мужика
@@ -61,10 +102,18 @@ namespace OpenGEWindows
             dialog.PressStringDialog(2);
             dialog.PressOkButton(1);
 
-            dialog.PressStringDialog(3);
-            dialog.PressOkButton(1);
+            if ((NumberOfRoute() == 0) || (NumberOfRoute() == 1))
+            {
+                dialog.PressStringDialog(3);     // стартовая точка - около входа
+                dialog.PressOkButton(1);
+            }
+            else
+            {
+                dialog.PressStringDialog(2);     // стартовая точка - центр карты (для маршрутов 2 и 3)
+                dialog.PressOkButton(1);
+            }
 
-            dialog.PressStringDialog(1);
+            dialog.PressStringDialog(1);    //move
             dialog.PressOkButton(1);
 
         }
@@ -80,8 +129,6 @@ namespace OpenGEWindows
             dialog.PressStringDialog(1);
             dialog.PressOkButton(3);
         }
-
-
 
         /// <summary>
         /// подходим к старому человеку после перехода из казарм
@@ -124,18 +171,45 @@ namespace OpenGEWindows
             Pause(500);
             RouteNextPoint().PressMouseR();
             Pause(RouteNextPointTime());
-            counterRoute++; if (counterRoute > 5) counterRoute = 1;
+            counterRouteNode++; if (counterRouteNode > 2) counterRouteNode = 0;
         }
-
 
         /// <summary>
         /// обнуляем счетчик, чтобы начать с начала маршрута
         /// </summary>
         public void  CounterRouteToNull()
         {
-            counterRoute = 0;
+            counterRouteNode = 0;
         }
 
+        /// <summary>
+        /// нажимаем на Мамона
+        /// </summary>
+        public void PressMamons()
+        {
+            pointMamons.PressMouseL();
+        }
+
+        /// <summary>
+        /// поговорить с Мамоном для перехода в Лос Толдос
+        /// </summary>
+        public void TalkMamons()
+        {
+            dialog.PressStringDialog(1);
+            dialog.PressOkButton(1);
+        }
+
+        /// <summary>
+        /// приближаем камеру (опускаем максимально вниз)
+        /// </summary>
+        public void MinHeight()
+        {
+            for (int j = 1; j <= 7; j++)
+            {
+                pointMamons.PressMouseWheelDown();
+                Pause(500);
+            }
+        }
 
         /// <summary>
         /// получаем следующий пункт маршрута

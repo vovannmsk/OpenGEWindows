@@ -12,10 +12,18 @@ namespace OpenGEWindows
     public abstract class Dialog : Server2
     {
         protected iPoint ButtonOkDialog;
-
-        
+        protected iPointColor pointDialog1;
+        protected iPointColor pointDialog2;
 
         // ============  методы  ========================
+
+        /// <summary>
+        /// проверяем, находимся ли мы в диалоге
+        /// </summary>
+        public bool isDialog()
+        {
+            return (pointDialog1.isColor() && pointDialog2.isColor());
+        }
 
         /// <summary>
         /// нажимаем на кнопку Ок в диалоге указанное количество раз
@@ -25,7 +33,7 @@ namespace OpenGEWindows
         {
             for (int j = 1; j <= number; j++)
             {
-                ButtonOkDialog.PressMouse();    // Нажимаем на Ok в диалоге
+                ButtonOkDialog.DoubleClickL();    // Нажимаем на Ok в диалоге
                 Pause(1500);
             }
         }

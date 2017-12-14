@@ -34,9 +34,13 @@ namespace OpenGEWindows
             this.pointTask1 = new PointColor(928 - 5 + xx, 360 - 5 + yy, 8200000, 5);
             this.pointTask2 = new PointColor(928 - 5 + xx, 361 - 5 + yy, 8200000, 5);
 
+            this.pointMamons = new Point(466 - 5 + xx, 437 - 5 + yy);
+
         }
 
         // ===============================  Методы ==================================================
+
+
 
         /// <summary>
         /// получаем следующую точку маршрута
@@ -44,16 +48,15 @@ namespace OpenGEWindows
         /// <returns></returns>
         public override iPoint RouteNextPoint()
         {
-            iPoint[] route = { new Point(505 - 5 + xx, 505 - 5 + yy), 
-                               new Point(462 - 5 + xx, 468 - 5 + yy), 
-                               new Point(492 - 5 + xx, 437 - 5 + yy), 
-                               new Point(539 - 5 + xx, 486 - 5 + yy), 
-                               new Point(462 - 5 + xx, 468 - 5 + yy),
-                               new Point(492 - 5 + xx, 437 - 5 + yy), 
-                               new Point(539 - 5 + xx, 486 - 5 + yy)                            
-                             };
 
-            iPoint result = route[counterRoute];
+            iPoint [,] route ={ 
+                                  { new Point(505 - 5 + xx, 505 - 5 + yy), new Point(462 - 5 + xx, 468 - 5 + yy), new Point(505 - 5 + xx, 474 - 5 + yy) }, 
+                                  { new Point(569 - 5 + xx, 414 - 5 + yy), new Point(511 - 5 + xx, 436 - 5 + yy), new Point(563 - 5 + xx, 444 - 5 + yy) }, 
+                                  { new Point(334 - 5 + xx, 375 - 5 + yy), new Point(287 - 5 + xx, 350 - 5 + yy), new Point(286 - 5 + xx, 400 - 5 + yy) }, 
+                                  { new Point(404 - 5 + xx, 339 - 5 + yy), new Point(362 - 5 + xx, 319 - 5 + yy), new Point(410 - 5 + xx, 289 - 5 + yy) }, 
+                              };
+
+            iPoint result = route[NumberOfRoute(), counterRouteNode];
 
             return result;
         }
@@ -65,9 +68,14 @@ namespace OpenGEWindows
         /// <returns>время в мс</returns>
         public override int RouteNextPointTime() 
         {
-            int[] routeTime = { 25000, 38000, 30000, 40000, 40000, 30000, 40000 };
+            int[,] routeTime = {
+                                   { 20000, 35000, 25000 },
+                                   { 15000, 35000, 25000 },
+                                   { 20000, 35000, 25000 },
+                                   { 20000, 25000, 35000 }
+                               };
 
-            int result = routeTime[counterRoute];
+            int result = routeTime[NumberOfRoute(), counterRouteNode];
 
             return result;
         }

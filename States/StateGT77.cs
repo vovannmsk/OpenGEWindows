@@ -14,6 +14,7 @@ namespace States
         private Server server;
         private Town town;
         private Otit otit;
+        private Dialog dialog;
         private int tekStateInt;
 
         public StateGT77()
@@ -29,7 +30,8 @@ namespace States
             this.town = server.getTown();
             OtitFactory otitFactory = new OtitFactory(botwindow);
             this.otit = otitFactory.createOtit();
-
+            DialogFactory dialogFactory = new DialogFactory(botwindow);
+            this.dialog = dialogFactory.createDialog();
             this.tekStateInt = 77;
         }
 
@@ -56,7 +58,8 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return otit.isOldMan();
+            //            return otit.isOldMan();
+            return dialog.isDialog();    //если находимся в диалоге
         }
 
         /// <summary>

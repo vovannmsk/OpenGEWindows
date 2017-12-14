@@ -99,7 +99,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return ((server.isTown()) || (server.isTown_2()));   //GT111   проверка по двум видам оружия
+            return server.isTown();   
         }
 
         /// <summary>

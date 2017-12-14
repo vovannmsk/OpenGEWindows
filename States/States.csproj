@@ -99,6 +99,8 @@
     <Compile Include="StateGT55.cs" />
     <Compile Include="StateGT56.cs" />
     <Compile Include="StateGT57.cs" />
+    <Compile Include="StateGT92.cs" />
+    <Compile Include="StateGT91.cs" />
     <Compile Include="StateGT90.cs" />
     <Compile Include="StateGT89.cs" />
     <Compile Include="StateGT88.cs" />

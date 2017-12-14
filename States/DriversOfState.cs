@@ -13,6 +13,8 @@ namespace States
     public class DriversOfState
     {
         private botWindow botwindow;
+        private Server server;
+        private Otit otit;
 
         public DriversOfState()
         { 
@@ -22,6 +24,10 @@ namespace States
         public DriversOfState(int numberOfWindow)
         {
             this.botwindow = new botWindow(numberOfWindow);
+            ServerFactory serverFactory = new ServerFactory(botwindow);
+            this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            OtitFactory otitFactory = new OtitFactory(botwindow);
+            this.otit = otitFactory.createOtit();
 
         }
 
@@ -30,14 +36,38 @@ namespace States
         #region движки для запуска перехода по состояниям
 
         /// <summary>
-        /// перевод из состояния 75 в состояние 90. Цель  - добыча отита
+        /// перевод из состояния 75 в состояние 90. Цель  - добыча отита. Исполнитель - барон
         /// </summary>
-        public void StateOtitRun()
+        public void StateOtitRunBaron()
         {
             StateDriverRun(new StateGT15(this.botwindow), new StateGT17(this.botwindow));  // переход из состояния "Логаут" в состояние "В городе" (Los Toldos)
             StateDriverRun(new StateGT75(this.botwindow), new StateGT82(this.botwindow));  // до выполнения задания на мертвых землях
             StateDriverRun(new StateGT15(this.botwindow), new StateGT17(this.botwindow));  // переход из состояния "Логаут" в состояние "В городе" (Los Toldos)
             StateDriverRun(new StateGT82(this.botwindow), new StateGT85(this.botwindow));  // получаем отит и логаут
+        }
+
+        /// <summary>
+        /// перевод из состояния 75 в состояние 90. Цель  - добыча отита. Исполнитель - не барон, но с отитовыми духами
+        /// </summary>
+        public void StateOtitRun()
+        {
+            StateDriverRun(new StateGT89(this.botwindow), new StateGT90(this.botwindow));  // летим из любого города к Мамону (первая строка в телепортах)
+            StateDriverRun(new StateGT86(this.botwindow), new StateGT88(this.botwindow));  // Говорим с Мамоном и переходим в Лос Толдос 
+            StateDriverRun(new StateGT75(this.botwindow), new StateGT81(this.botwindow));  // берем задание и выполняем его на мертвых землях
+            if (!server.isKillHero())        //если никого не убили
+            {
+                StateDriverRun(new StateGT88(this.botwindow), new StateGT89(this.botwindow));  // отбегаем в сторону (на мертвых землях)
+                StateDriverRun(new StateGT89(this.botwindow), new StateGT90(this.botwindow));  // летим к Мамону
+                StateDriverRun(new StateGT86(this.botwindow), new StateGT88(this.botwindow));  // Говорим с Мамоном и переходим в Лос Толдос 
+                StateDriverRun(new StateGT82(this.botwindow), new StateGT84(this.botwindow));  // получаем отит и остаёмся в городе (Лос Толдосе)
+            }
+            else         //если в процессе выполнения задания кто-то из персов был убит
+            {
+                otit.ChangeNumberOfRoute();  //сменить маршрут, чтобы в следующий раз не попасть в ту же ловушку
+                StateDriverRun(new StateGT81(this.botwindow), new StateGT82(this.botwindow));  // отбегаем в сторону (на случай, если кто-то выжил)  и логаут
+                StateDriverRun(new StateGT15(this.botwindow), new StateGT17(this.botwindow));  // переход из состояния "Логаут" в состояние "В городе" 
+                StateDriverRun(new StateGT90(this.botwindow), new StateGT91(this.botwindow));  // лечение и патроны в городе
+            }
         }
 
         /// <summary>

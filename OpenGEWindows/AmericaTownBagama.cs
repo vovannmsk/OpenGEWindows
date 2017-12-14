@@ -48,8 +48,8 @@ namespace OpenGEWindows
             this.pointTraderOnMap = new Point(735 - 5 + xx, 288 - 5 + yy);                       //730, 268);
             this.pointButtonMoveOnMap = new Point(822 + xx, 631 + yy);   //822, 631);
             this.pointHeadTrader = new Point(611 + xx, 411 + yy);      //611, 411);
-            this.pointSellOnMenu = new Point(520 + xx, 654 + yy);    //520, 654);
-            this.pointOkOnMenu = new Point(902 + xx, 674 + yy);         //902, 674);
+            //this.pointSellOnMenu = new Point(520 + xx, 654 + yy);    //520, 654);
+            //this.pointOkOnMenu = new Point(902 + xx, 674 + yy);         //902, 674);
             this.pointTownTeleport = new Point(110 + xx, 328 + (TELEPORT_N - 1) * 30 + yy);
             
             //точки для проверки цвета

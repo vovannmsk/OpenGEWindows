@@ -85,7 +85,7 @@ namespace States
                                 else
                                 {
                                     //================== если в городе ========================================
-                                    if ((server.isTown()) || (server.isTown_2()))          //если стоят в городе (проверка по обоим стойкам - эксп.дробаш и ружье )         //**   было istown2()
+                                    if (server.isTown())          //если стоят в городе
                                     {
                                         driver.StateExitFromTown();
                                         botwindow.PressEscThreeTimes();
@@ -104,19 +104,24 @@ namespace States
                                             }
                                             else
                                             {
-
+                                                //if (server.isCook())
+                                                //{
+                                                //    server.ClickSkillCook();    //нажиаем на скилл повару
+                                                //}
+                                                //else
+                                                //{ 
+                                                
+                                                //}
                                             }
                                         }
                                         //else
                                         //{ botwindow.PressMitridat(); }
-
                                     } //else isTown2()
                                 } //else isBoxOverflow()
                             } //else isBarack()
                         } // else isKillHero()
                     } // else isSale2()
                 } //else  isLogout()
-                
             } //if  Active_or_not
         }                                                                  //основной метод для зеленой кнопки
 
@@ -202,13 +207,13 @@ namespace States
             return server.isEnchant();
         }
 
-        /// <summary>
-        /// проверяем, находимся ли мы в диалоге со старым мужиком в Лос Толдосе
-        /// </summary>
-        public bool isOldMan()
-        {
-            return otit.isOldMan();
-        }
+        ///// <summary>
+        ///// проверяем, находимся ли мы в диалоге со старым мужиком в Лос Толдосе
+        ///// </summary>
+        //public bool isOldMan()
+        //{
+        //    return otit.isOldMan();
+        //}
 
 
         /// <summary>
@@ -216,11 +221,11 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            botWindow botwindow = new botWindow(19);
+            botWindow botwindow = new botWindow(3);
             Server server = new ServerSing(botwindow);
             Market market = new MarketSing(botwindow);
             Otit otit = new OtitSing(botwindow);
-            MessageBox.Show(" " + otit.isTaskDone());
+            MessageBox.Show(" " + server.isBoxOverflow());
 
             //bool iscolor1 = server.isSafeIP();
             //MessageBox.Show(" " + iscolor1);
@@ -231,8 +236,8 @@ namespace States
             uint color1;
             uint color2;
 
-            PointColor point1 = new PointColor(928 - 5 + xx, 360 - 5 + yy, 7800000, 5);
-            PointColor point2 = new PointColor(928 - 5 + xx, 361 - 5 + yy, 7800000, 5);
+            PointColor point1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 7800000, 5);
+            PointColor point2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 7800000, 5);
 
             color1 = point1.GetPixelColor();
             color2 = point2.GetPixelColor();

@@ -88,6 +88,7 @@ namespace OpenGEWindows
         protected iPointColor pointisOpenTopMenu132;
         protected iPoint pointLogout;
         protected iPoint pointGotoEnd;
+        protected iPoint pointGotoBarack;
         protected iPoint pointTeleport1;
         protected iPoint pointTeleport2;
 
@@ -166,7 +167,9 @@ namespace OpenGEWindows
         protected iPointColor pointisWork_VetDrobDot2;
         protected iPointColor pointisWork_ExpDrobDot1;        //проверка стойки с эксп дробашом (проверяются две точки )
         protected iPointColor pointisWork_ExpDrobDot2;
-        //        protected iPoint pointTeleportToTownAltW;
+        protected iPointColor pointisWork_VetSabreDot1;        //проверка стойки с вет саблей (проверяются две точки )
+        protected iPointColor pointisWork_VetSabreDot2;
+        protected iPoint pointSkillCook;
 
         #endregion
 
@@ -209,6 +212,8 @@ namespace OpenGEWindows
         protected iPointColor pointIsTown_ExpDrobSecondDot2;
         protected iPointColor pointIsTown_ExpDrobThirdDot1;
         protected iPointColor pointIsTown_ExpDrobThirdDot2;
+        protected iPointColor pointIsTown_VetSabreFirstDot1;    //проверка по вет сабле
+        protected iPointColor pointIsTown_VetSabreFirstDot2;
 
         #endregion
 
@@ -640,9 +645,19 @@ namespace OpenGEWindows
             pointLogout.PressMouse();
         }
 
+        /// <summary>
+        /// Идем в казармы через верхнее меню 
+        /// </summary>
+        public void GotoBarack()
+        {
+            TopMenu(13);
+            Pause(1000);
+            pointGotoBarack.PressMouse();
+        }
+
         public abstract void TopMenu(int numberOfThePartitionMenu);
         public abstract void TopMenu(int numberOfThePartitionMenu, int punkt);
-        public abstract void TeleportToTownAltW();
+        public abstract void TeleportToTownAltW(int i);
 
         #endregion
 
@@ -997,8 +1012,26 @@ namespace OpenGEWindows
             bool resultDrob = (pointisWork_DrobDot1.isColor() && pointisWork_DrobDot2.isColor());
             bool resultVetDrob = (pointisWork_VetDrobDot1.isColor() && pointisWork_VetDrobDot2.isColor());
             bool resultExpDrob = (pointisWork_ExpDrobDot1.isColor() && pointisWork_ExpDrobDot2.isColor());
+            bool resultVetSabre = (pointisWork_VetSabreDot1.isColor() && pointisWork_VetSabreDot2.isColor());
 
-            return (resultRifle || resultExpRifle || resultDrob || resultVetDrob || resultExpDrob);  //проверка только по первому персу
+            return (resultRifle || resultExpRifle || resultDrob || resultVetDrob || resultExpDrob || resultVetSabre);  //проверка только по первому персу
+        }
+
+        /// <summary>
+        /// метод проверяет является ли первый перс поваром
+        /// </summary>
+        /// <returns> true, если сейчас на рабочей карте </returns>
+        public bool isCook()
+        {
+            return (pointisWork_VetSabreDot1.isColor() && pointisWork_VetSabreDot2.isColor());
+        }
+
+        /// <summary>
+        /// нажимаем на спец. умение повару
+        /// </summary>
+        public void ClickSkillCook()
+        {
+            pointSkillCook.PressMouseL();
         }
 
 
@@ -1032,28 +1065,34 @@ namespace OpenGEWindows
         /// <returns> true, если бот находится в городе </returns>
         public bool isTown()
         {
-            //проверка по двум персам обычная стойка
-            bool result = (pointIsTown_RifleFirstDot1.isColor() && pointIsTown_RifleFirstDot2.isColor() && pointIsTown_RifleSecondDot1.isColor() && pointIsTown_RifleSecondDot2.isColor());
-            //проверка по двум персам эксп стойка
-            bool resultExp = (pointIsTown_ExpRifleFirstDot1.isColor() && pointIsTown_ExpRifleFirstDot2.isColor() && pointIsTown_ExpRifleSecondDot1.isColor() && pointIsTown_ExpRifleSecondDot2.isColor());
+            //ружье
+            bool resultRifle = (pointIsTown_RifleFirstDot1.isColor() && pointIsTown_RifleFirstDot2.isColor() && pointIsTown_RifleSecondDot1.isColor() && pointIsTown_RifleSecondDot2.isColor());
+            bool resultRifleExp = (pointIsTown_ExpRifleFirstDot1.isColor() && pointIsTown_ExpRifleFirstDot2.isColor() && pointIsTown_ExpRifleSecondDot1.isColor() && pointIsTown_ExpRifleSecondDot2.isColor());
+            //дробовик
+            bool resultShotgun = (pointIsTown_DrobFirstDot1.isColor() && pointIsTown_DrobFirstDot2.isColor());           //проверка по первому персу обычная стойка
+            bool resultShotgunVet = (pointIsTown_VetDrobFirstDot1.isColor() && pointIsTown_VetDrobFirstDot2.isColor());  //проверка по первому персу вет стойка
+            bool resultShotgunExp = (pointIsTown_ExpDrobFirstDot1.isColor() && pointIsTown_ExpDrobFirstDot2.isColor());  //проверка по первому персу эксп стойка
+            //сабля
+            bool resultVetSabre = (pointIsTown_VetSabreFirstDot1.isColor() && pointIsTown_VetSabreFirstDot2.isColor());  //проверка по первому персу вет сабля
 
-            return (result || resultExp);
+            return (resultRifle || resultRifleExp || resultShotgun || resultShotgunVet || resultShotgunExp || resultVetSabre);
         }
 
-        /// <summary>
-        /// метод проверяет, находится ли данное окно в городе (проверка по стойкам с дробовиком) 
-        /// делаем проверку по двум точкам у каждого перса
-        /// </summary>
-        /// <returns> true, если бот находится в городе </returns>
-        public bool isTown_2()
-        {
+        ///// <summary>
+        ///// метод проверяет, находится ли данное окно в городе (проверка по стойкам с дробовиком) 
+        ///// делаем проверку по двум точкам у каждого перса
+        ///// </summary>
+        ///// <returns> true, если бот находится в городе </returns>
+        //public bool isTown_2()
+        //{
 
-            bool result = (pointIsTown_DrobFirstDot1.isColor() && pointIsTown_DrobFirstDot2.isColor());           //проверка по первому персу обычная стойка
-            bool resultVet = (pointIsTown_VetDrobFirstDot1.isColor() && pointIsTown_VetDrobFirstDot2.isColor());  //проверка по первому персу вет стойка
-            bool resultExp = (pointIsTown_ExpDrobFirstDot1.isColor() && pointIsTown_ExpDrobFirstDot2.isColor());  //проверка по первому персу эксп стойка
+        //    bool resultShotgun = (pointIsTown_DrobFirstDot1.isColor() && pointIsTown_DrobFirstDot2.isColor());           //проверка по первому персу обычная стойка
+        //    bool resultShotgunVet = (pointIsTown_VetDrobFirstDot1.isColor() && pointIsTown_VetDrobFirstDot2.isColor());  //проверка по первому персу вет стойка
+        //    bool resultShotgunExp = (pointIsTown_ExpDrobFirstDot1.isColor() && pointIsTown_ExpDrobFirstDot2.isColor());  //проверка по первому персу эксп стойка
+        //    bool resultVetSabre = (pointIsTown_VetSabreFirstDot1.isColor() && pointIsTown_VetSabreFirstDot2.isColor());  //проверка по первому персу вет сабля
 
-            return (result || resultVet || resultExp);
-        }
+        //    return (resultShotgun || resultShotgunVet || resultShotgunExp || resultVetSabre);
+        //}
 
         /// <summary>
         /// лечение персов нажатием на красную бутылку
@@ -1916,7 +1955,6 @@ namespace OpenGEWindows
             return (pointisHP1.isColor() || pointisHP2.isColor() || pointisHP3.isColor() || pointisHP4.isColor());
         }
 
-
         /// <summary>
         /// метод возвращает параметр, отвечающий за тип чиповки оружия
         /// </summary>
@@ -2086,6 +2124,7 @@ namespace OpenGEWindows
                     break;
                 case 5:
                     if ((isAtk40() || isAtk39() || isAtk38() || isAtk37()) && (isAtkSpeed30() || isAtkSpeed29() || isAtkSpeed28() || isAtkSpeed27()) && (isUndead())) result = true;
+                    if ((isAtk40() || isAtk39()) && (isAtkSpeed30() || isAtkSpeed29())) result = true;
                     break;
                 case 6:
                     if ((isAtk40() || isAtk39() || isAtk38() || isAtk37()) && (isAtkSpeed30() || isAtkSpeed29() || isAtkSpeed28() || isAtkSpeed27()) && (isDemon())) result = true;

@@ -12,11 +12,8 @@ namespace States
     {
         private botWindow botwindow;
         private Server server;
-        private Server serverDealer;
-        //private Town town;
-        private ServerFactory serverFactory;
+        private Otit otit;
         private int tekStateInt;
-        private botWindow dealer;
 
         public StateGT90()
         {
@@ -26,13 +23,10 @@ namespace States
         public StateGT90(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
-            this.serverFactory = new ServerFactory(botwindow);
-            this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            //this.town = server.getTown();
-//            this.botwindowDealer = new botWindow(20);         // здесь методы торговца как у обычного бота
-            this.dealer = new botWindow(20);   // здесь уникальные методы, присущие только торговцу
-            this.serverFactory = new ServerFactory(dealer);
-            this.serverDealer = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            ServerFactory serverFactory = new ServerFactory(botwindow);
+            this.server = serverFactory.createServer();                 // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            OtitFactory otitFactory = new OtitFactory(botwindow);
+            this.otit = otitFactory.createOtit();
 
             this.tekStateInt = 90;
         }
@@ -43,8 +37,8 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-
-            int r = 1;
+            server.Cure();               //лечение+патроны                          // было botwindow.Cure();
+            botwindow.Pause(1000);
         }
 
         /// <summary>
@@ -60,7 +54,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return true;                                                                                //считаем, что осечек не будет на этом этапе, и мы 100% переёдем к следующему пункту
+            return true;
         }
 
         /// <summary>
@@ -69,7 +63,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT90(botwindow);
+            return new StateGT91(botwindow);
         }
 
         /// <summary>

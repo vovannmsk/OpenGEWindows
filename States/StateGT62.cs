@@ -56,7 +56,7 @@ namespace States
             {
                 dealer.Pause(500);
                 i++;
-                if ((serverDealer.isTown()) || (serverDealer.isTown_2())) break;    // проверяем успешный переход в город, проверка по ружью и дробовику
+                if (serverDealer.isTown()) break;    // проверяем успешный переход в город, проверка по ружью и дробовику
             }
             dealer.Pause(7000);       //поставил по Колиной просьбе
             dealer.PressEscThreeTimes();

@@ -9,185 +9,194 @@ namespace OpenGEWindows
 {
     public abstract class Town
     {
-        protected iPoint pointMaxHeight;
-        protected iPoint pointBookmark;
-        protected iPoint pointTraderOnMap;
-        protected iPoint pointButtonMoveOnMap;
-        protected iPoint pointHeadTrader;
-        protected iPoint pointSellOnMenu;
-        protected iPoint pointOkOnMenu;
-        protected iPoint pointTownTeleport;
-        protected iPoint pointExitFromTrader;
+        #region общие
+            protected int xx;
+            protected int yy;
+            protected iPoint pointMaxHeight;
+            protected const int NUMBER_OF_ITERATION = 10;
+        #endregion
 
-        protected iPointColor pointOpenMap1;
-        protected iPointColor pointOpenMap2;
-        protected iPointColor pointBookmark1;
-        protected iPointColor pointBookmark2;
-        protected iPointColor pointOpenTownTeleport1;
-        protected iPointColor pointOpenTownTeleport2;
+        #region Los Toldos
+            protected iPoint pointOldMan1;
+        #endregion
 
-        protected iPoint pointOldManOnMap;
-        protected iPoint pointOldMan1;
+        #region Town Teleport
+            protected int TELEPORT_N;   //номер городского телепорта
+            protected iPoint pointTownTeleport;
+            protected iPointColor pointOpenTownTeleport1;
+            protected iPointColor pointOpenTownTeleport2;
+        #endregion
 
-        protected int xx;
-        protected int yy;
-        protected int PAUSE_TIME;
-        protected int TELEPORT_N;   //номер городского телепорта
-        protected const int NUMBER_OF_ITERATION = 10;
+        #region Shop
+            protected iPoint pointHeadTrader;
+            //protected iPoint pointSellOnMenu;
+            //protected iPoint pointOkOnMenu;
+            protected int PAUSE_TIME;
 
-        /// <summary>
-        /// выход из магазина путем нажатия кнопки Exit
-        /// </summary>
-        public void PressExitFromShop()
-        {
-            pointOkOnMenu.PressMouseL();
-            Pause(2500);
-        }
+        #endregion
 
-        /// <summary>
-        /// проверяет, открыт ли городской телепорт (Alt + F3)                             
-        /// </summary>
-        /// <returns> true, если телепорт  (Alt + F3) открыт </returns>
-        public bool isOpenTownTeleport()
-        {
-            uint ff = pointOpenTownTeleport1.GetPixelColor();
-            uint gg = pointOpenTownTeleport2.GetPixelColor();
+        #region Map
+            protected iPointColor pointOpenMap1;
+            protected iPointColor pointOpenMap2;
+            protected iPointColor pointBookmark1;
+            protected iPointColor pointBookmark2;
+            protected iPoint pointOldManOnMap;
+            protected iPoint pointBookmark;
+            protected iPoint pointTraderOnMap;
+            protected iPoint pointButtonMoveOnMap;
+            protected iPoint pointExitFromTrader;
+        #endregion
 
-            return ((pointOpenTownTeleport1.isColor()) & (pointOpenTownTeleport2.isColor()));
-        }
+        // ======================= Методы ====================================
 
-        /// <summary>
-        /// удаляем камеру (поднимаем максимально вверх)                           
-        /// </summary>
-        public void MaxHeight()
-        {
-            for (int j = 1; j <= NUMBER_OF_ITERATION; j++)
+        #region общие
+
+            /// <summary>
+            /// удаляем камеру (поднимаем максимально вверх)                           
+            /// </summary>
+            public void MaxHeight()
             {
-                pointMaxHeight.PressMouseWheelUp();
+                for (int j = 1; j <= NUMBER_OF_ITERATION; j++)
+                {
+                    pointMaxHeight.PressMouseWheelUp();
+                }
             }
-        }
 
-        /// <summary>
-        /// перелететь по городскому телепорту на торговую улицу                            
-        /// </summary>
-        public void TownTeleportW()
-        {
-            pointTownTeleport.PressMouse();
-        }
+            /// <summary>
+            /// удаляем камеру (поднимаем максимально вверх)                           
+            /// </summary>
+            public void MinHeight()
+            {
+                for (int j = 1; j <= NUMBER_OF_ITERATION; j++)
+                {
+                    pointMaxHeight.PressMouseWheelDown();
+                }
+            }
 
-        /// <summary>
-        /// проверяет, открыта ли карта Alt+Z в городе                                        
-        /// </summary>
-        /// <returns> true, если карта уже открыта </returns>
-        public bool isOpenMap()
-        {
-            return ((pointOpenMap1.isColor()) && (pointOpenMap2.isColor()));
-        }
+            /// <summary>
+            /// Останавливает поток на некоторый период
+            /// </summary>
+            /// <param name="ms"> ms - период в милисекундах </param>
+            protected void Pause(int ms)
+            {
+                //Class_Timer.Pause(ms);
+                Thread.Sleep(ms);
+            }
 
-        /// <summary>
-        /// проверяет, открыласть ли вторая закладка карты местности (Alt + Z)          
-        /// </summary>
-        /// <returns> true, если вторая закладка открыта </returns>
-        public bool isSecondBookmark()
-        {
-            //bool ff = pointisOpenMenuPet1.isColor();
-            //bool gg = pointisOpenMenuPet2.isColor();
-            //uint bb = pointBookmark1.GetPixelColor();
-            //uint dd = pointBookmark2.GetPixelColor();
-            return ((pointBookmark1.isColor()) && (pointBookmark2.isColor()));
-        }
+        #endregion
 
-        /// <summary>
-        /// открыть вторую закладку в уже открытой карте Alt+Z       
-        /// </summary>
-        public void SecondBookmark()
-        {
-            pointBookmark.PressMouseL();
-            pointBookmark.PressMouseL();
-        }
+        #region Los Toldos
 
-        /// <summary>
-        /// переход к торговцу, который стоит рядом с нужным нам торговцем. карта местности Alt+Z открыта 
-        /// </summary>
-        public void GoToTraderMap()
-        {
-            pointTraderOnMap.PressMouse();
-        }
+            /// <summary>
+            /// тыкаем на старого мужика
+            /// </summary>
+            public void PressOldMan1()
+            {
+                pointOldMan1.PressMouseL();
+            }
 
-        /// <summary>
-        /// нажимаем на кнопку "Move" в открытой карте Alt+Z             
-        /// </summary>
-        public void ClickMoveMap()
-        {
-            pointButtonMoveOnMap.PressMouse();
-        }
+        #endregion
 
-        /// <summary>
-        /// Делаем паузу, чтобы бот успел добежать до торговца           
-        /// </summary>
-        public void PauseToTrader()
-        {
-            Pause(PAUSE_TIME);
-        }
+        #region Town Teleport (Alt + F3)
 
-        /// <summary>
-        /// тыкаем мышкой в голову торговца, чтобы войти в магазин              
-        /// </summary>
-        public void Click_ToHeadTrader()
-        {
-            pointHeadTrader.PressMouseL();
-        }
+            /// <summary>
+            /// проверяет, открыт ли городской телепорт (Alt + F3)                             
+            /// </summary>
+            /// <returns> true, если телепорт  (Alt + F3) открыт </returns>
+            public bool isOpenTownTeleport()
+            {
+                return ((pointOpenTownTeleport1.isColor()) & (pointOpenTownTeleport2.isColor()));
+            }
 
-        /// <summary>
-        /// Кликаем на строчку Sell и кнопку "Ok" в магазине   
-        /// </summary>
-        public void ClickSellAndOkInTrader()                 //кандидат на перенос в serverInterface
-        {
-            //ребо, коимбра, ош, багама
-            //========= тыкаем в "Sell/Buy Items" ======================================
-            //botwindow.PressMouseL(520, 654);
-            //botwindow.Pause(200);
-            //botwindow.PressMouseL(520, 654);
-            pointSellOnMenu.PressMouseL();
-            pointSellOnMenu.PressMouseL();
-            Pause(500);
+            /// <summary>
+            /// перелететь по городскому телепорту на торговую улицу                            
+            /// </summary>
+            public void TownTeleportW()
+            {
+                pointTownTeleport.PressMouse();
+            }
 
-            //========= тыкаем в OK =======================
-            //botwindow.PressMouseL(902, 674);
-            pointOkOnMenu.PressMouseL();
-            Pause(2500);
-        }
+        #endregion
 
-        /// <summary>
-        /// дополнительные нажатия для выхода из магазина (бывает в магазинах необходимо что-то нажать дополнительно, чтобы выйти)
-        /// </summary>
-        public abstract void ExitFromTrader();
+        #region Shop
 
-        /// <summary>
-        /// Останавливает поток на некоторый период
-        /// </summary>
-        /// <param name="ms"> ms - период в милисекундах </param>
-        protected void Pause(int ms)
-        {
-            //Class_Timer.Pause(ms);
-            Thread.Sleep(ms);
-        }
+            /// <summary>
+            /// Делаем паузу, чтобы бот успел добежать до торговца           
+            /// </summary>
+            public void PauseToTrader()
+            {
+                Pause(PAUSE_TIME);
+            }
 
-        /// <summary>
-        /// тыкаем на открытой карте в строчку со старым мужиком
-        /// </summary>
-        public void PressOldManonMap()
-        {
-            pointOldManOnMap.DoubleClickL();
-        }
+            /// <summary>
+            /// тыкаем мышкой в голову торговца, чтобы войти в магазин              
+            /// </summary>
+            public void Click_ToHeadTrader()
+            {
+                pointHeadTrader.PressMouseL();
+            }
 
-        /// <summary>
-        /// тыкаем на старого мужика
-        /// </summary>
-        public void PressOldMan1()
-        {
-            pointOldMan1.PressMouseL();
-        }
+            /// <summary>
+            /// дополнительные нажатия для выхода из магазина (бывает в магазинах необходимо что-то нажать дополнительно, чтобы выйти)
+            /// </summary>
+            public abstract void ExitFromTrader();
+
+        #endregion
+
+        #region Map
+
+            /// <summary>
+            /// тыкаем на открытой карте в строчку со старым мужиком
+            /// </summary>
+            public void PressOldManonMap()
+            {
+                pointOldManOnMap.DoubleClickL();
+            }
+
+            /// <summary>
+            /// открыть вторую закладку в уже открытой карте Alt+Z       
+            /// </summary>
+            public void SecondBookmark()
+            {
+                pointBookmark.PressMouseL();
+                pointBookmark.PressMouseL();
+            }
+
+            /// <summary>
+            /// переход к торговцу, который стоит рядом с нужным нам торговцем. карта местности Alt+Z открыта 
+            /// </summary>
+            public void GoToTraderMap()
+            {
+                pointTraderOnMap.PressMouse();
+            }
+
+            /// <summary>
+            /// нажимаем на кнопку "Move" в открытой карте Alt+Z             
+            /// </summary>
+            public void ClickMoveMap()
+            {
+                pointButtonMoveOnMap.PressMouse();
+            }
+
+            /// <summary>
+            /// проверяет, открыта ли карта Alt+Z в городе                                        
+            /// </summary>
+            /// <returns> true, если карта уже открыта </returns>
+            public bool isOpenMap()
+            {
+                return ((pointOpenMap1.isColor()) && (pointOpenMap2.isColor()));
+            }
+
+            /// <summary>
+            /// проверяет, открыласть ли вторая закладка карты местности (Alt + Z)          
+            /// </summary>
+            /// <returns> true, если вторая закладка открыта </returns>
+            public bool isSecondBookmark()
+            {
+                return ((pointBookmark1.isColor()) && (pointBookmark2.isColor()));
+            }
+
+        #endregion
 
     }
 }

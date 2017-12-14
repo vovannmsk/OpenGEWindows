@@ -41,6 +41,12 @@ namespace OpenGEWindows
 
             #endregion
 
+            DialogFactory dialogFactory = new DialogFactory(this.botwindow);
+            dialog = dialogFactory.createDialog();
+
+            //this.pointSellOnMenu = new Point(520 + xx, 654 + yy);
+            //this.pointOkOnMenu = new Point(902 + xx, 674 + yy);
+
         }
 
         // ============  методы  ========================

@@ -14,7 +14,7 @@ namespace Main
         public const int MAX_NUMBER_OF_ACCOUNTS = 20;
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
         
-        public UIntPtr[] arrayOfHwnd = new UIntPtr[21];   //используется в методе "Найти окна"
+        //public UIntPtr[] arrayOfHwnd = new UIntPtr[21];   //используется в методе "Найти окна"
 
         public MainForm()
         {
@@ -23,7 +23,7 @@ namespace Main
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "09-12-2017";
+        public static String DataVersion = "15-12-2017";
         public static int numberOfAccounts = KolvoAkk();
 
         /// <summary>
@@ -36,10 +36,10 @@ namespace Main
             this.Text = "Программа от " + DataVersion + ".    " + numberOfAccounts + " окон";
             this.Location = new System.Drawing.Point(1315, 1080 - this.Height - 40);
 
-            for (int i = 0; i <= 20; i++)
-            {
-                arrayOfHwnd[i] = (UIntPtr)0;
-            }
+            //for (int i = 0; i <= 20; i++)
+            //{
+            //   arrayOfHwnd[i] = (UIntPtr)0;
+            //}
 
         }
 
@@ -449,7 +449,7 @@ namespace Main
         /// </summary>*
         private void funcMagenta()
         {
-            for (int j = 1; j <= numberOfAccounts; j++)
+            for (int j = 11; j <= numberOfAccounts; j++)
             {
                 Check check = new Check(j);
                 if (check.isActive())
@@ -484,7 +484,7 @@ namespace Main
         /// </summary>
         private void funcChoco()
         {
-            for (int j = 1; j <= numberOfAccounts; j++)
+            for (int j = 11; j <= numberOfAccounts; j++)
             {
                 Check check = new Check(j);
                 if (check.isActive())
@@ -572,23 +572,25 @@ namespace Main
         /// </summary>
         private void funcSilver()
         {
-            Check check = new Check(19);
-            for (int i = 1; i <= 1; i++)
+            int NumberOfWindow = 15;
+            Check check = new Check(NumberOfWindow);
+            for (int i = 1; i <= 100; i++)
             {
                 check.ReOpenWindow();
-                if (check.isLogout())   //если окно находится в логауте
-                {
-                    DriversOfState drive = new DriversOfState(19);
+                //if (check.isLogout())   //если окно находится в логауте
+                //{
+                DriversOfState drive = new DriversOfState(NumberOfWindow);
                     drive.StateOtitRun();
-                }
+                //}
             }
         }
+
         #endregion
 
 
 
 
-    }// END class MainForm : Form
+    }// END class MainForm 
 }// END namespace OpenGEWindows
 
 

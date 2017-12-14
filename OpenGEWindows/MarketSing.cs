@@ -43,6 +43,14 @@ namespace OpenGEWindows
             this.pointBuyingMitridat3 = new Point(517 + xx, 423 + yy);      //1392 - 875, 428 - 5
 
             #endregion
+
+            DialogFactory dialogFactory = new DialogFactory(this.botwindow);
+            dialog = dialogFactory.createDialog();
+
+
+            //this.pointSellOnMenu = new Point(520 + xx, 654 + yy);
+            //this.pointOkOnMenu = new Point(902 + xx, 674 + yy);
+
         }
     }
 }

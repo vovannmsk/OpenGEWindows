@@ -95,7 +95,8 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return (server.isWeapon() || server.isArmor());
+//            return (server.isWeapon() || server.isArmor());
+            return true;
         }
 
         /// <summary>

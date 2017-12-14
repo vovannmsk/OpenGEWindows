@@ -32,8 +32,8 @@ namespace OpenGEWindows
             this.pointTraderOnMap = new Point(880 - 5 + xx, 295- 5 + yy);                    //торговец на карте                          ===========постоянная коррекция
             this.pointButtonMoveOnMap = new Point(835 - 5 + xx, 635 - 5 + yy);                //кнопка Move на карте    проверено
             this.pointHeadTrader = new Point(365 - 5 + xx, 474 - 5 + yy);                     //голова торговца          //не проверено
-            this.pointSellOnMenu = new Point(520 + xx, 654 + yy);
-            this.pointOkOnMenu = new Point(902 + xx, 674 + yy);
+            //this.pointSellOnMenu = new Point(520 + xx, 654 + yy);
+            //this.pointOkOnMenu = new Point(902 + xx, 674 + yy);
             this.pointTownTeleport = new Point(115 - 5 + xx, 333 - 5 + (TELEPORT_N - 1) * 30 + yy);    //сюда тыкаем, чтобы улететь на торговую улицу   //не проверено
             //точки для проверки цвета
             this.pointOpenMap1 = new PointColor(695 - 5 + xx, 143 - 5 + yy, 16600000, 5);      //проверено

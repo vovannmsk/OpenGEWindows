@@ -12,11 +12,8 @@ namespace States
     {
         private botWindow botwindow;
         private Server server;
-        private Server serverDealer;
-        //private Town town;
-        private ServerFactory serverFactory;
+        private Otit otit;
         private int tekStateInt;
-        private botWindow dealer;
 
         public StateGT89()
         {
@@ -26,13 +23,10 @@ namespace States
         public StateGT89(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
-            this.serverFactory = new ServerFactory(botwindow);
+            ServerFactory serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            //this.town = server.getTown();
-//            this.botwindowDealer = new botWindow(20);         // здесь методы торговца как у обычного бота
-            this.dealer = new botWindow(20);   // здесь уникальные методы, присущие только торговцу
-            this.serverFactory = new ServerFactory(dealer);
-            this.serverDealer = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            OtitFactory otitFactory = new OtitFactory(botwindow);
+            this.otit = otitFactory.createOtit();
 
             this.tekStateInt = 89;
         }
@@ -43,7 +37,22 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            server.Teleport();                       // телепорт на работу   
+            botwindow.Pause(8000);
 
+            int i = 0;
+            while ((!server.isWork()) & (i < 30))         //ожидание загрузки карты с Мамоном
+            { botwindow.Pause(500); i++; }
+
+
+            //server.TeleportToTownAltW(1);
+            ////ожидание загрузки города
+            //int counter = 0;
+            //while (((!server.isTown()) && (!server.isTown_2())) && (counter < 20))
+            //{ botwindow.Pause(1000); counter++; }
+
+            //botwindow.PressEscThreeTimes(); //29.04.17
+            //botwindow.Pause(500);
 
         }
 
@@ -60,7 +69,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return true;                                                                                //считаем, что осечек не будет на этом этапе, и мы 100% переёдем к следующему пункту
+            return server.isWork();
         }
 
         /// <summary>

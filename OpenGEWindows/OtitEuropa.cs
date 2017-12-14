@@ -40,8 +40,8 @@ namespace OpenGEWindows
                                new Point(539 - 5 + xx, 486 - 5 + yy), 
                                new Point(462 - 5 + xx, 468 - 5 + yy) };
 
-            iPoint result = route[counterRoute];
-            counterRoute++; if (counterRoute > 4) counterRoute = 0;
+            iPoint result = route[counterRouteNode];
+            counterRouteNode++; if (counterRouteNode > 4) counterRouteNode = 0;
 
             return result;
         }
@@ -55,7 +55,7 @@ namespace OpenGEWindows
         {
             int[] routeTime = { 10000, 15000, 15000, 15000, 15000 };
 
-            int result = routeTime[counterRoute];
+            int result = routeTime[counterRouteNode];
 
             return result;
         }

@@ -14,14 +14,6 @@ namespace OpenGEWindows
 
         // ============ переменные ======================
 
-        //#region общие
-
-        //protected botWindow botwindow;
-        //protected int xx;
-        //protected int yy;
-
-        //#endregion
-
         #region Shop
 
         protected iPointColor pointIsSale1;
@@ -78,21 +70,10 @@ namespace OpenGEWindows
 
         #endregion
 
+        protected Dialog dialog;
+
 
         // ============  методы  ========================
-
-        //#region общие методы
-
-        ///// <summary>
-        ///// Останавливает поток на некоторый период (пауза)
-        ///// </summary>
-        ///// <param name="ms"> ms - период в милисекундах </param>
-        //protected void Pause(int ms)
-        //{
-        //    Thread.Sleep(ms);
-        //}
-
-        //#endregion
 
         #region Shop
 
@@ -162,6 +143,7 @@ namespace OpenGEWindows
         public bool NeedToSellProduct(uint color)
         {
             bool result = true;
+            iPointColor pointMega = new PointColor();
 
             switch (color)                                             // Хорошая вещь или нет, сверяем по картотеке
             {
@@ -213,9 +195,84 @@ namespace OpenGEWindows
                 case 11258069:     // пули эксп
                 case 2569782:     // дробь эксп
                 case 5137276:     // сундук деревянный как у сфер древней звезды
-
-                    //              case 7645105:     // Quartz                 **
                     result = false;
+                    break;
+                case 14210771:     // Mega Etr, Io Talt
+                case 9803667:     // Mega A
+                case 7645105:     // Mega Qu
+                    result = true;
+                    break;
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// определяет, анализируется ли нужный товар либо данный товар можно продавать
+        /// </summary>
+        /// <param name="color"> цвет полностью определяет товар, который поступает на анализ </param>
+        /// <returns> true, если анализируемый товар нужный и его нельзя продавать </returns>
+        public bool NeedToSellProduct(uint color, int numberOfString)
+        {
+            bool result = true;   //по умолчанию вещь надо продаывать, поэтому true
+            iPointColor pointMega = new PointColor(174 - 5 + xx, 214 - 5 + yy + (numberOfString - 1) * 27, 10700000, 5);  //буква M в слове Mega
+
+            switch (color)                                             // Хорошая вещь или нет, сверяем по картотеке
+            {
+                case 394901:      // soul crystal                **
+                case 3947742:     // красная бутылка 1200HP      **
+                case 2634708:     // красная бутылка 2500HP      **
+                case 7171437:     // devil whisper               **
+                case 5933520:     // маленькая красная бутылка   **
+                case 1714255:     // митридат                    **
+                case 7303023:     // чугун                       **
+                case 4487528:     // honey                       **
+                case 1522446:     // green leaf                  **
+                case 2112641:     // red leaf                    **
+                case 1533304:     // yelow leaf                  **
+                case 13408291:    // shiny                       **
+                case 3303827:     // карта перса                 **
+                case 6569293:     // warp                        **
+                case 662558:      // head of Mantis              **
+                case 4497887:     // Mana Stone                  **
+                case 7305078:     // Ящики для джеков            **
+                case 15420103:    // Бутылка хрина               **
+                case 9868940:     // композитная сталь           **
+                case 5334831:     // магическая сфера            **
+                case 13164006:    // свекла                      **
+                case 16777215:    // Wheat flour                 **
+                case 13565951:    // playtoken                   **
+                case 10986144:    // Hinge                       **
+                case 3481651:     // Tube                        **
+                case 6593716:     // Clock                       **
+                case 13288135:    // Spring                      **
+                case 7233629:     // Cogwheel                    **
+                case 13820159:    // Family Support Token        **
+                case 4222442:     // Wolf meat                   **
+                case 4435935:     // Yellow ore                  **
+                case 5072004:     // Bone Stick                  **
+                case 3559777:     // Dragon Lether               **
+                case 1712711:     // Dragon Horn                 **
+                case 6719975:     // Wild Boar Meat              **
+                case 4448154:     // Green ore                   **
+                case 13865807:    // blue ore                    **
+                case 4670431:     // Red ore                     **
+                case 13291199:    // Diamond Ore                 **
+                case 1063140:     // Stone of Philos             **
+                case 8486756:     // Ice Crystal                 **
+                case 4143156:     // bulk of Coal                **
+                case 9472397:     // Steel piece                 **
+                case 7187897:     // Mustang ore
+                case 1381654:     // стрелы эксп
+                case 11258069:    // пули эксп
+                case 2569782:     // дробь эксп
+                case 5137276:     // сундук деревянный как у сфер древней звезды
+                    result = false;
+                    break;
+                case 14210771:    // Mega Etr, Io Talt
+                case 9803667:     // Mega A
+                case 7645105:     // Mega Qu
+                    if (pointMega.isColor())    result = false;     //если еще совпадает и вторая точка, то это мегакварц
                     break;
             }
 
@@ -275,7 +332,7 @@ namespace OpenGEWindows
             do
             {
                 previousProduct = currentProduct;
-                if (NeedToSellProduct(currentProduct.color1))
+                if (NeedToSellProduct(currentProduct.color1, 1 ))    //проверяем товар в первой строке
                     AddToCartLotProduct(1);
                 else
                     GoToNextproduct(1);
@@ -295,8 +352,8 @@ namespace OpenGEWindows
             {
                 pointCurrentProduct = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 3360337, 0);   //проверяем цвет текущего продукта
                 Pause(50);
-                if (NeedToSellProduct(pointCurrentProduct.GetPixelColor()))       //если нужно продать товар
-                    AddToCartLotProduct(j);                                       //добавляем в корзину весь товар в строке j
+                if (NeedToSellProduct(pointCurrentProduct.GetPixelColor(),j))       //если нужно продать товар в строке j
+                    AddToCartLotProduct(j);                                         //добавляем в корзину весь товар в строке j
             }
         }
 
@@ -355,6 +412,7 @@ namespace OpenGEWindows
         }
 
 
+        // закомментировано
         ///// <summary>
         ///// Посылаем нажатие числа 333 в окно с ботом с помощью команды PostMessage
         ///// </summary>
@@ -405,6 +463,23 @@ namespace OpenGEWindows
 
 
         #endregion
+
+        /// <summary>
+        /// Кликаем на строчку Sell и кнопку "Ok" в магазине   
+        /// </summary>
+        public void ClickSellAndOkInTrader()   
+        {
+            dialog.PressStringDialog(1);  ////========= тыкаем в "Sell/Buy Items" ======================================
+            dialog.PressOkButton(1);      ////========= тыкаем в OK =======================
+        }
+
+        ///// <summary>
+        ///// выход из магазина путем нажатия кнопки Exit
+        ///// </summary>
+        //public void PressExitFromShop()                   
+        //{
+        //    dialog.PressOkButton(1);      ////========= тыкаем в OK =======================
+        //}
 
 
     }

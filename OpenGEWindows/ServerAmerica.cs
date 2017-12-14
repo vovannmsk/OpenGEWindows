@@ -438,9 +438,9 @@ namespace OpenGEWindows
         /// <summary>
         /// телепортируемся в город продажи по Alt+W (Америка)
         /// </summary>
-        public override void TeleportToTownAltW()
+        public override void TeleportToTownAltW(int nomerTeleport)
         {
-            iPoint pointTeleportToTownAltW = new Point(801 + xx, 564 + yy + (botwindow.getNomerTeleport() - 1) * 17);
+            iPoint pointTeleportToTownAltW = new Point(801 + xx, 564 + yy + (nomerTeleport - 1) * 17);
 
             TopMenu(6, 1);
             Pause(1000);

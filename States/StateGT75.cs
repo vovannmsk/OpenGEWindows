@@ -13,6 +13,7 @@ namespace States
         private botWindow botwindow;
         private int tekStateInt;
         private Otit otit;
+        private Dialog dialog;
 
         public StateGT75()
         {
@@ -24,6 +25,8 @@ namespace States
             this.botwindow = botwindow;
             OtitFactory otitFactory = new OtitFactory(botwindow);
             this.otit = otitFactory.createOtit();
+            DialogFactory dialogFactory = new DialogFactory(botwindow);
+            this.dialog = dialogFactory.createDialog();
             this.tekStateInt = 75;
         }
 
@@ -48,7 +51,8 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return otit.isOldMan();
+//            return otit.isOldMan();
+            return dialog.isDialog();    //если находимся в диалоге
         }
 
         /// <summary>

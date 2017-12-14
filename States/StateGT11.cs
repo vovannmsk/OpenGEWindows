@@ -13,9 +13,7 @@ namespace States
         private botWindow botwindow;
         private Server server;
         private Town town;
-        private ServerFactory serverFactory;
         private Market market;
-        private MarketFactory marketFactory;
 
         //        GotoTrade gototrade;
         private int tekStateInt;
@@ -28,10 +26,10 @@ namespace States
         public StateGT11(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
-            this.serverFactory = new ServerFactory(botwindow);
+            ServerFactory serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.town = server.getTown();
-            this.marketFactory = new MarketFactory(botwindow);
+            MarketFactory marketFactory = new MarketFactory(botwindow);
             this.market = marketFactory.createMarket();
             this.tekStateInt = 11;
         }
@@ -76,6 +74,7 @@ namespace States
             market.SaleToTheRedBottle();      // продажа до красной бутылки
             market.SaleOverTheRedBottle();    // продажа от красной бутылки до того момента, пока крутится список продажи
             market.SaleToEnd();               // продажа до конца, когда список уже не крутится 
+
         }
 
         /// <summary>

@@ -71,7 +71,14 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGT80(botwindow);
+            IState result = new StateGT80(botwindow);
+            if (server.isKillHero()) 
+            { 
+                //что-нибудь придумать
+                result = new StateGT81(botwindow);
+            }
+
+            return result;
         }
 
         #region стандартные служебные методы для паттерна Состояния

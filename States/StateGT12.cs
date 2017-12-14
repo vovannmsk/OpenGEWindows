@@ -13,7 +13,7 @@ namespace States
         private botWindow botwindow;
         private Server server;
         private Town town;
-        private ServerFactory serverFactory;
+        private Market market;
         private int tekStateInt;
 
         public StateGT12()
@@ -24,10 +24,11 @@ namespace States
         public StateGT12(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
-            this.serverFactory = new ServerFactory(botwindow);
+            ServerFactory serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.town = server.getTown();
-            //            this.gototrade = gototrade;
+            MarketFactory marketFactory = new MarketFactory(botwindow);
+            this.market = marketFactory.createMarket();
             this.tekStateInt = 12;
         }
 
@@ -66,7 +67,6 @@ namespace States
         public void run()                // переход к следующему состоянию
         {
             server.GoToEnd();
-            //botwindow.Pause(4000);    //даём время для срабатывания предыдущей команды, иначе может сбиться движок
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace States
             botwindow.Pause(500);
 
             //если из-за тормозов интернета мы не вышли из магазина после продажи (и из-за этого не смогли тыкнуть в логаут), то делаем это здесь
-            town.PressExitFromShop();
+            market.Button_Close();
             town.ExitFromTrader();
         }
 

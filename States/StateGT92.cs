@@ -8,28 +8,27 @@ using OpenGEWindows;
 
 namespace States
 {
-    public class StateGT76 : IState
+    public class StateGT92 : IState
     {
         private botWindow botwindow;
         private Server server;
         private Otit otit;
-        //private Town town;
         private int tekStateInt;
 
-        public StateGT76()
+        public StateGT92()
         {
 
         }
 
-        public StateGT76(botWindow botwindow)   //, GotoTrade gototrade)
+        public StateGT92(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
-            this.server = botwindow.getserver();
-            this.otit = botwindow.getOtit();
+            ServerFactory serverFactory = new ServerFactory(botwindow);
+            this.server = serverFactory.createServer();                 // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            OtitFactory otitFactory = new OtitFactory(botwindow);
+            this.otit = otitFactory.createOtit();
 
-            //this.town = server.getTown();
-
-            this.tekStateInt = 76;
+            this.tekStateInt = 92;
         }
 
 
@@ -38,8 +37,6 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            otit.GetTask();
-            botwindow.Pause(1000); //ожидаем город
         }
 
         /// <summary>
@@ -55,7 +52,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return server.isTown();
+            return true;
         }
 
         /// <summary>
@@ -64,7 +61,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT77(botwindow);
+            return new StateGT92(botwindow);
         }
 
         /// <summary>
@@ -73,7 +70,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGT84(botwindow);
+            return new StateGT92(botwindow);
         }
 
         #region стандартные служебные методы для паттерна Состояния

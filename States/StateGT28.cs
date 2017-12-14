@@ -67,6 +67,7 @@ namespace States
             botwindow.ClickSpace();
             botwindow.Pause(500);
             botwindow.PressMitridat();
+            if (server.isCook()) server.ClickSkillCook();    //нажимаем на скилл повару
         }
 
         /// <summary>

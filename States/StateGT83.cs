@@ -54,7 +54,8 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return (server.isTown() && server.isTown_2());
+//            return (server.isTown() && server.isTown_2());
+            return server.isTown();
         }
 
         /// <summary>

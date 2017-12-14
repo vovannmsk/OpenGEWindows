@@ -64,11 +64,11 @@ namespace States
             botwindow.PressEscThreeTimes();
             botwindow.Pause(500);
             //================ переход в тот город, где надо продаться (переход по Alt+W) =================================
-            server.TeleportToTownAltW();            //метод без ветвлений и циклов
+            server.TeleportToTownAltW(botwindow.getNomerTeleport());            //метод без ветвлений и циклов
 
             //ожидание загрузки города
             int counter = 0;
-            while (((!server.isTown()) && (!server.isTown_2())) && (counter < 30))                  
+            while ((!server.isTown()) && (counter < 30))                  
             { botwindow.Pause(1000); counter++; }
 
             botwindow.PressEscThreeTimes(); //29.04.17
@@ -90,7 +90,7 @@ namespace States
         /// <returns> true, если получилось перейти к состоянию GT02 </returns>
         public bool isAllCool()          // получилось ли перейти к следующему состоянию. true, если получилось
         {
-            return  ( (server.isTown()) || (server.isTown_2()) );   //GT1   проверка по двум стойкам
+            return  server.isTown(); 
         }
 
         /// <summary>
