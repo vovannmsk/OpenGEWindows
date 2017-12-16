@@ -54,6 +54,8 @@ namespace OpenGEWindows
                                   { new Point(569 - 5 + xx, 414 - 5 + yy), new Point(511 - 5 + xx, 436 - 5 + yy), new Point(563 - 5 + xx, 444 - 5 + yy) }, 
                                   { new Point(334 - 5 + xx, 375 - 5 + yy), new Point(287 - 5 + xx, 350 - 5 + yy), new Point(286 - 5 + xx, 400 - 5 + yy) }, 
                                   { new Point(404 - 5 + xx, 339 - 5 + yy), new Point(362 - 5 + xx, 319 - 5 + yy), new Point(410 - 5 + xx, 289 - 5 + yy) }, 
+                                  { new Point(379 - 5 + xx, 352 - 5 + yy), new Point(306 - 5 + xx, 347 - 5 + yy), new Point(350 - 5 + xx, 312 - 5 + yy) }, 
+                                  { new Point(540 - 5 + xx, 479 - 5 + yy), new Point(476 - 5 + xx, 467 - 5 + yy), new Point(521 - 5 + xx, 442 - 5 + yy) }
                               };
 
             iPoint result = route[NumberOfRoute(), counterRouteNode];
@@ -72,7 +74,9 @@ namespace OpenGEWindows
                                    { 20000, 35000, 25000 },
                                    { 15000, 35000, 25000 },
                                    { 20000, 35000, 25000 },
-                                   { 20000, 25000, 35000 }
+                                   { 20000, 25000, 35000 },
+                                   { 20000, 30000, 30000 },
+                                   { 20000, 30000, 30000 }
                                };
 
             int result = routeTime[NumberOfRoute(), counterRouteNode];

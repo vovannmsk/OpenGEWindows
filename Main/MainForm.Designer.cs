@@ -46,6 +46,9 @@
             this.Nintendo = new System.Windows.Forms.Button();
             this.TransferVis = new System.Windows.Forms.Button();
             this.PureOtite = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.numberOfAccouts = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numberOfAccouts)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonReOpenWindowGE
@@ -82,9 +85,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 246);
+            this.button1.Location = new System.Drawing.Point(10, 297);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(167, 60);
+            this.button1.Size = new System.Drawing.Size(170, 35);
             this.button1.TabIndex = 5;
             this.button1.Text = "T E S T";
             this.button1.UseVisualStyleBackColor = true;
@@ -114,18 +117,20 @@
             // 
             // buttonGotoTradeTest
             // 
+            this.buttonGotoTradeTest.BackColor = System.Drawing.Color.White;
+            this.buttonGotoTradeTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.buttonGotoTradeTest.Location = new System.Drawing.Point(190, 90);
             this.buttonGotoTradeTest.Name = "buttonGotoTradeTest";
             this.buttonGotoTradeTest.Size = new System.Drawing.Size(170, 35);
             this.buttonGotoTradeTest.TabIndex = 45;
             this.buttonGotoTradeTest.Text = "Направить все окна на продажу";
-            this.buttonGotoTradeTest.UseVisualStyleBackColor = true;
+            this.buttonGotoTradeTest.UseVisualStyleBackColor = false;
             this.buttonGotoTradeTest.Click += new System.EventHandler(this.buttonGotoTradeTest_Click);
             // 
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.LightCoral;
-            this.button5.Location = new System.Drawing.Point(190, 171);
+            this.button5.Location = new System.Drawing.Point(10, 10);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(170, 34);
             this.button5.TabIndex = 48;
@@ -158,7 +163,7 @@
             // ButtonOpenWindow
             // 
             this.ButtonOpenWindow.BackColor = System.Drawing.Color.Gold;
-            this.ButtonOpenWindow.Location = new System.Drawing.Point(10, 10);
+            this.ButtonOpenWindow.Location = new System.Drawing.Point(190, 297);
             this.ButtonOpenWindow.Name = "ButtonOpenWindow";
             this.ButtonOpenWindow.Size = new System.Drawing.Size(170, 35);
             this.ButtonOpenWindow.TabIndex = 52;
@@ -170,7 +175,7 @@
             // 
             this.sharpening.BackColor = System.Drawing.Color.BlueViolet;
             this.sharpening.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.sharpening.Location = new System.Drawing.Point(190, 130);
+            this.sharpening.Location = new System.Drawing.Point(190, 256);
             this.sharpening.Name = "sharpening";
             this.sharpening.Size = new System.Drawing.Size(170, 35);
             this.sharpening.TabIndex = 49;
@@ -182,7 +187,7 @@
             // 
             this.Nintendo.BackColor = System.Drawing.Color.Chocolate;
             this.Nintendo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Nintendo.Location = new System.Drawing.Point(10, 130);
+            this.Nintendo.Location = new System.Drawing.Point(10, 256);
             this.Nintendo.Name = "Nintendo";
             this.Nintendo.Size = new System.Drawing.Size(170, 35);
             this.Nintendo.TabIndex = 53;
@@ -194,7 +199,7 @@
             // 
             this.TransferVis.BackColor = System.Drawing.Color.Green;
             this.TransferVis.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.TransferVis.Location = new System.Drawing.Point(10, 170);
+            this.TransferVis.Location = new System.Drawing.Point(10, 130);
             this.TransferVis.Name = "TransferVis";
             this.TransferVis.Size = new System.Drawing.Size(170, 35);
             this.TransferVis.TabIndex = 54;
@@ -205,7 +210,7 @@
             // PureOtite
             // 
             this.PureOtite.BackColor = System.Drawing.Color.Silver;
-            this.PureOtite.Location = new System.Drawing.Point(190, 211);
+            this.PureOtite.Location = new System.Drawing.Point(190, 131);
             this.PureOtite.Name = "PureOtite";
             this.PureOtite.Size = new System.Drawing.Size(170, 34);
             this.PureOtite.TabIndex = 55;
@@ -213,12 +218,33 @@
             this.PureOtite.UseVisualStyleBackColor = false;
             this.PureOtite.Click += new System.EventHandler(this.PureOtite_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(12, 179);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 20);
+            this.label1.TabIndex = 56;
+            this.label1.Text = "Кол-во окон";
+            // 
+            // numberOfAccouts
+            // 
+            this.numberOfAccouts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numberOfAccouts.Location = new System.Drawing.Point(137, 177);
+            this.numberOfAccouts.Name = "numberOfAccouts";
+            this.numberOfAccouts.Size = new System.Drawing.Size(43, 26);
+            this.numberOfAccouts.TabIndex = 57;
+            this.numberOfAccouts.Leave += new System.EventHandler(this.numberOfAccouts_Leave);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(369, 211);
+            this.ClientSize = new System.Drawing.Size(369, 214);
+            this.Controls.Add(this.numberOfAccouts);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.PureOtite);
             this.Controls.Add(this.TransferVis);
             this.Controls.Add(this.Nintendo);
@@ -242,6 +268,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numberOfAccouts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -265,6 +292,8 @@
         private System.Windows.Forms.Button Nintendo;
         private System.Windows.Forms.Button TransferVis;
         private System.Windows.Forms.Button PureOtite;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown numberOfAccouts;
     
     }
 }

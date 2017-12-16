@@ -35,7 +35,9 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            otit.GoToOldMan();
+
+            otit.GoToOldManBegin();
+            otit.GoToOldManEnd();
         }
 
         /// <summary>

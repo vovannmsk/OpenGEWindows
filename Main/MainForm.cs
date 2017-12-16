@@ -24,7 +24,7 @@ namespace Main
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
         public static String DataVersion = "15-12-2017";
-        public static int numberOfAccounts = KolvoAkk();
+        public static int numberOfAcc = KolvoAkk();
 
         /// <summary>
         /// выполняется перез загружкой основной формы (меню)
@@ -33,8 +33,10 @@ namespace Main
         /// <param name="e"></param>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            this.Text = "Программа от " + DataVersion + ".    " + numberOfAccounts + " окон";
+            this.Text = "Программа от " + DataVersion + ".    " + numberOfAcc + " окон";
             this.Location = new System.Drawing.Point(1315, 1080 - this.Height - 40);
+
+            this.numberOfAccouts.Value = numberOfAcc;
 
             //for (int i = 0; i <= 20; i++)
             //{
@@ -53,6 +55,17 @@ namespace Main
         {
             System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
+
+        /// <summary>
+        /// присваиваем переменной класса значение, выбранное пользователем в форме
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void numberOfAccouts_Leave(object sender, EventArgs e)
+        {
+            numberOfAcc = (int)this.numberOfAccouts.Value;
+        }
+
 
 
         #region Light Coral Button "Найти окна"
@@ -77,7 +90,7 @@ namespace Main
         /// </summary>
         private void funcCoral()
         {
-            for (int j = 1; j <= numberOfAccounts; j++)                //на европе и америке может быть только одно окно
+            for (int j = 1; j <= numberOfAcc; j++)                //на европе и америке может быть только одно окно
             {
                 Check check = new Check(j);
 
@@ -127,7 +140,7 @@ namespace Main
         /// </summary>
         private void funcOrange()
         {
-            for (int j = 1; j <= numberOfAccounts; j++)
+            for (int j = 1; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
                 if (check.isActive())
@@ -159,7 +172,7 @@ namespace Main
         /// </summary>
         private void funcLime()
         {
-            for (int j = 1; j <= numberOfAccounts; j++)
+            for (int j = 1; j <= numberOfAcc; j++)
 //            for (int j = 2; j <= 2; j++)
             {
                 Check check = new Check(j);
@@ -195,7 +208,7 @@ namespace Main
         /// </summary>
         private void funcPink()
         {
-            for (int j = 12; j <= numberOfAccounts; j++)
+            for (int j = 12; j <= numberOfAcc; j++)
 //            for (int j = 2; j <= 2; j++)
             {
                 Check check = new Check(j);
@@ -229,7 +242,7 @@ namespace Main
         /// </summary>*
         private void funcAqua()
         {
-            for (int j = 1; j <= numberOfAccounts; j++)
+            for (int j = 1; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
                 if (check.isActive())
@@ -285,12 +298,12 @@ namespace Main
         /// </summary>
         private void funcGreen()
         {
-            for (int j = 1; j <= numberOfAccounts; j++)
+            for (int j = 1; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
                 if (check.isActive())  check.checkForProblems();
             }
-            for (int j = 1; j <= numberOfAccounts; j++)
+            for (int j = 1; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
                 if (check.isActive())   check.ReOpenWindow();
@@ -379,7 +392,7 @@ namespace Main
         /// </summary>*
         private void funcNewWhite()
         {
-            for (int j = 1; j <= numberOfAccounts; j++)
+            for (int j = 1; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
                 if (check.isActive())
@@ -415,14 +428,14 @@ namespace Main
         /// </summary>
         private void funcGold()
         {
-            for (int j = 1; j <= numberOfAccounts; j++)
+            for (int j = 1; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
                 if (check.isActive()) check.OpenWindow();
                 check.Pause(5000);
             }
             
-            for (int j = 1; j <= numberOfAccounts; j++)
+            for (int j = 1; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
                 if (check.isActive()) check.ReOpenWindow();
@@ -449,7 +462,7 @@ namespace Main
         /// </summary>*
         private void funcMagenta()
         {
-            for (int j = 11; j <= numberOfAccounts; j++)
+            for (int j = 11; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
                 if (check.isActive())
@@ -484,7 +497,7 @@ namespace Main
         /// </summary>
         private void funcChoco()
         {
-            for (int j = 11; j <= numberOfAccounts; j++)
+            for (int j = 11; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
                 if (check.isActive())
@@ -521,7 +534,7 @@ namespace Main
         /// </summary>
         private void funcTransfer()
         {
-            for (int j = 1; j <= numberOfAccounts; j++)
+            for (int j = 1; j <= numberOfAcc; j++)
             //for (int j = 1; j <= 1; j++)
                 {
                 Check check = new Check(j);
@@ -572,7 +585,7 @@ namespace Main
         /// </summary>
         private void funcSilver()
         {
-            int NumberOfWindow = 15;
+            int NumberOfWindow = KolvoAkk() + 1;
             Check check = new Check(NumberOfWindow);
             for (int i = 1; i <= 100; i++)
             {
@@ -586,7 +599,6 @@ namespace Main
         }
 
         #endregion
-
 
 
 

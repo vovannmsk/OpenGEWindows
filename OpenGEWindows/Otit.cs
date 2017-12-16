@@ -53,6 +53,12 @@ namespace OpenGEWindows
                 case 3:
                     result = 2;
                     break;
+                case 4:
+                    result = 5;
+                    break;
+                case 5:
+                    result = 4;
+                    break;
             }
             SaveNumberOfRoute(result);
         }
@@ -102,7 +108,7 @@ namespace OpenGEWindows
             dialog.PressStringDialog(2);
             dialog.PressOkButton(1);
 
-            if ((NumberOfRoute() == 0) || (NumberOfRoute() == 1))
+            if ((NumberOfRoute() == 0) || (NumberOfRoute() == 1) || (NumberOfRoute() == 5))
             {
                 dialog.PressStringDialog(3);     // стартовая точка - около входа
                 dialog.PressOkButton(1);
@@ -150,6 +156,32 @@ namespace OpenGEWindows
             town.PressOldMan1();
             Pause(2000);
         }
+
+        /// <summary>
+        /// подходим к старому человеку после перехода из казарм
+        /// </summary>
+        public void GoToOldManBegin()
+        {
+            server.OpenMapForState();
+            Pause(1000);
+
+            town.PressOldManonMap();
+            town.ClickMoveMap();
+
+            botwindow.PressEscThreeTimes();
+            Pause(4000);
+
+        }
+
+        /// <summary>
+        /// тыкаем в старого человека для диалога
+        /// </summary>
+        public void GoToOldManEnd()
+        {
+            town.PressOldMan1();
+            Pause(2000);
+        }
+
 
         /// <summary>
         /// переход по карте Земли мертвых к месту начала маршрута для набивания андидов (100 шт.)

@@ -47,6 +47,16 @@ namespace States
         }
 
         /// <summary>
+        /// идем из состояния логаут до старого человека в Лос Толдосе
+        /// </summary>
+        public void StateGotoOldMan ()
+        {
+            StateDriverRun(new StateGT15(this.botwindow), new StateGT18(this.botwindow));  // переход из состояния "Логаут" в состояние "Около Мамона" 
+            StateDriverRun(new StateGT86(this.botwindow), new StateGT88(this.botwindow));  // Говорим с Мамоном и переходим в Лос Толдос 
+
+
+        }
+        /// <summary>
         /// перевод из состояния 75 в состояние 90. Цель  - добыча отита. Исполнитель - не барон, но с отитовыми духами
         /// </summary>
         public void StateOtitRun()
