@@ -65,23 +65,6 @@ namespace States
         public void run()                // переход к следующему состоянию
         {
             botwindow.Placement();
-
-            //// ============= нажимаем на первого перса (обязательно на точку ниже открытой карты)
-            //botwindow.FirstHero();
-
-            //botwindow.PressMouseL(botwindow.getTriangleX()[0], botwindow.getTriangleY()[0]);
-
-            //// ============= нажимаем на третьего перса (обязательно на точку ниже открытой карты)
-            //botwindow.ThirdHero();
-            //botwindow.PressMouseL(botwindow.getTriangleX()[2], botwindow.getTriangleY()[2]);
-
-            //// ============= нажимаем на второго перса (обязательно на точку ниже открытой карты)
-            //botwindow.SecondHero();
-            //botwindow.PressMouseL(botwindow.getTriangleX()[1], botwindow.getTriangleY()[1]);
-
-            //// ============= закрыть карту через верхнее меню
-            //botwindow.CloseMap();
-            //botwindow.Pause(1500);
         }
 
         /// <summary>

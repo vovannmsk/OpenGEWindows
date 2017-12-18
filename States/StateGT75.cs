@@ -36,8 +36,7 @@ namespace States
         public void run()                // переход к следующему состоянию
         {
 
-            otit.GoToOldManBegin();
-            otit.GoToOldManEnd();
+            otit.GoToOldManBegin();  //подбегаем к старому мужику
         }
 
         /// <summary>
@@ -53,8 +52,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-//            return otit.isOldMan();
-            return dialog.isDialog();    //если находимся в диалоге
+            return true;
         }
 
         /// <summary>
@@ -63,7 +61,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT76(botwindow);
+            return new StateGT751 (botwindow);
         }
 
         /// <summary>

@@ -104,6 +104,11 @@
     <Compile Include="Dialog.cs" />
     <Compile Include="DialogAmerica.cs" />
     <Compile Include="DialogEuropa.cs" />
+    <Compile Include="MMSing.cs" />
+    <Compile Include="MMFactory.cs" />
+    <Compile Include="MMEuropa.cs" />
+    <Compile Include="MMAmerica.cs" />
+    <Compile Include="MM.cs" />
     <Compile Include="Otit.cs" />
     <Compile Include="OtitAmerica.cs" />
     <Compile Include="OtitEuropa.cs" />

@@ -587,13 +587,17 @@ namespace Main
         {
             int NumberOfWindow = KolvoAkk() + 1;
             Check check = new Check(NumberOfWindow);
+            DriversOfState drive = new DriversOfState(NumberOfWindow);
+            check.ReOpenWindow();
+            drive.StateGotoOldMan();  //подходим в Old Man
+
             for (int i = 1; i <= 100; i++)
             {
-                check.ReOpenWindow();
+                //check.ReOpenWindow();
                 //if (check.isLogout())   //если окно находится в логауте
                 //{
-                DriversOfState drive = new DriversOfState(NumberOfWindow);
-                    drive.StateOtitRun();
+                //DriversOfState drive = new DriversOfState(NumberOfWindow);
+                    drive.StateOtitRun2();
                 //}
             }
         }

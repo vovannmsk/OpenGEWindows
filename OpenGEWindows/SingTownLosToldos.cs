@@ -44,7 +44,7 @@ namespace OpenGEWindows
             this.pointOpenTownTeleport2 = new PointColor(100 - 5 + xx, 296 - 5 + yy, 13000000, 5);  //не проверено
 
             this.pointOldManOnMap = new Point(740 - 5 + xx, 212 - 5 + yy);      //строка на карте Старый мужик 
-            this.pointOldMan1 = new Point(552 - 5 + xx, 383 - 5 + yy);          //голова Старого мужика
+            this.pointOldMan1 = new Point(531 - 5 + xx, 343 - 5 + yy);          //голова Старого мужика
 
         
         }

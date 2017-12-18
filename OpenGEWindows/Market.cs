@@ -78,6 +78,15 @@ namespace OpenGEWindows
         #region Shop
 
         /// <summary>
+        /// Кликаем на строчку Sell и кнопку "Ok" в магазине   
+        /// </summary>
+        public void ClickSellAndOkInTrader()
+        {
+            dialog.PressStringDialog(1);  ////========= тыкаем в "Sell/Buy Items" ======================================
+            dialog.PressOkButton(1);      ////========= тыкаем в OK =======================
+        }
+
+        /// <summary>
         /// проверяет, находится ли данное окно в магазине (а точнее на странице входа в магазин) 
         /// </summary>
         /// <returns> true, если находится в магазине </returns>
@@ -267,6 +276,8 @@ namespace OpenGEWindows
                 case 11258069:    // пули эксп
                 case 2569782:     // дробь эксп
                 case 5137276:     // сундук деревянный как у сфер древней звезды
+                case 3031912:     // Reinforced Lether
+
                     result = false;
                     break;
                 case 14210771:    // Mega Etr, Io Talt
@@ -464,14 +475,6 @@ namespace OpenGEWindows
 
         #endregion
 
-        /// <summary>
-        /// Кликаем на строчку Sell и кнопку "Ok" в магазине   
-        /// </summary>
-        public void ClickSellAndOkInTrader()   
-        {
-            dialog.PressStringDialog(1);  ////========= тыкаем в "Sell/Buy Items" ======================================
-            dialog.PressOkButton(1);      ////========= тыкаем в OK =======================
-        }
 
         ///// <summary>
         ///// выход из магазина путем нажатия кнопки Exit

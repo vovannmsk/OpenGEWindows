@@ -39,18 +39,10 @@ namespace OpenGEWindows
         private IScriptDataBot scriptDataBot;
 
         private Server server;                 
-        private ServerFactory serverFactory;
-//        private Town town;
         private Market market;
-        private MarketFactory marketFactory;
         private Pet pet;
-        private PetFactory petFactory;
         private Otit otit;
-        private OtitFactory otitFactory;
         private Dialog dialog;
-        private DialogFactory dialogFactory;
-
-
 
         //private int counterMitridat;
         //private System.DateTime timeMitridat = System.DateTime.Now;
@@ -90,16 +82,15 @@ namespace OpenGEWindows
             #endregion
 
             // эти объекты создаются на основании предыдущих переменных класса, а именно param (на каком сервере бот) и nomerTeleport (город продажи)
-            this.serverFactory = new ServerFactory(this);
+            ServerFactory serverFactory = new ServerFactory(this);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-//            this.town = server.getTown();
-            this.marketFactory = new MarketFactory(this);
+            MarketFactory marketFactory = new MarketFactory(this);
             this.market = marketFactory.createMarket();
-            this.petFactory = new PetFactory(this);
+            PetFactory petFactory = new PetFactory(this);
             this.pet = petFactory.createPet();
-            this.otitFactory = new OtitFactory(this);
+            OtitFactory otitFactory = new OtitFactory(this);
             this.otit = otitFactory.createOtit();
-            this.dialogFactory = new DialogFactory(this);
+            DialogFactory dialogFactory = new DialogFactory(this);
             this.dialog = dialogFactory.createDialog();
 
             // точки для тыканья. универсально для всех серверов
@@ -821,18 +812,26 @@ namespace OpenGEWindows
             //System.DateTime timeNow = DateTime.Now;  //текущее время
             //System.TimeSpan PeriodMitridat = timeNow.Subtract(timeMitridat);   //сколько времени прошло с последнего применения митридата
             //uint PeriodMitridatSeconds = (uint)PeriodMitridat.TotalSeconds;          //сколько времени прошло с последнего применения митридата в секундах
-            //if ((PeriodMitridatSeconds >= 360) | (counterMitridat == 0))
+            //if ((PeriodMitridatSeconds >= 600) | (counterMitridat == 0))
             //{
 
             pointPanel.PressMouseR();                   // Кликаю правой кнопкой в панель с бытылками, чтобы сделать ее активной и поверх всех окон (группа может мешать)
             pointSecondBox.PressMouseL();               // тыкаю в митридат (вторая ячейка)
             pointThirdBox.PressMouseL();                // тыкаю в  (третья ячейка)
 
-            SecondHero();                               //выбираю главным второго героя (это нужно, чтобы не было тормозов) типа надо нажать в экран после митридата
-            Pause(500);
+            if (server.isSecondHero())                  //если есть второй перс ()
+            {
+                SecondHero();                           //выбираю главным второго героя (это нужно, чтобы не было тормозов) типа надо нажать в экран после митридата
+                Pause(500);
+            }
+            else                                        //если бегаем одним персом
+            {
+                FirstHero();
+                Pause(500);
+            }
 
-            //timeMitridat = DateTime.Now;              //обновляю время, когда был применен митридат
-            //counterMitridat++;
+            //    timeMitridat = DateTime.Now;              //обновляю время, когда был применен митридат
+            //    counterMitridat++;
             //}
         }
 

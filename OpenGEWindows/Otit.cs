@@ -236,10 +236,10 @@ namespace OpenGEWindows
         /// </summary>
         public void MinHeight()
         {
-            for (int j = 1; j <= 7; j++)
+            for (int j = 1; j <= 10; j++)
             {
                 pointMamons.PressMouseWheelDown();
-                Pause(500);
+                Pause(1000);
             }
         }
 

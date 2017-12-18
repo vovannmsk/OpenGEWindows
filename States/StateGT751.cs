@@ -8,41 +8,35 @@ using OpenGEWindows;
 
 namespace States
 {
-    public class StateGT84 : IState
+    public class StateGT751 : IState
     {
         private botWindow botwindow;
-        private Server server;
         private int tekStateInt;
+        private Otit otit;
+        private Dialog dialog;
 
-        public StateGT84()
+        public StateGT751()
         {
 
         }
 
-        public StateGT84(botWindow botwindow) 
+        public StateGT751(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
-            ServerFactory serverFactory = new ServerFactory(botwindow);
-            this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-
-            this.tekStateInt = 84;
+            OtitFactory otitFactory = new OtitFactory(botwindow);
+            this.otit = otitFactory.createOtit();
+            DialogFactory dialogFactory = new DialogFactory(botwindow);
+            this.dialog = dialogFactory.createDialog();
+            this.tekStateInt = 751;
         }
-
 
         /// <summary>
         /// метод осуществляет действия для перехода в следующее состояние
         /// </summary>
         public void run()                // переход к следующему состоянию 
         {
-            server.Logout();
 
-            int i = 0;
-            while (!server.isLogout())
-            {
-                botwindow.Pause(1000);
-                i++; if (i > 10) break;
-            }
-
+            otit.GoToOldManEnd();
         }
 
         /// <summary>
@@ -50,6 +44,8 @@ namespace States
         /// </summary>
         public void elseRun()
         {
+            botwindow.PressEscThreeTimes();
+            botwindow.Pause(500);
         }
 
         /// <summary>
@@ -58,7 +54,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return server.isLogout();
+            return dialog.isDialog();    //если находимся в диалоге
         }
 
         /// <summary>
@@ -67,7 +63,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT85(botwindow);
+            return new StateGT76(botwindow);
         }
 
         /// <summary>
@@ -76,7 +72,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGT85(botwindow);
+            return new StateGT81(botwindow);
         }
 
         #region стандартные служебные методы для паттерна Состояния
@@ -90,14 +86,7 @@ namespace States
         {
             bool result = false;
             if (!(other == null))            //если other не null, то проверяем на равенство
-                if (other.getTekStateInt() == 1)         //27.04.17
-                {
                     if (this.getTekStateInt() == other.getTekStateInt()) result = true;
-                }
-                else   //27.04.17
-                {
-                    if (this.getTekStateInt() >= other.getTekStateInt()) result = true;  //27.04.17
-                }
             return result;
         }
 

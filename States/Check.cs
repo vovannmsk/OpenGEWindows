@@ -15,7 +15,9 @@ namespace States
         private Market market;
         private Pet pet;
         private Otit otit;
-        DriversOfState driver;
+        private MM mm;
+
+        private DriversOfState driver;
 
         public Check()
         { 
@@ -23,10 +25,17 @@ namespace States
         public Check(int numberOfWindow)
         {
             botwindow = new botWindow(numberOfWindow);
-            server = botwindow.getserver();
-            market = botwindow.getMarket();
-            pet = botwindow.getPet();
-            otit = botwindow.getOtit();
+            ServerFactory serverFactory = new ServerFactory(botwindow);
+            this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            MarketFactory marketFactory = new MarketFactory(botwindow);
+            this.market = marketFactory.createMarket();
+            PetFactory petFactory = new PetFactory(botwindow);
+            this.pet = petFactory.createPet();
+            OtitFactory otitFactory = new OtitFactory(botwindow);
+            this.otit = otitFactory.createOtit();
+            MMFactory mmFactory = new MMFactory(botwindow);
+            this.mm = mmFactory.create();
+
             driver = new DriversOfState(numberOfWindow);
         }
 
@@ -64,7 +73,7 @@ namespace States
                         if (server.isKillHero())                  // если убиты один или несколько персов   
                         {
                             botwindow.CureOneWindow2();              // сделать End Programm
-                            Pause(2000);
+                            //Pause(2000);
                             //driver.StateGotoWork();               // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
                         }
                         else
@@ -104,18 +113,16 @@ namespace States
                                             }
                                             else
                                             {
-                                                //if (server.isCook())
-                                                //{
-                                                //    server.ClickSkillCook();    //нажиаем на скилл повару
-                                                //}
-                                                //else
-                                                //{ 
-                                                
-                                                //}
+                                                if (mm.isMMSell() || (mm.isMMBuy()))
+                                                {
+                                                    SellProduct();
+                                                }
+                                                else
+                                                {
+                                                    botwindow.PressMitridat();
+                                                }
                                             }
-                                        }
-                                        //else
-                                        //{ botwindow.PressMitridat(); }
+                                        } 
                                     } //else isTown2()
                                 } //else isBoxOverflow()
                             } //else isBarack()
@@ -124,6 +131,14 @@ namespace States
                 } //else  isLogout()
             } //if  Active_or_not
         }                                                                  //основной метод для зеленой кнопки
+
+        /// <summary>
+        /// выставляем на рынок продукт, если у нас на рынке не лучшая цена
+        /// </summary>
+        public void SellProduct()
+        { 
+        
+        }
 
         /// <summary>
         /// поиск новых окон с игрой для кнопки "Найти окна"
@@ -221,11 +236,11 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            botWindow botwindow = new botWindow(3);
-            Server server = new ServerSing(botwindow);
-            Market market = new MarketSing(botwindow);
-            Otit otit = new OtitSing(botwindow);
-            MessageBox.Show(" " + server.isBoxOverflow());
+            //botWindow botwindow = new botWindow(3);
+            //Server server = new ServerSing(botwindow);
+            //Market market = new MarketSing(botwindow);
+            //Otit otit = new OtitSing(botwindow);
+            //MessageBox.Show(" " + server.isBoxOverflow());
 
             //bool iscolor1 = server.isSafeIP();
             //MessageBox.Show(" " + iscolor1);
@@ -235,15 +250,19 @@ namespace States
             yy = 5;
             uint color1;
             uint color2;
+//            uint color3;
 
-            PointColor point1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 7800000, 5);
-            PointColor point2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 7800000, 5);
+            PointColor point1 = new PointColor(572 - 5 + xx, 604 - 5 + yy, 4370000, 4);
+            PointColor point2 = new PointColor(572 - 5 + xx, 605 - 5 + yy, 4370000, 4);
+//            PointColor point3 = new PointColor(590 - 5 + xx, 636 - 5 + yy, 7800000, 5);
 
             color1 = point1.GetPixelColor();
             color2 = point2.GetPixelColor();
+//            color3 = point3.GetPixelColor();
 
             MessageBox.Show(" " + color1);
             MessageBox.Show(" " + color2);
+//            MessageBox.Show(" " + color3);
 
             //string str = "";
             //if (server.isHuman()) str += "Human ";

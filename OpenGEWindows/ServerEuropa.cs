@@ -139,6 +139,9 @@ namespace OpenGEWindows
             this.pointisKillHero1 = new PointColor(75 + xx, 631 + yy, 1900000, 4);
             this.pointisKillHero2 = new PointColor(330 + xx, 631 + yy, 1900000, 4);
             this.pointisKillHero3 = new PointColor(585 + xx, 631 + yy, 1900000, 4);
+            this.pointisLiveHero1 = new PointColor(80 - 5 + xx, 636 - 5 + yy, 4200000, 5);
+            this.pointisLiveHero2 = new PointColor(335 - 5 + xx, 636 - 5 + yy, 4200000, 5);
+            this.pointisLiveHero3 = new PointColor(590 - 5 + xx, 636 - 5 + yy, 4200000, 5);
             this.pointSkillCook = new Point(183 - 5 + xx, 700 - 5 + yy);
 
             #endregion

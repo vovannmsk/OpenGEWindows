@@ -53,9 +53,32 @@ namespace States
         {
             StateDriverRun(new StateGT15(this.botwindow), new StateGT18(this.botwindow));  // переход из состояния "Логаут" в состояние "Около Мамона" 
             StateDriverRun(new StateGT86(this.botwindow), new StateGT88(this.botwindow));  // Говорим с Мамоном и переходим в Лос Толдос 
-
-
+            StateDriverRun(new StateGT75(this.botwindow), new StateGT751(this.botwindow));  // подбегаем к старому мужику
         }
+
+        /// <summary>
+        ///  Цель  - добыча отита. Исполнитель - не барон, но с отитовыми духами
+        /// </summary>
+        public void StateOtitRun2()
+        {
+            StateDriverRun(new StateGT751(this.botwindow), new StateGT81(this.botwindow));  // берем задание и выполняем его на мертвых землях
+            if (!server.isKillHero())        //если никого не убили
+            {
+                StateDriverRun(new StateGT88(this.botwindow), new StateGT89(this.botwindow));  // отбегаем в сторону (на мертвых землях)
+                StateDriverRun(new StateGT89(this.botwindow), new StateGT90(this.botwindow));  // летим к Мамону
+                StateDriverRun(new StateGT86(this.botwindow), new StateGT88(this.botwindow));  // Говорим с Мамоном и переходим в Лос Толдос 
+                StateDriverRun(new StateGT82(this.botwindow), new StateGT84(this.botwindow));  // получаем отит и остаёмся в городе (Лос Толдосе) около старого мужика
+            }
+            else         //если в процессе выполнения задания кто-то из персов был убит
+            {
+                otit.ChangeNumberOfRoute();  //сменить маршрут, чтобы в следующий раз не попасть в ту же ловушку
+                StateDriverRun(new StateGT81(this.botwindow), new StateGT82(this.botwindow));  // отбегаем в сторону (на случай, если кто-то выжил)  и логаут
+                StateDriverRun(new StateGT15(this.botwindow), new StateGT18(this.botwindow));  // переход из состояния "Логаут" в состояние "Около Мамона" 
+                StateDriverRun(new StateGT86(this.botwindow), new StateGT88(this.botwindow));  // Говорим с Мамоном и переходим в Лос Толдос 
+                StateDriverRun(new StateGT75(this.botwindow), new StateGT751(this.botwindow));  // подбегаем к старому мужику
+            }
+        }
+
         /// <summary>
         /// перевод из состояния 75 в состояние 90. Цель  - добыча отита. Исполнитель - не барон, но с отитовыми духами
         /// </summary>

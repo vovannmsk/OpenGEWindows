@@ -51,6 +51,8 @@ namespace States
         /// </summary>
         public void elseRun() 
         {
+            botwindow.PressEscThreeTimes();
+            botwindow.Pause(500);
         }
 
         /// <summary>

@@ -92,14 +92,7 @@ namespace States
         {
             bool result = false;
             if (!(other == null))            //если other не null, то проверяем на равенство
-                if (other.getTekStateInt() == 1)         //27.04.17
-                {
-                    if (this.getTekStateInt() == other.getTekStateInt()) result = true;
-                }
-                else   //27.04.17
-                {
-                    if (this.getTekStateInt() >= other.getTekStateInt()) result = true;  //27.04.17
-                }
+                if (this.getTekStateInt() == other.getTekStateInt()) result = true;
             return result;
         }
 

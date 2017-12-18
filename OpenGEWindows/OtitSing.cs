@@ -34,7 +34,7 @@ namespace OpenGEWindows
             this.pointTask1 = new PointColor(928 - 5 + xx, 360 - 5 + yy, 8200000, 5);
             this.pointTask2 = new PointColor(928 - 5 + xx, 361 - 5 + yy, 8200000, 5);
 
-            this.pointMamons = new Point(466 - 5 + xx, 437 - 5 + yy);
+            this.pointMamons = new Point(526 - 5 + xx, 262 - 5 + yy);
 
         }
 
