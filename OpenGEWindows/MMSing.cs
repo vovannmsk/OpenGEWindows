@@ -45,7 +45,14 @@ namespace OpenGEWindows
             pointIsHideFamily1 = new PointColor(483 - 5 + xx, 267 - 5 + yy, 11700000, 5);
             pointIsHideFamily2 = new PointColor(485 - 5 + xx, 267 - 5 + yy, 11200000, 5);
 
-            product = new Product(botwindow);
+            product = new Product();
+            String fileName = "C:\\!! Суперпрограмма V&K\\Продукт.txt";
+            product.Name = LoadProduct(fileName)[0];
+            product.Quantity = int.Parse(LoadProduct(fileName)[1]);
+            product.MinPrice = int.Parse(LoadProduct(fileName)[2]);
+            product.Row = int.Parse(LoadProduct(fileName)[3]);
+            product.Column = int.Parse(LoadProduct(fileName)[4]);
+
 
             // ============  методы  ========================
 

@@ -56,44 +56,22 @@ namespace OpenGEWindows
             public int MinPrice;
             public int Row;
             public int Column;
-
-            /// <summary>
-            /// создаем структуру продукта с параметрами для продажи на рынке
-            /// </summary>
-            /// <param name="xx">сдвиг окна по оси X</param>
-            /// <param name="yy">сдвиг окна по оси Y</param>
-            /// <param name="numderOfString">номер строки в магазине, где берется товар</param>
-            public Product(botWindow botwindow)
-            {
-                String fileName = "C:\\!! Суперпрограмма V&K\\Продукт.txt";
-                Name = "";
-                Quantity = 30;
-                MinPrice = 700000;
-                Row = 3;
-                Column = 6;
-
-                this.Name = LoadProduct(fileName)[0];
-                this.Quantity = int.Parse(LoadProduct(fileName)[1]);
-                this.MinPrice = int.Parse(LoadProduct(fileName)[2]);
-                this.Row = int.Parse(LoadProduct(fileName)[3]);
-                this.Column = int.Parse(LoadProduct(fileName)[4]);
-            }
-
-            /// <summary>
-            /// читаем из текстового файла информацию о продаваемом продукте
-            /// </summary>
-            /// <returns></returns>
-            private String[]  LoadProduct(String fileName)
-            {
-                String[] parametrs = File.ReadAllLines(fileName); // Читаем файл 
-                return parametrs;
-            }
         }
 
 
 
 
         // ============  методы  ========================
+
+        /// <summary>
+        /// читаем из текстового файла информацию о продаваемом продукте
+        /// </summary>
+        /// <returns></returns>
+        protected String[] LoadProduct(String fileName)
+        {
+            String[] parametrs = File.ReadAllLines(fileName); // Читаем файл 
+            return parametrs;
+        }
 
 
         /// <summary>
