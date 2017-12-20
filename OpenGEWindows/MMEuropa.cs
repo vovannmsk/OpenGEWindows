@@ -23,8 +23,6 @@ namespace OpenGEWindows
 
             #endregion
 
-            DialogFactory dialogFactory = new DialogFactory(this.botwindow);
-            dialog = dialogFactory.createDialog();
 
         }
 

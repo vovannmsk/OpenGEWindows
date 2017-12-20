@@ -374,7 +374,7 @@ namespace OpenGEWindows
         /// </summary>
         private void ActiveWindow()
         {
-            ShowWindow(databot.hwnd, 9);                                       // Разворачивает окно если свернуто
+            ShowWindow(databot.hwnd, 9);                                       // Разворачивает окно если свернуто  было 9
             SetForegroundWindow(databot.hwnd);                                 // Перемещает окно в верхний список Z порядка     
             BringWindowToTop(databot.hwnd);                                    // Делает окно активным                              
             SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001); //перемещаем окно в заданные для него координаты

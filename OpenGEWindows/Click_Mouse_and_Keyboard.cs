@@ -86,12 +86,13 @@ namespace OpenGEWindows
         public static void MMC(int dx1, int dy1, int dx2, int dy2)
         {
             runMouse(dx1, dy1, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
+            Pause(200);
             runMouse(dx1, dy1, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, 0);
-            Pause(100);
-
+            Pause(500);
             runMouse(dx2, dy2, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
             Pause(500);
             runMouse(dx2, dy2, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP, 0);
+            Pause(500);
         }
 
         /// <summary>

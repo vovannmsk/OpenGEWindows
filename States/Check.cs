@@ -57,7 +57,7 @@ namespace States
             if (server.isActive())      //этот метод проверяет, нужно ли грузить или обрабатывать это окно (профа и прочее)
             {
                 ReOpenWindow();    
-                Pause(1000);
+                Pause(500);
                 if (server.isLogout())                // если окно в логауте
                 {
                     driver.StateRecovery();
@@ -84,7 +84,6 @@ namespace States
                             }
                             else
                             {
-                                //=========================== если переполнение ==============================
                                 if ((server.isBoxOverflow()) && (botwindow.getNomerTeleport() > 0))  // если карман переполнился и нужно продавать(телепорт = 0, тогда не нужно продавать)
                                 {
                                     driver.StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
@@ -93,37 +92,36 @@ namespace States
                                 }
                                 else
                                 {
-                                    //================== если в городе ========================================
-                                    if (server.isTown())          //если стоят в городе
+                                    if (mm.isMMSell() || (mm.isMMBuy()))
                                     {
-                                        driver.StateExitFromTown();
-                                        botwindow.PressEscThreeTimes();
-                                        Pause(2000);
-                                        driver.StateGotoWork();                                    // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                                        SellProduct();
                                     }
                                     else
-                                    {
-                                        if (market.isSale())                               // если застряли в магазине на странице входа
-                                        { driver.StateExitFromShop2(); }
+                                    { 
+                                        if (server.isTown())          //если стоят в городе
+                                        {
+                                            driver.StateExitFromTown();
+                                            botwindow.PressEscThreeTimes();
+                                            Pause(2000);
+                                            driver.StateGotoWork();                                    // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                                        }
                                         else
                                         {
-                                            if (pet.isOpenMenuPet())                  //если открыто меню с петом, значит пет не выпущен
-                                            {
-                                                driver.StateActivePet();
-                                            }
+                                            if (market.isSale())                               // если застряли в магазине на странице входа
+                                            { driver.StateExitFromShop2(); }
                                             else
                                             {
-                                                if (mm.isMMSell() || (mm.isMMBuy()))
+                                                if (pet.isOpenMenuPet())                  //если открыто меню с петом, значит пет не выпущен
                                                 {
-                                                    SellProduct();
+                                                    driver.StateActivePet();
                                                 }
                                                 else
                                                 {
-                                                    botwindow.PressMitridat();
+                                                        //botwindow.PressMitridat();
                                                 }
                                             }
-                                        } 
-                                    } //else isTown2()
+                                        }
+                                    } 
                                 } //else isBoxOverflow()
                             } //else isBarack()
                         } // else isKillHero()
@@ -132,12 +130,18 @@ namespace States
             } //if  Active_or_not
         }                                                                  //основной метод для зеленой кнопки
 
-        /// <summary>
+         /// <summary>
         /// выставляем на рынок продукт, если у нас на рынке не лучшая цена
         /// </summary>
         public void SellProduct()
-        { 
-        
+        {
+            if (mm.isMMSell())   mm.GotoPageBuy();   //если на странице Sell то переход на страницу Buy
+
+            mm.ProductSearch();
+            if (!mm.isMyFirstString())
+            {
+                mm.AddProduct();
+            }
         }
 
         /// <summary>
@@ -251,9 +255,11 @@ namespace States
             uint color1;
             uint color2;
 //            uint color3;
+            int x = 491;
+            int y = 292;
 
-            PointColor point1 = new PointColor(572 - 5 + xx, 604 - 5 + yy, 4370000, 4);
-            PointColor point2 = new PointColor(572 - 5 + xx, 605 - 5 + yy, 4370000, 4);
+            PointColor point1 = new PointColor(483 - 5 + xx, 267 - 5 + yy, 4370000, 4);
+            PointColor point2 = new PointColor(485 - 5 + xx, 267 - 5 + yy, 4370000, 4);
 //            PointColor point3 = new PointColor(590 - 5 + xx, 636 - 5 + yy, 7800000, 5);
 
             color1 = point1.GetPixelColor();
