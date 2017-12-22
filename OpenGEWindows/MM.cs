@@ -56,12 +56,44 @@ namespace OpenGEWindows
             public int MinPrice;
             public int Row;
             public int Column;
+            public int numberOfDigit;       //количество цифр в цене товара
         }
 
 
-
-
         // ============  методы  ========================
+
+        /// <summary>
+        /// выставляем на рынок продукт
+        /// </summary>
+        public void SellProduct()
+        {
+            String fileName = "C:\\!! Суперпрограмма V&K\\Продукт.txt";
+            String[] ggg = LoadProduct(fileName);
+            int numberOfparameters = 6;   //количество параметров товара 
+
+            int i = 0;
+            while (i * numberOfparameters < ggg.Length)
+            {
+                product.Name          =           ggg[0 + i * numberOfparameters];
+                product.Quantity      = int.Parse(ggg[1 + i * numberOfparameters]);
+                product.MinPrice      = int.Parse(ggg[2 + i * numberOfparameters]);
+                product.Row           = int.Parse(ggg[3 + i * numberOfparameters]);
+                product.Column        = int.Parse(ggg[4 + i * numberOfparameters]);
+                product.numberOfDigit = int.Parse(ggg[5 + i * numberOfparameters]);
+
+                if (!isMMBuy()) GotoPageBuy();   //если на странице Sell то переход на страницу Buy
+
+                ProductSearch();
+                if (!isMyFirstString())
+                {
+                    AddProduct();
+                }
+
+                i++;
+                Pause(1000);
+            }
+        }
+
 
         /// <summary>
         /// читаем из текстового файла информацию о продаваемом продукте
@@ -174,7 +206,43 @@ namespace OpenGEWindows
         /// <returns></returns>
         private int Numeral(int i)
         {
-            int[] koordX = {491, 483, 475,   463, 455, 447,   435, 427, 419,  407, 399, 391  };
+            int x;
+
+            switch (product.numberOfDigit)
+            {
+                case 3:
+                    x = 477;
+                    break;
+                case 4:
+                    x = 483;
+                    break;
+                case 5:
+                    x = 487;
+                    break;
+                case 6:
+                    x = 491;
+                    break;
+                case 7:
+                    x = 497;
+                    break;
+                case 8:
+                    x = 501;
+                    break;
+                case 9:
+                    x = 505;
+                    break;
+                case 10:
+                    x = 511;
+                    break;
+                default:
+                    x = 491;
+                    break;
+            }
+            int[] koordX = { x - 0 , x - 8 , x - 16, 
+                             x - 28, x - 36, x - 44,
+                             x - 56, x - 64, x - 72,
+                             x - 84, x - 92, x - 100 };
+
             int koordY = 292;
             return Numeral(koordX[i],koordY);
         }
@@ -187,25 +255,67 @@ namespace OpenGEWindows
         /// <returns></returns>
         private int Numeral(int x, int y)
         {
-            iPointColor pointdigit1 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 8, 4030000, 4);  //1
-            iPointColor pointdigit2 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 9, 4090000, 4);  //2
-            iPointColor pointdigit3 = new PointColor(x - 5 + xx + 2, y - 5 + yy + 4, 3630000, 4);  //3
-            iPointColor pointdigit4 = new PointColor(x - 5 + xx + 4, y - 5 + yy + 7, 4030000, 4);  //4
-            iPointColor pointdigit5 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 0, 3560000, 4);  //5
-            iPointColor pointdigit6 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 3, 2640000, 4);  //6
-            iPointColor pointdigit7 = new PointColor(x - 5 + xx + 0, y - 5 + yy + 0, 4030000, 4);  //7
-            iPointColor pointdigit8 = new PointColor(x - 5 + xx + 1, y - 5 + yy + 1, 3630000, 4);  //8
-            iPointColor pointdigit9 = new PointColor(x - 5 + xx + 2, y - 5 + yy + 5, 3170000, 4);  //9
+            iPointColor pointdigit1 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 2, 65000, 3);  //1
+            iPointColor pointdigit2 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 5, 63000, 3);  //2
+            iPointColor pointdigit3 = new PointColor(x - 5 + xx + 2, y - 5 + yy + 4, 65000, 3);  //3
+            iPointColor pointdigit4 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 6, 59000, 3);  //4
+            iPointColor pointdigit5 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 0, 56000, 3);  //5
+            iPointColor pointdigit6 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 1, 60000, 3);  //6
+            iPointColor pointdigit7 = new PointColor(x - 5 + xx + 0, y - 5 + yy + 0, 63000, 3);  //7
+            iPointColor pointdigit8 = new PointColor(x - 5 + xx + 1, y - 5 + yy + 4, 63000, 3);  //8
+            iPointColor pointdigit9 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 4, 65000, 3);  //9
+            iPointColor pointdigit0 = new PointColor(x - 5 + xx + 1, y - 5 + yy + 8, 56000, 3);  //0
+
+            switch (product.numberOfDigit)
+            {
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    pointdigit1 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 2, 65000, 3);  //1
+                    pointdigit2 = new PointColor(x - 5 + xx + 0, y - 5 + yy + 9, 65000, 3);  //2
+                    pointdigit3 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 4, 65000, 3);  //3
+                    pointdigit4 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 6, 59000, 3);  //4
+                    pointdigit5 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 0, 56000, 3);  //5
+                    pointdigit6 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 1, 60000, 3);  //6
+                    pointdigit7 = new PointColor(x - 5 + xx + 0, y - 5 + yy + 0, 63000, 3);  //7
+                    pointdigit8 = new PointColor(x - 5 + xx + 1, y - 5 + yy + 4, 63000, 3);  //8
+                    pointdigit9 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 4, 65000, 3);  //9
+                    pointdigit0 = new PointColor(x - 5 + xx + 1, y - 5 + yy + 8, 56000, 3);  //0
+                    break;
+                case 6:
+                    pointdigit1  = new PointColor(x - 5 + xx + 3, y - 5 + yy + 2, 4090000, 4);  //1
+                    pointdigit2  = new PointColor(x - 5 + xx + 3, y - 5 + yy + 5, 4030000, 4);  //2
+                    pointdigit3  = new PointColor(x - 5 + xx + 3, y - 5 + yy + 4, 4030000, 4);  //3
+                    pointdigit4  = new PointColor(x - 5 + xx + 3, y - 5 + yy + 6, 3760000, 4);  //4
+                    pointdigit5  = new PointColor(x - 5 + xx + 5, y - 5 + yy + 0, 3560000, 4);  //5
+                    pointdigit6  = new PointColor(x - 5 + xx + 5, y - 5 + yy + 1, 3760000, 4);  //6
+                    pointdigit7  = new PointColor(x - 5 + xx + 0, y - 5 + yy + 0, 4030000, 4);  //7
+                    pointdigit8  = new PointColor(x - 5 + xx + 1, y - 5 + yy + 4, 4030000, 4);  //8
+                    pointdigit9  = new PointColor(x - 5 + xx + 5, y - 5 + yy + 4, 4090000, 4);  //9
+                    pointdigit0  = new PointColor(x - 5 + xx + 1, y - 5 + yy + 8, 3560000, 4);  //0
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+                case 10:
+                    break;
+            }
 
             if (pointdigit1.isColor()) return 1;
             if (pointdigit2.isColor()) return 2;
-            if (pointdigit3.isColor()) return 3;
             if (pointdigit4.isColor()) return 4;
+            if (pointdigit7.isColor()) return 7;
             if (pointdigit5.isColor()) return 5;
             if (pointdigit6.isColor()) return 6;
-            if (pointdigit7.isColor()) return 7;
-            if (pointdigit8.isColor()) return 8;
+            if (pointdigit0.isColor()) return 0;
             if (pointdigit9.isColor()) return 9;
+            if (pointdigit8.isColor()) return 8;
+            if (pointdigit3.isColor()) return 3;
 
             return 0;
         }
@@ -218,7 +328,7 @@ namespace OpenGEWindows
         {
             int total = 0;                    //итоговое число - цена товара, получаем как 
             int digit = 1;                       //разряд получаемой цифры
-            for (int i = 0; i < 10; i++ )
+            for (int i = 0; i < 7; i++ )
             {
                 total = total + Numeral(i) * digit;    
                 digit *= 10;
@@ -321,6 +431,7 @@ namespace OpenGEWindows
         public void AddProduct ()
         {
             int myPrice = FirstStringPrice() - 1;
+//            int myPrice = FirstStringPrice();
 
             if (myPrice > product.MinPrice)
             {

@@ -308,10 +308,10 @@ namespace OpenGEWindows
         public void AddToCartLotProduct(int numberOfString)
         {
             Point pointAddProduct = new Point(360 - 5 + botwindow.getX(), 220 - 5 + (numberOfString - 1) * 27 + botwindow.getY());  //305 + 30, 190 + 30)
-            pointAddProduct.PressMouseL();  //тыкаем в строчку с товаром
+            pointAddProduct.DoubleClickL();  //тыкаем в строчку с товаром
             Pause(150);
             SendKeys.SendWait("33000");
-            Pause(100);
+            Pause(150);
             //Press44444();                   // пишем 444444 , чтобы максимальное количество данного товара попало в корзину 
             pointAddProduct.PressMouseWheelDown();   //прокручиваем список
         }
