@@ -40,9 +40,11 @@ namespace OpenGEWindows
         protected iPoint pointTime48Hours;
         protected iPointColor pointIsHideFamily1;
         protected iPointColor pointIsHideFamily2;
-        protected iPoint pointRegistration;
+        protected iPoint pointButtonRegistration;
         protected iPoint pointYesRegistration;
         protected iPoint pointOkRegistration;
+        //protected iPoint pointFirstStringList;
+        //protected iPoint pointLastStringList;
 
         protected Product product;
 
@@ -59,6 +61,11 @@ namespace OpenGEWindows
             public int numberOfDigit;       //количество цифр в цене товара
         }
 
+        protected struct ProductColor
+        {
+            public uint color1;
+            public uint color2;
+        }
 
         // ============  методы  ========================
 
@@ -92,8 +99,86 @@ namespace OpenGEWindows
                 i++;
                 Pause(1000);
             }
+            GotoPageSell();
+            ToRemoveDuplicates();        
+
         }
 
+        /// <summary>
+        /// округление вверх числа a на количество разрядов b
+        /// если a = 1655, b = 2, то результат равен 1600
+        /// </summary>
+        /// <param name="a"> округляемое число </param>
+        /// <param name="b"> количество разрядов для округления </param>
+        /// <returns> если a = 1655, b = 2, то результат равен 1600 </returns>
+        private uint RoundColor(uint a, int b)
+        {
+            uint bb = 1;
+            for (int j = 1; j <= b; j++) bb = bb * 10;
+            uint result = a - a % bb;
+            return result;
+        }
+
+        /// <summary>
+        /// убираем дубликаты товаров с неактуальными ценами (только на видимом списке, без прокрутки)
+        /// </summary>
+        public void ToRemoveDuplicates()
+        {
+            List<ProductColor> listProduct = new List<ProductColor>(10);    //список товаров, которые выставлены на рынке
+            ProductColor pr;
+            iPoint pointCancelProduct;
+            iPoint pointButtonCancel = new Point(70 - 5 + xx, 608 - 5 + yy);
+            iPoint pointButtonYesCancel = new Point(465 - 5 + xx, 418 - 5 + yy);
+            iPoint pointMM = new Point(405 - 5 + xx, 605 - 5 + yy);
+
+            for (int j = 9; j >= 0; j--)
+            {
+                pr.color1 = RoundColor (new PointColor(31 - 5 + xx, 333 - 5 + yy + j * 27, 2000000, 6).GetPixelColor(), 6);   // номер цвета округленный до 6 разряда
+                pr.color2 = RoundColor (new PointColor(38 - 5 + xx, 333 - 5 + yy + j * 27, 2000000, 6).GetPixelColor(), 6);
+
+                bool notProduct = ( (pr.color1 == 2000000) && (pr.color2 == 2000000) );   //нет товара на этом месте
+                if (!notProduct)
+                {
+                    if (listProduct.IndexOf(pr) > 0)  //если такой продукт уже в массиве
+                    {
+                        pointCancelProduct = new Point(75 - 5 + xx, 333 - 5 + yy + j * 27);
+                        pointCancelProduct.DoubleClickL();      //тыкаем в товар
+                        Pause(500);
+                        pointButtonCancel.DoubleClickL();       //тыкаем в Cancel, удаляя из списка
+                        Pause(1500);
+                        pointButtonYesCancel.PressMouseL();    // тыкаем в Yes
+                        Pause(1500);
+                        pointMM.PressMouseL();
+                    }
+                    else
+                    {
+                        listProduct.Add(pr);
+                    }
+                }
+            }
+
+
+
+            //int currentProduct;
+
+            //GotoEndList();  //идем в конец списка (в конце списка товары с актуальными ценами)
+
+            //currentProduct = SelectLastItem();   //выбираем последний элемент списка товаров (номер строки с помледним товаром)
+
+            //while (!isFirstStringOfList())            //пока не первая строка списка
+            //{
+            //    if (isDublicatProduct(currentProduct))   //если текущий товар является дубликатом
+            //    {
+            //        CancelProduct(currentProduct);     //отбиваем дубликат
+
+            //    }
+
+            //    NextProduct();      //переходим к следующему товару
+            //}
+
+
+
+        }
 
         /// <summary>
         /// читаем из текстового файла информацию о продаваемом продукте
@@ -176,7 +261,7 @@ namespace OpenGEWindows
         private void PressButtonSearch()
         {
             pointSearchButton.DoubleClickL();
-            Pause(4000);
+            Pause(3000);
         }
 
         /// <summary>
@@ -271,13 +356,23 @@ namespace OpenGEWindows
                 case 3:
                     break;
                 case 4:
+                    pointdigit1 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 2, 64000, 3);  //1
+                    pointdigit2 = new PointColor(x - 5 + xx + 0, y - 5 + yy + 9, 65000, 3);  //2
+                    pointdigit3 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 4, 64000, 3);  //3
+                    pointdigit4 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 6, 58000, 3);  //4
+                    pointdigit5 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 0, 56000, 3);  //5
+                    pointdigit6 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 1, 60000, 3);  //6
+                    pointdigit7 = new PointColor(x - 5 + xx + 0, y - 5 + yy + 0, 60000, 4);  //7
+                    pointdigit8 = new PointColor(x - 5 + xx + 1, y - 5 + yy + 4, 63000, 3);  //8
+                    pointdigit9 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 4, 65000, 3);  //9
+                    pointdigit0 = new PointColor(x - 5 + xx + 1, y - 5 + yy + 8, 56000, 3);  //0
                     break;
                 case 5:
                     pointdigit1 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 2, 65000, 3);  //1
                     pointdigit2 = new PointColor(x - 5 + xx + 0, y - 5 + yy + 9, 65000, 3);  //2
-                    pointdigit3 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 4, 65000, 3);  //3
+                    pointdigit3 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 4, 60000, 4);  //3
                     pointdigit4 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 6, 59000, 3);  //4
-                    pointdigit5 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 0, 56000, 3);  //5
+                    pointdigit5 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 0, 50000, 4);  //5
                     pointdigit6 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 1, 60000, 3);  //6
                     pointdigit7 = new PointColor(x - 5 + xx + 0, y - 5 + yy + 0, 63000, 3);  //7
                     pointdigit8 = new PointColor(x - 5 + xx + 1, y - 5 + yy + 4, 63000, 3);  //8
@@ -408,7 +503,7 @@ namespace OpenGEWindows
         {
             pointTime.PressMouseL();
             Pause(1000);
-            pointTime48Hours.PressMouseL();
+            pointTime48Hours.PressMouseLL();
             Pause(1000);
         }
 
@@ -417,11 +512,11 @@ namespace OpenGEWindows
         /// </summary>
         private void PressButtonRegistration()
         {
-            pointRegistration.PressMouse();
+            pointButtonRegistration.DoubleClickL();
             Pause(2000);
-            pointYesRegistration.PressMouse();
+            pointYesRegistration.DoubleClickL();
             Pause(2000);
-            pointOkRegistration.PressMouse();
+            pointOkRegistration.DoubleClickL();
             Pause(1000);
         }
 
@@ -431,7 +526,6 @@ namespace OpenGEWindows
         public void AddProduct ()
         {
             int myPrice = FirstStringPrice() - 1;
-//            int myPrice = FirstStringPrice();
 
             if (myPrice > product.MinPrice)
             {

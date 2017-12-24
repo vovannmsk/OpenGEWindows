@@ -174,6 +174,8 @@ namespace OpenGEWindows
         protected iPointColor pointisWork_VetSabreDot1;        //проверка стойки с вет саблей (проверяются две точки )
         protected iPointColor pointisWork_VetSabreDot2;
         protected iPoint pointSkillCook;
+        protected iPointColor pointisBattleMode1;
+        protected iPointColor pointisBattleMode2;
 
         #endregion
 
@@ -1033,6 +1035,15 @@ namespace OpenGEWindows
         public void ClickSkillCook()
         {
             pointSkillCook.PressMouseL();
+        }
+
+        /// <summary>
+        /// проверяем, включен ли боевой режим
+        /// </summary>
+        /// <returns></returns>
+        public bool isBattleMode()
+        {
+            return (pointisBattleMode1.isColor() && pointisBattleMode1.isColor());
         }
 
 

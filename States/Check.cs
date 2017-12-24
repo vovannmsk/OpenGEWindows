@@ -117,7 +117,14 @@ namespace States
                                                 }
                                                 else
                                                 {
+                                                    if ( (server.isCook()) && (!server.isBattleMode()))   //если повар и он не в боевом режиме
+                                                    {
+                                                        botwindow.ClickSpace();
+                                                    }
+                                                    else
+                                                    {
                                                         //botwindow.PressMitridat();
+                                                    }
                                                 }
                                             }
                                         }
@@ -255,31 +262,22 @@ namespace States
             xx = 5;
             yy = 5;
             uint color1;
-            //uint color2;
+            uint color2;
             //uint color3;
-            int x = 487;
-            int y = 292;
-            iPointColor pointdigit1 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 2, 4030000, 4);  //1
-            iPointColor pointdigit2 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 5, 4090000, 4);  //2
-            iPointColor pointdigit4 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 6, 4030000, 4);  //4
-            iPointColor pointdigit5 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 0, 3560000, 4);  //5
-            iPointColor pointdigit6 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 1, 2500000, 4);  //6
-            iPointColor pointdigit7 = new PointColor(x - 5 + xx + 0, y - 5 + yy + 0, 4030000, 4);  //7
-            iPointColor pointdigit8 = new PointColor(x - 5 + xx + 1, y - 5 + yy + 4, 3600000, 5);  //8
-            iPointColor pointdigit9 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 4, 3170000, 4);  //9
-            iPointColor pointdigit0 = new PointColor(x - 5 + xx + 1, y - 5 + yy + 8, 3170000, 4);  //0
+            //int x = 483;
+            //int y = 292;
 
 
-            PointColor point1 = new PointColor(x - 5 + xx + 0, y - 5 + yy + 9, 4370000, 4);
-            //PointColor point2 = new PointColor(463 - 5 + xx + 1, y - 5 + yy + 1, 4370000, 4);
+            PointColor point1 = new PointColor(173 - 5 + xx, 511 - 5 + yy, 4370000, 4);
+            PointColor point2 = new PointColor(200 - 5 + xx, 511 - 5 + yy, 4370000, 4);
             //PointColor point3 = new PointColor(455 - 5 + xx + 1, y - 5 + yy + 1, 7800000, 5);
 
             color1 = point1.GetPixelColor();
-            //color2 = point2.GetPixelColor();
+            color2 = point2.GetPixelColor();
             //color3 = point3.GetPixelColor();
 
             MessageBox.Show(" " + color1);
-            //MessageBox.Show(" " + color2);
+            MessageBox.Show(" " + color2);
             //MessageBox.Show(" " + color3);
 
             //string str = "";
