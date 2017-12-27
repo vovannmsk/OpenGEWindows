@@ -12,26 +12,19 @@ namespace States
     {
         private botWindow botwindow;
         private Server server;
-        private Server serverDealer;
-        //private Town town;
-        private ServerFactory serverFactory;
         private int tekStateInt;
-        private botWindow dealer;
 
         public StateGT60()
         {
 
         }
 
-        public StateGT60(botWindow botwindow)   //, GotoTrade gototrade)
+        public StateGT60(botWindow botwindow)   
         {
             this.botwindow = botwindow;
-            this.serverFactory = new ServerFactory(botwindow);
+            ServerFactory serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
 
-            this.dealer = new botWindow(20);   // здесь уникальные методы, присущие только торговцу
-            this.serverFactory = new ServerFactory(dealer);
-            this.serverDealer = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
 
             this.tekStateInt = 60;
         }
@@ -42,7 +35,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            dealer.ReOpenWindow();
+            botwindow.ReOpenWindow();
         }
 
         /// <summary>
@@ -58,7 +51,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return serverDealer.isLogout();
+            return server.isLogout();
         }
 
         /// <summary>

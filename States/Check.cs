@@ -259,17 +259,17 @@ namespace States
 
 
             int xx, yy;
-            xx = 5;
-            yy = 5;
+            xx = 255;
+            yy = 255;
             uint color1;
             uint color2;
             //uint color3;
-            //int x = 483;
-            //int y = 292;
+            int x = 483;
+            int y = 292;
 
 
-            PointColor point1 = new PointColor(173 - 5 + xx, 511 - 5 + yy, 4370000, 4);
-            PointColor point2 = new PointColor(200 - 5 + xx, 511 - 5 + yy, 4370000, 4);
+            PointColor point1 = new PointColor(x - 28 - 5 + xx + 0, y + 0 - 5 + yy + 0, 4370000, 4);
+            PointColor point2 = new PointColor(x - 28 - 5 + xx + 0, y + 0 - 5 + yy + 0, 4370000, 4);
             //PointColor point3 = new PointColor(455 - 5 + xx + 1, y - 5 + yy + 1, 7800000, 5);
 
             color1 = point1.GetPixelColor();

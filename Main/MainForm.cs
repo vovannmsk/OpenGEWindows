@@ -23,7 +23,7 @@ namespace Main
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "21-12-2017";
+        public static String DataVersion = "25-12-2017";
         public static int numberOfAcc = KolvoAkk();
 
         /// <summary>
@@ -534,13 +534,15 @@ namespace Main
         /// </summary>
         private void funcTransfer()
         {
+            DriversOfState driveTrader = new DriversOfState(1);
+            driveTrader.StateTransferVisChapter1();            //торговец выходит на место передачи песо
+
             for (int j = 1; j <= numberOfAcc; j++)
-            //for (int j = 1; j <= 1; j++)
-                {
+            {
                 Check check = new Check(j);
-                if (check.isActive())
+                check.ReOpenWindow();
+                if (check.isLogout())
                 {
-                    check.ReOpenWindow();
                     DriversOfState drive = new DriversOfState(j);
                     drive.StateTransferVis();
                 }

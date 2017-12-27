@@ -199,6 +199,7 @@ namespace OpenGEWindows
             this.pointTeamSelection1 = new Point(135 + xx, 450 + yy);    //кнопка выбора групп в бараке
             this.pointTeamSelection2 = new Point(65 + xx, 355 + yy);
             this.pointTeamSelection3 = new Point(65 + xx, 620 + yy);
+            this.pointNewPlace = new Point(85 + xx, 670 + yy);
 
             #endregion
 

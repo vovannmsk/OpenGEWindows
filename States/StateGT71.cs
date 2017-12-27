@@ -12,11 +12,8 @@ namespace States
     {
         private botWindow botwindow;
         private Server server;
-        private Server serverDealer;
-        //private Town town;
         private ServerFactory serverFactory;
         private int tekStateInt;
-        private botWindow dealer;
 
         public StateGT71()
         {
@@ -26,13 +23,8 @@ namespace States
         public StateGT71(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
-            this.serverFactory = new ServerFactory(botwindow);
-            this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            //this.town = server.getTown();
-//            this.botwindowDealer = new botWindow(20);         // здесь методы торговца как у обычного бота
-            this.dealer = new botWindow(20);   // здесь уникальные методы, присущие только торговцу
-            this.serverFactory = new ServerFactory(dealer);
-            this.serverDealer = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            ServerFactory serverFactory = new ServerFactory(botwindow);
+            this.server = serverFactory.createServer();                    // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
 
             this.tekStateInt = 71;
         }
@@ -50,14 +42,10 @@ namespace States
             // открываем фесо шоп
             server.OpenFesoShop();
 
-
-            // покупаем 400 еды в фесо шопе
+            // покупаем 125 еды в фесо шопе
             server.Buy125PetFood();
 
-            //server.GoToEnd();              //выгружаем окно с ботом (поправка на сервер)
-            server.Logout();
-
-
+            server.Logout();  
         }
 
         /// <summary>

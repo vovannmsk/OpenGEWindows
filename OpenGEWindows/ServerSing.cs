@@ -212,6 +212,7 @@ namespace OpenGEWindows
             this.pointButtonLogoutFromBarack = new Point(785 - 5 + xx, 700 - 5 + yy);               //кнопка логаут в казарме
             this.pointChooseChannel = new Point(820 - 5 + xx, 382 - 5 + yy);                       //переход из меню Alt+Q в меню Alt+F2 (нажатие кнопки Choose a channel)
             this.pointEnterChannel = new Point(646 - 5 + xx, 409 - 5 + yy + (botwindow.getKanal() - 2) * 15);                        //выбор канала в меню Alt+F2
+            this.pointNewPlace = new Point(85 + xx, 670 + yy);
 
             #endregion
 
@@ -386,9 +387,6 @@ namespace OpenGEWindows
             this.pointVis1 = new Point(903 - 5 + xx, 151 - 5 + yy);
             this.pointVisMove1 = new Point(701 - 5 + xx, 186 - 5 + yy);
             this.pointVisMove2 = new Point(395 - 5 + xx, 361 - 5 + yy);
-            this.pointVisOk = new Point(611 - 5 + xx, 397 - 5 + yy);
-            this.pointVisOk2 = new Point(442 - 5 + xx, 502 - 5 + yy);
-            this.pointVisTrade = new Point(523 - 5 + xx, 502 - 5 + yy);
 
             this.pointFood = new Point(361 - 5 + xx, 331 - 5 + yy);     //шаг = 27 пикселей на одну строчку магазина (на случай если добавят новые строчки)
             this.pointButtonFesoBUY = new Point(730 - 5 + xx, 625 - 5 + yy);
@@ -401,7 +399,7 @@ namespace OpenGEWindows
             this.pointBookmark4 = new Point(903 - 5 + xx, 151 - 5 + yy);
             this.pointFesoBegin = new Point(740 - 5 + xx, 186 - 5 + yy);
             this.pointFesoEnd = new Point(388 - 5 + xx, 343 - 5 + yy);
-            this.pointOkFeso = new Point(611 - 5 + xx, 397 - 5 + yy);
+            this.pointOkSum = new Point(611 - 5 + xx, 397 - 5 + yy);
             this.pointOk = new Point(441 - 5 + xx, 502 - 5 + yy);
             this.pointTrade = new Point(522 - 5 + xx, 502 - 5 + yy);
 

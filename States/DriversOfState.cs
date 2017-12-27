@@ -115,9 +115,36 @@ namespace States
         /// <summary>
         /// перевод из состояния 60 в состояние 80. Цель  - передача песо торговцу
         /// </summary>
+        public void StateTransferVisChapter1()
+        {
+            botWindow dealer = new botWindow(20);  //торговец
+
+            StateDriverRun(new StateGT60(dealer), new StateGT65(dealer));   // торговец из логаута в город  (канал 3) и далее на место передачи песо
+        }
+
+
+        /// <summary>
+        /// перевод из состояния 60 в состояние 80. Цель  - передача песо торговцу
+        /// </summary>
         public void StateTransferVis()
         {
-            Server server;                 
+            botWindow dealer = new botWindow(20);  //торговец
+
+            StateDriverRun(new StateGT60(this.botwindow), new StateGT63(this.botwindow));   // бот из логаута в город  (канал 3)
+
+            StateDriverRun(new StateGT68(this.botwindow), new StateGT69(this.botwindow));   // бот бежит на место торговли и предлагает торговлю торговцу
+            StateDriverRun(new StateGT69(dealer), new StateGT70(dealer));                   // торговец перекладывает фесо и ок-обмен
+
+            StateDriverRun(new StateGT70(this.botwindow), new StateGT72(this.botwindow));   // бот перекладывает песо, закрывает сделку, покупает еду и логаут
+//            StateDriverRun(new StateGT72(dealer), new StateGT73(dealer));                   // торговец логаут
+        }
+
+        /// <summary>
+        /// перевод из состояния 60 в состояние 80. Цель  - передача песо торговцу.  старый вариант
+        /// </summary>
+        public void StateTransferVis2()
+        {
+            Server server;
             ServerFactory serverFactory;
             serverFactory = new ServerFactory(this.botwindow);
             server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
@@ -127,7 +154,6 @@ namespace States
                 StateDriverRun(new StateGT60(this.botwindow), new StateGT74(this.botwindow));
             }
         }
-
 
         /// <summary>
         /// перевод из состояния 60 () в состояние 67 (). Цель  - заточка оружия и брони на +6 у Иды в Ребольдо

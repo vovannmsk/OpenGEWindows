@@ -12,12 +12,8 @@ namespace States
     {
         private botWindow botwindow;
         private Server server;
-        private Server serverDealer;
-        //private Town town;
-        private Town townDealer;
-        private ServerFactory serverFactory;
+        private Town town;
         private int tekStateInt;
-        private botWindow dealer;
 
         public StateGT64()
         {
@@ -27,14 +23,9 @@ namespace States
         public StateGT64(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
-            this.serverFactory = new ServerFactory(botwindow);
+            ServerFactory serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            //this.town = server.getTown();
-//            this.botwindowDealer = new botWindow(20);         // здесь методы торговца как у обычного бота
-            this.dealer = new botWindow(20);   // здесь уникальные методы, присущие только торговцу
-            this.serverFactory = new ServerFactory(dealer);
-            this.serverDealer = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            this.townDealer = serverDealer.getTown();    //город продажи торговца
+            this.town = server.getTown();
 
             this.tekStateInt = 64;
         }
@@ -45,10 +36,10 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            serverDealer.GoToChangePlace();            //  торговец следует на место передачи песо
+            server.GoToChangePlace();            //  торговец следует на место передачи песо
 
-            dealer.PressEscThreeTimes();         //закрываем карту и все лишние окна
-            dealer.Pause(1000);
+            botwindow.PressEscThreeTimes();         //закрываем карту и все лишние окна
+            botwindow.Pause(1000);
         }
 
         /// <summary>
@@ -64,7 +55,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return !townDealer.isOpenMap();    //проверяем, что карта закрыта
+            return !town.isOpenMap();    //проверяем, что карта закрыта
         }
 
         /// <summary>

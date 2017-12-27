@@ -12,7 +12,6 @@ namespace States
     {
         private botWindow botwindow;
         private Server server;
-        private Town town;
         private Market market;
         private int tekStateInt;
 
@@ -26,9 +25,8 @@ namespace States
             this.botwindow = botwindow;
             ServerFactory serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            this.town = server.getTown();
-            MarketFactory marketFactory = new MarketFactory(botwindow);
-            this.market = marketFactory.createMarket();
+            //MarketFactory marketFactory = new MarketFactory(botwindow);
+            //this.market = marketFactory.createMarket();
             this.tekStateInt = 12;
         }
 
@@ -67,6 +65,7 @@ namespace States
         public void run()                // переход к следующему состоянию
         {
             server.GoToEnd();
+            botwindow.Pause(3000);
         }
 
         /// <summary>
@@ -78,8 +77,8 @@ namespace States
             botwindow.Pause(500);
 
             //если из-за тормозов интернета мы не вышли из магазина после продажи (и из-за этого не смогли тыкнуть в логаут), то делаем это здесь
-            market.Button_Close();
-            town.ExitFromTrader();
+            //market.Button_Close();
+            //town.ExitFromTrader();
         }
 
         /// <summary>
@@ -88,8 +87,8 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            //return botwindow.isHwnd();   // проверяет, есть ли окно или выгружено
-            return server.isLogout();      // проверяем вышло ли окно в логаут
+            return !botwindow.isHwnd();   // проверяет, есть ли окно или выгружено (если нет такого hwnd, то значит окно выгружено)
+            //return server.isLogout();      // проверяем вышло ли окно в логаут
         }
 
         /// <summary>
@@ -107,15 +106,15 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            if (!botwindow.isHwnd()) return new StateGT28(botwindow);  //последнее состояние движка, чтобы движок сразу тормознулся
-            if (server.isLogout())
-            {
-                return new StateGT15(botwindow);  //коннект и далее
-            }
-            else
-            {
+          //  if (!botwindow.isHwnd()) return new StateGT28(botwindow);  //последнее состояние движка, чтобы движок сразу тормознулся
+            //if (server.isLogout())
+            //{
+            //    return new StateGT15(botwindow);  //коннект и далее
+            //}
+            //else
+            //{
                 return this;
-            }
+            //}
         }
 
         /// <summary>

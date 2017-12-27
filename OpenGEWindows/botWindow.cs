@@ -853,14 +853,14 @@ namespace OpenGEWindows
 
         #region Barack
 
-        /// <summary>
-        /// начать с выхода в город (нажать на кнопку "начать с нового места")
-        /// </summary>
-        public void NewPlace()
-        {
-            iPoint pointNewPlace = new Point(85 + databot.x, 670 + databot.y); //85, 670);
-            pointNewPlace.PressMouse();
-        }
+        ///// <summary>
+        ///// начать с выхода в город (нажать на кнопку "начать с нового места")
+        ///// </summary>
+        //public void NewPlace()
+        //{
+        //    iPoint pointNewPlace = new Point(85 + databot.x, 670 + databot.y); //85, 670);
+        //    pointNewPlace.DoubleClickL();
+        //}
 
         /// <summary>
         /// Нажимаем Выбор канала и группы персов в казарме 

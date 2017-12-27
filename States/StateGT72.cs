@@ -12,11 +12,7 @@ namespace States
     {
         private botWindow botwindow;
         private Server server;
-        private Server serverDealer;
-        //private Town town;
-        private ServerFactory serverFactory;
         private int tekStateInt;
-        private botWindow dealer;
 
         public StateGT72()
         {
@@ -26,13 +22,8 @@ namespace States
         public StateGT72(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
-            this.serverFactory = new ServerFactory(botwindow);
+            ServerFactory serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            //this.town = server.getTown();
-//            this.botwindowDealer = new botWindow(20);         // здесь методы торговца как у обычного бота
-            this.dealer = new botWindow(20);   // здесь уникальные методы, присущие только торговцу
-            this.serverFactory = new ServerFactory(dealer);
-            this.serverDealer = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
 
             this.tekStateInt = 72;
         }
@@ -43,28 +34,25 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            //продаём 10 ВК в фесо шопе, чтобы было что отдать следующему боту
-
             //делаем окно торговца активным
-            dealer.ReOpenWindow();
-            dealer.Pause(500);
+            botwindow.ReOpenWindow();
+            botwindow.Pause(500);
 
-            //открываем магазин фесо
-            serverDealer.OpenFesoShop();
+            //продаём 10 ВК в фесо шопе, чтобы было что отдать следующему боту
+            ////открываем магазин фесо
+            //serverDealer.OpenFesoShop();
 
-            //нажимаем на закладку sell
-            serverDealer.OpenBookmarkSell();
+            ////нажимаем на закладку sell
+            //serverDealer.OpenBookmarkSell();
 
-            // продаем 3 ВК в фесо шопе для передачи следующему боту
-            serverDealer.SellGrowthStone3pcs();
+            //// продаем 3 ВК в фесо шопе для передачи следующему боту
+            //serverDealer.SellGrowthStone3pcs();
 
             //убираем лишнее с экрана торговца
-            dealer.PressEscThreeTimes();
-            dealer.Pause(500);
+            botwindow.PressEscThreeTimes();
+            botwindow.Pause(500);
 
             server.Logout();    //выгружаем окно с торговцем
-
-
         }
 
         /// <summary>

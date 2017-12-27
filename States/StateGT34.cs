@@ -71,7 +71,7 @@ namespace States
             botwindow.Pause(500);
 
             //============ выход в город  ===========
-            botwindow.NewPlace();                //начинаем в ребольдо  
+            server.NewPlace();                //начинаем в ребольдо  
 
         //    botwindow.PressMouseR(200, 570);     //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
 

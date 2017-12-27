@@ -14,14 +14,6 @@ namespace OpenGEWindows
 
         // ============ переменные ======================
 
-        //protected String ProductName;
-        //protected int ProductQuantity;
-        //protected int ProductMinPrice;
-        //protected int ProductRow;
-        //protected int ProductColumn;
-        //protected botWindow botwindow;
-
-
         protected iPointColor pointIsMMSell1;
         protected iPointColor pointIsMMSell2;
         protected iPointColor pointIsMMBuy1;
@@ -43,8 +35,6 @@ namespace OpenGEWindows
         protected iPoint pointButtonRegistration;
         protected iPoint pointYesRegistration;
         protected iPoint pointOkRegistration;
-        //protected iPoint pointFirstStringList;
-        //protected iPoint pointLastStringList;
 
         protected Product product;
 
@@ -190,7 +180,6 @@ namespace OpenGEWindows
             return parametrs;
         }
 
-
         /// <summary>
         /// определяет, находимся ли мы на рынке на первой странице, где можно выставить товар на продажу  (MarketManager)
         /// </summary>
@@ -299,13 +288,13 @@ namespace OpenGEWindows
                     x = 477;
                     break;
                 case 4:
-                    x = 483;
+                    x = 483;  //зел
                     break;
                 case 5:
-                    x = 487;
+                    x = 487;  //жел
                     break;
                 case 6:
-                    x = 491;
+                    x = 491;  //коричн
                     break;
                 case 7:
                     x = 497;
@@ -355,7 +344,7 @@ namespace OpenGEWindows
             {
                 case 3:
                     break;
-                case 4:
+                case 4:         //зеленые цифры
                     pointdigit1 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 2, 64000, 3);  //1
                     pointdigit2 = new PointColor(x - 5 + xx + 0, y - 5 + yy + 9, 65000, 3);  //2
                     pointdigit3 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 4, 64000, 3);  //3
@@ -367,11 +356,11 @@ namespace OpenGEWindows
                     pointdigit9 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 4, 65000, 3);  //9
                     pointdigit0 = new PointColor(x - 5 + xx + 1, y - 5 + yy + 8, 56000, 3);  //0
                     break;
-                case 5:
+                case 5:        //желтые цифры
                     pointdigit1 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 2, 65000, 3);  //1
                     pointdigit2 = new PointColor(x - 5 + xx + 0, y - 5 + yy + 9, 65000, 3);  //2
-                    pointdigit3 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 4, 60000, 4);  //3
-                    pointdigit4 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 6, 59000, 3);  //4
+                    pointdigit3 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 6, 65000, 3);  //3
+                    pointdigit4 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 6, 50000, 4);  //4              если 3 и 6, то 59000
                     pointdigit5 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 0, 50000, 4);  //5
                     pointdigit6 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 1, 60000, 3);  //6
                     pointdigit7 = new PointColor(x - 5 + xx + 0, y - 5 + yy + 0, 63000, 3);  //7
@@ -379,7 +368,7 @@ namespace OpenGEWindows
                     pointdigit9 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 4, 65000, 3);  //9
                     pointdigit0 = new PointColor(x - 5 + xx + 1, y - 5 + yy + 8, 56000, 3);  //0
                     break;
-                case 6:
+                case 6:        //коричневые цифры
                     pointdigit1  = new PointColor(x - 5 + xx + 3, y - 5 + yy + 2, 4090000, 4);  //1
                     pointdigit2  = new PointColor(x - 5 + xx + 3, y - 5 + yy + 5, 4030000, 4);  //2
                     pointdigit3  = new PointColor(x - 5 + xx + 3, y - 5 + yy + 4, 4030000, 4);  //3

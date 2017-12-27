@@ -237,6 +237,7 @@ namespace OpenGEWindows
         protected iPointColor pointisBarack2;
         protected iPointColor pointisBarack3;
         protected iPointColor pointisBarack4;
+        protected iPoint pointNewPlace;
 
         #endregion
 
@@ -406,6 +407,7 @@ namespace OpenGEWindows
         #endregion
 
         #region для перекладывания песо в торговца
+
         protected iPointColor pointPersonalTrade1;
         protected iPointColor pointPersonalTrade2;
         protected iPoint pointTrader;
@@ -414,7 +416,6 @@ namespace OpenGEWindows
         protected iPoint pointVis1;
         protected iPoint pointVisMove1;
         protected iPoint pointVisMove2;
-        protected iPoint pointVisOk;
         protected iPoint pointVisOk2;
         protected iPoint pointVisTrade;
         protected iPoint pointFood;
@@ -427,7 +428,7 @@ namespace OpenGEWindows
         protected iPoint pointBookmark4;
         protected iPoint pointFesoBegin;
         protected iPoint pointFesoEnd;
-        protected iPoint pointOkFeso;
+        protected iPoint pointOkSum;
         protected iPoint pointOk;
         protected iPoint pointTrade;
 
@@ -1137,7 +1138,7 @@ namespace OpenGEWindows
         /// </summary>
         public void buttonExitFromBarack()
         {
-            pointButtonLogoutFromBarack.PressMouse();
+            pointButtonLogoutFromBarack.DoubleClickL();
             Pause(500);
 
         }
@@ -1173,6 +1174,16 @@ namespace OpenGEWindows
             //uint gg = pointisBarack2.GetPixelColor();
             return (pointisBarack1.isColor() && pointisBarack2.isColor()) || (pointisBarack3.isColor() && pointisBarack4.isColor());
         }
+
+        /// <summary>
+        /// начать с выхода в город (нажать на кнопку "начать с нового места")
+        /// </summary>
+        public void NewPlace()
+        {
+            iPoint pointNewPlace = new Point(85 + xx, 670 + yy);
+            pointNewPlace.DoubleClickL();
+        }
+
 
         #endregion
 
@@ -2164,61 +2175,24 @@ namespace OpenGEWindows
         #region методы для перекладывания песо в торговца
 
         /// <summary>
-        /// открыть фесо шоп
-        /// </summary>
-        public void OpenFesoShop()
-        {
-            TopMenu(2, 2);
-            Pause(1000);
-        }
-
-        /// <summary>
-        /// обмен песо (часть 2) закрываем сделку со стороны бота
-        /// </summary>
-        public void ChangeVis2()
-        {
-            // открываем инвентарь
-            TopMenu(8, 1);
-
-            // открываем закладку кармана, там где песо
-            pointVis1.DoubleClickL();
-            Pause(500);
-
-            // перетаскиваем песо
-            pointVisMove1.Drag(pointVisMove2);                                             // песо берется из первой ячейки на 4-й закладке  
-            Pause(500);
-
-            // нажимаем Ок для подтверждения передаваемой суммы песо
-            pointVisOk.DoubleClickL();
-
-            // нажимаем ок
-            pointVisOk2.DoubleClickL();
-            Pause(500);
-
-            // нажимаем обмен
-            pointVisTrade.DoubleClickL();
-            Pause(500);
-        }
-
-        /// <summary>
         /// для передачи песо торговцу. Идем на место и предложение персональной торговли                        
         /// </summary>
-        public void ChangeVis1()
+        public void GotoPlaceTradeBot()      
         {
             //идем на место передачи песо
             botwindow.PressEscThreeTimes();
             Pause(1000);
 
-            town.MaxHeight();             //с учетом города и сервера
+            town.MaxHeight();                    // с учетом города и сервера
             Pause(500);
 
-            OpenMapForState();                  //открываем карту города
+            OpenMapForState();                   // открываем карту города
             Pause(500);
 
-            pointMap.DoubleClickL();   //тыкаем в карту, чтобы добежать до нужного места
+            pointMap.DoubleClickL();             // тыкаем в карту, чтобы добежать до нужного места
 
-            botwindow.PressEscThreeTimes();       // закрываем карту
-            Pause(25000);               // ждем пока добежим
+            botwindow.PressEscThreeTimes();      // закрываем карту
+            Pause(25000);                        // ждем пока добежим
 
             iPointColor pointMenuTrade = new PointColor(588 - 5 + xx, 230 - 5 + yy, 1710000, 4);
             while (!pointMenuTrade.isColor())
@@ -2231,10 +2205,115 @@ namespace OpenGEWindows
             //жмем левой  на пункт "Personal Trade"
             pointPersonalTrade.PressMouseL();
             Pause(500);
+        }        //проверено
+
+        /// <summary>
+        /// обмен песо на фесо (часть 1 со стороны торговца) 
+        /// </summary>
+        public void ChangeVisDealer()
+        {
+            // наживаем Yes, подтверждая открытие торговли
+            PressButtonYesTrade();
+
+            // открываем сундук (карман)
+            TopMenu(8, 1);
+
+            // открываем закладку кармана, там где фесо
+            OpenFourthBookmark();
+
+            // перетаскиваем фесо на стол торговли
+            MoveFesoToTrade();
+
+            // нажимаем ок и обмен
+            PressOkTrade();
+        }                //проверено
+
+        /// <summary>
+        /// обмен песо. закрываем сделку со стороны бота
+        /// </summary>
+        public void ChangeVisBot()
+        {
+            // открываем инвентарь
+            TopMenu(8, 1);
+
+            // открываем закладку кармана, там где песо
+            OpenFourthBookmark();
+            //pointVis1.DoubleClickL();
+            //Pause(500);
+
+
+            //// перетаскиваем песо на стол торговли
+            MoveVisToTrade();
+
+            // нажимаем ок и обмен
+            PressOkTrade();
+        }                  // проверено
+
+        /// <summary>
+        /// подтверждает согласие на персональную торговлю
+        /// </summary>
+        public void PressButtonYesTrade()
+        {
+            pointYesTrade.DoubleClickL();
+            Pause(500);        
         }
 
         /// <summary>
-        /// купить 400 еды в фесо шопе                    
+        /// нажимаем Ок и Обмен в персональной торговле
+        /// </summary>
+        public void PressOkTrade()
+        {
+            // нажимаем ок
+            pointOk.DoubleClickL();
+            Pause(500);
+
+            // нажимаем обмен
+            pointTrade.DoubleClickL();
+            Pause(500);
+        }
+
+        /// <summary>
+        /// открываем четвертую закладку в инвентаре
+        /// </summary>
+        public void OpenFourthBookmark()
+        {
+            pointBookmark4.DoubleClickL();
+            Pause(500);
+        }
+
+        /// <summary>
+        /// перемещаем фесо 125 000 из инвентаря на стол торговли
+        /// </summary>
+        public void MoveFesoToTrade()
+        {
+            // перетаскиваем фесо на стол торговли
+            pointFesoBegin.Drag(pointFesoEnd);
+            Pause(500);
+
+            SendKeys.SendWait("300000");
+            Pause(500);
+
+            // нажимаем Ок для подтверждения передаваемой суммы фесо
+            pointOkSum.DoubleClickL();
+        
+        }
+
+        /// <summary>
+        /// перемещаем всё песо из инвентаря на стол торговли
+        /// </summary>
+        public void MoveVisToTrade()
+        {
+            // перетаскиваем песо
+            pointVisMove1.Drag(pointVisMove2);                                             // песо берется из первой ячейки на 4-й закладке  
+            Pause(500);
+
+            // нажимаем Ок для подтверждения передаваемой суммы песо
+            pointOkSum.DoubleClickL();
+
+        }
+
+        /// <summary>
+        /// купить 125 еды в фесо шопе                    
         /// </summary>
         public void Buy125PetFood()
         {
@@ -2293,32 +2372,14 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// обмен песо на фесо (часть 1 со стороны торговца) 
+        /// открыть фесо шоп
         /// </summary>
-        public void ChangeVisTrader1()
+        public void OpenFesoShop()
         {
-            // наживаем Yes, подтверждая торговлю
-            pointYesTrade.DoubleClickL();
-
-            // открываем сундук (карман)
-            TopMenu(8, 1);
-
-            // открываем закладку кармана, там где фесо
-            pointBookmark4.DoubleClickL();
-
-            // перетаскиваем фесо на стол торговли
-            pointFesoBegin.Drag(pointFesoEnd);
-            Pause(500);
-
-            // нажимаем Ок для подтверждения передаваемой суммы фесо
-            pointOkFeso.DoubleClickL();
-
-            // нажимаем ок
-            pointOk.DoubleClickL();
-
-            // нажимаем обмен
-            pointTrade.DoubleClickL();
+            TopMenu(2, 2);
+            Pause(1000);
         }
+
 
         #endregion
 

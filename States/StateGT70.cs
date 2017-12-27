@@ -51,8 +51,7 @@ namespace States
             //// перетаскиваем песо
             //// нажимаем Ок для подтверждения передаваемой суммы песо
             //// нажимаем ок и обмен
-//            botwindow.ChangeVis2();
-            server.ChangeVis2();
+            server.ChangeVisBot();
         }
 
         /// <summary>

@@ -38,11 +38,9 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            botwindow.PressMitridat();
             server.OpenMapForState();
             botwindow.Pause(1000);
-
-            botwindow.PressMitridat();
-
             otit.GotoWork();      //идем к началу маршрута
 
         }

@@ -11,10 +11,9 @@ namespace States
     public class StateGT62 : IState
     {
         private botWindow botwindow;
-        private Server serverDealer;
+        private Server server;
         private ServerFactory serverFactory;
         private int tekStateInt;
-        private botWindow dealer;
 
         public StateGT62()
         {
@@ -24,9 +23,9 @@ namespace States
         public StateGT62(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
-            this.dealer = new botWindow(20);   // здесь уникальные методы, присущие только торговцу
-            this.serverFactory = new ServerFactory(dealer);
-            this.serverDealer = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+
+            ServerFactory serverFactory = new ServerFactory(botwindow);
+            this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
 
             this.tekStateInt = 62;
         }
@@ -38,29 +37,29 @@ namespace States
         public void run()                // переход к следующему состоянию
         {
             //============ выбор персонажей  ===========
-            serverDealer.TeamSelection();
-            dealer.Pause(500);
+            server.TeamSelection();
+            botwindow.Pause(500);
 
             //============ выбор канала ===========
-            dealer.SelectChannel(3);            //идем на 3 канал
-            dealer.Pause(500);
+            botwindow.SelectChannel(3);            //идем на 3 канал
+            botwindow.Pause(500);
 
             //============ выход в город  ===========
-            dealer.NewPlace();                //начинаем в Ребольдо
+            server.NewPlace();                //начинаем в Ребольдо
 
-            dealer.ToMoveMouse();             //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
+            botwindow.ToMoveMouse();             //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
 
-            dealer.Pause(2000);
+            botwindow.Pause(2000);
             int i = 0;
             while (i < 50)      // ожидание загрузки города, проверка по двум видам оружия
             {
-                dealer.Pause(500);
+                botwindow.Pause(500);
                 i++;
-                if (serverDealer.isTown()) break;    // проверяем успешный переход в город, проверка по ружью и дробовику
+                if (server.isTown()) break;    // проверяем успешный переход в город, проверка по ружью и дробовику
             }
-            dealer.Pause(7000);       //поставил по Колиной просьбе
-            dealer.PressEscThreeTimes();
-            dealer.Pause(1000);
+            botwindow.Pause(7000);       //поставил по Колиной просьбе
+            botwindow.PressEscThreeTimes();
+            botwindow.Pause(1000);
         }
 
         /// <summary>
@@ -76,7 +75,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return !serverDealer.isBarack();    //проверяем, что уже не казармы
+            return !server.isBarack();    //проверяем, что уже не казармы
         }
 
         /// <summary>
