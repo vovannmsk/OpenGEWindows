@@ -1006,6 +1006,15 @@ namespace OpenGEWindows
         }
 
         /// <summary>
+        /// функция проверяет, убиты ли все герои
+        /// </summary>
+        /// <returns></returns>
+        public bool isKillAllHero()
+        {
+            return (pointisKillHero1.isColor() && pointisKillHero2.isColor() && pointisKillHero3.isColor());
+        }
+
+        /// <summary>
         /// метод проверяет, находится ли данное окно на работе (проверка по стойке)  две стойки
         /// </summary>
         /// <returns> true, если сейчас на рабочей карте </returns>
@@ -1072,15 +1081,16 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// метод проверяет, находится ли данное окно в городе (проверка по стойкам с ружьем) 
-        /// делаем проверку по двум точкам у каждого перса
+        /// метод проверяет, находится ли данное окно в городе (проверка по стойкам - серые в городе, цветные - на рабочих картах) 
         /// </summary>
         /// <returns> true, если бот находится в городе </returns>
         public bool isTown()
         {
             //ружье
-            bool resultRifle = (pointIsTown_RifleFirstDot1.isColor() && pointIsTown_RifleFirstDot2.isColor() && pointIsTown_RifleSecondDot1.isColor() && pointIsTown_RifleSecondDot2.isColor());
-            bool resultRifleExp = (pointIsTown_ExpRifleFirstDot1.isColor() && pointIsTown_ExpRifleFirstDot2.isColor() && pointIsTown_ExpRifleSecondDot1.isColor() && pointIsTown_ExpRifleSecondDot2.isColor());
+            bool resultRifle = (pointIsTown_RifleFirstDot1.isColor() && pointIsTown_RifleFirstDot2.isColor());
+//            bool resultRifle = (pointIsTown_RifleFirstDot1.isColor() && pointIsTown_RifleFirstDot2.isColor() && pointIsTown_RifleSecondDot1.isColor() && pointIsTown_RifleSecondDot2.isColor());
+            bool resultRifleExp = (pointIsTown_ExpRifleFirstDot1.isColor() && pointIsTown_ExpRifleFirstDot2.isColor());
+//            bool resultRifleExp = (pointIsTown_ExpRifleFirstDot1.isColor() && pointIsTown_ExpRifleFirstDot2.isColor() && pointIsTown_ExpRifleSecondDot1.isColor() && pointIsTown_ExpRifleSecondDot2.isColor());
             //дробовик
             bool resultShotgun = (pointIsTown_DrobFirstDot1.isColor() && pointIsTown_DrobFirstDot2.isColor());           //проверка по первому персу обычная стойка
             bool resultShotgunVet = (pointIsTown_VetDrobFirstDot1.isColor() && pointIsTown_VetDrobFirstDot2.isColor());  //проверка по первому персу вет стойка

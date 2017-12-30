@@ -120,10 +120,10 @@ namespace OpenGEWindows
             this.pointBuyingMitridat1 = new Point(360 + xx, 537 + yy);      //360, 537
             this.pointBuyingMitridat2 = new Point(517 + xx, 433 + yy);      //1392 - 875, 438 - 5
             this.pointBuyingMitridat3 = new Point(517 + xx, 423 + yy);      //1392 - 875, 428 - 5
-            //this.pointisBoxOverflow1 = new PointColor(523 - 5 + xx, 438 - 5 + yy, 7500000, 5);        это правильные точки для определения, переполнился карман или нет
-            //this.pointisBoxOverflow2 = new PointColor(524 - 5 + xx, 438 - 5 + yy, 7800000, 5);
-            this.pointisBoxOverflow1 = new PointColor(573 - 5 + xx, 488 - 5 + yy, 7500000, 5);          //это неправильные точки. сигнализация о наполненном кармане никогда не сработает
-            this.pointisBoxOverflow2 = new PointColor(574 - 5 + xx, 488 - 5 + yy, 7800000, 5);
+            this.pointisBoxOverflow1 = new PointColor(523 - 5 + xx, 438 - 5 + yy, 7500000, 5);            //     это правильные точки для определения, переполнился карман или нет
+            this.pointisBoxOverflow2 = new PointColor(524 - 5 + xx, 438 - 5 + yy, 7800000, 5);
+            //this.pointisBoxOverflow1 = new PointColor(573 - 5 + xx, 488 - 5 + yy, 7500000, 5);          //это неправильные точки. сигнализация о наполненном кармане никогда не сработает
+            //this.pointisBoxOverflow2 = new PointColor(574 - 5 + xx, 488 - 5 + yy, 7800000, 5);
             this.pointisWork_RifleDot1 = new PointColor(24 + xx, 692 + yy, 11051000, 3);      //29 - 5, 697 - 5, 11051000, 30 - 5, 697 - 5, 10919000, 3);                    //проверено
             this.pointisWork_RifleDot2 = new PointColor(25 + xx, 692 + yy, 10919000, 3);
             this.pointisWork_ExpRifleDot1 = new PointColor(24 + xx, 692 + yy, 1721000, 3);      //29 - 5, 697 - 5, 11051000, 30 - 5, 697 - 5, 10919000, 3);                    //не проверено

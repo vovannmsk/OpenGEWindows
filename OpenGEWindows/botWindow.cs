@@ -392,8 +392,9 @@ namespace OpenGEWindows
 
                 ActiveWindow();
 
-                //Pause(3000);
-                while (!server.isLogout()) Pause(1000);    //ожидание логаута
+                while (!server.isLogout()) Pause(1000);    //ожидание логаута        бесконечный цикл
+
+                ActiveWindow();
             }
             else
             {
@@ -407,7 +408,7 @@ namespace OpenGEWindows
         /// <returns> hwnd окна </returns>
         public void OpenWindow()
         {
-            server.runClient();
+            server.runClient();    ///запускаем клиент игры и ждем 30 сек
             while (true)
             {
                 Pause(5000);
@@ -774,6 +775,19 @@ namespace OpenGEWindows
         {
             iPoint pointBattleMode = new Point(190 - 5 + databot.x, 530 - 5 + databot.y);    //  185, 525
             pointBattleMode.PressMouse();  // Кликаю на кнопку "боевой режим"
+        }
+
+        /// <summary>
+        /// Лечение одного окна, если побили всех персов (лечение состоит в закрытии окна с ботом)
+        /// </summary>
+        public void CureOneWindow()
+        {
+            // ================================= убирает все лишние окна с экрана =========================================
+            PressEscThreeTimes();
+            Pause(1000);
+
+            //server.GoToEnd();
+            server.Logout();
         }
 
         /// <summary>

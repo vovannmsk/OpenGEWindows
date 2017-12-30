@@ -443,15 +443,6 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// действия для оранжевой кнопки
-        /// </summary>
-        public override void OrangeButton()
-        {
-            botwindow.ReOpenWindow();
-        }
-
-
-        /// <summary>
         /// поиск новых окон с игрой для кнопки "Найти окна"
         /// </summary>
         /// <returns></returns>
@@ -478,6 +469,15 @@ namespace OpenGEWindows
         }
 
         /// <summary>
+        /// проверяю белый цвет в загружающемся окне
+        /// </summary>
+        /// <returns></returns>
+        public bool isWhiteWindow()
+        {
+            iPointColor pointisWhiteWindow = new PointColor(1000, 500, 16700000, 5);            //проверяю белый цвет в загружающемся окне
+            return pointisWhiteWindow.isColor();
+        }
+        /// <summary>
         /// запуск клиента игры
         /// </summary>
         public override void runClient()
@@ -494,6 +494,15 @@ namespace OpenGEWindows
             process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
             process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + path_Client() + " -applaunch 663090 -silent";
             process.Start();
+
+            //while ((!isWhiteWindow()) && (!isSafeIP()))
+            //{
+            //    Pause(2000);
+            //}
+            //if (isSafeIP())
+            //{
+            //    pointOkSafeIP.PressMouseL();       //тыкаем в Ок и закрываем сообщение об ошибке
+            //}
             Pause(30000);
 
             //if (isSafeIP())
@@ -542,6 +551,17 @@ namespace OpenGEWindows
             #endregion
 
         }
+
+        /// <summary>
+        /// действия для оранжевой кнопки
+        /// </summary>
+        public override void OrangeButton()
+        {
+            botwindow.ReOpenWindow();
+            Pause(100);
+        }
+
+
 
         #endregion
 

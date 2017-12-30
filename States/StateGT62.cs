@@ -12,7 +12,6 @@ namespace States
     {
         private botWindow botwindow;
         private Server server;
-        private ServerFactory serverFactory;
         private int tekStateInt;
 
         public StateGT62()

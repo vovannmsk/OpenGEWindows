@@ -390,18 +390,18 @@ namespace OpenGEWindows
                     break;
             }
 
-            if (pointdigit1.isColor()) return 1;
-            if (pointdigit2.isColor()) return 2;
-            if (pointdigit4.isColor()) return 4;
-            if (pointdigit7.isColor()) return 7;
-            if (pointdigit5.isColor()) return 5;
-            if (pointdigit6.isColor()) return 6;
-            if (pointdigit0.isColor()) return 0;
-            if (pointdigit9.isColor()) return 9;
-            if (pointdigit8.isColor()) return 8;
-            if (pointdigit3.isColor()) return 3;
+            if ((pointdigit1.isColor()) || ( (pointdigit1.GetPixelColor() > 120000) && (pointdigit1.GetPixelColor() < 130000) ) ) return 1;
+            if ((pointdigit2.isColor()) || ( (pointdigit2.GetPixelColor() > 120000) && (pointdigit2.GetPixelColor() < 130000) ) ) return 2;
+            if ((pointdigit4.isColor()) || ( (pointdigit4.GetPixelColor() > 120000) && (pointdigit4.GetPixelColor() < 130000) ) ) return 4;
+            if ((pointdigit7.isColor()) || ( (pointdigit7.GetPixelColor() > 120000) && (pointdigit7.GetPixelColor() < 130000) ) ) return 7;
+            if ((pointdigit5.isColor()) || ( (pointdigit5.GetPixelColor() > 120000) && (pointdigit5.GetPixelColor() < 130000) ) ) return 5;
+            if ((pointdigit6.isColor()) || ( (pointdigit6.GetPixelColor() > 120000) && (pointdigit6.GetPixelColor() < 130000) ) ) return 6;
+            if ((pointdigit0.isColor()) || ( (pointdigit0.GetPixelColor() > 120000) && (pointdigit0.GetPixelColor() < 130000) ) ) return 0;
+            if ((pointdigit9.isColor()) || ( (pointdigit9.GetPixelColor() > 120000) && (pointdigit9.GetPixelColor() < 130000) ) ) return 9;
+            if ((pointdigit8.isColor()) || ( (pointdigit8.GetPixelColor() > 120000) && (pointdigit8.GetPixelColor() < 130000) ) ) return 8;
+            if ((pointdigit3.isColor()) || ( (pointdigit3.GetPixelColor() > 120000) && (pointdigit3.GetPixelColor() < 130000) ) ) return 3;
 
-            return 0;
+            return 0;  //возвращаем незанчащий ноль, если никакой цифры на этом месте нет
         }
 
         /// <summary>

@@ -70,68 +70,75 @@ namespace States
                     }
                     else
                     {
-                        if (server.isKillHero())                  // если убиты один или несколько персов   
+                        if (server.isKillAllHero())                  // если убиты все
                         {
-                            botwindow.CureOneWindow2();              // сделать End Programm
-                            //Pause(2000);
-                            //driver.StateGotoWork();               // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                            botwindow.CureOneWindow();              //logout
                         }
                         else
                         {
-                            if (server.isBarack())                  //если стоят в бараке     
+                            if (server.isKillHero())                  // если убиты не все
                             {
-                                server.buttonExitFromBarack();      //StateExitFromBarack();
+                                botwindow.CureOneWindow2();              // сделать End Programm
+                                //Pause(2000);
+                                //driver.StateGotoWork();               // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
                             }
                             else
                             {
-                                if ((server.isBoxOverflow()) && (botwindow.getNomerTeleport() > 0))  // если карман переполнился и нужно продавать(телепорт = 0, тогда не нужно продавать)
+                                if (server.isBarack())                  //если стоят в бараке     
                                 {
-                                    driver.StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
-                                    Pause(2000);
-                                    driver.StateGotoWork();                                           // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                                    server.buttonExitFromBarack();      //StateExitFromBarack();
                                 }
                                 else
                                 {
-                                    if (mm.isMMSell() || (mm.isMMBuy()))
+                                    if ((server.isBoxOverflow()) && (botwindow.getNomerTeleport() > 0))  // если карман переполнился и нужно продавать(телепорт = 0, тогда не нужно продавать)
                                     {
-                                        SellProduct();
+                                        driver.StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
+                                        Pause(2000);
+                                        driver.StateGotoWork();                                           // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
                                     }
                                     else
-                                    { 
-                                        if (server.isTown())          //если стоят в городе
+                                    {
+                                        if (mm.isMMSell() || (mm.isMMBuy()))
                                         {
-                                            driver.StateExitFromTown();
-                                            botwindow.PressEscThreeTimes();
-                                            Pause(2000);
-                                            driver.StateGotoWork();                                    // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                                            SellProduct();
                                         }
                                         else
                                         {
-                                            if (market.isSale())                               // если застряли в магазине на странице входа
-                                            { driver.StateExitFromShop2(); }
+                                            if (server.isTown())          //если стоят в городе
+                                            {
+                                                driver.StateExitFromTown();
+                                                botwindow.PressEscThreeTimes();
+                                                Pause(2000);
+                                                driver.StateGotoWork();                                    // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                                            }
                                             else
                                             {
-                                                if (pet.isOpenMenuPet())                  //если открыто меню с петом, значит пет не выпущен
-                                                {
-                                                    driver.StateActivePet();
-                                                }
+                                                if (market.isSale())                               // если застряли в магазине на странице входа
+                                                { driver.StateExitFromShop2(); }
                                                 else
                                                 {
-                                                    if ( (server.isCook()) && (!server.isBattleMode()))   //если повар и он не в боевом режиме
+                                                    if (pet.isOpenMenuPet())                  //если открыто меню с петом, значит пет не выпущен
                                                     {
-                                                        botwindow.ClickSpace();
+                                                        driver.StateActivePet();
                                                     }
                                                     else
                                                     {
-                                                        //botwindow.PressMitridat();
+                                                        if ((server.isCook()) && (!server.isBattleMode()))   //если повар и он не в боевом режиме
+                                                        {
+                                                            botwindow.ClickSpace();
+                                                        }
+                                                        else
+                                                        {
+                                                            //botwindow.PressMitridat();
+                                                        }
                                                     }
                                                 }
                                             }
                                         }
-                                    } 
-                                } //else isBoxOverflow()
-                            } //else isBarack()
-                        } // else isKillHero()
+                                    } //else isBoxOverflow()
+                                } //else isBarack()
+                            } // else isKillHero()
+                        }
                     } // else isSale2()
                 } //else  isLogout()
             } //if  Active_or_not
@@ -199,14 +206,12 @@ namespace States
         }
 
         /// <summary>
-        /// действия для оранжевой кнопки
+        /// оранжевая кнопка. разные действия по серверам . не удалять
         /// </summary>
         public void OrangeButton()
         {
             server.OrangeButton();
-
         }
-
         /// <summary>
         /// определяет, нужно ли работать с этим окном (может быть отключено из-за профилактики на сервере)
         /// </summary>
@@ -248,8 +253,8 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            //botWindow botwindow = new botWindow(3);
-            //Server server = new ServerSing(botwindow);
+            botWindow botwindow = new botWindow(3);
+            Server server = new ServerSing(botwindow);
             //Market market = new MarketSing(botwindow);
             //Otit otit = new OtitSing(botwindow);
             //MessageBox.Show(" " + server.isBoxOverflow());
@@ -259,8 +264,8 @@ namespace States
 
 
             int xx, yy;
-            xx = 255;
-            yy = 255;
+            xx = 5;
+            yy = 5;
             uint color1;
             uint color2;
             //uint color3;
@@ -268,8 +273,8 @@ namespace States
             int y = 292;
 
 
-            PointColor point1 = new PointColor(x - 28 - 5 + xx + 0, y + 0 - 5 + yy + 0, 4370000, 4);
-            PointColor point2 = new PointColor(x - 28 - 5 + xx + 0, y + 0 - 5 + yy + 0, 4370000, 4);
+            PointColor point1 = new PointColor(908 - 5 + xx, 707 - 5 + yy, 7790000, 4);
+            PointColor point2 = new PointColor(909 - 5 + xx, 707 - 5 + yy, 7790000, 4);
             //PointColor point3 = new PointColor(455 - 5 + xx + 1, y - 5 + yy + 1, 7800000, 5);
 
             color1 = point1.GetPixelColor();

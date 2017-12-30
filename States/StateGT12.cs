@@ -12,7 +12,7 @@ namespace States
     {
         private botWindow botwindow;
         private Server server;
-        private Market market;
+        //private Market market;
         private int tekStateInt;
 
         public StateGT12()

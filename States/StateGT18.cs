@@ -95,8 +95,8 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-//            return botwindow.isOpenMenuPet();     //сделать проверку, открыто ли окно с петом Alt+P
             return pet.isOpenMenuPet();     //сделать проверку, открыто ли окно с петом Alt+P
+            //return true;
         }
 
         /// <summary>
@@ -106,6 +106,7 @@ namespace States
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
             return new StateGT20(botwindow);
+//            return new StateGT27(botwindow);
         }
 
         /// <summary>
