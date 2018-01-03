@@ -38,10 +38,10 @@ namespace OpenGEWindows
                 //    //=================== Коимбра =======================================
                 //    town = new SingTownCoimbra(nomerOfWindow);
                 //    break;
-                //case 3:
-                //    //=================== Ош ============================================
-                //    town = new SingTownAuch(nomerOfWindow);
-                //    break;
+                case 3:
+                    //=================== Ош ============================================
+                    town = new SingTownAuch(botwindow);
+                    break;
                 //case 4:
                 //    //=================== Юстиар =======================================
                 //    town = new SingTownUstiar(nomerOfWindow);

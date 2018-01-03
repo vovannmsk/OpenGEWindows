@@ -129,7 +129,7 @@ namespace States
                                                         }
                                                         else
                                                         {
-                                                            //botwindow.PressMitridat();
+                                                            botwindow.PressMitridat();
                                                         }
                                                     }
                                                 }
@@ -269,12 +269,12 @@ namespace States
             uint color1;
             uint color2;
             //uint color3;
-            int x = 483;
-            int y = 292;
+            //int x = 483;
+            //int y = 292;
 
 
-            PointColor point1 = new PointColor(908 - 5 + xx, 707 - 5 + yy, 7790000, 4);
-            PointColor point2 = new PointColor(909 - 5 + xx, 707 - 5 + yy, 7790000, 4);
+            PointColor point1 = new PointColor(24 + xx, 692 + yy, 7700000, 4);
+            PointColor point2 = new PointColor(25 + xx, 692 + yy, 7700000, 4);
             //PointColor point3 = new PointColor(455 - 5 + xx + 1, y - 5 + yy + 1, 7800000, 5);
 
             color1 = point1.GetPixelColor();

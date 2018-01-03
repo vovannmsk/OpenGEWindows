@@ -100,6 +100,8 @@
   <ItemGroup>
     <Compile Include="AmericaTownFactory.cs" />
     <Compile Include="botWindow.cs" />
+    <Compile Include="GoldenEggEuropa.cs" />
+    <Compile Include="GoldenEggAmerica.cs" />
     <Compile Include="iPointColor.cs" />
     <Compile Include="Dialog.cs" />
     <Compile Include="DialogAmerica.cs" />
@@ -109,11 +111,14 @@
     <Compile Include="MMEuropa.cs" />
     <Compile Include="MMAmerica.cs" />
     <Compile Include="MM.cs" />
+    <Compile Include="GoldenEgg.cs" />
     <Compile Include="Otit.cs" />
     <Compile Include="OtitAmerica.cs" />
     <Compile Include="OtitEuropa.cs" />
     <Compile Include="DialogFactory.cs" />
+    <Compile Include="GoldenEggFactory.cs" />
     <Compile Include="OtitFactory.cs" />
+    <Compile Include="GoldenEggSing.cs" />
     <Compile Include="PetFactory.cs" />
     <Compile Include="DialogSing.cs" />
     <Compile Include="OtitSing.cs" />
@@ -144,6 +149,7 @@
     <Compile Include="ServerSing.cs" />
     <Compile Include="SingTownFactory.cs" />
     <Compile Include="SingTownLosToldos.cs" />
+    <Compile Include="SingTownAuch.cs" />
     <Compile Include="SingTownReboldo.cs" />
     <Compile Include="TextSend.cs" />
     <Compile Include="Town.cs" />

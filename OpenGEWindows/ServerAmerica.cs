@@ -133,6 +133,8 @@ namespace OpenGEWindows
             this.pointisWork_VetDrobDot2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
             this.pointisWork_ExpDrobDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);              //проверка по эксп стойке с дробашем
             this.pointisWork_ExpDrobDot2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
+            this.pointisWork_ExpSwordDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 3693000, 3);           //проверка по стойке с мечом Дарья
+            this.pointisWork_ExpSwordDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 10258000, 3);
             this.pointisKillHero1 = new PointColor(75 + xx, 631 + yy, 1900000, 4);
             this.pointisKillHero2 = new PointColor(330 + xx, 631 + yy, 1900000, 4);
             this.pointisKillHero3 = new PointColor(585 + xx, 631 + yy, 1900000, 4);

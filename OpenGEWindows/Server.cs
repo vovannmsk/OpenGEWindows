@@ -173,6 +173,8 @@ namespace OpenGEWindows
         protected iPointColor pointisWork_ExpDrobDot2;
         protected iPointColor pointisWork_VetSabreDot1;        //проверка стойки с вет саблей (проверяются две точки )
         protected iPointColor pointisWork_VetSabreDot2;
+        protected iPointColor pointisWork_ExpSwordDot1;        //проверка стойки с exp мечом Дарья (проверяются две точки )
+        protected iPointColor pointisWork_ExpSwordDot2;
         protected iPoint pointSkillCook;
         protected iPointColor pointisBattleMode1;
         protected iPointColor pointisBattleMode2;
@@ -220,6 +222,8 @@ namespace OpenGEWindows
         protected iPointColor pointIsTown_ExpDrobThirdDot2;
         protected iPointColor pointIsTown_VetSabreFirstDot1;    //проверка по вет сабле
         protected iPointColor pointIsTown_VetSabreFirstDot2;
+        protected iPointColor pointIsTown_ExpSwordFirstDot1;    //проверка по мечу Дарья
+        protected iPointColor pointIsTown_ExpSwordFirstDot2;   
 
         #endregion
 
@@ -1026,8 +1030,9 @@ namespace OpenGEWindows
             bool resultVetDrob = (pointisWork_VetDrobDot1.isColor() && pointisWork_VetDrobDot2.isColor());
             bool resultExpDrob = (pointisWork_ExpDrobDot1.isColor() && pointisWork_ExpDrobDot2.isColor());
             bool resultVetSabre = (pointisWork_VetSabreDot1.isColor() && pointisWork_VetSabreDot2.isColor());
+            bool resultExpSword = (pointisWork_ExpSwordDot1.isColor() && pointisWork_ExpSwordDot2.isColor());
 
-            return (resultRifle || resultExpRifle || resultDrob || resultVetDrob || resultExpDrob || resultVetSabre);  //проверка только по первому персу
+            return (resultRifle || resultExpRifle || resultDrob || resultVetDrob || resultExpDrob || resultVetSabre || resultExpSword);  //проверка только по первому персу
         }
 
         /// <summary>
@@ -1097,8 +1102,10 @@ namespace OpenGEWindows
             bool resultShotgunExp = (pointIsTown_ExpDrobFirstDot1.isColor() && pointIsTown_ExpDrobFirstDot2.isColor());  //проверка по первому персу эксп стойка
             //сабля
             bool resultVetSabre = (pointIsTown_VetSabreFirstDot1.isColor() && pointIsTown_VetSabreFirstDot2.isColor());  //проверка по первому персу вет сабля
+            //меч
+            bool resultExpSword = (pointIsTown_ExpSwordFirstDot1.isColor() && pointIsTown_ExpSwordFirstDot2.isColor());  //проверка по первому персу эксп меч 
 
-            return (resultRifle || resultRifleExp || resultShotgun || resultShotgunVet || resultShotgunExp || resultVetSabre);
+            return (resultRifle || resultRifleExp || resultShotgun || resultShotgunVet || resultShotgunExp || resultVetSabre || resultExpSword);
         }
 
         ///// <summary>

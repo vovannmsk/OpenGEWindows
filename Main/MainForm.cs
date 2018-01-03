@@ -23,7 +23,7 @@ namespace Main
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "30-12-2017";
+        public static String DataVersion = "02-01-2018";
         public static int numberOfAcc = KolvoAkk();
 
         /// <summary>
@@ -369,7 +369,7 @@ namespace Main
 
         #endregion
 
-        #region New white button (Sale)
+        #region New white button (отправляет все окна на продажу)
 
         /// <summary>
         /// метод продаёт все окна по очереди и потом каждое окно выставляет опят на работу

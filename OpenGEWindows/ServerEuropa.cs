@@ -136,6 +136,8 @@ namespace OpenGEWindows
             this.pointisWork_ExpDrobDot2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
             this.pointisWork_VetSabreDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 5138000, 3);           //проверка по вет стойке с саблей
             this.pointisWork_VetSabreDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 9747000, 3);
+            this.pointisWork_ExpSwordDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 3693000, 3);           //проверка по стойке с мечом Дарья
+            this.pointisWork_ExpSwordDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 10258000, 3);
             this.pointisKillHero1 = new PointColor(75 + xx, 631 + yy, 1900000, 4);
             this.pointisKillHero2 = new PointColor(330 + xx, 631 + yy, 1900000, 4);
             this.pointisKillHero3 = new PointColor(585 + xx, 631 + yy, 1900000, 4);
@@ -194,6 +196,9 @@ namespace OpenGEWindows
 
             this.pointIsTown_VetSabreFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 5131000, 3);       //точки для проверки вет стойки с саблей (повар)
             this.pointIsTown_VetSabreFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 9737000, 3);
+
+            this.pointIsTown_ExpSwordFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 3684000, 3);       //точки для проверки эксп стойки с мечом (дарья)
+            this.pointIsTown_ExpSwordFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 10263000, 3);
 
             #endregion
 
