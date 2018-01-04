@@ -606,6 +606,34 @@ namespace Main
 
         #endregion
 
+        #region Golden Button (Кукуруза)
+
+        /// <summary>
+        /// добыча кукурузы на ферме (начало в диалоге с Эстебаном)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GoldenEggFruit_Click(object sender, EventArgs e)
+        {
+            Thread myThreadGold2 = new Thread(funcGold2);
+            myThreadGold2.Start();
+        }
+
+        /// <summary>
+        /// метод задает функционал для потока, организуемого золотой кнопкой
+        /// </summary>
+        private void funcGold2()
+        {
+            int NumberOfWindow = KolvoAkk() + 1;
+            Check check = new Check(NumberOfWindow);
+            DriversOfState drive = new DriversOfState(NumberOfWindow);
+
+            check.ReOpenWindow();
+            check.Pause(500);
+            drive.StateGoldenEggFarm();
+        }
+
+        #endregion
 
 
     }// END class MainForm 

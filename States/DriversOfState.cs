@@ -36,6 +36,18 @@ namespace States
         #region движки для запуска перехода по состояниям
 
         /// <summary>
+        /// идем из состояния логаут до старого человека в Лос Толдосе
+        /// </summary>
+        public void StateGoldenEggFarm()
+        {
+            StateDriverRun(new StateGT74(this.botwindow), new StateGT75(this.botwindow));  // заходим на ферму
+            StateDriverRun(new StateGT91(this.botwindow), new StateGT92(this.botwindow));  // открываем карту
+
+            StateDriverRun(new StateGT85(this.botwindow), new StateGT86(this.botwindow));  // бегаем по кругу и собираем GoldenEggFruit
+        }
+
+
+        /// <summary>
         /// перевод из состояния 75 в состояние 90. Цель  - добыча отита. Исполнитель - барон
         /// </summary>
         public void StateOtitRunBaron()

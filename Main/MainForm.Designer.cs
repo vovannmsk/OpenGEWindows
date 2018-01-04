@@ -48,6 +48,7 @@
             this.PureOtite = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.numberOfAccouts = new System.Windows.Forms.NumericUpDown();
+            this.GoldenEggFruit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfAccouts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -237,12 +238,25 @@
             this.numberOfAccouts.TabIndex = 57;
             this.numberOfAccouts.Leave += new System.EventHandler(this.numberOfAccouts_Leave);
             // 
+            // GoldenEggFruit
+            // 
+            this.GoldenEggFruit.BackColor = System.Drawing.Color.Gold;
+            this.GoldenEggFruit.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.GoldenEggFruit.Location = new System.Drawing.Point(190, 173);
+            this.GoldenEggFruit.Name = "GoldenEggFruit";
+            this.GoldenEggFruit.Size = new System.Drawing.Size(170, 34);
+            this.GoldenEggFruit.TabIndex = 58;
+            this.GoldenEggFruit.Text = "Кукуруза";
+            this.GoldenEggFruit.UseVisualStyleBackColor = false;
+            this.GoldenEggFruit.Click += new System.EventHandler(this.GoldenEggFruit_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(369, 214);
+            this.Controls.Add(this.GoldenEggFruit);
             this.Controls.Add(this.numberOfAccouts);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.PureOtite);
@@ -294,6 +308,7 @@
         private System.Windows.Forms.Button PureOtite;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numberOfAccouts;
+        private System.Windows.Forms.Button GoldenEggFruit;
     
     }
 }

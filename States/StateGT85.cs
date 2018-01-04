@@ -12,6 +12,7 @@ namespace States
     {
         private botWindow botwindow;
         private Server server;
+        private GoldenEgg goldenEgg;
         private int tekStateInt;
 
         public StateGT85()
@@ -24,6 +25,8 @@ namespace States
             this.botwindow = botwindow;
             ServerFactory serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            GoldenEggFactory goldenEggFactory = new GoldenEggFactory(botwindow);
+            this.goldenEgg = goldenEggFactory.create();
 
             this.tekStateInt = 85;
         }
@@ -34,7 +37,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-
+            goldenEgg.GotoNextPointRoute();
 
         }
 
@@ -51,7 +54,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return true;                                                                                //считаем, что осечек не будет на этом этапе, и мы 100% переёдем к следующему пункту
+            return false;                                                                                //никогда успешно не закончится 
         }
 
         /// <summary>
@@ -60,7 +63,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT85(botwindow);
+            return new StateGT86(botwindow);
         }
 
         /// <summary>

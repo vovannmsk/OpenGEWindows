@@ -247,7 +247,7 @@ namespace OpenGEWindows
                 case 7305078:     // Ящики для джеков            **
                 case 15420103:    // Бутылка хрина               **
                 case 9868940:     // композитная сталь           **
-                case 5334831:     // магическая сфера            **
+                case 5334831:     // магическая сфера            ** Magic sphere
                 case 13164006:    // свекла                      **
                 case 16777215:    // Wheat flour                 **
                 case 13565951:    // playtoken                   **
@@ -280,6 +280,15 @@ namespace OpenGEWindows
                 case 13667914:    // 600 SP
                 case 2831927:     // Sign G, D
                 case 2828377:     // Ancient Orb
+                case 8363835:     // Icicle
+                case 12642302:     // Bone pick
+                case 15790834:     // Soft Cotton
+                case 4543325:     // Pebbles
+                case 1457773:     // Old Journal
+                case 10401925:     // Sharp Horn
+                case 6270101:     // Cabosse
+                case 14344416:     // Tough Cotton
+                case 13079681:     // Silk
                     result = false;
                     break;
                 case 14210771:    // Mega Etr, Io Talt
