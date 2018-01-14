@@ -126,7 +126,7 @@ namespace OpenGEWindows
                 pr.color1 = RoundColor (new PointColor(31 - 5 + xx, 333 - 5 + yy + j * 27, 2000000, 6).GetPixelColor(), 6);   // номер цвета округленный до 6 разряда
                 pr.color2 = RoundColor (new PointColor(38 - 5 + xx, 333 - 5 + yy + j * 27, 2000000, 6).GetPixelColor(), 6);
 
-                bool notProduct = ( (pr.color1 == 2000000) && (pr.color2 == 2000000) );   //нет товара на этом месте
+                bool notProduct = ( (pr.color1 < 2000000) && (pr.color2 < 2000000) );   //нет товара на этом месте
                 if (!notProduct)
                 {
                     if (listProduct.IndexOf(pr) > 0)  //если такой продукт уже в массиве
@@ -349,8 +349,8 @@ namespace OpenGEWindows
                     pointdigit2 = new PointColor(x - 5 + xx + 0, y - 5 + yy + 9, 65000, 3);  //2
                     pointdigit3 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 4, 64000, 3);  //3
                     pointdigit4 = new PointColor(x - 5 + xx + 3, y - 5 + yy + 6, 58000, 3);  //4
-                    pointdigit5 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 0, 56000, 3);  //5
-                    pointdigit6 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 1, 60000, 3);  //6
+                    pointdigit5 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 0, 50000, 4);  //5
+                    pointdigit6 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 1, 59000, 3);  //6
                     pointdigit7 = new PointColor(x - 5 + xx + 0, y - 5 + yy + 0, 60000, 4);  //7
                     pointdigit8 = new PointColor(x - 5 + xx + 1, y - 5 + yy + 4, 63000, 3);  //8
                     pointdigit9 = new PointColor(x - 5 + xx + 5, y - 5 + yy + 4, 65000, 3);  //9

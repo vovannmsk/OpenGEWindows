@@ -76,11 +76,10 @@ namespace States
                         }
                         else
                         {
-                            if (server.isKillHero())                  // если убиты не все
+                            //if ( (server.isKillHero()) || (!server.isBattleMode()) )                // если убиты не все или стоят не в боевом режиме
+                            if  (server.isKillHero())               // если убиты не все 
                             {
-                                botwindow.CureOneWindow2();              // сделать End Programm
-                                //Pause(2000);
-                                //driver.StateGotoWork();               // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                                botwindow.CureOneWindow2();              // сделать логаут
                             }
                             else
                             {
@@ -149,13 +148,6 @@ namespace States
         /// </summary>
         public void SellProduct()
         {
-            //if (mm.isMMSell())   mm.GotoPageBuy();   //если на странице Sell то переход на страницу Buy
-
-            //mm.ProductSearch();
-            //if (!mm.isMyFirstString())
-            //{
-            //    mm.AddProduct();
-            //}
             mm.SellProduct();
         }
 
@@ -165,7 +157,6 @@ namespace States
         /// <returns></returns>
         public UIntPtr FindWindow()
         {
-//            return botwindow.FindWindowEuropa();
             return server.FindWindowGE();
         }
 
@@ -257,7 +248,7 @@ namespace States
             Server server = new ServerSing(botwindow);
             //Market market = new MarketSing(botwindow);
             //Otit otit = new OtitSing(botwindow);
-            MessageBox.Show(" " + server.isBoxOverflow());
+            //MessageBox.Show(" " + server.isBoxOverflow());
 
             //bool iscolor1 = server.isSafeIP();
             //MessageBox.Show(" " + iscolor1);
@@ -267,22 +258,23 @@ namespace States
             xx = 5;
             yy = 5;
             uint color1;
-//            uint color2;
+            uint color2;
             //uint color3;
             //int x = 483;
             //int y = 292;
+            //int j = 9;
 
-
-            PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (1 - 1) * 27, 7700000, 4);
-  //          PointColor point2 = new PointColor(25 + xx, 692 + yy, 7700000, 4);
+            PointColor point1 = new PointColor(775 - 5 + xx, 140 - 5 + yy, 16777000, 3);
+            PointColor point2 = new PointColor(776 - 5 + xx, 140 - 5 + yy, 3552000, 3);
             //PointColor point3 = new PointColor(455 - 5 + xx + 1, y - 5 + yy + 1, 7800000, 5);
 
             color1 = point1.GetPixelColor();
-    //        color2 = point2.GetPixelColor();
+            color2 = point2.GetPixelColor();
             //color3 = point3.GetPixelColor();
 
             MessageBox.Show(" " + color1);
-      //      MessageBox.Show(" " + color2);
+            MessageBox.Show(" " + color2);
+            //if ((color1 > 2000000) && (color2 > 2000000)) MessageBox.Show(" больше ");
             //MessageBox.Show(" " + color3);
 
             //string str = "";

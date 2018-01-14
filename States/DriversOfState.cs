@@ -148,7 +148,7 @@ namespace States
             StateDriverRun(new StateGT69(dealer), new StateGT70(dealer));                   // торговец перекладывает фесо и ок-обмен
 
             StateDriverRun(new StateGT70(this.botwindow), new StateGT72(this.botwindow));   // бот перекладывает песо, закрывает сделку, покупает еду и логаут
-//            StateDriverRun(new StateGT72(dealer), new StateGT73(dealer));                   // торговец логаут
+            StateDriverRun(new StateGT72(dealer), new StateGT73(dealer));                   // торговец закрывает все лишние окна с экрана
         }
 
         /// <summary>
@@ -285,11 +285,13 @@ namespace States
         /// </summary>
         public void StateGotoTradeAndWork()
         {
-            if (botwindow.getserver().isWork())   //если бот на работе
+            if (server.isWork())   //если бот на работе
             {
-                StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа - продажа - нет окна)
-                botwindow.Pause(2000);
-                StateGotoWork();                                           // по паттерну "Состояние".  14-01       (нет окна - логаут - казарма - город - работа)
+                //StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа - продажа - нет окна)
+                //botwindow.Pause(2000);
+                //StateGotoWork();                                           // по паттерну "Состояние".  14-01       (нет окна - логаут - казарма - город - работа)
+                StateDriverRun(new StateGT01(botwindow), new StateGT12(botwindow));
+                server.Logout();
             }
         }
 

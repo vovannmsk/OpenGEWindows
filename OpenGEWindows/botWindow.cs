@@ -822,6 +822,8 @@ namespace OpenGEWindows
             iPoint pointPanel = new Point(38 - 5 + databot.x, 486 - 5 + databot.y);    // 33, 481
             iPoint pointSecondBox = new Point(31 - 5 + databot.x, 140 - 5 + databot.y);
             iPoint pointThirdBox = new Point(31 - 5 + databot.x, 170 - 5 + databot.y);
+            iPoint pointFourthBox = new Point(31 - 5 + databot.x, 200 - 5 + databot.y);
+            iPoint pointFifthBox = new Point(31 - 5 + databot.x, 230 - 5 + databot.y);
 
             //System.DateTime timeNow = DateTime.Now;  //текущее время
             //System.TimeSpan PeriodMitridat = timeNow.Subtract(timeMitridat);   //сколько времени прошло с последнего применения митридата
@@ -832,6 +834,9 @@ namespace OpenGEWindows
             pointPanel.PressMouseR();                   // Кликаю правой кнопкой в панель с бытылками, чтобы сделать ее активной и поверх всех окон (группа может мешать)
             pointSecondBox.PressMouseL();               // тыкаю в митридат (вторая ячейка)
             pointThirdBox.PressMouseL();                // тыкаю в  (третья ячейка)
+            pointFourthBox.PressMouseL();                // тыкаю в  (4-ю ячейку)
+            pointFifthBox.PressMouseL();                // тыкаю в  (5-ю ячейку)
+
 
             if (server.isSecondHero())                  //если есть второй перс ()
             {

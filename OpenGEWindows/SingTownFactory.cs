@@ -46,10 +46,10 @@ namespace OpenGEWindows
                 //    //=================== Юстиар =======================================
                 //    town = new SingTownUstiar(nomerOfWindow);
                 //    break;
-                //case 5:
-                //    //=================== багама =======================================
-                //    town = new SingTownBagama(nomerOfWindow);
-                //    break;
+                case 5:
+                    //=================== багама =======================================
+                    town = new SingTownBagama(botwindow);
+                    break;
                 //case 10:
                 //    //=================== Кастилия=======================================
                 //    town = new SingTownCastilia(nomerOfWindow);

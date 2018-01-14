@@ -52,7 +52,7 @@ namespace States
             botwindow.PressEscThreeTimes();
             botwindow.Pause(500);
 
-            server.Logout();    //выгружаем окно с торговцем
+            //server.Logout();    //выгружаем окно с торговцем
         }
 
         /// <summary>

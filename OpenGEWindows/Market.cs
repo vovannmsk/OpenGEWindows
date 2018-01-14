@@ -248,7 +248,7 @@ namespace OpenGEWindows
                 case 15420103:    // Бутылка хрина               **
                 case 9868940:     // композитная сталь           **
                 case 5334831:     // магическая сфера            ** Magic sphere
-                case 13164006:    // свекла                      **
+                case 13164006:    // свекла  Beet                **
                 case 16777215:    // Wheat flour                 **
                 case 13565951:    // playtoken                   **
                 case 10986144:    // Hinge                       **
@@ -281,14 +281,21 @@ namespace OpenGEWindows
                 case 2831927:     // Sign G, D
                 case 2828377:     // Ancient Orb
                 case 8363835:     // Icicle
-                case 12642302:     // Bone pick
-                case 15790834:     // Soft Cotton
+                case 12642302:    // Bone pick
+                case 15790834:    // Soft Cotton
                 case 4543325:     // Pebbles
                 case 1457773:     // Old Journal
-                case 10401925:     // Sharp Horn
+                case 10401925:    // Sharp Horn
                 case 6270101:     // Cabosse
-                case 14344416:     // Tough Cotton
-                case 13079681:     // Silk
+                case 14344416:    // Tough Cotton
+                case 13079681:    // Silk
+                case 14278629:    // Chip 100
+                case 14542297:    // Chip Veteran
+                case 13417421:    // Octopus Arm
+                case 573951:      // Golden Apple
+                case 3033453:     // Clear Rum
+                case 4474675:     // Fish Flesh
+                case 4966811:     // Cabbage
                     result = false;
                     break;
                 case 14210771:    // Mega Etr, Io Talt
@@ -309,7 +316,7 @@ namespace OpenGEWindows
         {
             Point pointAddProduct = new Point(380 - 5 + botwindow.getX(), 225 - 5 + (numberOfString - 1) * 27 + botwindow.getY());
             pointAddProduct.PressMouseWheelDown();   //прокручиваем список
-
+            Pause(250);
         }
 
         /// <summary>
@@ -322,9 +329,10 @@ namespace OpenGEWindows
             pointAddProduct.DoubleClickL();  //тыкаем в строчку с товаром
             Pause(150);
             SendKeys.SendWait("33000");
-            Pause(150);
+            Pause(250);
             //Press44444();                   // пишем 444444 , чтобы максимальное количество данного товара попало в корзину 
             pointAddProduct.PressMouseWheelDown();   //прокручиваем список
+            Pause(250);
         }
 
         /// <summary>

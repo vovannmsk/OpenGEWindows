@@ -171,6 +171,8 @@ namespace OpenGEWindows
         protected iPointColor pointisWork_VetDrobDot2;
         protected iPointColor pointisWork_ExpDrobDot1;        //проверка стойки с эксп дробашом (проверяются две точки )
         protected iPointColor pointisWork_ExpDrobDot2;
+        protected iPointColor pointisWork_JainaDrobDot1;        //проверка стойки с эксп дробашом (проверяются две точки )
+        protected iPointColor pointisWork_JainaDrobDot2;
         protected iPointColor pointisWork_VetSabreDot1;        //проверка стойки с вет саблей (проверяются две точки )
         protected iPointColor pointisWork_VetSabreDot2;
         protected iPointColor pointisWork_ExpSwordDot1;        //проверка стойки с exp мечом Дарья (проверяются две точки )
@@ -220,6 +222,8 @@ namespace OpenGEWindows
         protected iPointColor pointIsTown_ExpDrobSecondDot2;
         protected iPointColor pointIsTown_ExpDrobThirdDot1;
         protected iPointColor pointIsTown_ExpDrobThirdDot2;
+        protected iPointColor pointIsTown_JainaDrobFirstDot1;    //проверка по эксп. дробовику Джаина
+        protected iPointColor pointIsTown_JainaDrobFirstDot2;
         protected iPointColor pointIsTown_VetSabreFirstDot1;    //проверка по вет сабле
         protected iPointColor pointIsTown_VetSabreFirstDot2;
         protected iPointColor pointIsTown_ExpSwordFirstDot1;    //проверка по мечу Дарья
@@ -1029,10 +1033,11 @@ namespace OpenGEWindows
             bool resultDrob = (pointisWork_DrobDot1.isColor() && pointisWork_DrobDot2.isColor());
             bool resultVetDrob = (pointisWork_VetDrobDot1.isColor() && pointisWork_VetDrobDot2.isColor());
             bool resultExpDrob = (pointisWork_ExpDrobDot1.isColor() && pointisWork_ExpDrobDot2.isColor());
+            bool resultJainaDrob = (pointisWork_JainaDrobDot1.isColor() && pointisWork_JainaDrobDot2.isColor());
             bool resultVetSabre = (pointisWork_VetSabreDot1.isColor() && pointisWork_VetSabreDot2.isColor());
             bool resultExpSword = (pointisWork_ExpSwordDot1.isColor() && pointisWork_ExpSwordDot2.isColor());
 
-            return (resultRifle || resultExpRifle || resultDrob || resultVetDrob || resultExpDrob || resultVetSabre || resultExpSword);  //проверка только по первому персу
+            return (resultRifle || resultExpRifle || resultDrob || resultVetDrob || resultExpDrob || resultVetSabre || resultExpSword || resultJainaDrob);  //проверка только по первому персу
         }
 
         /// <summary>
@@ -1100,12 +1105,13 @@ namespace OpenGEWindows
             bool resultShotgun = (pointIsTown_DrobFirstDot1.isColor() && pointIsTown_DrobFirstDot2.isColor());           //проверка по первому персу обычная стойка
             bool resultShotgunVet = (pointIsTown_VetDrobFirstDot1.isColor() && pointIsTown_VetDrobFirstDot2.isColor());  //проверка по первому персу вет стойка
             bool resultShotgunExp = (pointIsTown_ExpDrobFirstDot1.isColor() && pointIsTown_ExpDrobFirstDot2.isColor());  //проверка по первому персу эксп стойка
+            bool resultShotgunJaina = (pointIsTown_JainaDrobFirstDot1.isColor() && pointIsTown_JainaDrobFirstDot2.isColor());  //проверка по первому персу Джаина
             //сабля
             bool resultVetSabre = (pointIsTown_VetSabreFirstDot1.isColor() && pointIsTown_VetSabreFirstDot2.isColor());  //проверка по первому персу вет сабля
             //меч
             bool resultExpSword = (pointIsTown_ExpSwordFirstDot1.isColor() && pointIsTown_ExpSwordFirstDot2.isColor());  //проверка по первому персу эксп меч 
 
-            return (resultRifle || resultRifleExp || resultShotgun || resultShotgunVet || resultShotgunExp || resultVetSabre || resultExpSword);
+            return (resultRifle || resultRifleExp || resultShotgun || resultShotgunVet || resultShotgunExp || resultVetSabre || resultExpSword || resultShotgunJaina);
         }
 
         ///// <summary>
@@ -2346,7 +2352,8 @@ namespace OpenGEWindows
             Pause(1500);
 
             //нажимаем кнопку Close
-            pointButtonClose.DoubleClickL();
+            botwindow.PressEscThreeTimes();
+            //pointButtonClose.DoubleClickL();
             Pause(1500);
         }
 

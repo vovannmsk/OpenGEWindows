@@ -8,27 +8,6 @@ namespace OpenGEWindows
 {
     public class EuropaTownBagama : Town
     {
-        //iPoint pointMaxHeight;
-        //iPoint pointBookmark;
-        //iPoint pointTraderOnMap;
-        //iPoint pointButtonMoveOnMap;
-        //iPoint pointHeadTrader;
-        //iPoint pointSellOnMenu;
-        //iPoint pointOkOnMenu;
-        //iPoint pointTownTeleport;
-
-        //iPointColor pointOpenMap1;
-        //iPointColor pointOpenMap2;
-        //iPointColor pointBookmark1;
-        //iPointColor pointBookmark2;
-        //iPointColor pointOpenTownTeleport1;
-        //iPointColor pointOpenTownTeleport2;
-
-        //int xx;
-        //int yy;
-
-        //const int PAUSE_TIME = 2000;
-        //const int TELEPORT_N = 2;
 
         private botWindow botwindow;
 

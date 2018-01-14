@@ -147,6 +147,7 @@
     <Compile Include="ServerEuropa.cs" />
     <Compile Include="ServerFactory.cs" />
     <Compile Include="ServerSing.cs" />
+    <Compile Include="SingTownBagama.cs" />
     <Compile Include="SingTownFactory.cs" />
     <Compile Include="SingTownLosToldos.cs" />
     <Compile Include="SingTownAuch.cs" />
