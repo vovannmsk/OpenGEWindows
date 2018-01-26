@@ -244,11 +244,11 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            botWindow botwindow = new botWindow(4);
+            botWindow botwindow = new botWindow(1);
             Server server = new ServerSing(botwindow);
-            //Market market = new MarketSing(botwindow);
+            Market market = new MarketSing(botwindow);
             //Otit otit = new OtitSing(botwindow);
-            //MessageBox.Show(" " + server.isBoxOverflow());
+            MessageBox.Show(" " + market.isSale());
 
             //bool iscolor1 = server.isSafeIP();
             //MessageBox.Show(" " + iscolor1);
@@ -262,10 +262,10 @@ namespace States
             //uint color3;
             //int x = 483;
             //int y = 292;
-            //int j = 9;
+            int j = 12;
 
-            PointColor point1 = new PointColor(775 - 5 + xx, 140 - 5 + yy, 16777000, 3);
-            PointColor point2 = new PointColor(776 - 5 + xx, 140 - 5 + yy, 3552000, 3);
+            PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 7200000, 5);
+            PointColor point2 = new PointColor(779 - 5 + xx, 140 - 5 + yy, 7800000, 5);
             //PointColor point3 = new PointColor(455 - 5 + xx + 1, y - 5 + yy + 1, 7800000, 5);
 
             color1 = point1.GetPixelColor();

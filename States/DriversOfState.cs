@@ -231,6 +231,7 @@ namespace States
         /// </summary>
         public void StateSelling()
         {
+            botwindow.Pause(300);
             if (botwindow.getMarket().isSale())                                 //проверяем, находимся ли в магазине
                 StateDriverRun(new StateGT09(botwindow), new StateGT12(botwindow));
             //StateDriverRun(new StateGT09(botwindow), new StateGT12(botwindow));

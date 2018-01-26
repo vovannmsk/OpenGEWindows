@@ -1286,7 +1286,7 @@ namespace OpenGEWindows
 
 
         /// <summary>
-        /// бежим к доминго
+        /// бежим к линдону после Доминго
         /// </summary>
         public void RunToLindon2()
         {
@@ -1401,7 +1401,7 @@ namespace OpenGEWindows
             Pause(1000);
 
             town_begin.ClickMoveMap();                 //нажимаем на кнопку Move на карте
-            Pause(30000);
+            Pause(33000);
 
             botwindow.PressEscThreeTimes();
             Pause(1000);
@@ -1550,7 +1550,7 @@ namespace OpenGEWindows
         /// </summary>
         public void TalkRunToNunez()
         {
-            pointPressNunez.PressMouseL();   // Нажимаем на Нуньеса
+            pointPressNunez.PressMouseLL();   // Нажимаем на Нуньеса
             Pause(2000);
 
             for (int j = 1; j <= 7; j++)

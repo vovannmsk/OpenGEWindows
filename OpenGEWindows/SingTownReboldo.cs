@@ -8,30 +8,7 @@ namespace OpenGEWindows
 {
     public class SingTownReboldo : Town
     {
-        //iPoint pointMaxHeight;
-        //iPoint pointBookmark;
-        //iPoint pointTraderOnMap;
-        //iPoint pointButtonMoveOnMap;
-        //iPoint pointHeadTrader;
-        //iPoint pointSellOnMenu;
-        //iPoint pointOkOnMenu;
-        //iPoint pointTownTeleport;
-
-        //iPointColor pointOpenMap1;
-        //iPointColor pointOpenMap2;
-        //iPointColor pointBookmark1;
-        //iPointColor pointBookmark2;
-        //iPointColor pointOpenTownTeleport1;
-        //iPointColor pointOpenTownTeleport2;
-
-        //int xx;
-        //int yy;
-
-        //const int PAUSE_TIME = 2000;
-        //const int TELEPORT_N = 2;
-
-        private botWindow botwindow;
-
+ 
         /// <summary>
         /// конструктор для класса
         /// </summary>
@@ -59,7 +36,22 @@ namespace OpenGEWindows
             this.pointBookmark2 = new PointColor(870 - 5 + xx, 48 - 5 + yy, 16400000, 5);      //проверено
             this.pointOpenTownTeleport1 = new PointColor(100 - 5 + xx, 295 - 5 + yy, 13000000, 5);  //проверено
             this.pointOpenTownTeleport2 = new PointColor(100 - 5 + xx, 296 - 5 + yy, 13000000, 5);  //проверено
+
+            DialogFactory tf = new DialogFactory(botwindow);
+            this.dialog = tf.createDialog();
+
         }
+
+        /// <summary>
+        /// нажать Sell и  Ok в меню входа в магазин
+        /// </summary>
+        public override void SellAndOk()
+        {
+            dialog.PressStringDialog(1);  ////========= тыкаем в "Sell/Buy Items" ======================================
+            dialog.PressOkButton(1);      ////========= тыкаем в OK =======================
+
+        }
+
 
 //        /// <summary>
 //        /// проверяет, открыт ли городской телепорт (Alt + F3)                             

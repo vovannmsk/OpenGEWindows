@@ -9,8 +9,6 @@ namespace OpenGEWindows
     public class SingTownAuch : Town
     {
 
-        private botWindow botwindow;
-
         /// <summary>
         /// конструктор для класса
         /// </summary>
@@ -36,10 +34,22 @@ namespace OpenGEWindows
             this.pointBookmark2 = new PointColor(874 - 5 + xx, 41 - 5 + yy, 7700000, 5);      //проверено
             this.pointOpenTownTeleport1 = new PointColor(100 - 5 + xx, 295 - 5 + yy, 13000000, 6);  //проверено
             this.pointOpenTownTeleport2 = new PointColor(100 - 5 + xx, 296 - 5 + yy, 13000000, 6);  //проверено
+
+            DialogFactory tf = new DialogFactory(botwindow);
+            this.dialog = tf.createDialog();
         }
 
 
         // ===========  Методы ================== 
+        /// <summary>
+        /// нажать Sell и  Ok в меню входа в магазин
+        /// </summary>
+        public override void SellAndOk()
+        {
+            dialog.PressStringDialog(1);  ////========= тыкаем в "Sell/Buy Items" ======================================
+            dialog.PressOkButton(1);      ////========= тыкаем в OK =======================
+
+        }
 
         /// <summary>
         /// дополнительные нажатия для выхода из магазина (бывает в магазинах необходимо что-то нажать дополнительно, чтобы выйти)

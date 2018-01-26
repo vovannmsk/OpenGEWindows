@@ -9,8 +9,6 @@ namespace OpenGEWindows
     public class EuropaTownCoimbra : Town
     {
 
-        private botWindow botwindow;
-
         /// <summary>
         /// конструктор для класса
         /// </summary>
@@ -39,9 +37,20 @@ namespace OpenGEWindows
             this.pointBookmark2 = new PointColor(860 - 5 + xx, 43 - 5 + yy, 7700000, 4);
             this.pointOpenTownTeleport1 = new PointColor(105 - 5 + xx, 292 - 5 + yy, 12500000, 4);
             this.pointOpenTownTeleport2 = new PointColor(105 - 5 + xx, 296 - 5 + yy, 13030000, 4);
+            DialogFactory tf = new DialogFactory(botwindow);
+            this.dialog = tf.createDialog();
 
         }
 
+        /// <summary>
+        /// нажать Sell и  Ok в меню входа в магазин
+        /// </summary>
+        public override void SellAndOk()
+        {
+            dialog.PressStringDialog(1);  ////========= тыкаем в "Sell/Buy Items" ======================================
+            dialog.PressOkButton(1);      ////========= тыкаем в OK =======================
+
+        }
 
 
         /// <summary>

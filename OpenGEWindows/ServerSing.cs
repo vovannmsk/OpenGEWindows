@@ -259,14 +259,14 @@ namespace OpenGEWindows
             this.pointButtonCloseSoldier = new Point(860 - 5 + xx, 590 - 5 + yy);                  //нажимаем на кнопку Close
             this.pointButtonYesSoldier = new Point(470 - 5 + xx, 430 - 5 + yy);                    //нажимаем на кнопку Yes
             this.pointFirstItem = new Point(35 - 5 + xx, 210 - 5 + yy);                            //нажимаем дважды на первую вещь в спецкармане
-            this.pointDomingoOnMap = new Point(810 - 5 + xx, 130 - 5 + yy);                        //нажимаем на Доминго на карте Alt+Z
-            this.pointPressDomingo = new Point(510 - 5 + xx, 425 - 5 + yy);                        //нажимаем на Доминго
+            this.pointDomingoOnMap = new Point(820 - 5 + xx, 130 - 5 + yy);                        //нажимаем на Доминго на карте Alt+Z
+            this.pointPressDomingo = new Point(508 - 5 + xx, 404 - 5 + yy);                        //нажимаем на Доминго
             this.pointFirstStringDialog = new Point(520 - 5 + xx, 660 - 5 + yy);                   //нажимаем Yes в диалоге Доминго (нижняя строчка)
             this.pointSecondStringDialog = new Point(520 - 5 + xx, 640 - 5 + yy);                  //нажимаем Yes в диалоге Доминго второй раз (вторая строчка снизу)
             this.pointDomingoMiss = new Point(396 - 5 + xx, 206 - 5 + yy);                         //нажимаем правой кнопкой по карте миссии Доминго
             this.pointPressDomingo2 = new Point(572 - 5 + xx, 237 - 5 + yy);                       //нажимаем на Доминго после миссии
-            this.pointLindonOnMap = new Point(820 - 5 + xx, 385 - 5 + yy);                         //нажимаем на Линдона на карте Alt+Z
-            this.pointPressLindon2 = new Point(655 - 5 + xx, 255 - 5 + yy);                        //нажимаем на Линдона
+            this.pointLindonOnMap = new Point(820 - 5 + xx, 370 - 5 + yy);                         //нажимаем на Линдона на карте Alt+Z
+            this.pointPressLindon2 = new Point(627 - 5 + xx, 274 - 5 + yy);                        //нажимаем на Линдона
             this.pointPetExpert = new Point(910 - 5 + xx, 415 - 5 + yy);                           //нажимаем на петэксперта
             this.pointPetExpert2 = new Point(815 - 5 + xx, 425 - 5 + yy);                          //нажимаем на петэксперта второй раз 
             this.pointThirdBookmark = new Point(842 - 5 + xx, 150 - 5 + yy);                       //тыкнули в третью закладку в кармане
@@ -291,8 +291,8 @@ namespace OpenGEWindows
             this.pointWorkCrater = new Point(botwindow.getTriangleX()[0] + xx, botwindow.getTriangleY()[0] + yy);     //бежим на место работы
             this.pointButtonSaveTeleport = new Point(440 - 5 + xx, 570 - 5 + yy);                   // нажимаем на кнопку сохранения телепорта в текущей позиции
             this.pointButtonOkSaveTeleport = new Point(660 - 5 + xx, 645 - 5 + yy);               // нажимаем на кнопку OK для подтверждения сохранения телепорта 
-            this.pointPetBegin = new Point(855 - 5 + xx, 180 - 5 + yy);    // 800-5, 220-5
-            this.pointPetEnd = new Point(520 - 5 + xx, 330 - 5 + yy);    // 520-5, 330-5
+            this.pointPetBegin = new Point(855 + 39 - 5 + xx, 180 - 5 + yy);    // 
+            this.pointPetEnd = new Point(520 - 5 + xx, 330 - 5 + yy);    // 
             #endregion
 
             #region заточка Ида 

@@ -9,7 +9,6 @@ namespace OpenGEWindows
     public class SingTownLosToldos : Town
     {
 
-        private botWindow botwindow;
 
         public SingTownLosToldos()
         {
@@ -46,10 +45,22 @@ namespace OpenGEWindows
             this.pointOldManOnMap = new Point(740 - 5 + xx, 212 - 5 + yy);      //строка на карте Старый мужик 
             this.pointOldMan1 = new Point(531 - 5 + xx, 343 - 5 + yy);          //голова Старого мужика
 
-        
+            DialogFactory tf = new DialogFactory(botwindow);
+            this.dialog = tf.createDialog();
+
         }
 
         // ===========================   Методы  ======================================
+        /// <summary>
+        /// нажать Sell и  Ok в меню входа в магазин
+        /// </summary>
+        public override void SellAndOk()
+        {
+            dialog.PressStringDialog(1);  ////========= тыкаем в "Sell/Buy Items" ======================================
+            dialog.PressOkButton(1);      ////========= тыкаем в OK =======================
+
+        }
+
         /// <summary>
         /// дополнительные нажатия для выхода из магазина (бывает в магазинах необходимо что-то нажать дополнительно, чтобы выйти)
         /// </summary>

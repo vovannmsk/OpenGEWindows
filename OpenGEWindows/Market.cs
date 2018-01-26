@@ -141,6 +141,7 @@ namespace OpenGEWindows
         {
             Point pointAddProduct = new Point(380 - 5 + botwindow.getX(), 220 - 5 + (numberOfString - 1) * 27 + botwindow.getY());
             pointAddProduct.PressMouseL();
+            Pause(200);
             pointAddProduct.PressMouseWheelDown();
         }
 
@@ -271,12 +272,12 @@ namespace OpenGEWindows
                 case 8486756:     // Ice Crystal                 **
                 case 4143156:     // bulk of Coal                **
                 case 9472397:     // Steel piece                 **
-                case 7187897:     // Mustang ore
+//                case 7187897:     // Mustang ore
                 case 1381654:     // стрелы эксп
                 case 11258069:    // пули эксп
                 case 2569782:     // дробь эксп Metal Shell Ammo
                 case 5137276:     // сундук деревянный как у сфер древней звезды
-                case 3031912:     // Reinforced Lether
+//                case 3031912:     // Reinforced Lether
                 case 13667914:    // 600 SP
                 case 2831927:     // Sign G, D
                 case 2828377:     // Ancient Orb
@@ -296,6 +297,7 @@ namespace OpenGEWindows
                 case 3033453:     // Clear Rum
                 case 4474675:     // Fish Flesh
                 case 4966811:     // Cabbage
+                case 10931953:    // Psychic Sphere
                     result = false;
                     break;
                 case 14210771:    // Mega Etr, Io Talt

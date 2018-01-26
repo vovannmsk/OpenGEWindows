@@ -50,10 +50,10 @@ namespace OpenGEWindows
                     //=================== багама =======================================
                     town = new SingTownBagama(botwindow);
                     break;
-                //case 10:
-                //    //=================== Кастилия=======================================
-                //    town = new SingTownCastilia(nomerOfWindow);
-                //    break;
+                case 10:
+                    //=================== Кастилия=======================================
+                    town = new SingTownCastilia(botwindow);
+                    break;
                 case 11:
                     //=================== лос толдос ======================================
                     town = new SingTownLosToldos(botwindow);

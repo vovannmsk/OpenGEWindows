@@ -14,6 +14,8 @@ namespace OpenGEWindows
             protected int yy;
             protected iPoint pointMaxHeight;
             protected const int NUMBER_OF_ITERATION = 10;
+            protected botWindow botwindow;
+            protected Dialog dialog;
         #endregion
 
         #region Los Toldos
@@ -140,6 +142,11 @@ namespace OpenGEWindows
             /// дополнительные нажатия для выхода из магазина (бывает в магазинах необходимо что-то нажать дополнительно, чтобы выйти)
             /// </summary>
             public abstract void ExitFromTrader();
+
+            /// <summary>
+            /// нажать Sell и  Ok в меню входа в магазин (зависит от города)
+            /// </summary>
+            public abstract void SellAndOk();
 
         #endregion
 

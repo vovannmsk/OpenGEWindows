@@ -123,7 +123,9 @@ namespace OpenGEWindows
 
             for (int j = 9; j >= 0; j--)
             {
-                pr.color1 = RoundColor (new PointColor(31 - 5 + xx, 333 - 5 + yy + j * 27, 2000000, 6).GetPixelColor(), 6);   // номер цвета округленный до 6 разряда
+                pointMM.PressMouseL(); //отводим мышку в сторону и активируем список
+
+                pr.color1 = RoundColor(new PointColor(31 - 5 + xx, 333 - 5 + yy + j * 27, 2000000, 6).GetPixelColor(), 6);   // номер цвета округленный до 6 разряда
                 pr.color2 = RoundColor (new PointColor(38 - 5 + xx, 333 - 5 + yy + j * 27, 2000000, 6).GetPixelColor(), 6);
 
                 bool notProduct = ( (pr.color1 < 2000000) && (pr.color2 < 2000000) );   //нет товара на этом месте
@@ -138,7 +140,7 @@ namespace OpenGEWindows
                         Pause(1500);
                         pointButtonYesCancel.PressMouseL();    // тыкаем в Yes
                         Pause(1500);
-                        pointMM.PressMouseL();
+                        pointMM.PressMouseL();  //отводим мышку в сторону и активируем список
                     }
                     else
                     {
