@@ -67,7 +67,7 @@ namespace OpenGEWindows
             Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 1);
             Pause(200);
         }
-
+         
         /// <summary>
         /// два последовательных нажатия левой кнопкой мыши через паузу
         /// </summary>

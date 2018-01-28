@@ -234,6 +234,17 @@ namespace Main
             buttonSuperSell.Visible = false;
             Thread mythread = new Thread(funcAqua);
             mythread.Start();
+            //for (int j = 1; j <= numberOfAcc; j++)
+            //{
+            //    Check check = new Check(j);
+            //    if (check.isActive())
+            //    {
+            //        check.ReOpenWindow();
+            //        DriversOfState driver = new DriversOfState(j);
+            //        driver.StateSelling();             // продаёт всех ботов, которые стоят в данный момент в магазине (через движок состояний)
+            //    }
+            //}
+
             buttonSuperSell.Visible = true;
         }
 

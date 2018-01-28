@@ -101,7 +101,7 @@ namespace OpenGEWindows
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <param name="dwFlag"></param>
-        public static void runMouse(int x, int y, uint dwFlag, int mouseData)
+        private static void runMouse(int x, int y, uint dwFlag, int mouseData)
         {
             MOUSEINPUT m = new MOUSEINPUT();
             m.dx = (int)(x * 34.1328);
