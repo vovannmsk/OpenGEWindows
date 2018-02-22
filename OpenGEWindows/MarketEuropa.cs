@@ -38,6 +38,7 @@ namespace OpenGEWindows
             this.pointButtonBUY = new Point(725 + xx, 663 + yy);   //725, 663);
             this.pointButtonSell = new Point(725 + xx, 663 + yy);   //725, 663);
             this.pointButtonClose = new Point(847 + xx, 663 + yy);   //847, 663);
+            this.pointAddProduct = new Point(380 - 5 + xx, 220 - 5 + yy);
 
             #endregion
 

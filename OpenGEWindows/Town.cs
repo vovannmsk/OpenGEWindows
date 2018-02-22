@@ -58,10 +58,20 @@ namespace OpenGEWindows
             /// </summary>
             public void MaxHeight()
             {
-                for (int j = 1; j <= NUMBER_OF_ITERATION; j++)
+                if (botwindow.getIsServer())
                 {
+                    // крутим колесико мыши 1 раз + пауза + колесо обратно    (для самарских серверов)
                     pointMaxHeight.PressMouseWheelUp();
+                    Pause(2000);
+                    pointMaxHeight.PressMouseWheelDown();
                 }
+                else
+                {
+                    // крутим колесико мыши 10 раз
+                    for (int j = 1; j <= NUMBER_OF_ITERATION; j++) pointMaxHeight.PressMouseWheelUp();
+                }
+
+
             }
 
             /// <summary>
@@ -165,8 +175,8 @@ namespace OpenGEWindows
             /// </summary>
             public void SecondBookmark()
             {
-                pointBookmark.PressMouseL();
-                pointBookmark.PressMouseL();
+                pointBookmark.PressMouseLL();
+//                pointBookmark.PressMouseL();
             }
 
             /// <summary>
@@ -174,7 +184,7 @@ namespace OpenGEWindows
             /// </summary>
             public void GoToTraderMap()
             {
-                pointTraderOnMap.PressMouse();
+                pointTraderOnMap.PressMouseLL();
             }
 
             /// <summary>
@@ -182,7 +192,7 @@ namespace OpenGEWindows
             /// </summary>
             public void ClickMoveMap()
             {
-                pointButtonMoveOnMap.PressMouse();
+                pointButtonMoveOnMap.DoubleClickL();
             }
 
             /// <summary>

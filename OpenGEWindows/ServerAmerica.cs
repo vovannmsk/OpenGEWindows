@@ -138,10 +138,19 @@ namespace OpenGEWindows
             this.pointisKillHero1 = new PointColor(75 + xx, 631 + yy, 1900000, 4);
             this.pointisKillHero2 = new PointColor(330 + xx, 631 + yy, 1900000, 4);
             this.pointisKillHero3 = new PointColor(585 + xx, 631 + yy, 1900000, 4);
+            this.pointisWork_VetPistolDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 13086000, 3);           //проверка по стойке с вет пистолетом Outrange
+            this.pointisWork_VetPistolDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 12954000, 3);
 
             #endregion
 
             #region inTown
+
+            this.pointCure1 = new Point(215 - 5 + xx, 705 - 5 + yy);                        //бутылка лечения под буквой U
+            this.pointCure2 = new Point(215 - 5 + 255 + xx, 705 - 5 + yy);                        //бутылка лечения под буквой J
+            this.pointCure3 = new Point(215 - 5 + 255 * 2 + xx, 705 - 5 + yy);                        //бутылка лечения под буквой M
+            this.pointMana1 = new Point(215 - 5 + 30 + xx, 705 - 5 + yy);                        //бутылка маны под буквой I
+            this.pointMana2 = new Point(245 - 5 + 255 + xx, 705 - 5 + yy);                        //бутылка маны под буквой K
+            this.pointMana3 = new Point(245 - 5 + 510 + xx, 705 - 5 + yy);                        //бутылка маны под буквой ,
 
             this.pointisToken1 = new PointColor(478 - 5 + xx, 92 - 5 + yy, 14600000, 5);           //проверяем открыто ли окно с токенами
             this.pointisToken2 = new PointColor(478 - 5 + xx, 93 - 5 + yy, 14600000, 5);
@@ -173,6 +182,8 @@ namespace OpenGEWindows
             this.pointIsTown_VetDrobSecondDot2 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
             this.pointIsTown_VetDrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
             this.pointIsTown_VetDrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
+            this.pointIsTown_VetPistolFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 65000, 3);       //точки для проверки вет стойки с пистолетом Outrange
+            this.pointIsTown_VetPistolFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 0, 0);
 
             this.pointIsTown_ExpDrobFirstDot1 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки эксп стойки с дробашом
             this.pointIsTown_ExpDrobFirstDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
@@ -286,6 +297,17 @@ namespace OpenGEWindows
             #endregion
 
             #region передача песо торговцу
+            #endregion
+
+            #region Undressing in Barack
+
+            this.pointShowEquipment = new Point(145 - 5 + xx, 442 - 5 + yy);
+            this.pointBarack1 = new Point(80 - 5 + xx, 152 - 5 + yy);
+            this.pointBarack2 = new Point(190 - 5 + xx, 152 - 5 + yy);
+            this.pointBarack3 = new Point(80 - 5 + xx, 177 - 5 + yy);
+
+
+
             #endregion
 
         }
@@ -449,6 +471,19 @@ namespace OpenGEWindows
             Pause(1000);
             pointTeleportToTownAltW.PressMouse();           //было два нажатия левой, решил попробовать RRL
             Pause(2000);
+        }
+
+        #endregion
+
+        #region at Work
+
+        /// <summary>
+        /// проверяем, находится ли в инвентае 248 вещей 
+        /// </summary>
+        /// <returns></returns>
+        public override bool is248Items()
+        {
+            return true;
         }
 
         #endregion

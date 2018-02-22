@@ -66,9 +66,9 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-//            botwindow.PressMitridat();            //пьем митридат
+            botwindow.PressMitridat();            //пьем митридат
 
-            botwindow.Pause(500);
+            //botwindow.Pause(500);
             //server.GoToChannel();                                                            //новое 30-06-2017
             //botwindow.Pause(500);
 

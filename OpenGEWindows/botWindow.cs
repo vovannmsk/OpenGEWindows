@@ -49,6 +49,8 @@ namespace OpenGEWindows
 
         private iPoint pointButtonClose;
         private iPoint pointOneMode;
+        private bool isServerVersion;
+
 
         enum TypeLoadUserData {txt, db}
         
@@ -93,9 +95,11 @@ namespace OpenGEWindows
             DialogFactory dialogFactory = new DialogFactory(this);
             this.dialog = dialogFactory.createDialog();
 
+
             // точки для тыканья. универсально для всех серверов
             this.pointButtonClose = new Point(850 - 5 + databot.x, 625 - 5 + databot.y);   //(848, 620);
             this.pointOneMode = new Point(123 - 5 + databot.x, 489 - 5 + databot.y);    // 118, 484
+            this.isServerVersion = isServerVer();
         }
 
         // ============================== методы ============================================
@@ -133,6 +137,10 @@ namespace OpenGEWindows
         }
 
 
+        public bool getIsServer()
+        {
+            return isServerVersion;
+        }
         public UIntPtr getHwnd()
         { return databot.hwnd; }
         public int getNumberWindow()
@@ -364,6 +372,21 @@ namespace OpenGEWindows
             TextSend.SendText2(1);           // нажимаем Esc
             Thread.Sleep(200);
         }
+
+        /// <summary>
+        /// метод возвращает параметр, который указывает, является ли данный компьютер удаленным сервером или локальным компом (различная обработка мыши)
+        /// </summary>
+        /// <returns>true, если комп является удаленным сервером</returns>
+        private bool isServerVer()
+        { 
+            int result = int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Сервер.txt"));
+
+            bool isServer = false;
+            if (result == 1) isServer = true;
+
+            return isServer;
+        }
+
 
         #endregion
 
@@ -660,22 +683,22 @@ namespace OpenGEWindows
             // ============= нажимаем на первого перса (обязательно на точку ниже открытой карты)
             FirstHero();
             pointFirstHero.PressMouseL();
-            Pause(200);
+            Pause(1000);
             //PressMouseL(databot.triangleX[0], databot.triangleY[0]);
 
             // ============= нажимаем на третьего перса (обязательно на точку ниже открытой карты)
             ThirdHero();
             pointThirdHero.PressMouseL();
-            Pause(200);
+            Pause(1000);
             //PressMouseL(databot.triangleX[2], databot.triangleY[2]);
 
             // ============= нажимаем на второго перса (обязательно на точку ниже открытой карты)
             SecondHero();
             pointSecondHero.PressMouseL();
-            Pause(200);
+            Pause(1000);
             //PressMouseL(databot.triangleX[1], databot.triangleY[1]);
 
-            // ============= закрыть карту через верхнее меню
+            // ============= закрыть карту через Esc =======================
             CloseMap();
             Pause(1500);
         }
@@ -815,7 +838,7 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// Нажать на бутылку митридата, которая лежит во второй ячейке
+        /// Нажать на бутылку митридата, которая лежит во второй ячейке                                перенести в server
         /// </summary>
         public void PressMitridat()
         {
@@ -834,8 +857,8 @@ namespace OpenGEWindows
             pointPanel.PressMouseR();                   // Кликаю правой кнопкой в панель с бытылками, чтобы сделать ее активной и поверх всех окон (группа может мешать)
             pointSecondBox.PressMouseL();               // тыкаю в митридат (вторая ячейка)
             pointThirdBox.PressMouseL();                // тыкаю в  (третья ячейка)
-            pointFourthBox.PressMouseL();                // тыкаю в  (4-ю ячейку)
-            pointFifthBox.PressMouseL();                // тыкаю в  (5-ю ячейку)
+            //pointFourthBox.PressMouseL();                // тыкаю в  (4-ю ячейку)
+            //pointFifthBox.PressMouseL();                // тыкаю в  (5-ю ячейку)
 
 
             if (server.isSecondHero())                  //если есть второй перс ()

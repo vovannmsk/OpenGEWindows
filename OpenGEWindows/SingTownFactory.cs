@@ -42,13 +42,17 @@ namespace OpenGEWindows
                     //=================== Ош ============================================
                     town = new SingTownAuch(botwindow);
                     break;
-                //case 4:
-                //    //=================== Юстиар =======================================
-                //    town = new SingTownUstiar(nomerOfWindow);
-                //    break;
+                case 4:
+                    //=================== Юстиар =======================================
+                    town = new SingTownUstiar(botwindow);
+                    break;
                 case 5:
                     //=================== багама =======================================
                     town = new SingTownBagama(botwindow);
+                    break;
+                case 7:
+                    //=================== байрон =======================================
+                    town = new SingTownViron(botwindow);
                     break;
                 case 10:
                     //=================== Кастилия=======================================

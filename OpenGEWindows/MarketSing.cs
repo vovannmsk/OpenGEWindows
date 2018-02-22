@@ -41,6 +41,7 @@ namespace OpenGEWindows
             this.pointBuyingMitridat1 = new Point(360 + xx, 537 + yy);      //360, 537
             this.pointBuyingMitridat2 = new Point(517 + xx, 433 + yy);      //1392 - 875, 438 - 5
             this.pointBuyingMitridat3 = new Point(517 + xx, 423 + yy);      //1392 - 875, 428 - 5
+            this.pointAddProduct = new Point(380 - 5 + xx, 220 - 5 + yy);
 
             #endregion
 

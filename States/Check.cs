@@ -91,9 +91,12 @@ namespace States
                                 {
                                     if ((server.isBoxOverflow()) && (botwindow.getNomerTeleport() > 0))  // если карман переполнился и нужно продавать(телепорт = 0, тогда не нужно продавать)
                                     {
-                                        driver.StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
-                                        Pause(2000);
-                                        driver.StateGotoWork();                                           // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                                        if (server.is248Items())
+                                        {
+                                            driver.StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
+                                            Pause(2000);
+                                            driver.StateGotoWork();                                           // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                                        }
                                     }
                                     else
                                     {
@@ -240,6 +243,14 @@ namespace States
 
 
         /// <summary>
+        /// раздевание в казарме
+        /// </summary>
+        public void UnDressing()
+        {
+            server.UnDressing();
+        }
+
+        /// <summary>
         /// тестовая кнопка
         /// </summary>
         public void TestButton()
@@ -248,34 +259,37 @@ namespace States
             Server server = new ServerSing(botwindow);
             Market market = new MarketSing(botwindow);
             //Otit otit = new OtitSing(botwindow);
-            MessageBox.Show(" " + market.isSale());
+            //MessageBox.Show(" " + server.is248Items());
 
             //bool iscolor1 = server.isSafeIP();
             //MessageBox.Show(" " + iscolor1);
 
+            int[] x = { 0, 0, 130, 260, 390, -70, 60, 190, 320, 450 };
+            int[] y = { 0, 0, 0, 0, 0, 340, 340, 340, 340, 340 };
 
             int xx, yy;
             xx = 5;
             yy = 5;
             uint color1;
             uint color2;
-            //uint color3;
+            uint color3;
             //int x = 483;
             //int y = 292;
-            int j = 12;
+            //int j = 12;
+            int i = 4;
 
-            PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 7200000, 5);
-            PointColor point2 = new PointColor(779 - 5 + xx, 140 - 5 + yy, 7800000, 5);
-            //PointColor point3 = new PointColor(455 - 5 + xx + 1, y - 5 + yy + 1, 7800000, 5);
+            PointColor point1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 7105647, 1);
+            PointColor point2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 1, 1);
+            PointColor point3 = new PointColor(328 - 5 + xx + x[i], 325 - 5 + yy + y[i], 1, 1);
 
             color1 = point1.GetPixelColor();
             color2 = point2.GetPixelColor();
-            //color3 = point3.GetPixelColor();
+            color3 = point3.GetPixelColor();
 
             MessageBox.Show(" " + color1);
             MessageBox.Show(" " + color2);
             //if ((color1 > 2000000) && (color2 > 2000000)) MessageBox.Show(" больше ");
-            //MessageBox.Show(" " + color3);
+            MessageBox.Show(" " + color3);
 
             //string str = "";
             //if (server.isHuman()) str += "Human ";

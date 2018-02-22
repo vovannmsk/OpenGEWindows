@@ -32,6 +32,7 @@ namespace OpenGEWindows
         protected iPoint pointBuyingMitridat1;
         protected iPoint pointBuyingMitridat2;
         protected iPoint pointBuyingMitridat3;
+        protected iPoint pointAddProduct;
 
         /// <summary>
         /// структура для сравнения товаров в магазине
@@ -137,12 +138,39 @@ namespace OpenGEWindows
         /// добавляем товар из указанной строки в корзину 
         /// </summary>
         /// <param name="numberOfString">номер строки</param>
-        public void AddToCart(int numberOfString)
+        public void AddToCart()
         {
-            Point pointAddProduct = new Point(380 - 5 + botwindow.getX(), 220 - 5 + (numberOfString - 1) * 27 + botwindow.getY());
-            pointAddProduct.PressMouseL();
+            AddProduct();
+
             Pause(200);
-            pointAddProduct.PressMouseWheelDown();
+
+            DownList();  
+        }
+
+        /// <summary>
+        /// добавить продукт в первой строчке списка в магазине
+        /// </summary>
+        private void AddProduct()
+        {
+            pointAddProduct.PressMouseL();
+        }
+
+        /// <summary>
+        /// в магазине сдвигаем список продаж вниз
+        /// </summary>
+        private void DownList()
+        {
+            if (botwindow.getIsServer())
+            {
+                // вариант 1. нажатие на стрелку вниз в магазине   (для самарских серверов)
+                iPoint pointArrowDown = new Point(507 - 5 + botwindow.getX(), 549 - 5 + botwindow.getY());
+                pointArrowDown.PressMouseL();
+            }
+            else
+            {
+                // вариант 2. колесик вниз
+                pointAddProduct.PressMouseWheelDown();
+            }
         }
 
         /// <summary>
@@ -202,9 +230,16 @@ namespace OpenGEWindows
                 case 9472397:     // Steel piece                 **
                 case 7187897:     // Mustang ore
                 case 1381654:     // стрелы эксп
-                case 11258069:     // пули эксп
+                case 11258069:    // пули эксп
                 case 2569782:     // дробь эксп
                 case 5137276:     // сундук деревянный как у сфер древней звезды
+                case 656906:      // magocal orb
+                case 13748687:    // Ressurection Potion
+                case 15595262:    // Small Stew обед
+                case 3164547:     // Portable Greate обед
+
+
+
                     result = false;
                     break;
                 case 14210771:     // Mega Etr, Io Talt
@@ -224,7 +259,7 @@ namespace OpenGEWindows
         /// <returns> true, если анализируемый товар нужный и его нельзя продавать </returns>
         public bool NeedToSellProduct(uint color, int numberOfString)
         {
-            bool result = true;   //по умолчанию вещь надо продаывать, поэтому true
+            bool result = true;   //по умолчанию вещь надо продавать, поэтому true
             iPointColor pointMega = new PointColor(174 - 5 + xx, 214 - 5 + yy + (numberOfString - 1) * 27, 10700000, 5);  //буква M в слове Mega
 
             switch (color)                                             // Хорошая вещь или нет, сверяем по картотеке
@@ -272,7 +307,7 @@ namespace OpenGEWindows
                 case 8486756:     // Ice Crystal                 **
                 case 4143156:     // bulk of Coal                **
                 case 9472397:     // Steel piece                 **
-//                case 7187897:     // Mustang ore
+                case 7187897:     // Mustang ore
                 case 1381654:     // стрелы эксп
                 case 11258069:    // пули эксп
                 case 2569782:     // дробь эксп Metal Shell Ammo
@@ -298,6 +333,10 @@ namespace OpenGEWindows
                 case 4474675:     // Fish Flesh
                 case 4966811:     // Cabbage
                 case 10931953:    // Psychic Sphere
+                case 656906:      // magocal orb
+                case 13748687:    // Ressurection Potion
+                case 15595262:    // Small Stew обед
+                case 3164547:     // Portable Greate обед
                     result = false;
                     break;
                 case 14210771:    // Mega Etr, Io Talt
@@ -314,26 +353,12 @@ namespace OpenGEWindows
         /// добавляем товар из указанной строки в корзину 
         /// </summary>
         /// <param name="numberOfString">номер строки</param>
-        public void GoToNextproduct(int numberOfString)
-        {
-            Point pointAddProduct = new Point(380 - 5 + botwindow.getX(), 225 - 5 + (numberOfString - 1) * 27 + botwindow.getY());
-            pointAddProduct.PressMouseWheelDown();   //прокручиваем список
-            Pause(250);
-        }
-
-        /// <summary>
-        /// добавляем товар из указанной строки в корзину 
-        /// </summary>
-        /// <param name="numberOfString">номер строки</param>
         public void AddToCartLotProduct(int numberOfString)
         {
             Point pointAddProduct = new Point(360 - 5 + botwindow.getX(), 220 - 5 + (numberOfString - 1) * 27 + botwindow.getY());  //305 + 30, 190 + 30)
             pointAddProduct.DoubleClickL();  //тыкаем в строчку с товаром
             Pause(150);
             SendKeys.SendWait("33000");
-            Pause(250);
-            //Press44444();                   // пишем 444444 , чтобы максимальное количество данного товара попало в корзину 
-            pointAddProduct.PressMouseWheelDown();   //прокручиваем список
             Pause(250);
         }
 
@@ -345,7 +370,7 @@ namespace OpenGEWindows
             uint count = 0;
             while (!isRedBottle(1))
             {
-                AddToCart(1);
+                AddToCart();
                 count++;
                 if (count > 220) break;   // защита от бесконечного цикла
             }
@@ -366,10 +391,10 @@ namespace OpenGEWindows
                 previousProduct = currentProduct;
                 if (NeedToSellProduct(currentProduct.color1, 1 ))    //проверяем товар в первой строке
                     AddToCartLotProduct(1);
-                else
-                    GoToNextproduct(1);
+                
+                DownList();  //список вниз
+                Pause(250);  //пауза, чтобы ГЕ успела выполнить нажатие. Можно и увеличить     
 
-                Pause(200);  //пауза, чтобы ГЕ успела выполнить нажатие. Можно и увеличить     
                 currentProduct = new Product(xx, yy, 1);
             } while (!currentProduct.EqualProduct(previousProduct));          //идет проверка по трем точкам
         }

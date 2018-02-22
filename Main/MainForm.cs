@@ -23,7 +23,7 @@ namespace Main
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "26-01-2018";
+        public static String DataVersion = "22-02-2018";
         public static int numberOfAcc = KolvoAkk();
 
         /// <summary>
@@ -208,7 +208,8 @@ namespace Main
         /// </summary>
         private void funcPink()
         {
-            for (int j = 11; j <= numberOfAcc; j++)
+            int start = BeginAcc();
+            for (int j = start; j <= numberOfAcc; j++)
 //            for (int j = 2; j <= 2; j++)
             {
                 Check check = new Check(j);
@@ -259,6 +260,7 @@ namespace Main
                 if (check.isActive())
                 {
                     check.ReOpenWindow();
+                    check.Pause(1000);
                     DriversOfState driver = new DriversOfState(j);
                     driver.StateSelling();             // продаёт всех ботов, которые стоят в данный момент в магазине (через движок состояний)
                 }
@@ -403,12 +405,14 @@ namespace Main
         /// </summary>*
         private void funcNewWhite()
         {
-            for (int j = 1; j <= numberOfAcc; j++)
+            int start = BeginAcc();
+            for (int j = start; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
                 if (check.isActive())
                 {
                     check.ReOpenWindow();
+                    check.Pause(1000);
                     DriversOfState drive = new DriversOfState(j);
                     drive.StateGotoTradeAndWork();
                 }
@@ -562,28 +566,6 @@ namespace Main
 
         #endregion
 
-        #region дополнительные методы
-
-        /// <summary>
-        /// возвращаеи количество аккаунтов
-        /// </summary>
-        /// <returns>кол-во акков всего</returns>
-        public static int KolvoAkk()
-        {
-            return int.Parse(File.ReadAllText(KatalogMyProgram + "\\Аккаунтов всего.txt"));
-        }
-
-        /// <summary>
-        /// читаем из файла значение
-        /// </summary>
-        /// <returns>с какого номера начинаются аккаунты Сингапура</returns>
-        public static int BeginSing()
-        {
-            return int.Parse(File.ReadAllText(KatalogMyProgram + "\\началоАкковСинга.txt"));
-        }
-
-        #endregion
-
         #region Silver Button (Pure Otite)
 
         private void PureOtite_Click(object sender, EventArgs e)
@@ -646,6 +628,59 @@ namespace Main
 
         #endregion
 
+        #region дополнительные методы
+
+        /// <summary>
+        /// возвращаеи количество аккаунтов
+        /// </summary>
+        /// <returns>кол-во акков всего</returns>
+        public static int KolvoAkk()
+        {
+            return int.Parse(File.ReadAllText(KatalogMyProgram + "\\Аккаунтов всего.txt"));
+        }
+
+        /// <summary>
+        /// читаем из файла значение
+        /// </summary>
+        /// <returns>с какого номера начинаются аккаунты Сингапура</returns>
+        public static int BeginSing()
+        {
+            return int.Parse(File.ReadAllText(KatalogMyProgram + "\\началоАкковСинга.txt"));
+        }
+
+        /// <summary>
+        /// читаем из файла значение
+        /// </summary>
+        /// <returns>с какого аккаунта начать работу методам</returns>
+        public static int BeginAcc()
+        {
+            return int.Parse(File.ReadAllText(KatalogMyProgram + "\\СтартовыйАккаунт.txt"));
+        }
+
+
+
+        #endregion
+
+        #region Undressing in Barack
+
+        private void undressing_Click(object sender, EventArgs e)
+        {
+            Thread myThreadUndressing = new Thread(funcUndressing);
+            myThreadUndressing.Start();
+        }
+
+        private void funcUndressing()
+        {
+            int currentAccount = numberOfAcc;
+
+            Check check = new Check(currentAccount);
+            check.ReOpenWindow();
+
+            check.UnDressing();
+
+        }
+
+        #endregion
 
     }// END class MainForm 
 }// END namespace OpenGEWindows

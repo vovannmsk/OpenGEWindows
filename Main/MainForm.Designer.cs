@@ -49,6 +49,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.numberOfAccouts = new System.Windows.Forms.NumericUpDown();
             this.GoldenEggFruit = new System.Windows.Forms.Button();
+            this.undressing = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfAccouts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -242,7 +243,7 @@
             // 
             this.GoldenEggFruit.BackColor = System.Drawing.Color.Gold;
             this.GoldenEggFruit.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.GoldenEggFruit.Location = new System.Drawing.Point(190, 173);
+            this.GoldenEggFruit.Location = new System.Drawing.Point(190, 379);
             this.GoldenEggFruit.Name = "GoldenEggFruit";
             this.GoldenEggFruit.Size = new System.Drawing.Size(170, 34);
             this.GoldenEggFruit.TabIndex = 58;
@@ -250,12 +251,24 @@
             this.GoldenEggFruit.UseVisualStyleBackColor = false;
             this.GoldenEggFruit.Click += new System.EventHandler(this.GoldenEggFruit_Click);
             // 
+            // undressing
+            // 
+            this.undressing.BackColor = System.Drawing.Color.Peru;
+            this.undressing.Location = new System.Drawing.Point(190, 173);
+            this.undressing.Name = "undressing";
+            this.undressing.Size = new System.Drawing.Size(170, 35);
+            this.undressing.TabIndex = 59;
+            this.undressing.Text = "Раздевание в казарме";
+            this.undressing.UseVisualStyleBackColor = false;
+            this.undressing.Click += new System.EventHandler(this.undressing_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(369, 214);
+            this.ClientSize = new System.Drawing.Size(369, 217);
+            this.Controls.Add(this.undressing);
             this.Controls.Add(this.GoldenEggFruit);
             this.Controls.Add(this.numberOfAccouts);
             this.Controls.Add(this.label1);
@@ -309,6 +322,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numberOfAccouts;
         private System.Windows.Forms.Button GoldenEggFruit;
+        private System.Windows.Forms.Button undressing;
     
     }
 }
