@@ -425,6 +425,7 @@ namespace OpenGEWindows
             this.pointBarack1 = new Point( 80 - 5 + xx, 152 - 5 + yy);
             this.pointBarack2 = new Point(190 - 5 + xx, 152 - 5 + yy);
             this.pointBarack3 = new Point( 80 - 5 + xx, 177 - 5 + yy);
+            this.pointBarack4 = new Point(190 - 5 + xx, 177 - 5 + yy);
 
 
 
@@ -616,7 +617,7 @@ namespace OpenGEWindows
             OpenInventory();
 
             //проверяем, что в инвентаре 248 вещей
-            result = (pointis248_1.isColor()) || (pointis248_2.isColor()) || (pointis248_3.isColor());
+            result = (pointis248_1.isColor()) && (pointis248_2.isColor()) && (pointis248_3.isColor());
 
             botwindow.PressEscThreeTimes();
 

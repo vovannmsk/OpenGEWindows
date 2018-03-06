@@ -456,6 +456,7 @@ namespace OpenGEWindows
         protected iPoint pointBarack1;
         protected iPoint pointBarack2;
         protected iPoint pointBarack3;
+        protected iPoint pointBarack4;
 
 
 
@@ -2445,123 +2446,74 @@ namespace OpenGEWindows
         #region Undressing in Barack
 
         /// <summary>
-        /// раздевание в казарме
+        /// раздевание персонажей в выбранной казарме
         /// </summary>
-        public void UnDressing()
+        private void UnDressingInCurrentBarack()
         {
             int[] x = { 0, 0, 130, 260, 390, -70, 60, 190, 320, 450 };
             int[] y = { 0, 0, 0, 0, 0, 340, 340, 340, 340, 340 };
 
-            pointShowEquipment.PressMouseL();
+            for (int i = 1; i <= 9; i++)            //перебор героев в текущей казарме
+            {
+                iPointColor pointHatC = new PointColor(285 - 5 + xx + x[i], 119 - 5 + yy + y[i], 2434089, 0);
+                iPointColor pointGlassesC = new PointColor(369 - 5 + xx + x[i], 119 - 5 + yy + y[i], 131588, 0);
+                iPointColor pointMedalC = new PointColor(345 - 5 + xx + x[i], 159 - 5 + yy + y[i], 5398113, 0);
+                iPointColor pointWingsC = new PointColor(285 - 5 + xx + x[i], 199 - 5 + yy + y[i], 197640, 0);
+                iPointColor pointArmorC = new PointColor(325 - 5 + xx + x[i], 199 - 5 + yy + y[i], 2960436, 0);
+                iPointColor pointCostumeC = new PointColor(365 - 5 + xx + x[i], 199 - 5 + yy + y[i], 2960436, 0);
+                iPointColor pointWeaponC = new PointColor(290 - 5 + xx + x[i], 241 - 5 + yy + y[i], 855313, 0);
+                iPointColor pointGlovesC = new PointColor(325 - 5 + xx + x[i], 279 - 5 + yy + y[i], 1644571, 0);
+                iPointColor pointBootsC = new PointColor(328 - 5 + xx + x[i], 325 - 5 + yy + y[i], 6513252, 0);
+
+                iPoint pointHat = new Point(285 - 5 + xx + x[i], 119 - 5 + yy + y[i]);
+                iPoint pointGlasses = new Point(365 - 5 + xx + x[i], 119 - 5 + yy + y[i]);
+                iPoint pointMedal = new Point(345 - 5 + xx + x[i], 159 - 5 + yy + y[i]);
+                iPoint pointWings = new Point(285 - 5 + xx + x[i], 199 - 5 + yy + y[i]);
+                iPoint pointArmor = new Point(325 - 5 + xx + x[i], 199 - 5 + yy + y[i]);
+                iPoint pointCostume = new Point(365 - 5 + xx + x[i], 199 - 5 + yy + y[i]);
+                iPoint pointWeapon = new Point(285 - 5 + xx + x[i], 239 - 5 + yy + y[i]);
+                iPoint pointGloves = new Point(325 - 5 + xx + x[i], 279 - 5 + yy + y[i]);
+                iPoint pointBoots = new Point(325 - 5 + xx + x[i], 319 - 5 + yy + y[i]);
+
+                if (!pointGlassesC.isColor()) { pointGlasses.DoubleClickL(); Pause(200); }
+                if (!pointHatC.isColor()) { pointHat.DoubleClickL(); Pause(200); }
+                if (!pointMedalC.isColor()) { pointMedal.DoubleClickL(); Pause(200); }
+                if (!pointWingsC.isColor()) { pointWings.DoubleClickL(); Pause(200); }
+                if (!pointArmorC.isColor()) { pointArmor.DoubleClickL(); Pause(200); }
+                if (!pointCostumeC.isColor()) { pointCostume.DoubleClickL(); Pause(200); }
+                if (!pointWeaponC.isColor()) { pointWeapon.DoubleClickL(); Pause(200); }
+                if (!pointGlovesC.isColor()) { pointGloves.DoubleClickL(); Pause(200); }
+                if (!pointBootsC.isColor()) { pointBoots.DoubleClickL(); Pause(200); }
+            }
+
+        }
+
+        /// <summary>
+        /// раздевание в первых четырёх казармах (36 персонажей)
+        /// </summary>
+        public void UnDressing()
+        {
+            pointShowEquipment.PressMouseL();      //нажимаем на кнопку "Show Equipment"
             Pause(1000);
 
             pointBarack1.PressMouseL();            //выбираем первую казарму
             Pause(1000);
-
-            for (int i = 1; i <= 9; i++)            //перебор героев в текущей казарме
-            {
-                iPointColor pointHatC = new PointColor(285 - 5 + xx + x[i], 119 - 5 + yy + y[i], 2434089, 0);
-                iPointColor pointGlassesC = new PointColor(369 - 5 + xx + x[i], 119 - 5 + yy + y[i], 131588, 0);
-                iPointColor pointMedalC = new PointColor(345 - 5 + xx + x[i], 159 - 5 + yy + y[i], 5398113, 0);
-                iPointColor pointWingsC = new PointColor(285 - 5 + xx + x[i], 199 - 5 + yy + y[i], 197640, 0);
-                iPointColor pointArmorC = new PointColor(325 - 5 + xx + x[i], 199 - 5 + yy + y[i], 2960436, 0);
-                iPointColor pointCostumeC = new PointColor(365 - 5 + xx + x[i], 199 - 5 + yy + y[i], 2960436, 0);
-                iPointColor pointWeaponC = new PointColor(290 - 5 + xx + x[i], 241 - 5 + yy + y[i], 855313, 0);
-                iPointColor pointGlovesC = new PointColor(325 - 5 + xx + x[i], 279 - 5 + yy + y[i], 1644571, 0);
-                iPointColor pointBootsC = new PointColor(328 - 5 + xx + x[i], 325 - 5 + yy + y[i], 6513252, 0);
-
-                iPoint pointHat = new Point(285 - 5 + xx + x[i], 119 - 5 + yy + y[i]); 
-                iPoint pointGlasses = new Point(365 - 5 + xx + x[i], 119 - 5 + yy + y[i]);
-                iPoint pointMedal   = new Point(345 - 5 + xx + x[i], 159 - 5 + yy + y[i]);
-                iPoint pointWings   = new Point(285 - 5 + xx + x[i], 199 - 5 + yy + y[i]);
-                iPoint pointArmor   = new Point(325 - 5 + xx + x[i], 199 - 5 + yy + y[i]);
-                iPoint pointCostume = new Point(365 - 5 + xx + x[i], 199 - 5 + yy + y[i]);
-                iPoint pointWeapon  = new Point(285 - 5 + xx + x[i], 239 - 5 + yy + y[i]);
-                iPoint pointGloves  = new Point(325 - 5 + xx + x[i], 279 - 5 + yy + y[i]);
-                iPoint pointBoots   = new Point(325 - 5 + xx + x[i], 319 - 5 + yy + y[i]);
-
-                if (!pointGlassesC.isColor()) { pointGlasses.DoubleClickL(); Pause(200); }
-                if (!pointHatC.isColor())     { pointHat.DoubleClickL(); Pause(200);     }
-                if (!pointMedalC.isColor())   { pointMedal.DoubleClickL(); Pause(200);   }
-                if (!pointWingsC.isColor())   { pointWings.DoubleClickL(); Pause(200);   }
-                if (!pointArmorC.isColor())   { pointArmor.DoubleClickL(); Pause(200);   }
-                if (!pointCostumeC.isColor()) { pointCostume.DoubleClickL(); Pause(200); }
-                if (!pointWeaponC.isColor())  { pointWeapon.DoubleClickL(); Pause(200);  }
-                if (!pointGlovesC.isColor())  { pointGloves.DoubleClickL(); Pause(200);  }
-                if (!pointBootsC.isColor())   { pointBoots.DoubleClickL(); Pause(200);   }
-            }
+            UnDressingInCurrentBarack();
 
             pointBarack2.PressMouseL();            //выбираем вторую казарму
             Pause(1000);
+            UnDressingInCurrentBarack();
 
-            for (int i = 1; i <= 9; i++)            //перебор героев в текущей казарме
-            {
-                iPointColor pointHatC = new PointColor(285 - 5 + xx + x[i], 119 - 5 + yy + y[i], 2434089, 0);
-                iPointColor pointGlassesC = new PointColor(369 - 5 + xx + x[i], 119 - 5 + yy + y[i], 131588, 0);
-                iPointColor pointMedalC = new PointColor(345 - 5 + xx + x[i], 159 - 5 + yy + y[i], 5398113, 0);
-                iPointColor pointWingsC = new PointColor(285 - 5 + xx + x[i], 199 - 5 + yy + y[i], 197640, 0);
-                iPointColor pointArmorC = new PointColor(325 - 5 + xx + x[i], 199 - 5 + yy + y[i], 2960436, 0);
-                iPointColor pointCostumeC = new PointColor(365 - 5 + xx + x[i], 199 - 5 + yy + y[i], 2960436, 0);
-                iPointColor pointWeaponC = new PointColor(290 - 5 + xx + x[i], 241 - 5 + yy + y[i], 855313, 0);
-                iPointColor pointGlovesC = new PointColor(325 - 5 + xx + x[i], 279 - 5 + yy + y[i], 1644571, 0);
-                iPointColor pointBootsC = new PointColor(328 - 5 + xx + x[i], 325 - 5 + yy + y[i], 6513252, 0);
-
-                iPoint pointHat = new Point(285 - 5 + xx + x[i], 119 - 5 + yy + y[i]);
-                iPoint pointGlasses = new Point(365 - 5 + xx + x[i], 119 - 5 + yy + y[i]);
-                iPoint pointMedal = new Point(345 - 5 + xx + x[i], 159 - 5 + yy + y[i]);
-                iPoint pointWings = new Point(285 - 5 + xx + x[i], 199 - 5 + yy + y[i]);
-                iPoint pointArmor = new Point(325 - 5 + xx + x[i], 199 - 5 + yy + y[i]);
-                iPoint pointCostume = new Point(365 - 5 + xx + x[i], 199 - 5 + yy + y[i]);
-                iPoint pointWeapon = new Point(285 - 5 + xx + x[i], 239 - 5 + yy + y[i]);
-                iPoint pointGloves = new Point(325 - 5 + xx + x[i], 279 - 5 + yy + y[i]);
-                iPoint pointBoots = new Point(325 - 5 + xx + x[i], 319 - 5 + yy + y[i]);
-
-                if (!pointGlassesC.isColor()) { pointGlasses.DoubleClickL(); Pause(200); }
-                if (!pointHatC.isColor()) { pointHat.DoubleClickL(); Pause(200); }
-                if (!pointMedalC.isColor()) { pointMedal.DoubleClickL(); Pause(200); }
-                if (!pointWingsC.isColor()) { pointWings.DoubleClickL(); Pause(200); }
-                if (!pointArmorC.isColor()) { pointArmor.DoubleClickL(); Pause(200); }
-                if (!pointCostumeC.isColor()) { pointCostume.DoubleClickL(); Pause(200); }
-                if (!pointWeaponC.isColor()) { pointWeapon.DoubleClickL(); Pause(200); }
-                if (!pointGlovesC.isColor()) { pointGloves.DoubleClickL(); Pause(200); }
-                if (!pointBootsC.isColor()) { pointBoots.DoubleClickL(); Pause(200); }
-            }
 
             pointBarack3.PressMouseL();            //выбираем третью казарму
             Pause(1000);
+            UnDressingInCurrentBarack();
 
-            for (int i = 1; i <= 9; i++)            //перебор героев в текущей казарме
-            {
-                iPointColor pointHatC = new PointColor(285 - 5 + xx + x[i], 119 - 5 + yy + y[i], 2434089, 0);
-                iPointColor pointGlassesC = new PointColor(369 - 5 + xx + x[i], 119 - 5 + yy + y[i], 131588, 0);
-                iPointColor pointMedalC = new PointColor(345 - 5 + xx + x[i], 159 - 5 + yy + y[i], 5398113, 0);
-                iPointColor pointWingsC = new PointColor(285 - 5 + xx + x[i], 199 - 5 + yy + y[i], 197640, 0);
-                iPointColor pointArmorC = new PointColor(325 - 5 + xx + x[i], 199 - 5 + yy + y[i], 2960436, 0);
-                iPointColor pointCostumeC = new PointColor(365 - 5 + xx + x[i], 199 - 5 + yy + y[i], 2960436, 0);
-                iPointColor pointWeaponC = new PointColor(290 - 5 + xx + x[i], 241 - 5 + yy + y[i], 855313, 0);
-                iPointColor pointGlovesC = new PointColor(325 - 5 + xx + x[i], 279 - 5 + yy + y[i], 1644571, 0);
-                iPointColor pointBootsC = new PointColor(328 - 5 + xx + x[i], 325 - 5 + yy + y[i], 6513252, 0);
 
-                iPoint pointHat = new Point(285 - 5 + xx + x[i], 119 - 5 + yy + y[i]);
-                iPoint pointGlasses = new Point(365 - 5 + xx + x[i], 119 - 5 + yy + y[i]);
-                iPoint pointMedal = new Point(345 - 5 + xx + x[i], 159 - 5 + yy + y[i]);
-                iPoint pointWings = new Point(285 - 5 + xx + x[i], 199 - 5 + yy + y[i]);
-                iPoint pointArmor = new Point(325 - 5 + xx + x[i], 199 - 5 + yy + y[i]);
-                iPoint pointCostume = new Point(365 - 5 + xx + x[i], 199 - 5 + yy + y[i]);
-                iPoint pointWeapon = new Point(285 - 5 + xx + x[i], 239 - 5 + yy + y[i]);
-                iPoint pointGloves = new Point(325 - 5 + xx + x[i], 279 - 5 + yy + y[i]);
-                iPoint pointBoots = new Point(325 - 5 + xx + x[i], 319 - 5 + yy + y[i]);
+            pointBarack4.PressMouseL();            //выбираем четвертую казарму
+            Pause(1000);
+            UnDressingInCurrentBarack();
 
-                if (!pointGlassesC.isColor()) { pointGlasses.DoubleClickL(); Pause(200); }
-                if (!pointHatC.isColor()) { pointHat.DoubleClickL(); Pause(200); }
-                if (!pointMedalC.isColor()) { pointMedal.DoubleClickL(); Pause(200); }
-                if (!pointWingsC.isColor()) { pointWings.DoubleClickL(); Pause(200); }
-                if (!pointArmorC.isColor()) { pointArmor.DoubleClickL(); Pause(200); }
-                if (!pointCostumeC.isColor()) { pointCostume.DoubleClickL(); Pause(200); }
-                if (!pointWeaponC.isColor()) { pointWeapon.DoubleClickL(); Pause(200); }
-                if (!pointGlovesC.isColor()) { pointGloves.DoubleClickL(); Pause(200); }
-                if (!pointBootsC.isColor()) { pointBoots.DoubleClickL(); Pause(200); }
-            }
         }
 
         #endregion
