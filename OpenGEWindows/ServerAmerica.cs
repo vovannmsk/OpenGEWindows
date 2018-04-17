@@ -302,10 +302,18 @@ namespace OpenGEWindows
             #region Undressing in Barack
 
             this.pointShowEquipment = new Point(145 - 5 + xx, 442 - 5 + yy);
-            this.pointBarack1 = new Point(80 - 5 + xx, 152 - 5 + yy);
-            this.pointBarack2 = new Point(190 - 5 + xx, 152 - 5 + yy);
-            this.pointBarack3 = new Point(80 - 5 + xx, 177 - 5 + yy);
+            //this.pointBarack1 = new Point( 80 - 5 + xx, 152 - 5 + yy);
+            //this.pointBarack2 = new Point(190 - 5 + xx, 152 - 5 + yy);
+            //this.pointBarack3 = new Point( 80 - 5 + xx, 177 - 5 + yy);
+            //this.pointBarack4 = new Point(190 - 5 + xx, 177 - 5 + yy);
 
+            this.pointBarack[1] = new Point(80 - 5 + xx, 152 - 5 + yy);
+            this.pointBarack[2] = new Point(190 - 5 + xx, 152 - 5 + yy);
+            this.pointBarack[3] = new Point(80 - 5 + xx, 177 - 5 + yy);
+            this.pointBarack[4] = new Point(190 - 5 + xx, 177 - 5 + yy);
+
+            this.pointEquipment1 = new PointColor(300 - 5 + xx, 60 - 5 + yy, 12600000, 5);
+            this.pointEquipment2 = new PointColor(302 - 5 + xx, 60 - 5 + yy, 12600000, 5);
 
 
             #endregion

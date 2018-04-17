@@ -182,7 +182,8 @@ namespace OpenGEWindows
         protected iPoint pointSkillCook;
         protected iPointColor pointisBattleMode1;
         protected iPointColor pointisBattleMode2;
-
+        protected iPointColor pointisWork_SightPistolDot1;
+        protected iPointColor pointisWork_SightPistolDot2;
 
 
         #endregion
@@ -234,9 +235,10 @@ namespace OpenGEWindows
         protected iPointColor pointIsTown_VetSabreFirstDot2;
         protected iPointColor pointIsTown_ExpSwordFirstDot1;    //проверка по мечу Дарья
         protected iPointColor pointIsTown_ExpSwordFirstDot2;   
-        protected iPointColor pointIsTown_VetPistolFirstDot1;    //проверка по пистолету
-        protected iPointColor pointIsTown_VetPistolFirstDot2;   
-
+        protected iPointColor pointIsTown_VetPistolFirstDot1;    //проверка по двум пистолетам outrange
+        protected iPointColor pointIsTown_VetPistolFirstDot2;
+        protected iPointColor pointIsTown_SightPistolFirstDot1;  //проверка по одному пистолету Sight Shot
+        protected iPointColor pointIsTown_SightPistolFirstDot2;
         #endregion
 
         #region Barack
@@ -453,12 +455,14 @@ namespace OpenGEWindows
         #region Undressing in Barack
 
         protected iPoint pointShowEquipment;
-        protected iPoint pointBarack1;
-        protected iPoint pointBarack2;
-        protected iPoint pointBarack3;
-        protected iPoint pointBarack4;
+        //protected iPoint pointBarack1;
+        //protected iPoint pointBarack2;
+        //protected iPoint pointBarack3;
+        //protected iPoint pointBarack4;
 
-
+        protected iPoint[] pointBarack = new Point[5];
+        protected iPointColor pointEquipment1;
+        protected iPointColor pointEquipment2;
 
 
         #endregion
@@ -1061,9 +1065,10 @@ namespace OpenGEWindows
             bool resultJainaDrob = (pointisWork_JainaDrobDot1.isColor() && pointisWork_JainaDrobDot2.isColor());
             bool resultVetSabre = (pointisWork_VetSabreDot1.isColor() && pointisWork_VetSabreDot2.isColor());
             bool resultExpSword = (pointisWork_ExpSwordDot1.isColor() && pointisWork_ExpSwordDot2.isColor());
-            bool resultVetPistol = (pointisWork_VetPistolDot1.isColor() && pointisWork_VetPistolDot2.isColor());
+            bool resultVetPistol2 = (pointisWork_VetPistolDot1.isColor() && pointisWork_VetPistolDot2.isColor());
+            bool resultVetPistol1 = (pointisWork_SightPistolDot1.isColor() && pointisWork_SightPistolDot2.isColor());
 
-            return (resultRifle || resultExpRifle || resultDrob || resultVetDrob || resultExpDrob || resultVetSabre || resultExpSword || resultJainaDrob || resultVetPistol);  //проверка только по первому персу
+            return (resultRifle || resultExpRifle || resultDrob || resultVetDrob || resultExpDrob || resultVetSabre || resultExpSword || resultJainaDrob || resultVetPistol2 || resultVetPistol1);  //проверка только по первому персу
         }
 
         /// <summary>
@@ -1135,9 +1140,10 @@ namespace OpenGEWindows
             //меч
             bool resultExpSword = (pointIsTown_ExpSwordFirstDot1.isColor() && pointIsTown_ExpSwordFirstDot2.isColor());  //проверка по первому персу эксп меч 
             //пистолет
-            bool resultVetPistol = (pointIsTown_VetPistolFirstDot1.isColor() && pointIsTown_VetPistolFirstDot2.isColor());
+            bool resultVetPistol2 = (pointIsTown_VetPistolFirstDot1.isColor() && pointIsTown_VetPistolFirstDot2.isColor());   //два пистолета
+            bool resultVetPistol1 = (pointIsTown_SightPistolFirstDot1.isColor() && pointIsTown_SightPistolFirstDot2.isColor());   //один пистолет
 
-            return (resultRifle || resultRifleExp || resultShotgun || resultShotgunVet || resultShotgunExp || resultVetSabre || resultExpSword || resultShotgunJaina || resultVetPistol);
+            return (resultRifle || resultRifleExp || resultShotgun || resultShotgunVet || resultShotgunExp || resultVetSabre || resultExpSword || resultShotgunJaina || resultVetPistol2 || resultVetPistol1);
         }
 
         /// <summary>
@@ -2493,26 +2499,39 @@ namespace OpenGEWindows
         /// </summary>
         public void UnDressing()
         {
-            pointShowEquipment.PressMouseL();      //нажимаем на кнопку "Show Equipment"
-            Pause(1000);
+            bool ff = true;
+            while (ff)
+            {
+                pointShowEquipment.PressMouseL();      //нажимаем на кнопку "Show Equipment"
+                Pause(1000);
+                ff = (pointEquipment1.isColor()) && (pointEquipment2.isColor());
+                ff = ! ff;
+            }
 
-            pointBarack1.PressMouseL();            //выбираем первую казарму
-            Pause(1000);
-            UnDressingInCurrentBarack();
+            for (int i = 1; i <= 4; i++)
+            {
+                pointBarack[i].PressMouseL();            //выбираем i-ю казарму
+                Pause(1000);
+                UnDressingInCurrentBarack();
+            }
 
-            pointBarack2.PressMouseL();            //выбираем вторую казарму
-            Pause(1000);
-            UnDressingInCurrentBarack();
+            //pointBarack1.PressMouseL();            //выбираем первую казарму
+            //Pause(1000);
+            //UnDressingInCurrentBarack();
+
+            //pointBarack2.PressMouseL();            //выбираем вторую казарму
+            //Pause(1000);
+            //UnDressingInCurrentBarack();
 
 
-            pointBarack3.PressMouseL();            //выбираем третью казарму
-            Pause(1000);
-            UnDressingInCurrentBarack();
+            //pointBarack3.PressMouseL();            //выбираем третью казарму
+            //Pause(1000);
+            //UnDressingInCurrentBarack();
 
 
-            pointBarack4.PressMouseL();            //выбираем четвертую казарму
-            Pause(1000);
-            UnDressingInCurrentBarack();
+            //pointBarack4.PressMouseL();            //выбираем четвертую казарму
+            //Pause(1000);
+            //UnDressingInCurrentBarack();
 
         }
 

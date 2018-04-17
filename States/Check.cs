@@ -100,9 +100,9 @@ namespace States
                                     }
                                     else
                                     {
-                                        if (mm.isMMSell() || (mm.isMMBuy()))
+                                        if (mm.isMMSell() || (mm.isMMBuy()))   //если бот стоит на рынке
                                         {
-                                            SellProduct();
+                                            SellProduct();                     // выставление товаров на рынок
                                         }
                                         else
                                         {
@@ -255,7 +255,7 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            botWindow botwindow = new botWindow(1);
+            botWindow botwindow = new botWindow(6);
             Server server = new ServerSing(botwindow);
             Market market = new MarketSing(botwindow);
             //Otit otit = new OtitSing(botwindow);
@@ -278,9 +278,9 @@ namespace States
             //int j = 12;
             int i = 4;
 
-            PointColor point1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 7105647, 1);
-            PointColor point2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 1, 1);
-            PointColor point3 = new PointColor(328 - 5 + xx + x[i], 325 - 5 + yy + y[i], 1, 1);
+            PointColor point1 = new PointColor(81 - 5 + xx, 63 - 5 + yy, 1, 1);
+            PointColor point2 = new PointColor(81 - 5 + xx, 64 - 5 + yy, 1, 1);
+            PointColor point3 = new PointColor(304 - 5 + xx, 60 - 5 + yy, 1, 1);
 
             color1 = point1.GetPixelColor();
             color2 = point2.GetPixelColor();

@@ -148,6 +148,8 @@ namespace OpenGEWindows
             this.pointisWork_ExpSwordDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 10258000, 3);
             this.pointisWork_VetPistolDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 66000, 3);           //проверка по стойке с вет пистолетом Outrange
             this.pointisWork_VetPistolDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 72, 0);
+            this.pointisWork_SightPistolDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 5068000, 3);       //точки для проверки вет стойки с пистолетом Sight Shot
+            this.pointisWork_SightPistolDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 9350000, 3);
             this.pointisKillHero1 = new PointColor(80 - 5 + xx, 636 - 5 + yy, 1900000, 5);
             this.pointisKillHero2 = new PointColor(335 - 5 + xx, 636 - 5 + yy, 1900000, 5);
             this.pointisKillHero3 = new PointColor(590 - 5 + xx, 636 - 5 + yy, 1900000, 5);
@@ -209,6 +211,8 @@ namespace OpenGEWindows
             this.pointIsTown_ExpSwordFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 10263000, 3);
             this.pointIsTown_VetPistolFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 65000, 3);       //точки для проверки вет стойки с пистолетом Outrange
             this.pointIsTown_VetPistolFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 0, 0);
+            this.pointIsTown_SightPistolFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 5066000, 3);       //точки для проверки вет стойки с пистолетом Sight Shot
+            this.pointIsTown_SightPistolFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 9342000, 3);
 
             #endregion
 
@@ -421,14 +425,19 @@ namespace OpenGEWindows
 
             #region Undressing in Barack
 
-            this.pointShowEquipment = new Point(145 - 5 + xx, 442 - 5 + yy);
-            this.pointBarack1 = new Point( 80 - 5 + xx, 152 - 5 + yy);
-            this.pointBarack2 = new Point(190 - 5 + xx, 152 - 5 + yy);
-            this.pointBarack3 = new Point( 80 - 5 + xx, 177 - 5 + yy);
-            this.pointBarack4 = new Point(190 - 5 + xx, 177 - 5 + yy);
+                this.pointShowEquipment = new Point(145 - 5 + xx, 442 - 5 + yy);
+                //this.pointBarack1 = new Point( 80 - 5 + xx, 152 - 5 + yy);
+                //this.pointBarack2 = new Point(190 - 5 + xx, 152 - 5 + yy);
+                //this.pointBarack3 = new Point( 80 - 5 + xx, 177 - 5 + yy);
+                //this.pointBarack4 = new Point(190 - 5 + xx, 177 - 5 + yy);
 
+                this.pointBarack[1] = new Point(80 - 5 + xx, 152 - 5 + yy);
+                this.pointBarack[2] = new Point(190 - 5 + xx, 152 - 5 + yy);
+                this.pointBarack[3] = new Point( 80 - 5 + xx, 177 - 5 + yy);
+                this.pointBarack[4] = new Point(190 - 5 + xx, 177 - 5 + yy);
 
-
+                this.pointEquipment1 = new PointColor(300 - 5 + xx, 60 - 5 + yy, 12600000, 5);
+                this.pointEquipment2 = new PointColor(302 - 5 + xx, 60 - 5 + yy, 12600000, 5);
             #endregion
 
 
