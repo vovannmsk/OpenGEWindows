@@ -20,6 +20,8 @@ namespace OpenGEWindows
         protected iPointColor pointisActivePet2;
         protected iPointColor pointisActivePet3;  //3 и 4 сделаны для европы для проверки корма на месяц
         protected iPointColor pointisActivePet4;
+        //protected iPointColor pointisActivePet5;
+        //protected iPointColor pointisActivePet6;
         protected iPointColor pointisOpenMenuPet1;
         protected iPointColor pointisOpenMenuPet2;
         protected iPoint pointCancelSummonPet;

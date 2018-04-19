@@ -22,22 +22,20 @@ namespace OpenGEWindows
             this.TELEPORT_N = 2;   //номер городского телепорта
             //точки для нажимания на них
             this.pointMaxHeight = new Point(545 - 5 + xx, 500 - 5 + yy);
-            this.pointBookmark = new Point(904 + xx, 21 + yy);                                          // работает
-            this.pointTraderOnMap = new Point(870 - 5 + xx, 147 - 5 + yy);                          // работает
-            this.pointButtonMoveOnMap = new Point(927 + xx, 708 + yy);                              // работает
-            this.pointHeadTrader = new Point(296 - 5 + xx, 228 - 5 + yy);                                  // работает
-            //this.pointSellOnMenu = new Point(520 + xx, 654 + yy);                                 // работает
-            //this.pointOkOnMenu = new Point(902 + xx, 674 + yy);                                // работает
-            this.pointTownTeleport = new Point(110 + xx, 328 + (TELEPORT_N - 1) * 30 + yy);                                // работает
+            this.pointBookmark = new Point(884-5 + xx, 49 - 5 + yy);                                          // работает
+            this.pointTraderOnMap = new Point(843 - 5 + xx, 175 - 5 + yy);                          // работает
+            this.pointButtonMoveOnMap = new Point(927 - 5 + xx, 729 - 5 + yy);                              // работает
+            this.pointHeadTrader = new Point(296 - 5 + xx, 228 - 5 + yy);                                  // не работает
+            //this.pointSellOnMenu = new Point(520 + xx, 654 + yy);                                 // не работает
+            //this.pointOkOnMenu = new Point(902 + xx, 674 + yy);                                // не работает
+            this.pointTownTeleport = new Point(115 - 5 + xx, 333 - 5 + (TELEPORT_N - 1) * 30 + yy);                                // работает
             //точки для проверки цвета
-            this.pointOpenMap1 = new PointColor(908 - 5 + xx, 707 - 5 + yy, 7790000, 4);                    //работает       //проверяем кнопку Move
-            this.pointOpenMap2 = new PointColor(909 - 5 + xx, 707 - 5 + yy, 7790000, 4);
-            this.pointBookmark1 = new PointColor(908 - 5 + xx, 707 - 5 + yy, 7790000, 4);                    //работает       //проверяем кнопку Move
-            this.pointBookmark2 = new PointColor(909 - 5 + xx, 707 - 5 + yy, 7790000, 4);
-//            this.pointBookmark1 = new PointColor(930 - 5 + xx, 235 - 5 + yy, 16300000, 5);                 //  работает  //
-  //          this.pointBookmark2 = new PointColor(931 - 5 + xx, 235 - 5 + yy, 16200000, 5);
-            this.pointOpenTownTeleport1 = new PointColor(93 - 5 + xx, 295 - 5 + yy, 12000000, 6);         // работает
-            this.pointOpenTownTeleport2 = new PointColor(94 - 5 + xx, 295 - 5 + yy, 12000000, 6);
+            this.pointOpenMap1 = new PointColor(804 - 5 + xx, 41 - 5 + yy, 7700000, 4);                    //работает       //проверяем первую закладку
+            this.pointOpenMap2 = new PointColor(805 - 5 + xx, 41 - 5 + yy, 7700000, 4);
+            this.pointBookmark1 = new PointColor(875 - 5 + xx, 41 - 5 + yy, 7700000, 4);                    //работает       //проверяем вторую закладку
+            this.pointBookmark2 = new PointColor(876 - 5 + xx, 41 - 5 + yy, 7700000, 4);
+            this.pointOpenTownTeleport1 = new PointColor(93 - 5 + xx, 295 - 5 + yy, 11000000, 6);         //  работает
+            this.pointOpenTownTeleport2 = new PointColor(94 - 5 + xx, 295 - 5 + yy, 11000000, 6);
             DialogFactory tf = new DialogFactory(botwindow);
             this.dialog = tf.createDialog();
 
