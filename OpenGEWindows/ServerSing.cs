@@ -338,61 +338,59 @@ namespace OpenGEWindows
             this.pointisHP3 = new PointColor(355 - 5 + xx, 307 - 5 + yy, 7600000, 5);
             this.pointisHP4 = new PointColor(355 - 5 + xx, 322 - 5 + yy, 7600000, 5);
 
-            this.pointisAtk401 = new PointColor(373 - 5 + xx, 247 - 5 + yy, 14300000, 5);
-            this.pointisAtk402 = new PointColor(373 - 5 + xx, 256 - 5 + yy, 14500000, 5);
-            this.pointisSpeed30 = new PointColor(390 - 5 + xx, 269 - 5 + yy, 15500000, 5);
+            this.pointisAtk401 = new PointColor(373 - 5 + xx, 247 - 5 + yy, 13300000, 5);   //проверено
+            this.pointisAtk402 = new PointColor(373 - 5 + xx, 256 - 5 + yy, 13700000, 5);   //проверено
+            this.pointisSpeed30 = new PointColor(390 - 5 + xx, 269 - 5 + yy, 15500000, 5);   //проверено
 
-            this.pointisAtk391 = new PointColor(378 - 5 + xx, 252 - 5 + yy, 15200000, 5);
-            this.pointisAtk392 = new PointColor(381 - 5 + xx, 252 - 5 + yy, 14100000, 5);
-            this.pointisSpeed291 = new PointColor(394 - 5 + xx, 267 - 5 + yy, 15200000, 5);
-            this.pointisSpeed292 = new PointColor(397 - 5 + xx, 267 - 5 + yy, 14100000, 5);
+            this.pointisAtk391 = new PointColor(378 - 5 + xx, 252 - 5 + yy, 14800000, 5);  //проверено
+            this.pointisAtk392 = new PointColor(381 - 5 + xx, 252 - 5 + yy, 13300000, 5);  //проверено
+            this.pointisSpeed291 = new PointColor(394 - 5 + xx, 267 - 5 + yy, 14800000, 5);   //проверено
+            this.pointisSpeed292 = new PointColor(397 - 5 + xx, 267 - 5 + yy, 13300000, 5);   //проверено
 
-            this.pointisAtk381 = new PointColor(378 - 5 + xx, 251 - 5 + yy, 14600000, 5);
-            this.pointisAtk382 = new PointColor(381 - 5 + xx, 251 - 5 + yy, 13500000, 5);
-            //this.pointisAtk381 = new PointColor(378 - 5 + xx, 251 - 5 + yy, 15100000, 5);
-            //this.pointisAtk382 = new PointColor(381 - 5 + xx, 251 - 5 + yy, 14300000, 5);
-            this.pointisSpeed281 = new PointColor(394 - 5 + xx, 266 - 5 + yy, 15100000, 5);
-            this.pointisSpeed282 = new PointColor(397 - 5 + xx, 266 - 5 + yy, 14300000, 5);
+            this.pointisAtk381 = new PointColor(378 - 5 + xx, 251 - 5 + yy, 14600000, 5);   //проверено
+            this.pointisAtk382 = new PointColor(381 - 5 + xx, 251 - 5 + yy, 13500000, 5);   //проверено
+            this.pointisSpeed281 = new PointColor(394 - 5 + xx, 266 - 5 + yy, 14600000, 5);  //проверено
+            this.pointisSpeed282 = new PointColor(397 - 5 + xx, 266 - 5 + yy, 13500000, 5);  //проверено
 
-            this.pointisAtk371 = new PointColor(377 - 5 + xx, 247 - 5 + yy, 15000000, 5);
-            this.pointisAtk372 = new PointColor(382 - 5 + xx, 247 - 5 + yy, 15100000, 5);
-            this.pointisSpeed271 = new PointColor(393 - 5 + xx, 262 - 5 + yy, 15000000, 5);
-            this.pointisSpeed272 = new PointColor(398 - 5 + xx, 262 - 5 + yy, 15100000, 5);
+            this.pointisAtk371 = new PointColor(377 - 5 + xx, 247 - 5 + yy, 14300000, 5);    //проверено
+            this.pointisAtk372 = new PointColor(382 - 5 + xx, 247 - 5 + yy, 14600000, 5);    //проверено
+            this.pointisSpeed271 = new PointColor(393 - 5 + xx, 262 - 5 + yy, 14300000, 5);  //проверено
+            this.pointisSpeed272 = new PointColor(398 - 5 + xx, 262 - 5 + yy, 14600000, 5);  //проверено
 
-            this.pointisWild41 = new PointColor(415 - 5 + xx, 292 - 5 + yy, 7900000, 5);
-            this.pointisWild42 = new PointColor(415 - 5 + xx, 301 - 5 + yy, 7900000, 5);
-            this.pointisWild51 = new PointColor(415 - 5 + xx, 307 - 5 + yy, 7900000, 5);
-            this.pointisWild52 = new PointColor(415 - 5 + xx, 316 - 5 + yy, 7900000, 5);
-            this.pointisWild61 = new PointColor(415 - 5 + xx, 322 - 5 + yy, 7900000, 5);
-            this.pointisWild62 = new PointColor(415 - 5 + xx, 331 - 5 + yy, 7900000, 5);
+            this.pointisWild41 = new PointColor(415 - 5 + xx, 292 - 5 + yy, 7900000, 5);   //проверено
+            this.pointisWild42 = new PointColor(415 - 5 + xx, 301 - 5 + yy, 7900000, 5);   //проверено
+            this.pointisWild51 = new PointColor(415 - 5 + xx, 307 - 5 + yy, 7900000, 5);   //проверено
+            this.pointisWild52 = new PointColor(415 - 5 + xx, 316 - 5 + yy, 7900000, 5);   //проверено
+            this.pointisWild61 = new PointColor(415 - 5 + xx, 322 - 5 + yy, 7900000, 5);   //проверено
+            this.pointisWild62 = new PointColor(415 - 5 + xx, 331 - 5 + yy, 7900000, 5);   //проверено
 
-            this.pointisHuman41 = new PointColor(403 - 5 + xx, 292 - 5 + yy, 7800000, 5);
-            this.pointisHuman42 = new PointColor(403 - 5 + xx, 301 - 5 + yy, 7800000, 5);
-            this.pointisHuman51 = new PointColor(403 - 5 + xx, 307 - 5 + yy, 7800000, 5);
-            this.pointisHuman52 = new PointColor(403 - 5 + xx, 316 - 5 + yy, 7800000, 5);
-            this.pointisHuman61 = new PointColor(403 - 5 + xx, 322 - 5 + yy, 7800000, 5);
-            this.pointisHuman62 = new PointColor(403 - 5 + xx, 331 - 5 + yy, 7800000, 5);
+            this.pointisHuman41 = new PointColor(403 - 5 + xx, 292 - 5 + yy, 7600000, 5);   //проверено
+            this.pointisHuman42 = new PointColor(403 - 5 + xx, 301 - 5 + yy, 7700000, 5);   //проверено
+            this.pointisHuman51 = new PointColor(403 - 5 + xx, 307 - 5 + yy, 7600000, 5);   //проверено
+            this.pointisHuman52 = new PointColor(403 - 5 + xx, 316 - 5 + yy, 7700000, 5);   //проверено
+            this.pointisHuman61 = new PointColor(403 - 5 + xx, 322 - 5 + yy, 7600000, 5);   //проверено
+            this.pointisHuman62 = new PointColor(403 - 5 + xx, 331 - 5 + yy, 7700000, 5);   //проверено
 
-            this.pointisDemon41 = new PointColor(398 - 5 + xx, 292 - 5 + yy, 7900000, 5);
-            this.pointisDemon42 = new PointColor(399 - 5 + xx, 292 - 5 + yy, 7900000, 5);
-            this.pointisDemon51 = new PointColor(398 - 5 + xx, 307 - 5 + yy, 7900000, 5);
-            this.pointisDemon52 = new PointColor(399 - 5 + xx, 307 - 5 + yy, 7900000, 5);
-            this.pointisDemon61 = new PointColor(398 - 5 + xx, 322 - 5 + yy, 7900000, 5);
-            this.pointisDemon62 = new PointColor(399 - 5 + xx, 322 - 5 + yy, 7900000, 5);
+            this.pointisDemon41 = new PointColor(398 - 5 + xx, 292 - 5 + yy, 7900000, 5);   //проверено
+            this.pointisDemon42 = new PointColor(399 - 5 + xx, 292 - 5 + yy, 7900000, 5);   //проверено
+            this.pointisDemon51 = new PointColor(398 - 5 + xx, 307 - 5 + yy, 7900000, 5);   //проверено
+            this.pointisDemon52 = new PointColor(399 - 5 + xx, 307 - 5 + yy, 7900000, 5);   //проверено
+            this.pointisDemon61 = new PointColor(398 - 5 + xx, 322 - 5 + yy, 7900000, 5);   //проверено
+            this.pointisDemon62 = new PointColor(399 - 5 + xx, 322 - 5 + yy, 7900000, 5);   //проверено
 
-            this.pointisUndead41 = new PointColor(397 - 5 + xx, 292 - 5 + yy, 7700000, 5);
-            this.pointisUndead42 = new PointColor(397 - 5 + xx, 293 - 5 + yy, 7700000, 5);
-            this.pointisUndead51 = new PointColor(397 - 5 + xx, 307 - 5 + yy, 7700000, 5);
-            this.pointisUndead52 = new PointColor(397 - 5 + xx, 308 - 5 + yy, 7700000, 5);
-            this.pointisUndead61 = new PointColor(397 - 5 + xx, 322 - 5 + yy, 7700000, 5);
-            this.pointisUndead62 = new PointColor(397 - 5 + xx, 323 - 5 + yy, 7700000, 5);
+            this.pointisUndead41 = new PointColor(397 - 5 + xx, 292 - 5 + yy, 7100000, 5);   //проверено
+            this.pointisUndead42 = new PointColor(397 - 5 + xx, 293 - 5 + yy, 7400000, 5);   //проверено
+            this.pointisUndead51 = new PointColor(397 - 5 + xx, 307 - 5 + yy, 7100000, 5);   //проверено
+            this.pointisUndead52 = new PointColor(397 - 5 + xx, 308 - 5 + yy, 7400000, 5);   //проверено
+            this.pointisUndead61 = new PointColor(397 - 5 + xx, 322 - 5 + yy, 7100000, 5);   //проверено
+            this.pointisUndead62 = new PointColor(397 - 5 + xx, 323 - 5 + yy, 7400000, 5);   //проверено
 
-            this.pointisLifeless41 = new PointColor(398 - 5 + xx, 292 - 5 + yy, 7800000, 5);
-            this.pointisLifeless42 = new PointColor(398 - 5 + xx, 301 - 5 + yy, 7800000, 5);
-            this.pointisLifeless51 = new PointColor(398 - 5 + xx, 307 - 5 + yy, 7800000, 5);
-            this.pointisLifeless52 = new PointColor(398 - 5 + xx, 316 - 5 + yy, 7800000, 5);
-            this.pointisLifeless61 = new PointColor(398 - 5 + xx, 322 - 5 + yy, 7800000, 5);
-            this.pointisLifeless62 = new PointColor(398 - 5 + xx, 331 - 5 + yy, 7800000, 5);
+            this.pointisLifeless41 = new PointColor(398 - 5 + xx, 292 - 5 + yy, 7500000, 5);   //проверено
+            this.pointisLifeless42 = new PointColor(398 - 5 + xx, 301 - 5 + yy, 7600000, 5);   //проверено
+            this.pointisLifeless51 = new PointColor(398 - 5 + xx, 307 - 5 + yy, 7500000, 5);   //проверено
+            this.pointisLifeless52 = new PointColor(398 - 5 + xx, 316 - 5 + yy, 7600000, 5);   //проверено
+            this.pointisLifeless61 = new PointColor(398 - 5 + xx, 322 - 5 + yy, 7500000, 5);   //проверено
+            this.pointisLifeless62 = new PointColor(398 - 5 + xx, 331 - 5 + yy, 7600000, 5);   //проверено
 
             #endregion
 

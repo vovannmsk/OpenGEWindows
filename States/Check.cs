@@ -255,13 +255,13 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            botWindow botwindow = new botWindow(6);
+            botWindow botwindow = new botWindow(1);
             Server server = new ServerSing(botwindow);
             Market market = new MarketSing(botwindow);
             //Otit otit = new OtitSing(botwindow);
             //MessageBox.Show(" " + server.is248Items());
 
-            bool iscolor1 = server.isAtk38();
+            bool iscolor1 = server.isHuman();
             MessageBox.Show(" " + iscolor1);
             //bool iscolor1 = server.isSafeIP();
             //MessageBox.Show(" " + iscolor1);
@@ -280,9 +280,9 @@ namespace States
             //int j = 12;
             //int i = 4;
 
-            PointColor point1 = new PointColor(378 - 5 + xx, 251 - 5 + yy, 1, 1);
-            PointColor point2 = new PointColor(381 - 5 + xx, 251 - 5 + yy, 1, 1);
-            PointColor point3 = new PointColor(703 - 5 + xx, 559 - 5 + yy, 1, 1);
+            PointColor point1 = new PointColor(403 - 5 + xx, 292 - 5 + yy, 1, 1);
+            PointColor point2 = new PointColor(403 - 5 + xx, 301 - 5 + yy, 1, 1);
+            PointColor point3 = new PointColor(398 - 5 + xx, 307 - 5 + yy, 1, 1);
 
             color1 = point1.GetPixelColor();
             color2 = point2.GetPixelColor();
@@ -290,7 +290,7 @@ namespace States
 
             MessageBox.Show(" " + color1);
             MessageBox.Show(" " + color2);
- //            MessageBox.Show(" " + color3);
+ //           MessageBox.Show(" " + color3);
             //if ((color1 > 2000000) && (color2 > 2000000)) MessageBox.Show(" больше ");
 
 
