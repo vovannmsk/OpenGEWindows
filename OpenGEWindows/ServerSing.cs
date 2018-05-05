@@ -58,7 +58,7 @@ namespace OpenGEWindows
             #region Logout
 
             this.pointConnect = new PointColor(696 - 5 + xx, 148 - 5 + yy, 7800000, 5);
-            this.pointisLogout1 = new PointColor(565 - 5 + xx, 530 - 5 + yy, 16000000, 6);       // проверено   слово Leave Game
+            this.pointisLogout1 = new PointColor(565 - 5 + xx, 532 - 5 + yy, 16000000, 6);       // проверено   слово Leave Game буква L
             this.pointisLogout2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 16000000, 6);       // проверено
 
             #endregion
@@ -92,8 +92,8 @@ namespace OpenGEWindows
             this.pointisOpenTopMenu92 = new PointColor(602 + xx, 74 + yy, 13420000, 4);
             this.pointisOpenTopMenu121 = new PointColor(502 - 5 + xx, 140 - 5 + yy, 12000000, 6);      //507 - 5, 140 - 5, 12440000, 508 - 5, 140 - 5, 12440000, 4);        //проверено
             this.pointisOpenTopMenu122 = new PointColor(502 - 5 + xx, 141 - 5 + yy, 12000000, 6);
-            this.pointisOpenTopMenu131 = new PointColor(404 - 5 + xx, 278 - 5 + yy, 16500000, 5);          //Quest Name                                                         //проверено
-            this.pointisOpenTopMenu132 = new PointColor(404 - 5 + xx, 279 - 5 + yy, 16500000, 5);
+            this.pointisOpenTopMenu131 = new PointColor(404 - 5 + xx, 278 - 5 + yy, 16000000, 6);          //Quest Name                                                         //проверено
+            this.pointisOpenTopMenu132 = new PointColor(404 - 5 + xx, 279 - 5 + yy, 16000000, 6);
 //            this.pointGotoEnd = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
             this.pointGotoEnd = new Point(685 - 5 + xx, 470 - 5 + yy);            //end
             this.pointLogout = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
@@ -128,8 +128,8 @@ namespace OpenGEWindows
 
             #region atWork
 
-            this.pointisBoxOverflow1 = new PointColor(522 - 5 + xx, 434 - 5 + yy, 7800000, 5);          //
-            this.pointisBoxOverflow2 = new PointColor(522 - 5 + xx, 435 - 5 + yy, 7800000, 5);
+            this.pointisBoxOverflow1 = new PointColor(522 - 5 + xx, 434 - 5 + yy, 7700000, 5);          //
+            this.pointisBoxOverflow2 = new PointColor(522 - 5 + xx, 435 - 5 + yy, 7700000, 5);
             this.pointisWork_RifleDot1 = new PointColor(24 + xx, 692 + yy, 11051000, 3);      //29 - 5, 697 - 5, 11051000, 30 - 5, 697 - 5, 10919000, 3);                    //проверено
             this.pointisWork_RifleDot2 = new PointColor(25 + xx, 692 + yy, 10919000, 3);
             this.pointisWork_ExpRifleDot1 = new PointColor(24 + xx, 692 + yy, 1721000, 3);      //29 - 5, 697 - 5, 11051000, 30 - 5, 697 - 5, 10919000, 3);                    //проверено
@@ -306,9 +306,9 @@ namespace OpenGEWindows
 
             #region заточка Ида 
             this.pointAcriveInventory = new Point(905 - 5 + xx, 425 - 5 + yy);
-            this.pointIsActiveInventory = new PointColor(696 - 5 + xx, 146 - 5 + yy, 16500000, 5);
-            this.pointisMoveEquipment1 = new PointColor(493 - 5 + xx, 281 - 5 + yy, 7790000, 4);
-            this.pointisMoveEquipment2 = new PointColor(493 - 5 + xx, 282 - 5 + yy, 7790000, 4);
+            this.pointIsActiveInventory = new PointColor(696 - 5 + xx, 146 - 5 + yy, 16000000, 6);
+            this.pointisMoveEquipment1 = new PointColor(493 - 5 + xx, 281 - 5 + yy, 7400000, 5);
+            this.pointisMoveEquipment2 = new PointColor(493 - 5 + xx, 282 - 5 + yy, 7400000, 5);
             this.pointButtonEnhance = new Point(525 - 5 + xx, 625 - 5 + yy);
             this.pointIsPlus41 = new PointColor(469 - 5 + xx, 461 - 5 + yy, 15700000, 5);
             this.pointIsPlus42 = new PointColor(470 - 5 + xx, 462 - 5 + yy, 16700000, 5);
@@ -347,8 +347,10 @@ namespace OpenGEWindows
             this.pointisSpeed291 = new PointColor(394 - 5 + xx, 267 - 5 + yy, 15200000, 5);
             this.pointisSpeed292 = new PointColor(397 - 5 + xx, 267 - 5 + yy, 14100000, 5);
 
-            this.pointisAtk381 = new PointColor(378 - 5 + xx, 251 - 5 + yy, 15100000, 5);
-            this.pointisAtk382 = new PointColor(381 - 5 + xx, 251 - 5 + yy, 14300000, 5);
+            this.pointisAtk381 = new PointColor(378 - 5 + xx, 251 - 5 + yy, 14600000, 5);
+            this.pointisAtk382 = new PointColor(381 - 5 + xx, 251 - 5 + yy, 13500000, 5);
+            //this.pointisAtk381 = new PointColor(378 - 5 + xx, 251 - 5 + yy, 15100000, 5);
+            //this.pointisAtk382 = new PointColor(381 - 5 + xx, 251 - 5 + yy, 14300000, 5);
             this.pointisSpeed281 = new PointColor(394 - 5 + xx, 266 - 5 + yy, 15100000, 5);
             this.pointisSpeed282 = new PointColor(397 - 5 + xx, 266 - 5 + yy, 14300000, 5);
 
@@ -619,9 +621,9 @@ namespace OpenGEWindows
         public override bool is248Items()
         {
             bool result = false;
-            iPointColor pointis248_1 = new PointColor(684 - 5 + xx, 561 - 5 + yy, 13000000, 5);
-            iPointColor pointis248_2 = new PointColor(694 - 5 + xx, 561 - 5 + yy, 12800000, 5);
-            iPointColor pointis248_3 = new PointColor(703 - 5 + xx, 559 - 5 + yy, 13000000, 5);
+            iPointColor pointis248_1 = new PointColor(684 - 5 + xx, 561 - 5 + yy, 12000000, 6);
+            iPointColor pointis248_2 = new PointColor(694 - 5 + xx, 561 - 5 + yy, 12000000, 6);
+            iPointColor pointis248_3 = new PointColor(703 - 5 + xx, 559 - 5 + yy, 12000000, 6);
 
             OpenInventory();
 
@@ -722,6 +724,8 @@ namespace OpenGEWindows
         /// <param name="numberOfEquipment">номер экипировки п/п</param>
         public override void MoveToSharpening(int numberOfEquipment)
         {
+            pointAcriveInventory.PressMouseR();
+            Pause(500);
             iPoint pointEquipmentBegin = new Point(701 - 5 + xx + (numberOfEquipment - 1) * 39, 183 - 5 + yy);
             iPoint pointEquipmentEnd = new Point(521 - 5 + xx, 208 - 5 + yy);
             pointEquipmentBegin.Drag(pointEquipmentEnd);

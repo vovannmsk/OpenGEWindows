@@ -24,8 +24,8 @@ namespace OpenGEWindows
 
             #region Shop
 
-            this.pointIsSale1 = new PointColor(907 + xx, 675 + yy, 7200000, 5);
-            this.pointIsSale2 = new PointColor(907 + xx, 676 + yy, 7800000, 5);
+            this.pointIsSale1 = new PointColor(907 - 5 + xx, 675 - 5 + yy, 7700000, 5);
+            this.pointIsSale2 = new PointColor(907 - 5 + xx, 676 - 5 + yy, 7700000, 5);
             this.pointIsSale21 = new PointColor(841 - 5 + xx, 665 - 5 + yy, 7900000, 5);
             this.pointIsSale22 = new PointColor(841 - 5 + xx, 668 - 5 + yy, 7900000, 5);
             this.pointIsClickSale1 = new PointColor(731 - 5 + xx, 662 - 5 + yy, 7900000, 5);

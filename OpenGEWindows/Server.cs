@@ -1932,6 +1932,8 @@ namespace OpenGEWindows
         /// <returns></returns>
         public bool isIda()
         {
+            //bool ff = pointIsIda1.isColor();
+            //bool gg = pointIsIda2.isColor();
             return (pointIsIda1.isColor() && pointIsIda2.isColor());
         }
 

@@ -260,7 +260,7 @@ namespace OpenGEWindows
         public bool NeedToSellProduct(uint color, int numberOfString)
         {
             bool result = true;   //по умолчанию вещь надо продавать, поэтому true
-            iPointColor pointMega = new PointColor(174 - 5 + xx, 214 - 5 + yy + (numberOfString - 1) * 27, 10700000, 5);  //буква M в слове Mega
+            iPointColor pointMega = new PointColor(174 - 5 + xx, 214 - 5 + yy + (numberOfString - 1) * 27, 10000000, 7);  //буква M в слове Mega
 
             switch (color)                                             // Хорошая вещь или нет, сверяем по картотеке
             {
@@ -284,7 +284,6 @@ namespace OpenGEWindows
                 case 15420103:    // Бутылка хрина               **
                 case 9868940:     // композитная сталь           **
                 case 5334831:     // магическая сфера            ** Magic sphere
-                case 13164006:    // свекла  Beet                **
                 case 16777215:    // Wheat flour                 **
                 case 13565951:    // playtoken                   **
                 case 10986144:    // Hinge                       **
@@ -294,17 +293,32 @@ namespace OpenGEWindows
                 case 7233629:     // Cogwheel                    **
                 case 13820159:    // Family Support Token        **
                 case 4222442:     // Wolf meat                   **
-                case 4435935:     // Yellow ore                  **
+                case 6719975:     // Wild Boar Meat              **
                 case 5072004:     // Bone Stick                  **
                 case 3559777:     // Dragon Lether               **
                 case 1712711:     // Dragon Horn                 **
-                case 6719975:     // Wild Boar Meat              **
+                case 4435935:     // Yellow ore                  **
                 case 4448154:     // Green ore                   **
                 case 13865807:    // blue ore                    **
                 case 4670431:     // Red ore                     **
-                case 13291199:    // Diamond Ore                 **
+                case 13291199:    // Diamond Ore                 ** *******************************************************
                 case 1063140:     // Stone of Philos             **
                 case 8486756:     // Ice Crystal                 **
+                case 573951:      // Golden Apple
+                case 4966811:     // Cabbage
+                case 13164006:    // свекла  Beet                **
+                case 8633037:     // Pure Gold Bar
+                case 8289818:     // Gray Feather
+                case 13068045:    // Blue Stone                
+                case 5393227:     // Ebony Tree
+                case 13627135:    // Molar                
+                case 5131077:     // Black Sap               
+                case 5803426:     // Tangler               
+                case 15575073:    // Blue sap               
+                case 12563070:    // Marble               
+                case 6380581:     // Leather         
+                case 14210488:    // Spool
+                case 3223857:     // Nail                        ************************************************************* 
                 case 4143156:     // bulk of Coal                **
                 case 9472397:     // Steel piece                 **
                 case 7187897:     // Mustang ore
@@ -328,10 +342,8 @@ namespace OpenGEWindows
                 case 14278629:    // Chip 100
                 case 14542297:    // Chip Veteran
                 case 13417421:    // Octopus Arm
-                case 573951:      // Golden Apple
                 case 3033453:     // Clear Rum
                 case 4474675:     // Fish Flesh
-                case 4966811:     // Cabbage
                 case 10931953:    // Psychic Sphere
                 case 656906:      // magocal orb
                 case 13748687:    // Ressurection Potion
@@ -342,7 +354,7 @@ namespace OpenGEWindows
                 case 14210771:    // Mega Etr, Io Talt
                 case 9803667:     // Mega A
                 case 7645105:     // Mega Qu
-                    if (pointMega.isColor())    result = false;     //если еще совпадает и вторая точка, то это мегакварц
+                    if (pointMega.isColor())    result = false;     //если еще совпадает и вторая точка, то это мегакварц              не работает
                     break;
             }
 
