@@ -36,6 +36,9 @@ namespace OpenGEWindows
                 case "C:\\SINGA\\":
                     otit = new OtitSing(botwindow);
                     break;
+                case "C:\\America2\\":
+                    otit = new OtitAmerica2(botwindow);
+                    break;
                 default:
                     otit = new OtitSing(botwindow);
                     break;

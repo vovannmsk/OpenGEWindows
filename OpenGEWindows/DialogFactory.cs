@@ -37,6 +37,9 @@ namespace OpenGEWindows
                 case "C:\\SINGA\\":
                     dialog = new DialogSing(botwindow);
                     break;
+                case "C:\\America2\\":
+                    dialog = new DialogAmerica2(botwindow);
+                    break;
                 default:
                     dialog = new DialogSing(botwindow);
                     break;

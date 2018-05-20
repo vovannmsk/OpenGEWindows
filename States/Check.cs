@@ -60,6 +60,7 @@ namespace States
                 Pause(500);
                 if (server.isLogout())                // если окно в логауте
                 {
+                    //server.serverSelection();
                     driver.StateRecovery();
                 }
                 else
@@ -251,18 +252,31 @@ namespace States
         }
 
         /// <summary>
+        /// выбор сервера (синг или америка2)
+        /// </summary>
+        public void serverSelection()
+        {
+            server.serverSelection();
+        }
+
+
+
+        /// <summary>
         /// тестовая кнопка
         /// </summary>
         public void TestButton()
         {
             botWindow botwindow = new botWindow(1);
-            Server server = new ServerSing(botwindow);
-            Market market = new MarketSing(botwindow);
+//            Server server = new ServerSing(botwindow);
+            Server server = new ServerAmerica2(botwindow);
+            //Market market = new MarketSing(botwindow);
             //Otit otit = new OtitSing(botwindow);
             //MessageBox.Show(" " + server.is248Items());
 
-            bool iscolor1 = server.isHuman();
-            MessageBox.Show(" " + iscolor1);
+            //bool iscolor1 = server.isHuman();
+            //MessageBox.Show(" " + iscolor1);
+            //bool iscolor1 = server.isActive ();
+            //MessageBox.Show(" " + iscolor1);
             //bool iscolor1 = server.isSafeIP();
             //MessageBox.Show(" " + iscolor1);
 
@@ -280,8 +294,8 @@ namespace States
             //int j = 12;
             //int i = 4;
 
-            PointColor point1 = new PointColor(403 - 5 + xx, 292 - 5 + yy, 1, 1);
-            PointColor point2 = new PointColor(403 - 5 + xx, 301 - 5 + yy, 1, 1);
+            PointColor point1 = new PointColor(870 - 5 + xx, 47 - 5 + yy, 1, 1);
+            PointColor point2 = new PointColor(870 - 5 + xx, 48 - 5 + yy, 1, 1);
             PointColor point3 = new PointColor(398 - 5 + xx, 307 - 5 + yy, 1, 1);
 
             color1 = point1.GetPixelColor();

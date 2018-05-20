@@ -425,6 +425,17 @@ namespace OpenGEWindows
 
         #endregion
 
+        #region LogOut
+
+        /// <summary>
+        /// выбираем сервер путем нажатия на первую строчку в меню
+        /// </summary>
+        public override void serverSelection()
+        {
+        }
+
+        #endregion
+
         #region Top Menu
 
 

@@ -32,6 +32,9 @@ namespace OpenGEWindows
                 case "C:\\SINGA\\":
                     pet = new PetSing(botwindow);
                     break;
+                case "C:\\America2\\":
+                    pet = new PetAmerica2(botwindow);
+                    break;
                 default:
                     pet = new PetSing(botwindow);
                     break;

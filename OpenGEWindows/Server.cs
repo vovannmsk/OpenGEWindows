@@ -532,6 +532,8 @@ namespace OpenGEWindows
             return pointConnect.isColor();
         }
 
+        public abstract void serverSelection();
+
         #endregion
 
         #region Pet (только точки)
@@ -1153,18 +1155,25 @@ namespace OpenGEWindows
         {
             for (int j = 1; j <= 4; j++)
             {
-                pointCure1.PressMouseL();  pointMana1.PressMouseL();
+                pointCure1.PressMouseL();  
+                pointMana1.PressMouseL();
 
                 //if (isSecondHero())     //если есть второй перс в команде
                 //{ 
-                pointCure2.PressMouseL(); pointMana2.PressMouseL(); 
+                pointCure2.PressMouseL(); 
+                pointMana2.PressMouseL(); 
                 //}
                 //if (isThirdHero())
                 //{ 
-                pointCure3.PressMouseL(); pointMana3.PressMouseL(); 
+                pointCure3.PressMouseL(); 
+                pointMana3.PressMouseL(); 
                 //}
             }
             Pause(500);
+
+            iPoint pointFourthBox = new Point(31 - 5 + xx, 200 - 5 + yy);
+            pointFourthBox.PressMouseL();                // тыкаю в  (третья ячейка)
+
             //for (int j = 1; j <= 3; j++)
             //{
             //    pointMana1.PressMouseL();   //жрем патроны (или то, что будет лежать на этом месте под буквой I)
@@ -1239,6 +1248,8 @@ namespace OpenGEWindows
         /// </summary>
         public void RunToPetExpert()
         {
+            botwindow.ThirdHero();
+            Pause(500);
             pointPetExpert.PressMouseL();            //тыкнули в эксперта по петам
             Pause(3000);
 

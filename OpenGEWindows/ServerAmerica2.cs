@@ -15,7 +15,7 @@ namespace OpenGEWindows
     /// <summary>
     /// Класс описывает процесс перехода к торговле от фарма , начиная от проверки необходимости продажи и заканчивая закрытием окна с ботом (для сервера Сингапур (Avalon))
     /// </summary>
-    public class ServerSing : Server
+    public class ServerAmerica2 : Server
     {
         [DllImport("user32.dll")]
         public static extern bool SetWindowPos(UIntPtr myhWnd, int myhwndoptional, int xx, int yy, int cxx, int cyy, uint flagus); // Перемещает окно в заданные координаты с заданным размером
@@ -31,7 +31,7 @@ namespace OpenGEWindows
         /// town отвечает за методы для конкретного города (паттерн Стратегия). Все различия в действиях, зависящих от города, инкапсулированы в семействе классов Town (в т.ч. AmericaTown)
         /// </summary>
         /// <param name="nomerOfWindow"> номер окна по порядку </param>
-        public ServerSing(botWindow botwindow)
+        public ServerAmerica2(botWindow botwindow)
         {
 
             #region общие
@@ -44,7 +44,7 @@ namespace OpenGEWindows
 
             #region общие 2
 
-            this.townFactory = new SingTownFactory(botwindow);                                     // здесь выбирается конкретная реализация для фабрики Town
+            this.townFactory = new America2TownFactory(botwindow);                                     // здесь выбирается конкретная реализация для фабрики Town
             this.town = townFactory.createTown();
             this.pathClient = path_Client();
 
@@ -275,9 +275,9 @@ namespace OpenGEWindows
             this.pointDomingoMiss = new Point(396 - 5 + xx, 206 - 5 + yy);                         //нажимаем правой кнопкой по карте миссии Доминго
             this.pointPressDomingo2 = new Point(572 - 5 + xx, 237 - 5 + yy);                       //нажимаем на Доминго после миссии
             this.pointLindonOnMap = new Point(820 - 5 + xx, 370 - 5 + yy);                         //нажимаем на Линдона на карте Alt+Z
-            this.pointPressLindon2 = new Point(627 - 5 + xx, 274 - 5 + yy);                        //нажимаем на Линдона
-            this.pointPetExpert = new Point(910 - 5 + xx, 415 - 5 + yy);                           //нажимаем на петэксперта
-            this.pointPetExpert2 = new Point(816 - 5 + xx, 415 - 5 + yy);                          //нажимаем на петэксперта второй раз 
+            this.pointPressLindon2 = new Point(652 - 5 + xx, 257 - 5 + yy);                        //нажимаем на Линдона
+            this.pointPetExpert = new Point(908 - 5 + xx, 423 - 5 + yy);                           //нажимаем на петэксперта
+            this.pointPetExpert2 = new Point(815 - 5 + xx, 425 - 5 + yy);                          //нажимаем на петэксперта второй раз 
             this.pointThirdBookmark = new Point(842 - 5 + xx, 150 - 5 + yy);                       //тыкнули в третью закладку в кармане
             this.pointNamePet = new Point(440 - 5 + xx, 440 - 5 + yy);                             //нажимаем на строку, где вводить имя пета
             this.pointButtonNamePet = new Point(520 - 5 + xx, 495 - 5 + yy);                       //тыкнули в кнопку Raise Pet
@@ -453,14 +453,14 @@ namespace OpenGEWindows
         /// </summary>
         /// <returns></returns>
         private String path_Client()
-        { return File.ReadAllText(KATALOG_MY_PROGRAM + "\\Singapoore_path.txt"); }
+        { return File.ReadAllText(KATALOG_MY_PROGRAM + "\\America2_path.txt"); }
 
         /// <summary>
         /// считываем параметр, отвечающий за то, надо ли загружать окна на сервере сингапур
         /// </summary>
         /// <returns></returns>
-        private int SingActive()
-        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Singapoore_active.txt")); }
+        private bool America2Active()
+        { return bool.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\America2_active.txt")); }
 
 
         #endregion
@@ -473,9 +473,10 @@ namespace OpenGEWindows
         /// <returns> true означает, что это окно (данный бот) должно быть активно и его надо грузить </returns>
         public override bool isActive()
         {
-            bool result = false;
-            if (SingActive() == 1) result = true;
-            return result;
+            //bool result = false;
+            //if (America2Active() == 1) result = true;
+            //return result;
+            return America2Active();
         }
 
         /// <summary>
@@ -608,7 +609,7 @@ namespace OpenGEWindows
         /// </summary>
         public override void serverSelection()
         {
-            iPoint pointserverSelection = new Point(480 - 5 + xx, 345 - 5 + yy);
+            iPoint pointserverSelection = new Point(480 - 5 + xx, 370 - 5 + yy);
             pointserverSelection.PressMouseLL();
             Pause(500);
         }

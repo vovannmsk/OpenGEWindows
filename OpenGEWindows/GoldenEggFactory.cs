@@ -36,6 +36,9 @@ namespace OpenGEWindows
                 case "C:\\SINGA\\":
                     goldenEgg = new GoldenEggSing(botwindow);
                     break;
+                case "C:\\America2\\":
+                    goldenEgg = new GoldenEggAmerica2(botwindow);
+                    break;
                 default:
                     goldenEgg = new GoldenEggSing(botwindow);
                     break;

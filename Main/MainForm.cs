@@ -23,7 +23,7 @@ namespace Main
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "05-05-2018";
+        public static String DataVersion = "20-05-2018";
         public static int numberOfAcc = KolvoAkk();
 
         /// <summary>
@@ -144,7 +144,10 @@ namespace Main
             {
                 Check check = new Check(j);
                 if (check.isActive())
+                {
                     check.OrangeButton();
+                    //check.serverSelection();
+                }
             }   
         }
 
@@ -346,7 +349,7 @@ namespace Main
                if (MainForm.NumberBlueButton == 1)    
                {
                    myTimer.Tick += new EventHandler(TimerEventProcessor);
-                   myTimer.Interval = 60000;
+                   myTimer.Interval = 30000;
                    myTimer.Start();
                }
                else myTimer.Start();
@@ -354,7 +357,7 @@ namespace Main
            }
            else
            {
-               this.buttonWarning.Text = "АВТОРЕЖИМ ВЫКЛЮЧЕН";
+               this.buttonWarning.Text = "== АВТОРЕЖИМ ВЫКЛЮЧЕН ==";
                this.buttonWarning.BackColor = Color.SkyBlue;
                // добавлено 08-09-2016
                myTimer.Stop();

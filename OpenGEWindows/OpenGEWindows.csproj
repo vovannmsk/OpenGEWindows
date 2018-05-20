@@ -100,6 +100,21 @@
   <ItemGroup>
     <Compile Include="AmericaTownFactory.cs" />
     <Compile Include="botWindow.cs" />
+    <Compile Include="DialogAmerica2.cs" />
+    <Compile Include="GoldenEggAmerica2.cs" />
+    <Compile Include="MarketAmerica2.cs" />
+    <Compile Include="MMAmerica2.cs" />
+    <Compile Include="OtitAmerica2.cs" />
+    <Compile Include="PetAmerica2.cs" />
+    <Compile Include="ServerAmerica2.cs" />
+    <Compile Include="America2TownAuch.cs" />
+    <Compile Include="America2TownBagama.cs" />
+    <Compile Include="America2TownCastilia.cs" />
+    <Compile Include="America2TownFactory.cs" />
+    <Compile Include="America2TownLosToldos.cs" />
+    <Compile Include="America2TownReboldo.cs" />
+    <Compile Include="America2TownUstiar.cs" />
+    <Compile Include="America2TownViron.cs" />
     <Compile Include="SingTownViron.cs" />
     <Compile Include="SingTownUstiar.cs" />
     <Compile Include="SingTownCastilia.cs" />

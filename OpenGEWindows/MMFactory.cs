@@ -32,6 +32,9 @@ namespace OpenGEWindows
                 case "C:\\SINGA\\":
                     mm = new MMSing(botwindow);
                     break;
+                case "C:\\America2\\":
+                    mm = new MMAmerica2(botwindow);
+                    break;
                 default:
                     mm = new MMSing(botwindow);
                     break;

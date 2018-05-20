@@ -32,6 +32,9 @@ namespace OpenGEWindows
                 case "C:\\SINGA\\":
                     market = new MarketSing(botwindow);
                     break;
+                case "C:\\America2\\":
+                    market = new MarketAmerica2(botwindow);
+                    break;
                 default:
                     market = new MarketSing(botwindow);
                     break;

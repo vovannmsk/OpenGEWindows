@@ -326,6 +326,7 @@ namespace OpenGEWindows
         public bool isHwnd()
         {
             return SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);  //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
+            //return SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0040);  //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
         }
 
         /// <summary>
@@ -401,6 +402,7 @@ namespace OpenGEWindows
             SetForegroundWindow(databot.hwnd);                                 // Перемещает окно в верхний список Z порядка     
             BringWindowToTop(databot.hwnd);                                    // Делает окно активным                              
             SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001); //перемещаем окно в заданные для него координаты
+            //SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0040); //перемещаем окно в заданные для него координаты
         }
 
         /// <summary>
@@ -438,7 +440,7 @@ namespace OpenGEWindows
                 UIntPtr hwnd = server.FindWindowGE();          //ищем окно ГЭ с нужными параметрами
                 if (hwnd != (UIntPtr)0) break;
             }
-            Pause(10000);
+            Pause(20000);
 
             #region старый вариант метода
             //UIntPtr New_HWND_GE, current_HWND_GE;
@@ -586,6 +588,8 @@ namespace OpenGEWindows
             #endregion
 
             #region старый вариант
+
+            server.serverSelection();          //17-05-2018
 
             iPointColor point5050 = new PointColor(50 - 5 + databot.x, 50 - 5 + databot.y, 7800000, 5);  //запоминаем цвет в координатах 50, 50 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
             iPoint pointButtonOk = new Point(525 - 5 + databot.x, 410 - 5 + databot.y);    // кнопка Ok в логауте
