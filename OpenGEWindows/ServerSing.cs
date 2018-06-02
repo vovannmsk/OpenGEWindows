@@ -150,6 +150,10 @@ namespace OpenGEWindows
             this.pointisWork_VetPistolDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 72, 0);
             this.pointisWork_SightPistolDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 5068000, 3);       //точки для проверки вет стойки с пистолетом Sight Shot
             this.pointisWork_SightPistolDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 9350000, 3);
+            //пушка
+            this.pointisWork_ExpCannonDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 8756000, 3);       //точки для проверки пушки Мисы
+            this.pointisWork_ExpCannonDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 8162000, 3);
+
             this.pointisKillHero1 = new PointColor(80 - 5 + xx, 636 - 5 + yy, 1900000, 5);
             this.pointisKillHero2 = new PointColor(335 - 5 + xx, 636 - 5 + yy, 1900000, 5);
             this.pointisKillHero3 = new PointColor(590 - 5 + xx, 636 - 5 + yy, 1900000, 5);
@@ -213,6 +217,9 @@ namespace OpenGEWindows
             this.pointIsTown_VetPistolFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 0, 0);
             this.pointIsTown_SightPistolFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 5066000, 3);       //точки для проверки вет стойки с пистолетом Sight Shot
             this.pointIsTown_SightPistolFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 9342000, 3);
+            //пушка Миса
+            this.pointIsTown_ExpCannonFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 8750000, 3);       //точки для проверки пушки Миса
+            this.pointIsTown_ExpCannonFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 8158000, 3);
 
             #endregion
 
@@ -332,11 +339,11 @@ namespace OpenGEWindows
             this.pointMoveLeftPanelBegin = new Point(161 - 5 + xx, 130 - 5 + yy);
             this.pointMoveLeftPanelEnd = new Point(161 - 5 + xx, 592 - 5 + yy);
             this.pointButtonEnchance = new Point(630 - 5 + xx, 490 - 5 + yy);
-            this.pointisDef15 = new PointColor(388 - 5 + xx, 247 - 5 + yy, 13400000, 5);
-            this.pointisHP1 = new PointColor(355 - 5 + xx, 277 - 5 + yy, 7600000, 5);
-            this.pointisHP2 = new PointColor(355 - 5 + xx, 292 - 5 + yy, 7600000, 5);
-            this.pointisHP3 = new PointColor(355 - 5 + xx, 307 - 5 + yy, 7600000, 5);
-            this.pointisHP4 = new PointColor(355 - 5 + xx, 322 - 5 + yy, 7600000, 5);
+            this.pointisDef15 = new PointColor(388 - 5 + xx, 247 - 5 + yy, 12400000, 5);  //проверено
+            this.pointisHP1 = new PointColor(355 - 5 + xx, 277 - 5 + yy, 7100000, 5);     //проверено
+            this.pointisHP2 = new PointColor(355 - 5 + xx, 292 - 5 + yy, 7100000, 5);     //проверено
+            this.pointisHP3 = new PointColor(355 - 5 + xx, 307 - 5 + yy, 7100000, 5);     //проверено
+            this.pointisHP4 = new PointColor(355 - 5 + xx, 322 - 5 + yy, 7100000, 5);     //проверено
 
             this.pointisAtk401 = new PointColor(373 - 5 + xx, 247 - 5 + yy, 13300000, 5);   //проверено
             this.pointisAtk402 = new PointColor(373 - 5 + xx, 256 - 5 + yy, 13700000, 5);   //проверено

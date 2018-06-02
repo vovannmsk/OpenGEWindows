@@ -273,8 +273,8 @@ namespace States
             //Otit otit = new OtitSing(botwindow);
             //MessageBox.Show(" " + server.is248Items());
 
-            //bool iscolor1 = server.isHuman();
-            //MessageBox.Show(" " + iscolor1);
+            bool iscolor1 = server.isHP();
+            MessageBox.Show(" " + iscolor1);
             //bool iscolor1 = server.isActive ();
             //MessageBox.Show(" " + iscolor1);
             //bool iscolor1 = server.isSafeIP();
@@ -294,8 +294,8 @@ namespace States
             //int j = 12;
             //int i = 4;
 
-            PointColor point1 = new PointColor(870 - 5 + xx, 47 - 5 + yy, 1, 1);
-            PointColor point2 = new PointColor(870 - 5 + xx, 48 - 5 + yy, 1, 1);
+            PointColor point1 = new PointColor(355 - 5 + xx, 277 - 5 + yy, 1, 1);
+            PointColor point2 = new PointColor(355 - 5 + xx, 292 - 5 + yy, 1, 1);
             PointColor point3 = new PointColor(398 - 5 + xx, 307 - 5 + yy, 1, 1);
 
             color1 = point1.GetPixelColor();

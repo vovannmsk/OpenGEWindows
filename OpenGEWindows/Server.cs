@@ -184,7 +184,8 @@ namespace OpenGEWindows
         protected iPointColor pointisBattleMode2;
         protected iPointColor pointisWork_SightPistolDot1;
         protected iPointColor pointisWork_SightPistolDot2;
-
+        protected iPointColor pointisWork_ExpCannonDot1;
+        protected iPointColor pointisWork_ExpCannonDot2;
 
         #endregion
 
@@ -239,6 +240,8 @@ namespace OpenGEWindows
         protected iPointColor pointIsTown_VetPistolFirstDot2;
         protected iPointColor pointIsTown_SightPistolFirstDot1;  //проверка по одному пистолету Sight Shot
         protected iPointColor pointIsTown_SightPistolFirstDot2;
+        protected iPointColor pointIsTown_ExpCannonFirstDot1;   // проверка по эксп пушке Мисы
+        protected iPointColor pointIsTown_ExpCannonFirstDot2;
         #endregion
 
         #region Barack
@@ -1069,8 +1072,9 @@ namespace OpenGEWindows
             bool resultExpSword = (pointisWork_ExpSwordDot1.isColor() && pointisWork_ExpSwordDot2.isColor());
             bool resultVetPistol2 = (pointisWork_VetPistolDot1.isColor() && pointisWork_VetPistolDot2.isColor());
             bool resultVetPistol1 = (pointisWork_SightPistolDot1.isColor() && pointisWork_SightPistolDot2.isColor());
+            bool resultExpCannon = (pointisWork_ExpCannonDot1.isColor() && pointisWork_ExpCannonDot2.isColor());
 
-            return (resultRifle || resultExpRifle || resultDrob || resultVetDrob || resultExpDrob || resultVetSabre || resultExpSword || resultJainaDrob || resultVetPistol2 || resultVetPistol1);  //проверка только по первому персу
+            return (resultRifle || resultExpRifle || resultDrob || resultVetDrob || resultExpDrob || resultVetSabre || resultExpSword || resultJainaDrob || resultVetPistol2 || resultVetPistol1 || resultExpCannon);  //проверка только по первому персу
         }
 
         /// <summary>
@@ -1144,8 +1148,10 @@ namespace OpenGEWindows
             //пистолет
             bool resultVetPistol2 = (pointIsTown_VetPistolFirstDot1.isColor() && pointIsTown_VetPistolFirstDot2.isColor());   //два пистолета
             bool resultVetPistol1 = (pointIsTown_SightPistolFirstDot1.isColor() && pointIsTown_SightPistolFirstDot2.isColor());   //один пистолет
+            //пушка Миса
+            bool resultExpCannon = (pointIsTown_ExpCannonFirstDot1.isColor() && pointIsTown_ExpCannonFirstDot2.isColor());   //пушка Миса
 
-            return (resultRifle || resultRifleExp || resultShotgun || resultShotgunVet || resultShotgunExp || resultVetSabre || resultExpSword || resultShotgunJaina || resultVetPistol2 || resultVetPistol1);
+            return (resultRifle || resultRifleExp || resultShotgun || resultShotgunVet || resultShotgunExp || resultVetSabre || resultExpSword || resultShotgunJaina || resultVetPistol2 || resultVetPistol1 || resultExpCannon);
         }
 
         /// <summary>
@@ -2191,6 +2197,7 @@ namespace OpenGEWindows
                     break;
                 case 2:
                     if ((isAtk40() || isAtk39() || isAtk38() || isAtk37()) && (isAtkSpeed30() || isAtkSpeed29() || isAtkSpeed28() || isAtkSpeed27()) && (isWild())) result = true;
+                    if ((isAtk40() || isAtk39()) && (isAtkSpeed30() || isAtkSpeed29())) result = true;
                     break;
                 case 3:
                     if ((isAtk40() || isAtk39() || isAtk38() || isAtk37()) && (isAtkSpeed30() || isAtkSpeed29() || isAtkSpeed28() || isAtkSpeed27()) && (isLifeless())) result = true;
