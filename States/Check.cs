@@ -266,26 +266,35 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            botWindow botwindow = new botWindow(1);
+            int i = 1;   //номер проверяемого окна
+
+            int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 875, 850, 825, 800, 775, 750, 875 };
+            int[] koordY = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 5, 30, 55, 80, 105, 130, 5 };
+
+            botWindow botwindow = new botWindow(i);
+
 //            Server server = new ServerSing(botwindow);
-            Server server = new ServerAmerica2(botwindow);
+            //Server server = new ServerAmerica2(botwindow);
+
             //Market market = new MarketSing(botwindow);
+            Pet pet = new PetAmerica2(botwindow);
+            MessageBox.Show(" " + pet.isOpenMenuPet());
             //Otit otit = new OtitSing(botwindow);
             //MessageBox.Show(" " + server.is248Items());
 
-            bool iscolor1 = server.isHP();
-            MessageBox.Show(" " + iscolor1);
+            //bool iscolor1 = server.isDef15();
+            //MessageBox.Show(" " + iscolor1);
             //bool iscolor1 = server.isActive ();
             //MessageBox.Show(" " + iscolor1);
             //bool iscolor1 = server.isSafeIP();
             //MessageBox.Show(" " + iscolor1);
 
-            int[] x = { 0, 0, 130, 260, 390, -70, 60, 190, 320, 450 };
-            int[] y = { 0, 0, 0, 0, 0, 340, 340, 340, 340, 340 };
+            //int[] x = { 0, 0, 130, 260, 390, -70, 60, 190, 320, 450 };
+            //int[] y = { 0, 0, 0, 0, 0, 340, 340, 340, 340, 340 };
 
             int xx, yy;
-            xx = 5;
-            yy = 5;
+            xx = koordX[i - 1];
+            yy = koordY[i - 1];
             uint color1;
             uint color2;
             uint color3;
@@ -294,8 +303,8 @@ namespace States
             //int j = 12;
             //int i = 4;
 
-            PointColor point1 = new PointColor(355 - 5 + xx, 277 - 5 + yy, 1, 1);
-            PointColor point2 = new PointColor(355 - 5 + xx, 292 - 5 + yy, 1, 1);
+            PointColor point1 = new PointColor(474 - 5 + xx, 211 - 5 + yy, 1, 1);
+            PointColor point2 = new PointColor(474 - 5 + xx, 212 - 5 + yy, 1, 1);
             PointColor point3 = new PointColor(398 - 5 + xx, 307 - 5 + yy, 1, 1);
 
             color1 = point1.GetPixelColor();

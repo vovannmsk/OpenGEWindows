@@ -321,7 +321,7 @@ namespace OpenGEWindows
                 case 3223857:     // Nail                        ************************************************************* 
                 case 4143156:     // bulk of Coal                **
                 case 9472397:     // Steel piece                 **
-                case 7187897:     // Mustang ore
+//                case 7187897:     // Mustang ore
                 case 1381654:     // стрелы эксп
                 case 11258069:    // пули эксп
                 case 2569782:     // дробь эксп Metal Shell Ammo

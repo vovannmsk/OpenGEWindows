@@ -339,11 +339,11 @@ namespace OpenGEWindows
             this.pointMoveLeftPanelBegin = new Point(161 - 5 + xx, 130 - 5 + yy);
             this.pointMoveLeftPanelEnd = new Point(161 - 5 + xx, 592 - 5 + yy);
             this.pointButtonEnchance = new Point(630 - 5 + xx, 490 - 5 + yy);
-            this.pointisDef15 = new PointColor(388 - 5 + xx, 247 - 5 + yy, 12400000, 5);  //проверено
-            this.pointisHP1 = new PointColor(355 - 5 + xx, 277 - 5 + yy, 7100000, 5);     //проверено
-            this.pointisHP2 = new PointColor(355 - 5 + xx, 292 - 5 + yy, 7100000, 5);     //проверено
-            this.pointisHP3 = new PointColor(355 - 5 + xx, 307 - 5 + yy, 7100000, 5);     //проверено
-            this.pointisHP4 = new PointColor(355 - 5 + xx, 322 - 5 + yy, 7100000, 5);     //проверено
+            this.pointisDef15 = new PointColor(388 - 5 + xx, 247 - 5 + yy, 12000000, 6);  //проверено
+            this.pointisHP1 = new PointColor(355 - 5 + xx, 277 - 5 + yy, 7000000, 6);     //проверено
+            this.pointisHP2 = new PointColor(355 - 5 + xx, 292 - 5 + yy, 7000000, 6);     //проверено
+            this.pointisHP3 = new PointColor(355 - 5 + xx, 307 - 5 + yy, 7000000, 6);     //проверено
+            this.pointisHP4 = new PointColor(355 - 5 + xx, 322 - 5 + yy, 7000000, 6);     //проверено
 
             this.pointisAtk401 = new PointColor(373 - 5 + xx, 247 - 5 + yy, 13300000, 5);   //проверено
             this.pointisAtk402 = new PointColor(373 - 5 + xx, 256 - 5 + yy, 13700000, 5);   //проверено

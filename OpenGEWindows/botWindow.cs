@@ -687,24 +687,24 @@ namespace OpenGEWindows
             // ============= нажимаем на первого перса (обязательно на точку ниже открытой карты)
             FirstHero();
             pointFirstHero.PressMouseL();
-            Pause(1000);
+            Pause(300);  //1000
             //PressMouseL(databot.triangleX[0], databot.triangleY[0]);
 
             // ============= нажимаем на третьего перса (обязательно на точку ниже открытой карты)
             ThirdHero();
             pointThirdHero.PressMouseL();
-            Pause(1000);
+            Pause(300);
             //PressMouseL(databot.triangleX[2], databot.triangleY[2]);
 
             // ============= нажимаем на второго перса (обязательно на точку ниже открытой карты)
             SecondHero();
             pointSecondHero.PressMouseL();
-            Pause(1000);
+            Pause(300);
             //PressMouseL(databot.triangleX[1], databot.triangleY[1]);
 
             // ============= закрыть карту через Esc =======================
             CloseMap();
-            Pause(1500);
+            //Pause(1500);
         }
 
         /// <summary>

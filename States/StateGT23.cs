@@ -67,7 +67,7 @@ namespace States
         public void run()                // переход к следующему состоянию
         {
             botwindow.PressEscThreeTimes();  //убираем лишние окна
-            botwindow.Pause(1000);
+            //botwindow.Pause(1000);
         }
 
         /// <summary>

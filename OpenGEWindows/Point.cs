@@ -102,7 +102,7 @@ namespace OpenGEWindows
         public void PressMouseWheelUp()
         {
             Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 9);
-            Pause(200);
+            Pause(400);   //было 200. сделал для Лаврово
         }
 
         /// <summary>
