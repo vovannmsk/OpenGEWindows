@@ -24,8 +24,10 @@ namespace OpenGEWindows
 
             #region Pet
 
-            this.pointisSummonPet1 = new PointColor(494 - 5 + xx, 304 - 5 + yy, 13000000, 6);
-            this.pointisSummonPet2 = new PointColor(494 - 5 + xx, 305 - 5 + yy, 13000000, 6);
+            //this.pointisSummonPet1 = new PointColor(494 - 5 + xx, 304 - 5 + yy, 13000000, 6);   //старый вариант
+            //this.pointisSummonPet2 = new PointColor(494 - 5 + xx, 305 - 5 + yy, 13000000, 6);
+            this.pointisSummonPet1 = new PointColor(435 - 5 + xx, 384 - 5 + yy, 7900000, 5);
+            this.pointisSummonPet2 = new PointColor(435 - 5 + xx, 385 - 5 + yy, 7900000, 5);
             this.pointisActivePet1 = new PointColor(493 - 5 + xx, 310 - 5 + yy, 10000000, 7);
             this.pointisActivePet2 = new PointColor(494 - 5 + xx, 309 - 5 + yy, 10000000, 7);
             this.pointisActivePet3 = new PointColor(829 - 5 + xx, 186 - 5 + yy, 12000000, 6); // для проверки периодической еды на месяц                                      //не проверено
@@ -35,13 +37,13 @@ namespace OpenGEWindows
 
             //this.pointisOpenMenuPet1 = new PointColor(474 - 5 + xx, 219 - 5 + yy, 12000000, 6);      //834 - 5, 98 - 5, 12400000, 835 - 5, 98 - 5, 12400000, 5);             //проверено  старый вариант
             //this.pointisOpenMenuPet2 = new PointColor(474 - 5 + xx, 220 - 5 + yy, 12000000, 6);
-            this.pointisOpenMenuPet1 = new PointColor(474 - 5 + xx, 211 - 5 + yy, 8000000, 5);      //834 - 5, 98 - 5, 12400000, 835 - 5, 98 - 5, 12400000, 5);             //проверено
-            this.pointisOpenMenuPet2 = new PointColor(474 - 5 + xx, 212 - 5 + yy, 8500000, 5);
+            this.pointisOpenMenuPet1 = new PointColor(474 - 5 + xx, 211 - 5 + yy, 8030000, 4);
+            this.pointisOpenMenuPet2 = new PointColor(484 - 5 + xx, 212 - 5 + yy, 8540000, 4);
 
-            this.pointCancelSummonPet = new Point(410 - 5 + xx, 390 - 5 + yy);   //750, 265                    //проверено
+            this.pointCancelSummonPet = new Point(465 - 5 + xx, 390 - 5 + yy);   //750, 265                    //проверено
             this.pointSummonPet1 = new Point(540 - 5 + xx, 380 - 5 + yy);                   // 868, 258   //Click Pet
-            this.pointSummonPet2 = new Point(410 - 5 + xx, 360 - 5 + yy);                   // 748, 238   //Click кнопку "Summon"
-            this.pointActivePet = new Point(410 - 5 + xx, 410 - 5 + yy);                   // //Click Button Active Pet                            //проверено
+            this.pointSummonPet2 = new Point(465 - 5 + xx, 360 - 5 + yy);                   // 748, 238   //Click кнопку "Summon"
+            this.pointActivePet = new Point(465 - 5 + xx, 410 - 5 + yy);                   // //Click Button Active Pet                            //проверено
 
             #endregion
         }
