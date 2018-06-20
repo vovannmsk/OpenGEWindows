@@ -277,9 +277,11 @@ namespace States
             //Server server = new ServerAmerica2(botwindow);
 
             //Market market = new MarketSing(botwindow);
+
 //            Pet pet = new PetAmerica2(botwindow);
-            Pet pet = new PetSing(botwindow);
-            MessageBox.Show(" " + pet.isOpenMenuPet());
+            //Pet pet = new PetSing(botwindow);
+            //MessageBox.Show(" " + pet.isOpenMenuPet());
+
             //Otit otit = new OtitSing(botwindow);
             //MessageBox.Show(" " + server.is248Items());
 
@@ -301,11 +303,11 @@ namespace States
             uint color3;
             //int x = 483;
             //int y = 292;
-            //int j = 12;
+            int j = 12;
             //int i = 4;
 
-            PointColor point1 = new PointColor(474 - 5 + xx, 211 - 5 + yy, 1, 1);
-            PointColor point2 = new PointColor(484 - 5 + xx, 212 - 5 + yy, 1, 1);
+            PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy, 1, 1);
+            PointColor point2 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 1, 1);
             PointColor point3 = new PointColor(398 - 5 + xx, 307 - 5 + yy, 1, 1);
 
             color1 = point1.GetPixelColor();
