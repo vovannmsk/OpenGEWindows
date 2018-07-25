@@ -90,8 +90,8 @@ namespace OpenGEWindows
             this.pointisOpenTopMenu82 = new PointColor(554 + xx, 87 + yy, 13420000, 4);
             this.pointisOpenTopMenu91 = new PointColor(601 + xx, 74 + yy, 13420000, 4);      //606 - 5, 79 - 5, 13420000, 607 - 5, 79 - 5, 13420000, 4);            //проверено
             this.pointisOpenTopMenu92 = new PointColor(602 + xx, 74 + yy, 13420000, 4);
-            this.pointisOpenTopMenu121 = new PointColor(502 - 5 + xx, 140 - 5 + yy, 12000000, 6);      //507 - 5, 140 - 5, 12440000, 508 - 5, 140 - 5, 12440000, 4);        //проверено
-            this.pointisOpenTopMenu122 = new PointColor(502 - 5 + xx, 141 - 5 + yy, 12000000, 6);
+            this.pointisOpenTopMenu121 = new PointColor(502 - 5 + xx, 120 - 5 + yy, 12000000, 6);            //проверено
+            this.pointisOpenTopMenu122 = new PointColor(502 - 5 + xx, 121 - 5 + yy, 12000000, 6);
             this.pointisOpenTopMenu131 = new PointColor(404 - 5 + xx, 278 - 5 + yy, 16000000, 6);          //Quest Name                                                         //проверено
             this.pointisOpenTopMenu132 = new PointColor(404 - 5 + xx, 279 - 5 + yy, 16000000, 6);
 //            this.pointGotoEnd = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
@@ -99,8 +99,8 @@ namespace OpenGEWindows
             this.pointLogout = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
             this.pointGotoBarack = new Point(685 - 5 + xx, 380 - 5 + yy);            //в барак
 
-            this.pointTeleport1 = new Point(400 + xx, 193 + yy);   //400, 193               тыкаем в первую строчку телепорта                          //проверено
-            this.pointTeleport2 = new Point(355 + xx, 570 + yy);   //355, 570               тыкаем в кнопку Execute                   //проверено
+            this.pointTeleport1 = new Point(400 + xx, 178 + yy);   //400, 193               тыкаем в первую строчку телепорта                          //проверено
+            this.pointTeleport2 = new Point(355 + xx, 580 + yy);   //             тыкаем в кнопку Execute                   //проверено
 
             #endregion
 
