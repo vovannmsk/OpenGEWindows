@@ -86,6 +86,7 @@ namespace States
         /// <returns> true, если получилось перейти к состоянию GT06 </returns>
         public bool isAllCool()          // получилось ли перейти к следующему состоянию. true, если получилось
         {
+            //bool ff = town.isOpenMap();
             return town.isOpenMap();     // проверяем, открыта ли карта (метод зависит от города)
         }
 

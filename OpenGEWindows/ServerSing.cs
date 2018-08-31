@@ -712,13 +712,13 @@ namespace OpenGEWindows
             iPoint pointNotToShoot = new Point(300 - 5 + xx, 300 - 5 + yy);
             iPoint pointNotToShoot2 = new Point(350 - 5 + xx, 350 - 5 + yy);
             iPoint pointTeleportToTownAltW;
-            if (botwindow.getNomerTeleport() < 11)
+            if (botwindow.getNomerTeleport() < 14)
             {
-                pointTeleportToTownAltW = new Point(801 + xx, 564 + yy + (nomerTeleport - 1) * 17);
+                pointTeleportToTownAltW = new Point(800 + xx, 517 + yy + (nomerTeleport - 1) * 17);
             }
             else
             {
-                pointTeleportToTownAltW = new Point(801 + xx, 564 + yy);   //ребольдо
+                pointTeleportToTownAltW = new Point(800 + xx, 517 + yy);   //ребольдо
             }
 
             // отбегаю в сторону. чтобы бот не стрелял  

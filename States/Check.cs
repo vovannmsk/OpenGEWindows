@@ -306,8 +306,8 @@ namespace States
             //int j = 12;
             //int i = 4;
 
-            PointColor point1 = new PointColor(502 - 5 + xx, 120 - 5 + yy, 1, 1);
-            PointColor point2 = new PointColor(502 - 5 + xx, 121 - 5 + yy, 1, 1);
+            PointColor point1 = new PointColor(487 - 5 + xx, 143 - 5 + yy, 1, 1);
+            PointColor point2 = new PointColor(487 - 5 + xx, 144 - 5 + yy, 1, 1);
             PointColor point3 = new PointColor(398 - 5 + xx, 307 - 5 + yy, 1, 1);
 
             color1 = point1.GetPixelColor();
