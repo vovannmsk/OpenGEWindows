@@ -184,6 +184,8 @@ namespace OpenGEWindows
         protected iPointColor pointisBattleMode2;
         protected iPointColor pointisWork_SightPistolDot1;
         protected iPointColor pointisWork_SightPistolDot2;
+        protected iPointColor pointisWork_UnlimPistolDot1;
+        protected iPointColor pointisWork_UnlimPistolDot2; 
         protected iPointColor pointisWork_ExpCannonDot1;
         protected iPointColor pointisWork_ExpCannonDot2;
 
@@ -240,6 +242,8 @@ namespace OpenGEWindows
         protected iPointColor pointIsTown_VetPistolFirstDot2;
         protected iPointColor pointIsTown_SightPistolFirstDot1;  //проверка по одному пистолету Sight Shot
         protected iPointColor pointIsTown_SightPistolFirstDot2;
+        protected iPointColor pointIsTown_UnlimPistolFirstDot1;  //проверка по двум пистолетам эксп стойка Unlimited Shot
+        protected iPointColor pointIsTown_UnlimPistolFirstDot2;
         protected iPointColor pointIsTown_ExpCannonFirstDot1;   // проверка по эксп пушке Мисы
         protected iPointColor pointIsTown_ExpCannonFirstDot2;
         #endregion
@@ -539,7 +543,7 @@ namespace OpenGEWindows
 
         #endregion
 
-        #region Pet (только точки)
+        #region Pet (перенесено в другой класс Pet)
 
         /// <summary>
         /// выбираем первого пета и нажимаем кнопку Summon в меню пет
@@ -602,7 +606,7 @@ namespace OpenGEWindows
 
         #endregion
 
-        #region Top Menu (только точки)
+        #region Top Menu 
 
         /// <summary>
         /// метод проверяет, открылось ли верхнее меню 
@@ -1072,9 +1076,10 @@ namespace OpenGEWindows
             bool resultExpSword = (pointisWork_ExpSwordDot1.isColor() && pointisWork_ExpSwordDot2.isColor());
             bool resultVetPistol2 = (pointisWork_VetPistolDot1.isColor() && pointisWork_VetPistolDot2.isColor());
             bool resultVetPistol1 = (pointisWork_SightPistolDot1.isColor() && pointisWork_SightPistolDot2.isColor());
+            bool resultExpPistol = (pointisWork_UnlimPistolDot1.isColor() && pointisWork_UnlimPistolDot2.isColor());
             bool resultExpCannon = (pointisWork_ExpCannonDot1.isColor() && pointisWork_ExpCannonDot2.isColor());
 
-            return (resultRifle || resultExpRifle || resultDrob || resultVetDrob || resultExpDrob || resultVetSabre || resultExpSword || resultJainaDrob || resultVetPistol2 || resultVetPistol1 || resultExpCannon);  //проверка только по первому персу
+            return (resultRifle || resultExpRifle || resultDrob || resultVetDrob || resultExpDrob || resultVetSabre || resultExpSword || resultJainaDrob || resultVetPistol2 || resultVetPistol1 || resultExpPistol || resultExpCannon);  //проверка только по первому персу
         }
 
         /// <summary>
@@ -1148,10 +1153,11 @@ namespace OpenGEWindows
             //пистолет
             bool resultVetPistol2 = (pointIsTown_VetPistolFirstDot1.isColor() && pointIsTown_VetPistolFirstDot2.isColor());   //два пистолета
             bool resultVetPistol1 = (pointIsTown_SightPistolFirstDot1.isColor() && pointIsTown_SightPistolFirstDot2.isColor());   //один пистолет
+            bool resultExpPistol = (pointIsTown_UnlimPistolFirstDot1.isColor() && pointIsTown_UnlimPistolFirstDot2.isColor());   //один пистолет
             //пушка Миса
             bool resultExpCannon = (pointIsTown_ExpCannonFirstDot1.isColor() && pointIsTown_ExpCannonFirstDot2.isColor());   //пушка Миса
 
-            return (resultRifle || resultRifleExp || resultShotgun || resultShotgunVet || resultShotgunExp || resultVetSabre || resultExpSword || resultShotgunJaina || resultVetPistol2 || resultVetPistol1 || resultExpCannon);
+            return (resultRifle || resultRifleExp || resultShotgun || resultShotgunVet || resultShotgunExp || resultVetSabre || resultExpSword || resultShotgunJaina || resultVetPistol2 || resultVetPistol1 || resultExpPistol || resultExpCannon);
         }
 
         /// <summary>

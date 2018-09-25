@@ -58,8 +58,10 @@ namespace OpenGEWindows
             #region Logout
 
             this.pointConnect = new PointColor(696 - 5 + xx, 148 - 5 + yy, 7800000, 5);
-            this.pointisLogout1 = new PointColor(565 - 5 + xx, 532 - 5 + yy, 16000000, 6);       // проверено   слово Leave Game буква L
-            this.pointisLogout2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 16000000, 6);       // проверено
+            //this.pointisLogout1 = new PointColor(565 - 5 + xx, 532 - 5 + yy, 16000000, 6);       // проверено   слово Leave Game буква L
+            //this.pointisLogout2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 16000000, 6);       // проверено
+            this.pointisLogout1 = new PointColor(913 - 5 + xx, 698 - 5 + yy, 7792880, 0);       // проверено   слово Ver буква V
+            this.pointisLogout2 = new PointColor(913 - 5 + xx, 699 - 5 + yy, 7726572, 0);       // проверено
 
             #endregion
 
@@ -82,25 +84,23 @@ namespace OpenGEWindows
 
             #region Top Menu
 
-            this.pointisOpenTopMenu21 = new PointColor(328 + xx, 74 + yy, 13420000, 4);      //333 - 5, 79 - 5, 13420000, 334 - 5, 79 - 5, 13420000, 4);            //не проверено
-            this.pointisOpenTopMenu22 = new PointColor(329 + xx, 74 + yy, 13420000, 4);
-            this.pointisOpenTopMenu61 = new PointColor(455 + xx, 87 + yy, 13420000, 4);      //460 - 5, 92 - 5, 13420000, 461 - 5, 92 - 5, 13420000, 4);            //не проверено
-            this.pointisOpenTopMenu62 = new PointColor(456 + xx, 87 + yy, 13420000, 4);
-            this.pointisOpenTopMenu81 = new PointColor(553 + xx, 87 + yy, 13420000, 4);      //558 - 5, 92 - 5, 13420000, 559 - 5, 92 - 5, 13420000, 4);            //не проверено
-            this.pointisOpenTopMenu82 = new PointColor(554 + xx, 87 + yy, 13420000, 4);
-            this.pointisOpenTopMenu91 = new PointColor(601 + xx, 74 + yy, 13420000, 4);      //606 - 5, 79 - 5, 13420000, 607 - 5, 79 - 5, 13420000, 4);            //проверено
-            this.pointisOpenTopMenu92 = new PointColor(602 + xx, 74 + yy, 13420000, 4);
+            this.pointisOpenTopMenu21  = new PointColor(328 + xx, 74 + yy, 13420000, 4);      //333 - 5, 79 - 5, 13420000, 334 - 5, 79 - 5, 13420000, 4);            //не проверено
+            this.pointisOpenTopMenu22  = new PointColor(329 + xx, 74 + yy, 13420000, 4);
+            this.pointisOpenTopMenu61  = new PointColor(455 + xx, 87 + yy, 13420000, 4);      //460 - 5, 92 - 5, 13420000, 461 - 5, 92 - 5, 13420000, 4);            //не проверено
+            this.pointisOpenTopMenu62  = new PointColor(456 + xx, 87 + yy, 13420000, 4);
+            this.pointisOpenTopMenu81  = new PointColor(553 + xx, 87 + yy, 13420000, 4);      //558 - 5, 92 - 5, 13420000, 559 - 5, 92 - 5, 13420000, 4);            //не проверено
+            this.pointisOpenTopMenu82  = new PointColor(554 + xx, 87 + yy, 13420000, 4);
+            this.pointisOpenTopMenu91  = new PointColor(601 + xx, 74 + yy, 13420000, 4);      //606 - 5, 79 - 5, 13420000, 607 - 5, 79 - 5, 13420000, 4);            //проверено
+            this.pointisOpenTopMenu92  = new PointColor(602 + xx, 74 + yy, 13420000, 4);
             this.pointisOpenTopMenu121 = new PointColor(502 - 5 + xx, 120 - 5 + yy, 12000000, 6);            //проверено
             this.pointisOpenTopMenu122 = new PointColor(502 - 5 + xx, 121 - 5 + yy, 12000000, 6);
             this.pointisOpenTopMenu131 = new PointColor(404 - 5 + xx, 278 - 5 + yy, 16000000, 6);          //Quest Name                                                         //проверено
             this.pointisOpenTopMenu132 = new PointColor(404 - 5 + xx, 279 - 5 + yy, 16000000, 6);
-//            this.pointGotoEnd = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
-            this.pointGotoEnd = new Point(685 - 5 + xx, 470 - 5 + yy);            //end
-            this.pointLogout = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
-            this.pointGotoBarack = new Point(685 - 5 + xx, 380 - 5 + yy);            //в барак
-
-            this.pointTeleport1 = new Point(400 + xx, 178 + yy);   //400, 193               тыкаем в первую строчку телепорта                          //проверено
-            this.pointTeleport2 = new Point(355 + xx, 580 + yy);   //             тыкаем в кнопку Execute                   //проверено
+            this.pointGotoEnd =          new Point(685 - 5 + xx, 470 - 5 + yy);            //end
+            this.pointLogout =           new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
+            this.pointGotoBarack =       new Point(685 - 5 + xx, 380 - 5 + yy);            //в барак
+            this.pointTeleport1 =        new Point(400 + xx, 178 + yy);   //400, 193               тыкаем в первую строчку телепорта                          //проверено
+            this.pointTeleport2 =        new Point(355 + xx, 580 + yy);   //             тыкаем в кнопку Execute                   //проверено
 
             #endregion
 
@@ -150,6 +150,8 @@ namespace OpenGEWindows
             this.pointisWork_VetPistolDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 72, 0);
             this.pointisWork_SightPistolDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 5068000, 3);       //точки для проверки вет стойки с пистолетом Sight Shot
             this.pointisWork_SightPistolDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 9350000, 3);
+            this.pointisWork_UnlimPistolDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 15824000, 3);      //проверка по стойке с эксп пистолетом Unlimited Shot
+            this.pointisWork_UnlimPistolDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 15767000, 3);
             //пушка
             this.pointisWork_ExpCannonDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 8756000, 3);       //точки для проверки пушки Мисы
             this.pointisWork_ExpCannonDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 8162000, 3);
@@ -217,6 +219,8 @@ namespace OpenGEWindows
             this.pointIsTown_VetPistolFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 0, 0);
             this.pointIsTown_SightPistolFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 5066000, 3);       //точки для проверки вет стойки с пистолетом Sight Shot
             this.pointIsTown_SightPistolFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 9342000, 3);
+            this.pointIsTown_UnlimPistolFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 15856000, 3);      //точки для проверки эксп стойки с пистолетами Unlimited Shot
+            this.pointIsTown_UnlimPistolFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 15790000, 3);
             //пушка Миса
             this.pointIsTown_ExpCannonFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 8750000, 3);       //точки для проверки пушки Миса
             this.pointIsTown_ExpCannonFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 8158000, 3);
@@ -666,7 +670,9 @@ namespace OpenGEWindows
         public override void TopMenu(int numberOfThePartitionMenu)
         {
             //int[] MenukoordX = { 300, 333, 365, 398, 431, 470, 518, 565, 606, 637, 669, 700, 733 };
-            int[] MenukoordX = { 283, 316, 349, 382, 415, 453, 500, 547, 588, 620, 653, 683, 715, 748 };
+//            int[] MenukoordX = { 283, 316, 349, 382, 415, 453, 500, 547, 588, 620, 653, 683, 715, 748 };
+            int[] MenukoordX = { 305, 339, 371, 402, 435, 475, 522, 570, 610, 642, 675, 705, 738 };
+
             int x = MenukoordX[numberOfThePartitionMenu - 1];
             int y = 55;
             iPoint pointMenu = new Point(x - 5 + xx, y - 5 + yy);
@@ -690,7 +696,9 @@ namespace OpenGEWindows
             //          int[] numberOfPunkt = { 0, 8, 4, 5, 0, 3, 2, 6, 9, 0, 0, 0, 0, 0 };
             int[] numberOfPunkt = { 0, 8, 4, 2, 0, 3, 2, 6, 9, 0, 0, 0, 0, 0 };
             //          int[] MenukoordX = { 300, 333, 365, 398, 431, 470, 518, 565, 606, 637, 669, 700, 733 };
-            int[] MenukoordX = { 283, 316, 349, 382, 415, 453, 500, 547, 588, 620, 653, 683, 715, 748 };
+//          int[] MenukoordX = { 283, 316, 349, 382, 415, 453, 500, 547, 588, 620, 653, 683, 715, 748 };
+            int[] MenukoordX = { 305, 339, 371, 402, 435, 475, 522, 570, 610, 642, 675, 705, 738 };
+
             int[] FirstPunktOfMenuKoordY = { 0, 85, 85, 85, 0, 97, 97, 97, 85, 0, 0, 0, 0 };
 
             if (punkt <= numberOfPunkt[numberOfThePartitionMenu - 1])

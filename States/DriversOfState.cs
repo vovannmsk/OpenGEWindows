@@ -291,8 +291,12 @@ namespace States
                 //StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа - продажа - нет окна)
                 //botwindow.Pause(2000);
                 //StateGotoWork();                                           // по паттерну "Состояние".  14-01       (нет окна - логаут - казарма - город - работа)
-                StateDriverRun(new StateGT01(botwindow), new StateGT12(botwindow));
-                server.Logout();
+
+                //StateDriverRun(new StateGT01(botwindow), new StateGT12(botwindow));
+                //server.Logout();
+                
+                StateDriverRun(new StateGT01(botwindow), new StateGT14(botwindow));
+                
             }
         }
 

@@ -349,6 +349,7 @@ namespace OpenGEWindows
                 case 13748687:    // Ressurection Potion
                 case 15595262:    // Small Stew обед
                 case 3164547:     // Portable Greate обед
+                case 3303027:     // книга со стойкой
                     result = false;
                     break;
                 case 14210771:    // Mega Etr, Io Talt

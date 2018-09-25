@@ -80,7 +80,7 @@ namespace States
                             //if ( (server.isKillHero()) || (!server.isBattleMode()) )                // если убиты не все или стоят не в боевом режиме
                             if  (server.isKillHero())               // если убиты не все 
                             {
-                                botwindow.CureOneWindow2();              // сделать логаут
+                                botwindow.CureOneWindow2();              // отбегаем в сторону и логаут
                             }
                             else
                             {
@@ -126,14 +126,14 @@ namespace States
                                                     }
                                                     else
                                                     {
-                                                        if ((server.isCook()) && (!server.isBattleMode()))   //если повар и он не в боевом режиме
-                                                        {
-                                                            botwindow.ClickSpace();
-                                                        }
-                                                        else
-                                                        {
-                                                            //botwindow.PressMitridat();
-                                                        }
+                                                        //if ((server.isCook()) && (!server.isBattleMode()))   //если повар и он не в боевом режиме
+                                                        //{
+                                                        //    botwindow.ClickSpace();
+                                                        //}
+                                                        //else
+                                                        //{
+                                                        //    //botwindow.PressMitridat();
+                                                        //}
                                                     }
                                                 }
                                             }
@@ -306,8 +306,8 @@ namespace States
             //int j = 12;
             //int i = 4;
 
-            PointColor point1 = new PointColor(487 - 5 + xx, 143 - 5 + yy, 1, 1);
-            PointColor point2 = new PointColor(487 - 5 + xx, 144 - 5 + yy, 1, 1);
+            PointColor point1 = new PointColor(913 - 5 + xx, 698 - 5 + yy, 1, 1);
+            PointColor point2 = new PointColor(913 - 5 + xx, 699 - 5 + yy, 1, 1);
             PointColor point3 = new PointColor(398 - 5 + xx, 307 - 5 + yy, 1, 1);
 
             color1 = point1.GetPixelColor();

@@ -325,7 +325,10 @@ namespace OpenGEWindows
         /// <returns></returns>
         public bool isHwnd()
         {
+            //не учитываются ширина и высота окна
             return SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);  //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
+            
+
             //return SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0040);  //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
         }
 
@@ -400,9 +403,10 @@ namespace OpenGEWindows
         {
             ShowWindow(databot.hwnd, 9);                                       // Разворачивает окно если свернуто  было 9
             SetForegroundWindow(databot.hwnd);                                 // Перемещает окно в верхний список Z порядка     
-            BringWindowToTop(databot.hwnd);                                    // Делает окно активным                              
+            //BringWindowToTop(databot.hwnd);                                    // Делает окно активным и Перемещает окно в верхний список Z порядка     
+
+            //не учитываются ширина и высота окна
             SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001); //перемещаем окно в заданные для него координаты
-            //SetWindowPos(databot.hwnd, 0, databot.x, databot.y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0040); //перемещаем окно в заданные для него координаты
         }
 
         /// <summary>
