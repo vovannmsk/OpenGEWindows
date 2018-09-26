@@ -54,11 +54,11 @@ namespace OpenGEWindows
                     //=================== байрон =======================================
                     town = new America2TownViron(botwindow);
                     break;
-                case 10:
+                case 13:
                     //=================== Кастилия=======================================
                     town = new America2TownCastilia(botwindow);
                     break;
-                case 11:
+                case 14:
                     //=================== лос толдос ======================================
                     town = new America2TownLosToldos(botwindow);
                     break;

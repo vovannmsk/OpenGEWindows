@@ -55,10 +55,14 @@ namespace OpenGEWindows
                     town = new SingTownViron(botwindow);
                     break;
                 case 10:
+                    //=================== байрон =======================================
+                    town = new SingTownArmonia(botwindow);
+                    break;
+                case 13:
                     //=================== Кастилия=======================================
                     town = new SingTownCastilia(botwindow);
                     break;
-                case 11:
+                case 14:
                     //=================== лос толдос ======================================
                     town = new SingTownLosToldos(botwindow);
                     break;
