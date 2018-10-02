@@ -303,10 +303,10 @@ namespace States
             uint color3;
             //int x = 483;
             //int y = 292;
-            //int j = 12;
+            int j = 12;
             //int i = 4;
 
-            PointColor point1 = new PointColor(795 - 5 + xx, 45 - 5 + yy, 1, 1);
+            PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 1, 1);
             PointColor point2 = new PointColor(795 - 5 + xx, 46 - 5 + yy, 1, 1);
             PointColor point3 = new PointColor(398 - 5 + xx, 307 - 5 + yy, 1, 1);
 

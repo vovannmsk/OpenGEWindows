@@ -54,6 +54,10 @@ namespace OpenGEWindows
                     //=================== байрон =======================================
                     town = new America2TownViron(botwindow);
                     break;
+                case 10:
+                    //=================== байрон =======================================
+                    town = new America2TownArmonia(botwindow);
+                    break;
                 case 13:
                     //=================== Кастилия=======================================
                     town = new America2TownCastilia(botwindow);

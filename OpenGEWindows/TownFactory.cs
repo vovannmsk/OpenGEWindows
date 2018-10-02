@@ -11,7 +11,6 @@ namespace OpenGEWindows
     /// </summary>
     public abstract class TownFactory
     {
-
         abstract public Town createTown();
 
     }

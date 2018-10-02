@@ -500,7 +500,7 @@ namespace OpenGEWindows
         /// </summary>
         public override void TeleportToTownAltW(int nomerTeleport)
         {
-            iPoint pointTeleportToTownAltW = new Point(801 + xx, 564 + yy + (nomerTeleport - 1) * 17);
+            iPoint pointTeleportToTownAltW = new Point(806 - 5 + xx, 517 - 5 + yy + (nomerTeleport - 1) * 17);
 
             TopMenu(6, 1);
             Pause(1000);

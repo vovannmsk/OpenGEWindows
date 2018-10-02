@@ -350,6 +350,9 @@ namespace OpenGEWindows
                 case 15595262:    // Small Stew обед
                 case 3164547:     // Portable Greate обед
                 case 3303027:     // книга со стойкой
+                case 11906207:    // Crest of Sacred
+                case 5590609:     // Crest of Black Knight
+                case 15526903:    // Elementium
                     result = false;
                     break;
                 case 14210771:    // Mega Etr, Io Talt
