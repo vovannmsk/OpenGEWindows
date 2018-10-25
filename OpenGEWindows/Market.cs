@@ -353,6 +353,8 @@ namespace OpenGEWindows
                 case 11906207:    // Crest of Sacred
                 case 5590609:     // Crest of Black Knight
                 case 15526903:    // Elementium
+                case 1835187:     // экспертные чипы
+                case 14146476:    // solarion
                     result = false;
                     break;
                 case 14210771:    // Mega Etr, Io Talt

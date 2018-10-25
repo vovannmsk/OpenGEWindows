@@ -30,13 +30,8 @@ namespace OpenGEWindows
             this.pointisSummonPet2 = new PointColor(435 - 5 + xx, 385 - 5 + yy, 7900000, 5);
             this.pointisActivePet1 = new PointColor(493 - 5 + xx, 310 - 5 + yy, 10000000, 7);
             this.pointisActivePet2 = new PointColor(494 - 5 + xx, 309 - 5 + yy, 10000000, 7);
-            this.pointisActivePet3 = new PointColor(829 - 5 + xx, 186 - 5 + yy, 12000000, 6); // для проверки периодической еды на месяц                                      //не проверено
+            this.pointisActivePet3 = new PointColor(829 - 5 + xx, 186 - 5 + yy, 12000000, 6); // для проверки периодической еды на месяц                                     
             this.pointisActivePet4 = new PointColor(829 - 5 + xx, 185 - 5 + yy, 12000000, 6); // для проверки периодической еды на месяц
-            //this.pointisActivePet5 = new PointColor(517 - 5 + xx, 302 - 5 + yy, 12900000, 5);                //проверено
-            //this.pointisActivePet6 = new PointColor(495 - 5 + xx, 310 - 5 + yy, 12400000, 5);                //проверено
-
-            //this.pointisOpenMenuPet1 = new PointColor(474 - 5 + xx, 219 - 5 + yy, 12000000, 6);      //834 - 5, 98 - 5, 12400000, 835 - 5, 98 - 5, 12400000, 5);             //проверено  старый вариант
-            //this.pointisOpenMenuPet2 = new PointColor(474 - 5 + xx, 220 - 5 + yy, 12000000, 6);
             this.pointisOpenMenuPet1 = new PointColor(474 - 5 + xx, 211 - 5 + yy, 8030000, 4);
             this.pointisOpenMenuPet2 = new PointColor(484 - 5 + xx, 212 - 5 + yy, 8540000, 4);
 

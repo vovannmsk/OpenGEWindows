@@ -60,8 +60,8 @@ namespace OpenGEWindows
             this.pointConnect = new PointColor(696 - 5 + xx, 148 - 5 + yy, 7800000, 5);
             //this.pointisLogout1 = new PointColor(565 - 5 + xx, 532 - 5 + yy, 16000000, 6);       // проверено   слово Leave Game буква L
             //this.pointisLogout2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 16000000, 6);       // проверено
-            this.pointisLogout1 = new PointColor(913 - 5 + xx, 698 - 5 + yy, 7792880, 0);       // проверено   слово Ver буква V
-            this.pointisLogout2 = new PointColor(913 - 5 + xx, 699 - 5 + yy, 7726572, 0);       // проверено
+            this.pointisLogout1 = new PointColor(913 - 5 + xx, 698 - 5 + yy, 7793136, 0);       // проверено   слово Ver буква V
+            this.pointisLogout2 = new PointColor(913 - 5 + xx, 699 - 5 + yy, 7726828, 0);       // проверено
 
             #endregion
 
@@ -235,7 +235,7 @@ namespace OpenGEWindows
             this.pointisBarack2 = new PointColor(65 - 5 + xx, 154 - 5 + yy, 2400000, 5);            // проверено
             this.pointisBarack3 = new PointColor(36 - 5 + xx, 56 - 5 + yy, 15500000, 5);             //проверено   Barrack Mode
             this.pointisBarack4 = new PointColor(36 - 5 + xx, 57 - 5 + yy, 15100000, 5);             //проверено
-            this.pointTeamSelection1 = new Point(140 - 5 + xx, 470 - 5 + yy);                   //проверено
+            this.pointTeamSelection1 = new Point(140 - 5 + xx, 496 - 5 + yy);                   //проверено
             this.pointTeamSelection2 = new Point(70 - 5 + xx, 355 - 5 + yy);                   //проверено
             this.pointTeamSelection3 = new Point(50 - 5 + xx, 620 - 5 + yy);                   //проверено
             this.pointButtonLogoutFromBarack = new Point(785 - 5 + xx, 700 - 5 + yy);               //кнопка логаут в казарме

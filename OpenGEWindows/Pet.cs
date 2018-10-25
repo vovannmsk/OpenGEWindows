@@ -73,7 +73,8 @@ namespace OpenGEWindows
         /// <returns></returns>
         public bool isActivePet()
         {
-            return ((pointisActivePet1.isColor() && pointisActivePet2.isColor()) || (pointisActivePet3.isColor() && pointisActivePet4.isColor()));
+           // return ((pointisActivePet1.isColor() && pointisActivePet2.isColor()) || (pointisActivePet3.isColor() && pointisActivePet4.isColor())); //две точки от обычной еды и две точки от периодической еды на месяц
+            return ((pointisActivePet1.isColor() && pointisActivePet2.isColor())); //две точки от обычной еды 
         }
 
         /// <summary>

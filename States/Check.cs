@@ -90,7 +90,7 @@ namespace States
                                 }
                                 else
                                 {
-                                    if ((server.isBoxOverflow()) && (botwindow.getNomerTeleport() > 0))  // если карман переполнился и нужно продавать(телепорт = 0, тогда не нужно продавать)
+                                    if ((server.isBoxOverflow()) && (botwindow.getNomerTeleport() > 0))  // если карман переполнился и нужно продавать (телепорт = 0, тогда не нужно продавать)
                                     {
                                         if (server.is248Items())
                                         {
@@ -109,7 +109,7 @@ namespace States
                                         {
                                             if (server.isTown())          //если стоят в городе
                                             {
-                                                driver.StateExitFromTown();
+                                                driver.StateExitFromTown();          // 12-14 (GotoEnd)
                                                 botwindow.PressEscThreeTimes();
                                                 Pause(2000);
                                                 driver.StateGotoWork();                                    // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
@@ -303,11 +303,13 @@ namespace States
             uint color3;
             //int x = 483;
             //int y = 292;
-            int j = 12;
             //int i = 4;
 
-            PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 1, 1);
-            PointColor point2 = new PointColor(795 - 5 + xx, 46 - 5 + yy, 1, 1);
+            //int j = 12;
+            //PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине
+
+            PointColor point1 = new PointColor(913 - 5 + xx, 698 - 5 + yy, 1, 1);       
+            PointColor point2 = new PointColor(913 - 5 + xx, 699 - 5 + yy, 1, 1);
             PointColor point3 = new PointColor(398 - 5 + xx, 307 - 5 + yy, 1, 1);
 
             color1 = point1.GetPixelColor();
