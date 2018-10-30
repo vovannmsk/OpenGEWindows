@@ -117,6 +117,7 @@
     <Compile Include="America2TownViron.cs" />
     <Compile Include="America2TownArmonia.cs" />
     <Compile Include="SingTownArmonia.cs" />
+    <Compile Include="SingTownErrac.cs" />
     <Compile Include="SingTownViron.cs" />
     <Compile Include="SingTownUstiar.cs" />
     <Compile Include="SingTownCastilia.cs" />

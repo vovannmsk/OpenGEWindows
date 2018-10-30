@@ -50,6 +50,10 @@ namespace OpenGEWindows
                     //=================== багама =======================================
                     town = new SingTownBagama(botwindow);
                     break;
+                case 6:
+                    //=================== Эррак =======================================
+                    town = new SingTownErrac(botwindow);
+                    break;
                 case 7:
                     //=================== байрон =======================================
                     town = new SingTownViron(botwindow);

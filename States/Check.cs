@@ -308,8 +308,8 @@ namespace States
             //int j = 12;
             //PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине
 
-            PointColor point1 = new PointColor(913 - 5 + xx, 698 - 5 + yy, 1, 1);       
-            PointColor point2 = new PointColor(913 - 5 + xx, 699 - 5 + yy, 1, 1);
+            PointColor point1 = new PointColor(873 - 5 + xx, 41 - 5 + yy, 1, 1);
+            PointColor point2 = new PointColor(874 - 5 + xx, 41 - 5 + yy, 1, 1);
             PointColor point3 = new PointColor(398 - 5 + xx, 307 - 5 + yy, 1, 1);
 
             color1 = point1.GetPixelColor();

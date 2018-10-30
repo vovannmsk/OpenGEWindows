@@ -64,8 +64,8 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.GoToEnd();
-            //server.Logout();
+            //server.GoToEnd();
+            server.Logout();
             botwindow.Pause(5000);
         }
 
@@ -88,8 +88,8 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return !botwindow.isHwnd();   // проверяет, есть ли окно или выгружено (если нет такого hwnd, то значит окно выгружено)
-            //return server.isLogout();      // проверяем вышло ли окно в логаут
+            //return !botwindow.isHwnd();   // проверяет, есть ли окно или выгружено (если нет такого hwnd, то значит окно выгружено)
+            return server.isLogout();      // проверяем вышло ли окно в логаут
         }
 
         /// <summary>
