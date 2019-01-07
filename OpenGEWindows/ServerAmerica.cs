@@ -199,6 +199,14 @@ namespace OpenGEWindows
             this.pointCure2 = new Point(215 - 5 + 255 + xx, 705 - 5 + yy);                         //бутылка лечения под буквой J
             this.pointCure3 = new Point(215 - 5 + 255 * 2 + xx, 705 - 5 + yy);                     //бутылка лечения под буквой M
             this.pointMana1 = new Point(215 - 5 + 30 + xx, 705 - 5 + yy);                          //бутылка маны под буквой I
+            //алхимия
+            this.pointisAlchemy1 = new PointColor(513 - 5 + xx, 565 - 5 + yy, 7925494, 0);
+            this.pointisAlchemy2 = new PointColor(513 - 5 + xx, 566 - 5 + yy, 7925494, 0);
+            this.pointAlchemy = new Point(522 - 5 + xx, 521 - 5 + yy);                                           //кнопка "Start Alchemy"
+            this.pointisInventoryFull1 = new PointColor(647 - 130 + xx, 559 - 130 + yy, 7727344, 0);             //переполнение инвентаря при алхимии
+            this.pointisInventoryFull2 = new PointColor(647 - 130 + xx, 560 - 130 + yy, 7727344, 0);
+            this.pointisOutOfIngredient1_1 = new PointColor(570 - 130 + xx, 645 - 130 + yy, 1973790, 0);             //закончился ОДИН ИЗ ингредиентов
+            this.pointisOutOfIngredient1_2 = new PointColor(570 - 130 + xx, 646 - 130 + yy, 1973790, 0);             //
 
             #endregion
 

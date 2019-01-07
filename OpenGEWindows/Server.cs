@@ -246,6 +246,19 @@ namespace OpenGEWindows
         protected iPointColor pointIsTown_UnlimPistolFirstDot2;
         protected iPointColor pointIsTown_ExpCannonFirstDot1;   // проверка по эксп пушке Мисы
         protected iPointColor pointIsTown_ExpCannonFirstDot2;
+        protected iPointColor pointisAlchemy1;
+        protected iPointColor pointisAlchemy2;
+        protected iPoint pointAlchemy;
+        protected iPointColor pointisInventoryFull1;
+        protected iPointColor pointisInventoryFull2;
+        protected iPointColor pointisOutOfIngredient1_1;
+        protected iPointColor pointisOutOfIngredient1_2;
+        protected iPointColor pointisOutOfIngredient2_1;
+        protected iPointColor pointisOutOfIngredient2_2;
+        protected iPointColor pointisOutOfIngredient3_1;
+        protected iPointColor pointisOutOfIngredient3_2;
+        
+
         #endregion
 
         #region Barack
@@ -1112,6 +1125,42 @@ namespace OpenGEWindows
         #endregion
 
         #region inTown
+
+        /// <summary>
+        /// проверяем, закончились ли ингредиенты для алхимии (проверяем по две точки на каждую из трех ячеек алхимии)
+        /// </summary>
+        /// <returns></returns>
+        public bool isOutOfIngredients()
+        {
+            return (  pointisOutOfIngredient1_1.isColor() && pointisOutOfIngredient1_2.isColor()  );
+        }
+
+        /// <summary>
+        /// проверяет, заполнился ли инвентарь при производстве на алхимическом столе
+        /// </summary>
+        /// <returns></returns>
+        public bool isInventoryFull()
+        {
+            return (pointisInventoryFull1.isColor() && pointisInventoryFull2.isColor());
+        }
+        /// <summary>
+        /// нажимаем кнопку "Start Alchemy" на алхимическом столе
+        /// </summary>
+        /// <returns></returns>
+        public void PressButtonAlchemy()
+        {
+            pointAlchemy.PressMouseL();
+        }
+
+
+        /// <summary>
+        /// проверяем, открыт ли алхимический стол
+        /// </summary>
+        /// <returns></returns>
+        public bool isAlchemy()
+        {
+            return (pointisAlchemy1.isColor() && pointisAlchemy2.isColor());
+        }
 
         /// <summary>
         /// проверяем, открыто ли окно с подарочными окнами

@@ -23,7 +23,7 @@ namespace Main
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "30-10-2018";
+        public static String DataVersion = "07-01-2019";
         public static int numberOfAcc = KolvoAkk();
 
         /// <summary>
@@ -684,6 +684,34 @@ namespace Main
         }
 
         #endregion
+
+
+        private void alchemy_Click(object sender, EventArgs e)
+        {
+            Thread myAlchemy = new Thread(funcAlchemy);
+            myAlchemy.Start();
+
+        }
+        /// <summary>
+        /// метод задает функционал для потока, организуемого кнопкой цвета "Коралл"
+        /// </summary>
+
+        private void funcAlchemy()
+        {
+            for (int j = 1; j <= numberOfAcc; j++)
+            {
+                Check check = new Check(j);
+                if (check.isActive())            //надо ли грузить окно (по умолчанию)
+                {
+                    check.ReOpenWindow();
+                    check.Pause(1000);
+                    DriversOfState driver = new DriversOfState(j);
+                    driver.StateAlchemy();             // продаёт всех ботов, которые стоят в данный момент в магазине (через движок состояний)
+                }
+            }
+
+        }
+
 
     }// END class MainForm 
 }// END namespace OpenGEWindows

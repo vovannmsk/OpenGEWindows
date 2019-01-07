@@ -50,6 +50,7 @@
             this.numberOfAccouts = new System.Windows.Forms.NumericUpDown();
             this.GoldenEggFruit = new System.Windows.Forms.Button();
             this.undressing = new System.Windows.Forms.Button();
+            this.alchemy = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfAccouts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,7 +133,7 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.LightCoral;
-            this.button5.Location = new System.Drawing.Point(10, 10);
+            this.button5.Location = new System.Drawing.Point(10, 419);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(170, 34);
             this.button5.TabIndex = 48;
@@ -201,7 +202,7 @@
             // 
             this.TransferVis.BackColor = System.Drawing.Color.Green;
             this.TransferVis.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.TransferVis.Location = new System.Drawing.Point(10, 130);
+            this.TransferVis.Location = new System.Drawing.Point(190, 418);
             this.TransferVis.Name = "TransferVis";
             this.TransferVis.Size = new System.Drawing.Size(170, 35);
             this.TransferVis.TabIndex = 54;
@@ -212,7 +213,7 @@
             // PureOtite
             // 
             this.PureOtite.BackColor = System.Drawing.Color.Silver;
-            this.PureOtite.Location = new System.Drawing.Point(190, 131);
+            this.PureOtite.Location = new System.Drawing.Point(10, 379);
             this.PureOtite.Name = "PureOtite";
             this.PureOtite.Size = new System.Drawing.Size(170, 34);
             this.PureOtite.TabIndex = 55;
@@ -224,7 +225,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 179);
+            this.label1.Location = new System.Drawing.Point(12, 140);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 20);
             this.label1.TabIndex = 56;
@@ -233,7 +234,7 @@
             // numberOfAccouts
             // 
             this.numberOfAccouts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numberOfAccouts.Location = new System.Drawing.Point(137, 177);
+            this.numberOfAccouts.Location = new System.Drawing.Point(137, 138);
             this.numberOfAccouts.Name = "numberOfAccouts";
             this.numberOfAccouts.Size = new System.Drawing.Size(43, 26);
             this.numberOfAccouts.TabIndex = 57;
@@ -254,7 +255,7 @@
             // undressing
             // 
             this.undressing.BackColor = System.Drawing.Color.Peru;
-            this.undressing.Location = new System.Drawing.Point(190, 173);
+            this.undressing.Location = new System.Drawing.Point(10, 459);
             this.undressing.Name = "undressing";
             this.undressing.Size = new System.Drawing.Size(170, 35);
             this.undressing.TabIndex = 59;
@@ -262,12 +263,24 @@
             this.undressing.UseVisualStyleBackColor = false;
             this.undressing.Click += new System.EventHandler(this.undressing_Click);
             // 
+            // alchemy
+            // 
+            this.alchemy.BackColor = System.Drawing.Color.Coral;
+            this.alchemy.Location = new System.Drawing.Point(10, 9);
+            this.alchemy.Name = "alchemy";
+            this.alchemy.Size = new System.Drawing.Size(170, 35);
+            this.alchemy.TabIndex = 60;
+            this.alchemy.Text = "АЛХИМИЯ";
+            this.alchemy.UseVisualStyleBackColor = false;
+            this.alchemy.Click += new System.EventHandler(this.alchemy_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(369, 217);
+            this.ClientSize = new System.Drawing.Size(369, 176);
+            this.Controls.Add(this.alchemy);
             this.Controls.Add(this.undressing);
             this.Controls.Add(this.GoldenEggFruit);
             this.Controls.Add(this.numberOfAccouts);
@@ -323,6 +336,7 @@
         private System.Windows.Forms.NumericUpDown numberOfAccouts;
         private System.Windows.Forms.Button GoldenEggFruit;
         private System.Windows.Forms.Button undressing;
+        private System.Windows.Forms.Button alchemy;
     
     }
 }

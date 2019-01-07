@@ -54,9 +54,13 @@ namespace OpenGEWindows
                     //=================== Эррак =======================================
                     town = new SingTownErrac(botwindow);
                     break;
-                case 7:
+                case 8:
                     //=================== байрон =======================================
                     town = new SingTownViron(botwindow);
+                    break;
+                case 9:
+                    //=================== Челси =======================================
+                    town = new SingTownKielce(botwindow);
                     break;
                 case 10:
                     //=================== байрон =======================================

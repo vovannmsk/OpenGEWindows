@@ -8,19 +8,19 @@ using OpenGEWindows;
 
 namespace States
 {
-    public class StateGT92 : IState
+    public class StateGT93 : IState
     {
         private botWindow botwindow;
         private Server server;
         private Otit otit;
         private int tekStateInt;
 
-        public StateGT92()
+        public StateGT93()
         {
 
         }
 
-        public StateGT92(botWindow botwindow)   //, GotoTrade gototrade)
+        public StateGT93(botWindow botwindow)   
         {
             this.botwindow = botwindow;
             ServerFactory serverFactory = new ServerFactory(botwindow);
@@ -28,7 +28,7 @@ namespace States
             OtitFactory otitFactory = new OtitFactory(botwindow);
             this.otit = otitFactory.createOtit();
 
-            this.tekStateInt = 92;
+            this.tekStateInt = 93;
         }
 
 
@@ -37,8 +37,6 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.PressButtonAlchemy();
-            botwindow.Pause(500);
         }
 
         /// <summary>
@@ -46,7 +44,6 @@ namespace States
         /// </summary>
         public void elseRun()
         {
-            
         }
 
         /// <summary>
@@ -55,10 +52,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return (  server.isInventoryFull() || 
-                      server.isOutOfIngredients() || 
-                     !server.isAlchemy()  ) ;  //выходим из процесса алхимичивания, если переполнился инвентарь или закончился один из ингредиентов 
-                                                                                                            //или пользователь вышел из режима алхимииалх
+            return true;
         }
 
         /// <summary>
@@ -76,7 +70,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGT92(botwindow);
+            return new StateGT93(botwindow);
         }
 
         #region стандартные служебные методы для паттерна Состояния

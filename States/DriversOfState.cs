@@ -15,6 +15,7 @@ namespace States
         private botWindow botwindow;
         private Server server;
         private Otit otit;
+        private Check check;
 
         public DriversOfState()
         { 
@@ -28,12 +29,30 @@ namespace States
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             OtitFactory otitFactory = new OtitFactory(botwindow);
             this.otit = otitFactory.createOtit();
+//            this.check = new Check(numberOfWindow);
 
         }
 
 
 
+
         #region движки для запуска перехода по состояниям
+
+        /// <summary>
+        ///                // коралл кнопка (алхимия)
+        /// </summary>
+        public void StateAlchemy()
+        {
+            botwindow.Pause(300);
+            if (server.isAlchemy())
+            {
+                StateDriverRun(new StateGT92(botwindow), new StateGT93(botwindow));
+
+            }
+        }
+
+
+
 
         /// <summary>
         /// идем из состояния логаут до старого человека в Лос Толдосе

@@ -66,7 +66,7 @@ namespace States
         {
             //server.GoToEnd();
             server.Logout();
-            botwindow.Pause(5000);
+            botwindow.Pause(8000);
         }
 
         /// <summary>

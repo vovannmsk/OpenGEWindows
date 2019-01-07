@@ -50,12 +50,20 @@ namespace OpenGEWindows
                     //=================== багама =======================================
                     town = new America2TownBagama(botwindow);
                     break;
-                case 7:
+                case 6:
+                    //=================== Эррак =======================================
+                    town = new America2TownErrac(botwindow);
+                    break;
+                case 8:
                     //=================== байрон =======================================
                     town = new America2TownViron(botwindow);
                     break;
+                case 9:
+                    //=================== Челси =======================================
+                    town = new America2TownKielce(botwindow);
+                    break;
                 case 10:
-                    //=================== байрон =======================================
+                    //=================== Армония =======================================
                     town = new America2TownArmonia(botwindow);
                     break;
                 case 13:

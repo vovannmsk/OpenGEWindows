@@ -224,6 +224,14 @@ namespace OpenGEWindows
             //пушка Миса
             this.pointIsTown_ExpCannonFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 8750000, 3);       //точки для проверки пушки Миса
             this.pointIsTown_ExpCannonFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 8158000, 3);
+            //алхимия
+            this.pointisAlchemy1 = new PointColor(513 - 5 + xx, 565 - 5 + yy, 7925494, 0);
+            this.pointisAlchemy2 = new PointColor(513 - 5 + xx, 566 - 5 + yy, 7925494, 0);
+            this.pointAlchemy = new Point(522 - 5 + xx, 521 - 5 + yy);                                           //кнопка "Start Alchemy"
+            this.pointisInventoryFull1 = new PointColor(647 - 130 + xx, 559 - 130 + yy, 7727344, 0);             //переполнение инвентаря при алхимии
+            this.pointisInventoryFull2 = new PointColor(647 - 130 + xx, 560 - 130 + yy, 7727344, 0);
+            this.pointisOutOfIngredient1_1 = new PointColor(570 - 130 + xx, 645 - 130 + yy, 1973790, 0);             //закончился ОДИН ИЗ ингредиентов
+            this.pointisOutOfIngredient1_2 = new PointColor(570 - 130 + xx, 646 - 130 + yy, 1973790, 0);             //
 
             #endregion
 
@@ -234,7 +242,7 @@ namespace OpenGEWindows
             this.pointisBarack3 = new PointColor(81 - 5 + xx, 63 - 5 + yy, 15300000, 5);       //проверено
             this.pointisBarack4 = new PointColor(81 - 5 + xx, 64 - 5 + yy, 13700000, 5);
             this.pointButtonLogoutFromBarack = new Point(955 - 5 + xx, 700 - 5 + yy);               //кнопка логаут в казарме
-            this.pointTeamSelection1 = new Point(140 - 5 + xx, 470 - 5 + yy);                   //проверено
+            this.pointTeamSelection1 = new Point(140 - 5 + xx, 500 - 5 + yy);                   //проверено
             this.pointTeamSelection2 = new Point(70 - 5 + xx, 355 - 5 + yy);                   //проверено
             this.pointTeamSelection3 = new Point(50 - 5 + xx, 620 - 5 + yy);                   //проверено
             this.sdvigY = 15;
@@ -402,7 +410,8 @@ namespace OpenGEWindows
             while (HWND == (UIntPtr)0)
             {
                 Pause(500);
-                HWND = FindWindow("Granado Espada", "Granado Espada Online");
+//                HWND = FindWindow("Granado Espada", "Granado Espada Online");
+                HWND = FindWindow("Granado Espada", "Granado Espada Europe");
 
                 count++; if (count > 5) return (UIntPtr)0;
             }

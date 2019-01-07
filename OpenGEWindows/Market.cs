@@ -322,9 +322,13 @@ namespace OpenGEWindows
                 case 4143156:     // bulk of Coal                **
 //                case 9472397:     // Steel piece                 **
 //                case 7187897:     // Mustang ore
+                //=================== пули ===========================
                 case 1381654:     // стрелы эксп
-                case 11258069:    // пули эксп
+                case 11258069:    // пули эксп Steel Bullet
                 case 2569782:     // дробь эксп Metal Shell Ammo
+                case 1843234:     // Steel Bolt
+                case 14404589:    // Large Calliber Bullet
+                //=================== пули конец =====================
                 case 5137276:     // сундук деревянный как у сфер древней звезды
 //                case 3031912:     // Reinforced Lether
                 case 13667914:    // 600 SP
@@ -355,6 +359,14 @@ namespace OpenGEWindows
                 case 15526903:    // Elementium
                 case 1835187:     // экспертные чипы
                 case 14146476:    // solarion
+                case 16251642:    // growth booster
+                case 10992324:    // Шахматы 
+                case 7830683:     // Кожа улитки
+                case 5205119:     // Токен 1
+                case 6848915:     // Токен 2
+                case 12308958:    // Токен 3
+                case 13361389:    // Токен 4
+                case 4345686:     // Токен Экстра
                     result = false;
                     break;
                 case 14210771:    // Mega Etr, Io Talt

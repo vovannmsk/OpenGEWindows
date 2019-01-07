@@ -80,6 +80,11 @@ namespace States
             botwindow.SecondHero();
             botwindow.Pause(1500);
 
+            // ============= Удаляем камеру на максимальную высоту =================================================================
+            town.MaxHeight();
+            botwindow.Pause(1000);
+
+
             // ================= открывает городской телепорт (ALT + F3) =================================
             server.OpenTownTeleportForState();                                                                                  
         }

@@ -60,8 +60,8 @@ namespace OpenGEWindows
             this.pointConnect = new PointColor(696 - 5 + xx, 148 - 5 + yy, 7800000, 5);
             //this.pointisLogout1 = new PointColor(565 - 5 + xx, 532 - 5 + yy, 16000000, 6);       // проверено   слово Leave Game буква L
             //this.pointisLogout2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 16000000, 6);       // проверено
-            this.pointisLogout1 = new PointColor(913 - 5 + xx, 698 - 5 + yy, 7793136, 0);       // проверено   слово Ver буква V
-            this.pointisLogout2 = new PointColor(913 - 5 + xx, 699 - 5 + yy, 7726828, 0);       // проверено
+            this.pointisLogout1 = new PointColor(913 - 5 + xx, 698 - 5 + yy, 7792880, 0);       // проверено   слово Ver буква V
+            this.pointisLogout2 = new PointColor(913 - 5 + xx, 699 - 5 + yy, 7726572, 0);       // проверено
 
             #endregion
 
@@ -225,8 +225,16 @@ namespace OpenGEWindows
             this.pointIsTown_UnlimPistolFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 15856000, 3);      //точки для проверки эксп стойки с пистолетами Unlimited Shot
             this.pointIsTown_UnlimPistolFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 15790000, 3);
             //пушка Миса
-            this.pointIsTown_ExpCannonFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 8750000, 3);       //точки для проверки пушки Миса
+            this.pointIsTown_ExpCannonFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 8750000, 3);         //точки для проверки пушки Миса
             this.pointIsTown_ExpCannonFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 8158000, 3);
+            //алхимия
+            this.pointisAlchemy1 = new PointColor(513 - 5 + xx, 565 - 5 + yy, 7925494, 0);
+            this.pointisAlchemy2 = new PointColor(513 - 5 + xx, 566 - 5 + yy, 7925494, 0);
+            this.pointAlchemy = new Point(522 - 5 + xx, 521 - 5 + yy);                                           //кнопка "Start Alchemy"
+            this.pointisInventoryFull1 = new PointColor(647 - 130 + xx, 559 - 130 + yy, 7727344, 0);             //переполнение инвентаря при алхимии
+            this.pointisInventoryFull2 = new PointColor(647 - 130 + xx, 560 - 130 + yy, 7727344, 0);
+            this.pointisOutOfIngredient1_1 = new PointColor(570 - 130 + xx, 645 - 130 + yy, 1973790, 0);             //закончился ОДИН ИЗ ингредиентов
+            this.pointisOutOfIngredient1_2 = new PointColor(570 - 130 + xx, 646 - 130 + yy, 1973790, 0);             //
 
             #endregion
 
