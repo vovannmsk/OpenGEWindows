@@ -270,7 +270,7 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            int i = 6;   //номер проверяемого окна
+            int i = 1;   //номер проверяемого окна
 
             int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 875, 850, 825, 800, 775, 750, 875 };
             int[] koordY = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 5, 30, 55, 80, 105, 130, 5 };
@@ -312,8 +312,8 @@ namespace States
             //int j = 12;
             //PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине
 
-            PointColor point1 = new PointColor(600 - 5 + xx, 30 - 5 + yy, 7000000, 6);
-            PointColor point2 = new PointColor(601 - 5 + xx, 30 - 5 + yy, 7000000, 6);
+            PointColor point1 = new PointColor(856 - 5 + xx, 41 - 5 + yy, 7000000, 6);
+            PointColor point2 = new PointColor(857 - 5 + xx, 41 - 5 + yy, 7000000, 6);
             PointColor point3 = new PointColor(913 - 5 + xx, 699 - 5 + yy, 1, 1);
 
             color1 = point1.GetPixelColor();

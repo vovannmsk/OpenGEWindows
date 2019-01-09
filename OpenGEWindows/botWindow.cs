@@ -717,9 +717,11 @@ namespace OpenGEWindows
         public void FirstHero()
         {
             iPoint pointFirstHeroL = new Point(187 - 5 + databot.x, 640 - 5 + databot.y);    // 182, 635
-            iPoint pointFirstHeroR = new Point(187 - 5 + databot.x, 669 - 5 + databot.y);    // 182, 664
-            pointFirstHeroR.PressMouseR();
-            pointFirstHeroR.PressMouseR();
+            iPoint pointFirstHeroR = new Point(177 - 5 + databot.x, 669 - 5 + databot.y);    // 182, 664
+            //pointFirstHeroR.PressMouseR();
+            //pointFirstHeroR.PressMouseR();
+            pointFirstHeroR.DoubleClickL();  //вместо двух строк поставил одну
+
             pointFirstHeroL.PressMouseL();
         }
 
@@ -730,8 +732,10 @@ namespace OpenGEWindows
         {
             iPoint pointSecondHeroL = new Point(425 - 5 + databot.x, 640 - 5 + databot.y);    // 420, 635
             iPoint pointSecondHeroR = new Point(425 - 5 + databot.x, 669 - 5 + databot.y);    // 420, 664
-            pointSecondHeroR.PressMouseR();
-            pointSecondHeroR.PressMouseR();
+            //pointSecondHeroR.PressMouseR();
+            //pointSecondHeroR.PressMouseR();
+            pointSecondHeroR.DoubleClickL();  //вместо двух строк поставил одну
+
             pointSecondHeroL.PressMouseL();
         }
 
@@ -742,8 +746,9 @@ namespace OpenGEWindows
         {
             iPoint pointThirdHeroL = new Point(675 - 5 + databot.x, 640 - 5 + databot.y);    // 670, 635
             iPoint pointThirdHeroR = new Point(675 - 5 + databot.x, 669 - 5 + databot.y);    // 670, 664
-            pointThirdHeroR.PressMouseR();
-            pointThirdHeroR.PressMouseR();
+            //pointThirdHeroR.PressMouseR();
+            //pointThirdHeroR.PressMouseR();
+            pointThirdHeroR.DoubleClickL();  //вместо двух строк поставил одну
             pointThirdHeroL.PressMouseL();
         }
 
