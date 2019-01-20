@@ -8,30 +8,25 @@ using OpenGEWindows;
 
 namespace States
 {
-    public class StateGT05 : IState
+    public class StateGT108 : IState
     {
         private botWindow botwindow;
         private Server server;
-        private Town town;
         private ServerFactory serverFactory;
-//        GotoTrade gototrade;
         private int tekStateInt;
 
-        public StateGT05()
+        public StateGT108()
         {
 
         }
 
-        public StateGT05(botWindow botwindow)
+        public StateGT108(botWindow botwindow)   
         {
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            this.town = server.getTown();
-//            this.gototrade = gototrade;
-            this.tekStateInt = 5;
+            this.tekStateInt = 108;
         }
-
 
         /// <summary>
         /// задаем метод Equals для данного объекта для получения возможности сравнения объектов State
@@ -63,16 +58,14 @@ namespace States
         }
 
         /// <summary>
-        /// метод осуществляет действия для перехода из состояния GT05 в GT06
+        /// метод осуществляет действия для перехода в следующее состояние
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            // ============= открыть карту через верхнее меню ============================================================
-            server.OpenMapForState();   // без проверок и while
         }
 
         /// <summary>
-        /// метод осуществляет действия для перехода к запасному состоянию, если не удался переход из состояния GT01 в GT02
+        /// метод осуществляет действия для перехода к запасному состоянию, если не удался переход 
         /// </summary>
         public void elseRun()
         {
@@ -81,13 +74,12 @@ namespace States
         }
 
         /// <summary>
-        /// проверяет, получилось ли перейти к состоянию GT06
+        /// проверяет, получилось ли перейти к следующему состоянию 
         /// </summary>
-        /// <returns> true, если получилось перейти к состоянию GT06 </returns>
-        public bool isAllCool()          // получилось ли перейти к следующему состоянию. true, если получилось
+        /// <returns> true, если получилось перейти к следующему состоянию </returns>
+        public bool isAllCool()
         {
-            //bool ff = town.isOpenMap();
-            return town.isOpenMap();     // проверяем, открыта ли карта (метод зависит от города)
+            return true;
         }
 
         /// <summary>
@@ -96,7 +88,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT06(botwindow);
+            return new StateGT108(botwindow);
         }
 
         /// <summary>
@@ -105,15 +97,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            if (!botwindow.isHwnd()) return new StateGT28(botwindow);  //последнее состояние движка, чтобы движок сразу тормознулся
-            if (server.isLogout())
-            {
-                return new StateGT15(botwindow);  //коннект и далее
-            }
-            else
-            {
-                return this;
-            }
+            return new StateGT108(botwindow);
         }
 
         /// <summary>

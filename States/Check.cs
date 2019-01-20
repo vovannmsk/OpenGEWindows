@@ -52,12 +52,74 @@ namespace States
             botwindow.OpenWindow();
         }
 
+
+        /// <summary>
+        /// проверяем, есть ли проблемы с ботом (убили, застряли, нужно продать)
+        /// </summary>
+        public void checkForProblemsBH()
+        {
+
+            if (server.isActive())      //этот метод проверяет, нужно ли грузить или обрабатывать это окно (профа и прочее)
+            {
+                ReOpenWindow();
+                Pause(500);
+                if (server.isLogout())                // если окно в логауте
+                {
+                    driver.StateRecoveryBH();         // долетаем до Гильдии Охотников
+                }
+                else
+                {
+                    if (server.isKillAllHero())                 // если убиты все
+                    {
+                        botwindow.CureOneWindow();              // logout
+                    }
+                    else
+                    {
+                        if (server.isKillHero())                // если убиты не все 
+                        {
+                            botwindow.CureOneWindow2();         // отбегаем в сторону и логаут
+                        }
+                        else
+                        {
+                            if (server.isBarack())                  //если стоят в бараке     
+                            {
+                                server.buttonExitFromBarack();      //StateExitFromBarack();
+                            }
+                            else
+                            {
+                                if (server.isTown())                     //если стоят в городе
+                                {
+                                    driver.StateExitFromTown();          // 12-14 (GotoEnd)
+                                    botwindow.PressEscThreeTimes();
+                                }
+                                else
+                                {
+                                    if (server.isBH())
+                                    {
+                                        driver.StateGateBH();            // BH --> Gate
+                                    }
+                                    else
+                                    {
+                                        if (server.isGateBH())
+                                        { 
+                                            
+                                        }
+
+                                    }
+                                }
+                            } //else isBarack()
+                        } // else isKillHero()
+                    }
+                } //else  isLogout()
+            } //if  Active_or_not
+        }                                                                  //основной метод для зеленой кнопки
+
+
         /// <summary>
         /// проверяем, есть ли проблемы с ботом (убили, застряли, нужно продать)
         /// </summary>
         public void checkForProblems()
         {
-            
             if (server.isActive())      //этот метод проверяет, нужно ли грузить или обрабатывать это окно (профа и прочее)
             {
                 ReOpenWindow();    
@@ -270,7 +332,7 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            int i = 1;   //номер проверяемого окна
+            int i = 2;   //номер проверяемого окна
 
             int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 875, 850, 825, 800, 775, 750, 875 };
             int[] koordY = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 5, 30, 55, 80, 105, 130, 5 };
@@ -312,8 +374,8 @@ namespace States
             //int j = 12;
             //PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине
 
-            PointColor point1 = new PointColor(856 - 5 + xx, 41 - 5 + yy, 7000000, 6);
-            PointColor point2 = new PointColor(857 - 5 + xx, 41 - 5 + yy, 7000000, 6);
+            PointColor point1 = new PointColor(979 - 30 + xx, 390 - 30 + yy, 7000000, 6);
+            PointColor point2 = new PointColor(979 - 30 + xx, 391 - 30 + yy, 7000000, 6);
             PointColor point3 = new PointColor(913 - 5 + xx, 699 - 5 + yy, 1, 1);
 
             color1 = point1.GetPixelColor();

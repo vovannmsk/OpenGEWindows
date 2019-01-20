@@ -51,6 +51,7 @@
             this.GoldenEggFruit = new System.Windows.Forms.Button();
             this.undressing = new System.Windows.Forms.Button();
             this.alchemy = new System.Windows.Forms.Button();
+            this.BH = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfAccouts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -274,12 +275,24 @@
             this.alchemy.UseVisualStyleBackColor = false;
             this.alchemy.Click += new System.EventHandler(this.alchemy_Click);
             // 
+            // BH
+            // 
+            this.BH.BackColor = System.Drawing.Color.ForestGreen;
+            this.BH.Location = new System.Drawing.Point(190, 131);
+            this.BH.Name = "BH";
+            this.BH.Size = new System.Drawing.Size(170, 35);
+            this.BH.TabIndex = 61;
+            this.BH.Text = "BH";
+            this.BH.UseVisualStyleBackColor = false;
+            this.BH.Click += new System.EventHandler(this.BH_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(369, 176);
+            this.Controls.Add(this.BH);
             this.Controls.Add(this.alchemy);
             this.Controls.Add(this.undressing);
             this.Controls.Add(this.GoldenEggFruit);
@@ -337,6 +350,7 @@
         private System.Windows.Forms.Button GoldenEggFruit;
         private System.Windows.Forms.Button undressing;
         private System.Windows.Forms.Button alchemy;
+        private System.Windows.Forms.Button BH;
     
     }
 }

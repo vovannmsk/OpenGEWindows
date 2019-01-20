@@ -23,7 +23,7 @@ namespace Main
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "09-01-2019";
+        public static String DataVersion = "19-01-2019";
         public static int numberOfAcc = KolvoAkk();
 
         /// <summary>
@@ -685,17 +685,23 @@ namespace Main
 
         #endregion
 
+        #region Алхимия
 
+        /// <summary>
+        /// кнопка "Алхимия"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void alchemy_Click(object sender, EventArgs e)
         {
             Thread myAlchemy = new Thread(funcAlchemy);
             myAlchemy.Start();
 
         }
+
         /// <summary>
         /// метод задает функционал для потока, организуемого кнопкой цвета "Коралл"
         /// </summary>
-
         private void funcAlchemy()
         {
             for (int j = 1; j <= numberOfAcc; j++)
@@ -709,9 +715,42 @@ namespace Main
                     driver.StateAlchemy();             // продаёт всех ботов, которые стоят в данный момент в магазине (через движок состояний)
                 }
             }
+        }
+
+        #endregion
+
+        #region Гильдия охотников
+
+        /// <summary>
+        /// Кнопка BH
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BH_Click(object sender, EventArgs e)
+        {
+            Thread myBH = new Thread(funcBH);
+            myBH.Start();
 
         }
 
+        /// <summary>
+        /// метод задает функционал для потока, организуемого кнопкой цвета "ForestGreen" (темно-зеленая)
+        /// </summary>
+        private void funcBH()
+        {
+            for (int j = 1; j <= numberOfAcc; j++)
+            {
+                Check check = new Check(j);
+                if (check.isActive()) check.checkForProblemsBH();
+            }
+            for (int j = 1; j <= numberOfAcc; j++)
+            {
+                Check check = new Check(j);
+                if (check.isActive()) check.ReOpenWindow();
+            }   
+        }
+
+        #endregion
 
     }// END class MainForm 
 }// END namespace OpenGEWindows

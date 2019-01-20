@@ -341,6 +341,15 @@ namespace OpenGEWindows
 
             #endregion
 
+            #region BH
+
+            this.pointGateInfinityBH = new Point(410 - 5 + xx, 430 - 5 + yy);
+            this.pointisBH1 = new PointColor(979 - 30 + xx, 390 - 30 + yy, 7727000, 3);
+            this.pointisBH2 = new PointColor(979 - 30 + xx, 391 - 30 + yy, 7727000, 3);
+
+            #endregion
+
+
         }  
 
 

@@ -29,14 +29,42 @@ namespace States
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             OtitFactory otitFactory = new OtitFactory(botwindow);
             this.otit = otitFactory.createOtit();
-//            this.check = new Check(numberOfWindow);
-
         }
 
 
 
 
         #region движки для запуска перехода по состояниям
+
+        #region Гилльдия Охотников
+
+        /// <summary>
+        /// перевод из состояния 15 (логаут) в состояние 101 (в Гильдии Охотников) 
+        /// </summary>
+        public void StateRecoveryBH()
+        {
+            StateDriverRun(new StateGT15(botwindow), new StateGT17(botwindow));     // Logout-->Town
+            StateDriverRun(new StateGT100(botwindow), new StateGT101(botwindow));   // Town-->BH
+        }
+
+        #endregion
+
+        /// <summary>
+        /// перевод из состояния 101 (BH) в состояние 102 (InfinityGate)
+        /// </summary>
+        public void StateGateBH()
+        {
+            StateDriverRun(new StateGT101(botwindow), new StateGT102(botwindow));   // BH-->Gate
+            StateDriverRun(new StateGT102(botwindow), new StateGT109(botwindow));   // Gate --> Mission
+
+
+        }
+
+        #endregion
+
+
+
+
 
         /// <summary>
         ///                // коралл кнопка (алхимия)
@@ -235,6 +263,8 @@ namespace States
             StateDriverRun(new StateGT15(botwindow), new StateGT01(botwindow));
 //            StateDriverRun(new StateGT15(botwindow), new StateGT28(botwindow));
         }
+
+
 
         /// <summary>
         /// перевод из состояния 14 (нет окна) в состояние 15 (логаут)              

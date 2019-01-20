@@ -367,6 +367,22 @@ namespace OpenGEWindows
                 case 12308958:    // Токен 3
                 case 13361389:    // Токен 4
                 case 4345686:     // Токен Экстра
+                case 6519909:     // Elemental Jewel
+                case 16435563:    // Spell Key
+                case 12697783:    // Wheel of Time
+                case 8078490:     // Stone of Soul
+                case 15521462:    // Piece of Naraka Lu
+                case 12835061:    // Piece of Naraka Beel
+                case 12566387:    // Piece of Naraka Al
+                case 9737463:     // Piece of Naraka Mo
+                case 13742236:    // Piece of Naraka Ma
+                case 10000596:    // Piece of Naraka Than
+                case 9686241:     // Piece of Naraka He
+                case 5195666:     // Sedative
+                case 2635075:     // Elemental Sphere (патроны)
+                case 1585221:     // Dried Maroon
+                case 8633037:     // Pure Gold Bar
+
                     result = false;
                     break;
                 case 14210771:    // Mega Etr, Io Talt

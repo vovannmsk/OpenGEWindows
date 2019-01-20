@@ -487,6 +487,13 @@ namespace OpenGEWindows
 
         #endregion
 
+        #region BH
+
+        protected iPoint pointGateInfinityBH;
+        protected iPointColor pointisBH1;
+        protected iPointColor pointisBH2;
+
+        #endregion
 
         // ===========================================  Методы ==========================================
 
@@ -662,11 +669,10 @@ namespace OpenGEWindows
         public void Teleport()
         {
             Pause(400);
-            TopMenu(12); //Click Teleport menu
-            //            botwindow.PressMouseL(400, 190 );
-            pointTeleport1.DoubleClickL();
+            TopMenu(12);                     // Click Teleport menu
+            pointTeleport1.DoubleClickL();   // Первая строка в списке телепортов
             Pause(200);
-            pointTeleport2.PressMouseL();   //Click on button Execute in Teleport menu
+            pointTeleport2.PressMouseL();    // Click on button Execute in Teleport menu
             Pause(2000);
         }
 
@@ -2609,6 +2615,40 @@ namespace OpenGEWindows
             //UnDressingInCurrentBarack();
 
         }
+
+        #endregion
+
+        #region Гильдия Охотников
+
+        /// <summary>
+        /// проверяем, находимся ли в Гильдии Охотников
+        /// </summary>
+        /// <returns></returns>
+        public bool isBH()
+        {
+            return true;
+            //return (pointisBH1.isColor() && pointisBH2.isColor());
+        }
+
+        /// <summary>
+        /// проверяем, находимся ли в воротах в Infinity (Гильдии Охотников)
+        /// </summary>
+        /// <returns></returns>
+        public bool isGateBH()
+        {
+            return (pointisBH1.isColor() && pointisBH2.isColor());
+        }
+
+        /// <summary>
+        /// тыкаем в ворота Infinity (Гильдии Охотников)
+        /// </summary>
+        /// <returns></returns>
+        public void GoToInfinityGateBH()
+        {
+            pointGateInfinityBH.PressMouse();
+            Pause(2000);
+        }
+
 
         #endregion
 

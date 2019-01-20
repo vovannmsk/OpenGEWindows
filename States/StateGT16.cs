@@ -65,11 +65,11 @@ namespace States
             //============ выбор персонажей  ===========
             //botwindow.TeamSelection();
             server.TeamSelection();
-            botwindow.Pause(500);
+            botwindow.Pause(1000);
 
             //============ выбор канала ===========
             botwindow.SelectChannel();
-            botwindow.Pause(500);
+            botwindow.Pause(1000);
 
             //============ выход в город  ===========
             server.NewPlace();                //начинаем в ребольдо  
