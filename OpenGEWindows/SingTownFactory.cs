@@ -74,6 +74,10 @@ namespace OpenGEWindows
                     //=================== лос толдос ======================================
                     town = new SingTownLosToldos(botwindow);
                     break;
+                case 100:
+                    //=================== катовия (снежка) ======================================
+                    town = new SingTownKatovia(botwindow);
+                    break;
                 default:
                     //=================== такого быть не должно, но пусть будет Ребольдо =======================================
                     town = new SingTownReboldo(botwindow);

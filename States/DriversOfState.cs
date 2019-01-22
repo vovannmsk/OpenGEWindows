@@ -47,7 +47,7 @@ namespace States
             StateDriverRun(new StateGT100(botwindow), new StateGT101(botwindow));   // Town-->BH
         }
 
-        #endregion
+        
 
         /// <summary>
         /// перевод из состояния 101 (BH) в состояние 102 (InfinityGate)
@@ -235,6 +235,16 @@ namespace States
                 StateDriverRun(new StateGTI70(botwindow, numberOfEquipment), new StateGTI80(botwindow, numberOfEquipment));
             }
         }
+
+        /// <summary>
+        /// перевод из состояния 151 (на работе) в состояние 170 (нет окна). Цель  - продажа после переполнения инвентаря в Катовии (снежка)
+        /// </summary>
+        public void StateGotoTradeKatovia()
+        {
+            botwindow.ReOpenWindow();
+            StateDriverRun(new StateGT01(botwindow), new StateGT14(botwindow));
+        }
+
 
         /// <summary>
         /// перевод из состояния 01 (на работе) в состояние 14 (нет окна). Цель  - продажа после переполнения инвентаря

@@ -160,9 +160,17 @@ namespace States
                                     {
                                         if (server.is248Items())
                                         {
-                                            driver.StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
-                                            Pause(2000);
-                                            driver.StateGotoWork();                                           // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                                            if (botwindow.getNomerTeleport() == 100)           // продажа в снежке
+                                            {
+                                                driver.StateGotoTradeKatovia();
+                                                Pause(2000);
+                                            }
+                                            else                                               // продажа в городах
+                                            {
+                                                driver.StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
+                                                Pause(2000);
+                                                driver.StateGotoWork();                                           // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                                            }
                                         }
                                     }
                                     else

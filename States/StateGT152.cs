@@ -5,28 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenGEWindows;
 
-
 namespace States
 {
-    public class StateGT100 : IState
+    public class StateGT152 : IState
     {
         private botWindow botwindow;
         private Server server;
-        //private Town town;
+        private Town town;
         private ServerFactory serverFactory;
         private int tekStateInt;
 
-        public StateGT100()
+        public StateGT152()
         {
 
         }
 
-        public StateGT100(botWindow botwindow)   //, GotoTrade gototrade)
+        public StateGT152(botWindow botwindow)  //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            this.tekStateInt = 100;
+            this.town = server.getTown();
+            this.tekStateInt = 152;
         }
 
         /// <summary>
@@ -36,6 +36,10 @@ namespace States
         /// <returns> true, если номера состояний объектов равны </returns>
         public bool Equals(IState other)
         {
+            //bool result = false;
+            //if (!(other == null))            //если other не null, то проверяем на равенство
+            //    if (this.getTekStateInt() == other.getTekStateInt()) result = true;
+            //return result;
             bool result = false;
             if (!(other == null))            //если other не null, то проверяем на равенство
                 if (other.getTekStateInt() == 1)         //27.04.17
@@ -49,6 +53,7 @@ namespace States
             return result;
         }
 
+
         /// <summary>
         /// геттер, возвращает текущее состояние
         /// </summary>
@@ -59,24 +64,32 @@ namespace States
         }
 
         /// <summary>
-        /// метод осуществляет действия для перехода в следующее состояние
+        /// метод осуществляет действия для перехода из в следующее состояние
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.Cure();               //лечение+патроны                          // было botwindow.Cure();
+            // ========================== убирает все лишние окна с экрана =================================
+            botwindow.PressEscThreeTimes();
             botwindow.Pause(1000);
 
-            //server.Teleport();                       // телепорт в Гильдию Охотников (первый телепорт в списке)          ===    Переделать на вторую строчку
-            server.TeleportBH();                    // телепорт в Гильдию Охотников (второй телепорт в списке)         
+            if (server.isToken()) server.TokenClose(); //сделано для Европы. Закрываем окно с подарочными токенами
             botwindow.Pause(1000);
 
-            int i = 0;
-            while ((!server.isBH()) & (i < 30))         //ожидание загрузки места работы
-            { botwindow.Pause(500); i++; }
+            // ================= выбираем главным среднего персонажа (для унификации) =================================
+            botwindow.SecondHero();
+            botwindow.Pause(1500);
+
+            // ============= Удаляем камеру на максимальную высоту =================================================================
+            town.MaxHeight();
+            botwindow.Pause(1000);
+
+
+            // ================= открывает городской телепорт (ALT + F3) =================================
+            server.Teleport(3);
         }
 
         /// <summary>
-        /// метод осуществляет действия для перехода к запасному состоянию, если не удался переход 
+        /// метод осуществляет действия для перехода к запасному состоянию, если не удался переход
         /// </summary>
         public void elseRun()
         {
@@ -85,12 +98,12 @@ namespace States
         }
 
         /// <summary>
-        /// проверяет, получилось ли перейти к следующему состоянию 
+        /// проверяет, получилось ли перейти к состоянию GT02
         /// </summary>
-        /// <returns> true, если получилось перейти к следующему состоянию </returns>
-        public bool isAllCool()
+        /// <returns> true, если получилось перейти к состоянию GT02 </returns>
+        public bool isAllCool()          // получилось ли перейти к следующему состоянию. true, если получилось
         {
-            return server.isBH();
+            return server.isWork();
         }
 
         /// <summary>
@@ -99,7 +112,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT101(botwindow);
+            return new StateGT153(botwindow); 
         }
 
         /// <summary>
@@ -108,7 +121,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGT100(botwindow);
+                return this;
         }
 
         /// <summary>
@@ -119,5 +132,6 @@ namespace States
         {
             return this.tekStateInt;
         }
+
     }
 }

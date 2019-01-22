@@ -66,7 +66,7 @@ namespace States
             server.Cure();               //лечение+патроны                          // было botwindow.Cure();
             botwindow.Pause(1000);
 
-            server.Teleport();                       // телепорт на работу   
+            server.Teleport(1);                       // телепорт на работу   
             botwindow.Pause(1000);
 
             int i = 0;

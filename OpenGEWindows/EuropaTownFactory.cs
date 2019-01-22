@@ -53,6 +53,10 @@ namespace OpenGEWindows
                     //=================== Кастилия=======================================
                     town = new EuropaTownCastilia(botwindow);
                     break;
+                case 100:
+                    //=================== катовия (снежка) ======================================
+                    town = new EuropaTownKatovia(botwindow);
+                    break;
                 default:
                     //=================== такого быть не должно, но пусть будет Ребольдо =======================================
                     town = new EuropaTownReboldo(botwindow);

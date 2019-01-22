@@ -74,6 +74,10 @@ namespace OpenGEWindows
                     //=================== лос толдос ======================================
                     town = new America2TownLosToldos(botwindow);
                     break;
+                case 100:
+                    //=================== катовия (снежка) ======================================
+                    town = new America2TownKatovia(botwindow);
+                    break;
                 default:
                     //=================== такого быть не должно, но пусть будет Ребольдо =======================================
                     town = new America2TownReboldo(botwindow);

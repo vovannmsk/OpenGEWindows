@@ -8,25 +8,28 @@ using OpenGEWindows;
 
 namespace States
 {
-    public class StateGT100 : IState
+    public class StateGT155 : IState
     {
         private botWindow botwindow;
         private Server server;
-        //private Town town;
+        private Town town;
         private ServerFactory serverFactory;
+        //        GotoTrade gototrade;
         private int tekStateInt;
 
-        public StateGT100()
+        public StateGT155()
         {
 
         }
 
-        public StateGT100(botWindow botwindow)   //, GotoTrade gototrade)
+        public StateGT155(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            this.tekStateInt = 100;
+            this.town = server.getTown();
+            //            this.gototrade = gototrade;
+            this.tekStateInt = 155;
         }
 
         /// <summary>
@@ -38,13 +41,13 @@ namespace States
         {
             bool result = false;
             if (!(other == null))            //если other не null, то проверяем на равенство
-                if (other.getTekStateInt() == 1)         //27.04.17
+                if (other.getTekStateInt() == 1)         //2155.04.1155
                 {
                     if (this.getTekStateInt() == other.getTekStateInt()) result = true;
                 }
-                else   //27.04.17
+                else   //2155.04.1155
                 {
-                    if (this.getTekStateInt() >= other.getTekStateInt()) result = true;  //27.04.17
+                    if (this.getTekStateInt() >= other.getTekStateInt()) result = true;  //2155.04.1155
                 }
             return result;
         }
@@ -59,20 +62,22 @@ namespace States
         }
 
         /// <summary>
-        /// метод осуществляет действия для перехода в следующее состояние
+        /// метод осуществляет действия для перехода из состояния GT0155 в GT156
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.Cure();               //лечение+патроны                          // было botwindow.Cure();
-            botwindow.Pause(1000);
+            ////тыкаем в другого торговца (который стоит рядом с нужным нам)
+            town.GoToTraderMap();
 
-            //server.Teleport();                       // телепорт в Гильдию Охотников (первый телепорт в списке)          ===    Переделать на вторую строчку
-            server.TeleportBH();                    // телепорт в Гильдию Охотников (второй телепорт в списке)         
-            botwindow.Pause(1000);
+            ////тыкаем "Move"
+            town.ClickMoveMap();
 
-            int i = 0;
-            while ((!server.isBH()) & (i < 30))         //ожидание загрузки места работы
-            { botwindow.Pause(500); i++; }
+            // закрываем все окна
+            botwindow.PressEscThreeTimes();
+
+            //время, чтобы добежать до нужного торговца (разное время для разных городов) 
+            town.PauseToTrader();
+
         }
 
         /// <summary>
@@ -80,17 +85,17 @@ namespace States
         /// </summary>
         public void elseRun()
         {
-            botwindow.PressEscThreeTimes();
-            botwindow.Pause(500);
+            //botwindow.PressEscThreeTimes();
+            //botwindow.Pause(500);
         }
 
         /// <summary>
         /// проверяет, получилось ли перейти к следующему состоянию 
         /// </summary>
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
-        public bool isAllCool()
+        public bool isAllCool()          // получилось ли перейти к следующему состоянию. true, если получилось
         {
-            return server.isBH();
+            return !town.isOpenMap();    //если нет меню Alt+Z, то значит добежали до торговца
         }
 
         /// <summary>
@@ -99,7 +104,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT101(botwindow);
+            return new StateGT156(botwindow);  //, gototrade);
         }
 
         /// <summary>
@@ -108,7 +113,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGT100(botwindow);
+            return this;
         }
 
         /// <summary>

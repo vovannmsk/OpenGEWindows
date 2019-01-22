@@ -96,13 +96,13 @@ namespace OpenGEWindows
             this.pointisOpenTopMenu122 = new PointColor(502 - 5 + xx, 121 - 5 + yy, 12000000, 6);
             this.pointisOpenTopMenu131 = new PointColor(404 - 5 + xx, 278 - 5 + yy, 16000000, 6);          //Quest Name                                                         //проверено
             this.pointisOpenTopMenu132 = new PointColor(404 - 5 + xx, 279 - 5 + yy, 16000000, 6);
-//            this.pointGotoEnd = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
             this.pointGotoEnd = new Point(685 - 5 + xx, 470 - 5 + yy);            //end
             this.pointLogout = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
             this.pointGotoBarack = new Point(685 - 5 + xx, 380 - 5 + yy);            //в барак
 
-            this.pointTeleport1 = new Point(400 + xx, 178 + yy);   //400, 193               тыкаем в первую строчку телепорта                          //проверено
-            this.pointTeleport2 = new Point(355 + xx, 580 + yy);   //355, 570               тыкаем в кнопку Execute                   //проверено
+            this.pointTeleportFirstLine = new Point(400 + xx, 178 + yy);    //              тыкаем в первую строчку телепорта                          //проверено
+            this.pointTeleportSecondLine = new Point(400 + xx, 193 + yy);   //              тыкаем во вторую строчку телепорта                          //проверено
+            this.pointTeleportExecute = new Point(355 + xx, 580 + yy);   //355, 570               тыкаем в кнопку Execute                   //проверено
 
             #endregion
 
@@ -466,6 +466,9 @@ namespace OpenGEWindows
             #region BH
 
                 this.pointGateInfinityBH = new Point(410 - 5 + xx, 430 - 5 + yy);
+                this.pointButtonOkGateBH = new Point(979 - 30 + xx, 394 - 30 + yy);
+
+            
                 this.pointisBH1 = new PointColor(979 - 30 + xx, 390 - 30 + yy, 7727000, 3);
                 this.pointisBH2 = new PointColor(979 - 30 + xx, 391 - 30 + yy, 7727000, 3);
 
@@ -681,7 +684,7 @@ namespace OpenGEWindows
         #endregion
 
         #region Top Menu
-
+        
         /// <summary>
         /// нажмает на выбранный раздел верхнего меню 
         /// </summary>
@@ -760,6 +763,24 @@ namespace OpenGEWindows
             botwindow.Pause(2000);
         }
 
+        /// <summary>
+        /// вызываем телепорт через верхнее меню и телепортируемся по указанному номеру телепорта
+        /// </summary>
+        /// <param name="NumberOfLine"></param>
+        public override void Teleport(int NumberOfLine)
+        {
+            Pause(400);
+            TopMenu(12);                     // Click Teleport menu
+
+            Point pointTeleportNumbertLine = new Point(405 - 5 + xx, 180 - 5 + (NumberOfLine - 1) * 15 + yy);    //              тыкаем в указанную строчку телепорта 
+
+            pointTeleportNumbertLine.DoubleClickL();   // Указанная строка в списке телепортов
+            Pause(500);
+
+            pointTeleportExecute.PressMouseL();        // Click on button Execute in Teleport menu
+            Pause(2000);
+        }
+
         #endregion
 
         #region заточка
@@ -793,6 +814,22 @@ namespace OpenGEWindows
         }
 
         #endregion
+
+        #region BH
+
+        /// <summary>
+        /// нажать указанную строку в диалоге в воротах Infinity BH. Отсчет снизу вверх
+        /// </summary>
+        /// <param name="number"></param>
+        public override void PressStringInfinityGateBH(int number)
+        {
+            iPoint pointString = new Point(839 - 30 + xx, 363 - 30 + yy - (number - 1) * 19);
+            pointString.PressMouse();
+            Pause(2000);
+        }
+
+        #endregion
+
 
     }
 }

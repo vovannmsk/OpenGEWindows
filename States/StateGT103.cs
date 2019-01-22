@@ -62,6 +62,8 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            server.PressStringInfinityGateBH(1);    //нажимаем нижнюю строчку в диалоге
+            server.PressButtonOkInfinityGateBH();   //нажимаем ОК
         }
 
         /// <summary>

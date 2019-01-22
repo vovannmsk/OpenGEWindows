@@ -99,8 +99,9 @@ namespace OpenGEWindows
             this.pointGotoEnd =          new Point(685 - 5 + xx, 470 - 5 + yy);            //end
             this.pointLogout =           new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
             this.pointGotoBarack =       new Point(685 - 5 + xx, 380 - 5 + yy);            //в барак
-            this.pointTeleport1 =        new Point(400 + xx, 178 + yy);   //400, 193               тыкаем в первую строчку телепорта                          //проверено
-            this.pointTeleport2 =        new Point(355 + xx, 580 + yy);   //             тыкаем в кнопку Execute                   //проверено
+            this.pointTeleportFirstLine =        new Point(400 + xx, 178 + yy);   //400, 193               тыкаем в первую строчку телепорта                          //проверено
+            this.pointTeleportSecondLine = new Point(400 + xx, 193 + yy);   //              тыкаем во вторую строчку телепорта                          //проверено
+            this.pointTeleportExecute = new Point(355 + xx, 580 + yy);   //             тыкаем в кнопку Execute                   //проверено
 
             #endregion
 
@@ -757,6 +758,25 @@ namespace OpenGEWindows
             botwindow.Pause(2000);
         }
 
+        /// <summary>
+        /// вызываем телепорт через верхнее меню и телепортируемся по указанному номеру телепорта
+        /// </summary>
+        /// <param name="NumberOfLine"></param>
+        public override void Teleport(int NumberOfLine)
+        {
+            Pause(400);
+            TopMenu(12);                     // Click Teleport menu
+
+            Point pointTeleportNumbertLine = new Point(405 - 5 + xx, 180 - 5 + (NumberOfLine - 1) * 15 + yy);    //              тыкаем в указанную строчку телепорта 
+
+            pointTeleportNumbertLine.DoubleClickL();   // Указанная строка в списке телепортов
+            Pause(500);
+
+            pointTeleportExecute.PressMouseL();        // Click on button Execute in Teleport menu
+            Pause(2000);
+        }
+
+
         #endregion
 
         #region заточка
@@ -791,6 +811,20 @@ namespace OpenGEWindows
 
         #endregion
 
+        #region BH
+
+        /// <summary>
+        /// нажать указанную строку в диалоге в воротах Infinity BH. Отсчет снизу вверх
+        /// </summary>
+        /// <param name="number"></param>
+        public override void PressStringInfinityGateBH(int number)
+        {
+            iPoint pointString = new Point(839 - 30 + xx, 363 - 30 + yy - (number - 1) * 19);
+            pointString.PressMouse();
+            Pause(2000);
+        }
+
+        #endregion
     }
 }
 

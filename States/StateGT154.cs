@@ -8,25 +8,26 @@ using OpenGEWindows;
 
 namespace States
 {
-    public class StateGT100 : IState
+    public class StateGT154 : IState
     {
         private botWindow botwindow;
         private Server server;
-        //private Town town;
+        private Town town;
         private ServerFactory serverFactory;
         private int tekStateInt;
 
-        public StateGT100()
+        public StateGT154()
         {
 
         }
 
-        public StateGT100(botWindow botwindow)   //, GotoTrade gototrade)
+        public StateGT154(botWindow botwindow)   
         {
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            this.tekStateInt = 100;
+            this.town = server.getTown();
+            this.tekStateInt = 154;
         }
 
         /// <summary>
@@ -49,6 +50,7 @@ namespace States
             return result;
         }
 
+
         /// <summary>
         /// геттер, возвращает текущее состояние
         /// </summary>
@@ -59,38 +61,29 @@ namespace States
         }
 
         /// <summary>
-        /// метод осуществляет действия для перехода в следующее состояние
+        /// метод осуществляет действия для перехода из состояния GT0154 в GT155
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.Cure();               //лечение+патроны                          // было botwindow.Cure();
+            // тыкаем во вторую закладку карты города
+            town.SecondBookmark();
             botwindow.Pause(1000);
-
-            //server.Teleport();                       // телепорт в Гильдию Охотников (первый телепорт в списке)          ===    Переделать на вторую строчку
-            server.TeleportBH();                    // телепорт в Гильдию Охотников (второй телепорт в списке)         
-            botwindow.Pause(1000);
-
-            int i = 0;
-            while ((!server.isBH()) & (i < 30))         //ожидание загрузки места работы
-            { botwindow.Pause(500); i++; }
         }
 
         /// <summary>
-        /// метод осуществляет действия для перехода к запасному состоянию, если не удался переход 
+        /// метод осуществляет действия для перехода к запасному состоянию, если не удался переход из состояния GT0154 в GT07
         /// </summary>
         public void elseRun()
         {
-            botwindow.PressEscThreeTimes();
-            botwindow.Pause(500);
         }
 
         /// <summary>
-        /// проверяет, получилось ли перейти к следующему состоянию 
+        /// проверяет, получилось ли перейти к состоянию GT02
         /// </summary>
-        /// <returns> true, если получилось перейти к следующему состоянию </returns>
-        public bool isAllCool()
+        /// <returns> true, если получилось перейти к состоянию GT02 </returns>
+        public bool isAllCool()          // получилось ли перейти к следующему состоянию. true, если получилось
         {
-            return server.isBH();
+            return town.isSecondBookmark();
         }
 
         /// <summary>
@@ -99,7 +92,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT101(botwindow);
+            return new StateGT155(botwindow);
         }
 
         /// <summary>
@@ -108,7 +101,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGT100(botwindow);
+                return this;
         }
 
         /// <summary>

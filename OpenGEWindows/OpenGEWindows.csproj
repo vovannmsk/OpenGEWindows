@@ -98,9 +98,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="America2TownKatovia.cs" />
     <Compile Include="AmericaTownFactory.cs" />
+    <Compile Include="AmericaTownKatovia.cs" />
     <Compile Include="botWindow.cs" />
     <Compile Include="DialogAmerica2.cs" />
+    <Compile Include="EuropaTownKatovia.cs" />
     <Compile Include="GoldenEggAmerica2.cs" />
     <Compile Include="MarketAmerica2.cs" />
     <Compile Include="MMAmerica2.cs" />
@@ -121,6 +124,7 @@
     <Compile Include="America2TownKielce.cs" />
     <Compile Include="SingTownKielce.cs" />
     <Compile Include="SingTownErrac.cs" />
+    <Compile Include="SingTownKatovia.cs" />
     <Compile Include="SingTownViron.cs" />
     <Compile Include="SingTownUstiar.cs" />
     <Compile Include="SingTownCastilia.cs" />

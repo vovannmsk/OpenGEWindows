@@ -89,8 +89,9 @@ namespace OpenGEWindows
         protected iPoint pointLogout;
         protected iPoint pointGotoEnd;
         protected iPoint pointGotoBarack;
-        protected iPoint pointTeleport1;
-        protected iPoint pointTeleport2;
+        protected iPoint pointTeleportFirstLine;
+        protected iPoint pointTeleportSecondLine;
+        protected iPoint pointTeleportExecute;
 
         #endregion
 
@@ -490,6 +491,10 @@ namespace OpenGEWindows
         #region BH
 
         protected iPoint pointGateInfinityBH;
+        protected iPoint pointButtonOkGateBH;
+        protected iPoint pointFirstLinekGateBH;
+
+        
         protected iPointColor pointisBH1;
         protected iPointColor pointisBH2;
 
@@ -670,11 +675,25 @@ namespace OpenGEWindows
         {
             Pause(400);
             TopMenu(12);                     // Click Teleport menu
-            pointTeleport1.DoubleClickL();   // Первая строка в списке телепортов
+            pointTeleportFirstLine.DoubleClickL();   // Первая строка в списке телепортов
             Pause(200);
-            pointTeleport2.PressMouseL();    // Click on button Execute in Teleport menu
+            pointTeleportExecute.PressMouseL();    // Click on button Execute in Teleport menu
             Pause(2000);
         }
+
+        /// <summary>
+        /// вызываем телепорт через верхнее меню и телепортируемся по второму телепорту
+        /// </summary>
+        public void TeleportBH()
+        {
+            Pause(400);
+            TopMenu(12);                     // Click Teleport menu
+            pointTeleportSecondLine.DoubleClickL();   // Первая строка в списке телепортов
+            Pause(200);
+            pointTeleportExecute.PressMouseL();    // Click on button Execute in Teleport menu
+            Pause(2000);
+        }
+
 
         /// <summary>
         /// Открыть городской телепорт (Alt + F3) без проверок и while (для паттерна Состояние)  StateGT
@@ -724,6 +743,7 @@ namespace OpenGEWindows
             pointGotoBarack.PressMouse();
         }
 
+        public abstract void Teleport(int numberOfLine);
         public abstract void TopMenu(int numberOfThePartitionMenu);
         public abstract void TopMenu(int numberOfThePartitionMenu, int punkt);
         public abstract void TeleportToTownAltW(int i);
@@ -2630,14 +2650,6 @@ namespace OpenGEWindows
             //return (pointisBH1.isColor() && pointisBH2.isColor());
         }
 
-        /// <summary>
-        /// проверяем, находимся ли в воротах в Infinity (Гильдии Охотников)
-        /// </summary>
-        /// <returns></returns>
-        public bool isGateBH()
-        {
-            return (pointisBH1.isColor() && pointisBH2.isColor());
-        }
 
         /// <summary>
         /// тыкаем в ворота Infinity (Гильдии Охотников)
@@ -2648,6 +2660,32 @@ namespace OpenGEWindows
             pointGateInfinityBH.PressMouse();
             Pause(2000);
         }
+
+        /// <summary>
+        /// проверяем, находимся ли в воротах в Infinity (Гильдии Охотников)
+        /// </summary>
+        /// <returns></returns>
+        public bool isGateBH()
+        {
+            return (pointisBH1.isColor() && pointisBH2.isColor());
+        }
+
+        
+        /// <summary>
+        /// тыкаем в кнопку Ок в диалоге в воротах Infinity (Гильдия Охотников)
+        /// </summary>
+        /// <returns></returns>
+        public void PressButtonOkInfinityGateBH()
+        {
+            pointButtonOkGateBH.PressMouse();
+            Pause(2000);
+        }
+
+        /// <summary>
+        /// нажать указанную строку в диалоге. Отсчет снизу вверх
+        /// </summary>
+        /// <param name="number"></param>
+        public abstract void PressStringInfinityGateBH(int number);
 
 
         #endregion

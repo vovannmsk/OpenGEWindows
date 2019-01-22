@@ -80,8 +80,9 @@ namespace OpenGEWindows
             this.pointGotoEnd = new Point(681 - 5 + xx, 436 - 5 + yy);                              //логаут
 //            this.pointGotoEnd = new Point(681 - 5 + xx, 467 - 5 + yy);                              //end
             this.pointLogout = new Point(681 - 5 + xx, 436 - 5 + yy);            //логаут
-            this.pointTeleport1 = new Point(400 + xx, 193 + yy);   //400, 193               тыкаем в первую строчку телепорта                          //проверено
-            this.pointTeleport2 = new Point(355 + xx, 570 + yy);   //355, 570              тыкаем в кнопку Execute                   //проверено
+            this.pointTeleportFirstLine = new Point(400 + xx, 193 + yy);   //400, 193               тыкаем в первую строчку телепорта                          //проверено
+            this.pointTeleportSecondLine = new Point(400 + xx, 208 + yy);   //              тыкаем во вторую строчку телепорта                          //проверено
+            this.pointTeleportExecute = new Point(355 + xx, 570 + yy);   //355, 570              тыкаем в кнопку Execute                   //проверено
             this.pointisOpenTopMenu21 = new PointColor(328 + xx, 74 + yy, 13420000, 4);      //333 - 5, 79 - 5, 13420000, 334 - 5, 79 - 5, 13420000, 4);            //не проверено
             this.pointisOpenTopMenu22 = new PointColor(329 + xx, 74 + yy, 13420000, 4);
             this.pointisOpenTopMenu61 = new PointColor(455 + xx, 87 + yy, 13420000, 4);      //460 - 5, 92 - 5, 13420000, 461 - 5, 92 - 5, 13420000, 4);            //не проверено
@@ -526,6 +527,24 @@ namespace OpenGEWindows
             Pause(2000);
         }
 
+        /// <summary>
+        /// вызываем телепорт через верхнее меню и телепортируемся по указанному номеру телепорта
+        /// </summary>
+        /// <param name="NumberOfLine"></param>
+        public override void Teleport(int NumberOfLine)
+        {
+            Pause(400);
+            TopMenu(12);                     // Click Teleport menu
+
+            Point pointTeleportNumbertLine = new Point(405 - 5 + xx, 198 - 5 + (NumberOfLine - 1) * 15 + yy);    //              тыкаем в указанную строчку телепорта  405 - 5 + xx, 198 - 5 + yy
+
+            pointTeleportNumbertLine.DoubleClickL();   // Указанная строка в списке телепортов
+            Pause(500);
+
+            pointTeleportExecute.PressMouseL();        // Click on button Execute in Teleport menu
+            Pause(2000);
+        }
+
         #endregion
 
         #region at Work
@@ -571,5 +590,21 @@ namespace OpenGEWindows
         }
 
         #endregion
+
+        #region BH
+
+        /// <summary>
+        /// нажать указанную строку в диалоге в воротах Infinity BH. Отсчет снизу вверх
+        /// </summary>
+        /// <param name="number"></param>
+        public override void PressStringInfinityGateBH(int number)
+        {
+            iPoint pointString = new Point(839 - 30 + xx, 363 - 30 + yy - (number - 1) * 19);
+            pointString.PressMouse();
+            Pause(2000);
+        }
+
+        #endregion
+
     }
 }
