@@ -103,7 +103,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT09(botwindow);  //, gototrade);
+            return new StateGT157(botwindow);  //, gototrade);
         }
 
         /// <summary>
@@ -112,16 +112,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-//            if ((server.isLogout()) || (!botwindow.isHwnd()))
-            if (!botwindow.isHwnd()) return new StateGT28(botwindow);  //последнее состояние движка, чтобы движок сразу тормознулся
-            if (server.isLogout())
-            {
-                return new StateGT15(botwindow);  //коннект и далее
-            }
-            else
-            {
-                return new StateGT12(botwindow);  //, gototrade);    //состояние из которого осуществляется End Programm
-            }
+            return this;
         }
 
         /// <summary>

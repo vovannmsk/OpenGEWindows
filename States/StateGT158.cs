@@ -5,28 +5,33 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenGEWindows;
 
+
 namespace States
 {
-    public class StateGT152 : IState
+    public class StateGT158 : IState
     {
         private botWindow botwindow;
         private Server server;
-        private Town town;
         private ServerFactory serverFactory;
+        private Town town;
+        private KatoviaMarket market;
+        private KatoviaMarketFactory marketFactory;
         private int tekStateInt;
 
-        public StateGT152()
+        public StateGT158()
         {
 
         }
 
-        public StateGT152(botWindow botwindow)  //, GotoTrade gototrade)
+        public StateGT158(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.town = server.getTown();
-            this.tekStateInt = 152;
+            this.marketFactory = new KatoviaMarketFactory(botwindow);
+            this.market = marketFactory.createMarket();
+            this.tekStateInt = 158;
         }
 
         /// <summary>
@@ -36,10 +41,6 @@ namespace States
         /// <returns> true, если номера состояний объектов равны </returns>
         public bool Equals(IState other)
         {
-            //bool result = false;
-            //if (!(other == null))            //если other не null, то проверяем на равенство
-            //    if (this.getTekStateInt() == other.getTekStateInt()) result = true;
-            //return result;
             bool result = false;
             if (!(other == null))            //если other не null, то проверяем на равенство
                 if (other.getTekStateInt() == 1)         //27.04.17
@@ -53,7 +54,6 @@ namespace States
             return result;
         }
 
-
         /// <summary>
         /// геттер, возвращает текущее состояние
         /// </summary>
@@ -64,53 +64,29 @@ namespace States
         }
 
         /// <summary>
-        /// метод осуществляет действия для перехода из в следующее состояние
+        /// метод осуществляет действия для перехода в следующее состояние
         /// </summary>
-        public void run()                // переход к следующему состоянию
+        public void run()                            // переход к следующему состоянию
         {
-            // ========================== убирает все лишние окна с экрана =================================
-            botwindow.PressEscThreeTimes();
-            botwindow.Pause(1000);
-
-            if (server.isToken()) server.TokenClose(); //сделано для Европы. Закрываем окно с подарочными токенами
-            botwindow.Pause(1000);
-
-            // ================= выбираем главным среднего персонажа (для унификации) =================================
-            botwindow.SecondHero();
-            botwindow.Pause(1500);
-
-            // ============= Удаляем камеру на максимальную высоту =================================================================
-            town.MaxHeight();
-            botwindow.Pause(1000);
-
-
-            // ================= открывает городской телепорт (ALT + F3) =================================
-            server.Teleport(3);
-            //ожидание загрузки Катовии
-            int counter = 0;
-            while ((!server.isWork()) && (counter < 30))
-            { botwindow.Pause(1000); counter++; }
-
-            botwindow.PressEscThreeTimes(); 
-            botwindow.Pause(500);
+            market.Bookmark_Sell();               //========= тыкаем в закладку SELL =======================
         }
 
         /// <summary>
-        /// метод осуществляет действия для перехода к запасному состоянию, если не удался переход
+        /// метод осуществляет действия для перехода к запасному состоянию, если не удался переход 
         /// </summary>
         public void elseRun()
         {
-            botwindow.PressEscThreeTimes();
-            botwindow.Pause(500);
+            //botwindow.PressEscThreeTimes();
+            //botwindow.Pause(500);
         }
 
         /// <summary>
-        /// проверяет, получилось ли перейти к состоянию GT02
+        /// проверяет, получилось ли перейти к следующему состоянию 
         /// </summary>
-        /// <returns> true, если получилось перейти к состоянию GT02 </returns>
-        public bool isAllCool()          // получилось ли перейти к следующему состоянию. true, если получилось
+        /// <returns> true, если получилось перейти к следующему состоянию </returns>
+        public bool isAllCool()
         {
-            return server.isWork();
+            return market.isClickSell();   // проверяет, что находимся в магазине на закладке SELL
         }
 
         /// <summary>
@@ -119,8 +95,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-        //    return new StateGT153(botwindow);
-            return new StateGT156(botwindow);
+            return new StateGT159(botwindow);  
         }
 
         /// <summary>
@@ -129,7 +104,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-                return this;
+            return this;
         }
 
         /// <summary>
@@ -140,6 +115,5 @@ namespace States
         {
             return this.tekStateInt;
         }
-
     }
 }

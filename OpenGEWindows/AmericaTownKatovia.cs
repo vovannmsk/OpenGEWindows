@@ -26,7 +26,8 @@ namespace OpenGEWindows
             this.pointTraderOnMap = new Point(875 + xx, 279 + yy);          //875, 259);
 //            this.pointTraderOnMap = new Point(875 + xx, 259 + yy);          //875, 259);
             this.pointButtonMoveOnMap = new Point(925 + xx, 723 + yy);      //925, 723);
-            this.pointHeadTrader = new Point(352 + xx, 498 + yy);           //352, 498);
+            //            this.pointHeadTrader = new Point(561 - 5 + xx, 282 - 5 + yy);                     //голова торговца          // проверено
+            this.pointHeadTrader = new Point(595 - 5 + xx, 212 - 5 + yy);                     //голова торговца          //проверено
             //this.pointSellOnMenu = new Point(520 + xx, 654 + yy);
             //this.pointOkOnMenu = new Point(902 + xx, 674 + yy);
             this.pointTownTeleport = new Point(110 + xx, 328 + (TELEPORT_N - 1) * 30 + yy);
@@ -57,8 +58,7 @@ namespace OpenGEWindows
         /// </summary>
         public override void ExitFromTrader()
         {
-
-
+            dialog.PressOkButton(1);      ////========= тыкаем в OK =======================
         }
     }
 }

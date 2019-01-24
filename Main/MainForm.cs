@@ -23,7 +23,7 @@ namespace Main
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "22-01-2019";
+        public static String DataVersion = "24-01-2019";
         public static int numberOfAcc = KolvoAkk();
 
         /// <summary>
@@ -416,8 +416,21 @@ namespace Main
                 {
                     check.ReOpenWindow();
                     check.Pause(1000);
-                    DriversOfState drive = new DriversOfState(j);
-                    drive.StateGotoTradeAndWork();
+                    DriversOfState driver = new DriversOfState(j);
+                    //driver.StateGotoTradeAndWork();
+
+                    if (check.getNumberTeleport() >= 100)           // продажа в снежке
+                    {
+                        driver.StateGotoTradeKatovia();
+                        check.Pause(2000);
+                    }
+                    else                                               // продажа в городах
+                    {
+                        driver.StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
+                        check.Pause(2000);
+                        driver.StateGotoWork();                                           // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                    }
+
                 }
             }
         }

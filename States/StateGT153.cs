@@ -95,7 +95,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT154(botwindow);
+            return new StateGT155(botwindow);
         }
 
         /// <summary>

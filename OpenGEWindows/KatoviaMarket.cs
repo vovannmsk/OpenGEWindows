@@ -9,7 +9,7 @@ using System.Threading;
 
 namespace OpenGEWindows
 {
-    public abstract class Market : Server2
+    public abstract class KatoviaMarket : Server2
     {
 
         // ============ переменные ======================
@@ -18,14 +18,14 @@ namespace OpenGEWindows
 
         protected iPointColor pointIsSale1;
         protected iPointColor pointIsSale2;
-        protected iPointColor pointIsSale21;
-        protected iPointColor pointIsSale22;
-        protected iPointColor pointIsClickSale1;
-        protected iPointColor pointIsClickSale2;
+        protected iPointColor pointIsSaleIn1;
+        protected iPointColor pointIsSaleIn2;
+        protected iPointColor pointIsClickSell1;
+        protected iPointColor pointIsClickSell2;
         protected iPoint pointBookmarkSell;
-        protected iPoint pointSaleToTheRedBottle;
-        protected iPoint pointSaleOverTheRedBottle;
-        protected iPoint pointWheelDown;
+        //protected iPoint pointSaleToTheRedBottle;
+        //protected iPoint pointSaleOverTheRedBottle;
+        //protected iPoint pointWheelDown;
         protected iPoint pointButtonBUY;
         protected iPoint pointButtonSell;
         protected iPoint pointButtonClose;
@@ -51,9 +51,9 @@ namespace OpenGEWindows
             /// <param name="numderOfString">номер строки в магазине, где берется товар</param>
             public Product(int xx, int yy, int numderOfString)
             {
-                color1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (numderOfString - 1) * 27, 3360337, 0).GetPixelColor();
-                color2 = new PointColor(146 - 5 + xx, 219 - 5 + yy + (numderOfString - 1) * 27, 3360337, 0).GetPixelColor();
-                color3 = new PointColor(165 - 5 + xx, 214 - 5 + yy + (numderOfString - 1) * 27, 3360337, 0).GetPixelColor();
+                color1 = new PointColor(152 - 5 + xx, 250 - 5 + yy + (numderOfString - 1) * 27, 3360337, 0).GetPixelColor();
+                color2 = new PointColor(149 - 5 + xx, 250 - 5 + yy + (numderOfString - 1) * 27, 3360337, 0).GetPixelColor();
+                color3 = new PointColor(168 - 5 + xx, 245 - 5 + yy + (numderOfString - 1) * 27, 3360337, 0).GetPixelColor();
             }
 
             /// <summary>
@@ -70,6 +70,7 @@ namespace OpenGEWindows
         };
 
         #endregion
+
 
         protected Dialog dialog;
 
@@ -88,21 +89,21 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// проверяет, находится ли данное окно в магазине (а точнее на странице входа в магазин) 
+        /// проверяет, находится ли данное окно в магазине (а точнее на странице входа в магазин)                              ===================== не используется
         /// </summary>
         /// <returns> true, если находится в магазине </returns>
         public bool isSale()
         {
             return ((pointIsSale1.isColor()) && (pointIsSale2.isColor()));
-        }
+        }                                                                                               // ===================== не используется
 
         /// <summary>
-        /// проверяет, находится ли данное окно в самом магазине (на закладке BUY или SELL)                                       
+        /// проверяет, находится ли данное окно внутри магазина (на закладке BUY или SELL)                                       
         /// </summary>
         /// <returns> true, если находится в магазине </returns>
-        public bool isSale2()
+        public bool isSaleIn()
         {
-            return ((pointIsSale21.isColor()) && (pointIsSale22.isColor()));
+            return ((pointIsSaleIn1.isColor()) && (pointIsSaleIn2.isColor()));
         }
 
 
@@ -112,7 +113,7 @@ namespace OpenGEWindows
         /// <returns> true, если закладка Sell в магазине открыта </returns>
         public bool isClickSell()
         {
-            return ((pointIsClickSale1.isColor()) && (pointIsClickSale2.isColor()));
+            return ((pointIsClickSell1.isColor()) && (pointIsClickSell2.isColor()));
         }
 
         /// <summary>
@@ -124,7 +125,6 @@ namespace OpenGEWindows
             Pause(1500);
         }
 
-
         /// <summary>
         /// проверяем, является ли товар в первой строке магазина маленькой красной бутылкой
         /// </summary>
@@ -132,9 +132,10 @@ namespace OpenGEWindows
         /// <returns> true, если в первой строке маленькая красная бутылка </returns>
         public bool isRedBottle(int numberOfString)
         {
-            PointColor pointFirstString = new PointColor(147 - 5 + xx, 224 - 5 + yy + (numberOfString - 1) * 27, 3360337, 0);
+//            PointColor pointFirstString = new PointColor(147 - 5 + xx, 224 - 5 + yy + (numberOfString - 1) * 27, 3360337, 0);   //старый вариант
+            PointColor pointFirstString = new PointColor(152 - 5 + xx, 250 - 5 + yy + (numberOfString - 1) * 27, 5933520, 0);
             return pointFirstString.isColor();
-        }
+        }                                                                //исправлено 23.01.2019
 
         /// <summary>
         /// добавляем товар из указанной строки в корзину 
@@ -165,7 +166,8 @@ namespace OpenGEWindows
             if (botwindow.getIsServer())
             {
                 // вариант 1. нажатие на стрелку вниз в магазине   (для самарских серверов)
-                iPoint pointArrowDown = new Point(507 - 5 + botwindow.getX(), 549 - 5 + botwindow.getY());
+//                iPoint pointArrowDown = new Point(507 - 5 + botwindow.getX(), 549 - 5 + botwindow.getY());            старый вариант
+                iPoint pointArrowDown = new Point(505 - 5 + botwindow.getX(), 555 - 5 + botwindow.getY());
                 pointArrowDown.PressMouseL();
             }
             else
@@ -262,7 +264,8 @@ namespace OpenGEWindows
         public bool NeedToSellProduct(uint color, int numberOfString)
         {
             bool result = true;   //по умолчанию вещь надо продавать, поэтому true
-            iPointColor pointMega = new PointColor(174 - 5 + xx, 214 - 5 + yy + (numberOfString - 1) * 27, 10000000, 7);  //буква M в слове Mega
+//            iPointColor pointMega = new PointColor(174 - 5 + xx, 214 - 5 + yy + (numberOfString - 1) * 27, 10000000, 7);  //буква M в слове Mega
+            iPointColor pointMega = new PointColor(177 - 5 + xx, 245 - 5 + yy + (numberOfString - 1) * 27, 10000000, 7);  //буква M в слове Mega
 
             switch (color)                                             // Хорошая вещь или нет, сверяем по картотеке
             {
@@ -404,7 +407,8 @@ namespace OpenGEWindows
         /// <param name="numberOfString">номер строки</param>
         public void AddToCartLotProduct(int numberOfString)
         {
-            Point pointAddProduct = new Point(360 - 5 + botwindow.getX(), 220 - 5 + (numberOfString - 1) * 27 + botwindow.getY());  //305 + 30, 190 + 30)
+            //Point pointAddProduct = new Point(360 - 5 + botwindow.getX(), 220 - 5 + (numberOfString - 1) * 27 + botwindow.getY());
+            Point pointAddProduct = new Point(363 - 5 + botwindow.getX(), 251 - 5 + (numberOfString - 1) * 27 + botwindow.getY());
             pointAddProduct.DoubleClickL();  //тыкаем в строчку с товаром
             Pause(150);
             SendKeys.SendWait("33000");
@@ -456,7 +460,7 @@ namespace OpenGEWindows
             iPointColor pointCurrentProduct;
             for (int j = 2; j <= 12; j++)
             {
-                pointCurrentProduct = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 3360337, 0);   //проверяем цвет текущего продукта
+                pointCurrentProduct = new PointColor(152 - 5 + xx, 250 - 5 + yy + (j - 1) * 27, 3360337, 0);   //проверяем цвет текущего продукта
                 Pause(50);
                 if (NeedToSellProduct(pointCurrentProduct.GetPixelColor(),j))       //если нужно продать товар в строке j
                     AddToCartLotProduct(j);                                         //добавляем в корзину весь товар в строке j
@@ -490,7 +494,6 @@ namespace OpenGEWindows
         {
             pointButtonClose.PressMouse();
             Pause(2000);
-            //PressMouse(847, 663);
         }
 
         /// <summary>
@@ -498,22 +501,18 @@ namespace OpenGEWindows
         /// </summary>
         public void BuyingMitridat()
         {
-            //botwindow.PressMouseL(360, 537);          //кликаем левой кнопкой в ячейку, где надо написать количество продаваемого товара
             pointBuyingMitridat1.PressMouseL();             //кликаем левой кнопкой в ячейку, где надо написать количество продаваемого товара
             Pause(150);
 
-            //Press333();
             SendKeys.SendWait("333");
 
             Botton_BUY();                             // Нажимаем на кнопку BUY 
 
 
             pointBuyingMitridat2.PressMouseL();           //кликаем левой кнопкой мыши в кнопку Ок, если переполнение митридата
-            //botwindow.PressMouseL(1392 - 875, 438 - 5);         
             Pause(500);
 
             pointBuyingMitridat3.PressMouseL();           //кликаем левой кнопкой мыши в кнопку Ок, если нет денег на покупку митридата
-            //botwindow.PressMouseL(1392 - 875, 428 - 5);          
             Pause(500);
         }
 

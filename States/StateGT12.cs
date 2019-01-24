@@ -20,7 +20,7 @@ namespace States
 
         }
 
-        public StateGT12(botWindow botwindow)   //, GotoTrade gototrade)
+        public StateGT12(botWindow botwindow)   
         {
             this.botwindow = botwindow;
             ServerFactory serverFactory = new ServerFactory(botwindow);

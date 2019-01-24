@@ -15,7 +15,7 @@ namespace States
         private botWindow botwindow;
         private Server server;
         private Otit otit;
-        private Check check;
+//        private Check check;
 
         public DriversOfState()
         { 
@@ -242,7 +242,7 @@ namespace States
         public void StateGotoTradeKatovia()
         {
             botwindow.ReOpenWindow();
-            StateDriverRun(new StateGT01(botwindow), new StateGT14(botwindow));
+            StateDriverRun(new StateGT151(botwindow), new StateGT162(botwindow));
         }
 
 
