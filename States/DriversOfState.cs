@@ -79,9 +79,6 @@ namespace States
             }
         }
 
-
-
-
         /// <summary>
         /// идем из состояния логаут до старого человека в Лос Толдосе
         /// </summary>
@@ -181,7 +178,6 @@ namespace States
             StateDriverRun(new StateGT60(dealer), new StateGT65(dealer));   // торговец из логаута в город  (канал 3) и далее на место передачи песо
         }
 
-
         /// <summary>
         /// перевод из состояния 60 в состояние 80. Цель  - передача песо торговцу
         /// </summary>
@@ -243,8 +239,7 @@ namespace States
         {
             botwindow.ReOpenWindow();
             StateDriverRun(new StateGT151(botwindow), new StateGT162(botwindow));
-        }
-
+        } 
 
         /// <summary>
         /// перевод из состояния 01 (на работе) в состояние 14 (нет окна). Цель  - продажа после переполнения инвентаря
@@ -273,8 +268,6 @@ namespace States
             StateDriverRun(new StateGT15(botwindow), new StateGT01(botwindow));
 //            StateDriverRun(new StateGT15(botwindow), new StateGT28(botwindow));
         }
-
-
 
         /// <summary>
         /// перевод из состояния 14 (нет окна) в состояние 15 (логаут)              
