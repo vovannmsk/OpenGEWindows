@@ -25,7 +25,7 @@ namespace States
         {
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
-            this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.tekStateInt = 100;
         }
 
@@ -66,8 +66,7 @@ namespace States
             server.Cure();               //лечение+патроны                          // было botwindow.Cure();
             botwindow.Pause(1000);
 
-            //server.Teleport();                       // телепорт в Гильдию Охотников (первый телепорт в списке)          ===    Переделать на вторую строчку
-            server.TeleportBH();                    // телепорт в Гильдию Охотников (второй телепорт в списке)         
+            server.Teleport(2);                       // телепорт в Гильдию Охотников (первый телепорт в списке)          ===    Переделать на вторую строчку
             botwindow.Pause(1000);
 
             int i = 0;

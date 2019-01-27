@@ -100,7 +100,7 @@ namespace OpenGEWindows
             this.pointLogout =           new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
             this.pointGotoBarack =       new Point(685 - 5 + xx, 380 - 5 + yy);            //в барак
             this.pointTeleportFirstLine =        new Point(400 + xx, 178 + yy);   //400, 193               тыкаем в первую строчку телепорта                          //проверено
-            this.pointTeleportSecondLine = new Point(400 + xx, 193 + yy);   //              тыкаем во вторую строчку телепорта                          //проверено
+            //this.pointTeleportSecondLine = new Point(400 + xx, 193 + yy);   //              тыкаем во вторую строчку телепорта                          //проверено
             this.pointTeleportExecute = new Point(355 + xx, 580 + yy);   //             тыкаем в кнопку Execute                   //проверено
 
             #endregion
@@ -225,6 +225,11 @@ namespace OpenGEWindows
             //пушка Миса
             this.pointIsTown_ExpCannonFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 8750000, 3);       //точки для проверки пушки Миса
             this.pointIsTown_ExpCannonFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 8158000, 3);
+
+            #endregion
+
+            #region алхимия
+
             //алхимия
             this.pointisAlchemy1 = new PointColor(513 - 5 + xx, 565 - 5 + yy, 7925494, 0);
             this.pointisAlchemy2 = new PointColor(513 - 5 + xx, 566 - 5 + yy, 7925494, 0);
@@ -233,6 +238,8 @@ namespace OpenGEWindows
             this.pointisInventoryFull2 = new PointColor(647 - 130 + xx, 560 - 130 + yy, 7727344, 0);
             this.pointisOutOfIngredient1_1 = new PointColor(570 - 130 + xx, 645 - 130 + yy, 1973790, 0);             //закончился ОДИН ИЗ ингредиентов
             this.pointisOutOfIngredient1_2 = new PointColor(570 - 130 + xx, 646 - 130 + yy, 1973790, 0);             //
+            this.pointOutOfMoney1 = new PointColor(647 - 130 + xx, 540 - 130 + yy, 7700000, 5);
+            this.pointOutOfMoney2 = new PointColor(647 - 130 + xx, 541 - 130 + yy, 7700000, 5);
 
             #endregion
 
@@ -463,8 +470,8 @@ namespace OpenGEWindows
             #region BH
 
                 this.pointGateInfinityBH = new Point(410 - 5 + xx, 430 - 5 + yy);
-                this.pointisBH1 = new PointColor(979 - 30 + xx, 390 - 30 + yy, 7727000, 3);
-                this.pointisBH2 = new PointColor(979 - 30 + xx, 391 - 30 + yy, 7727000, 3);
+                this.pointisBH1 = new PointColor(985 - 30 + xx, 91 - 30 + yy, 10353000, 3);                    // желтый ободок на миникарте (в BH миникарты нет)
+                this.pointisBH2 = new PointColor(975 - 30 + xx, 95 - 30 + yy, 5700000, 5);                 //синий ободок на миникарте (в BH миникарты нет)
 
             #endregion
 

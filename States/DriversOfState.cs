@@ -26,7 +26,7 @@ namespace States
         {
             this.botwindow = new botWindow(numberOfWindow);
             ServerFactory serverFactory = new ServerFactory(botwindow);
-            this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             OtitFactory otitFactory = new OtitFactory(botwindow);
             this.otit = otitFactory.createOtit();
         }
@@ -202,7 +202,7 @@ namespace States
             Server server;
             ServerFactory serverFactory;
             serverFactory = new ServerFactory(this.botwindow);
-            server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
 
             if (server.isLogout())
             {

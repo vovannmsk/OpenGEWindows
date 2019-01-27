@@ -85,7 +85,7 @@ namespace OpenGEWindows
 
             // эти объекты создаются на основании предыдущих переменных класса, а именно param (на каком сервере бот) и nomerTeleport (город продажи)
             ServerFactory serverFactory = new ServerFactory(this);
-            this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             MarketFactory marketFactory = new MarketFactory(this);
             this.market = marketFactory.createMarket();
             PetFactory petFactory = new PetFactory(this);

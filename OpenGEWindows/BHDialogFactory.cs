@@ -23,7 +23,7 @@ namespace OpenGEWindows
         /// возвращает ноывй экземпляр класса указанного сервера
         /// </summary>
         /// <returns></returns>
-        public BHDialog createDialog()
+        public BHDialog create()
         {
             dialog = new BHDialogSing(botwindow);
             switch (botwindow.getParam())

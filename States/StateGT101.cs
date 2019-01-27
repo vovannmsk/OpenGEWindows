@@ -13,6 +13,9 @@ namespace States
         private botWindow botwindow;
         private Server server;
         private ServerFactory serverFactory;
+        private BHDialog BHdialog;
+        private BHDialogFactory BHdialogFactory;
+
         private int tekStateInt;
 
         public StateGT101()
@@ -24,7 +27,10 @@ namespace States
         {
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
-            this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            this.BHdialogFactory = new BHDialogFactory(botwindow);
+            this.BHdialog = BHdialogFactory.create();   // создали конкретный экземпляр класса BHDialog по паттерну "простая Фабрика" (Америка, Европа или Синг)
+
             this.tekStateInt = 101;
         }
 
@@ -80,7 +86,8 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return server.isGateBH();
+            //return server.isGateBH();
+            return BHdialog.isGateBH();
         }
 
         /// <summary>
@@ -89,7 +96,16 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT102(botwindow);
+            if (BHdialog.isGateBH1())
+            {
+                return new StateGT102(botwindow);
+            }
+            if (BHdialog.isGateBH3())
+            {
+                return new StateGT105(botwindow);
+            }
+            else
+            { return new StateGT105(botwindow); }
         }
 
         /// <summary>

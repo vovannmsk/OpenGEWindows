@@ -24,7 +24,7 @@ namespace States
         {
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
-            this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.tekStateInt = 104;
         }
 
@@ -88,7 +88,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT104(botwindow);
+            return new StateGT109(botwindow);
         }
 
         /// <summary>

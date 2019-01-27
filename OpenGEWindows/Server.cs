@@ -90,7 +90,7 @@ namespace OpenGEWindows
         protected iPoint pointGotoEnd;
         protected iPoint pointGotoBarack;
         protected iPoint pointTeleportFirstLine;
-        protected iPoint pointTeleportSecondLine;
+//        protected iPoint pointTeleportSecondLine;
         protected iPoint pointTeleportExecute;
 
         #endregion
@@ -247,6 +247,12 @@ namespace OpenGEWindows
         protected iPointColor pointIsTown_UnlimPistolFirstDot2;
         protected iPointColor pointIsTown_ExpCannonFirstDot1;   // проверка по эксп пушке Мисы
         protected iPointColor pointIsTown_ExpCannonFirstDot2;
+        
+
+        #endregion
+
+        #region Алхимия
+
         protected iPointColor pointisAlchemy1;
         protected iPointColor pointisAlchemy2;
         protected iPoint pointAlchemy;
@@ -258,7 +264,8 @@ namespace OpenGEWindows
         protected iPointColor pointisOutOfIngredient2_2;
         protected iPointColor pointisOutOfIngredient3_1;
         protected iPointColor pointisOutOfIngredient3_2;
-        
+        protected iPointColor pointOutOfMoney1;
+        protected iPointColor pointOutOfMoney2;
 
         #endregion
 
@@ -494,7 +501,7 @@ namespace OpenGEWindows
         protected iPoint pointButtonOkGateBH;
         protected iPoint pointFirstLinekGateBH;
 
-        
+
         protected iPointColor pointisBH1;
         protected iPointColor pointisBH2;
 
@@ -681,18 +688,18 @@ namespace OpenGEWindows
             Pause(2000);
         }
 
-        /// <summary>
-        /// вызываем телепорт через верхнее меню и телепортируемся по второму телепорту
-        /// </summary>
-        public void TeleportBH()
-        {
-            Pause(400);
-            TopMenu(12);                     // Click Teleport menu
-            pointTeleportSecondLine.DoubleClickL();   // Первая строка в списке телепортов
-            Pause(200);
-            pointTeleportExecute.PressMouseL();    // Click on button Execute in Teleport menu
-            Pause(2000);
-        }
+        ///// <summary>
+        ///// вызываем телепорт через верхнее меню и телепортируемся по второму телепорту
+        ///// </summary>
+        //public void TeleportBH()
+        //{
+        //    Pause(400);
+        //    TopMenu(12);                     // Click Teleport menu
+        //    pointTeleportSecondLine.DoubleClickL();   // Первая строка в списке телепортов
+        //    Pause(200);
+        //    pointTeleportExecute.PressMouseL();    // Click on button Execute in Teleport menu
+        //    Pause(2000);
+        //}
 
 
         /// <summary>
@@ -1152,41 +1159,6 @@ namespace OpenGEWindows
 
         #region inTown
 
-        /// <summary>
-        /// проверяем, закончились ли ингредиенты для алхимии (проверяем по две точки на каждую из трех ячеек алхимии)
-        /// </summary>
-        /// <returns></returns>
-        public bool isOutOfIngredients()
-        {
-            return (  pointisOutOfIngredient1_1.isColor() && pointisOutOfIngredient1_2.isColor()  );
-        }
-
-        /// <summary>
-        /// проверяет, заполнился ли инвентарь при производстве на алхимическом столе
-        /// </summary>
-        /// <returns></returns>
-        public bool isInventoryFull()
-        {
-            return (pointisInventoryFull1.isColor() && pointisInventoryFull2.isColor());
-        }
-        /// <summary>
-        /// нажимаем кнопку "Start Alchemy" на алхимическом столе
-        /// </summary>
-        /// <returns></returns>
-        public void PressButtonAlchemy()
-        {
-            pointAlchemy.PressMouseL();
-        }
-
-
-        /// <summary>
-        /// проверяем, открыт ли алхимический стол
-        /// </summary>
-        /// <returns></returns>
-        public bool isAlchemy()
-        {
-            return (pointisAlchemy1.isColor() && pointisAlchemy2.isColor());
-        }
 
         /// <summary>
         /// проверяем, открыто ли окно с подарочными окнами
@@ -1269,6 +1241,56 @@ namespace OpenGEWindows
             //}
         }
 
+
+        #endregion
+
+        #region Алхимия
+
+        /// <summary>
+        /// проверяем, закончились ли ингредиенты для алхимии (проверяем по две точки на каждую из трех ячеек алхимии)
+        /// </summary>
+        /// <returns></returns>
+        public bool isOutOfIngredients()
+        {
+            return (pointisOutOfIngredient1_1.isColor() && pointisOutOfIngredient1_2.isColor());
+        }
+
+        /// <summary>
+        /// проверяем, закончились ли ингредиенты для алхимии (проверяем по две точки на каждую из трех ячеек алхимии)
+        /// </summary>
+        /// <returns></returns>
+        public bool isOutOfMoney()
+        {
+            return (pointOutOfMoney1.isColor() && pointOutOfMoney2.isColor());
+        }
+
+
+        /// <summary>
+        /// проверяет, заполнился ли инвентарь при производстве на алхимическом столе
+        /// </summary>
+        /// <returns></returns>
+        public bool isInventoryFull()
+        {
+            return (pointisInventoryFull1.isColor() && pointisInventoryFull2.isColor());
+        }
+
+        /// <summary>
+        /// нажимаем кнопку "Start Alchemy" на алхимическом столе
+        /// </summary>
+        /// <returns></returns>
+        public void PressButtonAlchemy()
+        {
+            pointAlchemy.PressMouseL();
+        }
+
+        /// <summary>
+        /// проверяем, открыт ли алхимический стол
+        /// </summary>
+        /// <returns></returns>
+        public bool isAlchemy()
+        {
+            return (pointisAlchemy1.isColor() && pointisAlchemy2.isColor());
+        }
 
         #endregion
 
@@ -2646,8 +2668,9 @@ namespace OpenGEWindows
         /// <returns></returns>
         public bool isBH()
         {
-            return true;
-            //return (pointisBH1.isColor() && pointisBH2.isColor());
+            //return true;
+//            return ( isTown() && ( pointisBH1.isColor() && pointisBH2.isColor() ) );
+            return (isTown() && !pointisBH1.isColor()) ;
         }
 
 
@@ -2659,15 +2682,6 @@ namespace OpenGEWindows
         {
             pointGateInfinityBH.PressMouse();
             Pause(2000);
-        }
-
-        /// <summary>
-        /// проверяем, находимся ли в воротах в Infinity (Гильдии Охотников)
-        /// </summary>
-        /// <returns></returns>
-        public bool isGateBH()
-        {
-            return (pointisBH1.isColor() && pointisBH2.isColor());
         }
 
         

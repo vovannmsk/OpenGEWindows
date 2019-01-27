@@ -13,6 +13,8 @@ namespace States
         private botWindow botwindow;
         private Server server;
         private ServerFactory serverFactory;
+        private BHDialog BHdialog;
+        private BHDialogFactory dialogFactory;
         private int tekStateInt;
 
         public StateGT103()
@@ -24,7 +26,9 @@ namespace States
         {
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
-            this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            this.dialogFactory = new BHDialogFactory(botwindow);
+            this.BHdialog = dialogFactory.create();   // создали конкретный экземпляр класса BHDialog по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.tekStateInt = 103;
         }
 
@@ -62,8 +66,12 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.PressStringInfinityGateBH(1);    //нажимаем нижнюю строчку в диалоге
-            server.PressButtonOkInfinityGateBH();   //нажимаем ОК
+            //server.PressStringInfinityGateBH(1);    //нажимаем нижнюю строчку в диалоге
+            //server.PressButtonOkInfinityGateBH();   //нажимаем ОК
+
+            BHdialog.PressStringDialog(1);
+            BHdialog.PressOkButton(1);
+            botwindow.Pause(3000);
         }
 
         /// <summary>
@@ -81,7 +89,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return true;
+            return server.isWork();
         }
 
         /// <summary>

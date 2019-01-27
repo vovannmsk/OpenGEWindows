@@ -99,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="America2TownKatovia.cs" />
+    <Compile Include="America2TownViron2.cs" />
     <Compile Include="AmericaTownFactory.cs" />
     <Compile Include="AmericaTownKatovia.cs" />
     <Compile Include="botWindow.cs" />

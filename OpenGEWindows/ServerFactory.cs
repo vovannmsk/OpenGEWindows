@@ -23,7 +23,7 @@ namespace OpenGEWindows
         {
             this.botwindow = botwindow;
         }
-        public Server createServer()
+        public Server create()
         { 
             switch (botwindow.getParam())    
             {

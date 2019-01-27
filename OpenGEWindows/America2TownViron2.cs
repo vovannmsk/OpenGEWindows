@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace OpenGEWindows
 {
-    public class SingTownViron : Town
+    public class America2TownViron2 : Town
     {
  
         /// <summary>
         /// конструктор для класса
         /// </summary>
         /// <param name="nomerOfWindow"> номер окна по порядку </param>
-        public SingTownViron(botWindow botwindow)
+        public America2TownViron2(botWindow botwindow)
         {
             this.botwindow = botwindow;
             this.xx = botwindow.getX();
@@ -23,9 +23,9 @@ namespace OpenGEWindows
             //точки для нажимания на них
             this.pointMaxHeight = new Point(545 - 5 + xx, 500 - 5 + yy);                                                //проверено
             this.pointBookmark = new Point(880 - 5 + xx, 48 - 5 + yy);                        //вторая закладка карты   //проверено
-            this.pointTraderOnMap = new Point(880 - 5 + xx, 224 - 130 + yy);                        //торговец на карте Jaina      //проверено                     ===========постоянная коррекция
+            this.pointTraderOnMap = new Point(880 - 5 + xx, 249 - 5 + yy);                    //торговец на карте       //проверено                     ===========постоянная коррекция
             this.pointButtonMoveOnMap = new Point(930 - 5 + xx, 728 - 5 + yy);                //кнопка Move на карте    //проверено
-            this.pointHeadTrader = new Point(1080 - 130 + xx, 620 - 130 + yy);                      //голова торговца         //проверено
+            this.pointHeadTrader = new Point(372 - 5 + xx, 467 - 5 + yy);                     //голова торговца         //проверено
             this.pointTownTeleport = new Point(115 - 5 + xx, 333 - 5 + (TELEPORT_N - 1) * 30 + yy);    //сюда тыкаем, чтобы улететь на торговую улицу   //проверено
             //точки для проверки цвета
             this.pointOpenMap1 = new PointColor(794 - 5 + xx, 45 - 5 + yy, 16700000, 5);            //проверено
@@ -45,7 +45,7 @@ namespace OpenGEWindows
         /// </summary>
         public override void SellAndOk()
         {
-            dialog.PressStringDialog(4);  ////========= тыкаем в "Sell/Buy Items" ======================================
+            dialog.PressStringDialog(1);  ////========= тыкаем в "Sell/Buy Items" ======================================
             dialog.PressOkButton(1);      ////========= тыкаем в OK =======================
 
         }

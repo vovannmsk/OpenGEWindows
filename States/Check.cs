@@ -16,6 +16,7 @@ namespace States
         private Pet pet;
         private Otit otit;
         private MM mm;
+        private BHDialog BHdialog;
 
         private DriversOfState driver;
 
@@ -26,7 +27,7 @@ namespace States
         {
             botwindow = new botWindow(numberOfWindow);
             ServerFactory serverFactory = new ServerFactory(botwindow);
-            this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             MarketFactory marketFactory = new MarketFactory(botwindow);
             this.market = marketFactory.createMarket();
             PetFactory petFactory = new PetFactory(botwindow);
@@ -35,6 +36,8 @@ namespace States
             this.otit = otitFactory.createOtit();
             MMFactory mmFactory = new MMFactory(botwindow);
             this.mm = mmFactory.create();
+            BHDialogFactory dialogFactory = new BHDialogFactory(botwindow);
+            this.BHdialog = dialogFactory.create();  
 
             driver = new DriversOfState(numberOfWindow);
         }
@@ -95,7 +98,7 @@ namespace States
                             }
                             else
                             {
-                                if (server.isTown())                     //если стоят в городе
+                                if (server.isTown() && !server.isBH())                     //если стоят в городе (но не в BH)
                                 {
                                     driver.StateExitFromTown();          // 12-14 (GotoEnd)
                                     botwindow.PressEscThreeTimes();
@@ -108,7 +111,7 @@ namespace States
                                     }
                                     else
                                     {
-                                        if (server.isGateBH())
+                                        if (BHdialog.isGateBH())
                                         { 
                                             
                                         }
@@ -349,15 +352,18 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            int i = 1;   //номер проверяемого окна
+            int i = 2;   //номер проверяемого окна
 
             int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 875, 850, 825, 800, 775, 750, 875 };
             int[] koordY = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 5, 30, 55, 80, 105, 130, 5 };
 
             botWindow botwindow = new botWindow(i);
 
-//            Server server = new ServerSing(botwindow);
+            Server server = new ServerSing(botwindow);
             //Server server = new ServerAmerica2(botwindow);
+
+            BHDialog BHdialog = new BHDialogSing(botwindow);
+            
 
             //Market market = new MarketSing(botwindow);
 
@@ -374,6 +380,21 @@ namespace States
             //MessageBox.Show(" " + iscolor1);
             //bool iscolor1 = server.isSafeIP();
             //MessageBox.Show(" " + iscolor1);
+            bool ttt;
+            ttt = BHdialog.isBottonGateBH();
+            MessageBox.Show(" " + ttt);
+            ttt = BHdialog.isGateBH1();
+            MessageBox.Show(" " + ttt);
+            ttt = BHdialog.isGateBH2();
+            MessageBox.Show(" " + ttt);
+            ttt = BHdialog.isGateBH3();
+            MessageBox.Show(" " + ttt);
+            ttt = BHdialog.isGateBH4();
+            MessageBox.Show(" " + ttt);
+            ttt = BHdialog.isGateBH5();
+            MessageBox.Show(" " + ttt);
+            //ttt = BHdialog.isGateBH6();
+            //MessageBox.Show(" " + ttt);
 
             //int[] x = { 0, 0, 130, 260, 390, -70, 60, 190, 320, 450 };
             //int[] y = { 0, 0, 0, 0, 0, 340, 340, 340, 340, 340 };
@@ -388,13 +409,14 @@ namespace States
             //int y = 292;
             //int i = 4;
 
-            int j = 1;
+            //int j = 1;
 //            PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в городе
 //            PointColor point1 = new PointColor(152 - 5 + xx, 250 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в Катовии
 
-            PointColor point1 = new PointColor(954 - 5 + xx, 365 - 5 + yy, 7000000, 6);
-            PointColor point2 = new PointColor(954 - 5 + xx, 366 - 5 + yy, 7000000, 6);
-            PointColor point3 = new PointColor(913 - 5 + xx, 699 - 5 + yy, 1, 1);
+            PointColor point1 = new PointColor(932 - 30 + xx, 700 - 30 + yy, 7000000, 6);
+            PointColor point2 = new PointColor(979 - 30 + xx, 390 - 30 + yy, 7000000, 6);
+            PointColor point3 = new PointColor(716 - 30 + xx, 249 - 30 + yy, 1, 1);
+
 
             color1 = point1.GetPixelColor();
             color2 = point2.GetPixelColor();
@@ -402,7 +424,9 @@ namespace States
 
             MessageBox.Show(" " + color1);
             MessageBox.Show(" " + color2);
- //           MessageBox.Show(" " + color3);
+            MessageBox.Show(" " + color3);
+
+
             //if ((color1 > 2000000) && (color2 > 2000000)) MessageBox.Show(" больше ");
 
 

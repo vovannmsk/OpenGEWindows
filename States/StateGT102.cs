@@ -13,6 +13,9 @@ namespace States
         private botWindow botwindow;
         private Server server;
         private ServerFactory serverFactory;
+        private BHDialog BHdialog;
+        private BHDialogFactory dialogFactory;
+
         private int tekStateInt;
 
         public StateGT102()
@@ -24,7 +27,9 @@ namespace States
         {
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
-            this.server = serverFactory.createServer();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            this.dialogFactory = new BHDialogFactory(botwindow);
+            this.BHdialog = dialogFactory.create();   // создали конкретный экземпляр класса BHDialog по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.tekStateInt = 102;
         }
 
@@ -62,7 +67,10 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.PressButtonOkInfinityGateBH();        //нажимаем на кнопку Ок в первом диалоге
+//            server.PressButtonOkInfinityGateBH();        //нажимаем на кнопку Ок в первом диалоге
+
+
+            BHdialog.PressOkButton(1);
         }
 
         /// <summary>
@@ -80,7 +88,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return server.isGateBH();
+            return BHdialog.isGateBH2();
         }
 
         /// <summary>
@@ -98,7 +106,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGT102(botwindow);
+            return this;
         }
 
         /// <summary>
