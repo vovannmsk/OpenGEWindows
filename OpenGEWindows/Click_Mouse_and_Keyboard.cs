@@ -96,6 +96,25 @@ namespace OpenGEWindows
         }
 
         /// <summary>
+        /// поворот 
+        /// </summary>
+        /// <param name="dx1"></param>
+        /// <param name="dy1"></param>
+        /// <param name="dx2"></param>
+        /// <param name="dy2"></param>
+        public static void MMCR(int dx1, int dy1, int dx2, int dy2)
+        {
+            runMouse(dx1, dy1, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
+            Pause(300);
+            runMouse(dx1, dy1, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_RIGHTDOWN, 0);
+            Pause(100);
+            runMouse(dx2, dy2, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
+            Pause(300);
+            runMouse(dx2, dy2, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_RIGHTUP, 0);
+            Pause(100);
+        }
+
+        /// <summary>
         /// произвести действие с мышью
         /// </summary>
         /// <param name="x"></param>
@@ -149,15 +168,6 @@ namespace OpenGEWindows
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_WHEEL, 120);
                     break;
 
-                //case 5:     // Кликаем мышкой и прокручиваем
-                //    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
-                //    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, 0);
-                //    Pause(50);
-                //    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP, 0);
-                //    Pause(100);
-                //    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_WHEEL, -120);
-                //    break;
-
                 case 6:      // Перемещение мыши и двойной клик
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
                     Pause(200);
@@ -170,6 +180,20 @@ namespace OpenGEWindows
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP, 0);
 
                     break;
+
+                //case 7:     // Кликаем правой кнопкой в указанных координатах (правую кнопку не отпускаем)
+                //    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
+                //    Pause(200);
+                //    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_RIGHTDOWN, 0);
+                //    Pause(200);
+                //    break;
+
+                //case 8:     // Отпускаем правую кнопку в указанных координатах
+                //    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
+                //    Pause(200);
+                //    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_RIGHTUP, 0);
+                //    Pause(200);
+                //    break;
 
                 case 9:     // перемещаем мышку в координаты и прокручиваем вверх
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);

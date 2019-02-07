@@ -62,6 +62,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            server.WriteToLogFileBH("Казарма");
             //============ выбор персонажей  ===========
             //botwindow.TeamSelection();
             server.TeamSelection();
@@ -114,7 +115,14 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT17(botwindow);
+            //if (botwindow.getBullet() == 0)
+            //{
+                return new StateGT17(botwindow);              //если не надо покупать патроны
+            //}
+            //else
+            //{
+            //    return new StateGT16a(botwindow);           // если надо покупать патроны
+            //}
         }
 
         /// <summary>

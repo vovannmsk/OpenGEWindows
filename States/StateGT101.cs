@@ -68,7 +68,17 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            server.WriteToLogFileBH("БХ");
+            
             server.GoToInfinityGateBH();
+
+            //ожидание загрузки диалога ворот
+            int counter = 0;
+            while ((!BHdialog.isGateBH()) && (counter < 30))
+            { botwindow.Pause(500); counter++; }
+
+            server.WriteToLogFileBH("101 Вошли в ворота");
+            //далее оказываемся в воротах в состоянии ворот 1 или 3
         }
 
         /// <summary>
@@ -86,7 +96,6 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            //return server.isGateBH();
             return BHdialog.isGateBH();
         }
 
@@ -96,16 +105,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            if (BHdialog.isGateBH1())
-            {
-                return new StateGT102(botwindow);
-            }
-            if (BHdialog.isGateBH3())
-            {
-                return new StateGT105(botwindow);
-            }
-            else
-            { return new StateGT105(botwindow); }
+            return new StateGT102(botwindow);       
         }
 
         /// <summary>
@@ -114,7 +114,8 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGT101(botwindow);                                                                   //////    продумать куда направить при непопадании в ворота ()
+            server.WriteToLogFileBH("101              ELSE");
+            return this;                                                                                     //если не попали в ворота (продумать, куда направить поток)
         }
 
         /// <summary>

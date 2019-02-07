@@ -19,6 +19,7 @@ namespace GEBot.Data
         public String nameOfFamily { get; set; }
         public int[] triangleX { get; set; }
         public int[] triangleY { get; set; }
+        public int Bullet { get; set; }                              //используемы тип патронов
 
 
         //public int NumberOfAccaunts { get; set; }

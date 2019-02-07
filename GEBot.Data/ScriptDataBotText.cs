@@ -30,6 +30,9 @@ namespace GEBot.Data
             databot.nameOfFamily = NameOfFamily();
             databot.triangleX = LoadTriangleX();
             databot.triangleY = LoadTriangleY();
+            //databot.Bullet = NumberOfBullets();                                               //пока не используется, но всё готово для использования
+
+
         }
 
         public ScriptDataBotText()
@@ -56,6 +59,20 @@ namespace GEBot.Data
             databot.hwnd = hwnd;
             File.WriteAllText(KATALOG_MY_PROGRAM + numberOfWindow + "\\HWND.txt", hwnd.ToString());
         }
+
+        /// <summary>
+        /// функция возвращает тип патронов, которые нужно покупать в автомате патронов
+        /// 0 - не нужно покупать
+        /// 1 - стальные пули
+        /// 2 - картечь
+        /// 3 - Болты
+        /// 4 - болшой калибр 
+        /// 5 - элементальные сферы
+        /// 6 - психические сферы
+        /// </summary>
+        /// <returns></returns>
+        private int NumberOfBullets()
+        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + this.numberOfWindow + "\\Патроны.txt")); }
 
         /// <summary>
         /// функция возвращает номер телепорта, по которому летим продаваться

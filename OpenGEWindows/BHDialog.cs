@@ -28,7 +28,8 @@ namespace OpenGEWindows
         protected iPoint pointInputBoxBottonOk;
 
         protected iPointColor pointsGateBH5;
-//        protected iPointColor pointsGateBH6;
+        protected iPointColor pointsGateBH6;
+        //        protected iPointColor pointsGateBH6;
 
 
         // ============  методы  ========================
@@ -107,6 +108,16 @@ namespace OpenGEWindows
             return (isBottonGateBH() && pointsGateBH5.isColor());
         }
 
+        /// <summary>
+        /// проверяем, находимся ли в воротах в Infinity (Гильдии Охотников) 
+        /// проверяем то состояние ворот, где написано "Reset difficulty by using Shiny Crystal 200 piece(s)"
+        /// </summary>
+        /// <returns></returns>
+        public bool isGateBH6()
+        {
+            return (isBottonGateBH() && pointsGateBH6.isColor());
+        }
+
         ///// <summary>
         ///// проверяем, находимся ли в воротах в Infinity (Гильдии Охотников) 
         ///// проверяем то состояние ворот, где написано "You cannot enter for free"
@@ -152,7 +163,8 @@ namespace OpenGEWindows
         {
             for (int j = 1; j <= number; j++)
             {
-                ButtonOkDialog.DoubleClickL();    // Нажимаем на Ok в диалоге
+//                ButtonOkDialog.DoubleClickL();    // Нажимаем на Ok в диалоге
+                ButtonOkDialog.PressMouseL();       // Нажимаем на Ok в диалоге
                 Pause(1500);
             }
         }

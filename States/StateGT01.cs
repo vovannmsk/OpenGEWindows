@@ -60,8 +60,10 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            
             botwindow.PressEscThreeTimes();   // ================= убирает все лишние окна с экрана =================================
             botwindow.Pause(500);
+
             //================ переход в тот город, где надо продаться (переход по Alt+W) =================================
             server.TeleportToTownAltW(botwindow.getNomerTeleport());            //метод без ветвлений и циклов
 

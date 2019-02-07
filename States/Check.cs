@@ -17,6 +17,7 @@ namespace States
         private Otit otit;
         private MM mm;
         private BHDialog BHdialog;
+        private int numberOfWindow;
 
         private DriversOfState driver;
 
@@ -25,6 +26,7 @@ namespace States
         }
         public Check(int numberOfWindow)
         {
+            this.numberOfWindow = numberOfWindow;
             botwindow = new botWindow(numberOfWindow);
             ServerFactory serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
@@ -76,7 +78,8 @@ namespace States
                 Pause(500);
                 if (server.isLogout())                // если окно в логауте
                 {
-                    driver.StateRecoveryBH();         // долетаем до Гильдии Охотников
+                    //driver.StateFromLogoutToBH();         // долетаем до Гильдии Охотников
+                    driver.StateFromLogoutToBarackBH();         // Logout-->Barack
                 }
                 else
                 {
@@ -94,28 +97,43 @@ namespace States
                         {
                             if (server.isBarack())                  //если стоят в бараке     
                             {
-                                server.buttonExitFromBarack();      //StateExitFromBarack();
+                                driver.StateFromBarackToTownBH();     //идем в город
                             }
                             else
                             {
                                 if (server.isTown() && !server.isBH())                     //если стоят в городе (но не в BH)
                                 {
-                                    driver.StateExitFromTown();          // 12-14 (GotoEnd)
-                                    botwindow.PressEscThreeTimes();
+                                    //driver.StateExitFromTown();          // 12-14 (GotoEnd)            может заменить на переход в БХ???
+                                    driver.StateFromTownToBH();            //town --> BH
+                                    //botwindow.PressEscThreeTimes();
                                 }
                                 else
                                 {
                                     if (server.isBH())
                                     {
-                                        driver.StateGateBH();            // BH --> Gate
+                                        driver.StateFromBHToGateBH();            // BH --> Gate
                                     }
                                     else
                                     {
                                         if (BHdialog.isGateBH())
-                                        { 
-                                            
+                                        {
+                                            driver.StateFromGateToMissionBH();            // Gate --> Mission
                                         }
-
+                                        else
+                                        {
+                                            if (server.isWork() && server.isMissionBH())                            //если находимся в миссии, в самом начале
+                                            {
+                                                driver.StateFromMissionToFightBH();                                 // Mission--> Fight!!!
+                                            }
+                                            else
+                                            {
+                                                if (server.isWork() && !server.isMissionBH() && !server.isAtakBH())  
+                                                    //если находимся в миссии, но уже не в начале и не атакуем босса (значит бой окончен, либо заблудились и надо выходить в БХ) 
+                                                {
+                                                    driver.StateFromMissionToBH();         //в бх
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             } //else isBarack()
@@ -352,12 +370,14 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            int i = 2;   //номер проверяемого окна
+            int i = 1;   //номер проверяемого окна
 
             int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 875, 850, 825, 800, 775, 750, 875 };
             int[] koordY = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 5, 30, 55, 80, 105, 130, 5 };
 
             botWindow botwindow = new botWindow(i);
+            botwindow.ReOpenWindow();
+            //botwindow.Pause(1000);
 
             Server server = new ServerSing(botwindow);
             //Server server = new ServerAmerica2(botwindow);
@@ -380,24 +400,33 @@ namespace States
             //MessageBox.Show(" " + iscolor1);
             //bool iscolor1 = server.isSafeIP();
             //MessageBox.Show(" " + iscolor1);
-            bool ttt;
-            ttt = BHdialog.isBottonGateBH();
-            MessageBox.Show(" " + ttt);
-            ttt = BHdialog.isGateBH1();
-            MessageBox.Show(" " + ttt);
-            ttt = BHdialog.isGateBH2();
-            MessageBox.Show(" " + ttt);
-            ttt = BHdialog.isGateBH3();
-            MessageBox.Show(" " + ttt);
-            ttt = BHdialog.isGateBH4();
-            MessageBox.Show(" " + ttt);
-            ttt = BHdialog.isGateBH5();
-            MessageBox.Show(" " + ttt);
+            //bool ttt;
+            //ttt = BHdialog.isGateBH();
+            //MessageBox.Show(" " + ttt);
+            //ttt = BHdialog.isGateBH1();
+            //MessageBox.Show(" " + ttt);
+            //ttt = BHdialog.isGateBH2();
+            //MessageBox.Show(" " + ttt);
+            //ttt = BHdialog.isGateBH3();
+            //MessageBox.Show(" " + ttt);
+            //ttt = BHdialog.isGateBH4();
+            //MessageBox.Show(" " + ttt);
+            //ttt = BHdialog.isGateBH5();
+            //MessageBox.Show(" " + ttt);
             //ttt = BHdialog.isGateBH6();
             //MessageBox.Show(" " + ttt);
 
             //int[] x = { 0, 0, 130, 260, 390, -70, 60, 190, 320, 450 };
             //int[] y = { 0, 0, 0, 0, 0, 340, 340, 340, 340, 340 };
+
+            //int[] aa = new int[17] { 0, 1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 2104613 };
+            //bool ff = aa.Contains(725272);
+            //int tt = Array.IndexOf(aa, 7272);
+            //MessageBox.Show(" " + ff + " " + tt);
+
+
+            //ReOpenWindow();
+            //server.Turn90L();
 
             int xx, yy;
             xx = koordX[i - 1];
@@ -409,13 +438,13 @@ namespace States
             //int y = 292;
             //int i = 4;
 
-            //int j = 1;
-//            PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в городе
+            int j = 12;
+            PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в городе
 //            PointColor point1 = new PointColor(152 - 5 + xx, 250 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в Катовии
 
-            PointColor point1 = new PointColor(932 - 30 + xx, 700 - 30 + yy, 7000000, 6);
-            PointColor point2 = new PointColor(979 - 30 + xx, 390 - 30 + yy, 7000000, 6);
-            PointColor point3 = new PointColor(716 - 30 + xx, 249 - 30 + yy, 1, 1);
+            //PointColor point1 = new PointColor(700 - 30 + xx, 500 - 30 + yy, 1, 1);
+            PointColor point2 = new PointColor(101 - 30 + xx, 541 - 30 + yy, 1, 1);
+            PointColor point3 = new PointColor(101 - 30 + xx, 542 - 30 + yy, 1, 1);
 
 
             color1 = point1.GetPixelColor();

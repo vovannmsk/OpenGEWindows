@@ -13,6 +13,8 @@ namespace States
         private botWindow botwindow;
         private Server server;
         private ServerFactory serverFactory;
+        private BHDialog BHdialog;
+        private BHDialogFactory dialogFactory;
         private int tekStateInt;
 
         public StateGT106()
@@ -25,6 +27,8 @@ namespace States
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            this.dialogFactory = new BHDialogFactory(botwindow);
+            this.BHdialog = dialogFactory.create();   // создали конкретный экземпляр класса BHDialog по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.tekStateInt = 106;
         }
 
@@ -62,6 +66,11 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            //начинаем из четвертого состояния, т.е. isGateBH4 = true
+            BHdialog.WriteInitialize();      //написали слово Initialize и нажали кнопку Ок
+            botwindow.Pause(1000);
+            server.WriteToLogFileBH("106 состояние ворот 4. написали слово Initialize и нажали кнопку Ок");
+
         }
 
         /// <summary>
@@ -79,7 +88,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return true;
+            return BHdialog.isGateBH5();
         }
 
         /// <summary>
@@ -88,7 +97,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT106(botwindow);
+            return new StateGT107(botwindow);
         }
 
         /// <summary>
@@ -97,7 +106,9 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGT106(botwindow);
+            server.WriteToLogFileBH("106 ELSE ");
+
+            return this;
         }
 
         /// <summary>

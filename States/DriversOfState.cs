@@ -39,11 +39,60 @@ namespace States
         #region Гилльдия Охотников
 
         /// <summary>
+        /// перевод из состояния 108 (в миссии) в состояние 129 (бой) 
+        /// </summary>
+        public void StateFromMissionToFightBH()
+        {
+            server.WriteToLogFileBH("Движок 108-129 mission-->Fight");
+            StateDriverRun(new StateGT108(botwindow), new StateGT129(botwindow));   // mission-->Fight
+        }
+
+        /// <summary>
+        /// перевод из состояния 129 (после победы в бою) в состояние 130 (BH) 
+        /// </summary>
+        public void StateFromMissionToBH()
+        {
+            server.WriteToLogFileBH("Движок 129-130 mission --> BH");
+            StateDriverRun(new StateGT129(botwindow), new StateGT130(botwindow));   // mission (Win)-->BH   (отбежать в сторону и телепортнуться)
+        }
+
+        /// <summary>
+        /// перевод из состояния 100 (город) в состояние 101 (в Гильдии Охотников) 
+        /// </summary>
+        public void StateFromTownToBH()
+        {
+            server.WriteToLogFileBH("Движок 100-101 Town-->BH");
+            StateDriverRun(new StateGT100(botwindow), new StateGT101(botwindow));   // Town-->BH
+        }
+
+        /// <summary>
+        /// перевод из состояния 15 (логаут) в состояние 16 (Barack) 
+        /// </summary>
+        public void StateFromLogoutToBarackBH()
+        {
+            server.WriteToLogFileBH("Движок 15-16 Logout-->Barack");
+            StateDriverRun(new StateGT15(botwindow), new StateGT16(botwindow));     // Logout-->Barack
+        }
+
+        /// <summary>
+        /// перевод из состояния 16 (Barack) --> 17 (Town)
+        /// </summary>
+        public void StateFromBarackToTownBH()
+        {
+            server.WriteToLogFileBH("Движок 16-17 Barack-->Town");
+            StateDriverRun(new StateGT16(botwindow), new StateGT17(botwindow));     // Barack-->Town
+        }
+
+
+
+        /// <summary>
         /// перевод из состояния 15 (логаут) в состояние 101 (в Гильдии Охотников) 
         /// </summary>
-        public void StateRecoveryBH()
+        public void StateFromLogoutToBH()
         {
+            server.WriteToLogFileBH("Движок 15-17 Logout-->Town");
             StateDriverRun(new StateGT15(botwindow), new StateGT17(botwindow));     // Logout-->Town
+            server.WriteToLogFileBH("Движок 100-101 Town-->BH");
             StateDriverRun(new StateGT100(botwindow), new StateGT101(botwindow));   // Town-->BH
         }
 
@@ -52,13 +101,26 @@ namespace States
         /// <summary>
         /// перевод из состояния 101 (BH) в состояние 102 (InfinityGate)
         /// </summary>
-        public void StateGateBH()
+        public void StateFromBHToGateBH()
         {
+            server.WriteToLogFileBH("Движок 101-102 BH-->Gate");
             StateDriverRun(new StateGT101(botwindow), new StateGT102(botwindow));   // BH-->Gate
-            StateDriverRun(new StateGT102(botwindow), new StateGT109(botwindow));   // Gate --> Mission
+//            StateDriverRun(new StateGT102(botwindow), new StateGT108(botwindow));   // Gate --> Mission
 
 
         }
+
+        /// <summary>
+        /// перевод из состояния 102 (InfinityGate) в состояние 108 (миссия) 
+        /// </summary>
+        public void StateFromGateToMissionBH()
+        {
+            server.WriteToLogFileBH("Движок 102-108  Gate --> Mission");
+            StateDriverRun(new StateGT102(botwindow), new StateGT108(botwindow));   // Gate --> Mission
+
+
+        }
+
 
         #endregion
 
@@ -283,10 +345,25 @@ namespace States
         /// </summary>
         public void StateSelling()
         {
+
             botwindow.Pause(300);
-            if (botwindow.getMarket().isSale())                                 //проверяем, находимся ли в магазине
-                StateDriverRun(new StateGT09(botwindow), new StateGT12(botwindow));
-            //StateDriverRun(new StateGT09(botwindow), new StateGT12(botwindow));
+            if (botwindow.getNomerTeleport() >= 100)
+            {
+                KatoviaMarketFactory marketFactory = new KatoviaMarketFactory(botwindow);
+                KatoviaMarket kMarket = marketFactory.createMarket();
+                if (kMarket.isSale())                                                            //проверяем, находимся ли в магазине
+                    StateDriverRun(new StateGT157(botwindow), new StateGT162(botwindow));
+
+            }
+            else
+            {
+                MarketFactory marketFactory = new MarketFactory(botwindow);
+                Market market = marketFactory.createMarket();
+
+                if (market.isSale())                                 //проверяем, находимся ли в магазине
+                    StateDriverRun(new StateGT09(botwindow), new StateGT12(botwindow));
+            }
+           
         }
 
         /// <summary>
@@ -311,7 +388,7 @@ namespace States
         /// </summary>
         public void StateExitFromShop()
         {
-            StateDriverRun(new StateGT111(botwindow), new StateGT14(botwindow));
+            StateDriverRun(new StateGT11a(botwindow), new StateGT14(botwindow));
             //StateDriverRun(new StateGT111(botwindow), new StateGT12(botwindow));
         }
 

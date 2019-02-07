@@ -343,6 +343,7 @@ namespace OpenGEWindows
             this.pointGateInfinityBH = new Point(410 - 5 + xx, 430 - 5 + yy);
             this.pointisBH1 = new PointColor(985 - 30 + xx, 91 - 30 + yy, 10353000, 3);                    // желтый ободок на миникарте (в BH миникарты нет)
             this.pointisBH2 = new PointColor(975 - 30 + xx, 95 - 30 + yy, 5700000, 5);                 //синий ободок на миникарте (в BH миникарты нет)
+            this.arrayOfColors = new uint[17] { 0, 1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 2104613 };
 
             #endregion
 
@@ -588,15 +589,36 @@ namespace OpenGEWindows
         #region BH
 
         /// <summary>
-        /// нажать указанную строку в диалоге в воротах Infinity BH. Отсчет снизу вверх
+        /// проверка миссии по цвету контрольной точки
         /// </summary>
-        /// <param name="number"></param>
-        public override void PressStringInfinityGateBH(int number)
+        /// <returns> номер цвета </returns>
+        public override uint ColorOfMissionBH()
         {
-            iPoint pointString = new Point(839 - 30 + xx, 363 - 30 + yy - (number - 1) * 19);
-            pointString.PressMouse();
-            Pause(2000);
+            return new PointColor(700 - 30 + xx, 500 - 30 + yy, 0, 0).GetPixelColor();
         }
+
+        /// <summary>
+        /// отбегаю в сторону, чтобы бот не стрелял
+        /// </summary>
+        public override void runAway()
+        {
+            iPoint pointNotToShoot = new Point(300 - 5 + xx, 300 - 5 + yy);
+            // отбегаю в сторону. чтобы бот не стрелял  
+            pointNotToShoot.DoubleClickL();
+            botwindow.Pause(4000);
+        }
+
+
+        ///// <summary>
+        ///// нажать указанную строку в диалоге в воротах Infinity BH. Отсчет снизу вверх
+        ///// </summary>
+        ///// <param name="number"></param>
+        //public override void PressStringInfinityGateBH(int number)
+        //{
+        //    iPoint pointString = new Point(839 - 30 + xx, 363 - 30 + yy - (number - 1) * 19);
+        //    pointString.PressMouse();
+        //    Pause(2000);
+        //}
 
         #endregion
 

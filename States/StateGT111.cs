@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenGEWindows;
+using System.Windows.Forms;
 
 
 namespace States
@@ -12,10 +13,7 @@ namespace States
     {
         private botWindow botwindow;
         private Server server;
-        private Town town;
         private ServerFactory serverFactory;
-        private Market market;
-        private MarketFactory marketFactory;
         private int tekStateInt;
 
         public StateGT111()
@@ -23,15 +21,12 @@ namespace States
 
         }
 
-        public StateGT111(botWindow botwindow)   //, GotoTrade gototrade)
+        public StateGT111(botWindow botwindow)   
         {
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            this.town = server.getTown();
-            this.marketFactory = new MarketFactory(botwindow);
-            this.market = marketFactory.createMarket();
-            this.tekStateInt = 11;
+            this.tekStateInt = 111;
         }
 
         /// <summary>
@@ -68,20 +63,18 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            //server.Botton_Sell();             // Нажимаем на кнопку Sell
-            //botwindow.Pause(1500);
-            //server.Button_Close();            // Нажимаем на кнопку Close
-            //town.ExitFromTrader();               // дополнительные нажатия при выходе из магазина
-            //botwindow.ToMoveMouse();             //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
-            //botwindow.Pause(2000);
+            // тринити с текущей водой
+            //MessageBox.Show("3 тринити с текущей водой");   550 120
+            //server.runAway();
+            server.WriteToLogFileBH("сост 111 бой");
 
-            market.Botton_Sell();             // Нажимаем на кнопку Sell
-            botwindow.Pause(1500);
-            market.Button_Close();            // Нажимаем на кнопку Close
-            town.ExitFromTrader();               // дополнительные нажатия при выходе из магазина
-            botwindow.ToMoveMouse();             //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
-            botwindow.Pause(2000);
+            server.FightToPoint(545, 120, 3);
+            
+            server.FightToPoint(545, 120, 3);
+            
+            server.FightToPoint(545, 120, 3);
 
+            server.waitToCancelAtak();
         }
 
         /// <summary>
@@ -89,8 +82,8 @@ namespace States
         /// </summary>
         public void elseRun()
         {
-            //botwindow.PressEscThreeTimes();
-            //botwindow.Pause(500);
+            botwindow.PressEscThreeTimes();
+            botwindow.Pause(500);
         }
 
         /// <summary>
@@ -99,7 +92,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return server.isTown();   
+            return true;
         }
 
         /// <summary>
@@ -108,7 +101,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT12(botwindow);  //, gototrade);
+            return new StateGT129(botwindow);
         }
 
         /// <summary>
@@ -117,17 +110,15 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            if (!botwindow.isHwnd()) return new StateGT28(botwindow);  //последнее состояние движка, чтобы движок сразу тормознулся
-            if (server.isLogout())
-            {
-                return new StateGT15(botwindow);  //коннект и далее
-            }
-            else
-            {
-                return this;
-            }
+            server.WriteToLogFileBH("111 ELSE ");
+
+            return this;
         }
 
+        /// <summary>
+        /// геттер. возвращает номер текущего состояния
+        /// </summary>
+        /// <returns> номер состояния </returns>
         public int getTekStateInt()
         {
             return this.tekStateInt;

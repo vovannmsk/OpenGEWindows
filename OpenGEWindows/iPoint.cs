@@ -17,6 +17,7 @@ namespace OpenGEWindows
         void Pause(int ms);  //
         void DoubleClickL();
         void Drag(iPoint point);
+        void Turn(iPoint point);
         int getX();
         int getY();
     }

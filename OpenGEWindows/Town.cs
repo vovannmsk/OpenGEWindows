@@ -31,9 +31,17 @@ namespace OpenGEWindows
 
         #region Shop
             protected iPoint pointHeadTrader;
+
             //protected iPoint pointSellOnMenu;
             //protected iPoint pointOkOnMenu;
             protected int PAUSE_TIME;
+
+        #endregion
+
+        #region Bullet
+
+        protected iPoint pointBulletAutomat;
+        protected int PAUSE_TIME_Bullet;
 
         #endregion
 
@@ -126,6 +134,26 @@ namespace OpenGEWindows
             public void TownTeleportW()
             {
                 pointTownTeleport.PressMouse();
+            }
+
+        #endregion
+
+        #region Bullet
+
+            /// <summary>
+            /// Делаем паузу, чтобы бот успел добежать до торговца           
+            /// </summary>
+            public void PauseToBullet()
+            {
+                Pause(PAUSE_TIME_Bullet);
+            }
+
+            /// <summary>
+            /// тыкаем мышкой в голову торговца, чтобы войти в магазин              
+            /// </summary>
+            public void Click_ToBulletAutomat()
+            {
+                pointBulletAutomat.PressMouseL();
             }
 
         #endregion

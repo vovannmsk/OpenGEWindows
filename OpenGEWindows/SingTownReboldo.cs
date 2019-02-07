@@ -26,6 +26,8 @@ namespace OpenGEWindows
             this.pointTraderOnMap = new Point(880 - 5 + xx, 280 - 5 + yy);                    //торговец на карте                          ===========постоянная коррекция  шаг 15
             this.pointButtonMoveOnMap = new Point(930 - 5 + xx, 728 - 5 + yy);                //кнопка Move на карте
             this.pointHeadTrader = new Point(365 - 5 + xx, 474 - 5 + yy);                     //голова торговца          //проверено
+            this.pointBulletAutomat = new Point(440 - 30 + xx, 375 - 30 + yy);                //автомат с пулями
+            this.PAUSE_TIME_Bullet = 3000;
             //this.pointSellOnMenu = new Point(520 + xx, 654 + yy);
             //this.pointOkOnMenu = new Point(907 - 5 + xx, 679 - 5 + yy);
             this.pointTownTeleport = new Point(115 - 5 + xx, 333 - 5 + (TELEPORT_N - 1) * 30 + yy);    //сюда тыкаем, чтобы улететь на торговую улицу   //проверено

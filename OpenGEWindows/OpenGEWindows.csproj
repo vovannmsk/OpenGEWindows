@@ -106,10 +106,16 @@
     <Compile Include="BHDialogAmerica2.cs" />
     <Compile Include="BHDialogAmerica.cs" />
     <Compile Include="BHDialog.cs" />
+    <Compile Include="BulletDialog.cs" />
+    <Compile Include="BulletDialogAmerica.cs" />
+    <Compile Include="BulletDialogAmerica2.cs" />
     <Compile Include="DialogAmerica2.cs" />
     <Compile Include="BHDialogEuropa.cs" />
     <Compile Include="BHDialogFactory.cs" />
     <Compile Include="BHDialogSing.cs" />
+    <Compile Include="BulletDialogEuropa.cs" />
+    <Compile Include="BulletDialogFactory.cs" />
+    <Compile Include="BulletDialogSing.cs" />
     <Compile Include="EuropaTownKatovia.cs" />
     <Compile Include="GoldenEggAmerica2.cs" />
     <Compile Include="KatoviaMarket.cs" />

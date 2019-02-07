@@ -63,7 +63,8 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.Cure();               //лечение+патроны                          // было botwindow.Cure();
+            server.WriteToLogFileBH("Город");
+            //server.Cure();               //лечение+патроны                          // было botwindow.Cure();
             botwindow.Pause(1000);
 
             server.Teleport(2);                       // телепорт в Гильдию Охотников (первый телепорт в списке)          ===    Переделать на вторую строчку

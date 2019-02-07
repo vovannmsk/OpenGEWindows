@@ -385,6 +385,10 @@ namespace OpenGEWindows
                 case 1585221:     // Dried Maroon
                 case 8633037:     // Pure Gold Bar
                 case 1527133:     // Armonia Coin
+                case 1023705:     // Violet's Vaucher
+                case 5002080:     // Карточка кэш персонажа 1
+                case 5001823:     // Карточка кэш персонажа 2
+                case 16515071:    // Devil Dream
 
                     result = false;
                     break;

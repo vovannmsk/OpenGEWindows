@@ -48,6 +48,9 @@ namespace OpenGEWindows
             //проверяем то состояние ворот, где написано "The difficulty level has been reset normaly"
             this.pointsGateBH5 = new PointColor(670 - 30 + xx, 356 - 30 + yy, 13000000, 6);           //The
 
+            //проверяем то состояние ворот, где написано "Reset difficulty by using Shiny Crystal 200 piece(s)"
+            this.pointsGateBH6 = new PointColor(659 - 30 + xx, 359 - 30 + yy, 12900000, 5);           //Reset
+
             //проверяем то состояние ворот, где написано "You cannot ener for free today. Next Challenge..."
             //this.pointsGateBH6 = new PointColor(716 - 30 + xx, 263 - 30 + yy, 13000000, 6);           //Next
 

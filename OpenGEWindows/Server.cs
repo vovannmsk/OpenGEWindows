@@ -498,12 +498,14 @@ namespace OpenGEWindows
         #region BH
 
         protected iPoint pointGateInfinityBH;
-        protected iPoint pointButtonOkGateBH;
-        protected iPoint pointFirstLinekGateBH;
-
-
         protected iPointColor pointisBH1;
         protected iPointColor pointisBH2;
+        protected iPointColor pointIsAtak1;
+        protected iPointColor pointIsAtak2;
+        //protected iPointColor pointIsAtak3;
+
+//        protected uint[] arrayOfColors = new uint[17] { 0, 1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 2104613 };
+        protected uint[] arrayOfColors;
 
         #endregion
 
@@ -523,12 +525,23 @@ namespace OpenGEWindows
         #endregion
 
         #region Getters
+
         /// <summary>
         /// геттер
         /// </summary>
         /// <returns></returns>
         public Town getTown()
         { return this.town; }
+
+        /// <summary>
+        /// возвращает параметр, прочитанный из файла
+        /// </summary>
+        /// <returns></returns>
+        public Town getTownBegin()
+        {
+            return town_begin;
+        }
+
         #endregion
 
         #region No Window
@@ -2660,7 +2673,110 @@ namespace OpenGEWindows
 
         #endregion
 
-        #region Гильдия Охотников
+        #region Гильдия Охотников BH
+
+        /// <summary>
+        /// проверяем, атакуем ли сейчас босса
+        /// если точки серые т.е. pointIsAtak1.isColor() = true или pointIsAtak1.isColor() = true, то значит не атакуем. Поэтому стоит отрицание
+        /// </summary>
+        /// <returns></returns>
+        public bool isAtakBH()
+        {
+            return (pointIsAtak1.isColor() && pointIsAtak2.isColor());
+        }
+
+        /// <summary>
+        /// ожидание прекращения атаки
+        /// </summary>
+        public void waitToCancelAtak()
+        {
+            //while (isAtakBH())
+            //{
+            //    Pause(500);
+            //}
+        }
+
+        /// <summary>
+        /// опускаем камеру (опускаем максимально вниз)                           
+        /// </summary>
+        public void MinHeight()
+        {
+            Point pointMinHeight = new Point(514 - 30 + xx, 352 - 30 + yy);
+            for (int j = 1; j <= 5; j++)
+            {
+                pointMinHeight.PressMouseWheelDown();
+                Pause(300);
+            }
+        }
+
+        /// <summary>
+        /// записываем в лог-файл инфу по прохождению программы
+        /// </summary>
+        /// <param name="strLog"></param>
+        public void WriteToLogFileBH(string strLog)
+        {
+            StreamWriter writer = new StreamWriter(KATALOG_MY_PROGRAM + "\\BH.log", true);
+            string timeNow = DateTime.Now.ToString("dd MMMM yyyy | HH:mm:ss  ");
+
+            writer.WriteLine(timeNow + strLog);
+            writer.Close();
+        }
+
+        /// <summary>
+        /// нажимаем левой кнопкой мыши на точку с указанными координатами
+        /// </summary>
+        /// <param name="x">коорд X</param>
+        /// <param name="y">коорд Y</param>
+        public void FightToPoint(int x, int y, int t)
+        {
+             Point pointSabreBottonBH = new Point(92 - 5 + xx, 525 - 5 + yy);         //нажимаем на кнопку с саблей на боевой панели (соответствует нажатию Ctrl)
+             Point pointFightBH = new Point(x - 30 + xx, y - 30 + yy);                //нажимаем конкретную точку, куда надо бежать и бить всех по пути
+
+             pointSabreBottonBH.PressMouseL();
+             pointFightBH.PressMouseL();
+             Pause(t * 1000);
+        }
+
+        /// <summary>
+        /// проверка миссии по цвету контрольной точки
+        /// </summary>
+        /// <returns> номер цвета </returns>
+        public abstract uint ColorOfMissionBH();                                                                    //может быть перенести из синга сюда
+
+        /// <summary>
+        /// отбегаем в сторону, чтобы бот перестал стрелять
+        /// </summary>
+        public abstract void runAway();
+
+        /// <summary>
+        /// проверяем, находимся ли в миссии Гильдии Охотников (проверяется 16 миссий по контрольной точке)
+        /// </summary>
+        /// <returns></returns>
+        public bool isMissionBH()
+        {
+            //проверяем одну и ту же точку на экране в миссии
+            //каждой карте в теории соответствует свой цвет этой точки
+
+            // в массиве хранятся все цвета контрольной точки, которые могут быть миссиях. Один цвет - одна миссия
+            //uint[] arrayOfColors = new uint[17] { 0, 1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 2104613 };
+
+            uint color = new PointColor(700 - 30 + xx, 500 - 30 + yy, 0, 0).GetPixelColor();                 // проверяем номер цвета в контрольной точке
+            //int tt = Array.IndexOf(arrayOfColors, color);
+            //bool ff = this.arrayOfColors.Contains(color);                                                         // проверяем, есть ли цвет контрольной точки в массиве цветов
+
+            return this.arrayOfColors.Contains(color);                                                         // проверяем, есть ли цвет контрольной точки в массиве цветов
+
+        }
+
+        /// <summary>
+        /// проверяем контрольную точку в миссии БХ и находим, в какой миссии мы находимся 
+        /// </summary>
+        /// <returns>номер миссии по порядку</returns>
+        public int NumberOfMissionBH()
+        {
+            uint color = new PointColor(700 - 30 + xx, 500 - 30 + yy, 0, 0).GetPixelColor();                // проверяем номер цвета в контрольной точке
+            return  Array.IndexOf(this.arrayOfColors, color);                                               // номер миссии соответствует порядковому номеру цвета в массиве arrayOfColors
+        }
 
         /// <summary>
         /// проверяем, находимся ли в Гильдии Охотников
@@ -2668,11 +2784,8 @@ namespace OpenGEWindows
         /// <returns></returns>
         public bool isBH()
         {
-            //return true;
-//            return ( isTown() && ( pointisBH1.isColor() && pointisBH2.isColor() ) );
-            return (isTown() && !pointisBH1.isColor()) ;
+            return (isTown() && !pointisBH1.isColor());
         }
-
 
         /// <summary>
         /// тыкаем в ворота Infinity (Гильдии Охотников)
@@ -2680,27 +2793,111 @@ namespace OpenGEWindows
         /// <returns></returns>
         public void GoToInfinityGateBH()
         {
-            pointGateInfinityBH.PressMouse();
-            Pause(2000);
+            //MinHeight();
+            pointGateInfinityBH.PressMouseL();
         }
 
-        
         /// <summary>
-        /// тыкаем в кнопку Ок в диалоге в воротах Infinity (Гильдия Охотников)
+        /// поворот на 180 градусов через левое плечо
         /// </summary>
         /// <returns></returns>
-        public void PressButtonOkInfinityGateBH()
+        public void Turn180()
         {
-            pointButtonOkGateBH.PressMouse();
-            Pause(2000);
+            //если begin больше на 24, то вправо на 90
+            //если begin меньше на 24, то влево на 90
+            //если begin больше на 16, то на 180 градусов
+
+            Point pointBegin = new Point(560 + 16 + - 30 + xx, 430 - 30 + yy);
+            Point pointEnd = new Point(560 - 30 + xx, 430 - 30 + yy);
+            pointBegin.Turn(pointEnd);
+            //pointBegin.Turn(pointEnd);
+            //pointBegin.Turn(pointEnd);
+            //pointBegin.Turn(pointEnd);
+
+            ////ровно 135 градусов за 4 поворота (33,75)
+            //Point pointBegin = new Point(560 + 1 - 30 + xx, 430 - 30 + yy);
+            //Point pointEnd   = new Point(560     - 30 + xx, 430 - 30 + yy);
+            //pointBegin.Turn(pointEnd);
+            //pointBegin.Turn(pointEnd);
+            //pointBegin.Turn(pointEnd);
+            //pointBegin.Turn(pointEnd);
+
+            //ровно 270 градусов за 4 поворота (67,5)
+            //Point pointBegin = new Point(560 + 2 - 30 + xx, 430 - 30 + yy);
+            //Point pointEnd   = new Point(560     - 30 + xx, 430 - 30 + yy);
+            //pointBegin.Turn(pointEnd);
+            //pointBegin.Turn(pointEnd);
+            //pointBegin.Turn(pointEnd);
+            //pointBegin.Turn(pointEnd);
+
+            ////ровно 360+45 градусов за 4 поворота (101,25 )
+            //Point pointBegin = new Point(560 + 3 - 30 + xx, 430 - 30 + yy);
+            //Point pointEnd =   new Point(560     - 30 + xx, 430 - 30 + yy);
+            //pointBegin.Turn(pointEnd);
+            //pointBegin.Turn(pointEnd);
+            //pointBegin.Turn(pointEnd);
+            //pointBegin.Turn(pointEnd);
+
+            ////ровно 360+180=540 градусов за 4 поворота (135)
+            //Point pointBegin = new Point(560 + 4 - 30 + xx, 430 - 30 + yy);
+            //Point pointEnd   = new Point(560     - 30 + xx, 430 - 30 + yy);
+            //pointBegin.Turn(pointEnd);
+            //pointBegin.Turn(pointEnd);
+            //pointBegin.Turn(pointEnd);
+            //pointBegin.Turn(pointEnd);
+
         }
 
         /// <summary>
-        /// нажать указанную строку в диалоге. Отсчет снизу вверх
+        /// поворот на 90 градусов вправо (по часовой стрелке)
         /// </summary>
-        /// <param name="number"></param>
-        public abstract void PressStringInfinityGateBH(int number);
+        /// <returns></returns>
+        public void Turn90L()
+        {
+            //если begin больше на 24, то влево на 90
+            //если begin меньше на 24, то вправо на 90
+            //если begin больше на 16, то на 180 градусов
 
+            Point pointBegin = new Point(560 + 24 - 30 + xx, 430 - 30 + yy);
+            Point pointEnd   = new Point(560 - 30 + xx, 430 - 30 + yy);
+            pointBegin.Turn(pointEnd);
+        }
+
+        /// <summary>
+        /// поворот на 90 градусов влево (против часовой стрелки)
+        /// </summary>
+        /// <returns></returns>
+        public void Turn90R()
+        {
+            //если begin больше на 24, то влево на 90
+            //если begin меньше на 24, то вправо на 90
+            //если begin больше на 16, то на 180 градусов
+
+            Point pointBegin = new Point(560 - 24 - 30 + xx, 430 - 30 + yy);
+            Point pointEnd = new Point(560 - 30 + xx, 430 - 30 + yy);
+            pointBegin.Turn(pointEnd);
+        }
+
+
+        /// <summary>
+        /// поворот, чтобы смотреть более горизонтально (снизу вверх)
+        /// </summary>
+        public void TurnUp()
+        {
+            Point pointBegin = new Point(560 - 30 + xx, 430 - 30 + 1 + yy);
+            Point pointEnd   = new Point(560 - 30 + xx, 430 - 30 + yy);
+            pointBegin.Turn(pointEnd);
+        }
+
+        /// <summary>
+        /// поворот, чтобы смотреть более вертикально (сверху вниз)
+        /// </summary>
+        public void TurnDown()
+        {
+            Point pointBegin = new Point(560 - 30 + xx, 430 - 30 - 1 + yy);
+            Point pointEnd   = new Point(560 - 30 + xx, 430 - 30 + yy);
+            pointBegin.Turn(pointEnd);
+        }
 
         #endregion
 

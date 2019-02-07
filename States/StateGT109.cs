@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenGEWindows;
+using System.Windows.Forms;
 
 
 namespace States
@@ -62,6 +63,18 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            // круглая арена с колоннами и квадратные плиты на полу. босс по центру
+
+            //MessageBox.Show("1 круглая арена с колоннами и квадратные плиты на полу. босс по центру");
+            //server.runAway();
+            server.WriteToLogFileBH("сост 109 бой ");
+
+            server.FightToPoint(520, 127, 3);
+            server.FightToPoint(520, 127, 3);
+            server.FightToPoint(520, 127, 3);
+            server.FightToPoint(520, 127, 3);
+            //botwindow.Pause(30000);
+            server.waitToCancelAtak();
         }
 
         /// <summary>
@@ -88,7 +101,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT109(botwindow);
+            return new StateGT129(botwindow);
         }
 
         /// <summary>
@@ -97,6 +110,8 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
+            server.WriteToLogFileBH("109 ELSE ");
+
             return new StateGT109(botwindow);
         }
 

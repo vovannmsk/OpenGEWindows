@@ -138,5 +138,15 @@ namespace OpenGEWindows
             Click_Mouse_and_Keyboard.MMC(x, y, point.getX(), point.getY());
             Pause(200);
         }
+
+        /// <summary>
+        /// нажимаем правую кнопку мыши в указанных координатах и перемещаем мышь в другие координаты, а там отпускаем правую кнопку
+        /// </summary>
+        /// <param name="point"></param>
+        public void Turn(iPoint point)
+        {
+            Click_Mouse_and_Keyboard.MMCR(x, y, point.getX(), point.getY());
+            Pause(200);
+        }
     }
 }

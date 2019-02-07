@@ -21,11 +21,13 @@ namespace States
 
         }
 
-        public StateGT76(botWindow botwindow)   //, GotoTrade gototrade)
+        public StateGT76(botWindow botwindow)   
         {
             this.botwindow = botwindow;
             this.server = botwindow.getserver();
-            this.otit = botwindow.getOtit();
+            //this.otit = botwindow.getOtit();
+            OtitFactory otitFactory = new OtitFactory(botwindow);
+            this.otit = otitFactory.createOtit();
 
             //this.town = server.getTown();
 

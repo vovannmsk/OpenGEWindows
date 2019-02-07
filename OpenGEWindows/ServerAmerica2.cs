@@ -60,8 +60,8 @@ namespace OpenGEWindows
             this.pointConnect = new PointColor(696 - 5 + xx, 148 - 5 + yy, 7800000, 5);
             //this.pointisLogout1 = new PointColor(565 - 5 + xx, 532 - 5 + yy, 16000000, 6);       // проверено   слово Leave Game буква L
             //this.pointisLogout2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 16000000, 6);       // проверено
-            this.pointisLogout1 = new PointColor(913 - 5 + xx, 698 - 5 + yy, 7792880, 0);       // проверено   слово Ver буква V
-            this.pointisLogout2 = new PointColor(913 - 5 + xx, 699 - 5 + yy, 7726572, 0);       // проверено
+            this.pointisLogout1 = new PointColor(930 - 5 + xx, 702 - 5 + yy, 7925494, 0);       // проверено   слово Ver буква r
+            this.pointisLogout2 = new PointColor(930 - 5 + xx, 703 - 5 + yy, 7925494, 0);       // проверено
 
             #endregion
 
@@ -283,7 +283,7 @@ namespace OpenGEWindows
             this.ButtonCloseMedal = new Point(740 - 5 + xx, 600 - 5 + yy);                         //нажимаем на кнопку Close и закрываем медали
             this.pointPressNunez2 = new Point(700 - 5 + xx, 360 - 5 + yy);                         //нажимаем на Нуньеса после надевания медали
 
-            this.town_begin = new AmericaTownReboldo(botwindow);                                   //город взят по умолчанию, как Ребольдо. 
+            this.town_begin = new America2TownReboldo(botwindow);                                   //город взят по умолчанию, как Ребольдо. 
             this.pointPressLindon1 = new Point(590 - 5 + xx, 210 - 5 + yy);                        //нажимаем на Линдона
             this.pointPressGMonMap = new Point(840 - 5 + xx, 235 - 5 + yy);                        //нажимаем на строчку GM на карте Alt+Z
             this.pointPressGM_1 = new Point(555 - 5 + xx, 425 - 5 + yy);                           //нажимаем на голову GM 
@@ -472,6 +472,7 @@ namespace OpenGEWindows
                 this.pointGateInfinityBH = new Point(410 - 5 + xx, 430 - 5 + yy);
                 this.pointisBH1 = new PointColor(985 - 30 + xx, 91 - 30 + yy, 10353000, 3);                    // желтый ободок на миникарте (в BH миникарты нет)
                 this.pointisBH2 = new PointColor(975 - 30 + xx, 95 - 30 + yy, 5700000, 5);                 //синий ободок на миникарте (в BH миникарты нет)
+                this.arrayOfColors = new uint[17] { 0, 1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 2104613 };
 
             #endregion
 
@@ -741,8 +742,6 @@ namespace OpenGEWindows
         /// </summary>
         public override void TeleportToTownAltW(int nomerTeleport)
         {
-            iPoint pointNotToShoot = new Point(300 - 5 + xx, 300 - 5 + yy);
-            iPoint pointNotToShoot2 = new Point(350 - 5 + xx, 350 - 5 + yy);
             iPoint pointTeleportToTownAltW;
             if (botwindow.getNomerTeleport() < 14)
             {
@@ -754,10 +753,15 @@ namespace OpenGEWindows
             }
 
             // отбегаю в сторону. чтобы бот не стрелял  
-            pointNotToShoot.DoubleClickL();
-            botwindow.Pause(3000);
-            pointNotToShoot2.DoubleClickL();
-            botwindow.Pause(3000);
+            //iPoint pointNotToShoot = new Point(300 - 5 + xx, 300 - 5 + yy);
+            //iPoint pointNotToShoot2 = new Point(350 - 5 + xx, 350 - 5 + yy);
+            //pointNotToShoot.DoubleClickL();
+            //botwindow.Pause(3000);
+            //pointNotToShoot2.DoubleClickL();
+            //botwindow.Pause(3000);
+
+            // отбегаю в сторону. чтобы бот не стрелял 
+            runAway();                            
 
             TopMenu(6, 1);
             Pause(1000);
@@ -821,15 +825,36 @@ namespace OpenGEWindows
         #region BH
 
         /// <summary>
-        /// нажать указанную строку в диалоге в воротах Infinity BH. Отсчет снизу вверх
+        /// проверка миссии по цвету контрольной точки
         /// </summary>
-        /// <param name="number"></param>
-        public override void PressStringInfinityGateBH(int number)
+        /// <returns> номер цвета </returns>
+        public override uint ColorOfMissionBH()
         {
-            iPoint pointString = new Point(839 - 30 + xx, 363 - 30 + yy - (number - 1) * 19);
-            pointString.PressMouse();
-            Pause(2000);
+            return new PointColor(700 - 30 + xx, 500 - 30 + yy, 0, 0).GetPixelColor();
         }
+
+        /// <summary>
+        /// отбегаю в сторону, чтобы бот не стрелял
+        /// </summary>
+        public override void runAway()
+        {
+            iPoint pointNotToShoot = new Point(300 - 5 + xx, 300 - 5 + yy);
+            // отбегаю в сторону. чтобы бот не стрелял  
+            pointNotToShoot.DoubleClickL();
+            botwindow.Pause(4000);
+        }
+
+
+        ///// <summary>
+        ///// нажать указанную строку в диалоге в воротах Infinity BH. Отсчет снизу вверх
+        ///// </summary>
+        ///// <param name="number"></param>
+        //public override void PressStringInfinityGateBH(int number)
+        //{
+        //    iPoint pointString = new Point(839 - 30 + xx, 363 - 30 + yy - (number - 1) * 19);
+        //    pointString.PressMouse();
+        //    Pause(2000);
+        //}
 
         #endregion
     }

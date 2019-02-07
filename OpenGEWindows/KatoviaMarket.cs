@@ -388,6 +388,10 @@ namespace OpenGEWindows
                 case 1585221:     // Dried Maroon
                 case 8633037:     // Pure Gold Bar
                 case 1527133:     // Armonia Coin
+                case 1023705:     // Violet's Vaucher
+                case 5002080:     // Карточка кэш персонажа 1
+                case 5001823:     // Карточка кэш персонажа 2
+                case 16515071:    // Devil Dream
 
                     result = false;
                     break;
@@ -458,7 +462,7 @@ namespace OpenGEWindows
         public void SaleToEnd()
         {
             iPointColor pointCurrentProduct;
-            for (int j = 2; j <= 12; j++)
+            for (int j = 2; j <= 11; j++)
             {
                 pointCurrentProduct = new PointColor(152 - 5 + xx, 250 - 5 + yy + (j - 1) * 27, 3360337, 0);   //проверяем цвет текущего продукта
                 Pause(50);

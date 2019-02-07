@@ -27,6 +27,9 @@ namespace OpenGEWindows
             this.pointTraderOnMap = new Point(857 - 5 + xx, 280 - 5 + yy);                              // работает   +15 пискелей одна строчка
             this.pointButtonMoveOnMap = new Point(927 - 5 + xx, 728 - 5 + yy);                                  // работает
             this.pointHeadTrader = new Point(357 + xx, 502 + yy);                                       // работает
+            this.pointBulletAutomat = new Point(440 - 30 + xx, 375 - 30 + yy);                //автомат с пулями
+            this.PAUSE_TIME_Bullet = 3000;
+
             //this.pointSellOnMenu = new Point(520 + xx, 654 + yy);                                     // работает
             //this.pointOkOnMenu = new Point(902 + xx, 674 + yy);                                       // работает
             this.pointTownTeleport = new Point(110 + xx, 328 + (TELEPORT_N - 1) * 30 + yy);                                // работает

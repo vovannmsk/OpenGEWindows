@@ -13,6 +13,8 @@ namespace States
         private botWindow botwindow;
         private Server server;
         private ServerFactory serverFactory;
+        private BHDialog BHdialog;
+        private BHDialogFactory dialogFactory;
         private int tekStateInt;
 
         public StateGT107()
@@ -25,6 +27,8 @@ namespace States
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            this.dialogFactory = new BHDialogFactory(botwindow);
+            this.BHdialog = dialogFactory.create();   // создали конкретный экземпляр класса BHDialog по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.tekStateInt = 107;
         }
 
@@ -62,6 +66,15 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            //начинаем из пятого состояния, т.е. isGateBH5 = true
+            BHdialog.PressOkButton(1);
+            //ожидание загрузки BH
+            int counter = 0;
+            while (!(server.isBH()) && (counter < 30))
+            { botwindow.Pause(500); counter++; }
+
+//            botwindow.Pause(2500);         //ожидание загруэки БХ
+            server.WriteToLogFileBH("107 состояние ворот 5. нажали кнопку Ок и подождали загрузки БХ");
         }
 
         /// <summary>
@@ -79,7 +92,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return true;
+            return server.isBH();
         }
 
         /// <summary>
@@ -88,7 +101,8 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT107(botwindow);
+//            return new StateGT108(botwindow);   //идем в конец цикла
+            return new StateGT101(botwindow);     //идём в состояние 101, чтобы снова зайти в ворота BH         если не получиться, то можно вернуть старый вариант
         }
 
         /// <summary>
@@ -97,7 +111,9 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGT107(botwindow);
+            server.WriteToLogFileBH("107 ELSE ");
+
+            return this;
         }
 
         /// <summary>

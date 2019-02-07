@@ -39,10 +39,10 @@ namespace OpenGEWindows
         private IScriptDataBot scriptDataBot;
 
         private Server server;                 
-        private Market market;
-        private Pet pet;
-        private Otit otit;
-        private Dialog dialog;
+       // private Market market;
+       // private Pet pet;
+        //private Otit otit;
+        //private Dialog dialog;
 
         //private int counterMitridat;
         //private System.DateTime timeMitridat = System.DateTime.Now;
@@ -86,14 +86,14 @@ namespace OpenGEWindows
             // эти объекты создаются на основании предыдущих переменных класса, а именно param (на каком сервере бот) и nomerTeleport (город продажи)
             ServerFactory serverFactory = new ServerFactory(this);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            MarketFactory marketFactory = new MarketFactory(this);
-            this.market = marketFactory.createMarket();
-            PetFactory petFactory = new PetFactory(this);
-            this.pet = petFactory.createPet();
-            OtitFactory otitFactory = new OtitFactory(this);
-            this.otit = otitFactory.createOtit();
-            DialogFactory dialogFactory = new DialogFactory(this);
-            this.dialog = dialogFactory.createDialog();
+            //MarketFactory marketFactory = new MarketFactory(this);
+            //this.market = marketFactory.createMarket();
+            //PetFactory petFactory = new PetFactory(this);
+            //this.pet = petFactory.createPet();
+            //OtitFactory otitFactory = new OtitFactory(this);
+            //this.otit = otitFactory.createOtit();
+            //DialogFactory dialogFactory = new DialogFactory(this);
+            //this.dialog = dialogFactory.createDialog();
 
 
             // точки для тыканья. универсально для всех серверов
@@ -119,22 +119,22 @@ namespace OpenGEWindows
         {
             return this.server;
         }
-        public Market getMarket()
-        {
-            return this.market;
-        }
-        public Pet getPet()
-        {
-            return this.pet;
-        }
-        public Otit getOtit()
-        {
-            return this.otit;
-        }
-        public Dialog getDialog()
-        {
-            return this.dialog;
-        }
+        //public Market getMarket()
+        //{
+        //    return this.market;
+        //}
+        //public Pet getPet()
+        //{
+        //    return this.pet;
+        //}
+        //public Otit getOtit()
+        //{
+        //    return this.otit;
+        //}
+        //public Dialog getDialog()
+        //{
+        //    return this.dialog;
+        //}
 
 
         public bool getIsServer()
@@ -170,6 +170,15 @@ namespace OpenGEWindows
         public String getNameOfFamily()
         {
             return databot.nameOfFamily;
+        }
+        /// <summary>
+        /// тип закупаемых патронов в городском автомате. Пока не используется
+        /// </summary>
+        /// <returns></returns>
+        public int getBullet()
+        { 
+            //return databot.Bullet;
+            return 0;
         }
 
         #endregion
@@ -893,6 +902,18 @@ namespace OpenGEWindows
             //}
         }
 
+        /// <summary>
+        /// Нажать на бутылку митридата, которая лежит в первой ячейке                              
+        /// </summary>
+        public void PressMitridatBH()
+        {
+            iPoint pointPanel = new Point(38 - 5 + databot.x, 486 - 5 + databot.y);    // 33, 481
+            iPoint pointFirstBox = new Point(27 - 5 + databot.x, 110 - 5 + databot.y);
+
+            //pointPanel.PressMouseR();                   // Кликаю правой кнопкой в панель с бытылками, чтобы сделать ее активной и поверх всех окон (группа может мешать)
+            pointFirstBox.PressMouseL();               // тыкаю в митридат (вторая ячейка)
+            Pause(200);
+        }
 
         #endregion
 
