@@ -23,7 +23,7 @@ namespace Main
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "06-02-2019";
+        public static String DataVersion = "11-02-2019";
         public static int numberOfAcc = KolvoAkk();
 
         /// <summary>
@@ -752,13 +752,24 @@ namespace Main
         private void funcBH()
         {
             int start = BeginAcc();
+            Check check;
             //for (int i = 1; i <= 20; i++)
+            int counter = 0;
             while(true)
             {
+                
                 for (int j = start; j <= numberOfAcc; j++)
                 {
-                    Check check = new Check(j);
-                    if (check.isActive()) check.checkForProblemsBH();
+                    check = new Check(j);
+                    //if (check.isActive()) check.checkForProblemsBH();
+                    if (check.isActive()) check.problemResolutionBH();
+                }
+                counter++;
+                check = new Check(1);
+                if (counter >= 500)
+                {
+                    counter = 0;
+                    check.setStatusOfSale(1);
                 }
             }
             //ReOpen всех окон

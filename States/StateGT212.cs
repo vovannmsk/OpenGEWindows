@@ -4,29 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenGEWindows;
-using System.Windows.Forms;
 
 
 namespace States
 {
-    public class StateGT115 : IState
+    public class StateGT212 : IState
     {
         private botWindow botwindow;
         private Server server;
+        private Town town;
         private ServerFactory serverFactory;
+        private Market market;
+        private MarketFactory marketFactory;
         private int tekStateInt;
 
-        public StateGT115()
+        public StateGT212()
         {
 
         }
 
-        public StateGT115(botWindow botwindow)   
+        public StateGT212(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            this.tekStateInt = 115;
+            this.town = server.getTown();
+            this.marketFactory = new MarketFactory(botwindow);
+            this.market = marketFactory.createMarket();
+            this.tekStateInt = 212;
         }
 
         /// <summary>
@@ -63,25 +68,20 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            // Раффлезия
-            //MessageBox.Show("7 Раффлезия");
-            server.WriteToLogFileBH("сост 115 в бой");
+            server.WriteToLogFileBH("212");
+            //server.Botton_Sell();             // Нажимаем на кнопку Sell
+            //botwindow.Pause(1500);
+            //server.Button_Close();            // Нажимаем на кнопку Close
+            //town.ExitFromTrader();               // дополнительные нажатия при выходе из магазина
+            //botwindow.ToMoveMouse();             //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
+            //botwindow.Pause(2000);
 
-            //server.FightToPoint(785, 105, 3);         // идем в правый верхний угол  рабочий вариант
-            //server.FightToPoint(785, 105, 3);       
-            //server.FightToPoint(785, 105, 3);       
-            //server.FightToPoint(785, 105, 0);
-
-            //новый вариант
-            server.TurnUp();
-            server.FightToPoint(780, 238, 1);
-            server.TurnDown();
-
-
-
-            //botwindow.Pause(40000);
-            //server.runAway();
-            server.waitToCancelAtak();
+            market.Botton_Sell();             // Нажимаем на кнопку Sell
+            botwindow.Pause(1500);
+            market.Button_Close();            // Нажимаем на кнопку Close
+            town.ExitFromTrader();               // дополнительные нажатия при выходе из магазина
+            botwindow.ToMoveMouse();             //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
+            botwindow.Pause(2000);
 
         }
 
@@ -90,8 +90,8 @@ namespace States
         /// </summary>
         public void elseRun()
         {
-            botwindow.PressEscThreeTimes();
-            botwindow.Pause(500);
+            //botwindow.PressEscThreeTimes();
+            //botwindow.Pause(500);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return true;
+            return server.isTown();   
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT129(botwindow);
+            return new StateGT213(botwindow);  //, gototrade);
         }
 
         /// <summary>
@@ -118,15 +118,9 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            server.WriteToLogFileBH("115 ELSE ");
-
             return this;
         }
 
-        /// <summary>
-        /// геттер. возвращает номер текущего состояния
-        /// </summary>
-        /// <returns> номер состояния </returns>
         public int getTekStateInt()
         {
             return this.tekStateInt;

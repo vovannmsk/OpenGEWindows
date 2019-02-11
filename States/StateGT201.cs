@@ -4,29 +4,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenGEWindows;
-using System.Windows.Forms;
-
 
 namespace States
 {
-    public class StateGT115 : IState
+    public class StateGT201 : IState
     {
         private botWindow botwindow;
-        private Server server;
+        private Server server;                 
+        private Town town;
         private ServerFactory serverFactory;
         private int tekStateInt;
 
-        public StateGT115()
+
+        public StateGT201()
         {
 
         }
 
-        public StateGT115(botWindow botwindow)   
+        public StateGT201(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            this.tekStateInt = 115;
+            this.town = server.getTown();
+            this.tekStateInt = 201;
         }
 
         /// <summary>
@@ -38,16 +39,12 @@ namespace States
         {
             bool result = false;
             if (!(other == null))            //если other не null, то проверяем на равенство
-                if (other.getTekStateInt() == 1)         //27.04.17
                 {
-                    if (this.getTekStateInt() == other.getTekStateInt()) result = true;
-                }
-                else   //27.04.17
-                {
-                    if (this.getTekStateInt() >= other.getTekStateInt()) result = true;  //27.04.17
+                    if (this.tekStateInt == other.getTekStateInt()) result = true;
                 }
             return result;
         }
+
 
         /// <summary>
         /// геттер, возвращает текущее состояние
@@ -59,47 +56,42 @@ namespace States
         }
 
         /// <summary>
-        /// метод осуществляет действия для перехода в следующее состояние
+        /// метод осуществляет действия для перехода из состояния GT201 в GT02
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            // Раффлезия
-            //MessageBox.Show("7 Раффлезия");
-            server.WriteToLogFileBH("сост 115 в бой");
+            
+            botwindow.PressEscThreeTimes();   // ================= убирает все лишние окна с экрана =================================
+            botwindow.Pause(500);
 
-            //server.FightToPoint(785, 105, 3);         // идем в правый верхний угол  рабочий вариант
-            //server.FightToPoint(785, 105, 3);       
-            //server.FightToPoint(785, 105, 3);       
-            //server.FightToPoint(785, 105, 0);
+            server.TeleportAltW_BH();            //================ переход в тот город, где надо продаться (переход по Alt+W) =================================
 
-            //новый вариант
-            server.TurnUp();
-            server.FightToPoint(780, 238, 1);
-            server.TurnDown();
+            server.WriteToLogFileBH("201");
+            ////ожидание загрузки города
+            //int counter = 0;
+            //while ((!server.isTown()) && (counter < 30))                  
+            //{ botwindow.Pause(1000); counter++; }
 
-
-
-            //botwindow.Pause(40000);
-            //server.runAway();
-            server.waitToCancelAtak();
-
+            //botwindow.PressEscThreeTimes(); //29.04.17
+            //botwindow.Pause(500);
         }
 
         /// <summary>
-        /// метод осуществляет действия для перехода к запасному состоянию, если не удался переход 
+        /// метод осуществляет действия для перехода к запасному состоянию, если не удался переход из состояния GT201 в GT02
         /// </summary>
-        public void elseRun()
+        public void elseRun()            
         {
             botwindow.PressEscThreeTimes();
             botwindow.Pause(500);
         }
 
         /// <summary>
-        /// проверяет, получилось ли перейти к следующему состоянию 
+        /// проверяет, получилось ли перейти к состоянию GT02
         /// </summary>
-        /// <returns> true, если получилось перейти к следующему состоянию </returns>
-        public bool isAllCool()
+        /// <returns> true, если получилось перейти к состоянию GT02 </returns>
+        public bool isAllCool()          // получилось ли перейти к следующему состоянию. true, если получилось
         {
+//            return  server.isTown(); 
             return true;
         }
 
@@ -108,8 +100,8 @@ namespace States
         /// </summary>
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
-        {
-            return new StateGT129(botwindow);
+        { 
+            return new StateGT203(botwindow);  
         }
 
         /// <summary>
@@ -118,8 +110,6 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            server.WriteToLogFileBH("115 ELSE ");
-
             return this;
         }
 

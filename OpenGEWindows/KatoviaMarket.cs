@@ -488,6 +488,7 @@ namespace OpenGEWindows
         {
             pointButtonSell.PressMouseL();
             pointButtonSell.PressMouseL();
+            botwindow.setStatusOfSale(0);
             Pause(2000);
         }
 

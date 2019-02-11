@@ -31,6 +31,10 @@ namespace OpenGEWindows
             this.pointIsSale22 = new PointColor(840 - 5 + xx, 668 - 5 + yy, 7390000, 4);      //работает
             this.pointIsClickSale1 = new PointColor(733 - 5 + xx, 665 - 5 + yy, 7390000, 4);      //работает
             this.pointIsClickSale2 = new PointColor(733 - 5 + xx, 664 - 5 + yy, 7390000, 4);      //работает
+
+            this.pointIsClickPurchase1 = new PointColor(696 - 5 + xx, 664 - 5 + yy, 7500000, 5);      //нажата ли закладка "Purchase"
+            this.pointIsClickPurchase2 = new PointColor(696 - 5 + xx, 665 - 5 + yy, 7500000, 5);
+
             this.pointBookmarkSell = new Point(230 - 5 + xx, 168 - 5 + yy);                      //работает                        
             this.pointSaleToTheRedBottle = new Point(335 + xx, 220 + yy);
             this.pointSaleOverTheRedBottle = new Point(335 + xx, 220 + yy);

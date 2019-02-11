@@ -37,6 +37,7 @@ namespace OpenGEWindows
 
         private DataBot databot;              //начальные данные для бота (заданные пользователем)
         private IScriptDataBot scriptDataBot;
+        private int statusOfSale;
 
         private Server server;                 
        // private Market market;
@@ -83,6 +84,8 @@ namespace OpenGEWindows
 
             #endregion
 
+            this.statusOfSale = GetStatusOfSale();              //значение статуса, 1 - мы направляемся на продажу товара в магазин, 0 - нет (обычный режим работы),  введен для работы в Гильдии Охотников
+            
             // эти объекты создаются на основании предыдущих переменных класса, а именно param (на каком сервере бот) и nomerTeleport (город продажи)
             ServerFactory serverFactory = new ServerFactory(this);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
@@ -108,11 +111,37 @@ namespace OpenGEWindows
 
         #region геттеры и сеттеры
 
+        /// <summary>
+        /// сеттер для statusOfSale. Параллельно идет запись в файл
+        /// </summary>
+        /// <param name="status"></param>
+        public void setStatusOfSale(int status)
+        {
+            this.statusOfSale = status;                   // обновили переменную класса
+            SetStatusInFile();                          //записали в файл
+        }
+
+        /// <summary>
+        /// геттер для statusOfSale.
+        /// </summary>
+        /// <returns></returns>
+        public int getStatusOfSale()
+        {
+            return statusOfSale;
+        }
+
+        /// <summary>
+        /// сеттер для databot.hwnd;  параллельно идет запись в файл
+        /// </summary>
+        /// <param name="hwnd"></param>
         public void setHwnd(UIntPtr hwnd)
         { 
             databot.hwnd = hwnd; 
             hwnd_to_file(); 
         }
+
+        
+
         public DataBot getDataBot()
         { return this.databot; }
         public Server getserver()
@@ -329,6 +358,23 @@ namespace OpenGEWindows
         #region Общие методы
 
         /// <summary>
+        /// метод считывает значение статуса из файла, 1 - мы направляемся на продажу товара в магазин, 0 - нет (обычный режим работы)
+        /// </summary>
+        /// <returns></returns>
+        private int GetStatusOfSale()
+        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\StatusOfSale.txt")); }
+
+        /// <summary>
+        /// метод записывает значение статуса в файл, 1 - мы направляемся на продажу товара в магазин, 0 - нет (обычный режим работы)
+        /// </summary>
+        /// <returns></returns>
+        private void SetStatusInFile()
+        {
+            File.WriteAllText(KATALOG_MY_PROGRAM + "\\StatusOfSale.txt", this.statusOfSale.ToString());
+        }
+
+
+        /// <summary>
         /// Перемещает окно с ботом в заданные координаты. Если окно есть, то result = true, а если вылетело окно, то result = false.
         /// </summary>
         /// <returns></returns>
@@ -385,6 +431,16 @@ namespace OpenGEWindows
             TextSend.SendText2(1);           // нажимаем Esc
             Thread.Sleep(200);
         }
+
+        /// <summary>
+        /// эмулирует нажатие кнопки "Esc"
+        /// </summary>
+        public void PressEsc()
+        {
+            TextSend.SendText2(1);           // нажимаем Esc
+            Thread.Sleep(200);
+        }
+
 
         /// <summary>
         /// метод возвращает параметр, который указывает, является ли данный компьютер удаленным сервером или локальным компом (различная обработка мыши)
@@ -602,7 +658,7 @@ namespace OpenGEWindows
 
             #region старый вариант
 
-            server.serverSelection();          //17-05-2018
+            server.serverSelection();          //выбираем из списка свой сервер
 
             iPointColor point5050 = new PointColor(50 - 5 + databot.x, 50 - 5 + databot.y, 7800000, 5);  //запоминаем цвет в координатах 50, 50 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
             iPoint pointButtonOk = new Point(525 - 5 + databot.x, 410 - 5 + databot.y);    // кнопка Ok в логауте

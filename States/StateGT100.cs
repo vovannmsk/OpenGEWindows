@@ -65,14 +65,15 @@ namespace States
         {
             server.WriteToLogFileBH("Город");
             //server.Cure();               //лечение+патроны                          // было botwindow.Cure();
-            botwindow.Pause(1000);
+            botwindow.PressEscThreeTimes();
+            botwindow.Pause(500);
 
-            server.Teleport(2);                       // телепорт в Гильдию Охотников (первый телепорт в списке)          ===    Переделать на вторую строчку
-            botwindow.Pause(1000);
+            server.Teleport(2, true);                       // телепорт в Гильдию Охотников (второй телепорт в списке)        
+            //botwindow.Pause(1000);
 
-            int i = 0;
-            while ((!server.isBH()) & (i < 30))         //ожидание загрузки места работы
-            { botwindow.Pause(500); i++; }
+            //int i = 0;
+            //while ((!server.isBH()) & (i < 30))         //ожидание загрузки места работы
+            //{ botwindow.Pause(500); i++; }
         }
 
         /// <summary>
@@ -90,7 +91,8 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return server.isBH();
+            //return server.isBH();
+            return true;
         }
 
         /// <summary>

@@ -68,14 +68,16 @@ namespace States
 
             //разворот на 180 градусов и вперед 4 раза
             server.Turn180();
+            
             //server.TurnUp();
+            //botwindow.Pause(40000);
 
             server.FightToPoint(585, 125, 3);
             server.FightToPoint(585, 125, 3);
             server.FightToPoint(585, 125, 3);
             server.FightToPoint(585, 125, 3);
             server.FightToPoint(585, 125, 3);
-            server.FightToPoint(585, 125, 3);
+            server.FightToPoint(585, 125, 0);
 
             server.waitToCancelAtak();
         }

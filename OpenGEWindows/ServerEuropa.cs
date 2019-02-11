@@ -91,8 +91,8 @@ namespace OpenGEWindows
             this.pointisOpenTopMenu82 = new PointColor(554 + xx, 87 + yy, 13420000, 4);
             this.pointisOpenTopMenu91 = new PointColor(601 + xx, 74 + yy, 13420000, 4);      //606 - 5, 79 - 5, 13420000, 607 - 5, 79 - 5, 13420000, 4);            //проверено
             this.pointisOpenTopMenu92 = new PointColor(602 + xx, 74 + yy, 13420000, 4);
-            this.pointisOpenTopMenu121 = new PointColor(502 + xx, 135 + yy, 12440000, 4);      //507 - 5, 140 - 5, 12440000, 508 - 5, 140 - 5, 12440000, 4);        //проверено
-            this.pointisOpenTopMenu122 = new PointColor(503 + xx, 135 + yy, 12440000, 4);
+            this.pointisOpenTopMenu12_1 = new PointColor(502 + xx, 135 + yy, 12440000, 4);      //507 - 5, 140 - 5, 12440000, 508 - 5, 140 - 5, 12440000, 4);        //проверено
+            this.pointisOpenTopMenu12_2 = new PointColor(503 + xx, 135 + yy, 12440000, 4);
             this.pointisOpenTopMenu131 = new PointColor(539 - 5 + xx, 374 - 5 + yy, 16100000, 5);                                                                   //проверено
             this.pointisOpenTopMenu132 = new PointColor(540 - 5 + xx, 374 - 5 + yy, 16500000, 5);
 
@@ -248,6 +248,8 @@ namespace OpenGEWindows
             this.pointisBarack2 = new PointColor(104 - 5 + xx, 155 - 5 + yy, 2350000, 4);
             this.pointisBarack3 = new PointColor(81 - 5 + xx, 63 - 5 + yy, 15300000, 5);       //проверено
             this.pointisBarack4 = new PointColor(81 - 5 + xx, 64 - 5 + yy, 13700000, 5);
+            this.pointisBarackTeamSelection1 = new PointColor(15 - 5 + xx, 60 - 5 + yy, 7900000, 5);            //Team Selection
+            this.pointisBarackTeamSelection2 = new PointColor(16 - 5 + xx, 60 - 5 + yy, 7900000, 5);            //
             this.pointButtonLogoutFromBarack = new Point(955 - 5 + xx, 700 - 5 + yy);               //кнопка логаут в казарме
             this.pointTeamSelection1 = new Point(140 - 5 + xx, 500 - 5 + yy);                   //проверено
             this.pointTeamSelection2 = new Point(70 - 5 + xx, 355 - 5 + yy);                   //проверено
@@ -257,6 +259,9 @@ namespace OpenGEWindows
             this.pointEnterChannel = new Point(646 - 5 + xx, 409 - 5 + yy + (botwindow.getKanal() - 2) * 15);                        //выбор канала в меню Alt+F2
             this.pointMoveNow = new Point(651 - 5 + xx, 591 - 5 + yy);                        //выбор канала в меню Alt+F2
             this.pointNewPlace = new Point(85 + xx, 670 + yy);
+            this.pointLastPoint = new Point(210 - 5 + xx, 670 - 5 + yy);
+            this.pointisBHLastPoint1 = new PointColor(101 - 5 + xx, 527 - 5 + yy, 11000000, 6);
+            this.pointisBHLastPoint2 = new PointColor(101 - 5 + xx, 528 - 5 + yy, 11000000, 6);            
 
             #endregion
 

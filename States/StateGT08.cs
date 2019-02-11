@@ -68,6 +68,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            server.WriteToLogFileBH("08");
             // ============= тыкаем в голову торговца, чтобы войти в магазин  ===================================================
             town.Click_ToHeadTrader();
 

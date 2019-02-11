@@ -41,7 +41,8 @@ namespace OpenGEWindows
 
             //проверяем то состояние ворот, где написано "Please input Initialize"
             this.pointsGateBH4_1 = new PointColor(932 - 30 + xx, 700 - 30 + yy, 7700000, 5);            //Ok
-            this.pointsGateBH4_2 = new PointColor(932 - 30 + xx, 701 - 30 + yy, 7700000, 5);            //Ok
+//            this.pointsGateBH4_2 = new PointColor(932 - 30 + xx, 701 - 30 + yy, 7700000, 5);            //Ok
+            this.pointsGateBH4_2 = new PointColor(163 - 30 + xx, 641 - 30 + yy, 13752023, 0);            //If
             pointInputBox = new Point(310 - 30 + xx, 675 - 30 + yy);                                    //нажимаем на поле ввода
             pointInputBoxBottonOk = new Point(933 - 30 + xx, 704 - 30 + yy);                            //нажимаем на Ок в диалоге (Initialize)
 

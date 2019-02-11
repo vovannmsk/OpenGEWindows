@@ -72,12 +72,13 @@ namespace States
 
             server.Turn90R();
             //server.TurnUp();
+            //botwindow.Pause(40000);       //проверить цвет 
 
             server.FightToPoint(480, 125, 3);
             server.FightToPoint(480, 125, 3);
             server.FightToPoint(480, 125, 3);
-            server.FightToPoint(480, 125, 3);
-            server.FightToPoint(545, 125, 3);
+            server.FightToPoint(480, 125, 0);
+            //server.FightToPoint(545, 125, 0);
 
             server.waitToCancelAtak();
         }

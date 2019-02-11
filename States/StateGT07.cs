@@ -66,6 +66,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            server.WriteToLogFileBH("07");
             ////тыкаем в другого торговца (который стоит рядом с нужным нам)
             town.GoToTraderMap();
 

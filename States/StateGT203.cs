@@ -4,29 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenGEWindows;
-using System.Windows.Forms;
-
 
 namespace States
 {
-    public class StateGT115 : IState
+    public class StateGT203 : IState
     {
         private botWindow botwindow;
         private Server server;
+        private Town town;
         private ServerFactory serverFactory;
         private int tekStateInt;
 
-        public StateGT115()
+        public StateGT203()
         {
 
         }
 
-        public StateGT115(botWindow botwindow)   
+        public StateGT203(botWindow botwindow)  //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            this.tekStateInt = 115;
+            this.town = server.getTown();
+            this.tekStateInt = 203;
         }
 
         /// <summary>
@@ -36,6 +36,10 @@ namespace States
         /// <returns> true, если номера состояний объектов равны </returns>
         public bool Equals(IState other)
         {
+            //bool result = false;
+            //if (!(other == null))            //если other не null, то проверяем на равенство
+            //    if (this.getTekStateInt() == other.getTekStateInt()) result = true;
+            //return result;
             bool result = false;
             if (!(other == null))            //если other не null, то проверяем на равенство
                 if (other.getTekStateInt() == 1)         //27.04.17
@@ -49,6 +53,7 @@ namespace States
             return result;
         }
 
+
         /// <summary>
         /// геттер, возвращает текущее состояние
         /// </summary>
@@ -59,34 +64,15 @@ namespace States
         }
 
         /// <summary>
-        /// метод осуществляет действия для перехода в следующее состояние
+        /// метод осуществляет действия для перехода из в следующее состояние
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            // Раффлезия
-            //MessageBox.Show("7 Раффлезия");
-            server.WriteToLogFileBH("сост 115 в бой");
-
-            //server.FightToPoint(785, 105, 3);         // идем в правый верхний угол  рабочий вариант
-            //server.FightToPoint(785, 105, 3);       
-            //server.FightToPoint(785, 105, 3);       
-            //server.FightToPoint(785, 105, 0);
-
-            //новый вариант
-            server.TurnUp();
-            server.FightToPoint(780, 238, 1);
-            server.TurnDown();
-
-
-
-            //botwindow.Pause(40000);
-            //server.runAway();
-            server.waitToCancelAtak();
-
+            server.WriteToLogFileBH("203");
         }
 
         /// <summary>
-        /// метод осуществляет действия для перехода к запасному состоянию, если не удался переход 
+        /// метод осуществляет действия для перехода к запасному состоянию, если не удался переход
         /// </summary>
         public void elseRun()
         {
@@ -95,12 +81,14 @@ namespace States
         }
 
         /// <summary>
-        /// проверяет, получилось ли перейти к следующему состоянию 
+        /// проверяет, получилось ли перейти к состоянию GT02
         /// </summary>
-        /// <returns> true, если получилось перейти к следующему состоянию </returns>
-        public bool isAllCool()
+        /// <returns> true, если получилось перейти к состоянию GT02 </returns>
+        public bool isAllCool()          // получилось ли перейти к следующему состоянию. true, если получилось
         {
+            //return town.isOpenTownTeleport();
             return true;
+
         }
 
         /// <summary>
@@ -109,7 +97,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT129(botwindow);
+            return this;
         }
 
         /// <summary>
@@ -118,8 +106,6 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            server.WriteToLogFileBH("115 ELSE ");
-
             return this;
         }
 
@@ -131,5 +117,6 @@ namespace States
         {
             return this.tekStateInt;
         }
+
     }
 }

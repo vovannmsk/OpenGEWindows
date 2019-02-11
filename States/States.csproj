@@ -45,6 +45,12 @@
     <Compile Include="IState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StateDriver.cs" />
+    <Compile Include="StateGT214.cs" />
+    <Compile Include="StateGT213.cs" />
+    <Compile Include="StateGT212.cs" />
+    <Compile Include="StateGT211.cs" />
+    <Compile Include="StateGT203.cs" />
+    <Compile Include="StateGT201.cs" />
     <Compile Include="StateGT126.cs" />
     <Compile Include="StateGT125.cs" />
     <Compile Include="StateGT124.cs" />
@@ -64,6 +70,11 @@
     <Compile Include="StateGT112.cs" />
     <Compile Include="StateGT111.cs" />
     <Compile Include="StateGT110.cs" />
+    <Compile Include="StateGT251.cs" />
+    <Compile Include="StateGT250.cs" />
+    <Compile Include="StateGT217.cs" />
+    <Compile Include="StateGT216.cs" />
+    <Compile Include="StateGT215.cs" />
     <Compile Include="StateGT16g.cs" />
     <Compile Include="StateGT16f.cs" />
     <Compile Include="StateGT16e.cs" />

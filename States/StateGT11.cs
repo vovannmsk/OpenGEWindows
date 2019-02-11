@@ -68,10 +68,11 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            server.WriteToLogFileBH("11");
             //server.SaleToTheRedBottle();      // продажа до красной бутылки
             //server.SaleOverTheRedBottle();    // продажа от красной бутылки до того момента, пока крутится список продажи
             //server.SaleToEnd();               // продажа до конца, когда список уже не крутится 
-            market.SaleToTheRedBottle();      // продажа до красной бутылки
+            market.SaleToTheRedBottle(220);      // продажа до красной бутылки
             market.SaleOverTheRedBottle();    // продажа от красной бутылки до того момента, пока крутится список продажи
             market.SaleToEnd();               // продажа до конца, когда список уже не крутится 
 

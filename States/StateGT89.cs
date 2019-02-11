@@ -37,7 +37,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.Teleport();                       // телепорт на работу   
+            server.Teleport(1);                       // телепорт на работу   
             botwindow.Pause(8000);
 
             int i = 0;

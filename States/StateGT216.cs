@@ -4,29 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenGEWindows;
-using System.Windows.Forms;
 
 
 namespace States
 {
-    public class StateGT115 : IState
+    public class StateGT216 : IState
     {
         private botWindow botwindow;
         private Server server;
         private ServerFactory serverFactory;
         private int tekStateInt;
 
-        public StateGT115()
+        public StateGT216()
         {
 
         }
 
-        public StateGT115(botWindow botwindow)   
+        public StateGT216(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            this.tekStateInt = 115;
+            this.tekStateInt = 216;
         }
 
         /// <summary>
@@ -63,26 +62,32 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            // Раффлезия
-            //MessageBox.Show("7 Раффлезия");
-            server.WriteToLogFileBH("сост 115 в бой");
+            server.WriteToLogFileBH("Казарма");
+            //============ выбор персонажей  ===========
+            server.TeamSelection();
+            botwindow.Pause(1000);
 
-            //server.FightToPoint(785, 105, 3);         // идем в правый верхний угол  рабочий вариант
-            //server.FightToPoint(785, 105, 3);       
-            //server.FightToPoint(785, 105, 3);       
-            //server.FightToPoint(785, 105, 0);
+            //============ выбор канала ===========
+            //botwindow.SelectChannel();
+            //botwindow.Pause(1000);
 
-            //новый вариант
-            server.TurnUp();
-            server.FightToPoint(780, 238, 1);
-            server.TurnDown();
+            //============ выход в город  ===========
+            server.NewPlace();                //начинаем в ребольдо  
 
+            botwindow.ToMoveMouse();             //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
 
+            //botwindow.Pause(2000);
+            //int i = 0;
+            //while (i < 50)      // ожидание загрузки города, проверка по двум стойкам
+            //{ 
+            //    botwindow.Pause(500); 
+            //    i++;
+            //    if (server.isTown())  break;    // проверяем успешный переход в город, проверка по ружью и дробовику
+            //}
+            //botwindow.Pause(7000);       //поставил по Колиной просьбе
 
-            //botwindow.Pause(40000);
-            //server.runAway();
-            server.waitToCancelAtak();
-
+            //botwindow.PressEscThreeTimes();
+            //botwindow.Pause(1000);
         }
 
         /// <summary>
@@ -90,8 +95,7 @@ namespace States
         /// </summary>
         public void elseRun()
         {
-            botwindow.PressEscThreeTimes();
-            botwindow.Pause(500);
+            ///???
         }
 
         /// <summary>
@@ -100,6 +104,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
+//            return !server.isBarack();
             return true;
         }
 
@@ -109,7 +114,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT129(botwindow);
+                return new StateGT217(botwindow);              //если не надо покупать патроны
         }
 
         /// <summary>
@@ -118,8 +123,6 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            server.WriteToLogFileBH("115 ELSE ");
-
             return this;
         }
 

@@ -82,8 +82,8 @@ namespace OpenGEWindows
         protected iPointColor pointisOpenTopMenu82;
         protected iPointColor pointisOpenTopMenu91;
         protected iPointColor pointisOpenTopMenu92;
-        protected iPointColor pointisOpenTopMenu121;
-        protected iPointColor pointisOpenTopMenu122;
+        protected iPointColor pointisOpenTopMenu12_1;
+        protected iPointColor pointisOpenTopMenu12_2;
         protected iPointColor pointisOpenTopMenu131;
         protected iPointColor pointisOpenTopMenu132;
         protected iPoint pointLogout;
@@ -283,7 +283,12 @@ namespace OpenGEWindows
         protected iPointColor pointisBarack2;
         protected iPointColor pointisBarack3;
         protected iPointColor pointisBarack4;
+        protected iPointColor pointisBarackTeamSelection1;
+        protected iPointColor pointisBarackTeamSelection2;
         protected iPoint pointNewPlace;
+        protected iPoint pointLastPoint;
+        protected iPointColor pointisBHLastPoint1;
+        protected iPointColor pointisBHLastPoint2;
 
         #endregion
 
@@ -498,8 +503,8 @@ namespace OpenGEWindows
         #region BH
 
         protected iPoint pointGateInfinityBH;
-        protected iPointColor pointisBH1;
-        protected iPointColor pointisBH2;
+        protected iPointColor pointisBH1;           //правильное место в бх
+        protected iPointColor pointisBH2;           //неправильное место в бх
         protected iPointColor pointIsAtak1;
         protected iPointColor pointIsAtak2;
         //protected iPointColor pointIsAtak3;
@@ -585,6 +590,24 @@ namespace OpenGEWindows
         }
 
         public abstract void serverSelection();
+
+        /// <summary>
+        /// нажимаем кооннект без проверки результатов нажатия
+        /// </summary>
+        public void QuickConnect()
+        {
+            serverSelection();
+            PressConnectButton();
+        }
+
+        /// <summary>
+        /// нажимаем на кнопку Connect (окно в логауте)
+        /// </summary>
+        protected void PressConnectButton()
+        {
+            iPoint pointButtonConnect = new Point(595 - 5 + xx, 485 - 5 + yy);    // кнопка коннект в логауте 
+            pointButtonConnect.PressMouseLL();   // Кликаю в Connect
+        }
 
         #endregion
 
@@ -676,7 +699,7 @@ namespace OpenGEWindows
                     result = (pointisOpenTopMenu91.isColor() && pointisOpenTopMenu92.isColor());
                     break;
                 case 12:
-                    result = (pointisOpenTopMenu121.isColor() && pointisOpenTopMenu122.isColor());
+                    result = (pointisOpenTopMenu12_1.isColor() && pointisOpenTopMenu12_2.isColor());
                     break;
                 case 13:
                     result = (pointisOpenTopMenu131.isColor() && pointisOpenTopMenu132.isColor());
@@ -688,18 +711,18 @@ namespace OpenGEWindows
             return result;
         }
 
-        /// <summary>
-        /// вызываем телепорт через верхнее меню и телепортируемся по первому телепорту
-        /// </summary>
-        public void Teleport()
-        {
-            Pause(400);
-            TopMenu(12);                     // Click Teleport menu
-            pointTeleportFirstLine.DoubleClickL();   // Первая строка в списке телепортов
-            Pause(200);
-            pointTeleportExecute.PressMouseL();    // Click on button Execute in Teleport menu
-            Pause(2000);
-        }
+        ///// <summary>
+        ///// вызываем телепорт через верхнее меню и телепортируемся по первому телепорту
+        ///// </summary>
+        //public void Teleport()
+        //{
+        //    Pause(400);
+        //    TopMenu(12);                     // Click Teleport menu
+        //    pointTeleportFirstLine.DoubleClickL();   // Первая строка в списке телепортов
+        //    Pause(200);
+        //    pointTeleportExecute.PressMouseL();    // Click on button Execute in Teleport menu
+        //    Pause(2000);
+        //}
 
         ///// <summary>
         ///// вызываем телепорт через верхнее меню и телепортируемся по второму телепорту
@@ -738,9 +761,11 @@ namespace OpenGEWindows
         /// </summary>
         public void GoToEnd()
         {
-            TopMenu(13);
-            Pause(1000);
-            pointGotoEnd.PressMouse();
+            //TopMenu(13);
+            //Pause(1000);
+            //pointGotoEnd.PressMouse();
+
+            systemMenu(7);
         }
 
         /// <summary>
@@ -748,9 +773,11 @@ namespace OpenGEWindows
         /// </summary>
         public void Logout()
         {
-            TopMenu(13);
-            Pause(1000);
-            pointLogout.PressMouse();
+            //TopMenu(13);
+            //Pause(1000);
+            //pointLogout.PressMouse();
+
+            systemMenu(6);
         }
 
         /// <summary>
@@ -758,10 +785,114 @@ namespace OpenGEWindows
         /// </summary>
         public void GotoBarack()
         {
-            TopMenu(13);
-            Pause(1000);
-            pointGotoBarack.PressMouse();
+            //TopMenu(13);
+            //Pause(1000);
+            //pointGotoBarack.PressMouse();
+
+            systemMenu(4);
         }
+
+        /// <summary>
+        /// Идем в казармы через верхнее меню 
+        /// </summary>
+        /// <param name="status"> false, если без проверки открытия системного меню </param>
+        public void GotoBarack(bool status)
+        {
+            //TopMenu(13);
+            //Pause(1000);
+            //pointGotoBarack.PressMouse();
+
+            systemMenu(4, status);
+        }
+
+
+        /// <summary>
+        /// переход по системному меню 
+        /// </summary>
+        /// <param name="number"> номер пункта меню </param>
+        public void systemMenu(int number)
+        {
+            if (!isOpenTopMenu(13)) TopMenu(13);
+            Pause(1000);
+            iPoint pointCurrentMenu = new Point(685 - 5 + xx, 288 - 5 + (number - 1) * 30 + yy);
+            pointCurrentMenu.PressMouse();
+        }
+
+        /// <summary>
+        /// переход по системному меню 
+        /// </summary>
+        /// <param name="number"> номер пункта меню </param>
+        public void systemMenu(int number, bool status)
+        {
+            if(!isOpenTopMenu(13))  TopMenu(13, status);       //если не открыто системное меню, то открыть
+            Pause(1000);
+            iPoint pointCurrentMenu = new Point(685 - 5 + xx, 288 - 5 + (number - 1) * 30 + yy);
+            pointCurrentMenu.PressMouse();
+        }
+
+
+        /// <summary>
+        /// телепортируемся в город продажи по Alt+W (улетаем из БХ или другого города)
+        /// </summary>
+        public void TeleportAltW_BH()
+        {
+            int teleport = botwindow.getNomerTeleport();
+
+            if (teleport >= 14)
+            {
+                teleport = 1;              //если номер телепорта больше 14 (катовия и отит), то летим в Ребольдо
+            }
+
+            iPoint pointTeleportToTownAltW = new Point(800 + xx, 517 + yy + (teleport - 1) * 17);
+
+            TopMenu(6, 1);
+            Pause(1000);
+            pointTeleportToTownAltW.PressMouse();           //было два нажатия левой, решил попробовать RRL
+            //            botwindow.Pause(2000);
+        }
+
+        /// <summary>
+        /// нажмает на выбранный раздел верхнего меню (используется для БХ)
+        /// </summary>
+        /// <param name="numberOfThePartitionMenu"></param>
+        /// <param name="status">если false, то не проверяется сработало ли нажатие</param>
+        public void TopMenu(int numberOfThePartitionMenu, bool status)
+        {
+            int[] MenukoordX = { 305, 339, 371, 402, 435, 475, 522, 570, 610, 642, 675, 705, 738 };
+            int x = MenukoordX[numberOfThePartitionMenu - 1];
+            int y = 55;
+            iPoint pointMenu = new Point(x - 5 + xx, y - 5 + yy);
+
+            int count = 0;
+            do
+            {
+                pointMenu.PressMouse();
+                botwindow.Pause(2000);
+                count++; if (count > 3) break;
+            } while ((!isOpenTopMenu(numberOfThePartitionMenu)) && (status));
+        }
+
+        /// <summary>
+        /// вызываем телепорт через верхнее меню и телепортируемся по указанному номеру телепорта (используется для БХ)
+        /// </summary>
+        /// <param name="NumberOfLine"></param>
+        /// <param name="status">если false, то не проверяется сработало ли нажатие</param>
+        public void Teleport(int NumberOfLine, bool status)
+        {
+            //Pause(400);
+            TopMenu(12, status);                     // Click Teleport menu
+
+            Point pointTeleportNumbertLine = new Point(405 - 5 + xx, 180 - 5 + (NumberOfLine - 1) * 15 + yy);    //              тыкаем в указанную строчку телепорта 
+
+            pointTeleportNumbertLine.DoubleClickL();   // Указанная строка в списке телепортов
+            Pause(500);
+
+            pointTeleportExecute.PressMouseL();        // Click on button Execute in Teleport menu
+            //Pause(500);
+        }
+
+
+
 
         public abstract void Teleport(int numberOfLine);
         public abstract void TopMenu(int numberOfThePartitionMenu);
@@ -1223,35 +1354,35 @@ namespace OpenGEWindows
         /// <summary>
         /// лечение персов нажатием на красную бутылку и выпивание бутылок маны
         /// </summary>
-        public void Cure()
+        public void Cure(int n)
         {
-            for (int j = 1; j <= 4; j++)
+            for (int j = 1; j <= n; j++)
             {
                 pointCure1.PressMouseL();  
                 pointMana1.PressMouseL();
 
-                //if (isSecondHero())     //если есть второй перс в команде
-                //{ 
                 pointCure2.PressMouseL(); 
                 pointMana2.PressMouseL(); 
-                //}
-                //if (isThirdHero())
-                //{ 
+                
                 pointCure3.PressMouseL(); 
                 pointMana3.PressMouseL(); 
-                //}
             }
             Pause(500);
 
             iPoint pointFourthBox = new Point(31 - 5 + xx, 200 - 5 + yy);
-            pointFourthBox.PressMouseL();                // тыкаю в  (третья ячейка)
+            pointFourthBox.PressMouseL();                // тыкаю в  (четвертая ячейка)
 
-            //for (int j = 1; j <= 3; j++)
-            //{
-            //    pointMana1.PressMouseL();   //жрем патроны (или то, что будет лежать на этом месте под буквой I)
-            //    Pause(2000);
-            //    //PressMouseL(210 + 30, 700);
-            //}
+        }
+
+
+        /// <summary>
+        /// "быстрое лечение". Применение коробок патронов в ячейках с маной
+        /// </summary>
+        public void QuickCure()
+        {
+            pointMana1.PressMouseL();
+            //pointMana2.PressMouseL();
+            //pointMana3.PressMouseL();
         }
 
 
@@ -1324,7 +1455,6 @@ namespace OpenGEWindows
         /// </summary>
         public void TeamSelection()
         {
-            //            Class_Timer.Pause(500);
             pointTeamSelection1.PressMouse();   // Нажимаем кнопку вызова списка групп
             pointTeamSelection2.PressMouseL();  // выбираем нужную группу персов (первую в списке)
             pointTeamSelection3.PressMouseL();  // Нажимаем кнопку выбора группы (Select Team) 
@@ -1345,19 +1475,44 @@ namespace OpenGEWindows
         /// <returns> true, если бот в бараках </returns>
         public bool isBarack()
         {
-            //   return botwindow.isColor2(61 - 5, 151 - 5, 2420000, 61 - 5, 154 - 5, 2420000, 4);
-            //uint ff = pointisBarack1.GetPixelColor();
-            //uint gg = pointisBarack2.GetPixelColor();
             return (pointisBarack1.isColor() && pointisBarack2.isColor()) || (pointisBarack3.isColor() && pointisBarack4.isColor());
         }
+
+        /// <summary>
+        /// проверяем, в бараках ли бот (на стадии выбора группы)
+        /// </summary>
+        /// <returns> true, если бот в бараках на стадии выбора группы  </returns>
+        public bool isBarackTeamSelection()
+        {
+            return (pointisBarackTeamSelection1.isColor() && pointisBarackTeamSelection2.isColor());
+        }
+
+
 
         /// <summary>
         /// начать с выхода в город (нажать на кнопку "начать с нового места")
         /// </summary>
         public void NewPlace()
         {
-            iPoint pointNewPlace = new Point(85 + xx, 670 + yy);
+            iPoint pointNewPlace = new Point(54 - 5 + xx, 685 - 5 + yy);
             pointNewPlace.DoubleClickL();
+        }
+
+        /// <summary>
+        /// начинаем со старого места (из барака)
+        /// </summary>
+        public void barackLastPoint()
+        {
+            pointLastPoint.PressMouseL();
+        }
+
+        /// <summary>
+        /// проверяем, попадём ли мы в BH, если в бараке начинаем со старого места
+        /// </summary>
+        public bool isBarackLastPoint()
+        {
+            pointLastPoint.PressMouseR();    // наводим мышку на кнопку Last Point в бараке
+            return (pointisBHLastPoint1.isColor() && pointisBHLastPoint2.isColor());
         }
 
 
@@ -2675,6 +2830,24 @@ namespace OpenGEWindows
 
         #region Гильдия Охотников BH
 
+
+        /// <summary>
+        /// метод возвращает значение статуса, 1 - мы направляемся на продажу товара в магазин, 0 - нет (обычный режим работы)
+        /// </summary>
+        /// <returns></returns>
+        private int GetStatusOfSale()
+        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\StatusOfSale.txt")); }
+
+        /// <summary>
+        /// метод возвращает значение статуса, 1 - мы направляемся на продажу товара в магазин, 0 - нет (обычный режим работы)
+        /// </summary>
+        /// <returns></returns>
+        private void SetStatusOfSale(int status)
+        {
+            File.WriteAllText(KATALOG_MY_PROGRAM + "\\StatusOfSale.txt", status.ToString());
+        }
+
+
         /// <summary>
         /// проверяем, атакуем ли сейчас босса
         /// если точки серые т.е. pointIsAtak1.isColor() = true или pointIsAtak1.isColor() = true, то значит не атакуем. Поэтому стоит отрицание
@@ -2696,18 +2869,18 @@ namespace OpenGEWindows
             //}
         }
 
-        /// <summary>
-        /// опускаем камеру (опускаем максимально вниз)                           
-        /// </summary>
-        public void MinHeight()
-        {
-            Point pointMinHeight = new Point(514 - 30 + xx, 352 - 30 + yy);
-            for (int j = 1; j <= 5; j++)
-            {
-                pointMinHeight.PressMouseWheelDown();
-                Pause(300);
-            }
-        }
+        ///// <summary>
+        ///// опускаем камеру (опускаем максимально вниз)                           
+        ///// </summary>
+        //public void MinHeight()
+        //{
+        //    Point pointMinHeight = new Point(514 - 30 + xx, 352 - 30 + yy);
+        //    for (int j = 1; j <= 5; j++)
+        //    {
+        //        pointMinHeight.PressMouseWheelDown();
+        //        Pause(300);
+        //    }
+        //}
 
         /// <summary>
         /// записываем в лог-файл инфу по прохождению программы
@@ -2716,9 +2889,9 @@ namespace OpenGEWindows
         public void WriteToLogFileBH(string strLog)
         {
             StreamWriter writer = new StreamWriter(KATALOG_MY_PROGRAM + "\\BH.log", true);
-            string timeNow = DateTime.Now.ToString("dd MMMM yyyy | HH:mm:ss  ");
+            string timeNow = DateTime.Now.ToString("dd MMMM yyyy | HH:mm:ss | ");
 
-            writer.WriteLine(timeNow + strLog);
+            writer.WriteLine(timeNow + botwindow.getNumberWindow().ToString() + " " + strLog);
             writer.Close();
         }
 
@@ -2784,8 +2957,20 @@ namespace OpenGEWindows
         /// <returns></returns>
         public bool isBH()
         {
-            return (isTown() && !pointisBH1.isColor());
+//            return (isTown() && !pointisBH1.isColor());
+            return (!pointisBH1.isColor());
         }
+
+        /// <summary>
+        /// проверяем, находимся ли в Гильдии Охотников на неправильном месте (вылет из миссии после убийства босса через минуту бездействия)
+        /// </summary>
+        /// <returns></returns>
+        public bool isBH2()
+        {
+            return (pointisBH2.isColor());
+        }
+
+
 
         /// <summary>
         /// тыкаем в ворота Infinity (Гильдии Охотников)
@@ -2896,6 +3081,29 @@ namespace OpenGEWindows
         {
             Point pointBegin = new Point(560 - 30 + xx, 430 - 30 - 1 + yy);
             Point pointEnd   = new Point(560 - 30 + xx, 430 - 30 + yy);
+            pointBegin.Turn(pointEnd);
+        }
+
+
+        /// <summary>
+        /// поворот влево (против часовой стрелки)
+        /// </summary>
+        /// <returns></returns>
+        public void TurnL(int gradus)
+        {
+            Point pointBegin = new Point(560 + gradus - 30 + xx, 430 - 30 + yy);
+            Point pointEnd   = new Point(560          - 30 + xx, 430 - 30 + yy);
+            pointBegin.Turn(pointEnd);
+        }
+
+        /// <summary>
+        /// поворот вправо (по часовой стрелке)
+        /// </summary>
+        /// <returns></returns>
+        public void TurnR(int gradus)
+        {
+            Point pointBegin = new Point(560 - gradus - 30 + xx, 430 - 30 + yy);
+            Point pointEnd   = new Point(560          - 30 + xx, 430 - 30 + yy);
             pointBegin.Turn(pointEnd);
         }
 

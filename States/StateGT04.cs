@@ -68,6 +68,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            server.WriteToLogFileBH("04");
             // ============= Удаляем камеру на максимальную высоту =================================================================
             town.MaxHeight();
             botwindow.Pause(1000);

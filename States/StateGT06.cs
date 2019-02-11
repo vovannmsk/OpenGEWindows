@@ -67,6 +67,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            server.WriteToLogFileBH("06");
             // тыкаем во вторую закладку карты города
             town.SecondBookmark();
             botwindow.Pause(1000);

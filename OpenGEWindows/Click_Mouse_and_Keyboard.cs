@@ -105,11 +105,11 @@ namespace OpenGEWindows
         public static void MMCR(int dx1, int dy1, int dx2, int dy2)
         {
             runMouse(dx1, dy1, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
-            Pause(300);
+            Pause(500);
             runMouse(dx1, dy1, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_RIGHTDOWN, 0);
             Pause(100);
             runMouse(dx2, dy2, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
-            Pause(300);
+            Pause(500);
             runMouse(dx2, dy2, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_RIGHTUP, 0);
             Pause(100);
         }

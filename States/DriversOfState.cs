@@ -36,7 +36,56 @@ namespace States
 
         #region движки для запуска перехода по состояниям
 
+
+
         #region Гилльдия Охотников
+
+
+        /// <summary>
+        /// перевод из состояния 01 (в БХ) в состояние 03 (в городе продажи). 
+        /// </summary>
+        public void StateGotoTradeStep1BH()
+        {
+            StateDriverRun(new StateGT201(botwindow), new StateGT203(botwindow));
+            server.WriteToLogFileBH("new StateGT201(botwindow), new StateGT203(botwindow)");
+        }
+
+        /// <summary>
+        /// перевод из состояния 03 (в городе продажи) в состояние 09 (в магазине). 
+        /// </summary>
+        public void StateGotoTradeStep2BH()
+        {
+            StateDriverRun(new StateGT03(botwindow), new StateGT09(botwindow));
+            server.WriteToLogFileBH("new StateGT03(botwindow), new StateGT09(botwindow)");
+        }
+
+        /// <summary>
+        /// перевод из состояния 09 (в магазине) в состояние 10 (в магазине на закладке BUY или SELL). 
+        /// </summary>
+        public void StateGotoTradeStep3BH()
+        {
+            StateDriverRun(new StateGT09(botwindow), new StateGT10(botwindow));
+            server.WriteToLogFileBH("new StateGT09(botwindow), new StateGT10(botwindow)");
+        }
+
+        /// <summary>
+        /// перевод из состояния 10 (в магазине на закладке BUY) в состояние 11 (закладка SELL). 
+        /// </summary>
+        public void StateGotoTradeStep4BH()
+        {
+            StateDriverRun(new StateGT10(botwindow), new StateGT11(botwindow));
+            server.WriteToLogFileBH("StateDriverRun(new StateGT10(botwindow), new StateGT11(botwindow));");
+        }
+
+        /// <summary>
+        /// перевод из состояния 211 (в магазине на закладке BUY) в состояние 214 (логаут). 
+        /// </summary>
+        public void StateGotoTradeStep5BH()
+        {
+//            StateDriverRun(new StateGT11(botwindow), new StateGT14(botwindow));
+            StateDriverRun(new StateGT211(botwindow), new StateGT214(botwindow));
+            server.WriteToLogFileBH("StateDriverRun(new StateGT211(botwindow), new StateGT214(botwindow));");
+        }
 
         /// <summary>
         /// перевод из состояния 108 (в миссии) в состояние 129 (бой) 
@@ -57,6 +106,16 @@ namespace States
         }
 
         /// <summary>
+        /// перевод из состояния 250 (после победы в бою) в состояние 251 (барак) 
+        /// </summary>
+        public void StateFromMissionToBarackBH()
+        {
+            server.WriteToLogFileBH("Движок 250-251 mission --> Barack");
+            StateDriverRun(new StateGT250(botwindow), new StateGT251(botwindow));   // mission (Win)-->Barack   (вызываем системное меню и в барак)
+        }
+
+
+        /// <summary>
         /// перевод из состояния 100 (город) в состояние 101 (в Гильдии Охотников) 
         /// </summary>
         public void StateFromTownToBH()
@@ -70,31 +129,33 @@ namespace States
         /// </summary>
         public void StateFromLogoutToBarackBH()
         {
-            server.WriteToLogFileBH("Движок 15-16 Logout-->Barack");
-            StateDriverRun(new StateGT15(botwindow), new StateGT16(botwindow));     // Logout-->Barack
+            server.WriteToLogFileBH("Движок 215-216 Logout-->Barack");
+            StateDriverRun(new StateGT215(botwindow), new StateGT216(botwindow));     // Logout-->Barack
         }
 
         /// <summary>
-        /// перевод из состояния 16 (Barack) --> 17 (Town)
+        /// перевод из состояния 216 (Barack) --> 217 (Town)
         /// </summary>
         public void StateFromBarackToTownBH()
         {
-            server.WriteToLogFileBH("Движок 16-17 Barack-->Town");
-            StateDriverRun(new StateGT16(botwindow), new StateGT17(botwindow));     // Barack-->Town
+            server.WriteToLogFileBH("Движок 216-217 Barack-->Town");
+            StateDriverRun(new StateGT216(botwindow), new StateGT217(botwindow));     // Barack-->Town
         }
 
 
 
-        /// <summary>
-        /// перевод из состояния 15 (логаут) в состояние 101 (в Гильдии Охотников) 
-        /// </summary>
-        public void StateFromLogoutToBH()
-        {
-            server.WriteToLogFileBH("Движок 15-17 Logout-->Town");
-            StateDriverRun(new StateGT15(botwindow), new StateGT17(botwindow));     // Logout-->Town
-            server.WriteToLogFileBH("Движок 100-101 Town-->BH");
-            StateDriverRun(new StateGT100(botwindow), new StateGT101(botwindow));   // Town-->BH
-        }
+
+
+        ///// <summary>
+        ///// перевод из состояния 15 (логаут) в состояние 101 (в Гильдии Охотников) 
+        ///// </summary>
+        //public void StateFromLogoutToBH()
+        //{
+        //    server.WriteToLogFileBH("Движок 15-17 Logout-->Town");
+        //    StateDriverRun(new StateGT15(botwindow), new StateGT17(botwindow));     // Logout-->Town
+        //    server.WriteToLogFileBH("Движок 100-101 Town-->BH");
+        //    StateDriverRun(new StateGT100(botwindow), new StateGT101(botwindow));   // Town-->BH
+        //}
 
         
 
@@ -105,10 +166,19 @@ namespace States
         {
             server.WriteToLogFileBH("Движок 101-102 BH-->Gate");
             StateDriverRun(new StateGT101(botwindow), new StateGT102(botwindow));   // BH-->Gate
-//            StateDriverRun(new StateGT102(botwindow), new StateGT108(botwindow));   // Gate --> Mission
 
 
         }
+
+        /// <summary>
+        /// перевод из состояния 104 (ворота состояние 2) в состояние 108 (миссия) 
+        /// </summary>
+        public void StateFromGate2ToMissionBH()
+        {
+            server.WriteToLogFileBH("Движок 104-108  Gate --> Mission");
+            StateDriverRun(new StateGT104(botwindow), new StateGT108(botwindow));   // Gate --> Mission
+        }
+
 
         /// <summary>
         /// перевод из состояния 102 (InfinityGate) в состояние 108 (миссия) 
@@ -119,6 +189,24 @@ namespace States
             StateDriverRun(new StateGT102(botwindow), new StateGT108(botwindow));   // Gate --> Mission
 
 
+        }
+
+        /// <summary>
+        /// перевод из состояния 106 (состояние ворот 4) в состояние 107 (состояние ворот 5) 
+        /// </summary>
+        public void StateFromGate4ToGate5BH()
+        {
+            server.WriteToLogFileBH("Движок 106-107  Gate4 --> Gate5");
+            StateDriverRun(new StateGT106(botwindow), new StateGT107(botwindow));   // Gate4 --> Gate5
+        }
+
+        /// <summary>
+        /// перевод из состояния 107 (состояние ворот 5) в состояние 108 (BH) 
+        /// </summary>
+        public void StateFromGate5ToBH()
+        {
+            server.WriteToLogFileBH("Движок 107-108  Gate5 --> BH");
+            StateDriverRun(new StateGT107(botwindow), new StateGT108(botwindow));   // Gate5 --> BH
         }
 
 

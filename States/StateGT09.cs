@@ -67,6 +67,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            server.WriteToLogFileBH("09");
             //market.ClickSellAndOkInTrader();      //нажимает строчку Sell и кнопку Ок при входе в магазин (по разному в разных городах)
             town.SellAndOk();                       //нажимает строчку Sell и кнопку Ок при входе в магазин (по разному в разных городах)
 

@@ -67,6 +67,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            server.WriteToLogFileBH("05");
             // ============= открыть карту через верхнее меню ============================================================
             server.OpenMapForState();   // без проверок и while
         }

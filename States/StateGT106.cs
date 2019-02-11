@@ -68,7 +68,7 @@ namespace States
         {
             //начинаем из четвертого состояния, т.е. isGateBH4 = true
             BHdialog.WriteInitialize();      //написали слово Initialize и нажали кнопку Ок
-            botwindow.Pause(1000);
+            //botwindow.Pause(1000);
             server.WriteToLogFileBH("106 состояние ворот 4. написали слово Initialize и нажали кнопку Ок");
 
         }
@@ -88,7 +88,8 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return BHdialog.isGateBH5();
+//            return BHdialog.isGateBH5();
+            return true;
         }
 
         /// <summary>

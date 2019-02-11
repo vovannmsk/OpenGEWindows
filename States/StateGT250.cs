@@ -4,29 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenGEWindows;
-using System.Windows.Forms;
 
 
 namespace States
 {
-    public class StateGT115 : IState
+    public class StateGT250 : IState
     {
         private botWindow botwindow;
         private Server server;
+        private Town town;
         private ServerFactory serverFactory;
         private int tekStateInt;
+        //private bool resultat;
 
-        public StateGT115()
+        public StateGT250()
         {
 
         }
 
-        public StateGT115(botWindow botwindow)   
+        public StateGT250(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            this.tekStateInt = 115;
+            this.town = server.getTown();
+            this.tekStateInt = 250;
+            //this.resultat = true;
         }
 
         /// <summary>
@@ -63,25 +66,17 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            // Раффлезия
-            //MessageBox.Show("7 Раффлезия");
-            server.WriteToLogFileBH("сост 115 в бой");
+            if (server.isBoxOverflow()) botwindow.setStatusOfSale(1);
 
-            //server.FightToPoint(785, 105, 3);         // идем в правый верхний угол  рабочий вариант
-            //server.FightToPoint(785, 105, 3);       
-            //server.FightToPoint(785, 105, 3);       
-            //server.FightToPoint(785, 105, 0);
+            server.WriteToLogFileBH("250 Идем в барак");
 
-            //новый вариант
-            server.TurnUp();
-            server.FightToPoint(780, 238, 1);
-            server.TurnDown();
+            botwindow.ClickSpace();                     //переходим в боевой режим. Если есть в кого стрелять, то стреляем. 
 
+            if (server.isBoxOverflow()) botwindow.setStatusOfSale(1);
 
+            server.GotoBarack(false);                       //если не в кого стрелять, уходим в барак
 
-            //botwindow.Pause(40000);
-            //server.runAway();
-            server.waitToCancelAtak();
+            if (server.isBoxOverflow()) botwindow.setStatusOfSale(1);
 
         }
 
@@ -90,8 +85,7 @@ namespace States
         /// </summary>
         public void elseRun()
         {
-            botwindow.PressEscThreeTimes();
-            botwindow.Pause(500);
+            // подумать
         }
 
         /// <summary>
@@ -109,7 +103,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT129(botwindow);
+            return new StateGT251(botwindow);
         }
 
         /// <summary>
@@ -118,9 +112,8 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            server.WriteToLogFileBH("115 ELSE ");
-
-            return this;
+            //return new StateGT01(botwindow);
+            return this;  // остаемся в логауте
         }
 
         /// <summary>

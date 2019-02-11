@@ -65,6 +65,159 @@ namespace States
             botwindow.OpenWindow();
         }
 
+        /// <summary>
+        /// выполняет действия по открытию окна с игрой
+        /// </summary>
+        public void setStatusOfSale(int status)
+        {
+            botwindow.setStatusOfSale(status);
+        }
+
+
+        /// <summary>
+        /// проверяем, если ли проблемы при работе в БХ и возвращаем номер проблемы
+        /// </summary>
+        /// <returns>порядковый номер проблемы</returns>
+        public int NumberOfProblemBH()
+        {
+            int statusOfSale = botwindow.getStatusOfSale();
+
+    
+            if (server.isTown())   //если в городе
+            {
+                if (server.isBH2()) return 18;   //стоим в БХ в неправильном месте
+                if (server.isBH())     //в БХ
+                {
+                    if (statusOfSale == 1)     
+                    {
+                        // если нужно бежать продаваться
+                        return 3;
+                    }
+                    else
+                    {
+                        // если не нужно бежать продаваться
+                        return 4;
+                    }
+                }
+                else   // в городе, но не в БХ
+                {
+                    if (statusOfSale == 1)
+                    {
+                        // если нужно бежать продаваться
+                        return 5;
+                    }
+                    else
+                    {
+                        // если не нужно бежать продаваться
+                        return 6;
+                    }
+                }
+            }
+
+            if (BHdialog.isGateBH()) return 7;             //если стоим в воротах в положении 1 или 3
+            if (BHdialog.isGateBH2()) return 8;                 //ворота состояние 2
+            if (BHdialog.isGateBH4()) return 9;                 //ворота состояние 4
+            if (BHdialog.isGateBH5()) return 10;               //ворота состояние 5
+            if (market.isSale())
+            {
+                if (!((server.isTown()) || (server.isWork()))) return 11;        //если стоим в магазине на экране входа, но не проходит проверка, что мы в городе и что мы на работе (защита от ложных срабатываний)
+            }
+            if (market.isClickPurchase())
+            {
+                if (!((server.isTown()) || (server.isWork()))) return 12;         //если стоим в магазине на закладке Purchase, но не проходит проверка, что мы в городе и что мы на работе (защита от ложных срабатываний)
+            }
+            if (market.isClickSell())
+            {
+                if (!((server.isTown()) || (server.isWork()))) return 15;         //если стоим в магазине на закладке Purchase, но не проходит проверка, что мы в городе и что мы на работе (защита от ложных срабатываний)
+            }
+            if (server.isWork())
+            {
+                if (server.isMissionBH())                                   //если находимся в миссии, в самом начале (миссия определилась)
+                {
+                    return 13;
+                }
+                else
+                {
+                    if (!server.isAtakBH()) return 14;   //если находимся в миссии, но уже не в начале и не атакуем босса (значит бой окончен, либо заблудились и надо выходить в БХ) 
+                }
+            }
+            if (server.isLogout()) return 1;               // если окно в логауте
+            if (server.isBarack())                         //если стоят в бараке 
+            {
+                if (server.isBarackLastPoint())            //если начиная со старого места попадаем в БХ
+                { return 16;} 
+                else 
+                { return 2; }                
+            }
+
+            if (server.isBarackTeamSelection()) return 17;    //если в бараках на стадии выбора группы
+
+            if (server.isKillAllHero()) return 29;            // если убиты все
+            if (server.isKillHero()) return 30;               // если убиты не все 
+
+            return 0;
+        }
+
+
+        /// <summary>
+        /// разрешение выявленных проблем в БХ
+        /// </summary>
+        public void problemResolutionBH()
+        {
+            ReOpenWindow();
+            Pause(500);
+
+            int numberOfProblem = NumberOfProblemBH();             //проверили, какие есть проблемы (на какой стадии находится бот)
+
+            switch (numberOfProblem)
+            {
+                case 1: driver.StateFromLogoutToBarackBH();       // Logout-->Barack
+                    break;
+                case 2: driver.StateFromBarackToTownBH();         // идем в город
+                    break;
+                case 3: 
+                case 18:
+                        driver.StateGotoTradeStep1BH();           // BH-->Town (первый этап продажи)
+                    break;
+                case 4: driver.StateFromBHToGateBH();             // BH --> Gate
+                    break;
+                case 5: driver.StateGotoTradeStep2BH();           // если стоят в городе и надо продаваться, то второй этап продажи
+                    break;
+                case 6: driver.StateFromTownToBH();               // town --> BH
+                    break;
+                case 7: driver.StateFromGateToMissionBH();        // Gate --> Mission
+                    break;
+                case 8: driver.StateFromGate2ToMissionBH();       // Gate2 --> Mission (из состояния 2)
+                    break;
+                case 9: driver.StateFromGate4ToGate5BH();         // Gate4 --> Gate 5
+                    break;
+                case 10: driver.StateFromGate5ToBH();             // Gate5 --> BH
+                    break;
+                case 11: driver.StateGotoTradeStep3BH();          // третий этап продажи
+                    break;
+                case 12: driver.StateGotoTradeStep4BH();          // четвертый этап продажи
+                    break;
+                case 13: driver.StateFromMissionToFightBH();      // Mission--> Fight!!!
+                    break;
+                case 14: driver.StateFromMissionToBarackBH();     // в барак 
+                       //driver.StateFromMissionToBH();           // в бх
+                    break;
+                case 15: driver.StateGotoTradeStep5BH();          // пятый этап продажи
+                    break;
+                case 16: server.barackLastPoint();                // начинаем со старого места
+                    break;
+                case 17: botwindow.PressEsc();                    // нажимаем Esc
+                    break;
+                case 29: botwindow.CureOneWindow();               // logout
+                    break;
+                case 30: botwindow.CureOneWindow2();              // отбегаем в сторону и логаут
+                    break;
+            }
+
+
+        }
+
+
 
         /// <summary>
         /// проверяем, есть ли проблемы с ботом (убили, застряли, нужно продать)
@@ -101,47 +254,101 @@ namespace States
                             }
                             else
                             {
-                                if (server.isTown() && !server.isBH())                     //если стоят в городе (но не в BH)
+                                if (server.isTown() && !server.isBH() && (botwindow.getStatusOfSale() == 0))                     //если стоят в городе (но не в BH) и не надо идти продаваться
                                 {
-                                    //driver.StateExitFromTown();          // 12-14 (GotoEnd)            может заменить на переход в БХ???
                                     driver.StateFromTownToBH();            //town --> BH
-                                    //botwindow.PressEscThreeTimes();
                                 }
                                 else
                                 {
-                                    if (server.isBH())
+                                    if (  (server.isBH())   &&   (botwindow.getStatusOfSale()==0)  )          //если стоим в БХ и если мы не собираемся идти продаваться
                                     {
                                         driver.StateFromBHToGateBH();            // BH --> Gate
                                     }
                                     else
                                     {
-                                        if (BHdialog.isGateBH())
+                                        if ((server.isBH()) && (botwindow.getStatusOfSale() == 1))          //если стоим в БХ и если собираемся идти продаваться
                                         {
-                                            driver.StateFromGateToMissionBH();            // Gate --> Mission
+                                            //int ff = botwindow.getNomerTeleport();
+                                            //if (botwindow.getNomerTeleport() >= 100)           // продажа в снежке
+                                            //{
+                                            //    driver.StateGotoTradeKatovia();
+                                            //}
+                                            //else                                               // продажа в городах
+                                            //{
+                                            driver.StateGotoTradeStep1BH();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
+                                            //}
                                         }
                                         else
                                         {
-                                            if (server.isWork() && server.isMissionBH())                            //если находимся в миссии, в самом начале
+                                            if (BHdialog.isGateBH())
                                             {
-                                                driver.StateFromMissionToFightBH();                                 // Mission--> Fight!!!
+                                                driver.StateFromGateToMissionBH();            // Gate --> Mission
                                             }
                                             else
                                             {
-                                                if (server.isWork() && !server.isMissionBH() && !server.isAtakBH())  
-                                                    //если находимся в миссии, но уже не в начале и не атакуем босса (значит бой окончен, либо заблудились и надо выходить в БХ) 
+                                                if (server.isWork() && server.isMissionBH())                            //если находимся в миссии, в самом начале
                                                 {
-                                                    driver.StateFromMissionToBH();         //в бх
+                                                    driver.StateFromMissionToFightBH();                                 // Mission--> Fight!!!
+                                                }
+                                                else
+                                                {
+                                                    if (server.isWork() && !server.isMissionBH() && !server.isAtakBH())
+                                                    //если находимся в миссии, но уже не в начале и не атакуем босса (значит бой окончен, либо заблудились и надо выходить в БХ) 
+                                                    {
+                                                        driver.StateFromMissionToBH();         //в бх
+                                                    }
+                                                    else
+                                                    {
+                                                        if (BHdialog.isGateBH4())
+                                                        {
+                                                            driver.StateFromGate4ToGate5BH();
+                                                        }
+                                                        else
+                                                        {
+                                                            if (BHdialog.isGateBH5())
+                                                            {
+                                                                driver.StateFromGate5ToBH();
+                                                            }
+                                                            else
+                                                            {
+                                                                if ((server.isTown()) && !server.isBH() && (botwindow.getStatusOfSale() == 1))    //если стоят в городе (но не в BH) и надо идти продаваться
+                                                                {
+                                                                    driver.StateGotoTradeStep2BH();
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (market.isSale())                                   //если стоим в магазине на экране входа
+                                                                    {
+                                                                        driver.StateGotoTradeStep3BH();
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (market.isSale2())                                        //если стоим в магазине
+                                                                        {
+                                                                            driver.StateGotoTradeStep4BH();
+                                                                        }
+                                                                        else
+                                                                        {
+
+
+
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             }
-                                        }
-                                    }
-                                }
+                                        }//если стоим в БХ и если собираемся идти продаваться
+                                    }//если стоим в БХ и если мы не собираемся идти продаваться
+                                } //если стоят в городе (но не в BH)
                             } //else isBarack()
                         } // else isKillHero()
                     }
                 } //else  isLogout()
             } //if  Active_or_not
-        }                                                                  //основной метод для зеленой кнопки
+        }                                                                  //основной метод для зеленой кнопки  (старый рабочий вариант)
 
 
         /// <summary>
@@ -377,7 +584,7 @@ namespace States
 
             botWindow botwindow = new botWindow(i);
             botwindow.ReOpenWindow();
-            //botwindow.Pause(1000);
+            botwindow.Pause(1000);
 
             Server server = new ServerSing(botwindow);
             //Server server = new ServerAmerica2(botwindow);
@@ -385,7 +592,7 @@ namespace States
             BHDialog BHdialog = new BHDialogSing(botwindow);
             
 
-            //Market market = new MarketSing(botwindow);
+            Market market = new MarketSing(botwindow);
 
 //            Pet pet = new PetAmerica2(botwindow);
             //Pet pet = new PetSing(botwindow);
@@ -394,12 +601,16 @@ namespace States
             //Otit otit = new OtitSing(botwindow);
             //MessageBox.Show(" " + server.is248Items());
 
-            //bool iscolor1 = server.isDef15();
+            //bool iscolor1 = server.isMissionBH();
             //MessageBox.Show(" " + iscolor1);
-            //bool iscolor1 = server.isActive ();
+
+            //bool iscolor1 = market.isClickPurchase();
             //MessageBox.Show(" " + iscolor1);
-            //bool iscolor1 = server.isSafeIP();
-            //MessageBox.Show(" " + iscolor1);
+            //bool iscolor2 = market.isClickSell();
+            //MessageBox.Show(" " + iscolor2);
+
+            bool iscolor1 = server.isBH2();
+            MessageBox.Show(" " + iscolor1);
             //bool ttt;
             //ttt = BHdialog.isGateBH();
             //MessageBox.Show(" " + ttt);
@@ -424,9 +635,13 @@ namespace States
             //int tt = Array.IndexOf(aa, 7272);
             //MessageBox.Show(" " + ff + " " + tt);
 
+            //server.FightToPoint(997 + 25, 160 + 25, 3);
+            //server.Turn180();
+            //server.TurnUp();
+            //server.TurnR(1);
+            //server.FightToPoint(595, 125, 3);
+            //server.TurnDown();
 
-            //ReOpenWindow();
-            //server.Turn90L();
 
             int xx, yy;
             xx = koordX[i - 1];
@@ -438,22 +653,22 @@ namespace States
             //int y = 292;
             //int i = 4;
 
-            int j = 12;
-            PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в городе
+            //int j = 12;
+            //PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в городе
 //            PointColor point1 = new PointColor(152 - 5 + xx, 250 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в Катовии
 
-            //PointColor point1 = new PointColor(700 - 30 + xx, 500 - 30 + yy, 1, 1);
-            PointColor point2 = new PointColor(101 - 30 + xx, 541 - 30 + yy, 1, 1);
-            PointColor point3 = new PointColor(101 - 30 + xx, 542 - 30 + yy, 1, 1);
+            PointColor point1 = new PointColor(700 - 30 + xx, 500 - 30 + yy, 1, 1);
+            PointColor point2 = new PointColor(963 - 5 + xx, 47 - 5 + yy, 1, 1);
+            PointColor point3 = new PointColor(16 - 5 + xx, 60 - 5 + yy, 1, 1);
 
 
             color1 = point1.GetPixelColor();
             color2 = point2.GetPixelColor();
             color3 = point3.GetPixelColor();
 
-            MessageBox.Show(" " + color1);
-            MessageBox.Show(" " + color2);
-            MessageBox.Show(" " + color3);
+           // MessageBox.Show(" " + color1);
+            //MessageBox.Show(" " + color2);
+            //MessageBox.Show(" " + color3);
 
 
             //if ((color1 > 2000000) && (color2 > 2000000)) MessageBox.Show(" больше ");

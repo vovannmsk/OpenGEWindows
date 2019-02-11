@@ -4,29 +4,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenGEWindows;
-using System.Windows.Forms;
 
 
 namespace States
 {
-    public class StateGT115 : IState
+    public class StateGT217 : IState
     {
         private botWindow botwindow;
-        private Server server;
-        private ServerFactory serverFactory;
+        //private Server server;
+        //private ServerFactory serverFactory;
+        //private Pet pet;
+        //private PetFactory petFactory;
         private int tekStateInt;
 
-        public StateGT115()
+        public StateGT217()
         {
 
         }
 
-        public StateGT115(botWindow botwindow)   
+        public StateGT217(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
-            this.serverFactory = new ServerFactory(botwindow);
-            this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            this.tekStateInt = 115;
+            //this.serverFactory = new ServerFactory(botwindow);
+            //this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            //this.petFactory = new PetFactory(botwindow);
+            //this.pet = petFactory.createPet();
+            this.tekStateInt = 217;
         }
 
         /// <summary>
@@ -63,26 +66,6 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            // Раффлезия
-            //MessageBox.Show("7 Раффлезия");
-            server.WriteToLogFileBH("сост 115 в бой");
-
-            //server.FightToPoint(785, 105, 3);         // идем в правый верхний угол  рабочий вариант
-            //server.FightToPoint(785, 105, 3);       
-            //server.FightToPoint(785, 105, 3);       
-            //server.FightToPoint(785, 105, 0);
-
-            //новый вариант
-            server.TurnUp();
-            server.FightToPoint(780, 238, 1);
-            server.TurnDown();
-
-
-
-            //botwindow.Pause(40000);
-            //server.runAway();
-            server.waitToCancelAtak();
-
         }
 
         /// <summary>
@@ -109,7 +92,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT129(botwindow);
+            return this;
         }
 
         /// <summary>
@@ -118,8 +101,6 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            server.WriteToLogFileBH("115 ELSE ");
-
             return this;
         }
 

@@ -85,7 +85,7 @@ namespace States
 
 
             // ================= открывает городской телепорт (ALT + F3) =================================
-            server.Teleport(3);
+            server.Teleport(3, true);
             //ожидание загрузки Катовии
             int counter = 0;
             while ((!server.isWork()) && (counter < 30))

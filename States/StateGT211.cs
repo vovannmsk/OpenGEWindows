@@ -4,29 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenGEWindows;
-using System.Windows.Forms;
 
 
 namespace States
 {
-    public class StateGT115 : IState
+    public class StateGT211 : IState
     {
         private botWindow botwindow;
         private Server server;
-        private ServerFactory serverFactory;
+        private Town town;
+        private Market market;
+
+        //        GotoTrade gototrade;
         private int tekStateInt;
 
-        public StateGT115()
+        public StateGT211()
         {
 
         }
 
-        public StateGT115(botWindow botwindow)   
+        public StateGT211(botWindow botwindow)   //, GotoTrade gototrade)
         {
             this.botwindow = botwindow;
-            this.serverFactory = new ServerFactory(botwindow);
+            ServerFactory serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            this.tekStateInt = 115;
+            this.town = server.getTown();
+            MarketFactory marketFactory = new MarketFactory(botwindow);
+            this.market = marketFactory.createMarket();
+            this.tekStateInt = 211;
         }
 
         /// <summary>
@@ -63,25 +68,13 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            // Раффлезия
-            //MessageBox.Show("7 Раффлезия");
-            server.WriteToLogFileBH("сост 115 в бой");
-
-            //server.FightToPoint(785, 105, 3);         // идем в правый верхний угол  рабочий вариант
-            //server.FightToPoint(785, 105, 3);       
-            //server.FightToPoint(785, 105, 3);       
-            //server.FightToPoint(785, 105, 0);
-
-            //новый вариант
-            server.TurnUp();
-            server.FightToPoint(780, 238, 1);
-            server.TurnDown();
-
-
-
-            //botwindow.Pause(40000);
-            //server.runAway();
-            server.waitToCancelAtak();
+            server.WriteToLogFileBH("211");
+            //server.SaleToTheRedBottle();      // продажа до красной бутылки
+            //server.SaleOverTheRedBottle();    // продажа от красной бутылки до того момента, пока крутится список продажи
+            //server.SaleToEnd();               // продажа до конца, когда список уже не крутится 
+            market.SaleToTheRedBottle(220);      // продажа до красной бутылки
+            //market.SaleOverTheRedBottle();    // продажа от красной бутылки до того момента, пока крутится список продажи
+            //market.SaleToEnd();               // продажа до конца, когда список уже не крутится 
 
         }
 
@@ -90,8 +83,8 @@ namespace States
         /// </summary>
         public void elseRun()
         {
-            botwindow.PressEscThreeTimes();
-            botwindow.Pause(500);
+            //botwindow.PressEscThreeTimes();
+            //botwindow.Pause(500);
         }
 
         /// <summary>
@@ -100,7 +93,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return true;
+            return true; // server.isTown();   // проверяет, что находимся в городе (по стойке с ружьём)
         }
 
         /// <summary>
@@ -109,7 +102,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT129(botwindow);
+            return new StateGT212(botwindow); 
         }
 
         /// <summary>
@@ -118,15 +111,17 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            server.WriteToLogFileBH("115 ELSE ");
-
-            return this;
+            if (!botwindow.isHwnd()) return new StateGT28(botwindow);  //последнее состояние движка, чтобы движок сразу тормознулся
+            if (server.isLogout())
+            {
+                return new StateGT15(botwindow);  //коннект и далее
+            }
+            else
+            {
+                return this;
+            }
         }
 
-        /// <summary>
-        /// геттер. возвращает номер текущего состояния
-        /// </summary>
-        /// <returns> номер состояния </returns>
         public int getTekStateInt()
         {
             return this.tekStateInt;

@@ -62,22 +62,42 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            botwindow.PressEscThreeTimes();   // ================= убирает все лишние окна с экрана =================================
-            botwindow.Pause(1500);
+            if (server.isBoxOverflow())
+            {
+                botwindow.setStatusOfSale(1);
+            }
+
+            //botwindow.PressEscThreeTimes();   // ================= убирает все лишние окна с экрана =================================
+            //botwindow.Pause(500);
 
             server.WriteToLogFileBH("сост 129 в сторону и телепорт в БХ");
+            //if (server.isBoxOverflow())
+            //{
+            //    botwindow.setStatusOfSale(1);
+            //}
 
-            //server.runAway();                  // отбегаем в сторону
-            server.Teleport(2);                // телепорт в БХ
 
-            //ожидание загрузки BH
-            int counter = 0;
-            while ((!server.isBH()) && (counter < 12))
-            { botwindow.Pause(1000); counter++; }
-            server.WriteToLogFileBH("сост 129 дождались загрузки БХ");
 
-            //botwindow.PressEscThreeTimes(); //29.04.17
-            //botwindow.Pause(500);
+            server.Teleport(2, false);                  // телепорт в БХ (без проверки открытия меню с телепортами)
+
+            if (server.isBoxOverflow())
+            {
+                botwindow.setStatusOfSale(1);
+            }
+
+            botwindow.PressEscThreeTimes();   // ================= убирает все лишние окна с экрана =================================
+
+            if (server.isBoxOverflow())
+            {
+                botwindow.setStatusOfSale(1);
+            }
+
+            ////ожидание загрузки BH
+            //int counter = 0;
+            //while ((!server.isBH()) && (counter < 12))
+            //{ botwindow.Pause(1000); counter++; }
+            //server.WriteToLogFileBH("сост 129 дождались загрузки БХ");
+
 
         }
 
@@ -96,7 +116,8 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return server.isBH();
+            return true;
+//            return server.isBH();
         }
 
         /// <summary>

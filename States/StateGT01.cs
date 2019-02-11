@@ -60,7 +60,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            
+            server.WriteToLogFileBH("01");
             botwindow.PressEscThreeTimes();   // ================= убирает все лишние окна с экрана =================================
             botwindow.Pause(500);
 

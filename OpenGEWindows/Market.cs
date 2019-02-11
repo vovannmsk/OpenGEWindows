@@ -22,6 +22,8 @@ namespace OpenGEWindows
         protected iPointColor pointIsSale22;
         protected iPointColor pointIsClickSale1;
         protected iPointColor pointIsClickSale2;
+        protected iPointColor pointIsClickPurchase1;
+        protected iPointColor pointIsClickPurchase2;
         protected iPoint pointBookmarkSell;
         protected iPoint pointSaleToTheRedBottle;
         protected iPoint pointSaleOverTheRedBottle;
@@ -104,6 +106,16 @@ namespace OpenGEWindows
         {
             return ((pointIsSale21.isColor()) && (pointIsSale22.isColor()));
         }
+
+        /// <summary>
+        /// проверяет, открыта ли закладка Purchase (BUY) в магазине 
+        /// </summary>
+        /// <returns> true, если закладка Purchase в магазине открыта </returns>
+        public bool isClickPurchase()
+        {
+            return ((pointIsClickPurchase1.isColor()) && (pointIsClickPurchase2.isColor()));
+        }
+
 
 
         /// <summary>
@@ -418,14 +430,14 @@ namespace OpenGEWindows
         /// <summary>
         /// Продажа товаров в магазине вплоть до маленькой красной бутылки 
         /// </summary>
-        public void SaleToTheRedBottle()
+        public void SaleToTheRedBottle(int limit)
         {
             uint count = 0;
             while (!isRedBottle(1))
             {
                 AddToCart();
                 count++;
-                if (count > 220) break;   // защита от бесконечного цикла
+                if (count > limit) break;   // защита от бесконечного цикла
             }
         }
 
@@ -484,6 +496,7 @@ namespace OpenGEWindows
         {
             pointButtonSell.PressMouseL();
             pointButtonSell.PressMouseL();
+            botwindow.setStatusOfSale(0);
             Pause(2000);
         }
 

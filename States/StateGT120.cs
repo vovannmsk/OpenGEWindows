@@ -69,9 +69,9 @@ namespace States
             server.WriteToLogFileBH("сост 120 в бой");
 
             server.TurnUp();
-
-            server.FightToPoint(545, 125, 3);
+            server.FightToPoint(545, 125, 1);
             server.TurnDown();
+
             server.waitToCancelAtak();
 
             //botwindow.Pause(36000);

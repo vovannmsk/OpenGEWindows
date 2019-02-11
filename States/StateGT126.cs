@@ -65,11 +65,15 @@ namespace States
             // круглая арена, земляной пол             
             server.WriteToLogFileBH("сост 126 в бой");
 
-            //botwindow.Pause(50000);
-            server.FightToPoint(760, 126, 3);
-            server.FightToPoint(760, 126, 3);
-            server.FightToPoint(760, 126, 3);
-            //botwindow.Pause(30000);
+            //server.FightToPoint(950, 126, 3);
+            //server.FightToPoint(950, 126, 3);
+            //server.FightToPoint(950, 126, 0);
+
+            //новый вариант
+            server.TurnUp();
+            server.FightToPoint(1041, 174, 1);       
+            server.TurnDown();
+            
             server.waitToCancelAtak();
         }
 

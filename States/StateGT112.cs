@@ -74,7 +74,7 @@ namespace States
 
             server.FightToPoint(545, 120, 3);
 
-            server.FightToPoint(545, 120, 3);
+            server.FightToPoint(545, 120, 0);
 
             server.waitToCancelAtak();
 

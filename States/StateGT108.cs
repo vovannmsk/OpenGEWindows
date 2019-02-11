@@ -100,7 +100,7 @@ namespace States
                 case 3:  return new StateGT111(botwindow);    // тринити с текущей водой                                                   111
                 case 4:  return new StateGT112(botwindow);    // лава + малиновый грунт                                                    112
                 case 5:  return new StateGT113(botwindow);    // вода + плиты на полу                                                      113
-                case 6:  return new StateGT114(botwindow);    // квадратная арена. идти в обход до босса. лучше справа                     114
+                case 6:  return new StateGT114(botwindow);    // квадратная арена. идти в обход до босса. лучше справа                     114  еще одна жопа!!!
                 case 7:  return new StateGT115(botwindow);    // Раффлезия                                                                 115
                 case 8:  return new StateGT116(botwindow);    // синий пол, синие колонны в виде буквы Л                                   116
                 case 9:  return new StateGT117(botwindow);    // Золотой голем                                                             117

@@ -71,7 +71,7 @@ namespace States
             server.FightToPoint(488, 115, 3);
             server.FightToPoint(488, 115, 3);
             server.FightToPoint(488, 115, 3);
-            server.FightToPoint(488, 115, 3);
+            server.FightToPoint(488, 115, 0);
             //server.TurnDown();
             //botwindow.Pause(40000);
             server.waitToCancelAtak();

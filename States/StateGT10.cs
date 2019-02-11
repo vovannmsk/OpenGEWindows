@@ -69,6 +69,7 @@ namespace States
         /// </summary>
         public void run()                            // переход к следующему состоянию
         {
+            server.WriteToLogFileBH("10");
             //server.BuyingMitridat();                 // покупка митридата
 
 //            server.Bookmark_Sell();               //========= тыкаем в закладку SELL =======================

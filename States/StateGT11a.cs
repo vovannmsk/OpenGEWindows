@@ -68,6 +68,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            server.WriteToLogFileBH("11a");
             //server.Botton_Sell();             // Нажимаем на кнопку Sell
             //botwindow.Pause(1500);
             //server.Button_Close();            // Нажимаем на кнопку Close

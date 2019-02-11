@@ -69,15 +69,22 @@ namespace States
 
          //   server.runAway();
             //разворот на 180 градусов и три раза вперед 
-            server.Turn180();
-            //server.TurnUp();
 
+            server.Turn180();
             server.FightToPoint(595, 125, 3);
-            server.FightToPoint(595, 125, 3);
-            server.FightToPoint(595, 125, 3);
-            server.FightToPoint(595, 125, 3);
-            server.FightToPoint(595, 125, 3);
-            server.FightToPoint(595, 125, 3);
+
+            server.TurnUp();
+            server.FightToPoint(565, 261, 1);
+            server.TurnDown();
+
+
+            //server.FightToPoint(595, 125, 3);
+            //server.FightToPoint(595, 125, 3);
+            //server.FightToPoint(595, 125, 3);
+            //server.FightToPoint(595, 125, 3);
+            //server.FightToPoint(595, 125, 3);
+            //server.FightToPoint(595, 125, 0);
+
             server.waitToCancelAtak();
             //botwindow.Pause(40000);
 

@@ -70,13 +70,19 @@ namespace States
             //server.TurnUp();
             //MessageBox.Show(" сост 114");
             //server.runAway();
-            server.FightToPoint(860, 367, 3);
-            server.FightToPoint(930, 390, 3);
-            server.FightToPoint(930, 390, 3);
-            server.FightToPoint(988, 136, 3);
-            server.FightToPoint(555, 120, 3);
-            server.FightToPoint(555, 120, 3);
-            botwindow.Pause(30000);
+            server.FightToPoint(997+25, 160+25, 3);
+            server.FightToPoint(1034, 308, 3);
+            server.FightToPoint(1011, 80, 5);
+            //botwindow.Pause(30000);
+            //server.FightToPoint(883 + 25, 84 + 25, 5);
+            //server.FightToPoint(510+25, 86+25, 3);
+            server.FightToPoint(510 + 25, 86 + 25, 3);
+            server.FightToPoint(510 + 25, 86 + 25, 3);
+            server.FightToPoint(510 + 25, 86 + 25, 3);
+            server.FightToPoint(293, 166, 0);
+            //server.FightToPoint(555, 120, 0);
+            //server.Turn90L();
+            //botwindow.Pause(30000);
 //            server.FightToPoint(555, 120, 3);
   //          server.TurnDown();
 

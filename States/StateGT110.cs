@@ -71,25 +71,17 @@ namespace States
             server.Turn90L();
             server.FightToPoint(620, 125, 3);
             server.FightToPoint(620, 125, 3);
+            server.FightToPoint(620, 125, 3);
+            server.FightToPoint(620, 125, 3);
             
             server.TurnUp();
-            botwindow.Pause(50000);
-            server.FightToPoint(555, 125, 3);                  //уточнить координаты
-
-//            botwindow.Pause(50000);                             //
+            server.FightToPoint(626, 250, 1);               
             server.TurnDown();
-            //server.FightToPoint(555, 125, 3);
-            //server.FightToPoint(555, 125, 3);
-            //server.FightToPoint(555, 125, 3);
-            //server.FightToPoint(555, 125, 40);
 
-            //botwindow.Pause(50000);
             server.waitToCancelAtak();
 
            //server.runAway();
-
-
-
+            //botwindow.Pause(50000);
         }
 
         /// <summary>

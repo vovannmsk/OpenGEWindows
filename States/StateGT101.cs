@@ -69,16 +69,19 @@ namespace States
         public void run()                // переход к следующему состоянию
         {
             server.WriteToLogFileBH("БХ");
-            
+
+            //server.Cure(1);
+            server.QuickCure();           //"пьём" патроны в ячейке под буквой i
+
             server.GoToInfinityGateBH();
 
-            //ожидание загрузки диалога ворот
-            int counter = 0;
-            while ((!BHdialog.isGateBH()) && (counter < 30))
-            { botwindow.Pause(500); counter++; }
+            ////ожидание загрузки диалога ворот
+            //int counter = 0;
+            //while ((!BHdialog.isGateBH()) && (counter < 30))
+            //{ botwindow.Pause(500); counter++; }
 
-            server.WriteToLogFileBH("101 Вошли в ворота");
-            //далее оказываемся в воротах в состоянии ворот 1 или 3
+            //server.WriteToLogFileBH("101 Вошли в ворота");
+            ////далее оказываемся в воротах в состоянии ворот 1 или 3
         }
 
         /// <summary>
@@ -96,7 +99,8 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return BHdialog.isGateBH();
+            //return BHdialog.isGateBH();
+            return true;
         }
 
         /// <summary>

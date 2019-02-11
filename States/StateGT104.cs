@@ -67,9 +67,6 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            //server.PressStringInfinityGateBH(1);    //нажимаем нижнюю строчку в диалоге
-            //server.PressButtonOkInfinityGateBH();   //нажимаем ОК
-
 
             //начинаем из второго состояния, т.е. isGateBH2 = true
             BHdialog.PressStringDialog(1);
@@ -77,14 +74,14 @@ namespace States
 
             server.WriteToLogFileBH("104 состояние ворот 2. выбрали нижнюю строку и Ок");
 
-            //ожидание загрузки миссии 
-            int counter = 0;
-            while ((!server.isWork()) && (counter < 30))
-            { botwindow.Pause(1000); counter++; }
+            ////ожидание загрузки миссии 
+            //int counter = 0;
+            //while ((!server.isWork()) && (counter < 30))
+            //{ botwindow.Pause(1000); counter++; }
 
-            server.WriteToLogFileBH("104 дождались загрузки миссии");
+            //server.WriteToLogFileBH("104 дождались загрузки миссии");
 
-            //далее переходим в миссию
+            ////далее переходим в миссию
 
         }
 
@@ -103,7 +100,8 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return server.isWork();
+            //return server.isWork();
+            return true;
         }
 
         /// <summary>
@@ -113,6 +111,7 @@ namespace States
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
             return new StateGT108(botwindow);
+//            return new StateGT106(botwindow);
         }
 
         /// <summary>
