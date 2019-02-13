@@ -359,6 +359,10 @@ namespace OpenGEWindows
             this.pointisBH1 = new PointColor(985 - 30 + xx, 91 - 30 + yy, 10353000, 3);                    // желтый ободок на миникарте (в BH миникарты нет)
             this.pointisBH2 = new PointColor(975 - 30 + xx, 95 - 30 + yy, 5700000, 5);                 //синий ободок на миникарте (в BH миникарты нет)
             this.arrayOfColors = new uint[17] { 0, 1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 2104613 };
+            this.pointIsAtak1 = new PointColor(101 - 30 + xx, 541 - 30 + yy, 6000000, 6);                // проверяем, атакует ли бот босса (есть ли зеленый ободок вокруг сабли)
+            this.pointIsAtak2 = new PointColor(101 - 30 + xx, 542 - 30 + yy, 6000000, 6);
+            this.pointIsRoulette1 = new PointColor(507 - 5 + xx, 83 - 5 + yy, 15000000, 6);
+            this.pointIsRoulette2 = new PointColor(509 - 5 + xx, 83 - 5 + yy, 15000000, 6);                
 
             #endregion
 

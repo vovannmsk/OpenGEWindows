@@ -263,8 +263,8 @@ namespace OpenGEWindows
             this.pointEnterChannel = new Point(646 - 5 + xx, 409 - 5 + yy + (botwindow.getKanal() - 2) * 15);                        //выбор канала в меню Alt+F2
             this.pointNewPlace = new Point(85 + xx, 670 + yy);
             this.pointLastPoint = new Point(210 - 5 + xx, 670 - 5 + yy);
-            this.pointisBHLastPoint1 = new PointColor(101 - 5 + xx, 527 - 5 + yy, 11000000, 6);
-            this.pointisBHLastPoint2 = new PointColor(101 - 5 + xx, 528 - 5 + yy, 11000000, 6);            
+            this.pointisBHLastPoint1 = new PointColor(101 - 30 + xx, 527 - 30 + yy, 11000000, 6);
+            this.pointisBHLastPoint2 = new PointColor(101 - 30 + xx, 528 - 30 + yy, 11000000, 6);   
 
             #endregion
 
@@ -477,9 +477,23 @@ namespace OpenGEWindows
             #region BH
 
                 this.pointGateInfinityBH = new Point(410 - 5 + xx, 430 - 5 + yy);
-                this.pointisBH1 = new PointColor(985 - 30 + xx, 91 - 30 + yy, 10353000, 3);                    // желтый ободок на миникарте (в BH миникарты нет)
-                this.pointisBH2 = new PointColor(975 - 30 + xx, 95 - 30 + yy, 5700000, 5);                 //синий ободок на миникарте (в BH миникарты нет)
-                this.arrayOfColors = new uint[17] { 0, 1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 2104613 };
+                //this.pointGateInfinityBH = new Point(892 - 30 + xx, 573 - 30 + yy);
+                this.pointisBH1 = new PointColor(985 - 30 + xx, 91 - 30 + yy, 10353000, 3);              // желтый ободок на миникарте (в BH миникарты нет)
+                this.pointisBH2 = new PointColor(963 - 5 + xx, 47 - 5 + yy, 6600000, 5);                 // верхняя желтая часть колонны
+
+                //int[] aa = new int[16] {1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 2104613};
+                //bool ff = aa.Contains(725272);
+                //int tt = Array.IndexOf(aa, 725272);
+
+                this.arrayOfColors = new uint[19] { 0, 1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 1842730, 3955550, 1250584 };
+
+                //this.pointIsAtak1 = new PointColor(101 - 30 + xx, 541 - 30 + yy, 4000000, 6);                // проверяем, атакует ли бот босса (есть ли зеленый ободок вокруг сабли)
+                //this.pointIsAtak2 = new PointColor(101 - 30 + xx, 542 - 30 + yy, 3000000, 6);
+                //this.pointIsAtak3 = new PointColor(101 - 30 + xx, 542 - 30 + yy, 5000000, 6);
+                this.pointIsAtak1 = new PointColor(101 - 30 + xx, 541 - 30 + yy, 6000000, 6);                // проверяем, атакует ли бот босса (есть ли зеленый ободок вокруг сабли)
+                this.pointIsAtak2 = new PointColor(101 - 30 + xx, 542 - 30 + yy, 6000000, 6);
+                this.pointIsRoulette1 = new PointColor(507 - 5 + xx, 83 - 5 + yy, 15000000, 6);
+                this.pointIsRoulette2 = new PointColor(509 - 5 + xx, 83 - 5 + yy, 15000000, 6);                
 
             #endregion
 

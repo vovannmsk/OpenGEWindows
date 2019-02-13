@@ -66,15 +66,22 @@ namespace States
             // лава + малиновый грунт
 //            MessageBox.Show("4 лава + малиновый грунт");
             server.WriteToLogFileBH("сост 112 бой");
-            //server.runAway();
 
+            //старый вариант
             server.Turn180();
+            server.FightToPoint(545, 110, 3);
+            //server.FightToPoint(545, 120, 3);
+            server.FightToPoint(545, 110, 0);
 
-            server.FightToPoint(545, 120, 3);
 
-            server.FightToPoint(545, 120, 3);
+            //новый вариант
+            //server.Turn180();
+            //server.FightToPoint(545, 110, 3);
+            //server.TurnUp();
+            //server.TurnR(1);
+            //server.FightToPoint(133, 116, 1);
+            //server.TurnDown();
 
-            server.FightToPoint(545, 120, 0);
 
             server.waitToCancelAtak();
 

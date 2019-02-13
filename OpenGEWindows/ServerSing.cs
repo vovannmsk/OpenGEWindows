@@ -486,7 +486,6 @@ namespace OpenGEWindows
                 //bool ff = aa.Contains(725272);
                 //int tt = Array.IndexOf(aa, 725272);
 
-//                this.arrayOfColors = new uint[19] { 0, 1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 2104613, 3955550, 0 };
                 this.arrayOfColors = new uint[19] { 0, 1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 1842730, 3955550, 1250584 };
 
                 //this.pointIsAtak1 = new PointColor(101 - 30 + xx, 541 - 30 + yy, 4000000, 6);                // проверяем, атакует ли бот босса (есть ли зеленый ободок вокруг сабли)
@@ -494,6 +493,8 @@ namespace OpenGEWindows
                 //this.pointIsAtak3 = new PointColor(101 - 30 + xx, 542 - 30 + yy, 5000000, 6);
                 this.pointIsAtak1 = new PointColor(101 - 30 + xx, 541 - 30 + yy, 6000000, 6);                // проверяем, атакует ли бот босса (есть ли зеленый ободок вокруг сабли)
                 this.pointIsAtak2 = new PointColor(101 - 30 + xx, 542 - 30 + yy, 6000000, 6);
+                this.pointIsRoulette1 = new PointColor(507 - 5 + xx, 83 - 5 + yy, 15000000, 6);                
+                this.pointIsRoulette2 = new PointColor(509 - 5 + xx, 83 - 5 + yy, 15000000, 6);                
 
             #endregion
         }

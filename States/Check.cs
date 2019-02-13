@@ -85,9 +85,9 @@ namespace States
     
             if (server.isTown())   //если в городе
             {
-                if (server.isBH2()) return 18;   //стоим в БХ в неправильном месте
                 if (server.isBH())     //в БХ
                 {
+                    if (server.isBH2()) return 18;   //стоим в БХ в неправильном месте
                     if (statusOfSale == 1)     
                     {
                         // если нужно бежать продаваться
@@ -132,13 +132,14 @@ namespace States
             }
             if (server.isWork())
             {
-                if (server.isMissionBH())                                   //если находимся в миссии, в самом начале (миссия определилась)
+                if (server.isMissionBH())                                         //если находимся в миссии, в самом начале (миссия определилась)
                 {
                     return 13;
                 }
                 else
                 {
-                    if (!server.isAtakBH()) return 14;   //если находимся в миссии, но уже не в начале и не атакуем босса (значит бой окончен, либо заблудились и надо выходить в БХ) 
+                    if ((!server.isAtakBH()) && (!server.isRouletteBH())) return 14;   
+                    //если находимся в миссии, но уже не в начале и не атакуем босса и не крутится рулетка (значит бой окончен, либо заблудились и надо выходить из миссии) 
                 }
             }
             if (server.isLogout()) return 1;               // если окно в логауте
@@ -175,9 +176,9 @@ namespace States
                     break;
                 case 2: driver.StateFromBarackToTownBH();         // идем в город
                     break;
-                case 3: 
-                case 18:
-                        driver.StateGotoTradeStep1BH();           // BH-->Town (первый этап продажи)
+                case 3: driver.StateGotoTradeStep1BH();           // BH-->Town (первый этап продажи)
+                    break;
+                case 18: server.systemMenu(3, true);              // переход в стартовый город
                     break;
                 case 4: driver.StateFromBHToGateBH();             // BH --> Gate
                     break;
@@ -577,7 +578,7 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            int i = 1;   //номер проверяемого окна
+            int i = 2;   //номер проверяемого окна
 
             int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 875, 850, 825, 800, 775, 750, 875 };
             int[] koordY = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 5, 30, 55, 80, 105, 130, 5 };
@@ -586,8 +587,8 @@ namespace States
             botwindow.ReOpenWindow();
             botwindow.Pause(1000);
 
-            Server server = new ServerSing(botwindow);
-            //Server server = new ServerAmerica2(botwindow);
+            //Server server = new ServerSing(botwindow);
+            Server server = new ServerAmerica2(botwindow);
 
             BHDialog BHdialog = new BHDialogSing(botwindow);
             
@@ -601,7 +602,7 @@ namespace States
             //Otit otit = new OtitSing(botwindow);
             //MessageBox.Show(" " + server.is248Items());
 
-            //bool iscolor1 = server.isMissionBH();
+            //bool iscolor1 = server.isTown();
             //MessageBox.Show(" " + iscolor1);
 
             //bool iscolor1 = market.isClickPurchase();
@@ -609,8 +610,8 @@ namespace States
             //bool iscolor2 = market.isClickSell();
             //MessageBox.Show(" " + iscolor2);
 
-            bool iscolor1 = server.isBH2();
-            MessageBox.Show(" " + iscolor1);
+            //bool iscolor1 = server.isBH2();
+            //MessageBox.Show(" " + iscolor1);
             //bool ttt;
             //ttt = BHdialog.isGateBH();
             //MessageBox.Show(" " + ttt);
@@ -638,9 +639,16 @@ namespace States
             //server.FightToPoint(997 + 25, 160 + 25, 3);
             //server.Turn180();
             //server.TurnUp();
-            //server.TurnR(1);
+            //server.Turn90R();
+            //server.TurnL(1);
             //server.FightToPoint(595, 125, 3);
             //server.TurnDown();
+            //server.TurnR(1);
+            //server.FightToPoint(545, 110, 3);
+
+            server.TurnL(1); 
+            server.TurnUp();
+            
 
 
             int xx, yy;
@@ -658,8 +666,8 @@ namespace States
 //            PointColor point1 = new PointColor(152 - 5 + xx, 250 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в Катовии
 
             PointColor point1 = new PointColor(700 - 30 + xx, 500 - 30 + yy, 1, 1);
-            PointColor point2 = new PointColor(963 - 5 + xx, 47 - 5 + yy, 1, 1);
-            PointColor point3 = new PointColor(16 - 5 + xx, 60 - 5 + yy, 1, 1);
+            PointColor point2 = new PointColor(507 - 5 + xx, 83 - 5 + yy, 1, 1);
+            PointColor point3 = new PointColor(509 - 5 + xx, 83 - 5 + yy, 1, 1);
 
 
             color1 = point1.GetPixelColor();

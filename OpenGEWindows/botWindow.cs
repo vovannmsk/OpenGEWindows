@@ -879,6 +879,16 @@ namespace OpenGEWindows
         }
 
         /// <summary>
+        /// нажимаем пробел (переход в боевой режим)
+        /// </summary>
+        public void ClickSpaceBH()
+        {
+            iPoint pointBattleMode = new Point(190 - 5 + databot.x, 530 - 5 + databot.y);    //  185, 525
+            pointBattleMode.PressMouseL();  // Кликаю на кнопку "боевой режим"
+        }
+
+
+        /// <summary>
         /// Лечение одного окна, если побили всех персов (лечение состоит в закрытии окна с ботом)
         /// </summary>
         public void CureOneWindow()

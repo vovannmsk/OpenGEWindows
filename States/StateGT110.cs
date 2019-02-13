@@ -73,7 +73,11 @@ namespace States
             server.FightToPoint(620, 125, 3);
             server.FightToPoint(620, 125, 3);
             server.FightToPoint(620, 125, 3);
-            
+            //server.FightToPoint(620, 110, 3);
+            //server.FightToPoint(620, 110, 3);
+            //server.FightToPoint(620, 110, 3);
+            //server.FightToPoint(620, 110, 3);
+
             server.TurnUp();
             server.FightToPoint(626, 250, 1);               
             server.TurnDown();

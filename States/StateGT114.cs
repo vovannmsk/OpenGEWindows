@@ -65,26 +65,26 @@ namespace States
         {
             // квадратная арена. идти в обход до босса. лучше справа
             //MessageBox.Show("6 квадратная арена. идти в обход до босса. лучше справа");
-            server.WriteToLogFileBH("сост 114 в сторону");
+            server.WriteToLogFileBH("сост 114 в бой");
 
-            //server.TurnUp();
-            //MessageBox.Show(" сост 114");
-            //server.runAway();
-            server.FightToPoint(997+25, 160+25, 3);
+            //старый рабочий вариант
+            //server.FightToPoint(997+25, 160+25, 3);
+            //server.FightToPoint(1034, 308, 3);
+            //server.FightToPoint(1011, 80, 5);
+            //server.FightToPoint(510 + 25, 86 + 25, 3);
+            //server.FightToPoint(510 + 25, 86 + 25, 3);
+            //server.FightToPoint(510 + 25, 86 + 25, 3);
+            //server.FightToPoint(293, 166, 0);
+
+            
+            
+            server.FightToPoint(997 + 25, 160 + 25, 3);
             server.FightToPoint(1034, 308, 3);
-            server.FightToPoint(1011, 80, 5);
-            //botwindow.Pause(30000);
-            //server.FightToPoint(883 + 25, 84 + 25, 5);
-            //server.FightToPoint(510+25, 86+25, 3);
-            server.FightToPoint(510 + 25, 86 + 25, 3);
-            server.FightToPoint(510 + 25, 86 + 25, 3);
-            server.FightToPoint(510 + 25, 86 + 25, 3);
-            server.FightToPoint(293, 166, 0);
-            //server.FightToPoint(555, 120, 0);
-            //server.Turn90L();
-            //botwindow.Pause(30000);
-//            server.FightToPoint(555, 120, 3);
-  //          server.TurnDown();
+            server.FightToPoint(1011, 80, 6);
+            server.TurnL(1);
+            server.TurnUp();
+            server.FightToPoint(94, 383, 1);
+            server.TurnDown();
 
             server.waitToCancelAtak();
 

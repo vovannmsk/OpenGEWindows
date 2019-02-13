@@ -66,13 +66,22 @@ namespace States
             // Море. Прибой
 
             server.WriteToLogFileBH("сост 118 в бой");
+            
+            
+            //server.Turn90R();
+            ////server.TurnUp();
+            //server.FightToPoint(488, 115, 3);
+            //server.FightToPoint(488, 115, 3);
+            //server.FightToPoint(488, 115, 3);
+            //server.FightToPoint(488, 115, 0);
+
             server.Turn90R();
-            //server.TurnUp();
-            server.FightToPoint(488, 115, 3);
-            server.FightToPoint(488, 115, 3);
-            server.FightToPoint(488, 115, 3);
-            server.FightToPoint(488, 115, 0);
-            //server.TurnDown();
+            server.TurnUp();
+            server.TurnR(1);
+            server.FightToPoint(114, 392, 1);
+            server.TurnDown();
+
+
             //botwindow.Pause(40000);
             server.waitToCancelAtak();
 

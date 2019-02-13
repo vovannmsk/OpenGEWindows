@@ -507,6 +507,8 @@ namespace OpenGEWindows
         protected iPointColor pointisBH2;           //неправильное место в бх
         protected iPointColor pointIsAtak1;
         protected iPointColor pointIsAtak2;
+        protected iPointColor pointIsRoulette1;
+        protected iPointColor pointIsRoulette2;
         //protected iPointColor pointIsAtak3;
 
 //        protected uint[] arrayOfColors = new uint[17] { 0, 1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 2104613 };
@@ -2830,6 +2832,14 @@ namespace OpenGEWindows
 
         #region Гильдия Охотников BH
 
+        /// <summary>
+        /// проверяем, крутится ли рулетка после убийства босса
+        /// </summary>
+        /// <returns></returns>
+        public bool isRouletteBH()
+        {
+            return (pointIsRoulette1.isColor() && pointIsRoulette2.isColor());
+        }
 
         /// <summary>
         /// метод возвращает значение статуса, 1 - мы направляемся на продажу товара в магазин, 0 - нет (обычный режим работы)
@@ -2992,9 +3002,13 @@ namespace OpenGEWindows
             //если begin меньше на 24, то влево на 90
             //если begin больше на 16, то на 180 градусов
 
-            Point pointBegin = new Point(560 + 16 + - 30 + xx, 430 - 30 + yy);
-            Point pointEnd = new Point(560 - 30 + xx, 430 - 30 + yy);
-            pointBegin.Turn(pointEnd);
+            //Point pointBegin = new Point(560 + 16 + - 30 + xx, 430 - 30 + yy);
+            //Point pointEnd = new Point(560 - 30 + xx, 430 - 30 + yy);
+            //pointBegin.Turn(pointEnd);
+
+            TurnL(16);
+
+
             //pointBegin.Turn(pointEnd);
             //pointBegin.Turn(pointEnd);
             //pointBegin.Turn(pointEnd);
@@ -3043,9 +3057,11 @@ namespace OpenGEWindows
             //если begin меньше на 24, то вправо на 90
             //если begin больше на 16, то на 180 градусов
 
-            Point pointBegin = new Point(560 + 24 - 30 + xx, 430 - 30 + yy);
-            Point pointEnd   = new Point(560 - 30 + xx, 430 - 30 + yy);
-            pointBegin.Turn(pointEnd);
+            //Point pointBegin = new Point(560 + 24 - 30 + xx, 430 - 30 + yy);
+            //Point pointEnd   = new Point(560 - 30 + xx, 430 - 30 + yy);
+            //pointBegin.Turn(pointEnd);
+
+            TurnL(24);
         }
 
         /// <summary>
@@ -3058,9 +3074,11 @@ namespace OpenGEWindows
             //если begin меньше на 24, то вправо на 90
             //если begin больше на 16, то на 180 градусов
 
-            Point pointBegin = new Point(560 - 24 - 30 + xx, 430 - 30 + yy);
-            Point pointEnd = new Point(560 - 30 + xx, 430 - 30 + yy);
-            pointBegin.Turn(pointEnd);
+            //Point pointBegin = new Point(560 - 24 - 30 + xx, 430 - 30 + yy);
+            //Point pointEnd = new Point(560 - 30 + xx, 430 - 30 + yy);
+            //pointBegin.Turn(pointEnd);
+
+            TurnR(24);
         }
 
 

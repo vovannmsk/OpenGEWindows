@@ -68,13 +68,13 @@ namespace States
             //server.runAway();
             server.WriteToLogFileBH("сост 111 бой");
 
-            server.FightToPoint(545, 120, 3);
+            server.FightToPoint(545, 110, 3);
             
-            server.FightToPoint(545, 120, 3);
+            server.FightToPoint(545, 110, 3);
 
-            server.FightToPoint(545, 120, 3);
+            server.FightToPoint(545, 110, 3);
             
-            server.FightToPoint(545, 120, 0);
+            server.FightToPoint(545, 110, 0);
 
             server.waitToCancelAtak();
         }

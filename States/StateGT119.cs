@@ -66,18 +66,22 @@ namespace States
             //  Красные свечи
             server.WriteToLogFileBH("сост 119 ");
 
-            //разворот на 180 градусов и вперед 4 раза
+    
             server.Turn180();
-            
-            //server.TurnUp();
-            //botwindow.Pause(40000);
+            server.TurnUp();
 
-            server.FightToPoint(585, 125, 3);
-            server.FightToPoint(585, 125, 3);
-            server.FightToPoint(585, 125, 3);
-            server.FightToPoint(585, 125, 3);
-            server.FightToPoint(585, 125, 3);
-            server.FightToPoint(585, 125, 0);
+            server.TurnR(1);
+            server.FightToPoint(236, 470, 0);
+            server.TurnDown();
+
+            
+
+            //server.FightToPoint(585, 125, 3);
+            //server.FightToPoint(585, 125, 3);
+            //server.FightToPoint(585, 125, 3);
+            //server.FightToPoint(585, 125, 3);
+            //server.FightToPoint(585, 125, 3);
+            //server.FightToPoint(585, 125, 0);
 
             server.waitToCancelAtak();
         }

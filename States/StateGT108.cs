@@ -97,15 +97,15 @@ namespace States
             {
                 case 1:  return new StateGT109(botwindow);    // круглая арена с колоннами и квадратные плиты на полу. босс по центру      109
                 case 2:  return new StateGT110(botwindow);    // сетка, а под ней зеленая вода                                             110  самая жопа!!!
-                case 3:  return new StateGT111(botwindow);    // тринити с текущей водой                                                   111
-                case 4:  return new StateGT112(botwindow);    // лава + малиновый грунт                                                    112
+                case 3:  return new StateGT111(botwindow);    // тринити с текущей водой                                                   111+
+                case 4:  return new StateGT112(botwindow);    // лава + малиновый грунт                                                    112+
                 case 5:  return new StateGT113(botwindow);    // вода + плиты на полу                                                      113
                 case 6:  return new StateGT114(botwindow);    // квадратная арена. идти в обход до босса. лучше справа                     114  еще одна жопа!!!
-                case 7:  return new StateGT115(botwindow);    // Раффлезия                                                                 115
-                case 8:  return new StateGT116(botwindow);    // синий пол, синие колонны в виде буквы Л                                   116
-                case 9:  return new StateGT117(botwindow);    // Золотой голем                                                             117
-                case 10: return new StateGT118(botwindow);    // Море. Прибой                                                              118
-                case 11: return new StateGT119(botwindow);    // Красные свечи                                                             119
+                case 7:  return new StateGT115(botwindow);    // Раффлезия                                                                 115+
+                case 8:  return new StateGT116(botwindow);    // синий пол, синие колонны в виде буквы Л                                   116+
+                case 9:  return new StateGT117(botwindow);    // Золотой голем                                                             117+
+                case 10: return new StateGT118(botwindow);    // Море. Прибой                                                              118+
+                case 11: return new StateGT119(botwindow);    // Красные свечи                                                             119+
                 case 12: return new StateGT120(botwindow);    // Серый пол, арнамент на полу в виде змейки. Муфаса                         120
                 case 13: return new StateGT121(botwindow);    // Синий пол, синие кристаллы                                                121
                 case 14: return new StateGT122(botwindow);    // Две темные арены со столбом посредине. Босс в дальней арене               122
