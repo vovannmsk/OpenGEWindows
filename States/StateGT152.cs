@@ -70,7 +70,7 @@ namespace States
         {
             // ========================== убирает все лишние окна с экрана =================================
             botwindow.PressEscThreeTimes();
-            botwindow.Pause(1000);
+            botwindow.Pause(500);
 
             if (server.isToken()) server.TokenClose(); //сделано для Европы. Закрываем окно с подарочными токенами
             botwindow.Pause(1000);

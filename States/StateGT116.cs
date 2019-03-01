@@ -70,8 +70,9 @@ namespace States
             //Point point1 = new Point(500 - 30 + xx,127 - 30 - yy);
             server.WriteToLogFileBH("сост 116 в бой");
 
-            server.FightToPoint(545, 125, 3);
-            server.FightToPoint(545, 125, 0);
+            //server.FightToPoint(545, 125, 3);
+            server.FightToPoint(545, 115, 3);
+            server.FightToPoint(545, 115, 0);  
 
             server.waitToCancelAtak();
 

@@ -65,19 +65,23 @@ namespace States
             //16 // Босс лава
             server.WriteToLogFileBH("сост 124 в бой");
 
-            //server.runAway();
-            //botwindow.Pause(52000);  //проверить цвет карты
 
             //поворот направо и три раза вперед
 
             server.Turn90R();
-            //server.TurnUp();
-            //botwindow.Pause(40000);       //проверить цвет 
+            server.TurnUp();
+            server.TurnR(1);
+            //botwindow.Pause(50000);
+            server.FightToPoint(176-75, 390-75, 1);
+            server.TurnDown();
 
-            server.FightToPoint(480, 125, 3);
-            server.FightToPoint(480, 125, 3);
-            server.FightToPoint(480, 125, 3);
-            server.FightToPoint(480, 125, 0);
+
+            //старый вариант
+            //server.Turn90R();
+            //server.FightToPoint(480, 125, 3);
+            //server.FightToPoint(480, 125, 3);
+            //server.FightToPoint(480, 125, 3);
+            //server.FightToPoint(480, 125, 0);
             //server.FightToPoint(545, 125, 0);
 
             server.waitToCancelAtak();

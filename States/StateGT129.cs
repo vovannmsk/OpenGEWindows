@@ -71,10 +71,10 @@ namespace States
             //botwindow.Pause(500);
 
             server.WriteToLogFileBH("сост 129 в сторону и телепорт в БХ");
-            //if (server.isBoxOverflow())
-            //{
-            //    botwindow.setStatusOfSale(1);
-            //}
+            if (server.isBoxOverflow())
+            {
+                botwindow.setStatusOfSale(1);
+            }
 
 
 

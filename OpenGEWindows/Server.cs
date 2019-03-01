@@ -8,6 +8,9 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Threading;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Reflection;
 
 namespace OpenGEWindows
 {
@@ -162,33 +165,35 @@ namespace OpenGEWindows
 
         protected iPointColor pointisBoxOverflow1;
         protected iPointColor pointisBoxOverflow2;
-        protected iPointColor pointisWork_RifleDot1;          //проверка стойки с ружьем (проверяются две точки )
-        protected iPointColor pointisWork_RifleDot2;
-        protected iPointColor pointisWork_ExpRifleDot1;       //проверка стойки с эксп ружьем (проверяются две точки )
-        protected iPointColor pointisWork_ExpRifleDot2;
-        protected iPointColor pointisWork_DrobDot1;           //проверка стойки с обычным дробашом (проверяются две точки )
-        protected iPointColor pointisWork_DrobDot2;
-        protected iPointColor pointisWork_VetDrobDot1;        //проверка стойки с вет дробашом (проверяются две точки )
-        protected iPointColor pointisWork_VetDrobDot2;
-        protected iPointColor pointisWork_ExpDrobDot1;        //проверка стойки с эксп дробашом (проверяются две точки )
-        protected iPointColor pointisWork_ExpDrobDot2;
-        protected iPointColor pointisWork_JainaDrobDot1;        //проверка стойки с эксп дробашом (проверяются две точки )
-        protected iPointColor pointisWork_JainaDrobDot2;
-        protected iPointColor pointisWork_VetSabreDot1;        //проверка стойки с вет саблей (проверяются две точки )
-        protected iPointColor pointisWork_VetSabreDot2;
-        protected iPointColor pointisWork_ExpSwordDot1;        //проверка стойки с exp мечом Дарья (проверяются две точки )
-        protected iPointColor pointisWork_ExpSwordDot2;
-        protected iPointColor pointisWork_VetPistolDot1;        //проверка стойки с вет пистолетом Outrange (проверяются две точки )
-        protected iPointColor pointisWork_VetPistolDot2;
+        //protected iPointColor pointisWork_RifleDot1;          //проверка стойки с ружьем (проверяются две точки )
+        //protected iPointColor pointisWork_RifleDot2;
+        //protected iPointColor pointisWork_ExpRifleDot1;       //проверка стойки с эксп ружьем (проверяются две точки )
+        //protected iPointColor pointisWork_ExpRifleDot2;
+        //protected iPointColor pointisWork_DrobDot1;           //проверка стойки с обычным дробашом (проверяются две точки )
+        //protected iPointColor pointisWork_DrobDot2;
+        //protected iPointColor pointisWork_VetDrobDot1;        //проверка стойки с вет дробашом (проверяются две точки )
+        //protected iPointColor pointisWork_VetDrobDot2;
+        //protected iPointColor pointisWork_ExpDrobDot1;        //проверка стойки с эксп дробашом (проверяются две точки )
+        //protected iPointColor pointisWork_ExpDrobDot2;
+        //protected iPointColor pointisWork_JainaDrobDot1;        //проверка стойки с эксп дробашом (проверяются две точки )
+        //protected iPointColor pointisWork_JainaDrobDot2;
+        //protected iPointColor pointisWork_VetSabreDot1;        //проверка стойки с вет саблей (проверяются две точки )
+        //protected iPointColor pointisWork_VetSabreDot2;
+        //protected iPointColor pointisWork_ExpSwordDot1;        //проверка стойки с exp мечом Дарья (проверяются две точки )
+        //protected iPointColor pointisWork_ExpSwordDot2;
+        //protected iPointColor pointisWork_VetPistolDot1;        //проверка стойки с вет пистолетом Outrange (проверяются две точки )
+        //protected iPointColor pointisWork_VetPistolDot2;
         protected iPoint pointSkillCook;
         protected iPointColor pointisBattleMode1;
         protected iPointColor pointisBattleMode2;
-        protected iPointColor pointisWork_SightPistolDot1;
-        protected iPointColor pointisWork_SightPistolDot2;
-        protected iPointColor pointisWork_UnlimPistolDot1;
-        protected iPointColor pointisWork_UnlimPistolDot2; 
-        protected iPointColor pointisWork_ExpCannonDot1;
-        protected iPointColor pointisWork_ExpCannonDot2;
+        //protected iPointColor pointisWork_SightPistolDot1;
+        //protected iPointColor pointisWork_SightPistolDot2;
+        //protected iPointColor pointisWork_UnlimPistolDot1;
+        //protected iPointColor pointisWork_UnlimPistolDot2; 
+        //protected iPointColor pointisWork_ExpCannonDot1;
+        //protected iPointColor pointisWork_ExpCannonDot2;
+        protected uint[] arrayOfColorsIsWork1;
+        protected uint[] arrayOfColorsIsWork2;
 
         #endregion
 
@@ -203,51 +208,52 @@ namespace OpenGEWindows
         protected iPoint pointMana1;
         protected iPoint pointMana2;
         protected iPoint pointMana3;
-        protected iPointColor pointIsTown_RifleFirstDot1;   //проверка по обычному ружью
-        protected iPointColor pointIsTown_RifleFirstDot2;
-        protected iPointColor pointIsTown_RifleSecondDot1;
-        protected iPointColor pointIsTown_RifleSecondDot2;
-        protected iPointColor pointIsTown_RifleThirdDot1;
-        protected iPointColor pointIsTown_RifleThirdDot2;
-        protected iPointColor pointIsTown_ExpRifleFirstDot1;   //проверка по эксп. ружью (флинт)
-        protected iPointColor pointIsTown_ExpRifleFirstDot2;
-        protected iPointColor pointIsTown_ExpRifleSecondDot1;
-        protected iPointColor pointIsTown_ExpRifleSecondDot2;
-        protected iPointColor pointIsTown_ExpRifleThirdDot1;
-        protected iPointColor pointIsTown_ExpRifleThirdDot2;
-        protected iPointColor pointIsTown_DrobFirstDot1;      //проверка по обычному дробовику
-        protected iPointColor pointIsTown_DrobFirstDot2;
-        protected iPointColor pointIsTown_DrobSecondDot1;
-        protected iPointColor pointIsTown_DrobSecondDot2;
-        protected iPointColor pointIsTown_DrobThirdDot1;
-        protected iPointColor pointIsTown_DrobThirdDot2;
-        protected iPointColor pointIsTown_VetDrobFirstDot1;    //проверка по вет. дробовику
-        protected iPointColor pointIsTown_VetDrobFirstDot2;
-        protected iPointColor pointIsTown_VetDrobSecondDot1;
-        protected iPointColor pointIsTown_VetDrobSecondDot2;
-        protected iPointColor pointIsTown_VetDrobThirdDot1;
-        protected iPointColor pointIsTown_VetDrobThirdDot2;
-        protected iPointColor pointIsTown_ExpDrobFirstDot1;    //проверка по эксп. дробовику
-        protected iPointColor pointIsTown_ExpDrobFirstDot2;
-        protected iPointColor pointIsTown_ExpDrobSecondDot1;
-        protected iPointColor pointIsTown_ExpDrobSecondDot2;
-        protected iPointColor pointIsTown_ExpDrobThirdDot1;
-        protected iPointColor pointIsTown_ExpDrobThirdDot2;
-        protected iPointColor pointIsTown_JainaDrobFirstDot1;    //проверка по эксп. дробовику Джаина
-        protected iPointColor pointIsTown_JainaDrobFirstDot2;
-        protected iPointColor pointIsTown_VetSabreFirstDot1;    //проверка по вет сабле
-        protected iPointColor pointIsTown_VetSabreFirstDot2;
-        protected iPointColor pointIsTown_ExpSwordFirstDot1;    //проверка по мечу Дарья
-        protected iPointColor pointIsTown_ExpSwordFirstDot2;   
-        protected iPointColor pointIsTown_VetPistolFirstDot1;    //проверка по двум пистолетам outrange
-        protected iPointColor pointIsTown_VetPistolFirstDot2;
-        protected iPointColor pointIsTown_SightPistolFirstDot1;  //проверка по одному пистолету Sight Shot
-        protected iPointColor pointIsTown_SightPistolFirstDot2;
-        protected iPointColor pointIsTown_UnlimPistolFirstDot1;  //проверка по двум пистолетам эксп стойка Unlimited Shot
-        protected iPointColor pointIsTown_UnlimPistolFirstDot2;
-        protected iPointColor pointIsTown_ExpCannonFirstDot1;   // проверка по эксп пушке Мисы
-        protected iPointColor pointIsTown_ExpCannonFirstDot2;
-        
+        //protected iPointColor pointIsTown_RifleFirstDot1;   //проверка по обычному ружью
+        //protected iPointColor pointIsTown_RifleFirstDot2;
+        //protected iPointColor pointIsTown_RifleSecondDot1;
+        //protected iPointColor pointIsTown_RifleSecondDot2;
+        //protected iPointColor pointIsTown_RifleThirdDot1;
+        //protected iPointColor pointIsTown_RifleThirdDot2;
+        //protected iPointColor pointIsTown_ExpRifleFirstDot1;   //проверка по эксп. ружью (флинт)
+        //protected iPointColor pointIsTown_ExpRifleFirstDot2;
+        //protected iPointColor pointIsTown_ExpRifleSecondDot1;
+        //protected iPointColor pointIsTown_ExpRifleSecondDot2;
+        //protected iPointColor pointIsTown_ExpRifleThirdDot1;
+        //protected iPointColor pointIsTown_ExpRifleThirdDot2;
+        //protected iPointColor pointIsTown_DrobFirstDot1;      //проверка по обычному дробовику
+        //protected iPointColor pointIsTown_DrobFirstDot2;
+        //protected iPointColor pointIsTown_DrobSecondDot1;
+        //protected iPointColor pointIsTown_DrobSecondDot2;
+        //protected iPointColor pointIsTown_DrobThirdDot1;
+        //protected iPointColor pointIsTown_DrobThirdDot2;
+        //protected iPointColor pointIsTown_VetDrobFirstDot1;    //проверка по вет. дробовику
+        //protected iPointColor pointIsTown_VetDrobFirstDot2;
+        //protected iPointColor pointIsTown_VetDrobSecondDot1;
+        //protected iPointColor pointIsTown_VetDrobSecondDot2;
+        //protected iPointColor pointIsTown_VetDrobThirdDot1;
+        //protected iPointColor pointIsTown_VetDrobThirdDot2;
+        //protected iPointColor pointIsTown_ExpDrobFirstDot1;    //проверка по эксп. дробовику
+        //protected iPointColor pointIsTown_ExpDrobFirstDot2;
+        //protected iPointColor pointIsTown_ExpDrobSecondDot1;
+        //protected iPointColor pointIsTown_ExpDrobSecondDot2;
+        //protected iPointColor pointIsTown_ExpDrobThirdDot1;
+        //protected iPointColor pointIsTown_ExpDrobThirdDot2;
+        //protected iPointColor pointIsTown_JainaDrobFirstDot1;    //проверка по эксп. дробовику Джаина
+        //protected iPointColor pointIsTown_JainaDrobFirstDot2;
+        //protected iPointColor pointIsTown_VetSabreFirstDot1;    //проверка по вет сабле
+        //protected iPointColor pointIsTown_VetSabreFirstDot2;
+        //protected iPointColor pointIsTown_ExpSwordFirstDot1;    //проверка по мечу Дарья
+        //protected iPointColor pointIsTown_ExpSwordFirstDot2;   
+        //protected iPointColor pointIsTown_VetPistolFirstDot1;    //проверка по двум пистолетам outrange
+        //protected iPointColor pointIsTown_VetPistolFirstDot2;
+        //protected iPointColor pointIsTown_SightPistolFirstDot1;  //проверка по одному пистолету Sight Shot
+        //protected iPointColor pointIsTown_SightPistolFirstDot2;
+        //protected iPointColor pointIsTown_UnlimPistolFirstDot1;  //проверка по двум пистолетам эксп стойка Unlimited Shot
+        //protected iPointColor pointIsTown_UnlimPistolFirstDot2;
+        //protected iPointColor pointIsTown_ExpCannonFirstDot1;   // проверка по эксп пушке Мисы
+        //protected iPointColor pointIsTown_ExpCannonFirstDot2;
+        protected uint[] arrayOfColorsIsTown1;
+        protected uint[] arrayOfColorsIsTown2;
 
         #endregion
 
@@ -509,7 +515,6 @@ namespace OpenGEWindows
         protected iPointColor pointIsAtak2;
         protected iPointColor pointIsRoulette1;
         protected iPointColor pointIsRoulette2;
-        //protected iPointColor pointIsAtak3;
 
 //        protected uint[] arrayOfColors = new uint[17] { 0, 1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 2104613 };
         protected uint[] arrayOfColors;
@@ -564,6 +569,7 @@ namespace OpenGEWindows
             return (pointSafeIP1.isColor() && pointSafeIP2.isColor());
         }
 
+        public abstract void runClientSteam();
         public abstract void runClient();
         public abstract bool isActive();
         public abstract UIntPtr FindWindowGE();
@@ -829,7 +835,7 @@ namespace OpenGEWindows
             if(!isOpenTopMenu(13))  TopMenu(13, status);       //если не открыто системное меню, то открыть
             Pause(1000);
             iPoint pointCurrentMenu = new Point(685 - 5 + xx, 288 - 5 + (number - 1) * 30 + yy);
-            pointCurrentMenu.PressMouse();
+            if (!isRouletteBH() && (isOpenTopMenu(13))) pointCurrentMenu.PressMouse();
         }
 
 
@@ -1252,36 +1258,56 @@ namespace OpenGEWindows
             return (pointisKillHero1.isColor() && pointisKillHero2.isColor() && pointisKillHero3.isColor());
         }
 
+        ///// <summary>
+        ///// метод проверяет, находится ли данное окно на работе (проверка по стойке)  две стойки
+        ///// </summary>
+        ///// <returns> true, если сейчас на рабочей карте </returns>
+        //public bool isWork()
+        //{
+        //    bool resultRifle = (pointisWork_RifleDot1.isColor() && pointisWork_RifleDot2.isColor());
+        //    bool resultExpRifle = (pointisWork_ExpRifleDot1.isColor() && pointisWork_ExpRifleDot2.isColor());
+        //    bool resultDrob = (pointisWork_DrobDot1.isColor() && pointisWork_DrobDot2.isColor());
+        //    bool resultVetDrob = (pointisWork_VetDrobDot1.isColor() && pointisWork_VetDrobDot2.isColor());
+        //    bool resultExpDrob = (pointisWork_ExpDrobDot1.isColor() && pointisWork_ExpDrobDot2.isColor());
+        //    bool resultJainaDrob = (pointisWork_JainaDrobDot1.isColor() && pointisWork_JainaDrobDot2.isColor());
+        //    bool resultVetSabre = (pointisWork_VetSabreDot1.isColor() && pointisWork_VetSabreDot2.isColor());
+        //    bool resultExpSword = (pointisWork_ExpSwordDot1.isColor() && pointisWork_ExpSwordDot2.isColor());
+        //    bool resultVetPistol2 = (pointisWork_VetPistolDot1.isColor() && pointisWork_VetPistolDot2.isColor());
+        //    bool resultVetPistol1 = (pointisWork_SightPistolDot1.isColor() && pointisWork_SightPistolDot2.isColor());
+        //    bool resultExpPistol = (pointisWork_UnlimPistolDot1.isColor() && pointisWork_UnlimPistolDot2.isColor());
+        //    bool resultExpCannon = (pointisWork_ExpCannonDot1.isColor() && pointisWork_ExpCannonDot2.isColor());
+
+        //    return (resultRifle || resultExpRifle || resultDrob || resultVetDrob || resultExpDrob || resultVetSabre || resultExpSword || resultJainaDrob || resultVetPistol2 || resultVetPistol1 || resultExpPistol || resultExpCannon);  //проверка только по первому персу
+        //}
+
         /// <summary>
-        /// метод проверяет, находится ли данное окно на работе (проверка по стойке)  две стойки
+        /// проверяем, находимся ли на работе
         /// </summary>
-        /// <returns> true, если сейчас на рабочей карте </returns>
+        /// <returns></returns>
         public bool isWork()
         {
-            bool resultRifle = (pointisWork_RifleDot1.isColor() && pointisWork_RifleDot2.isColor());
-            bool resultExpRifle = (pointisWork_ExpRifleDot1.isColor() && pointisWork_ExpRifleDot2.isColor());
-            bool resultDrob = (pointisWork_DrobDot1.isColor() && pointisWork_DrobDot2.isColor());
-            bool resultVetDrob = (pointisWork_VetDrobDot1.isColor() && pointisWork_VetDrobDot2.isColor());
-            bool resultExpDrob = (pointisWork_ExpDrobDot1.isColor() && pointisWork_ExpDrobDot2.isColor());
-            bool resultJainaDrob = (pointisWork_JainaDrobDot1.isColor() && pointisWork_JainaDrobDot2.isColor());
-            bool resultVetSabre = (pointisWork_VetSabreDot1.isColor() && pointisWork_VetSabreDot2.isColor());
-            bool resultExpSword = (pointisWork_ExpSwordDot1.isColor() && pointisWork_ExpSwordDot2.isColor());
-            bool resultVetPistol2 = (pointisWork_VetPistolDot1.isColor() && pointisWork_VetPistolDot2.isColor());
-            bool resultVetPistol1 = (pointisWork_SightPistolDot1.isColor() && pointisWork_SightPistolDot2.isColor());
-            bool resultExpPistol = (pointisWork_UnlimPistolDot1.isColor() && pointisWork_UnlimPistolDot2.isColor());
-            bool resultExpCannon = (pointisWork_ExpCannonDot1.isColor() && pointisWork_ExpCannonDot2.isColor());
+            //проверяем одну и ту же точку на экране в миссии
+            //каждой стойке соответствует свой цвет этой точки
+            //проверяем две точки для надежности
 
-            return (resultRifle || resultExpRifle || resultDrob || resultVetDrob || resultExpDrob || resultVetSabre || resultExpSword || resultJainaDrob || resultVetPistol2 || resultVetPistol1 || resultExpPistol || resultExpCannon);  //проверка только по первому персу
+            // в массиве arrayOfColorsIsWork1 хранятся все цвета первой контрольной точки, которые есть у проверяемых стоек 
+            // в массиве arrayOfColorsIsWork2 хранятся все цвета второй контрольной точки, которые есть у проверяемых стоек 
+
+            uint color1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 0, 0).GetPixelColor() / 1000;                 // проверяем номер цвета в контрольной точке и округляем
+            uint color2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 0, 0).GetPixelColor() / 1000;                 // проверяем номер цвета в контрольной точке и округляем
+
+            return ((this.arrayOfColorsIsWork1.Contains(color1)) && (this.arrayOfColorsIsWork2.Contains(color2)));                // проверяем, есть ли цвет контрольной точки в массивах цветов
         }
 
-        /// <summary>
-        /// метод проверяет является ли первый перс поваром
-        /// </summary>
-        /// <returns> true, если сейчас на рабочей карте </returns>
-        public bool isCook()
-        {
-            return (pointisWork_VetSabreDot1.isColor() && pointisWork_VetSabreDot2.isColor());
-        }
+
+        ///// <summary>
+        ///// метод проверяет является ли первый перс поваром
+        ///// </summary>
+        ///// <returns> true, если сейчас на рабочей карте </returns>
+        //public bool isCook()
+        //{
+        //    return (pointisWork_VetSabreDot1.isColor() && pointisWork_VetSabreDot2.isColor());
+        //}
 
         /// <summary>
         /// нажимаем на спец. умение повару
@@ -1325,33 +1351,53 @@ namespace OpenGEWindows
             pointToken.PressMouse();
         }
 
+        ///// <summary>
+        ///// метод проверяет, находится ли данное окно в городе (проверка по стойкам - серые в городе, цветные - на рабочих картах) 
+        ///// </summary>
+        ///// <returns> true, если бот находится в городе </returns>
+        //public bool isTown()
+        //{
+        //    //ружье
+        //    bool resultRifle = (pointIsTown_RifleFirstDot1.isColor() && pointIsTown_RifleFirstDot2.isColor());
+        //    bool resultRifleExp = (pointIsTown_ExpRifleFirstDot1.isColor() && pointIsTown_ExpRifleFirstDot2.isColor());
+        //    //дробовик
+        //    bool resultShotgun = (pointIsTown_DrobFirstDot1.isColor() && pointIsTown_DrobFirstDot2.isColor());           //проверка по первому персу обычная стойка
+        //    bool resultShotgunVet = (pointIsTown_VetDrobFirstDot1.isColor() && pointIsTown_VetDrobFirstDot2.isColor());  //проверка по первому персу вет стойка
+        //    bool resultShotgunExp = (pointIsTown_ExpDrobFirstDot1.isColor() && pointIsTown_ExpDrobFirstDot2.isColor());  //проверка по первому персу эксп стойка
+        //    bool resultShotgunJaina = (pointIsTown_JainaDrobFirstDot1.isColor() && pointIsTown_JainaDrobFirstDot2.isColor());  //проверка по первому персу Джаина
+        //    //сабля
+        //    bool resultVetSabre = (pointIsTown_VetSabreFirstDot1.isColor() && pointIsTown_VetSabreFirstDot2.isColor());  //проверка по первому персу вет сабля
+        //    //меч
+        //    bool resultExpSword = (pointIsTown_ExpSwordFirstDot1.isColor() && pointIsTown_ExpSwordFirstDot2.isColor());  //проверка по первому персу эксп меч 
+        //    //пистолет
+        //    bool resultVetPistol2 = (pointIsTown_VetPistolFirstDot1.isColor() && pointIsTown_VetPistolFirstDot2.isColor());   //два пистолета
+        //    bool resultVetPistol1 = (pointIsTown_SightPistolFirstDot1.isColor() && pointIsTown_SightPistolFirstDot2.isColor());   //один пистолет
+        //    bool resultExpPistol = (pointIsTown_UnlimPistolFirstDot1.isColor() && pointIsTown_UnlimPistolFirstDot2.isColor());   //один пистолет
+        //    //пушка Миса
+        //    bool resultExpCannon = (pointIsTown_ExpCannonFirstDot1.isColor() && pointIsTown_ExpCannonFirstDot2.isColor());   //пушка Миса
+
+        //    return (resultRifle || resultRifleExp || resultShotgun || resultShotgunVet || resultShotgunExp || resultVetSabre || resultExpSword || resultShotgunJaina || resultVetPistol2 || resultVetPistol1 || resultExpPistol || resultExpCannon);
+        //}
+
         /// <summary>
-        /// метод проверяет, находится ли данное окно в городе (проверка по стойкам - серые в городе, цветные - на рабочих картах) 
+        /// проверяем, находимся ли в городе
         /// </summary>
-        /// <returns> true, если бот находится в городе </returns>
+        /// <returns></returns>
         public bool isTown()
         {
-            //ружье
-            bool resultRifle = (pointIsTown_RifleFirstDot1.isColor() && pointIsTown_RifleFirstDot2.isColor());
-            bool resultRifleExp = (pointIsTown_ExpRifleFirstDot1.isColor() && pointIsTown_ExpRifleFirstDot2.isColor());
-            //дробовик
-            bool resultShotgun = (pointIsTown_DrobFirstDot1.isColor() && pointIsTown_DrobFirstDot2.isColor());           //проверка по первому персу обычная стойка
-            bool resultShotgunVet = (pointIsTown_VetDrobFirstDot1.isColor() && pointIsTown_VetDrobFirstDot2.isColor());  //проверка по первому персу вет стойка
-            bool resultShotgunExp = (pointIsTown_ExpDrobFirstDot1.isColor() && pointIsTown_ExpDrobFirstDot2.isColor());  //проверка по первому персу эксп стойка
-            bool resultShotgunJaina = (pointIsTown_JainaDrobFirstDot1.isColor() && pointIsTown_JainaDrobFirstDot2.isColor());  //проверка по первому персу Джаина
-            //сабля
-            bool resultVetSabre = (pointIsTown_VetSabreFirstDot1.isColor() && pointIsTown_VetSabreFirstDot2.isColor());  //проверка по первому персу вет сабля
-            //меч
-            bool resultExpSword = (pointIsTown_ExpSwordFirstDot1.isColor() && pointIsTown_ExpSwordFirstDot2.isColor());  //проверка по первому персу эксп меч 
-            //пистолет
-            bool resultVetPistol2 = (pointIsTown_VetPistolFirstDot1.isColor() && pointIsTown_VetPistolFirstDot2.isColor());   //два пистолета
-            bool resultVetPistol1 = (pointIsTown_SightPistolFirstDot1.isColor() && pointIsTown_SightPistolFirstDot2.isColor());   //один пистолет
-            bool resultExpPistol = (pointIsTown_UnlimPistolFirstDot1.isColor() && pointIsTown_UnlimPistolFirstDot2.isColor());   //один пистолет
-            //пушка Миса
-            bool resultExpCannon = (pointIsTown_ExpCannonFirstDot1.isColor() && pointIsTown_ExpCannonFirstDot2.isColor());   //пушка Миса
+            //проверяем одну и ту же точку на экране в миссии
+            //каждой стойке соответствует свой цвет этой точки
+            //проверяем две точки для надежности
 
-            return (resultRifle || resultRifleExp || resultShotgun || resultShotgunVet || resultShotgunExp || resultVetSabre || resultExpSword || resultShotgunJaina || resultVetPistol2 || resultVetPistol1 || resultExpPistol || resultExpCannon);
+            // в массиве arrayOfColorsIsTown1 хранятся все цвета первой контрольной точки, которые есть у проверяемых стоек 
+            // в массиве arrayOfColorsIsTown2 хранятся все цвета второй контрольной точки, которые есть у проверяемых стоек 
+
+            uint color1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 0, 0).GetPixelColor() / 1000;                 // проверяем номер цвета в контрольной точке и округляем
+            uint color2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 0, 0).GetPixelColor() / 1000;                 // проверяем номер цвета в контрольной точке и округляем
+
+            return ((this.arrayOfColorsIsTown1.Contains(color1)) && (this.arrayOfColorsIsTown2.Contains(color2)));                // проверяем, есть ли цвет контрольной точки в массивах цветов
         }
+
 
         /// <summary>
         /// лечение персов нажатием на красную бутылку и выпивание бутылок маны
@@ -2456,7 +2502,14 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// проверяем, является ли предмет для чиповки брони
+        /// проверяем, является ли предмет для чиповки оружия
+        /// 1 - без рассы
+        /// 2 - wild
+        /// 3 - LifeLess
+        /// 4 - wild or Human
+        /// 5 - Undeed
+        /// 6 - Demon
+        /// 7 - Human
         /// </summary>
         /// <returns></returns>
         public bool isGoodChipWeapon()
@@ -2940,15 +2993,40 @@ namespace OpenGEWindows
             //проверяем одну и ту же точку на экране в миссии
             //каждой карте в теории соответствует свой цвет этой точки
 
-            // в массиве хранятся все цвета контрольной точки, которые могут быть миссиях. Один цвет - одна миссия
-            //uint[] arrayOfColors = new uint[17] { 0, 1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 2104613 };
+            // в массиве arrayOfColors хранятся все цвета контрольной точки, которые могут быть миссиях. Один цвет - одна миссия
 
             uint color = new PointColor(700 - 30 + xx, 500 - 30 + yy, 0, 0).GetPixelColor();                 // проверяем номер цвета в контрольной точке
+            color = color / 1000;
             //int tt = Array.IndexOf(arrayOfColors, color);
-            //bool ff = this.arrayOfColors.Contains(color);                                                         // проверяем, есть ли цвет контрольной точки в массиве цветов
+            
+            bool result = this.arrayOfColors.Contains(color);                                                         // проверяем, есть ли цвет контрольной точки в массиве цветов
+            //if (!result) WriteToLogFileBH("неизвестная миссия, цвет " + color);
 
-            return this.arrayOfColors.Contains(color);                                                         // проверяем, есть ли цвет контрольной точки в массиве цветов
+            return result;                                                   // проверяем, есть ли цвет контрольной точки в массиве цветов
 
+        }
+
+        /// <summary>
+        /// если миссия в БХ не найдена. Нет в списке
+        /// </summary>
+        public void MissionNotFoundBH()
+        {
+            //botwindow.setStatusOfAtk(1);
+            
+            uint color = new PointColor(700 - 30 + xx, 500 - 30 + yy, 0, 0).GetPixelColor();                 // проверяем номер цвета в контрольной точке
+            //color = color / 1000;
+            WriteToLogFileBH("неизвестная миссия!!!, цвет " + color);
+
+            //FightToPoint(1000, 100, 0);    //бежим с атакой в сторону (вдруг зацепим Босса)
+
+            //сохраняем скриншот
+            string timeNow = DateTime.Now.ToString(" ddMMMMyyyy HH-mm-ss");
+            Size screenSz = Screen.PrimaryScreen.Bounds.Size;
+            Bitmap screenshot = new Bitmap(screenSz.Width, screenSz.Height);
+            Graphics gr = Graphics.FromImage(screenshot);
+            gr.CopyFromScreen(0, 0, 0, 0, screenSz);
+            string filepath = KATALOG_MY_PROGRAM + "\\ScreenShot"+ timeNow + ".bmp" ;
+            screenshot.Save(filepath);    
         }
 
         /// <summary>
@@ -2958,7 +3036,10 @@ namespace OpenGEWindows
         public int NumberOfMissionBH()
         {
             uint color = new PointColor(700 - 30 + xx, 500 - 30 + yy, 0, 0).GetPixelColor();                // проверяем номер цвета в контрольной точке
-            return  Array.IndexOf(this.arrayOfColors, color);                                               // номер миссии соответствует порядковому номеру цвета в массиве arrayOfColors
+            color = color / 1000;
+            int result = Array.IndexOf(this.arrayOfColors, color);                                               // номер миссии соответствует порядковому номеру цвета в массиве arrayOfColors
+            //if (result == 0) WriteToLogFileBH("неизвестная миссия, цвет " + color);
+            return result;
         }
 
         /// <summary>

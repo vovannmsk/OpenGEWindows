@@ -28,10 +28,14 @@ namespace OpenGEWindows
             this.pointHeadTrader = new Point(529 - 5 + xx, 333 - 5 + yy);                                            //проверено
             this.pointTownTeleport = new Point(115 - 5 + xx, 333 - 5 + (TELEPORT_N - 1) * 30 + yy);                 //проверено
             //точки для проверки цвета
-            this.pointOpenMap1 = new PointColor(845 - 5 + xx, 30 - 5 + yy, 7700000, 5);                     //проверено
-            this.pointOpenMap2 = new PointColor(846 - 5 + xx, 30 - 5 + yy, 7700000, 5);                     //проверено
-            this.pointBookmark1 = new PointColor(873 - 5 + xx, 41 - 5 + yy, 7700000, 5);                    //проверено
-            this.pointBookmark2 = new PointColor(874 - 5 + xx, 41 - 5 + yy, 7700000, 5);                    //проверено
+            //this.pointOpenMap1 = new PointColor(845 - 5 + xx, 30 - 5 + yy, 7700000, 5);                     //проверено
+            //this.pointOpenMap2 = new PointColor(846 - 5 + xx, 30 - 5 + yy, 7700000, 5);                     //проверено
+            this.pointOpenMap1 = new PointColor(919 - 130 + xx, 170 - 130 + yy, 16700000, 5);                     //проверено
+            this.pointOpenMap2 = new PointColor(919 - 130 + xx, 171 - 130 + yy, 16700000, 5);                     //проверено
+            //this.pointBookmark1 = new PointColor(873 - 5 + xx, 41 - 5 + yy, 7700000, 5);                    //проверено
+            //this.pointBookmark2 = new PointColor(874 - 5 + xx, 41 - 5 + yy, 7700000, 5);                    //проверено
+            this.pointBookmark1 = new PointColor(1000 - 130 + xx, 166 - 130 + yy, 7700000, 5);                    //проверено
+            this.pointBookmark2 = new PointColor(1001 - 130 + xx, 166 - 130 + yy, 7700000, 5);                    //проверено
             this.pointOpenTownTeleport1 = new PointColor(95 - 5 + xx, 298 - 5 + yy, 13000000, 6);           // работает
             this.pointOpenTownTeleport2 = new PointColor(95 - 5 + xx, 299 - 5 + yy, 13000000, 6);
 

@@ -67,13 +67,22 @@ namespace States
             //MessageBox.Show("14 Две темные арены со столбом посредине. Босс в дальней арене");
             server.WriteToLogFileBH("сост 122 в бой");
 
-            //старый рабочий вариант (но очень долгий)
             server.FightToPoint(905, 87, 3);  //вправо наискосок
-            server.FightToPoint(813, 84, 3);  //вправо наискосок
-            server.FightToPoint(87 , 114, 5);  //влево наискосок
-            server.FightToPoint(478, 114, 3);  //прямо
-            server.FightToPoint(478, 114, 3);
-            server.FightToPoint(478, 114, 0);
+            server.TurnUp();
+            server.TurnR(1);
+            //botwindow.Pause(50000);
+            server.FightToPoint(142-75, 535-75, 1);
+            server.TurnDown();
+
+
+
+            //старый рабочий вариант (но очень долгий)
+            //server.FightToPoint(905, 87, 3);  //вправо наискосок
+            //server.FightToPoint(813, 84, 3);  //вправо наискосок
+            //server.FightToPoint(87 , 114, 5);  //влево наискосок
+            //server.FightToPoint(478, 114, 3);  //прямо
+            //server.FightToPoint(478, 114, 3);
+            //server.FightToPoint(478, 114, 0);
 
             //новый вариант
             //server.FightToPoint(905, 87, 3);  //вправо наискосок

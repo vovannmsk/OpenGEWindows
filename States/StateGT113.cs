@@ -67,9 +67,15 @@ namespace States
 //            MessageBox.Show("5 вода + плиты на полу");
             server.WriteToLogFileBH("сост 113 в бой");
 
-            server.FightToPoint(500, 110, 3);   //было 555
+            server.TurnR(1);
+            server.FightToPoint(157, 107, 2);
+            server.FightToPoint(295, 78, 0);
 
-            server.FightToPoint(500, 110, 0);
+
+            //старый вариант
+            //server.FightToPoint(500, 110, 3);   //было 555
+
+            //server.FightToPoint(500, 110, 0);
 
             server.waitToCancelAtak();
 

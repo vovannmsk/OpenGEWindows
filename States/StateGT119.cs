@@ -71,7 +71,7 @@ namespace States
             server.TurnUp();
 
             server.TurnR(1);
-            server.FightToPoint(236, 470, 0);
+            server.FightToPoint(236, 470, 1);
             server.TurnDown();
 
             

@@ -65,9 +65,14 @@ namespace States
             // Плитка ромбами, босс близко впереди                                       
             server.WriteToLogFileBH("сост 125 в бой");
 
+
+            server.TurnR(1);
+            //server.TurnUp();
             //botwindow.Pause(50000);
-//            server.FightToPoint(555, 125, 3);
-            server.FightToPoint(555, 110, 0);
+            server.FightToPoint(157, 107, 1);
+
+            //старый вариант  . бывает, что тыкает в босса, чтоприводит к потере трофеев
+            //server.FightToPoint(555, 110, 0);
 
             server.waitToCancelAtak();
 

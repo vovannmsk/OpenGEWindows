@@ -67,10 +67,9 @@ namespace States
             botwindow.Pause(1000);
 
             server.Teleport(1);                       // телепорт на работу   
-            botwindow.Pause(1000);
 
             int i = 0;
-            while ((!server.isWork()) & (i < 30))         //ожидание загрузки места работы
+            while ((!server.isWork()) && (i < 30))         //ожидание загрузки места работы
             { botwindow.Pause(500); i++; }
         }
 

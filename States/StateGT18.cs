@@ -77,7 +77,12 @@ namespace States
             botwindow.Pause(1000);
 
             server.TopMenu(9, 2);   //открываем верхнее меню пункт "пет"
-            botwindow.Pause(1000);
+
+            //int i = 0;
+            //while ((!pet.isOpenMenuPet()) & (i < 10))         //ожидание загрузки меню пета
+            //{ botwindow.Pause(300); i++; }
+
+            botwindow.Pause(1000);                                                              
         }
 
         /// <summary>
@@ -105,8 +110,21 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT20(botwindow);
-//            return new StateGT27(botwindow);
+            if (pet.isActivePet())
+            {
+                if (server.isKillHero())
+                {
+                    return new StateGT01(botwindow);                  //если убит один из героев, то в конец движка
+                }
+                else
+                {
+                    return new StateGT23(botwindow);             // если пет уже активирован, то идем на расстановку
+                }
+            }
+            else
+            {
+                return new StateGT20(botwindow);             //если пет не активирован, то идем обычным порядком
+            }
         }
 
         /// <summary>

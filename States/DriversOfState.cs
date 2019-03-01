@@ -144,20 +144,7 @@ namespace States
 
 
 
-
-
-        ///// <summary>
-        ///// перевод из состояния 15 (логаут) в состояние 101 (в Гильдии Охотников) 
-        ///// </summary>
-        //public void StateFromLogoutToBH()
-        //{
-        //    server.WriteToLogFileBH("Движок 15-17 Logout-->Town");
-        //    StateDriverRun(new StateGT15(botwindow), new StateGT17(botwindow));     // Logout-->Town
-        //    server.WriteToLogFileBH("Движок 100-101 Town-->BH");
-        //    StateDriverRun(new StateGT100(botwindow), new StateGT101(botwindow));   // Town-->BH
-        //}
-
-        
+      
 
         /// <summary>
         /// перевод из состояния 101 (BH) в состояние 102 (InfinityGate)
@@ -165,8 +152,9 @@ namespace States
         public void StateFromBHToGateBH()
         {
             server.WriteToLogFileBH("Движок 101-102 BH-->Gate");
+            //botwindow.setStatusOfAtk(0);           //обнулили статус атаки
             StateDriverRun(new StateGT101(botwindow), new StateGT102(botwindow));   // BH-->Gate
-
+            
 
         }
 
@@ -476,8 +464,7 @@ namespace States
         /// </summary>
         public void StateExitFromShop()
         {
-            StateDriverRun(new StateGT11a(botwindow), new StateGT14(botwindow));
-            //StateDriverRun(new StateGT111(botwindow), new StateGT12(botwindow));
+            StateDriverRun(new StateGT10(botwindow), new StateGT14(botwindow));
         }
 
         /// <summary>

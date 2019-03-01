@@ -23,7 +23,7 @@ namespace Main
 
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
         public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "14-02-2019";
+        public static String DataVersion = "27-02-2019";
         public static int numberOfAcc = KolvoAkk();
 
         /// <summary>
@@ -317,7 +317,8 @@ namespace Main
             for (int j = 1; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
-                if (check.isActive())  check.checkForProblems();
+//                if (check.isActive())  check.checkForProblems();
+                if (check.isActive()) check.problemResolution();
             }
             for (int j = 1; j <= numberOfAcc; j++)
             {
@@ -534,6 +535,7 @@ namespace Main
                 if (check.isActive())
                 {
                     check.ReOpenWindow();
+                    check.Pause(1000);
                     if (check.isEnchant())   //если окно находится в магазине чиповки
                     {
                         DriversOfState drive = new DriversOfState(j);

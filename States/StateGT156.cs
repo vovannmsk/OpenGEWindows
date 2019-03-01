@@ -72,7 +72,7 @@ namespace States
             town.Click_ToHeadTrader();
 
             int i = 0;
-            while ((!market.isSale()) && (i < 30))        //время, чтобы загрузился магазин
+            while ((!market.isSale()) && (i < 15))        //время, чтобы загрузился магазин
             { botwindow.Pause(500); i++; }
 
             //botwindow.Pause(5000);   //время, чтобы загрузился магазин
@@ -85,10 +85,10 @@ namespace States
         public void elseRun()
         {
             //если не удалось зайти в магазин, то делаем логаут и идем в конец цикла (состояние 162)
-            botwindow.PressEscThreeTimes();
-            botwindow.Pause(500);
-            server.Logout();
-            botwindow.Pause(8000);
+            //botwindow.PressEscThreeTimes();
+            //botwindow.Pause(500);
+            //server.Logout();
+            //botwindow.Pause(8000);
 
         }
 
@@ -116,7 +116,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGT162(botwindow); 
+            return new StateGT161(botwindow); 
         }
 
         /// <summary>
