@@ -65,6 +65,9 @@ namespace States
             botwindow.OpenWindow();
         }
 
+
+        #region чипование
+
         /// <summary>
         /// возвращаем тип чиповки
         /// 1 - без рассы
@@ -80,6 +83,8 @@ namespace States
         {
             return server.TypeOfNintendo();
         }
+
+        #endregion
 
         #region Гильдия охотников BH
 
@@ -576,7 +581,7 @@ namespace States
                     } // else isSale2()
                 } //else  isLogout()
             } //if  Active_or_not
-        }                                                                  //основной метод для зеленой кнопки
+        }                                                                  //старый метод. не используется
 
          /// <summary>
         /// выставляем на рынок продукт, если у нас на рынке не лучшая цена

@@ -15,7 +15,7 @@ namespace Main
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";      
         private static string KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";
-        private static string DataVersion = "04-03-2019";
+        private static string DataVersion = "07-03-2019";
         private static int numberOfAcc = KolvoAkk();
 
         //public UIntPtr[] arrayOfHwnd = new UIntPtr[21];   //используется в методе "Найти окна"
@@ -25,6 +25,10 @@ namespace Main
             InitializeComponent();
         }
 
+        //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
+        //public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
+        //public static String DataVersion = "27-02-2019";
+        //public static int numberOfAcc = KolvoAkk();
 
         /// <summary>
         /// выполняется перез загружкой основной формы (меню)
