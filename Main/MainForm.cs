@@ -10,10 +10,14 @@ namespace Main
 {
     public partial class MainForm : Form
     {
-        public static uint NumberBlueButton = 0;       //сколько раз нажали голубую(красную) кнопку
-        public const int MAX_NUMBER_OF_ACCOUNTS = 20;
+        private static uint NumberBlueButton = 0;       //сколько раз нажали голубую(красную) кнопку
+        private const int MAX_NUMBER_OF_ACCOUNTS = 20;
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
-        
+        //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";      
+        private static string KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";
+        private static string DataVersion = "04-03-2019";
+        private static int numberOfAcc = KolvoAkk();
+
         //public UIntPtr[] arrayOfHwnd = new UIntPtr[21];   //используется в методе "Найти окна"
 
         public MainForm()
@@ -21,10 +25,6 @@ namespace Main
             InitializeComponent();
         }
 
-        //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
-        public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        public static String DataVersion = "14-02-2019";
-        public static int numberOfAcc = KolvoAkk();
 
         /// <summary>
         /// выполняется перез загружкой основной формы (меню)
@@ -37,6 +37,28 @@ namespace Main
             this.Location = new System.Drawing.Point(1315, 1080 - this.Height - 40);
 
             this.numberOfAccouts.Value = numberOfAcc;
+
+            // 1 - без расы
+            // 2 - wild
+            // 3 - LifeLess
+            // 4 - wild or Human
+            // 5 - Undeed
+            // 6 - Demon
+            // 7 - Human
+            Check check = new Check(1);
+            string typeOfNintendo;
+            switch (check.TypeOfNintendo())
+            {
+                case 1: typeOfNintendo = "без расы"; break;
+                case 2: typeOfNintendo = "Wild"; break;
+                case 3: typeOfNintendo = "LifeLess"; break;
+                case 4: typeOfNintendo = "Wild or Human"; break;
+                case 5: typeOfNintendo = "Undeed"; break;
+                case 6: typeOfNintendo = "Demon"; break;
+                case 7: typeOfNintendo = "Human"; break;
+                default: typeOfNintendo = "без расы"; break;
+            }
+            this.labelEnchanting.Text = "Чиповка - " + typeOfNintendo;
 
             //for (int i = 0; i <= 20; i++)
             //{
@@ -317,7 +339,8 @@ namespace Main
             for (int j = 1; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
-                if (check.isActive())  check.checkForProblems();
+//                if (check.isActive())  check.checkForProblems();
+                if (check.isActive()) check.problemResolution();
             }
             for (int j = 1; j <= numberOfAcc; j++)
             {
@@ -499,6 +522,7 @@ namespace Main
                 if (check.isActive())
                 {
                     check.ReOpenWindow();
+                    check.Pause(1000);
                     if (check.isIda())   //если окно находится в магазине Иды
                     {
                         DriversOfState drive = new DriversOfState(j);
@@ -534,6 +558,7 @@ namespace Main
                 if (check.isActive())
                 {
                     check.ReOpenWindow();
+                    check.Pause(1000);
                     if (check.isEnchant())   //если окно находится в магазине чиповки
                     {
                         DriversOfState drive = new DriversOfState(j);

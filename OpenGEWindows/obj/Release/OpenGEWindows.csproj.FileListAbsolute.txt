@@ -13,3 +13,20 @@ C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка но�
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\OpenGEWindows.dll.config
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\OpenGEWindows.dll
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\OpenGEWindows.dll.config
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\OpenGEWindows.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\OpenGEWindows.pdb
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\EntityFramework.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\GEBot.Data.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\GEBot.Data.pdb
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\GEBot.Data.dll.config
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\EntityFramework.xml
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.csprojAssemblyReference.cache
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.Properties.Resources.resources
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.csproj.GenerateResource.cache
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.csproj.CoreCompileInputs.cache
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.csproj.CopyComplete
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.pdb

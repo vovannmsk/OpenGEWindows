@@ -67,10 +67,10 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            pet.buttonCancelSummonPet();
-            //botwindow.PressMouseL(408, 390); //Click Cancel Summon
-            //botwindow.PressMouseL(408, 390);
-            //botwindow.Pause(1000);
+            if (!pet.isActivePet())
+            { 
+                pet.buttonCancelSummonPet(); 
+            }
         }
 
         /// <summary>
@@ -88,8 +88,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            bool ff = !pet.isSummonPet();
-            return ff;
+            return ((!pet.isSummonPet()) || (pet.isActivePet()));
         }
 
         /// <summary>
@@ -98,7 +97,21 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT21(botwindow);
+            if (pet.isActivePet())
+            {
+                if (server.isKillHero())
+                {
+                    return new StateGT01(botwindow);                  //если убит один из героев, то в конец движка
+                }
+                else
+                {
+                    return new StateGT23(botwindow);             // если пет уже активирован, то идем на расстановку
+                }
+            }
+            else
+            {
+                return new StateGT21(botwindow);             //если пет не активирован, то идем обычным порядком
+            }
         }
 
         /// <summary>

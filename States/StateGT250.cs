@@ -70,11 +70,14 @@ namespace States
 
             server.WriteToLogFileBH("250 Идем в барак");
 
-            botwindow.ClickSpaceBH();                     //переходим в боевой режим. Если есть в кого стрелять, то стреляем. 
+            //if (!server.isOpenTopMenu(13))
+            //{
+                botwindow.ClickSpaceBH();                     //переходим в боевой режим. Если есть в кого стрелять, то стреляем. 
+                server.GotoBarack(false);                       //если не в кого стрелять, уходим в барак
+            //}
 
             if (server.isBoxOverflow()) botwindow.setStatusOfSale(1);
 
-            server.GotoBarack(false);                       //если не в кого стрелять, уходим в барак
 
             if (server.isBoxOverflow()) botwindow.setStatusOfSale(1);
 

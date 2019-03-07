@@ -66,6 +66,24 @@ namespace States
         }
 
         /// <summary>
+        /// возвращаем тип чиповки
+        /// 1 - без рассы
+        /// 2 - wild
+        /// 3 - LifeLess
+        /// 4 - wild or Human
+        /// 5 - Undeed
+        /// 6 - Demon
+        /// 7 - Human
+        /// </summary>
+        /// <returns></returns>
+        public int TypeOfNintendo()
+        {
+            return server.TypeOfNintendo();
+        }
+
+        #region Гильдия охотников BH
+
+        /// <summary>
         /// выполняет действия по открытию окна с игрой
         /// </summary>
         public void setStatusOfSale(int status)
@@ -81,8 +99,17 @@ namespace States
         public int NumberOfProblemBH()
         {
             int statusOfSale = botwindow.getStatusOfSale();
+            int statusOfAtk  = botwindow.getStatusOfAtk();
 
-    
+            //ворота
+            if (BHdialog.isGateBH()) return 7;                 //если стоим в воротах в положении 1 или 3
+            if (BHdialog.isGateBH2()) return 8;                //ворота состояние 2
+            if (BHdialog.isGateBH4()) return 9;                //ворота состояние 4
+            if (BHdialog.isGateBH5()) return 10;               //ворота состояние 5
+            if (BHdialog.isBottonGateBH()) return 19;          //ворота прочий диалог 
+
+
+            //город или БХ
             if (server.isTown())   //если в городе
             {
                 if (server.isBH())     //в БХ
@@ -114,10 +141,7 @@ namespace States
                 }
             }
 
-            if (BHdialog.isGateBH()) return 7;             //если стоим в воротах в положении 1 или 3
-            if (BHdialog.isGateBH2()) return 8;                 //ворота состояние 2
-            if (BHdialog.isGateBH4()) return 9;                 //ворота состояние 4
-            if (BHdialog.isGateBH5()) return 10;               //ворота состояние 5
+            //магазин
             if (market.isSale())
             {
                 if (!((server.isTown()) || (server.isWork()))) return 11;        //если стоим в магазине на экране входа, но не проходит проверка, что мы в городе и что мы на работе (защита от ложных срабатываний)
@@ -130,16 +154,32 @@ namespace States
             {
                 if (!((server.isTown()) || (server.isWork()))) return 15;         //если стоим в магазине на закладке Purchase, но не проходит проверка, что мы в городе и что мы на работе (защита от ложных срабатываний)
             }
+
+            //в миссии
             if (server.isWork())
             {
-                if (server.isMissionBH())                                         //если находимся в миссии, в самом начале (миссия определилась)
+                if (statusOfAtk == 0)                                            //еще не атаковали босса в миссии
                 {
-                    return 13;
+                    if (server.isMissionBH())                                         //если миссия определилась
+                    {
+                        return 13;
+                    }
+                    else
+                    {
+                        return 21;                                                    //миссия не определилась
+                    }
                 }
-                else
+                else                                                                  //после начала атаки босса
                 {
-                    if ((!server.isAtakBH()) && (!server.isRouletteBH())) return 14;   
-                    //если находимся в миссии, но уже не в начале и не атакуем босса и не крутится рулетка (значит бой окончен, либо заблудились и надо выходить из миссии) 
+                    if (server.isRouletteBH())
+                    {
+                        return 20;
+                    }
+                    else
+                    {
+                        if (!server.isAtakBH()) return 14;
+                        //если находимся в миссии, но уже не в начале и не атакуем босса и не крутится рулетка (значит бой окончен, либо заблудились и надо выходить из миссии) 
+                    }
                 }
             }
             if (server.isLogout()) return 1;               // если окно в логауте
@@ -178,8 +218,6 @@ namespace States
                     break;
                 case 3: driver.StateGotoTradeStep1BH();           // BH-->Town (первый этап продажи)
                     break;
-                case 18: server.systemMenu(3, true);              // переход в стартовый город
-                    break;
                 case 4: driver.StateFromBHToGateBH();             // BH --> Gate
                     break;
                 case 5: driver.StateGotoTradeStep2BH();           // если стоят в городе и надо продаваться, то второй этап продажи
@@ -208,6 +246,14 @@ namespace States
                 case 16: server.barackLastPoint();                // начинаем со старого места
                     break;
                 case 17: botwindow.PressEsc();                    // нажимаем Esc
+                    break;
+                case 18: server.systemMenu(3, true);              // переход в стартовый город
+                    break;
+                case 19: BHdialog.PressOkButton(1);               // в диалоге ворот нажали кнопку "Ок"
+                    break;
+                case 20: //server.FightToPoint(180, 270, 0);        // бежим в сторону с атакой, чтобы не улететь в барак, пока крутится рулетка
+                    break;
+                case 21: server.MissionNotFoundBH();              // миссия не найдена. записываем в файл данные и отбегаем в сторону
                     break;
                 case 29: botwindow.CureOneWindow();               // logout
                     break;
@@ -351,6 +397,79 @@ namespace States
             } //if  Active_or_not
         }                                                                  //основной метод для зеленой кнопки  (старый рабочий вариант)
 
+        #endregion
+
+        /// <summary>
+        /// проверяем, есть ли проблемы с ботом (убили, застряли, нужно продать)
+        /// </summary>
+        /// <returns>нпорядковый номер проблемы</returns>
+        public int NumberOfProblem()
+        {
+            if (server.isLogout()) return 1;                         // если окно в логауте
+            if (server.isKillAllHero()) return 2;                  // если убиты все
+            if (server.isKillHero()) return 3;                        // если убиты не все 
+            if (pet.isOpenMenuPet()) return 4;                //если открыто меню с петом, значит пет не выпущен
+
+            int numberTeleport = this.botwindow.getNomerTeleport();
+            if (server.isBoxOverflow())                             // если карман переполнился и нужно продавать 
+            {
+                if (numberTeleport > 0)                            // (телепорт = 0, тогда не нужно продавать)
+                {
+                    if (server.is248Items())                       //проверяем реально ли карман переполнился
+                    {
+                        if (numberTeleport >= 100)           // продажа в снежке
+                        {  return 5; }
+                        else                                 // продажа в городах
+                        { return 6;  }
+                    
+                    }
+                }
+            }
+            if (market.isSale()) return 7;                     // если бот стоит в магазине на странице входа
+            if (market.isSale2()) return 8;                         //если зависли в магазине на любой закладке
+            if (server.isBarack()) return 9;                        //если стоят в бараке     
+            if (server.isBarackTeamSelection()) return 9;           //если стоят в бараке  на странице выбора группы
+            if (server.isTown()) return 10;                       //если стоят в городе
+            if (mm.isMMSell() || (mm.isMMBuy())) return 11;     //если бот стоит на рынке
+            return 0;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void problemResolution()
+        { 
+            ReOpenWindow();
+            Pause(500);
+
+            int numberOfProblem = NumberOfProblem();             //проверили, какие есть проблемы (на какой стадии находится бот)
+
+            switch (numberOfProblem)
+            {
+                case 1: driver.StateRecovery();
+                    break;
+                case 2: botwindow.CureOneWindow();              //logout
+                    break;
+                case 3: botwindow.CureOneWindow2();              // отбегаем в сторону и логаут
+                    break;
+                case 4: driver.StateActivePet();
+                    break;
+                case 5: driver.StateGotoTradeKatovia();            //Pause(2000);
+                    break;
+                case 6: driver.StateGotoTrade();                //Pause(2000);                        // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
+                    break;
+                case 7: driver.StateExitFromShop2();           //продаемся и логаут   09-14
+                    break;
+                case 8: driver.StateExitFromShop();            //продаемся и логаут   10-14                                                  
+                    break;
+                case 9: server.buttonExitFromBarack();          //StateExitFromBarack();
+                    break;
+                case 10: driver.StateExitFromTown();          // 12-14 (GotoEnd)
+                    break;
+                case 11: SellProduct();                     // выставление товаров на рынок
+                    break;
+            }
+        }
 
         /// <summary>
         /// проверяем, есть ли проблемы с ботом (убили, застряли, нужно продать)
@@ -578,42 +697,44 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            int i = 2;   //номер проверяемого окна
+            int i = 1;   //номер проверяемого окна
 
             int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 875, 850, 825, 800, 775, 750, 875 };
             int[] koordY = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 5, 30, 55, 80, 105, 130, 5 };
 
             botWindow botwindow = new botWindow(i);
+            //MessageBox.Show(" " + botwindow.getNomerTeleport());
             botwindow.ReOpenWindow();
-            botwindow.Pause(1000);
+            //botwindow.Pause(1000);
 
-            //Server server = new ServerSing(botwindow);
-            Server server = new ServerAmerica2(botwindow);
+            Server server = new ServerSing(botwindow);
+            //Server server = new ServerAmerica2(botwindow);
 
-            BHDialog BHdialog = new BHDialogSing(botwindow);
+            //BHDialog BHdialog = new BHDialogSing(botwindow);
             
 
-            Market market = new MarketSing(botwindow);
+            //Market market = new MarketSing(botwindow);
 
 //            Pet pet = new PetAmerica2(botwindow);
-            //Pet pet = new PetSing(botwindow);
+            Pet pet = new PetSing(botwindow);
             //MessageBox.Show(" " + pet.isOpenMenuPet());
 
             //Otit otit = new OtitSing(botwindow);
             //MessageBox.Show(" " + server.is248Items());
 
-            //bool iscolor1 = server.isTown();
-            //MessageBox.Show(" " + iscolor1);
+            //server.MissionNotFoundBH();
+            bool iscolor1 = pet.isActivePet();
+            MessageBox.Show(" " + iscolor1);
 
             //bool iscolor1 = market.isClickPurchase();
             //MessageBox.Show(" " + iscolor1);
             //bool iscolor2 = market.isClickSell();
             //MessageBox.Show(" " + iscolor2);
 
-            //bool iscolor1 = server.isBH2();
+            //bool iscolor1 = server.isBoxOverflow();
             //MessageBox.Show(" " + iscolor1);
             //bool ttt;
-            //ttt = BHdialog.isGateBH();
+            //ttt = BHdialog.isBottonGateBH();
             //MessageBox.Show(" " + ttt);
             //ttt = BHdialog.isGateBH1();
             //MessageBox.Show(" " + ttt);
@@ -646,8 +767,8 @@ namespace States
             //server.TurnR(1);
             //server.FightToPoint(545, 110, 3);
 
-            server.TurnL(1); 
-            server.TurnUp();
+            //server.TurnL(1); 
+            //server.TurnUp();
             
 
 
@@ -666,17 +787,17 @@ namespace States
 //            PointColor point1 = new PointColor(152 - 5 + xx, 250 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в Катовии
 
             PointColor point1 = new PointColor(700 - 30 + xx, 500 - 30 + yy, 1, 1);
-            PointColor point2 = new PointColor(507 - 5 + xx, 83 - 5 + yy, 1, 1);
-            PointColor point3 = new PointColor(509 - 5 + xx, 83 - 5 + yy, 1, 1);
+            PointColor point2 = new PointColor(493 - 5 + xx, 310 - 5 + yy, 1, 1);
+            PointColor point3 = new PointColor(494 - 5 + xx, 309 - 5 + yy, 1, 1);
 
 
             color1 = point1.GetPixelColor();
             color2 = point2.GetPixelColor();
             color3 = point3.GetPixelColor();
 
-           // MessageBox.Show(" " + color1);
-            //MessageBox.Show(" " + color2);
-            //MessageBox.Show(" " + color3);
+            //MessageBox.Show(" " + color1);
+            MessageBox.Show(" " + color2);
+            MessageBox.Show(" " + color3);
 
 
             //if ((color1 > 2000000) && (color2 > 2000000)) MessageBox.Show(" больше ");

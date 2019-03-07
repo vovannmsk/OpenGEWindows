@@ -9,3 +9,18 @@ C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка но�
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\States\obj\Release\States.dll
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\States\obj\Release\States.pdb
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\States\bin\Release\OpenGEWindows.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Release\States.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Release\States.pdb
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Release\OpenGEWindows.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Release\GEBot.Data.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Release\EntityFramework.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Release\OpenGEWindows.pdb
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Release\OpenGEWindows.dll.config
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Release\GEBot.Data.pdb
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Release\GEBot.Data.dll.config
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Release\EntityFramework.xml
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\obj\Release\States.csprojAssemblyReference.cache
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\obj\Release\States.csproj.CoreCompileInputs.cache
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\obj\Release\States.csproj.CopyComplete
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\obj\Release\States.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\obj\Release\States.pdb

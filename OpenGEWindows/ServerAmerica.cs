@@ -126,24 +126,28 @@ namespace OpenGEWindows
             this.pointBuyingMitridat1 = new Point(360 + xx, 537 + yy);
             this.pointBuyingMitridat2 = new Point(517 + xx, 433 + yy);
             this.pointBuyingMitridat3 = new Point(517 + xx, 423 + yy);
-            this.pointisWork_RifleDot1 = new PointColor(24 + xx, 692 + yy, 11051000, 3);               //проверка по стойке с ружьем
-            this.pointisWork_RifleDot2 = new PointColor(25 + xx, 692 + yy, 10919000, 3);
-            this.pointisWork_DrobDot1 = new PointColor(24 + xx, 692 + yy, 7644000, 3);              //проверка по обычной стойке с дробашем
-            this.pointisWork_DrobDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
-            this.pointisWork_VetDrobDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);              //проверка по вет стойке с дробашем          не проверено
-            this.pointisWork_VetDrobDot2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
-            this.pointisWork_ExpDrobDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);              //проверка по эксп стойке с дробашем
-            this.pointisWork_ExpDrobDot2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
-            this.pointisWork_ExpSwordDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 3693000, 3);           //проверка по стойке с мечом Дарья
-            this.pointisWork_ExpSwordDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 10258000, 3);
+            //this.pointisWork_RifleDot1 = new PointColor(24 + xx, 692 + yy, 11051000, 3);               //проверка по стойке с ружьем
+            //this.pointisWork_RifleDot2 = new PointColor(25 + xx, 692 + yy, 10919000, 3);
+            //this.pointisWork_DrobDot1 = new PointColor(24 + xx, 692 + yy, 7644000, 3);              //проверка по обычной стойке с дробашем
+            //this.pointisWork_DrobDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
+            //this.pointisWork_VetDrobDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);              //проверка по вет стойке с дробашем          не проверено
+            //this.pointisWork_VetDrobDot2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
+            //this.pointisWork_ExpDrobDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);              //проверка по эксп стойке с дробашем
+            //this.pointisWork_ExpDrobDot2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
+            //this.pointisWork_ExpSwordDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 3693000, 3);           //проверка по стойке с мечом Дарья
+            //this.pointisWork_ExpSwordDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 10258000, 3);
             this.pointisKillHero1 = new PointColor(75 + xx, 631 + yy, 1900000, 4);
             this.pointisKillHero2 = new PointColor(330 + xx, 631 + yy, 1900000, 4);
             this.pointisKillHero3 = new PointColor(585 + xx, 631 + yy, 1900000, 4);
-            this.pointisWork_VetPistolDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 13086000, 3);           //проверка по стойке с вет пистолетом Outrange
-            this.pointisWork_VetPistolDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 12954000, 3);
-            this.pointisWork_UnlimPistolDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 15824000, 3);      //проверка по стойке с эксп пистолетом Unlimited Shot
-            this.pointisWork_UnlimPistolDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 15767000, 3);
+            //this.pointisWork_VetPistolDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 13086000, 3);           //проверка по стойке с вет пистолетом Outrange
+            //this.pointisWork_VetPistolDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 12954000, 3);
+            //this.pointisWork_UnlimPistolDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 15824000, 3);      //проверка по стойке с эксп пистолетом Unlimited Shot
+            //this.pointisWork_UnlimPistolDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 15767000, 3);
 
+            //this.arrayOfColorsIsWork1 = new uint[13] { 0, 11051000, 1721000, 7644000, 2764000, 16777000, 4278000, 5138000, 3693000, 66000, 5068000, 15824000, 8756000 };
+            //this.arrayOfColorsIsWork2 = new uint[13] { 0, 10919000, 2106000, 16711000, 7243000, 3560000, 5401000, 9747000, 10258000, 0, 9350000, 15767000, 8162000 };
+            this.arrayOfColorsIsWork1 = new uint[12] { 11051, 1721, 7644, 2764, 16777, 4278, 5138, 3693, 66, 5068, 15824, 8756 };
+            this.arrayOfColorsIsWork2 = new uint[12] { 10919, 2106, 16711, 7243, 3560, 5401, 9747, 10258, 0, 9350, 15767, 8162 };
             #endregion
 
             #region inTown
@@ -158,48 +162,48 @@ namespace OpenGEWindows
             this.pointisToken1 = new PointColor(478 - 5 + xx, 92 - 5 + yy, 14600000, 5);           //проверяем открыто ли окно с токенами
             this.pointisToken2 = new PointColor(478 - 5 + xx, 93 - 5 + yy, 14600000, 5);
             this.pointToken = new Point(755 - 5 + xx, 94 - 5 + yy);                                //крестик в углу окошка с токенами
-            this.pointIsTown_RifleFirstDot1 = new PointColor(24 + xx, 692 + yy, 11053000, 3);        //точки для проверки стойки с ружьем
-            this.pointIsTown_RifleFirstDot2 = new PointColor(25 + xx, 692 + yy, 10921000, 3);
-            this.pointIsTown_RifleSecondDot1 = new PointColor(279 + xx, 692 + yy, 11053000, 3);
-            this.pointIsTown_RifleSecondDot2 = new PointColor(280 + xx, 692 + yy, 10921000, 3);
-            this.pointIsTown_RifleThirdDot1 = new PointColor(534 + xx, 692 + yy, 11053000, 3);
-            this.pointIsTown_RifleThirdDot2 = new PointColor(535 + xx, 692 + yy, 10921000, 3);
 
-            this.pointIsTown_ExpRifleFirstDot1 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки эксп стойки с ружьем
-            this.pointIsTown_ExpRifleFirstDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_ExpRifleSecondDot1 = new PointColor(279 + xx, 692 + yy, 7631000, 3);
-            this.pointIsTown_ExpRifleSecondDot2 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_ExpRifleThirdDot1 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
-            this.pointIsTown_ExpRifleThirdDot2 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
+            this.arrayOfColorsIsTown1 = new uint[12] { 11053, 1710, 7631, 2763, 16777, 4276, 5131, 3684, 65, 5066, 15856, 8750 };
+            this.arrayOfColorsIsTown2 = new uint[12] { 10921, 2105, 16711, 7237, 3552, 5395, 9737, 10263, 0, 9342, 15790, 8158 };
 
-            this.pointIsTown_DrobFirstDot1 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки обычной стойки с дробашом в городе
-            this.pointIsTown_DrobFirstDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_DrobSecondDot1 = new PointColor(279 + xx, 692 + yy, 7631000, 3);
-            this.pointIsTown_DrobSecondDot2 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_DrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
-            this.pointIsTown_DrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
+            //this.pointIsTown_RifleFirstDot1 = new PointColor(24 + xx, 692 + yy, 11053000, 3);        //точки для проверки стойки с ружьем
+            //this.pointIsTown_RifleFirstDot2 = new PointColor(25 + xx, 692 + yy, 10921000, 3);
+            //this.pointIsTown_RifleSecondDot1 = new PointColor(279 + xx, 692 + yy, 11053000, 3);
+            //this.pointIsTown_RifleSecondDot2 = new PointColor(280 + xx, 692 + yy, 10921000, 3);
+            //this.pointIsTown_RifleThirdDot1 = new PointColor(534 + xx, 692 + yy, 11053000, 3);
+            //this.pointIsTown_RifleThirdDot2 = new PointColor(535 + xx, 692 + yy, 10921000, 3);
 
-            this.pointIsTown_VetDrobFirstDot1 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки вет стойки с дробашом в городе            не проверено          
-            this.pointIsTown_VetDrobFirstDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_VetDrobSecondDot1 = new PointColor(279 + xx, 692 + yy, 7631000, 3);
-            this.pointIsTown_VetDrobSecondDot2 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_VetDrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
-            this.pointIsTown_VetDrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_VetPistolFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 65000, 3);       //точки для проверки вет стойки с пистолетом Outrange
-            this.pointIsTown_VetPistolFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 0, 0);
-            this.pointIsTown_UnlimPistolFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 15856000, 3);      //точки для проверки эксп стойки с пистолетами Unlimited Shot
-            this.pointIsTown_UnlimPistolFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 15790000, 3);
+            //this.pointIsTown_ExpRifleFirstDot1 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки эксп стойки с ружьем
+            //this.pointIsTown_ExpRifleFirstDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
+            //this.pointIsTown_ExpRifleSecondDot1 = new PointColor(279 + xx, 692 + yy, 7631000, 3);
+            //this.pointIsTown_ExpRifleSecondDot2 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
+            //this.pointIsTown_ExpRifleThirdDot1 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
+            //this.pointIsTown_ExpRifleThirdDot2 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
 
-            this.pointIsTown_ExpDrobFirstDot1 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки эксп стойки с дробашом
-            this.pointIsTown_ExpDrobFirstDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_ExpDrobSecondDot1 = new PointColor(279 + xx, 692 + yy, 7631000, 3);
-            this.pointIsTown_ExpDrobSecondDot2 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
-            this.pointIsTown_ExpDrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
-            this.pointIsTown_ExpDrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
-            this.pointCure1 = new Point(215 - 5 + xx, 705 - 5 + yy);                               //бутылка лечения под буквой U
-            this.pointCure2 = new Point(215 - 5 + 255 + xx, 705 - 5 + yy);                         //бутылка лечения под буквой J
-            this.pointCure3 = new Point(215 - 5 + 255 * 2 + xx, 705 - 5 + yy);                     //бутылка лечения под буквой M
-            this.pointMana1 = new Point(215 - 5 + 30 + xx, 705 - 5 + yy);                          //бутылка маны под буквой I
+            //this.pointIsTown_DrobFirstDot1 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки обычной стойки с дробашом в городе
+            //this.pointIsTown_DrobFirstDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
+            //this.pointIsTown_DrobSecondDot1 = new PointColor(279 + xx, 692 + yy, 7631000, 3);
+            //this.pointIsTown_DrobSecondDot2 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
+            //this.pointIsTown_DrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
+            //this.pointIsTown_DrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
+
+            //this.pointIsTown_VetDrobFirstDot1 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки вет стойки с дробашом в городе            не проверено          
+            //this.pointIsTown_VetDrobFirstDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
+            //this.pointIsTown_VetDrobSecondDot1 = new PointColor(279 + xx, 692 + yy, 7631000, 3);
+            //this.pointIsTown_VetDrobSecondDot2 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
+            //this.pointIsTown_VetDrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
+            //this.pointIsTown_VetDrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
+            //this.pointIsTown_VetPistolFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 65000, 3);       //точки для проверки вет стойки с пистолетом Outrange
+            //this.pointIsTown_VetPistolFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 0, 0);
+            //this.pointIsTown_UnlimPistolFirstDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 15856000, 3);      //точки для проверки эксп стойки с пистолетами Unlimited Shot
+            //this.pointIsTown_UnlimPistolFirstDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 15790000, 3);
+
+            //this.pointIsTown_ExpDrobFirstDot1 = new PointColor(24 + xx, 692 + yy, 7631000, 3);       //точки для проверки эксп стойки с дробашом
+            //this.pointIsTown_ExpDrobFirstDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
+            //this.pointIsTown_ExpDrobSecondDot1 = new PointColor(279 + xx, 692 + yy, 7631000, 3);
+            //this.pointIsTown_ExpDrobSecondDot2 = new PointColor(280 + xx, 692 + yy, 16711000, 3);
+            //this.pointIsTown_ExpDrobThirdDot1 = new PointColor(534 + xx, 692 + yy, 7631000, 3);
+            //this.pointIsTown_ExpDrobThirdDot2 = new PointColor(535 + xx, 692 + yy, 16711000, 3);
 
             #endregion
 
@@ -216,7 +220,6 @@ namespace OpenGEWindows
             this.pointOutOfMoney2 = new PointColor(647 - 130 + xx, 541 - 130 + yy, 7700000, 5);
 
             #endregion
-
 
             #region Barack
 
@@ -371,6 +374,26 @@ namespace OpenGEWindows
         #endregion
 
         #region No window
+
+        /// <summary>
+        /// запуск клиента Steam
+        /// </summary>
+        public override void runClientSteam()
+        {
+            #region для песочницы
+
+            //запускаем steam в песочнице
+            Process process = new Process();
+            process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
+            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + path_Client();
+            process.Start();
+
+            Pause(30000);
+
+
+            #endregion
+
+        }
 
         /// <summary>
         /// запуск клиента игры

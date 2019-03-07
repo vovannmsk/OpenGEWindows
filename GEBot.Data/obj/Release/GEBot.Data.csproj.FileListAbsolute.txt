@@ -8,3 +8,15 @@ C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка но�
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\GEBot.Data\obj\Release\GEBot.Data.dll
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\GEBot.Data\obj\Release\GEBot.Data.pdb
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\GEBot.Data\obj\Release\GEBot.Data.csprojResolveAssemblyReference.cache
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\GEBot.Data\bin\Release\GEBot.Data.dll.config
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\GEBot.Data\bin\Release\GEBot.Data.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\GEBot.Data\bin\Release\GEBot.Data.pdb
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\GEBot.Data\bin\Release\EntityFramework.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\GEBot.Data\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\GEBot.Data\bin\Release\EntityFramework.xml
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\GEBot.Data\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\GEBot.Data\obj\Release\GEBot.Data.csprojAssemblyReference.cache
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\GEBot.Data\obj\Release\GEBot.Data.csproj.CoreCompileInputs.cache
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\GEBot.Data\obj\Release\GEBot.Data.csproj.CopyComplete
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\GEBot.Data\obj\Release\GEBot.Data.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\GEBot.Data\obj\Release\GEBot.Data.pdb

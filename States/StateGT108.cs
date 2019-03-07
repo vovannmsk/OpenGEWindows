@@ -66,6 +66,7 @@ namespace States
             //никаких действий, только проверка того, на какую миссию попали и распределение по состояниям
             server.WriteToLogFileBH("108 выбираем, в какую миссию идти");
             botwindow.PressMitridatBH();
+            botwindow.setStatusOfAtk(1);                      // статус атаки = 1 (начинаем атаковать босса)
         }
 
         /// <summary>
@@ -92,6 +93,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
+            botwindow.setStatusOfAtk(1);                      // статус атаки = 1 (начинаем атаковать босса)
             int result = server.NumberOfMissionBH();
             switch (result)
             {
@@ -113,14 +115,20 @@ namespace States
                 case 16: return new StateGT124(botwindow);    // Лава-босс                                                                 124
                 case 17: return new StateGT125(botwindow);    // Плитка ромбами, босс близко впереди                                       125
                 case 18: return new StateGT126(botwindow);    // Темная арена, земляной пол                                                126
- 
-                default:
-                    //MessageBox.Show("Неизвестная миссия " + server.ColorOfMissionBH());
-                    server.WriteToLogFileBH("Выбор миссии сост 108   Неизвестная миссия " + server.ColorOfMissionBH());
-                    return new StateGT129(botwindow);                                                                               
+                    //повторные
+                case 19: return new StateGT119(botwindow);    // Красные свечи                                                             119+
+                case 20: return new StateGT122(botwindow);    // Две темные арены со столбом посредине. Босс в дальней арене               122
+                case 21: return new StateGT113(botwindow);    // вода + плиты на полу                                                      113+
+                case 31: return new StateGT126(botwindow);    // Темная арена, земляной пол                                                126
+                case 32: return new StateGT111(botwindow);    // тринити с текущей водой                                                   111+
+                case 33: return new StateGT119(botwindow);    // Красные свечи                                                             119+
+                case 34: return new StateGT125(botwindow);    // Плитка ромбами, босс близко впереди                                       125
+                case 35: return new StateGT126(botwindow);    // Темная арена, земляной пол                                                126
+                case 36: return new StateGT125(botwindow);    // Плитка ромбами, босс близко впереди                                       125
+                case 37: return new StateGT111(botwindow);    // тринити с текущей водой                                                   111+
             }
-
-            //return new StateGT108(botwindow);
+            server.MissionNotFoundBH();
+            return new StateGT129(botwindow);                                                      //если карта не найдена (не может быть такого), то идём в конец цикла
         }
 
         /// <summary>

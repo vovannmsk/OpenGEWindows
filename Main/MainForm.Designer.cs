@@ -52,6 +52,7 @@
             this.undressing = new System.Windows.Forms.Button();
             this.alchemy = new System.Windows.Forms.Button();
             this.BH = new System.Windows.Forms.Button();
+            this.labelEnchanting = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfAccouts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -286,12 +287,24 @@
             this.BH.UseVisualStyleBackColor = false;
             this.BH.Click += new System.EventHandler(this.BH_Click);
             // 
+            // labelEnchanting
+            // 
+            this.labelEnchanting.AutoSize = true;
+            this.labelEnchanting.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelEnchanting.Location = new System.Drawing.Point(7, 201);
+            this.labelEnchanting.MaximumSize = new System.Drawing.Size(300, 20);
+            this.labelEnchanting.Name = "labelEnchanting";
+            this.labelEnchanting.Size = new System.Drawing.Size(154, 20);
+            this.labelEnchanting.TabIndex = 63;
+            this.labelEnchanting.Text = "tttttttttttttrrrrrrrrrrrrrrrr";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(369, 176);
+            this.ClientSize = new System.Drawing.Size(369, 532);
+            this.Controls.Add(this.labelEnchanting);
             this.Controls.Add(this.BH);
             this.Controls.Add(this.alchemy);
             this.Controls.Add(this.undressing);
@@ -351,7 +364,7 @@
         private System.Windows.Forms.Button undressing;
         private System.Windows.Forms.Button alchemy;
         private System.Windows.Forms.Button BH;
-    
+        private System.Windows.Forms.Label labelEnchanting;
     }
 }
 
