@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GlobalParametrs;
+
 
 namespace OpenGEWindows
 {
@@ -43,7 +40,7 @@ namespace OpenGEWindows
             this.pointOpenTownTeleport2 = new PointColor(94 - 5 + xx, 295 - 5 + yy, 11710000, 4);
             DialogFactory tf = new DialogFactory(botwindow);
             this.dialog = tf.createDialog();
-
+            this.globalParam = new GlobalParam();
         }
 
         /// <summary>

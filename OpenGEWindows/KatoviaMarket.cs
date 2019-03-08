@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Threading;
-
+﻿using System.Windows.Forms;
+using GlobalParametrs;
 
 namespace OpenGEWindows
 {
@@ -73,6 +67,7 @@ namespace OpenGEWindows
 
 
         protected Dialog dialog;
+        protected GlobalParam globalParam;
 
 
         // ============  методы  ========================
@@ -163,7 +158,8 @@ namespace OpenGEWindows
         /// </summary>
         private void DownList()
         {
-            if (botwindow.getIsServer())
+            if (globalParam.Samara)
+//            if (botwindow.getIsServer())
             {
                 // вариант 1. нажатие на стрелку вниз в магазине   (для самарских серверов)
 //                iPoint pointArrowDown = new Point(507 - 5 + botwindow.getX(), 549 - 5 + botwindow.getY());            старый вариант

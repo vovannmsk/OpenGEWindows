@@ -48,12 +48,7 @@ namespace OpenGEWindows
             //pointLastStringList = new Point(115 - 5 + xx, 576 - 5 + yy);             //последняя строка списка выставленных на рынок товаров
 
             product = new Product();
-            //String fileName = "C:\\!! Суперпрограмма V&K\\Продукт.txt";
-            //product.Name = LoadProduct(fileName)[0];
-            //product.Quantity = int.Parse(LoadProduct(fileName)[1]);
-            //product.MinPrice = int.Parse(LoadProduct(fileName)[2]);
-            //product.Row = int.Parse(LoadProduct(fileName)[3]);
-            //product.Column = int.Parse(LoadProduct(fileName)[4]);
+
 
 
             // ============  методы  ========================

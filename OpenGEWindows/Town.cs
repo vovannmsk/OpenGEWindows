@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using GlobalParametrs;
 
 namespace OpenGEWindows
 {
@@ -16,6 +17,7 @@ namespace OpenGEWindows
             protected const int NUMBER_OF_ITERATION = 10;
             protected botWindow botwindow;
             protected Dialog dialog;
+            protected GlobalParam globalParam;
         #endregion
 
         #region Los Toldos
@@ -66,7 +68,8 @@ namespace OpenGEWindows
             /// </summary>
             public void MaxHeight()
             {
-                if (botwindow.getIsServer())
+                if (globalParam.Samara)
+                //if (botwindow.getIsServer())
                 {
                     // крутим колесико мыши 1 раз + пауза + колесо обратно    (для самарских серверов)
                     pointMaxHeight.PressMouseWheelUp();

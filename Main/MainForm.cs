@@ -5,6 +5,7 @@ using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Threading;
 using States;
+using GlobalParametrs;
 
 namespace Main
 {
@@ -14,44 +15,28 @@ namespace Main
         private const int MAX_NUMBER_OF_ACCOUNTS = 20;
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
         //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";      
-        private static string KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";
+//        private static string KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";
         private static string DataVersion = "07-03-2019";
-        private static int numberOfAcc = KolvoAkk();
+        private int numberOfAcc;                                              // количество аккаунтов ботов
+        GlobalParam globalParam;
 
         //public UIntPtr[] arrayOfHwnd = new UIntPtr[21];   //используется в методе "Найти окна"
 
+        /// <summary>
+        /// конструктор
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
-        }
 
-        //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";         //                   включаем это, когда компилируем в exe-файл
-        //public static String KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";                    //                   включаем это, когда экспериментируем (программируем)!! Суперпрограмма V&K
-        //public static String DataVersion = "27-02-2019";
-        //public static int numberOfAcc = KolvoAkk();
-
-        /// <summary>
-        /// выполняется перез загружкой основной формы (меню)
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MainForm_Load(object sender, EventArgs e)
-        {
+            this.globalParam = new GlobalParam();                          //сделали экземпляр класса
+            numberOfAcc = globalParam.TotalNumberOfAccounts;
             this.Text = "Программа от " + DataVersion + ".    " + numberOfAcc + " окон";
             this.Location = new System.Drawing.Point(1315, 1080 - this.Height - 40);
-
             this.numberOfAccouts.Value = numberOfAcc;
 
-            // 1 - без расы
-            // 2 - wild
-            // 3 - LifeLess
-            // 4 - wild or Human
-            // 5 - Undeed
-            // 6 - Demon
-            // 7 - Human
-            Check check = new Check(1);
             string typeOfNintendo;
-            switch (check.TypeOfNintendo())
+            switch (globalParam.Nintendo)
             {
                 case 1: typeOfNintendo = "без расы"; break;
                 case 2: typeOfNintendo = "Wild"; break;
@@ -64,13 +49,7 @@ namespace Main
             }
             this.labelEnchanting.Text = "Чиповка - " + typeOfNintendo;
 
-            //for (int i = 0; i <= 20; i++)
-            //{
-            //   arrayOfHwnd[i] = (UIntPtr)0;
-            //}
-
         }
-
 
         /// <summary>
         /// действия при закрытии формы
@@ -237,7 +216,7 @@ namespace Main
         /// </summary>
         private void funcPink()
         {
-            int start = BeginAcc();
+            int start = globalParam.StartingAccount;
             for (int j = start; j <= numberOfAcc; j++)
 //            for (int j = 2; j <= 2; j++)
             {
@@ -435,7 +414,7 @@ namespace Main
         /// </summary>*
         private void funcNewWhite()
         {
-            int start = BeginAcc();
+            int start = globalParam.StartingAccount;
             for (int j = start; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
@@ -625,7 +604,7 @@ namespace Main
         /// </summary>
         private void funcSilver()
         {
-            int NumberOfWindow = KolvoAkk() + 1;
+            int NumberOfWindow =  globalParam.TotalNumberOfAccounts + 1;
             Check check = new Check(NumberOfWindow);
             DriversOfState drive = new DriversOfState(NumberOfWindow);
             check.ReOpenWindow();
@@ -662,7 +641,7 @@ namespace Main
         /// </summary>
         private void funcGold2()
         {
-            int NumberOfWindow = KolvoAkk() + 1;
+            int NumberOfWindow = globalParam.TotalNumberOfAccounts + 1;
             Check check = new Check(NumberOfWindow);
             DriversOfState drive = new DriversOfState(NumberOfWindow);
 
@@ -670,39 +649,6 @@ namespace Main
             check.Pause(500);
             drive.StateGoldenEggFarm();
         }
-
-        #endregion
-
-        #region дополнительные методы
-
-        /// <summary>
-        /// возвращаеи количество аккаунтов
-        /// </summary>
-        /// <returns>кол-во акков всего</returns>
-        public static int KolvoAkk()
-        {
-            return int.Parse(File.ReadAllText(KatalogMyProgram + "\\Аккаунтов всего.txt"));
-        }
-
-        /// <summary>
-        /// читаем из файла значение
-        /// </summary>
-        /// <returns>с какого номера начинаются аккаунты Сингапура</returns>
-        public static int BeginSing()
-        {
-            return int.Parse(File.ReadAllText(KatalogMyProgram + "\\началоАкковСинга.txt"));
-        }
-
-        /// <summary>
-        /// читаем из файла значение
-        /// </summary>
-        /// <returns>с какого аккаунта начать работу методам</returns>
-        public static int BeginAcc()
-        {
-            return int.Parse(File.ReadAllText(KatalogMyProgram + "\\СтартовыйАккаунт.txt"));
-        }
-
-
 
         #endregion
 
@@ -780,7 +726,7 @@ namespace Main
         /// </summary>
         private void funcBH()
         {
-            int start = BeginAcc();
+            int start =  globalParam.StartingAccount;
             Check check;
             //for (int i = 1; i <= 20; i++)
             int counter = 0;

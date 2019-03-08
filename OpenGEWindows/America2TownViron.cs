@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GlobalParametrs;
+
 
 namespace OpenGEWindows
 {
@@ -37,7 +34,7 @@ namespace OpenGEWindows
 
             DialogFactory tf = new DialogFactory(botwindow);
             this.dialog = tf.createDialog();
-
+            this.globalParam = new GlobalParam();
         }
 
         /// <summary>

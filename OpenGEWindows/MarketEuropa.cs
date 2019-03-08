@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
+﻿using GlobalParametrs;
 
 namespace OpenGEWindows
 {
@@ -48,9 +43,7 @@ namespace OpenGEWindows
 
             DialogFactory dialogFactory = new DialogFactory(this.botwindow);
             dialog = dialogFactory.createDialog();
-
-            //this.pointSellOnMenu = new Point(520 + xx, 654 + yy);          
-            //this.pointOkOnMenu = new Point(902 + xx, 674 + yy);            
+            this.globalParam = new GlobalParam();
 
         }
 

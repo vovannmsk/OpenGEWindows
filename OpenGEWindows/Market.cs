@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Threading;
-
+﻿using System.Windows.Forms;
+using GlobalParametrs;
 
 namespace OpenGEWindows
 {
@@ -74,6 +68,7 @@ namespace OpenGEWindows
         #endregion
 
         protected Dialog dialog;
+        protected GlobalParam globalParam;
 
 
         // ============  методы  ========================
@@ -116,8 +111,6 @@ namespace OpenGEWindows
             return ((pointIsClickPurchase1.isColor()) && (pointIsClickPurchase2.isColor()));
         }
 
-
-
         /// <summary>
         /// проверяет, открыта ли закладка Sell в магазине 
         /// </summary>
@@ -135,7 +128,6 @@ namespace OpenGEWindows
             pointBookmarkSell.DoubleClickL();
             Pause(1500);
         }
-
 
         /// <summary>
         /// проверяем, является ли товар в первой строке магазина маленькой красной бутылкой
@@ -174,7 +166,8 @@ namespace OpenGEWindows
         /// </summary>
         private void DownList()
         {
-            if (botwindow.getIsServer())
+//          if (botwindow.getIsServer())
+            if (globalParam.Samara)
             {
                 // вариант 1. нажатие на стрелку вниз в магазине   (для самарских серверов)
                 iPoint pointArrowDown = new Point(507 - 5 + botwindow.getX(), 549 - 5 + botwindow.getY());

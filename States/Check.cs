@@ -52,6 +52,11 @@ namespace States
         {
             return botwindow.getNomerTeleport();
         }
+
+        /// <summary>
+        /// если находимся на алхимическом столе, то true
+        /// </summary>
+        /// <returns></returns>
         public bool isAlchemy()
         {
             return server.isAlchemy();
@@ -66,25 +71,25 @@ namespace States
         }
 
 
-        #region чипование
+        //#region чипование
 
-        /// <summary>
-        /// возвращаем тип чиповки
-        /// 1 - без рассы
-        /// 2 - wild
-        /// 3 - LifeLess
-        /// 4 - wild or Human
-        /// 5 - Undeed
-        /// 6 - Demon
-        /// 7 - Human
-        /// </summary>
-        /// <returns></returns>
-        public int TypeOfNintendo()
-        {
-            return server.TypeOfNintendo();
-        }
+        ///// <summary>
+        ///// возвращаем тип чиповки
+        ///// 1 - без рассы
+        ///// 2 - wild
+        ///// 3 - LifeLess
+        ///// 4 - wild or Human
+        ///// 5 - Undeed
+        ///// 6 - Demon
+        ///// 7 - Human
+        ///// </summary>
+        ///// <returns></returns>
+        //public int TypeOfNintendo()
+        //{
+        //    return server.TypeOfNintendo();
+        //}
 
-        #endregion
+        //#endregion
 
         #region Гильдия охотников BH
 
@@ -413,8 +418,6 @@ namespace States
             if (server.isLogout()) return 1;                         // если окно в логауте
             if (server.isKillAllHero()) return 2;                  // если убиты все
             if (server.isKillHero()) return 3;                        // если убиты не все 
-            if (pet.isOpenMenuPet()) return 4;                //если открыто меню с петом, значит пет не выпущен
-
             int numberTeleport = this.botwindow.getNomerTeleport();
             if (server.isBoxOverflow())                             // если карман переполнился и нужно продавать 
             {
@@ -423,13 +426,14 @@ namespace States
                     if (server.is248Items())                       //проверяем реально ли карман переполнился
                     {
                         if (numberTeleport >= 100)           // продажа в снежке
-                        {  return 5; }
+                        { return 5; }
                         else                                 // продажа в городах
-                        { return 6;  }
-                    
+                        { return 6; }
+
                     }
                 }
             }
+            if (pet.isOpenMenuPet()) return 4;                //если открыто меню с петом, значит пет не выпущен
             if (market.isSale()) return 7;                     // если бот стоит в магазине на странице входа
             if (market.isSale2()) return 8;                         //если зависли в магазине на любой закладке
             if (server.isBarack()) return 9;                        //если стоят в бараке     
@@ -440,7 +444,7 @@ namespace States
         }
 
         /// <summary>
-        /// 
+        /// решение проблем с ботами
         /// </summary>
         public void problemResolution()
         { 
@@ -477,7 +481,7 @@ namespace States
         }
 
         /// <summary>
-        /// проверяем, есть ли проблемы с ботом (убили, застряли, нужно продать)
+        /// проверяем, есть ли проблемы с ботом (убили, застряли, нужно продать)                           //старый метод. не используется
         /// </summary>
         public void checkForProblems()
         {
@@ -599,7 +603,6 @@ namespace States
         {
             return server.FindWindowGE();
         }
-
 
         /// <summary>
         /// пауза в милисекундах

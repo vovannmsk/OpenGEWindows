@@ -30,3 +30,5 @@ C:\Users\VovkaA6\source\repos\Америка новый эксперимент\O
 C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.csproj.CopyComplete
 C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.dll
 C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\obj\Release\OpenGEWindows.pdb
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\GlobalParametrs.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\OpenGEWindows\bin\Release\GlobalParametrs.pdb
