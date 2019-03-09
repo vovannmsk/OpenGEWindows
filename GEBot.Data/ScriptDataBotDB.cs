@@ -1,37 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
 
 
 namespace GEBot.Data
 {
+    /// <summary>
+    /// =========================================================== класс не используется =====================================
+    /// </summary>
     public class ScriptDataBotDB:IScriptDataBot
     {
-        //private const String KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
         private int numberOfWindow;
-        private DataBot databot;
+        private BotParam databot;
+        private GlobalParam globalParam;
 
         public ScriptDataBotDB(int numberOfWindow)
         {
+            this.globalParam = new GlobalParam();
             this.numberOfWindow = numberOfWindow;
-            this.databot = new DataBot();
+            this.databot = new BotParam(this.numberOfWindow);
+
             BotsNew bot = new BotsNew();
             bot = GetBots();                                 //подчитываем из БД одну строку                                                   программа спотыкается на этом месте
-            this.databot.x = Koord_X();
-            this.databot.y = Koord_Y();
-            this.databot.Login = bot.Login;
-            this.databot.Password = bot.Password;
-            this.databot.hwnd = (UIntPtr)uint.Parse(bot.HWND);
-            this.databot.param = bot.Server;
-            this.databot.Kanal = bot.Channel;
-            this.databot.nomerTeleport = bot.TeleportForSale;
-            this.databot.nameOfFamily = bot.Family;
+            //this.databot.X = Koord_X();
+            //this.databot.Y = Koord_Y();
+            //this.databot.Login = bot.Login;
+            //this.databot.Password = bot.Password;
+            //this.databot.Hwnd = (UIntPtr)uint.Parse(bot.HWND);
+            //this.databot.Param = bot.Server;
+            //this.databot.Kanal = bot.Channel;
+            //this.databot.NomerTeleport = bot.TeleportForSale;
+            //this.databot.NameOfFamily = bot.Family;
 
-            this.databot.triangleX = GetCoordinatesX();
-            this.databot.triangleY = GetCoordinatesY();
+            //this.databot.TriangleX = GetCoordinatesX();
+            //this.databot.TriangleY = GetCoordinatesY();
         }
 
         public ScriptDataBotDB()
@@ -43,7 +44,7 @@ namespace GEBot.Data
         /// возвращает данные для бота, заданные пользователем
         /// </summary>
         /// <returns></returns>
-        public DataBot GetDataBot()
+        public BotParam GetDataBot()
         {
             return this.databot;
         }
@@ -54,12 +55,12 @@ namespace GEBot.Data
         /// <param name="hwnd"></param>
         public void SetHwnd(UIntPtr hwnd)
         {
-            databot.hwnd = hwnd;
+            databot.Hwnd = hwnd;
             // обязательно прописать запись hwnd в базу данных Entity Framework
             var context = new GEContext();
             IQueryable<BotsNew> query = context.BotsNew.Where(c => c.NumberOfWindow == this.numberOfWindow);
             BotsNew bots = query.Single<BotsNew>();
-            bots.HWND = databot.hwnd.ToString();
+            bots.HWND = databot.Hwnd.ToString();
             context.SaveChanges();
         }
 

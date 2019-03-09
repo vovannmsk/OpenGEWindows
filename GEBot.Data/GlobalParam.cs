@@ -1,19 +1,19 @@
 ﻿using System;
 using System.IO;
 
-namespace GlobalParametrs
+namespace GEBot.Data
 {
 
-    public  class GlobalParam
+    public class GlobalParam
     {
-        private  int nintendo;                           // как зачиповать оружие
-        private  int startingAccount;                    // номер стартового аккаунта (для заточки, чиповки и проч)
-        private  bool samara;                            // если этот комп расположен в Самаре, то true
-        private  string[] mmProduct;                     // массив товаров для продажи через рынок (MM)
-        private  int totalNumberOfAccounts;              // всего аккаунтов ботов
-        private  int statusOfSale;                       // статус продажи (для BH)
-        private string directoryOfMyProgram; 
-      //  private const string KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
+        private int nintendo;                           // как зачиповать оружие
+        private int startingAccount;                    // номер стартового аккаунта (для заточки, чиповки и проч)
+        private bool samara;                            // если этот комп расположен в Самаре, то true
+        private string[] mmProduct;                     // массив товаров для продажи через рынок (MM)
+        private int totalNumberOfAccounts;              // всего аккаунтов ботов
+        private int statusOfSale;                       // статус продажи (для BH)
+        private string directoryOfMyProgram;
+        //  private const string KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
 
         /// <summary>
         /// конструктор
@@ -98,7 +98,7 @@ namespace GlobalParametrs
         /// <returns></returns>
         private String[] LoadProduct()
         {
-            String[] parametrs = File.ReadAllLines(directoryOfMyProgram + "Продукт.txt"); 
+            String[] parametrs = File.ReadAllLines(directoryOfMyProgram + "Продукт.txt");
             return parametrs;
         }
 

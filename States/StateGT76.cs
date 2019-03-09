@@ -13,7 +13,6 @@ namespace States
         private botWindow botwindow;
         private Server server;
         private Otit otit;
-        //private Town town;
         private int tekStateInt;
 
         public StateGT76()
@@ -24,12 +23,11 @@ namespace States
         public StateGT76(botWindow botwindow)   
         {
             this.botwindow = botwindow;
-            this.server = botwindow.getserver();
-            //this.otit = botwindow.getOtit();
+            ServerFactory serverFactory = new ServerFactory(botwindow);
+            this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             OtitFactory otitFactory = new OtitFactory(botwindow);
             this.otit = otitFactory.createOtit();
 
-            //this.town = server.getTown();
 
             this.tekStateInt = 76;
         }

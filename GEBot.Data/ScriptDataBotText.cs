@@ -1,38 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
+using GEBot.Data;
 
 
 namespace GEBot.Data
 {
+    /// <summary>
+    /// =========================================================== класс не используется =====================================
+    /// </summary>
     public class ScriptDataBotText : IScriptDataBot
     {
-        private const String KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
         private int numberOfWindow;
-        private DataBot databot;
+        private BotParam databot;
+        private GlobalParam globalParam;
 
         public ScriptDataBotText(int numberOfWindow)
         {
+            this.globalParam = new GlobalParam();
             this.numberOfWindow = numberOfWindow;
-            this.databot = new DataBot();
-            //databot.NumberOfAccaunts = KolvoAkk();
-            databot.x = Koord_X();
-            databot.y = Koord_Y();
-            databot.Login = Login();
-            databot.Password = Pass();
-            databot.hwnd = Hwnd_in_file();
-            databot.param = Parametr();
-            databot.Kanal = Channal();
-            databot.nomerTeleport = NomerTeleporta();
-            databot.nameOfFamily = NameOfFamily();
-            databot.triangleX = LoadTriangleX();
-            databot.triangleY = LoadTriangleY();
+            this.databot = new BotParam(this.numberOfWindow);
+            //this.databot.X = Koord_X();
+            //this.databot.Y = Koord_Y();
+            //this.databot.Login = Login();
+            //this.databot.Password = Pass();
+            //this.databot.Hwnd = Hwnd_in_file();
+            //this.databot.Param = Parametr();
+            //this.databot.Kanal = Channal();
+            //this.databot.NomerTeleport = NomerTeleporta();
+            //this.databot.NameOfFamily = NameOfFamily();
+            //this.databot.TriangleX = LoadTriangleX();
+            //this.databot.TriangleY = LoadTriangleY();
+            //this.databot.StatusOfAtk = GetStatusOfAtk();
             //databot.Bullet = NumberOfBullets();                                               //пока не используется, но всё готово для использования
-
-
         }
 
         public ScriptDataBotText()
@@ -40,15 +39,19 @@ namespace GEBot.Data
             throw new NotImplementedException("Номер окна должен быть указан обязательно!!!");
         }
 
+        /// <summary>
+        /// метод считывает значение статуса из файла, 1 - мы уже били босса, 0 - нет 
+        /// </summary>
+        /// <returns></returns>
+        private int GetStatusOfAtk()
+        { return int.Parse(File.ReadAllText(globalParam.DirectoryOfMyProgram + this.numberOfWindow + "\\StatusOfAtk.txt")); }
 
         /// <summary>
         /// возвращает данные для бота, заданные пользователем
         /// </summary>
         /// <returns></returns>
-        public DataBot GetDataBot()
-        {
-            return databot;
-        }
+        public BotParam GetDataBot()
+        {  return databot;   }
 
         /// <summary>
         /// изменяем Hwnd окна и записываем в файл
@@ -56,8 +59,8 @@ namespace GEBot.Data
         /// <param name="hwnd"></param>
         public void SetHwnd(UIntPtr hwnd)
         {
-            databot.hwnd = hwnd;
-            File.WriteAllText(KATALOG_MY_PROGRAM + numberOfWindow + "\\HWND.txt", hwnd.ToString());
+            databot.Hwnd = hwnd;
+            File.WriteAllText(globalParam.DirectoryOfMyProgram + this.numberOfWindow + "\\HWND.txt", hwnd.ToString());
         }
 
         /// <summary>
@@ -72,28 +75,28 @@ namespace GEBot.Data
         /// </summary>
         /// <returns></returns>
         private int NumberOfBullets()
-        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + this.numberOfWindow + "\\Патроны.txt")); }
+        { return int.Parse(File.ReadAllText(globalParam.DirectoryOfMyProgram + this.numberOfWindow + "\\Патроны.txt")); }
 
         /// <summary>
         /// функция возвращает номер телепорта, по которому летим продаваться
         /// </summary>
         /// <returns></returns>
         private int NomerTeleporta()
-        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + this.numberOfWindow + "\\ТелепортПродажа.txt")); }
+        { return int.Parse(File.ReadAllText(globalParam.DirectoryOfMyProgram + this.numberOfWindow + "\\ТелепортПродажа.txt")); }
 
         /// <summary>
         /// функция возвращает логин бота
         /// </summary>
         /// <returns></returns>
         private String Login()   // каталог и номер окна
-        { return File.ReadAllText(KATALOG_MY_PROGRAM + this.numberOfWindow + "\\Логины.txt"); }
+        { return File.ReadAllText(globalParam.DirectoryOfMyProgram + this.numberOfWindow + "\\Логины.txt"); }
 
         /// <summary>
         /// функция возвращает пароль от бота
         /// </summary>
         /// <returns></returns>
         private String Pass()   // каталог и номер окна
-        { return File.ReadAllText(KATALOG_MY_PROGRAM + this.numberOfWindow + "\\Пароли.txt"); }
+        { return File.ReadAllText(globalParam.DirectoryOfMyProgram + this.numberOfWindow + "\\Пароли.txt"); }
 
         /// <summary>
         /// функция возвращает hwnd бота
@@ -102,7 +105,7 @@ namespace GEBot.Data
         private UIntPtr Hwnd_in_file()
         {
             UIntPtr ff;
-            String ss = File.ReadAllText(KATALOG_MY_PROGRAM + this.numberOfWindow + "\\HWND.txt");
+            String ss = File.ReadAllText(globalParam.DirectoryOfMyProgram + this.numberOfWindow + "\\HWND.txt");
             if (ss.Equals(""))
             { ff = (UIntPtr)2222222; }   //если пусто в файле, то hwnd = 2222222;
             else
@@ -141,14 +144,14 @@ namespace GEBot.Data
         /// </summary>
         /// <returns></returns>
         private String Parametr()
-        { return File.ReadAllText(KATALOG_MY_PROGRAM + this.numberOfWindow + "\\Параметр.txt"); }
+        { return File.ReadAllText(globalParam.DirectoryOfMyProgram + this.numberOfWindow + "\\Параметр.txt"); }
 
         /// <summary>
         /// функция возвращает номер канала, где стоит бот
         /// </summary>
         /// <returns></returns>
         private int Channal()
-        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + numberOfWindow + "\\Каналы.txt")); }
+        { return int.Parse(File.ReadAllText(globalParam.DirectoryOfMyProgram + this.numberOfWindow + "\\Каналы.txt")); }
 
         /// <summary>
         /// считываем из файла координаты Х расстановки треугольником
@@ -159,7 +162,7 @@ namespace GEBot.Data
             int SIZE_OF_ARRAY = 3;
             String[] Koord_X = new String[SIZE_OF_ARRAY];
             int[] intKoord_X = new int[SIZE_OF_ARRAY];        //координаты для расстановки треугольником
-            Koord_X = File.ReadAllLines(KATALOG_MY_PROGRAM + numberOfWindow + "\\РасстановкаX.txt"); // Читаем файл с Координатами Х в папке с номером Number_Window
+            Koord_X = File.ReadAllLines(globalParam.DirectoryOfMyProgram + this.numberOfWindow + "\\РасстановкаX.txt"); // Читаем файл с Координатами Х в папке с номером Number_Window
             for (int i = 0; i < SIZE_OF_ARRAY; i++) { intKoord_X[i] = int.Parse(Koord_X[i]); }
             return intKoord_X;
         }
@@ -173,7 +176,7 @@ namespace GEBot.Data
             int SIZE_OF_ARRAY = 3;
             String[] Koord_Y = new String[SIZE_OF_ARRAY];
             int[] intKoord_Y = new int[SIZE_OF_ARRAY];        //координаты для расстановки треугольником
-            Koord_Y = File.ReadAllLines(KATALOG_MY_PROGRAM + numberOfWindow + "\\РасстановкаY.txt"); // Читаем файл с Координатами Y в папке с номером Number_Window
+            Koord_Y = File.ReadAllLines(globalParam.DirectoryOfMyProgram + this.numberOfWindow + "\\РасстановкаY.txt"); // Читаем файл с Координатами Y в папке с номером Number_Window
             for (int i = 0; i < SIZE_OF_ARRAY; i++) { intKoord_Y[i] = int.Parse(Koord_Y[i]); }
             return intKoord_Y;
         }
@@ -183,21 +186,8 @@ namespace GEBot.Data
         /// </summary>
         /// <returns></returns>
         public string NameOfFamily()                                                                                                    
-        { return File.ReadAllText(KATALOG_MY_PROGRAM + numberOfWindow + "\\Имя семьи.txt"); }                                          
+        { return File.ReadAllText(globalParam.DirectoryOfMyProgram + this.numberOfWindow + "\\Имя семьи.txt"); }                                          
 
-        ///// <summary>
-        ///// возвращает количесто аккаунтов ботов 
-        ///// </summary>
-        ///// <returns></returns>
-        //public int KolvoAkk()
-        //{ return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Аккаунтов всего.txt")); }
-
-        ///// <summary>
-        ///// возвращает количесто аккаунтов ботов 
-        ///// </summary>
-        ///// <returns></returns>
-        //public static int KolvoAkk()
-        //{ return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Аккаунтов всего.txt")); }
 
     }
 }

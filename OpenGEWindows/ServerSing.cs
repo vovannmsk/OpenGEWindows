@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
+using GEBot.Data;
 
 
 
@@ -39,14 +35,23 @@ namespace OpenGEWindows
             this.botwindow = botwindow;
             this.xx = botwindow.getX();
             this.yy = botwindow.getY();
+            this.globalParam = new GlobalParam();
+            ServerParamFactory serverParamFactory = new ServerParamFactory(botwindow.getNumberWindow());
+            this.serverParam = serverParamFactory.create();
 
             #endregion
 
             #region общие 2
 
-            this.townFactory = new SingTownFactory(botwindow);                                     // здесь выбирается конкретная реализация для фабрики Town
+            TownFactory townFactory = new SingTownFactory(botwindow);                                     // здесь выбирается конкретная реализация для фабрики Town
             this.town = townFactory.createTown();
-            this.pathClient = path_Client();
+
+            #endregion
+
+            #region параметры, зависящие от сервера
+            //            this.pathClient = path_Client();
+            this.pathClient = serverParam.PathClient;
+            this.isActiveServer = serverParam.IsActiveServer;
 
             #endregion
 
@@ -496,35 +501,35 @@ namespace OpenGEWindows
 
         #region общие методы 2
 
-        /// <summary>
-        /// путь к исполняемому файлу игры (сервер сингапур)
-        /// </summary>
-        /// <returns></returns>
-        private String path_Client()
-        { return File.ReadAllText(KATALOG_MY_PROGRAM + "\\Singapoore_path.txt"); }
+        ///// <summary>
+        ///// путь к исполняемому файлу игры (сервер сингапур)
+        ///// </summary>
+        ///// <returns></returns>
+        //private String path_Client()
+        //{ return File.ReadAllText(globalParam.DirectoryOfMyProgram + "\\Singapoore_path.txt"); }
 
-        /// <summary>
-        /// считываем параметр, отвечающий за то, надо ли загружать окна на сервере сингапур
-        /// </summary>
-        /// <returns></returns>
-        private int SingActive()
-        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Singapoore_active.txt")); }
+        ///// <summary>
+        ///// считываем параметр, отвечающий за то, надо ли загружать окна на сервере сингапур
+        ///// </summary>
+        ///// <returns></returns>
+        //private int SingActive()
+        //{ return int.Parse(File.ReadAllText(globalParam.DirectoryOfMyProgram + "\\Singapoore_active.txt")); }
 
 
         #endregion
 
         #region No window
 
-        /// <summary>
-        /// Определяет, надо ли грузить данное окно с ботом
-        /// </summary>
-        /// <returns> true означает, что это окно (данный бот) должно быть активно и его надо грузить </returns>
-        public override bool isActive()
-        {
-            bool result = false;
-            if (SingActive() == 1) result = true;
-            return result;
-        }
+        ///// <summary>
+        ///// Определяет, надо ли грузить данное окно с ботом
+        ///// </summary>
+        ///// <returns> true означает, что это окно (данный бот) должно быть активно и его надо грузить </returns>
+        //public override bool isActive()
+        //{
+        //    bool result = false;
+        //    if (SingActive() == 1) result = true;
+        //    return result;
+        //}
 
         /// <summary>
         /// поиск новых окон с игрой для кнопки "Найти окна"
@@ -572,7 +577,7 @@ namespace OpenGEWindows
             //запускаем steam в песочнице
             Process process = new Process();
             process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
-            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + path_Client();
+            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient;
             process.Start();
 
             Pause(30000);
@@ -598,7 +603,7 @@ namespace OpenGEWindows
             //запускаем steam в песочнице
             Process process = new Process();
             process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
-            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + path_Client() + " -applaunch 663090 -silent";
+            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient + " -applaunch 663090 -silent";
             process.Start();
             //while ((!isWhiteWindow()) && (!isSafeIP()))
             //{

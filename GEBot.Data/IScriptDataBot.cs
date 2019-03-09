@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GEBot.Data
 {
@@ -13,7 +9,7 @@ namespace GEBot.Data
         /// </summary>
         /// <param name="numberOfWindow"> номер окна бота</param>
         /// <returns>данные, необходимые для создания бота в формате DataBot </returns>
-        DataBot GetDataBot();
+        BotParam GetDataBot();
 
         /// <summary>
         /// запись hwnd в текстовый файл или в БД

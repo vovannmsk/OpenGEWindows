@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using OpenGEWindows;
+using GEBot.Data;
 
 namespace States
 {
@@ -18,8 +15,12 @@ namespace States
         private MM mm;
         private BHDialog BHdialog;
         private int numberOfWindow;
-
+        private GlobalParam globalParam;
         private DriversOfState driver;
+
+        private bool isActiveServer;
+
+        public bool IsActiveServer { get => isActiveServer; }
 
         public Check()
         { 
@@ -41,7 +42,9 @@ namespace States
             BHDialogFactory dialogFactory = new BHDialogFactory(botwindow);
             this.BHdialog = dialogFactory.create();  
 
-            driver = new DriversOfState(numberOfWindow);
+            this.driver = new DriversOfState(numberOfWindow);
+            this.globalParam = new GlobalParam();
+            this.isActiveServer = server.IsActiveServer;
         }
 
         /// <summary>
@@ -71,44 +74,17 @@ namespace States
         }
 
 
-        //#region чипование
-
-        ///// <summary>
-        ///// возвращаем тип чиповки
-        ///// 1 - без рассы
-        ///// 2 - wild
-        ///// 3 - LifeLess
-        ///// 4 - wild or Human
-        ///// 5 - Undeed
-        ///// 6 - Demon
-        ///// 7 - Human
-        ///// </summary>
-        ///// <returns></returns>
-        //public int TypeOfNintendo()
-        //{
-        //    return server.TypeOfNintendo();
-        //}
-
-        //#endregion
-
         #region Гильдия охотников BH
 
-        /// <summary>
-        /// выполняет действия по открытию окна с игрой
-        /// </summary>
-        public void setStatusOfSale(int status)
-        {
-            botwindow.setStatusOfSale(status);
-        }
-
-
+     
         /// <summary>
         /// проверяем, если ли проблемы при работе в БХ и возвращаем номер проблемы
         /// </summary>
         /// <returns>порядковый номер проблемы</returns>
         public int NumberOfProblemBH()
         {
-            int statusOfSale = botwindow.getStatusOfSale();
+            //            int statusOfSale = botwindow.getStatusOfSale();
+            int statusOfSale = globalParam.StatusOfSale;
             int statusOfAtk  = botwindow.getStatusOfAtk();
 
             //ворота
@@ -277,12 +253,12 @@ namespace States
 
 
         /// <summary>
-        /// проверяем, есть ли проблемы с ботом (убили, застряли, нужно продать)
+        /// проверяем, есть ли проблемы с ботом (убили, застряли, нужно продать)                                //старый метод. не используется
         /// </summary>
         public void checkForProblemsBH()
         {
 
-            if (server.isActive())      //этот метод проверяет, нужно ли грузить или обрабатывать это окно (профа и прочее)
+            if (isActiveServer)      //этот метод проверяет, нужно ли грузить или обрабатывать это окно (профа и прочее)
             {
                 ReOpenWindow();
                 Pause(500);
@@ -311,19 +287,19 @@ namespace States
                             }
                             else
                             {
-                                if (server.isTown() && !server.isBH() && (botwindow.getStatusOfSale() == 0))                     //если стоят в городе (но не в BH) и не надо идти продаваться
+                                if (server.isTown() && !server.isBH() && (globalParam.StatusOfSale == 0))                     //если стоят в городе (но не в BH) и не надо идти продаваться
                                 {
                                     driver.StateFromTownToBH();            //town --> BH
                                 }
                                 else
                                 {
-                                    if (  (server.isBH())   &&   (botwindow.getStatusOfSale()==0)  )          //если стоим в БХ и если мы не собираемся идти продаваться
+                                    if (  (server.isBH())   &&   (globalParam.StatusOfSale == 0)  )          //если стоим в БХ и если мы не собираемся идти продаваться
                                     {
                                         driver.StateFromBHToGateBH();            // BH --> Gate
                                     }
                                     else
                                     {
-                                        if ((server.isBH()) && (botwindow.getStatusOfSale() == 1))          //если стоим в БХ и если собираемся идти продаваться
+                                        if ((server.isBH()) && (globalParam.StatusOfSale == 1))          //если стоим в БХ и если собираемся идти продаваться
                                         {
                                             //int ff = botwindow.getNomerTeleport();
                                             //if (botwindow.getNomerTeleport() >= 100)           // продажа в снежке
@@ -368,7 +344,7 @@ namespace States
                                                             }
                                                             else
                                                             {
-                                                                if ((server.isTown()) && !server.isBH() && (botwindow.getStatusOfSale() == 1))    //если стоят в городе (но не в BH) и надо идти продаваться
+                                                                if ((server.isTown()) && !server.isBH() && (globalParam.StatusOfSale == 1))    //если стоят в городе (но не в BH) и надо идти продаваться
                                                                 {
                                                                     driver.StateGotoTradeStep2BH();
                                                                 }
@@ -405,7 +381,7 @@ namespace States
                     }
                 } //else  isLogout()
             } //if  Active_or_not
-        }                                                                  //основной метод для зеленой кнопки  (старый рабочий вариант)
+        }                                                                  //  (старый рабочий вариант)
 
         #endregion
 
@@ -485,7 +461,7 @@ namespace States
         /// </summary>
         public void checkForProblems()
         {
-            if (server.isActive())      //этот метод проверяет, нужно ли грузить или обрабатывать это окно (профа и прочее)
+            if (isActiveServer)      //этот метод проверяет, нужно ли грузить или обрабатывать это окно (профа и прочее)
             {
                 ReOpenWindow();    
                 Pause(500);
@@ -646,14 +622,15 @@ namespace States
         {
             server.OrangeButton();
         }
-        /// <summary>
-        /// определяет, нужно ли работать с этим окном (может быть отключено из-за профилактики на сервере)
-        /// </summary>
-        /// <returns></returns>
-        public bool isActive()
-        {
-            return server.isActive();
-        }
+
+        ///// <summary>
+        ///// определяет, нужно ли работать с этим окном (может быть отключено из-за профилактики на сервере)
+        ///// </summary>
+        ///// <returns></returns>
+        //public bool isActive()
+        //{
+        //    return IsActiveServer;
+        //}
 
         /// <summary>
         /// проверяем, находимся ли в магазине у Иды (заточка)
@@ -680,8 +657,7 @@ namespace States
         //{
         //    return otit.isOldMan();
         //}
-
-
+        
         /// <summary>
         /// раздевание в казарме
         /// </summary>

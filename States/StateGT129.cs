@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using OpenGEWindows;
+using GEBot.Data;
 
 
 namespace States
@@ -13,6 +10,7 @@ namespace States
         private botWindow botwindow;
         private Server server;
         private ServerFactory serverFactory;
+        private GlobalParam globalParam;
         private int tekStateInt;
 
         public StateGT129()
@@ -25,6 +23,7 @@ namespace States
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            globalParam = new GlobalParam();
             this.tekStateInt = 129;
         }
 
@@ -64,7 +63,9 @@ namespace States
         {
             if (server.isBoxOverflow())
             {
-                botwindow.setStatusOfSale(1);
+                //botwindow.setStatusOfSale(1);
+                globalParam.StatusOfSale = 1;
+
             }
 
             //botwindow.PressEscThreeTimes();   // ================= убирает все лишние окна с экрана =================================
@@ -73,7 +74,8 @@ namespace States
             server.WriteToLogFileBH("сост 129 в сторону и телепорт в БХ");
             if (server.isBoxOverflow())
             {
-                botwindow.setStatusOfSale(1);
+                //botwindow.setStatusOfSale(1);
+                globalParam.StatusOfSale = 1;
             }
 
 
@@ -82,14 +84,16 @@ namespace States
 
             if (server.isBoxOverflow())
             {
-                botwindow.setStatusOfSale(1);
+                //botwindow.setStatusOfSale(1);
+                globalParam.StatusOfSale = 1;
             }
 
             botwindow.PressEscThreeTimes();   // ================= убирает все лишние окна с экрана =================================
 
             if (server.isBoxOverflow())
             {
-                botwindow.setStatusOfSale(1);
+                //botwindow.setStatusOfSale(1);
+                globalParam.StatusOfSale = 1;
             }
 
             ////ожидание загрузки BH

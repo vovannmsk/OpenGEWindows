@@ -79,9 +79,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GlobalParametrs\GlobalParametrs.csproj">
-      <Project>{5f53f368-e659-43b4-b6cc-e50709bfe96b}</Project>
-      <Name>GlobalParametrs</Name>
+    <ProjectReference Include="..\GEBot.Data\GEBot.Data.csproj">
+      <Project>{3e94057c-f406-4c7a-b12c-fc8ea064b141}</Project>
+      <Name>GEBot.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\States\States.csproj">
       <Project>{bd4bc46c-838b-4520-a470-a08a3ebd6f89}</Project>

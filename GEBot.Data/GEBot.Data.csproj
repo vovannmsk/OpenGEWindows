@@ -54,7 +54,7 @@
     <Compile Include="CoordinatesNew.cs">
       <DependentUpon>GEModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataBot.cs" />
+    <Compile Include="BotParam.cs" />
     <Compile Include="GEModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -70,10 +70,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GEModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="GlobalParam.cs" />
     <Compile Include="IScriptDataBot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScriptDataBotDB.cs" />
     <Compile Include="ScriptDataBotText.cs" />
+    <Compile Include="ServerParamAmerica.cs" />
+    <Compile Include="ServerParamAmerica2.cs" />
+    <Compile Include="ServerParamEuropa.cs" />
+    <Compile Include="ServerParamSing.cs" />
+    <Compile Include="ServerParam.cs" />
+    <Compile Include="ServerParamFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

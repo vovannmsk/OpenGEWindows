@@ -1,5 +1,5 @@
 ﻿using System.Windows.Forms;
-using GlobalParametrs;
+using GEBot.Data;
 
 namespace OpenGEWindows
 {
@@ -489,7 +489,8 @@ namespace OpenGEWindows
         {
             pointButtonSell.PressMouseL();
             pointButtonSell.PressMouseL();
-            botwindow.setStatusOfSale(0);
+            //botwindow.setStatusOfSale(0);
+            globalParam.StatusOfSale = 0;
             Pause(2000);
         }
 

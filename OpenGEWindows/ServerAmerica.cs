@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
-
-
+using GEBot.Data;
 
 namespace OpenGEWindows
 {
@@ -39,14 +33,24 @@ namespace OpenGEWindows
             this.botwindow = botwindow;
             this.xx = botwindow.getX();
             this.yy = botwindow.getY();
+            this.globalParam = new GlobalParam();
+            ServerParamFactory serverParamFactory = new ServerParamFactory(botwindow.getNumberWindow());
+            this.serverParam = serverParamFactory.create();
 
             #endregion
 
             #region общие 2
 
-            this.townFactory = new AmericaTownFactory(botwindow);                                     // здесь выбирается конкретная реализация для фабрики Town
-            this.town = townFactory.createTown();                                                      // выбирается город с помощью фабрики
-            this.pathClient = path_Client();
+            TownFactory townFactory = new AmericaTownFactory(botwindow);                        // здесь выбирается конкретная реализация для фабрики Town
+            this.town = townFactory.createTown();                                               // выбирается город с помощью фабрики
+
+            #endregion
+
+            #region параметры, зависящие от сервера
+
+            //            this.pathClient = path_Client();
+            this.pathClient = serverParam.PathClient;
+            this.isActiveServer = serverParam.IsActiveServer;
 
             #endregion
 
@@ -357,19 +361,19 @@ namespace OpenGEWindows
 
         #region общие методы 2
 
-        /// <summary>
-        /// возвращает параметр, прочитанный из файла
-        /// </summary>
-        /// <returns></returns>    
-        private String path_Client()
-        { return File.ReadAllText(KATALOG_MY_PROGRAM + "\\America_path.txt"); }
+        ///// <summary>
+        ///// возвращает параметр, прочитанный из файла
+        ///// </summary>
+        ///// <returns></returns>    
+        //private String path_Client()
+        //{ return File.ReadAllText(globalParam.DirectoryOfMyProgram + "\\America_path.txt"); }
 
-        /// <summary>
-        /// возвращает параметр, прочитанный из файла
-        /// </summary>
-        /// <returns></returns>
-        private int AmericaActive()
-        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\America_active.txt")); }                                     
+        ///// <summary>
+        ///// возвращает параметр, прочитанный из файла
+        ///// </summary>
+        ///// <returns></returns>
+        //private int AmericaActive()
+        //{ return int.Parse(File.ReadAllText(globalParam.DirectoryOfMyProgram + "\\America_active.txt")); }                                     
 
         #endregion
 
@@ -385,7 +389,7 @@ namespace OpenGEWindows
             //запускаем steam в песочнице
             Process process = new Process();
             process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
-            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + path_Client();
+            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient;
             process.Start();
 
             Pause(30000);
@@ -416,16 +420,16 @@ namespace OpenGEWindows
             }
         }
 
-        /// <summary>
-        /// Определяет, надо ли грузить данное окно с ботом
-        /// </summary>
-        /// <returns> true означает, что это окно (данный бот) должно быть активно и его надо грузить </returns>
-        public override bool isActive()
-        {
-            bool result = false;
-            if (AmericaActive() == 1) result = true;
-            return result;
-        }
+        ///// <summary>
+        ///// Определяет, надо ли грузить данное окно с ботом
+        ///// </summary>
+        ///// <returns> true означает, что это окно (данный бот) должно быть активно и его надо грузить </returns>
+        //public override bool isActive()
+        //{
+        //    bool result = false;
+        //    if (AmericaActive() == 1) result = true;
+        //    return result;
+        //}
 
 
         /// <summary>

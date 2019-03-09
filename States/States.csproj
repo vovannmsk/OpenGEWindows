@@ -215,6 +215,10 @@
     <Compile Include="StateGT58.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GEBot.Data\GEBot.Data.csproj">
+      <Project>{3e94057c-f406-4c7a-b12c-fc8ea064b141}</Project>
+      <Name>GEBot.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenGEWindows\OpenGEWindows.csproj">
       <Project>{60aa44d6-e4b0-48a8-a5f0-2b9fd3d00171}</Project>
       <Name>OpenGEWindows</Name>

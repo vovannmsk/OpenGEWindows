@@ -1,5 +1,4 @@
-﻿using GlobalParametrs;
-
+﻿using GEBot.Data;
 
 namespace OpenGEWindows
 {

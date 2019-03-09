@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OpenGEWindows
+﻿namespace OpenGEWindows
 {
     /// <summary>
     /// класс для реализация паттерна "Фабрика" (семейство классов server: serverAmerica,serverEuropa,serverSing)

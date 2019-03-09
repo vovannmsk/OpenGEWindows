@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-
-namespace OpenGEWindows
+﻿namespace OpenGEWindows
 {
     public class OtitAmerica2 : Otit
     {
@@ -23,7 +16,10 @@ namespace OpenGEWindows
 
             #endregion
 
-            this.server = botwindow.getserver();
+            //this.server = botwindow.getserver();
+            ServerFactory serverFactory = new ServerFactory(botwindow);
+            this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+
             this.town = server.getTown();
             DialogFactory dialogFactory = new DialogFactory(this.botwindow);
             dialog = dialogFactory.createDialog();

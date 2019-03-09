@@ -1,11 +1,9 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Threading;
 using States;
-using GlobalParametrs;
+using GEBot.Data;
 
 namespace Main
 {
@@ -14,9 +12,7 @@ namespace Main
         private static uint NumberBlueButton = 0;       //сколько раз нажали голубую(красную) кнопку
         private const int MAX_NUMBER_OF_ACCOUNTS = 20;
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
-        //public static string KatalogMyProgram = Directory.GetCurrentDirectory() + "\\";      
-//        private static string KatalogMyProgram = "C:\\!! Суперпрограмма V&K\\";
-        private static string DataVersion = "07-03-2019";
+        private static string DataVersion = "09-03-2019";
         private int numberOfAcc;                                              // количество аккаунтов ботов
         GlobalParam globalParam;
 
@@ -99,7 +95,7 @@ namespace Main
             {
                 Check check = new Check(j);
 
-                if (check.isActive())
+                if (check.IsActiveServer)
                 {
                     UIntPtr hwnd = check.FindWindow();
                     if (hwnd == (UIntPtr)0)  MessageBox.Show("Не найдено окно ГЕ с номером " + j); 
@@ -148,7 +144,7 @@ namespace Main
             for (int j = 1; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
-                if (check.isActive())
+                if (check.IsActiveServer)
                 {
                     check.OrangeButton();
                     //check.serverSelection();
@@ -184,7 +180,7 @@ namespace Main
 //            for (int j = 2; j <= 2; j++)
             {
                 Check check = new Check(j);
-                if (check.isActive())
+                if (check.IsActiveServer)
                 {
                     DriversOfState driver = new DriversOfState(j);
                     driver.StateToCrater();
@@ -221,7 +217,7 @@ namespace Main
 //            for (int j = 2; j <= 2; j++)
             {
                 Check check = new Check(j);
-                if (check.isActive())
+                if (check.IsActiveServer)
                 {
                     DriversOfState driver = new DriversOfState(j);
                     driver.StateNewAcc();
@@ -265,7 +261,7 @@ namespace Main
             for (int j = 1; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
-                if (check.isActive())
+                if (check.IsActiveServer)
                 {
                     check.ReOpenWindow();
                     check.Pause(1000);
@@ -323,12 +319,12 @@ namespace Main
             {
                 Check check = new Check(j);
 //                if (check.isActive())  check.checkForProblems();
-                if (check.isActive()) check.problemResolution();
+                if (check.IsActiveServer) check.problemResolution();
             }
             for (int j = 1; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
-                if (check.isActive())   check.ReOpenWindow();
+                if (check.IsActiveServer)   check.ReOpenWindow();
             }   
         }
 
@@ -418,7 +414,7 @@ namespace Main
             for (int j = start; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
-                if (check.isActive())
+                if (check.IsActiveServer)
                 {
                     check.ReOpenWindow();
                     check.Pause(1000);
@@ -468,14 +464,14 @@ namespace Main
             for (int j = 1; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
-                if (check.isActive()) check.OpenWindow();
+                if (check.IsActiveServer) check.OpenWindow();
                 check.Pause(5000);
             }
             
             for (int j = 1; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
-                if (check.isActive()) check.ReOpenWindow();
+                if (check.IsActiveServer) check.ReOpenWindow();
             }
         }
 
@@ -502,7 +498,7 @@ namespace Main
             for (int j = 1; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
-                if (check.isActive())
+                if (check.IsActiveServer)
                 {
                     check.ReOpenWindow();
                     check.Pause(1000);
@@ -538,7 +534,7 @@ namespace Main
             for (int j = 1; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
-                if (check.isActive())
+                if (check.IsActiveServer)
                 {
                     check.ReOpenWindow();
                     check.Pause(1000);
@@ -695,7 +691,7 @@ namespace Main
             for (int j = 1; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
-                if (check.isActive())            //надо ли грузить окно (по умолчанию)
+                if (check.IsActiveServer)            //надо ли грузить окно (по умолчанию)
                 {
                     check.ReOpenWindow();
                     check.Pause(1000);
@@ -737,14 +733,15 @@ namespace Main
                 {
                     check = new Check(j);
                     //if (check.isActive()) check.checkForProblemsBH();
-                    if (check.isActive()) check.problemResolutionBH();
+                    if (check.IsActiveServer) check.problemResolutionBH();
                 }
                 counter++;
                 check = new Check(1);
                 if (counter >= 500)
                 {
                     counter = 0;
-                    check.setStatusOfSale(1);
+                    //check.setStatusOfSale(1);
+                    globalParam.StatusOfSale = 1;
                 }
             }
             //ReOpen всех окон

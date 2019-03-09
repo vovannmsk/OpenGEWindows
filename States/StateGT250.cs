@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using OpenGEWindows;
-
+using GEBot.Data;
 
 namespace States
 {
@@ -15,7 +11,7 @@ namespace States
         private Town town;
         private ServerFactory serverFactory;
         private int tekStateInt;
-        //private bool resultat;
+        private GlobalParam globalParam;
 
         public StateGT250()
         {
@@ -28,8 +24,8 @@ namespace States
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.town = server.getTown();
+            globalParam = new GlobalParam();
             this.tekStateInt = 250;
-            //this.resultat = true;
         }
 
         /// <summary>
@@ -66,7 +62,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            if (server.isBoxOverflow()) botwindow.setStatusOfSale(1);
+            if (server.isBoxOverflow())      globalParam.StatusOfSale = 1;
 
             server.WriteToLogFileBH("250 Идем в барак");
 
@@ -76,10 +72,10 @@ namespace States
                 server.GotoBarack(false);                       //если не в кого стрелять, уходим в барак
             //}
 
-            if (server.isBoxOverflow()) botwindow.setStatusOfSale(1);
+            if (server.isBoxOverflow())    globalParam.StatusOfSale = 1;
 
 
-            if (server.isBoxOverflow()) botwindow.setStatusOfSale(1);
+            if (server.isBoxOverflow())    globalParam.StatusOfSale = 1;
 
         }
 

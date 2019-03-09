@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using System.Diagnostics;
 using System.Threading;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.Reflection;
+using GEBot.Data;
+    
+//using GEBot.Data;
 
 namespace OpenGEWindows
 {
@@ -28,6 +25,8 @@ namespace OpenGEWindows
         #region общие
 
         protected botWindow botwindow;
+        protected GlobalParam globalParam;
+        protected ServerParam serverParam;
         protected int xx;
         protected int yy;
 
@@ -35,11 +34,15 @@ namespace OpenGEWindows
 
         #region общие 2
 
-        protected const String KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
         protected Town town;
         protected Town town_begin;
-        protected TownFactory townFactory;
-        protected String pathClient;
+
+        #endregion
+
+        #region параметры, зависящие от сервера
+
+        protected string pathClient;
+        protected bool isActiveServer;                       //это свойство можно использовать везде вместо метода isActive()
 
         #endregion
 
@@ -519,6 +522,8 @@ namespace OpenGEWindows
 //        protected uint[] arrayOfColors = new uint[17] { 0, 1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 2104613 };
         protected uint[] arrayOfColors;
 
+
+
         #endregion
 
         // ===========================================  Методы ==========================================
@@ -537,6 +542,8 @@ namespace OpenGEWindows
         #endregion
 
         #region Getters
+
+        public bool IsActiveServer { get { return isActiveServer; } }
 
         /// <summary>
         /// геттер
@@ -571,7 +578,7 @@ namespace OpenGEWindows
 
         public abstract void runClientSteam();
         public abstract void runClient();
-        public abstract bool isActive();
+        //public abstract bool isActive();
         public abstract UIntPtr FindWindowGE();
         public abstract void OrangeButton();
 
@@ -2362,7 +2369,7 @@ namespace OpenGEWindows
         /// </summary>
         /// <returns></returns>
         public int TypeOfNintendo()
-        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\Чиповка.txt")); }
+        { return int.Parse(File.ReadAllText(globalParam.DirectoryOfMyProgram + "\\Чиповка.txt")); }
 
         /// <summary>
         /// проверяем, зачиповалось ли оружие на АТК + 40%
@@ -2515,7 +2522,7 @@ namespace OpenGEWindows
         public bool isGoodChipWeapon()
         {
             bool result = false;
-            int parametr = TypeOfNintendo();
+            int parametr =  globalParam.Nintendo;
             switch (parametr)
             {
                 case 1:
@@ -2894,21 +2901,21 @@ namespace OpenGEWindows
             return (pointIsRoulette1.isColor() && pointIsRoulette2.isColor());
         }
 
-        /// <summary>
-        /// метод возвращает значение статуса, 1 - мы направляемся на продажу товара в магазин, 0 - нет (обычный режим работы)
-        /// </summary>
-        /// <returns></returns>
-        private int GetStatusOfSale()
-        { return int.Parse(File.ReadAllText(KATALOG_MY_PROGRAM + "\\StatusOfSale.txt")); }
+        ///// <summary>
+        ///// метод возвращает значение статуса, 1 - мы направляемся на продажу товара в магазин, 0 - нет (обычный режим работы)
+        ///// </summary>
+        ///// <returns></returns>
+        //private int GetStatusOfSale()
+        //{ return int.Parse(File.ReadAllText(globalParam.DirectoryOfMyProgram + "\\StatusOfSale.txt")); }
 
-        /// <summary>
-        /// метод возвращает значение статуса, 1 - мы направляемся на продажу товара в магазин, 0 - нет (обычный режим работы)
-        /// </summary>
-        /// <returns></returns>
-        private void SetStatusOfSale(int status)
-        {
-            File.WriteAllText(KATALOG_MY_PROGRAM + "\\StatusOfSale.txt", status.ToString());
-        }
+        ///// <summary>
+        ///// метод возвращает значение статуса, 1 - мы направляемся на продажу товара в магазин, 0 - нет (обычный режим работы)
+        ///// </summary>
+        ///// <returns></returns>
+        //private void SetStatusOfSale(int status)
+        //{
+        //    File.WriteAllText(globalParam.DirectoryOfMyProgram + "\\StatusOfSale.txt", status.ToString());
+        //}
 
 
         /// <summary>
@@ -3025,7 +3032,7 @@ namespace OpenGEWindows
             Bitmap screenshot = new Bitmap(screenSz.Width, screenSz.Height);
             Graphics gr = Graphics.FromImage(screenshot);
             gr.CopyFromScreen(0, 0, 0, 0, screenSz);
-            string filepath = KATALOG_MY_PROGRAM + "\\ScreenShot"+ timeNow + ".bmp" ;
+            string filepath = globalParam.DirectoryOfMyProgram + "\\ScreenShot"+ timeNow + ".bmp" ;
             screenshot.Save(filepath);    
         }
 
