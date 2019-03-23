@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-
-namespace OpenGEWindows
+﻿namespace OpenGEWindows
 {
     public class BHDialogAmerica2 : BHDialog
     {

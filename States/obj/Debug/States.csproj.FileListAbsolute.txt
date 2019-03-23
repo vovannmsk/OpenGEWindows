@@ -9,3 +9,18 @@ C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка но�
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\States\obj\Debug\States.csprojResolveAssemblyReference.cache
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\States\obj\Debug\States.dll
 C:\Users\VovkaNewComp\Documents\Visual Studio 2013\Projects\Америка новый эксперимент\OpenGEWindows\States\obj\Debug\States.pdb
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Debug\States.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Debug\States.pdb
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Debug\GEBot.Data.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Debug\OpenGEWindows.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Debug\EntityFramework.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Debug\GEBot.Data.pdb
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Debug\GEBot.Data.dll.config
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Debug\OpenGEWindows.pdb
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Debug\OpenGEWindows.dll.config
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\bin\Debug\EntityFramework.xml
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\obj\Debug\States.csprojAssemblyReference.cache
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\obj\Debug\States.csproj.CoreCompileInputs.cache
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\obj\Debug\States.csproj.CopyComplete
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\obj\Debug\States.dll
+C:\Users\VovkaA6\source\repos\Америка новый эксперимент\OpenGEWindows\States\obj\Debug\States.pdb

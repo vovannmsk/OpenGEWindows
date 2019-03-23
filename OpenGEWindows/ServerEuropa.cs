@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
 using System.Runtime.InteropServices;
-//using GEBot.Data;
 using GEBot.Data;
 
 
@@ -360,8 +358,11 @@ namespace OpenGEWindows
             #endregion
 
 
-        }  
+        }
 
+        public ServerEuropa(int numberOfWindow) : this(new botWindow(numberOfWindow))
+        {
+        }
 
         // ===============================  Методы ==================================================
 

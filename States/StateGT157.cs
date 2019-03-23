@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenGEWindows;
+﻿using OpenGEWindows;
 
 
 namespace States
@@ -12,11 +7,8 @@ namespace States
     {
         private botWindow botwindow;
         private Server server;
-        private Town town;
         private KatoviaMarket market;
         private Dialog dialog;
-        private DialogFactory dialogFactory;
-        private KatoviaMarketFactory marketFactory;
         private int tekStateInt;
 
         public StateGT157()
@@ -29,10 +21,9 @@ namespace States
             this.botwindow = botwindow;
             ServerFactory serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            this.town = server.getTown();
-            this.marketFactory = new KatoviaMarketFactory(botwindow);
+            KatoviaMarketFactory marketFactory = new KatoviaMarketFactory(botwindow);
             this.market = marketFactory.createMarket();
-            this.dialogFactory = new DialogFactory(botwindow);
+            DialogFactory dialogFactory = new DialogFactory(botwindow);
             this.dialog = dialogFactory.createDialog();
 
             this.tekStateInt = 157;
@@ -72,7 +63,8 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            dialog.PressOkButton(2);
+            market.ClickSellAndOkInTrader();
+            //dialog.PressOkButton(2);
 
         }
 

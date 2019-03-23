@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GEBot.Data
+﻿namespace GEBot.Data
 {
+
+    /// <summary>
+    /// Параметры ботов, зависящие от сервера (сингапур, америка или европа)
+    /// </summary>
     public abstract class ServerParam
     {
         protected GlobalParam globalParam;
 
         #region параметры, зависящие от сервера
 
-        protected string pathClient;
-        protected bool isActiveServer;
+        protected string pathClient;    //путь к клиенту игры
+        protected bool isActiveServer;  //активен ли данный сервер сейчас или профилактика 
 
         public string PathClient { get => pathClient; }
         public bool IsActiveServer { get => isActiveServer;  }

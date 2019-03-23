@@ -10,6 +10,7 @@ namespace States
         private botWindow botwindow;
         private Server server;
         private Market market;
+        private KatoviaMarket kMarket;
         private Pet pet;
         private Otit otit;
         private MM mm;
@@ -33,6 +34,8 @@ namespace States
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             MarketFactory marketFactory = new MarketFactory(botwindow);
             this.market = marketFactory.createMarket();
+            KatoviaMarketFactory kMarketFactory = new KatoviaMarketFactory(botwindow);
+            this.kMarket = kMarketFactory.createMarket();
             PetFactory petFactory = new PetFactory(botwindow);
             this.pet = petFactory.createPet();
             OtitFactory otitFactory = new OtitFactory(botwindow);
@@ -412,6 +415,9 @@ namespace States
             if (pet.isOpenMenuPet()) return 4;                //если открыто меню с петом, значит пет не выпущен
             if (market.isSale()) return 7;                     // если бот стоит в магазине на странице входа
             if (market.isSale2()) return 8;                         //если зависли в магазине на любой закладке
+            if (kMarket.isSale()) return 12;                     // если бот стоит в магазине на странице входа
+            if (kMarket.isClickSell()) return 13;                //если зависли в катовичевском магазине на закладке Sell
+            if (kMarket.isSaleIn()) return 14;                //если зависли в катовичевском магазине на закладке BUY 
             if (server.isBarack()) return 9;                        //если стоят в бараке     
             if (server.isBarackTeamSelection()) return 9;           //если стоят в бараке  на странице выбора группы
             if (server.isTown()) return 10;                       //если стоят в городе
@@ -452,6 +458,12 @@ namespace States
                 case 10: driver.StateExitFromTown();          // 12-14 (GotoEnd)
                     break;
                 case 11: SellProduct();                     // выставление товаров на рынок
+                    break;
+                case 12: driver.StateSelling2();          //продажа в катовичевском магазине      
+                    break;
+                case 13: driver.StateSelling4();          //продажа в катовичевском магазине
+                    break;
+                case 14: driver.StateSelling3();          //продажа в катовичевском магазине   
                     break;
             }
         }
@@ -695,27 +707,33 @@ namespace States
             //Server server = new ServerAmerica2(botwindow);
 
             //BHDialog BHdialog = new BHDialogSing(botwindow);
-            
+            //Dialog dialog = new DialogSing(botwindow);
+            //bool ttt = dialog.isDialog();
+            //MessageBox.Show(" " + ttt);
 
+            KatoviaMarket kMarket = new KatoviaMarketSing (botwindow);
             //Market market = new MarketSing(botwindow);
 
-//            Pet pet = new PetAmerica2(botwindow);
-            Pet pet = new PetSing(botwindow);
+            //            Pet pet = new PetAmerica2(botwindow);
+            //Pet pet = new PetSing(botwindow);
             //MessageBox.Show(" " + pet.isOpenMenuPet());
 
             //Otit otit = new OtitSing(botwindow);
             //MessageBox.Show(" " + server.is248Items());
 
             //server.MissionNotFoundBH();
-            bool iscolor1 = pet.isActivePet();
-            MessageBox.Show(" " + iscolor1);
+            //bool iscolor1 = pet.isActivePet();
+            //MessageBox.Show(" " + iscolor1);
+
+            //bool iscolor1 = kMarket.isSaleIn();
+            //MessageBox.Show(" " + iscolor1);
 
             //bool iscolor1 = market.isClickPurchase();
             //MessageBox.Show(" " + iscolor1);
             //bool iscolor2 = market.isClickSell();
             //MessageBox.Show(" " + iscolor2);
 
-            //bool iscolor1 = server.isBoxOverflow();
+            //bool iscolor1 = server.isWork();
             //MessageBox.Show(" " + iscolor1);
             //bool ttt;
             //ttt = BHdialog.isBottonGateBH();
@@ -753,7 +771,7 @@ namespace States
 
             //server.TurnL(1); 
             //server.TurnUp();
-            
+
 
 
             int xx, yy;
@@ -771,8 +789,8 @@ namespace States
 //            PointColor point1 = new PointColor(152 - 5 + xx, 250 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в Катовии
 
             PointColor point1 = new PointColor(700 - 30 + xx, 500 - 30 + yy, 1, 1);
-            PointColor point2 = new PointColor(493 - 5 + xx, 310 - 5 + yy, 1, 1);
-            PointColor point3 = new PointColor(494 - 5 + xx, 309 - 5 + yy, 1, 1);
+            PointColor point2 = new PointColor(291 - 5 + xx, 469 - 5 + yy, 1, 1);
+            PointColor point3 = new PointColor(291 - 5 + xx, 470 - 5 + yy, 1, 1);
 
 
             color1 = point1.GetPixelColor();

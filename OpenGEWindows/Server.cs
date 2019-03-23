@@ -7,7 +7,6 @@ using System.Threading;
 using System.Drawing;
 using GEBot.Data;
     
-//using GEBot.Data;
 
 namespace OpenGEWindows
 {
@@ -827,7 +826,8 @@ namespace OpenGEWindows
         /// <param name="number"> номер пункта меню </param>
         public void systemMenu(int number)
         {
-            if (!isOpenTopMenu(13)) TopMenu(13);
+            //if (!isOpenTopMenu(13))
+                TopMenu(13);
             Pause(1000);
             iPoint pointCurrentMenu = new Point(685 - 5 + xx, 288 - 5 + (number - 1) * 30 + yy);
             pointCurrentMenu.PressMouse();

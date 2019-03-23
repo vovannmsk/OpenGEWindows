@@ -20,8 +20,10 @@ namespace OpenGEWindows
 
             #region Shop
 
-            this.pointIsSale1 = new PointColor(843 - 5 + xx, 622 - 5 + yy, 7900000, 5);              // не используется
-            this.pointIsSale2 = new PointColor(843 - 5 + xx, 623 - 5 + yy, 7900000, 5);
+            this.pointIsSale1 = new PointColor(907 - 5 + xx, 677 - 5 + yy, 7700000, 5);              // не используется
+            this.pointIsSale2 = new PointColor(907 - 5 + xx, 678 - 5 + yy, 7700000, 5);
+            this.pointIsSale3 = new PointColor(291 - 5 + xx, 469 - 5 + yy, 4600000, 5);     //филосовские камни         
+            this.pointIsSale4 = new PointColor(291 - 5 + xx, 470 - 5 + yy, 4600000, 5);
 
             this.pointIsSaleIn1 = new PointColor(843 - 5 + xx, 622 - 5 + yy, 7900000, 5);            // для isSale2
             this.pointIsSaleIn2 = new PointColor(843 - 5 + xx, 623 - 5 + yy, 7900000, 5);

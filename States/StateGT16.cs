@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenGEWindows;
+﻿using OpenGEWindows;
 
 
 namespace States
@@ -70,12 +65,12 @@ namespace States
 
             //============ выбор канала ===========
             botwindow.SelectChannel();
-            botwindow.Pause(1000);
+            //botwindow.Pause(1000);
 
             //============ выход в город  ===========
             server.NewPlace();                //начинаем в ребольдо  
 
-            botwindow.ToMoveMouse();             //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
+            botwindow.ToMoveMouse();          //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
 
             botwindow.Pause(2000);
             int i = 0;

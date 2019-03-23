@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using GEBot.Data;
@@ -496,6 +495,9 @@ namespace OpenGEWindows
             #endregion
         }
 
+        public ServerSing(int numberOfWindow) : this(new botWindow(numberOfWindow))
+        {
+        }
 
         //==================================== Методы ===================================================
 
@@ -595,55 +597,16 @@ namespace OpenGEWindows
         {
             #region для песочницы
 
-            //iPoint pointOkSafeIP = new Point(966, 582);
-            //iPoint pointOkReklamaSteam = new Point(1251, 894);
-            //iPoint pointRunGE = new Point(1263, 584);
-            //iPoint pointCloseSteam = new Point(1897, 397);
-
             //запускаем steam в песочнице
             Process process = new Process();
             process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
             process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient + " -applaunch 663090 -silent";
             process.Start();
-            //while ((!isWhiteWindow()) && (!isSafeIP()))
-            //{
-            //    Pause(2000);
-            //}
-            //if (isSafeIP())
-            //{
-            //    pointOkSafeIP.PressMouseL();       //тыкаем в Ок и закрываем сообщение об ошибке
-            //}
-            Pause(30000);
-
-            //if (isSafeIP())
-            //{
-            //    pointOkSafeIP.PressMouse();       //тыкаем в Ок и закрываем сообщение об ошибке
-            //}
-
-            //int i = 0;
-            //while (true)
-            //{
-            //    Pause(2000);
-            //    if (this.isSafeIP())
-            //    {
-            //        pointOkSafeIP.PressMouseL();       //тыкаем в Ок и закрываем сообщение об ошибке
-            //        break;
-            //    }
-            //    i++; if (i > 50) break;
-            //}
 
 
-            //if (isReklamaSteam())
-            //{
-            //    pointOkReklamaSteam.PressMouseL();   //закрываем рекламу стим
-            //    Pause(5000);
-            //}
+            Pause(60000);
 
-            //pointRunGE.PressMouseL();            //нажимаем на кнопку запуска ГЭ
-            //Pause(1000);
 
-            //pointCloseSteam.PressMouseL();      //закрываем крестиком окно Steam и ждем открытия окна ГЭ
-            //Pause(60000);
 
             #endregion
 

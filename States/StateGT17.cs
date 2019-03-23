@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenGEWindows;
+﻿using OpenGEWindows;
 
 
 namespace States
@@ -70,7 +65,7 @@ namespace States
 
             int i = 0;
             while ((!server.isWork()) && (i < 30))         //ожидание загрузки места работы
-            { botwindow.Pause(500); i++; }
+            { botwindow.Pause(1000); i++; }
         }
 
         /// <summary>

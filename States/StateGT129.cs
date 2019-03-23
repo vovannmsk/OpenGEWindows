@@ -1,5 +1,4 @@
-﻿
-using OpenGEWindows;
+﻿using OpenGEWindows;
 using GEBot.Data;
 
 

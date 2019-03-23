@@ -12,6 +12,8 @@ namespace OpenGEWindows
 
         protected iPointColor pointIsSale1;
         protected iPointColor pointIsSale2;
+        protected iPointColor pointIsSale3;
+        protected iPointColor pointIsSale4;
         protected iPointColor pointIsSaleIn1;
         protected iPointColor pointIsSaleIn2;
         protected iPointColor pointIsClickSell1;
@@ -75,22 +77,39 @@ namespace OpenGEWindows
         #region Shop
 
         /// <summary>
-        /// Кликаем на строчку Sell и кнопку "Ok" в магазине   
+        /// проверяет, находится ли данное окно на входе в магазин (но в кармане филосовские камни)
+        /// </summary>
+        /// <returns> true, если находится в магазине </returns>
+        public bool isSalePhiloStone()
+        {
+            return ((pointIsSale3.isColor()) && (pointIsSale4.isColor()));
+        }
+
+
+        /// <summary>
+        /// действия по входу в магазин до закладки "Purchase"
         /// </summary>
         public void ClickSellAndOkInTrader()
         {
-            dialog.PressStringDialog(1);  ////========= тыкаем в "Sell/Buy Items" ======================================
-            dialog.PressOkButton(1);      ////========= тыкаем в OK =======================
+            if (isSalePhiloStone())
+            {
+                dialog.PressStringDialog(1);
+                dialog.PressOkButton(1);
+            }
+            else
+            {
+                dialog.PressOkButton(2);
+            }
         }
 
         /// <summary>
-        /// проверяет, находится ли данное окно в магазине (а точнее на странице входа в магазин)                              ===================== не используется
+        /// проверяет, находится ли данное окно в магазине (а точнее на странице входа в магазин)  
         /// </summary>
         /// <returns> true, если находится в магазине </returns>
         public bool isSale()
         {
             return ((pointIsSale1.isColor()) && (pointIsSale2.isColor()));
-        }                                                                                               // ===================== не используется
+        }                                                                                       
 
         /// <summary>
         /// проверяет, находится ли данное окно внутри магазина (на закладке BUY или SELL)                                       

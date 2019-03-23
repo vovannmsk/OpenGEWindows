@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenGEWindows;
+﻿using OpenGEWindows;
 
 namespace States
 {
@@ -428,7 +423,7 @@ namespace States
                 KatoviaMarketFactory marketFactory = new KatoviaMarketFactory(botwindow);
                 KatoviaMarket kMarket = marketFactory.createMarket();
                 if (kMarket.isSale())                                                            //проверяем, находимся ли в магазине
-                    StateDriverRun(new StateGT157(botwindow), new StateGT162(botwindow));
+                    StateDriverRun(new StateGT157(botwindow), new StateGT161(botwindow));
 
             }
             else
@@ -441,6 +436,32 @@ namespace States
             }
            
         }
+
+        /// <summary>
+        /// перевод из состояния 157 (в магазине Катовии на странице входа) в состояние 162 (всё продано, в логауте)    
+        /// </summary>
+        public void StateSelling2()
+        {
+            StateDriverRun(new StateGT157(botwindow), new StateGT162(botwindow));
+        }
+
+        /// <summary>
+        /// перевод из состояния 158 (в магазине в Катовии на странице BUY) в состояние 162 (всё продано, в логауте)    
+        /// </summary>
+        public void StateSelling3()
+        {
+            StateDriverRun(new StateGT158(botwindow), new StateGT162(botwindow));
+        }
+
+        /// <summary>
+        /// перевод из состояния 160 (в магазине в Катовии на странице SELL) в состояние 162 (всё продано, в логауте)    
+        /// </summary>
+        public void StateSelling4()
+        {
+            StateDriverRun(new StateGT160(botwindow), new StateGT162(botwindow));
+        }
+
+
 
         /// <summary>
         /// создание новой семьи, выход в ребольдо, получение и надевание брони 35 лвл, выполнение квеста Доминго, разговор с Линдоном, получение Кокошки и еды 100 шт.

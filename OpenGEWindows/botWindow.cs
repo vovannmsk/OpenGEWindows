@@ -1,10 +1,9 @@
 ﻿using System;
-using System.IO;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Threading;
 using GEBot.Data;
-//using GEBot.Data;
+
 
 namespace OpenGEWindows
 {
@@ -380,9 +379,11 @@ namespace OpenGEWindows
         /// </summary>
         public void ReOpenWindow()
         {
-            bool result = isHwnd();                           //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
-            if (!result)
+            bool result = isHwnd();   //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
+            if (!result)           
             {
+                //нет окна
+
                 OpenWindow();
 
                 ActiveWindow();
@@ -404,13 +405,14 @@ namespace OpenGEWindows
         public void OpenWindow()
         {
             server.runClient();    ///запускаем клиент игры и ждем 30 сек
+
             while (true)
             {
                 Pause(5000);
-                UIntPtr hwnd = server.FindWindowGE();          //ищем окно ГЭ с нужными параметрами
-                if (hwnd != (UIntPtr)0) break;
+                UIntPtr hwnd = server.FindWindowGE();      //ищем окно ГЭ с нужными параметрами
+                if (hwnd != (UIntPtr)0) break;             //если найденное hwnd не равно нулю (то есть открыли ГЭ), то выходим из цикла
             }
-            Pause(20000);
+            Pause(5000);
 
             #region старый вариант метода
             //UIntPtr New_HWND_GE, current_HWND_GE;
@@ -655,20 +657,23 @@ namespace OpenGEWindows
 
             // ============= нажимаем на первого перса (обязательно на точку ниже открытой карты)
             FirstHero();
+            Pause(500);  //1000
             pointFirstHero.PressMouseL();
-            Pause(300);  //1000
+            Pause(500);  //1000
             //PressMouseL(databot.TriangleX[0], databot.TriangleY[0]);
 
             // ============= нажимаем на третьего перса (обязательно на точку ниже открытой карты)
             ThirdHero();
+            Pause(500);  //1000
             pointThirdHero.PressMouseL();
-            Pause(300);
+            Pause(500);
             //PressMouseL(databot.TriangleX[2], databot.TriangleY[2]);
 
             // ============= нажимаем на второго перса (обязательно на точку ниже открытой карты)
             SecondHero();
+            Pause(500);  //1000
             pointSecondHero.PressMouseL();
-            Pause(300);
+            Pause(500);
             //PressMouseL(databot.TriangleX[1], databot.TriangleY[1]);
 
             // ============= закрыть карту через Esc =======================
@@ -685,8 +690,9 @@ namespace OpenGEWindows
             //iPoint pointFirstHeroR = new Point(177 - 5 + databot.X, 669 - 5 + databot.Y);    // 182, 664
             iPoint pointFirstHeroUp = new Point(155 - 5 + databot.X, 640 - 5 + databot.Y);       // нижняя точка
             iPoint pointFirstHeroDown = new Point(155 - 5 + databot.X, 682 - 5 + databot.Y);     // верхняя точка
-            pointFirstHeroDown.PressMouseL();  //вместо двух строк поставил одну
-
+            pointFirstHeroDown.PressMouseL();  
+            pointFirstHeroDown.PressMouseL();
+            Pause(500);
             pointFirstHeroUp.PressMouseL();
         }
 
@@ -697,11 +703,13 @@ namespace OpenGEWindows
         {
             //iPoint pointSecondHeroL = new Point(425 - 5 + databot.X, 640 - 5 + databot.Y);    // 420, 635
             //iPoint pointSecondHeroR = new Point(425 - 5 + databot.X, 682 - 5 + databot.Y);    // 420, 664
-            iPoint pointSecondHeroL = new Point(408 - 5 + databot.X, 640 - 5 + databot.Y);    // 420, 635
-            iPoint pointSecondHeroR = new Point(408 - 5 + databot.X, 682 - 5 + databot.Y);    // 420, 664
+            iPoint pointSecondHeroUp = new Point(408 - 5 + databot.X, 640 - 5 + databot.Y);    // 420, 635
+            iPoint pointSecondHeroDown = new Point(408 - 5 + databot.X, 682 - 5 + databot.Y);    // 420, 664
 
-            pointSecondHeroR.PressMouseL();  //вместо двух строк поставил одну
-            pointSecondHeroL.PressMouseL();
+            pointSecondHeroDown.PressMouseL();
+            pointSecondHeroDown.PressMouseL();
+            Pause(500);
+            pointSecondHeroUp.PressMouseL();
         }
 
         /// <summary>
@@ -711,11 +719,13 @@ namespace OpenGEWindows
         {
             //iPoint pointThirdHeroL = new Point(675 - 5 + databot.X, 640 - 5 + databot.Y);    // 670, 635
             //iPoint pointThirdHeroR = new Point(675 - 5 + databot.X, 669 - 5 + databot.Y);    // 670, 664
-            iPoint pointThirdHeroL = new Point(663 - 5 + databot.X, 640 - 5 + databot.Y);    // 670, 635
-            iPoint pointThirdHeroR = new Point(663 - 5 + databot.X, 682 - 5 + databot.Y);    // 670, 664
+            iPoint pointThirdHeroUp = new Point(663 - 5 + databot.X, 640 - 5 + databot.Y);    // 670, 635
+            iPoint pointThirdHeroDown = new Point(663 - 5 + databot.X, 682 - 5 + databot.Y);    // 670, 664
 
-            pointThirdHeroR.PressMouseL();  //вместо двух строк поставил одну
-            pointThirdHeroL.PressMouseL();
+            pointThirdHeroDown.PressMouseL();
+            pointThirdHeroDown.PressMouseL();
+            Pause(500);
+            pointThirdHeroUp.PressMouseL();
         }
 
         /// <summary>
@@ -915,8 +925,11 @@ namespace OpenGEWindows
         {
             iPoint pointChoiceOfChannel = new Point(125 + databot.X, 660 + (databot.Kanal - 1) * 15 + server.sdvig() + databot.Y);    //переход на нужный канал в казарме
             iPoint pointButtonSelectChannel = new Point(125 + databot.X, 705 + databot.Y); //   125, 705);
+
             pointButtonSelectChannel.PressMouseL();
+            Pause(500);
             pointChoiceOfChannel.PressMouseL();
+            Pause(500);
         }
 
         /// <summary>

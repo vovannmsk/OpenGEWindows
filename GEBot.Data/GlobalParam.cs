@@ -3,7 +3,9 @@ using System.IO;
 
 namespace GEBot.Data
 {
-
+    /// <summary>
+    /// Глобальные параметры, настройки. Действуют для ВСЕХ ботов
+    /// </summary>
     public class GlobalParam
     {
         private int nintendo;                           // как зачиповать оружие

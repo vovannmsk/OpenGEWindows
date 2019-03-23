@@ -1,8 +1,6 @@
 ﻿using System;
-using System.IO;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
-//using GEBot.Data;
 using GEBot.Data;
 
 
@@ -516,6 +514,10 @@ namespace OpenGEWindows
 
         }
 
+        public ServerAmerica2(int numberOfWindow) : this(new botWindow(numberOfWindow))
+        {
+        }
+
 
         //==================================== Методы ===================================================
 
@@ -553,7 +555,7 @@ namespace OpenGEWindows
             process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient;
             process.Start();
 
-            Pause(30000);
+            Pause(60000);
 
 
             #endregion

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenGEWindows;
+﻿using OpenGEWindows;
 
 
 namespace States
@@ -14,8 +9,8 @@ namespace States
         private Server server;
         private Town town;
         private ServerFactory serverFactory;
-        private Market market;
-        private MarketFactory marketFactory;
+        private KatoviaMarket market;
+        private KatoviaMarketFactory kMarketFactory;
         private int tekStateInt;
 
         public StateGT156()
@@ -29,8 +24,8 @@ namespace States
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.town = server.getTown();
-            this.marketFactory = new MarketFactory(botwindow);
-            this.market = marketFactory.createMarket();
+            this.kMarketFactory = new KatoviaMarketFactory(botwindow);
+            this.market = kMarketFactory.createMarket();
             this.tekStateInt = 156;
         }
 
@@ -69,10 +64,14 @@ namespace States
         public void run()                // переход к следующему состоянию
         {
             // ============= тыкаем в голову торговца, чтобы войти в магазин  ===================================================
+            botwindow.Pause(3000);         //ждем пока подгрузятся все объекты на карте
+
             town.Click_ToHeadTrader();
 
+            botwindow.Pause(5000);
+
             int i = 0;
-            while ((!market.isSale()) && (i < 15))        //время, чтобы загрузился магазин
+            while ((!market.isSale()) && (i < 30))        //время, чтобы загрузился магазин
             { botwindow.Pause(500); i++; }
 
             //botwindow.Pause(5000);   //время, чтобы загрузился магазин
@@ -107,7 +106,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT157(botwindow);  //, gototrade);
+            return new StateGT157(botwindow);  
         }
 
         /// <summary>

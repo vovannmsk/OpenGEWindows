@@ -3,6 +3,9 @@ using System.IO;
 
 namespace GEBot.Data
 {
+    /// <summary>
+    /// Индивидуальные параметры конкретного бота
+    /// </summary>
     public class BotParam
     {
         private string directoryOfMyProgram;

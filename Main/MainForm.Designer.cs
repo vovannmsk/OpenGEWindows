@@ -53,13 +53,21 @@
             this.alchemy = new System.Windows.Forms.Button();
             this.BH = new System.Windows.Forms.Button();
             this.labelEnchanting = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfAccouts)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonReOpenWindowGE
             // 
             this.buttonReOpenWindowGE.BackColor = System.Drawing.Color.Orange;
-            this.buttonReOpenWindowGE.Location = new System.Drawing.Point(10, 50);
+            this.buttonReOpenWindowGE.Location = new System.Drawing.Point(9, 15);
             this.buttonReOpenWindowGE.Name = "buttonReOpenWindowGE";
             this.buttonReOpenWindowGE.Size = new System.Drawing.Size(170, 35);
             this.buttonReOpenWindowGE.TabIndex = 1;
@@ -80,7 +88,7 @@
             // buttonSuperSell
             // 
             this.buttonSuperSell.BackColor = System.Drawing.Color.Aqua;
-            this.buttonSuperSell.Location = new System.Drawing.Point(10, 90);
+            this.buttonSuperSell.Location = new System.Drawing.Point(9, 71);
             this.buttonSuperSell.Name = "buttonSuperSell";
             this.buttonSuperSell.Size = new System.Drawing.Size(170, 35);
             this.buttonSuperSell.TabIndex = 3;
@@ -90,7 +98,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(10, 297);
+            this.button1.Location = new System.Drawing.Point(6, 67);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(170, 35);
             this.button1.TabIndex = 5;
@@ -101,7 +109,7 @@
             // button_StandUp
             // 
             this.button_StandUp.BackColor = System.Drawing.Color.PaleGreen;
-            this.button_StandUp.Location = new System.Drawing.Point(190, 50);
+            this.button_StandUp.Location = new System.Drawing.Point(200, 71);
             this.button_StandUp.Name = "button_StandUp";
             this.button_StandUp.Size = new System.Drawing.Size(170, 35);
             this.button_StandUp.TabIndex = 20;
@@ -112,7 +120,7 @@
             // buttonWarning
             // 
             this.buttonWarning.BackColor = System.Drawing.Color.SkyBlue;
-            this.buttonWarning.Location = new System.Drawing.Point(190, 10);
+            this.buttonWarning.Location = new System.Drawing.Point(200, 15);
             this.buttonWarning.Name = "buttonWarning";
             this.buttonWarning.Size = new System.Drawing.Size(170, 35);
             this.buttonWarning.TabIndex = 22;
@@ -124,7 +132,7 @@
             // 
             this.buttonGotoTradeTest.BackColor = System.Drawing.Color.White;
             this.buttonGotoTradeTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonGotoTradeTest.Location = new System.Drawing.Point(190, 90);
+            this.buttonGotoTradeTest.Location = new System.Drawing.Point(9, 133);
             this.buttonGotoTradeTest.Name = "buttonGotoTradeTest";
             this.buttonGotoTradeTest.Size = new System.Drawing.Size(170, 35);
             this.buttonGotoTradeTest.TabIndex = 45;
@@ -135,7 +143,7 @@
             // button5
             // 
             this.button5.BackColor = System.Drawing.Color.LightCoral;
-            this.button5.Location = new System.Drawing.Point(10, 419);
+            this.button5.Location = new System.Drawing.Point(17, 96);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(170, 34);
             this.button5.TabIndex = 48;
@@ -146,7 +154,7 @@
             // buttonNewAcc
             // 
             this.buttonNewAcc.BackColor = System.Drawing.Color.Pink;
-            this.buttonNewAcc.Location = new System.Drawing.Point(10, 338);
+            this.buttonNewAcc.Location = new System.Drawing.Point(17, 15);
             this.buttonNewAcc.Name = "buttonNewAcc";
             this.buttonNewAcc.Size = new System.Drawing.Size(170, 35);
             this.buttonNewAcc.TabIndex = 49;
@@ -157,7 +165,7 @@
             // RunToCrater
             // 
             this.RunToCrater.BackColor = System.Drawing.Color.Lime;
-            this.RunToCrater.Location = new System.Drawing.Point(190, 338);
+            this.RunToCrater.Location = new System.Drawing.Point(193, 56);
             this.RunToCrater.Name = "RunToCrater";
             this.RunToCrater.Size = new System.Drawing.Size(170, 35);
             this.RunToCrater.TabIndex = 50;
@@ -168,7 +176,7 @@
             // ButtonOpenWindow
             // 
             this.ButtonOpenWindow.BackColor = System.Drawing.Color.Gold;
-            this.ButtonOpenWindow.Location = new System.Drawing.Point(190, 297);
+            this.ButtonOpenWindow.Location = new System.Drawing.Point(193, 15);
             this.ButtonOpenWindow.Name = "ButtonOpenWindow";
             this.ButtonOpenWindow.Size = new System.Drawing.Size(170, 35);
             this.ButtonOpenWindow.TabIndex = 52;
@@ -180,7 +188,7 @@
             // 
             this.sharpening.BackColor = System.Drawing.Color.BlueViolet;
             this.sharpening.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.sharpening.Location = new System.Drawing.Point(190, 256);
+            this.sharpening.Location = new System.Drawing.Point(200, 67);
             this.sharpening.Name = "sharpening";
             this.sharpening.Size = new System.Drawing.Size(170, 35);
             this.sharpening.TabIndex = 49;
@@ -192,7 +200,7 @@
             // 
             this.Nintendo.BackColor = System.Drawing.Color.Chocolate;
             this.Nintendo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Nintendo.Location = new System.Drawing.Point(10, 256);
+            this.Nintendo.Location = new System.Drawing.Point(198, 123);
             this.Nintendo.Name = "Nintendo";
             this.Nintendo.Size = new System.Drawing.Size(170, 35);
             this.Nintendo.TabIndex = 53;
@@ -204,7 +212,7 @@
             // 
             this.TransferVis.BackColor = System.Drawing.Color.Green;
             this.TransferVis.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.TransferVis.Location = new System.Drawing.Point(190, 418);
+            this.TransferVis.Location = new System.Drawing.Point(193, 136);
             this.TransferVis.Name = "TransferVis";
             this.TransferVis.Size = new System.Drawing.Size(170, 35);
             this.TransferVis.TabIndex = 54;
@@ -215,7 +223,7 @@
             // PureOtite
             // 
             this.PureOtite.BackColor = System.Drawing.Color.Silver;
-            this.PureOtite.Location = new System.Drawing.Point(10, 379);
+            this.PureOtite.Location = new System.Drawing.Point(17, 56);
             this.PureOtite.Name = "PureOtite";
             this.PureOtite.Size = new System.Drawing.Size(170, 34);
             this.PureOtite.TabIndex = 55;
@@ -227,7 +235,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 140);
+            this.label1.Location = new System.Drawing.Point(204, 139);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 20);
             this.label1.TabIndex = 56;
@@ -236,7 +244,7 @@
             // numberOfAccouts
             // 
             this.numberOfAccouts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numberOfAccouts.Location = new System.Drawing.Point(137, 138);
+            this.numberOfAccouts.Location = new System.Drawing.Point(327, 137);
             this.numberOfAccouts.Name = "numberOfAccouts";
             this.numberOfAccouts.Size = new System.Drawing.Size(43, 26);
             this.numberOfAccouts.TabIndex = 57;
@@ -246,7 +254,7 @@
             // 
             this.GoldenEggFruit.BackColor = System.Drawing.Color.Gold;
             this.GoldenEggFruit.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.GoldenEggFruit.Location = new System.Drawing.Point(190, 379);
+            this.GoldenEggFruit.Location = new System.Drawing.Point(193, 97);
             this.GoldenEggFruit.Name = "GoldenEggFruit";
             this.GoldenEggFruit.Size = new System.Drawing.Size(170, 34);
             this.GoldenEggFruit.TabIndex = 58;
@@ -257,7 +265,7 @@
             // undressing
             // 
             this.undressing.BackColor = System.Drawing.Color.Peru;
-            this.undressing.Location = new System.Drawing.Point(10, 459);
+            this.undressing.Location = new System.Drawing.Point(17, 136);
             this.undressing.Name = "undressing";
             this.undressing.Size = new System.Drawing.Size(170, 35);
             this.undressing.TabIndex = 59;
@@ -268,7 +276,7 @@
             // alchemy
             // 
             this.alchemy.BackColor = System.Drawing.Color.Coral;
-            this.alchemy.Location = new System.Drawing.Point(10, 9);
+            this.alchemy.Location = new System.Drawing.Point(6, 6);
             this.alchemy.Name = "alchemy";
             this.alchemy.Size = new System.Drawing.Size(170, 35);
             this.alchemy.TabIndex = 60;
@@ -279,7 +287,7 @@
             // BH
             // 
             this.BH.BackColor = System.Drawing.Color.ForestGreen;
-            this.BH.Location = new System.Drawing.Point(190, 131);
+            this.BH.Location = new System.Drawing.Point(202, 6);
             this.BH.Name = "BH";
             this.BH.Size = new System.Drawing.Size(170, 35);
             this.BH.TabIndex = 61;
@@ -291,41 +299,86 @@
             // 
             this.labelEnchanting.AutoSize = true;
             this.labelEnchanting.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelEnchanting.Location = new System.Drawing.Point(7, 201);
+            this.labelEnchanting.Location = new System.Drawing.Point(16, 129);
             this.labelEnchanting.MaximumSize = new System.Drawing.Size(300, 20);
             this.labelEnchanting.Name = "labelEnchanting";
             this.labelEnchanting.Size = new System.Drawing.Size(154, 20);
             this.labelEnchanting.TabIndex = 63;
             this.labelEnchanting.Text = "tttttttttttttrrrrrrrrrrrrrrrr";
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(386, 210);
+            this.tabControl1.TabIndex = 64;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.SeaShell;
+            this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage1.Controls.Add(this.buttonReOpenWindowGE);
+            this.tabPage1.Controls.Add(this.buttonWarning);
+            this.tabPage1.Controls.Add(this.button_StandUp);
+            this.tabPage1.Controls.Add(this.buttonSuperSell);
+            this.tabPage1.Controls.Add(this.buttonGotoTradeTest);
+            this.tabPage1.Controls.Add(this.numberOfAccouts);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(378, 184);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Основные функции";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.Bisque;
+            this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage2.Controls.Add(this.alchemy);
+            this.tabPage2.Controls.Add(this.labelEnchanting);
+            this.tabPage2.Controls.Add(this.BH);
+            this.tabPage2.Controls.Add(this.sharpening);
+            this.tabPage2.Controls.Add(this.Nintendo);
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(378, 184);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Доп. функции";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.LightCyan;
+            this.tabPage3.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage3.Controls.Add(this.ButtonOpenWindow);
+            this.tabPage3.Controls.Add(this.undressing);
+            this.tabPage3.Controls.Add(this.button5);
+            this.tabPage3.Controls.Add(this.GoldenEggFruit);
+            this.tabPage3.Controls.Add(this.buttonNewAcc);
+            this.tabPage3.Controls.Add(this.PureOtite);
+            this.tabPage3.Controls.Add(this.RunToCrater);
+            this.tabPage3.Controls.Add(this.TransferVis);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(378, 184);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Редкие функции";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(369, 238);
-            this.Controls.Add(this.labelEnchanting);
-            this.Controls.Add(this.BH);
-            this.Controls.Add(this.alchemy);
-            this.Controls.Add(this.undressing);
-            this.Controls.Add(this.GoldenEggFruit);
-            this.Controls.Add(this.numberOfAccouts);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.PureOtite);
-            this.Controls.Add(this.TransferVis);
-            this.Controls.Add(this.Nintendo);
-            this.Controls.Add(this.sharpening);
-            this.Controls.Add(this.ButtonOpenWindow);
-            this.Controls.Add(this.RunToCrater);
-            this.Controls.Add(this.buttonNewAcc);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.buttonGotoTradeTest);
-            this.Controls.Add(this.buttonWarning);
-            this.Controls.Add(this.button_StandUp);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonSuperSell);
+            this.ClientSize = new System.Drawing.Size(386, 210);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.labelInformation);
-            this.Controls.Add(this.buttonReOpenWindowGE);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -333,8 +386,13 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
-            //this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numberOfAccouts)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -365,6 +423,10 @@
         private System.Windows.Forms.Button alchemy;
         private System.Windows.Forms.Button BH;
         private System.Windows.Forms.Label labelEnchanting;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
     }
 }
 

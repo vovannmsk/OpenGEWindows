@@ -1,4 +1,6 @@
-﻿namespace OpenGEWindows
+﻿using GEBot.Data;
+
+namespace OpenGEWindows
 {
     /// <summary>
     /// класс для реализация паттерна "Фабрика" (семейство классов server: serverAmerica,serverEuropa,serverSing)
@@ -8,6 +10,7 @@
     {
         private Server server;
         private botWindow botwindow;
+        private string parametr;
 
         /// <summary>
         /// конструктор
@@ -16,10 +19,21 @@
         public ServerFactory(botWindow botwindow)
         {
             this.botwindow = botwindow;
+            this.parametr = botwindow.getParam();
         }
+
+        public ServerFactory(int numberOfWindow)
+        {
+            BotParam botParam = new BotParam(numberOfWindow);
+            this.parametr = botParam.Param;
+            this.botwindow = new botWindow(numberOfWindow);
+        }
+
+
+
         public Server create()
         { 
-            switch (botwindow.getParam())    
+            switch (parametr)    
             {
                 case "C:\\America\\":
                     server = new ServerAmerica(botwindow);

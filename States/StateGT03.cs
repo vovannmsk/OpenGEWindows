@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OpenGEWindows;
+﻿using OpenGEWindows;
 
 namespace States
 {
@@ -12,22 +7,29 @@ namespace States
         private botWindow botwindow;
         private Server server;
         private Town town;
-        private ServerFactory serverFactory;
-        private int tekStateInt;
+        private readonly int tekStateInt = 3;
 
         public StateGT03()
         {
 
         }
 
-        public StateGT03(botWindow botwindow)  //, GotoTrade gototrade)
+        public StateGT03(botWindow botwindow)  
         {
             this.botwindow = botwindow;
-            this.serverFactory = new ServerFactory(botwindow);
+            ServerFactory serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.town = server.getTown();
-//            this.gototrade = gototrade;
-            this.tekStateInt = 3;
+//            this.tekStateInt = 3;
+        }
+
+        public StateGT03(int numberOfWindow)
+        {
+            this.botwindow = new botWindow(numberOfWindow);
+            ServerFactory serverFactory = new ServerFactory(numberOfWindow);
+            this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            this.town = server.getTown();
+  //          this.tekStateInt = 3;
         }
 
         /// <summary>
