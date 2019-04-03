@@ -12,7 +12,7 @@ namespace Main
         private static uint NumberBlueButton = 0;       //сколько раз нажали голубую(красную) кнопку
         private const int MAX_NUMBER_OF_ACCOUNTS = 20;
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
-        private static string DataVersion = "23-03-2019 2";
+        private static string DataVersion = "04-04-2019";
         private int numberOfAcc;                                              // количество аккаунтов ботов
         GlobalParam globalParam;
 
@@ -430,8 +430,8 @@ namespace Main
                     {
                         driver.StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
                         check.Pause(2000);
-                        driver.StateGotoWork();                                           // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
                     }
+                    driver.StateGotoWork();            // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
 
                 }
             }

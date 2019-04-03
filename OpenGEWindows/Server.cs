@@ -1500,7 +1500,7 @@ namespace OpenGEWindows
         /// </summary>
         public void buttonExitFromBarack()
         {
-            pointButtonLogoutFromBarack.DoubleClickL();
+            pointButtonLogoutFromBarack.DoubleClickL(); 
             Pause(500);
 
         }

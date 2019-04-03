@@ -366,7 +366,7 @@ namespace OpenGEWindows
                 case 15526903:    // Elementium
                 case 1835187:     // экспертные чипы
                 case 14146476:    // solarion
-                case 16251642:    // growth booster
+//                case 16251642:    // growth booster
                 case 10992324:    // Шахматы 
                 case 7830683:     // Кожа улитки
                 case 5205119:     // Токен 1
@@ -388,7 +388,7 @@ namespace OpenGEWindows
                 case 5195666:     // Sedative
                 case 2635075:     // Elemental Sphere (патроны)
                 case 1585221:     // Dried Maroon
-                case 8633037:     // Pure Gold Bar
+ //               case 8633037:     // Pure Gold Bar
                 case 1527133:     // Armonia Coin
                 case 1023705:     // Violet's Vaucher
                 case 5002080:     // Карточка кэш персонажа 1
