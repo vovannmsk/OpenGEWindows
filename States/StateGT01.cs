@@ -68,7 +68,7 @@ namespace States
             { botwindow.Pause(1000); counter++; }
 
             botwindow.PressEscThreeTimes(); //29.04.17
-            botwindow.Pause(500);
+            botwindow.Pause(2500); //500
         }
 
         /// <summary>

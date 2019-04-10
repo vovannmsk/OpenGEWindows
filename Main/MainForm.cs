@@ -12,7 +12,7 @@ namespace Main
         private static uint NumberBlueButton = 0;       //сколько раз нажали голубую(красную) кнопку
         private const int MAX_NUMBER_OF_ACCOUNTS = 20;
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
-        private static string DataVersion = "04-04-2019";
+        private static string DataVersion = "10-04-2019";
         private int numberOfAcc;                                              // количество аккаунтов ботов
         GlobalParam globalParam;
 
@@ -421,18 +421,21 @@ namespace Main
                     DriversOfState driver = new DriversOfState(j);
                     //driver.StateGotoTradeAndWork();
 
-                    if (check.getNumberTeleport() >= 100)           // продажа в снежке
+                    if (check.getNumberTeleport() != 0)           // не нужно продаваться
                     {
-                        driver.StateGotoTradeKatovia();
-                        check.Pause(2000);
-                    }
-                    else                                               // продажа в городах
-                    {
-                        driver.StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
-                        check.Pause(2000);
-                    }
-                    driver.StateGotoWork();            // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                        if (check.getNumberTeleport() >= 100)           // продажа в снежке
+                        {
+                            driver.StateGotoTradeKatovia();
+                            check.Pause(2000);
+                        }
+                        else                                               // продажа в городах
+                        {
 
+                            driver.StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
+                            check.Pause(2000);
+                        }
+                        driver.StateGotoWork();            // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                    }
                 }
             }
         }

@@ -78,9 +78,9 @@ namespace States
             { 
                 botwindow.Pause(500); 
                 i++;
-                if (server.isTown())  break;    // проверяем успешный переход в город, проверка по ружью и дробовику
+                if (server.isTown())  break;    // проверяем успешный переход в город
             }
-            botwindow.Pause(7000);       //поставил по Колиной просьбе
+            botwindow.Pause(12000);       //поставил по Колиной просьбе
 
             botwindow.PressEscThreeTimes();
             botwindow.Pause(1000);

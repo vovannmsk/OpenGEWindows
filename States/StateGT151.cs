@@ -65,6 +65,7 @@ namespace States
             while ((!server.isTown()) && (counter < 30))                  
             { botwindow.Pause(1000); counter++; }
 
+            botwindow.Pause(12000);         //10-04-2019
             botwindow.PressEscThreeTimes(); //29.04.17
             botwindow.Pause(500);
         }
