@@ -164,38 +164,15 @@ namespace OpenGEWindows
         protected iPointColor pointisLiveHero1;      //если перс жив
         protected iPointColor pointisLiveHero2;
         protected iPointColor pointisLiveHero3;
-
         protected iPointColor pointisBoxOverflow1;
         protected iPointColor pointisBoxOverflow2;
-        //protected iPointColor pointisWork_RifleDot1;          //проверка стойки с ружьем (проверяются две точки )
-        //protected iPointColor pointisWork_RifleDot2;
-        //protected iPointColor pointisWork_ExpRifleDot1;       //проверка стойки с эксп ружьем (проверяются две точки )
-        //protected iPointColor pointisWork_ExpRifleDot2;
-        //protected iPointColor pointisWork_DrobDot1;           //проверка стойки с обычным дробашом (проверяются две точки )
-        //protected iPointColor pointisWork_DrobDot2;
-        //protected iPointColor pointisWork_VetDrobDot1;        //проверка стойки с вет дробашом (проверяются две точки )
-        //protected iPointColor pointisWork_VetDrobDot2;
-        //protected iPointColor pointisWork_ExpDrobDot1;        //проверка стойки с эксп дробашом (проверяются две точки )
-        //protected iPointColor pointisWork_ExpDrobDot2;
-        //protected iPointColor pointisWork_JainaDrobDot1;        //проверка стойки с эксп дробашом (проверяются две точки )
-        //protected iPointColor pointisWork_JainaDrobDot2;
-        //protected iPointColor pointisWork_VetSabreDot1;        //проверка стойки с вет саблей (проверяются две точки )
-        //protected iPointColor pointisWork_VetSabreDot2;
-        //protected iPointColor pointisWork_ExpSwordDot1;        //проверка стойки с exp мечом Дарья (проверяются две точки )
-        //protected iPointColor pointisWork_ExpSwordDot2;
-        //protected iPointColor pointisWork_VetPistolDot1;        //проверка стойки с вет пистолетом Outrange (проверяются две точки )
-        //protected iPointColor pointisWork_VetPistolDot2;
         protected iPoint pointSkillCook;
         protected iPointColor pointisBattleMode1;
         protected iPointColor pointisBattleMode2;
-        //protected iPointColor pointisWork_SightPistolDot1;
-        //protected iPointColor pointisWork_SightPistolDot2;
-        //protected iPointColor pointisWork_UnlimPistolDot1;
-        //protected iPointColor pointisWork_UnlimPistolDot2; 
-        //protected iPointColor pointisWork_ExpCannonDot1;
-        //protected iPointColor pointisWork_ExpCannonDot2;
         protected uint[] arrayOfColorsIsWork1;
         protected uint[] arrayOfColorsIsWork2;
+        protected iPointColor pointisBulletHalf;      //если патронов половина (желтый значок)
+        protected iPointColor pointisBulletOff;       //если патронов почти нет (красный значок)
 
         #endregion
 
@@ -433,6 +410,8 @@ namespace OpenGEWindows
         protected iPointColor pointisWild52;
         protected iPointColor pointisWild61;  //строка 6
         protected iPointColor pointisWild62;
+        protected iPointColor pointisWild71;  //строка 7
+        protected iPointColor pointisWild72;
 
         protected iPointColor pointisHuman41;  //строка 4
         protected iPointColor pointisHuman42;
@@ -440,6 +419,8 @@ namespace OpenGEWindows
         protected iPointColor pointisHuman52;
         protected iPointColor pointisHuman61;  //строка 6
         protected iPointColor pointisHuman62;
+        protected iPointColor pointisHuman71;  //строка 7
+        protected iPointColor pointisHuman72;
 
         protected iPointColor pointisDemon41;  //строка 4
         protected iPointColor pointisDemon42;
@@ -447,6 +428,8 @@ namespace OpenGEWindows
         protected iPointColor pointisDemon52;
         protected iPointColor pointisDemon61;  //строка 6
         protected iPointColor pointisDemon62;
+        protected iPointColor pointisDemon71;  //строка 7
+        protected iPointColor pointisDemon72;
 
         protected iPointColor pointisUndead41;  //строка 4
         protected iPointColor pointisUndead42;
@@ -454,6 +437,8 @@ namespace OpenGEWindows
         protected iPointColor pointisUndead52;
         protected iPointColor pointisUndead61;  //строка 6
         protected iPointColor pointisUndead62;
+        protected iPointColor pointisUndead71;  //строка 7
+        protected iPointColor pointisUndead72;
 
         protected iPointColor pointisLifeless41;  //строка 4
         protected iPointColor pointisLifeless42;
@@ -461,6 +446,8 @@ namespace OpenGEWindows
         protected iPointColor pointisLifeless52;
         protected iPointColor pointisLifeless61;  //строка 6
         protected iPointColor pointisLifeless62;
+        protected iPointColor pointisLifeless71;  //строка 7
+        protected iPointColor pointisLifeless72;
 
 
         #endregion
@@ -1237,6 +1224,25 @@ namespace OpenGEWindows
 
         public abstract bool is248Items();
 
+        public abstract void AddBullet10000();
+
+        /// <summary>
+        /// метод проверяет, закончились ли экспертные патроны (красный значок индикатора)
+        /// </summary>
+        /// <returns> true, если красный значок </returns>
+        public bool isBulletOff()
+        {
+            return (pointisBulletOff.isColor());
+        }
+
+        /// <summary>
+        /// метод проверяет, ополовинились ли экспертные патроны (желтый значок индикатора)
+        /// </summary>
+        /// <returns> true, если желтый значок </returns>
+        public bool isBulletHalf()
+        {
+            return (pointisBulletHalf.isColor());
+        }
 
         /// <summary>
         /// метод проверяет, переполнился ли карман (выскочило ли уже сообщение о переполнении)
@@ -2452,7 +2458,8 @@ namespace OpenGEWindows
             return (
                     (pointisWild41.isColor() && pointisWild42.isColor()) ||
                     (pointisWild51.isColor() && pointisWild52.isColor()) || 
-                    (pointisWild61.isColor() && pointisWild62.isColor())
+                    (pointisWild61.isColor() && pointisWild62.isColor()) ||
+                    (pointisWild71.isColor() && pointisWild72.isColor())
                    );
         }
 
@@ -2465,7 +2472,8 @@ namespace OpenGEWindows
             return (
                     (pointisHuman41.isColor() && pointisHuman42.isColor()) ||
                     (pointisHuman51.isColor() && pointisHuman52.isColor()) ||
-                    (pointisHuman61.isColor() && pointisHuman62.isColor())
+                    (pointisHuman61.isColor() && pointisHuman62.isColor()) ||
+                    (pointisHuman71.isColor() && pointisHuman72.isColor())
                     );
         }
 
@@ -2478,7 +2486,8 @@ namespace OpenGEWindows
             return (
                     (pointisDemon41.isColor() && pointisDemon42.isColor()) ||
                     (pointisDemon51.isColor() && pointisDemon52.isColor()) ||
-                    (pointisDemon61.isColor() && pointisDemon62.isColor())
+                    (pointisDemon61.isColor() && pointisDemon62.isColor()) ||
+                    (pointisDemon71.isColor() && pointisDemon72.isColor())
                     );
         }
 
@@ -2491,7 +2500,8 @@ namespace OpenGEWindows
             return (
                     (pointisUndead41.isColor() && pointisUndead42.isColor()) ||
                     (pointisUndead51.isColor() && pointisUndead52.isColor()) ||
-                    (pointisUndead61.isColor() && pointisUndead62.isColor())
+                    (pointisUndead61.isColor() && pointisUndead62.isColor()) ||
+                    (pointisUndead71.isColor() && pointisUndead72.isColor())
                     );
         }
 
@@ -2504,7 +2514,8 @@ namespace OpenGEWindows
             return (
                     (pointisLifeless41.isColor() && pointisLifeless42.isColor()) ||
                     (pointisLifeless51.isColor() && pointisLifeless52.isColor()) ||
-                    (pointisLifeless61.isColor() && pointisLifeless62.isColor())
+                    (pointisLifeless61.isColor() && pointisLifeless62.isColor()) ||
+                    (pointisLifeless71.isColor() && pointisLifeless72.isColor())
                     );
         }
 
@@ -2548,6 +2559,11 @@ namespace OpenGEWindows
                     break;
                 case 7:
                     if ((isAtk40() || isAtk39() || isAtk38() || isAtk37()) && (isAtkSpeed30() || isAtkSpeed29() || isAtkSpeed28() || isAtkSpeed27()) && (isHuman())) result = true;
+                    break;
+                case 10:
+                    if ((isAtk40() || isAtk39() || isAtk38() || isAtk37()) &&
+                        (isAtkSpeed30() || isAtkSpeed29() || isAtkSpeed28() || isAtkSpeed27()) && 
+                        (isHuman() || (isWild()) || (isLifeless()) || (isUndead()) || (isDemon()) )) result = true;
                     break;
             }
             return result;

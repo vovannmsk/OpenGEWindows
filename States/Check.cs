@@ -422,6 +422,8 @@ namespace States
             if (server.isBarackTeamSelection()) return 9;           //если стоят в бараке  на странице выбора группы
             if (server.isTown()) return 10;                       //если стоят в городе
             if (mm.isMMSell() || (mm.isMMBuy())) return 11;     //если бот стоит на рынке
+            if (server.isBulletHalf()|| server.isBulletOff()) return 15;      // если заканчиваются экспертные патроны
+
             return 0;
         }
 
@@ -464,6 +466,9 @@ namespace States
                 case 13: driver.StateSelling4();          //продажа в катовичевском магазине
                     break;
                 case 14: driver.StateSelling3();          //продажа в катовичевском магазине   
+                    break;
+                case 15:
+                    server.AddBullet10000();              //открываем коробку с патронами 10 000 штук
                     break;
             }
         }
@@ -703,8 +708,8 @@ namespace States
             botwindow.ReOpenWindow();
             //botwindow.Pause(1000);
 
-            Server server = new ServerSing(botwindow);
-            //Server server = new ServerAmerica2(botwindow);
+            //Server server = new ServerSing(botwindow);
+            Server server = new ServerAmerica2(botwindow);
 
             //BHDialog BHdialog = new BHDialogSing(botwindow);
             //Dialog dialog = new DialogSing(botwindow);
@@ -733,7 +738,7 @@ namespace States
             //bool iscolor2 = market.isClickSell();
             //MessageBox.Show(" " + iscolor2);
 
-            //bool iscolor1 = server.isWork();
+            //bool iscolor1 = server.isUndead();
             //MessageBox.Show(" " + iscolor1);
             //bool ttt;
             //ttt = BHdialog.isBottonGateBH();
@@ -789,7 +794,7 @@ namespace States
 //            PointColor point1 = new PointColor(152 - 5 + xx, 250 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в Катовии
 
             PointColor point1 = new PointColor(700 - 30 + xx, 500 - 30 + yy, 1, 1);
-            PointColor point2 = new PointColor(291 - 5 + xx, 469 - 5 + yy, 1, 1);
+            PointColor point2 = new PointColor(227 - 5 + xx, 621 - 5 + yy, 1, 1);
             PointColor point3 = new PointColor(291 - 5 + xx, 470 - 5 + yy, 1, 1);
 
 
@@ -799,7 +804,7 @@ namespace States
 
             //MessageBox.Show(" " + color1);
             MessageBox.Show(" " + color2);
-            MessageBox.Show(" " + color3);
+            //MessageBox.Show(" " + color3);
 
 
             //if ((color1 > 2000000) && (color2 > 2000000)) MessageBox.Show(" больше ");

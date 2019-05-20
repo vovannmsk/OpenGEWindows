@@ -131,34 +131,6 @@ namespace OpenGEWindows
             this.pointisBoxOverflow2 = new PointColor(524 - 5 + xx, 438 - 5 + yy, 7600000, 5);
             //this.pointisBoxOverflow1 = new PointColor(573 - 5 + xx, 488 - 5 + yy, 7500000, 5);          //это неправильные точки. сигнализация о наполненном кармане никогда не сработает
             //this.pointisBoxOverflow2 = new PointColor(574 - 5 + xx, 488 - 5 + yy, 7800000, 5);
-            //this.pointisWork_RifleDot1 = new PointColor(24 + xx, 692 + yy, 11051000, 3);      //29 - 5, 697 - 5, 11051000, 30 - 5, 697 - 5, 10919000, 3);                    //проверено
-            //this.pointisWork_RifleDot2 = new PointColor(25 + xx, 692 + yy, 10919000, 3);
-            //this.pointisWork_ExpRifleDot1 = new PointColor(24 + xx, 692 + yy, 1721000, 3);      //29 - 5, 697 - 5, 11051000, 30 - 5, 697 - 5, 10919000, 3);                    //не проверено
-            //this.pointisWork_ExpRifleDot2 = new PointColor(25 + xx, 692 + yy, 2106000, 3);
-            //this.pointisWork_DrobDot1 = new PointColor(24 + xx, 692 + yy, 7644000, 3);              //проверка по обычной стойке с дробашем
-            //this.pointisWork_DrobDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
-            //this.pointisWork_VetDrobDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);              //проверка по вет стойке с дробашем          не проверено
-            //this.pointisWork_VetDrobDot2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
-            //this.pointisWork_ExpDrobDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);              //проверка по эксп стойке с дробашем
-            //this.pointisWork_ExpDrobDot2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
-            //this.pointisWork_JainaDrobDot1 = new PointColor(24 + xx, 692 + yy, 4278000, 3);              //проверка по эксп стойке с дробашем Jaina
-            //this.pointisWork_JainaDrobDot2 = new PointColor(25 + xx, 692 + yy, 5401000, 3);
-            //this.pointisWork_VetSabreDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 5138000, 3);           //проверка по вет стойке с саблей
-            //this.pointisWork_VetSabreDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 9747000, 3);
-            //this.pointisWork_ExpSwordDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 3693000, 3);           //проверка по стойке с мечом Дарья
-            //this.pointisWork_ExpSwordDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 10258000, 3);
-            //this.pointisWork_VetPistolDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 66000, 3);           //проверка по стойке с вет пистолетом Outrange
-            //this.pointisWork_VetPistolDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 72, 0);
-            //this.pointisWork_SightPistolDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 5068000, 3);       //точки для проверки вет стойки с пистолетом Sight Shot
-            //this.pointisWork_SightPistolDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 9350000, 3);
-            //this.pointisWork_UnlimPistolDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 15824000, 3);      //проверка по стойке с эксп пистолетом Unlimited Shot
-            //this.pointisWork_UnlimPistolDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 15767000, 3);
-            ////пушка
-            //this.pointisWork_ExpCannonDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 8756000, 3);       //точки для проверки пушки Мисы
-            //this.pointisWork_ExpCannonDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 8162000, 3);
-
-            //this.arrayOfColorsIsWork1 = new uint[13] { 0, 11051000, 1721000, 7644000, 2764000, 16777000, 4278000, 5138000, 3693000, 66000, 5068000, 15824000, 8756000 };
-            //this.arrayOfColorsIsWork2 = new uint[13] { 0, 10919000, 2106000, 16711000, 7243000, 3560000, 5401000, 9747000, 10258000, 0, 9350000, 15767000, 8162000 };
             this.arrayOfColorsIsWork1 = new uint[12] { 11051, 1721, 7644, 2764, 16777, 4278, 5138, 3693, 66, 5068, 15824, 8756 };
             this.arrayOfColorsIsWork2 = new uint[12] { 10919, 2106, 16711, 7243, 3560, 5401, 9747, 10258, 0, 9350, 15767, 8162 };
 
@@ -171,8 +143,9 @@ namespace OpenGEWindows
             this.pointSkillCook = new Point(183 - 5 + xx, 700 - 5 + yy);
             this.pointisBattleMode1 = new PointColor(173 - 5 + xx, 511 - 5 + yy, 8900000, 5);
             this.pointisBattleMode2 = new PointColor(200 - 5 + xx, 511 - 5 + yy, 8900000, 5);
-            //this.pointisWork_VetPistolDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 13086000, 3);           //проверка по стойке с вет пистолетом Outrange
-            //this.pointisWork_VetPistolDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 12954000, 3);
+
+            this.pointisBulletHalf = new PointColor(227 - 5 + xx, 621 - 5 + yy, 5500000, 5);
+            this.pointisBulletOff = new PointColor(227 - 5 + xx, 621 - 5 + yy, 5700000, 5);
 
             #endregion
 
@@ -579,6 +552,13 @@ namespace OpenGEWindows
         #endregion
 
         #region at Work
+
+        /// <summary>
+        /// пополняем патроны в кармане на 10 000 штук
+        /// </summary>
+        public override void AddBullet10000()
+        {
+        }
 
         /// <summary>
         /// проверяем, находится ли в инвентае 248 вещей 

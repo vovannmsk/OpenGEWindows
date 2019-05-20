@@ -64,7 +64,7 @@ namespace States
             if (!server.isGoodChipWeapon())
             {
                 server.PressButtonEnchance();
-                botwindow.Pause(2000);
+                botwindow.Pause(750);
             }
         }
 

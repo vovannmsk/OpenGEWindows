@@ -125,7 +125,8 @@ namespace OpenGEWindows
         /// </summary>
         public void Bookmark_Sell()
         {
-            pointBookmarkSell.DoubleClickL();
+            //            pointBookmarkSell.DoubleClickL();
+            pointBookmarkSell.PressMouseLL();
             Pause(1500);
         }
 
@@ -308,7 +309,7 @@ namespace OpenGEWindows
                 case 4448154:     // Green ore                   **
                 case 13865807:    // blue ore                    **
                 case 4670431:     // Red ore                     **
-                //case 13291199:    // Diamond Ore                 ** *******************************************************
+                case 13291199:    // Diamond Ore                 ** *******************************************************
                 //case 1063140:     // Stone of Philos             **
                 //case 8486756:     // Ice Crystal                 **
                 //case 8633037:     // Pure Gold Bar
@@ -366,7 +367,7 @@ namespace OpenGEWindows
                 case 15526903:    // Elementium
                 case 1835187:     // экспертные чипы
                 case 14146476:    // solarion
-//                case 16251642:    // growth booster
+                case 16251642:    // growth booster
                 case 10992324:    // Шахматы 
                 case 7830683:     // Кожа улитки
                 case 5205119:     // Токен 1

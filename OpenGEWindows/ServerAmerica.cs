@@ -576,6 +576,13 @@ namespace OpenGEWindows
         #region at Work
 
         /// <summary>
+        /// пополняем патроны в кармане на 10 000 штук
+        /// </summary>
+        public override void AddBullet10000()
+        {
+        }
+
+        /// <summary>
         /// проверяем, находится ли в инвентае 248 вещей 
         /// </summary>
         /// <returns></returns>

@@ -12,8 +12,9 @@ namespace Main
         private static uint NumberBlueButton = 0;       //сколько раз нажали голубую(красную) кнопку
         private const int MAX_NUMBER_OF_ACCOUNTS = 20;
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
-        private static string DataVersion = "10-04-2019";
+        private static string DataVersion = "03-05-2019";
         private int numberOfAcc;                                              // количество аккаунтов ботов
+        private int startAccount;
         GlobalParam globalParam;
 
         //public UIntPtr[] arrayOfHwnd = new UIntPtr[21];   //используется в методе "Найти окна"
@@ -27,6 +28,7 @@ namespace Main
 
             this.globalParam = new GlobalParam();                          //сделали экземпляр класса
             numberOfAcc = globalParam.TotalNumberOfAccounts;
+            startAccount = globalParam.StartingAccount;
             this.Text = "Программа от " + DataVersion + ".    " + numberOfAcc + " окон";
             this.Location = new System.Drawing.Point(1315, 1080 - this.Height - 40);
             this.numberOfAccouts.Value = numberOfAcc;
@@ -41,6 +43,7 @@ namespace Main
                 case 5: typeOfNintendo = "Undeed"; break;
                 case 6: typeOfNintendo = "Demon"; break;
                 case 7: typeOfNintendo = "Human"; break;
+                case 10: typeOfNintendo = "все расы"; break;
                 default: typeOfNintendo = "без расы"; break;
             }
             this.labelEnchanting.Text = "Чиповка - " + typeOfNintendo;
@@ -212,8 +215,8 @@ namespace Main
         /// </summary>
         private void funcPink()
         {
-            int start = globalParam.StartingAccount;
-            for (int j = start; j <= numberOfAcc; j++)
+            //int start = globalParam.StartingAccount;
+            for (int j = startAccount; j <= numberOfAcc; j++)
 //            for (int j = 2; j <= 2; j++)
             {
                 Check check = new Check(j);
@@ -410,33 +413,35 @@ namespace Main
         /// </summary>*
         private void funcNewWhite()
         {
-            int start = globalParam.StartingAccount;
-            for (int j = start; j <= numberOfAcc; j++)
+            //int start = globalParam.StartingAccount;
+            for (int j = startAccount; j <= numberOfAcc; j++)
             {
-                Check check = new Check(j);
-                if (check.IsActiveServer)
-                {
-                    check.ReOpenWindow();
-                    check.Pause(1000);
-                    DriversOfState driver = new DriversOfState(j);
-                    //driver.StateGotoTradeAndWork();
+                DriversOfState driver = new DriversOfState(j);
+                driver.StateGotoTradeAndWork();
+                //Check check = new Check(j);
+                //if (check.IsActiveServer)
+                //{
+                //    check.ReOpenWindow();
+                //    check.Pause(1000);
+                //    DriversOfState driver = new DriversOfState(j);
+                //    //driver.StateGotoTradeAndWork();
 
-                    if (check.getNumberTeleport() != 0)           // не нужно продаваться
-                    {
-                        if (check.getNumberTeleport() >= 100)           // продажа в снежке
-                        {
-                            driver.StateGotoTradeKatovia();
-                            check.Pause(2000);
-                        }
-                        else                                               // продажа в городах
-                        {
+                //    if (check.getNumberTeleport() != 0)           // не нужно продаваться
+                //    {
+                //        if (check.getNumberTeleport() >= 100)           // продажа в снежке
+                //        {
+                //            driver.StateGotoTradeKatovia();
+                //            check.Pause(2000);
+                //        }
+                //        else                                               // продажа в городах
+                //        {
 
-                            driver.StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
-                            check.Pause(2000);
-                        }
-                        driver.StateGotoWork();            // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
-                    }
-                }
+                //            driver.StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
+                //            check.Pause(2000);
+                //        }
+                //        driver.StateGotoWork();            // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                //    }
+                //}
             }
         }
         
@@ -725,14 +730,14 @@ namespace Main
         /// </summary>
         private void funcBH()
         {
-            int start =  globalParam.StartingAccount;
+            //int start =  globalParam.StartingAccount;
             Check check;
             //for (int i = 1; i <= 20; i++)
             int counter = 0;
             while(true)
             {
                 
-                for (int j = start; j <= numberOfAcc; j++)
+                for (int j = startAccount; j <= numberOfAcc; j++)
                 {
                     check = new Check(j);
                     //if (check.isActive()) check.checkForProblemsBH();

@@ -1,4 +1,5 @@
 ﻿using OpenGEWindows;
+using GEBot.Data;
 
 namespace States
 {
@@ -10,7 +11,10 @@ namespace States
         private botWindow botwindow;
         private Server server;
         private Otit otit;
-//        private Check check;
+        //        private Check check;
+        private BotParam botParam;
+        
+
 
         public DriversOfState()
         { 
@@ -24,6 +28,7 @@ namespace States
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             OtitFactory otitFactory = new OtitFactory(botwindow);
             this.otit = otitFactory.createOtit();
+            this.botParam = new BotParam(numberOfWindow);                          //сделали экземпляр класса
         }
 
 
@@ -355,7 +360,7 @@ namespace States
         }
 
         /// <summary>
-        /// перевод из состояния 70 () в состояние 80 (). Цель  - заточка оружия и брони на +6 у Иды в Ребольдо
+        /// перевод из состояния 70 () в состояние 80 (). Цель  - чиповка оружия и брони 
         /// </summary>
         public void StateNintendo()
         {
@@ -511,19 +516,48 @@ namespace States
         /// </summary>
         public void StateGotoTradeAndWork()
         {
-            if (server.isWork())   //если бот на работе
+            
+            if (server.IsActiveServer)
             {
-                //StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа - продажа - нет окна)
-                //botwindow.Pause(2000);
-                //StateGotoWork();                                           // по паттерну "Состояние".  14-01       (нет окна - логаут - казарма - город - работа)
+                botwindow.ReOpenWindow();
+                botwindow.Pause(1000);
 
-                //StateDriverRun(new StateGT01(botwindow), new StateGT12(botwindow));
-                //server.Logout();
-                
-                StateDriverRun(new StateGT01(botwindow), new StateGT14(botwindow));
-                
+                if (botParam.NomerTeleport != 0 )           // если нужно продаваться
+                {
+                    if (server.is248Items())
+                    {
+                        if (botParam.NomerTeleport >= 100)           // продажа в снежке
+                        {
+                            StateGotoTradeKatovia();
+                            botwindow.Pause(2000);
+                        }
+                        else                                         // продажа в городах
+                        {
+                            StateGotoTrade();                       // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
+                            botwindow.Pause(2000);
+                        }
+                        StateGotoWork();            // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                        botwindow.Pause(2000);
+                    }
+                }
             }
-        }
+
+
+
+
+            //if (server.isWork())   //если бот на работе
+            //{
+            //    //StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа - продажа - нет окна)
+            //    //botwindow.Pause(2000);
+            //    //StateGotoWork();                                           // по паттерну "Состояние".  14-01       (нет окна - логаут - казарма - город - работа)
+
+            //    //StateDriverRun(new StateGT01(botwindow), new StateGT12(botwindow));
+            //    //server.Logout();
+
+            //    StateDriverRun(new StateGT01(botwindow), new StateGT14(botwindow));
+
+            //}
+    }
 
 
         
@@ -535,7 +569,7 @@ namespace States
         /// <param name="stateEnd"> конечное состояние </param>
         public void StateDriverRun(IState stateBegin, IState stateEnd)
         {
-            StateDriver stateDriver = new StateDriver(botwindow, stateBegin, stateEnd);
+            StateDriver stateDriver = new StateDriver(this.botwindow, stateBegin, stateEnd);
             while (!stateDriver.Equals(stateEnd))
             {
                 stateDriver.run();
