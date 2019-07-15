@@ -86,20 +86,20 @@ namespace OpenGEWindows
             this.pointGotoEnd = new Point(681 - 5 + xx, 436 - 5 + yy);                              //логаут
 //            this.pointGotoEnd = new Point(681 - 5 + xx, 467 - 5 + yy);                              //end
             this.pointLogout = new Point(681 - 5 + xx, 436 - 5 + yy);            //логаут
-            this.pointTeleportFirstLine = new Point(400 + xx, 193 + yy);   //400, 193               тыкаем в первую строчку телепорта                          //проверено
+            this.pointTeleportFirstLine = new Point(405 - 5 + xx, 180 - 5 + yy);   //400, 193               тыкаем в первую строчку телепорта                          //проверено
             //this.pointTeleportSecondLine = new Point(400 + xx, 208 + yy);   //              тыкаем во вторую строчку телепорта                          //проверено
-            this.pointTeleportExecute = new Point(355 + xx, 570 + yy);   //355, 570              тыкаем в кнопку Execute                   //проверено
-            this.pointisOpenTopMenu21 = new PointColor(328 + xx, 74 + yy, 13420000, 4);      //333 - 5, 79 - 5, 13420000, 334 - 5, 79 - 5, 13420000, 4);            //не проверено
+            this.pointTeleportExecute = new Point(360 - 5 + xx, 590 - 5 + yy);               //        тыкаем в кнопку Execute                
+            this.pointisOpenTopMenu21 = new PointColor(328 + xx, 74 + yy, 13420000, 4);                //не проверено
             this.pointisOpenTopMenu22 = new PointColor(329 + xx, 74 + yy, 13420000, 4);
-            this.pointisOpenTopMenu61 = new PointColor(455 + xx, 87 + yy, 13420000, 4);      //460 - 5, 92 - 5, 13420000, 461 - 5, 92 - 5, 13420000, 4);            //не проверено
+            this.pointisOpenTopMenu61 = new PointColor(455 + xx, 87 + yy, 13420000, 4);                //не проверено
             this.pointisOpenTopMenu62 = new PointColor(456 + xx, 87 + yy, 13420000, 4);
-            this.pointisOpenTopMenu81 = new PointColor(553 + xx, 87 + yy, 13420000, 4);      //558 - 5, 92 - 5, 13420000, 559 - 5, 92 - 5, 13420000, 4);            //не проверено
+            this.pointisOpenTopMenu81 = new PointColor(553 + xx, 87 + yy, 13420000, 4);                //не проверено
             this.pointisOpenTopMenu82 = new PointColor(554 + xx, 87 + yy, 13420000, 4);
-            this.pointisOpenTopMenu91 = new PointColor(601 + xx, 74 + yy, 13420000, 4);      //606 - 5, 79 - 5, 13420000, 607 - 5, 79 - 5, 13420000, 4);            //проверено
+            this.pointisOpenTopMenu91 = new PointColor(601 + xx, 74 + yy, 13420000, 4);                //проверено
             this.pointisOpenTopMenu92 = new PointColor(602 + xx, 74 + yy, 13420000, 4);
-            this.pointisOpenTopMenu12_1 = new PointColor(502 + xx, 135 + yy, 12440000, 4);      //507 - 5, 140 - 5, 12440000, 508 - 5, 140 - 5, 12440000, 4);        //проверено
-            this.pointisOpenTopMenu12_2 = new PointColor(503 + xx, 135 + yy, 12440000, 4);
-            this.pointisOpenTopMenu131 = new PointColor(539 - 5 + xx, 374 - 5 + yy, 16100000, 5);                                                                   //проверено
+            this.pointisOpenTopMenu12_1 = new PointColor(507 - 5 + xx, 111 - 5 + yy, 8030000, 4);      
+            this.pointisOpenTopMenu12_2 = new PointColor(508 - 5 + xx, 111 - 5 + yy, 8030000, 4);
+            this.pointisOpenTopMenu131 = new PointColor(539 - 5 + xx, 374 - 5 + yy, 16100000, 5);      //проверено
             this.pointisOpenTopMenu132 = new PointColor(540 - 5 + xx, 374 - 5 + yy, 16500000, 5);
 
             #endregion

@@ -56,10 +56,9 @@ namespace OpenGEWindows
         public override void ExitFromTrader()
         {
             //коимбра
-            //botwindow.PressMouseL(902, 675);
-            //botwindow.PressMouseL(902, 675);
-            pointExitFromTrader.PressMouseL();
+  //            pointExitFromTrader.PressMouseL();
+            dialog.PressOkButton(1);      ////========= тыкаем в OK =======================
         }
-    
+
     }
 }

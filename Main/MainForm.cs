@@ -12,7 +12,7 @@ namespace Main
         private static uint NumberBlueButton = 0;       //сколько раз нажали голубую(красную) кнопку
         private const int MAX_NUMBER_OF_ACCOUNTS = 20;
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
-        private static string DataVersion = "03-05-2019";
+        private static string DataVersion = "10-07-2019";
         private int numberOfAcc;                                              // количество аккаунтов ботов
         private int startAccount;
         GlobalParam globalParam;

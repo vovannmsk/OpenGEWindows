@@ -33,8 +33,6 @@ namespace OpenGEWindows
             this.pointOpenMap2 = new PointColor(809 - 5 + xx, 41 - 5 + yy, 7700000, 4);
             this.pointBookmark1 = new PointColor(856 - 5 + xx, 41 - 5 + yy, 7700000, 4);                    //работает       
             this.pointBookmark2 = new PointColor(857 - 5 + xx, 41 - 5 + yy, 7700000, 4);
-            //this.pointBookmark1 = new PointColor(932 - 5 + xx, 255 - 5 + yy, 16300000, 5);                 //  работает  //
-            //this.pointBookmark2 = new PointColor(931 - 5 + xx, 255 - 5 + yy, 16400000, 5);
             this.pointOpenTownTeleport1 = new PointColor(93 - 5 + xx, 295 - 5 + yy, 11710000, 4);         // работает
             this.pointOpenTownTeleport2 = new PointColor(94 - 5 + xx, 295 - 5 + yy, 11710000, 4);
             DialogFactory tf = new DialogFactory(botwindow);

@@ -881,7 +881,6 @@ namespace OpenGEWindows
         /// <param name="status">если false, то не проверяется сработало ли нажатие</param>
         public void Teleport(int NumberOfLine, bool status)
         {
-            //Pause(400);
             TopMenu(12, status);                     // Click Teleport menu
 
             Point pointTeleportNumbertLine = new Point(405 - 5 + xx, 180 - 5 + (NumberOfLine - 1) * 15 + yy);    //              тыкаем в указанную строчку телепорта 
@@ -890,7 +889,6 @@ namespace OpenGEWindows
             Pause(500);
 
             pointTeleportExecute.PressMouseL();        // Click on button Execute in Teleport menu
-            //Pause(500);
         }
 
 
@@ -2132,7 +2130,6 @@ namespace OpenGEWindows
             botwindow.PressEscThreeTimes();
             Pause(1000);
         }
-
 
         /// <summary>
         /// бежим к месту работы в Кратере

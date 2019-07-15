@@ -13,7 +13,7 @@ namespace OpenGEWindows
         public EuropaTownReboldo(botWindow botwindow)
         {
             this.botwindow = botwindow;
-            this.xx = botwindow.getX();
+            this.xx = botwindow.getX(); 
             this.yy = botwindow.getY();
             this.PAUSE_TIME = 3000;                                                                                         // работает
             this.TELEPORT_N = 2;   //номер городского телепорта                                                                 // работает

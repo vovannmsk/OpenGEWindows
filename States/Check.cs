@@ -794,8 +794,8 @@ namespace States
 //            PointColor point1 = new PointColor(152 - 5 + xx, 250 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в Катовии
 
             PointColor point1 = new PointColor(700 - 30 + xx, 500 - 30 + yy, 1, 1);
-            PointColor point2 = new PointColor(227 - 5 + xx, 621 - 5 + yy, 1, 1);
-            PointColor point3 = new PointColor(291 - 5 + xx, 470 - 5 + yy, 1, 1);
+            PointColor point2 = new PointColor(507 - 5 + xx, 111 - 5 + yy, 1, 1);
+            PointColor point3 = new PointColor(508 - 5 + xx, 111 - 5 + yy, 1, 1);
 
 
             color1 = point1.GetPixelColor();
@@ -804,7 +804,7 @@ namespace States
 
             //MessageBox.Show(" " + color1);
             MessageBox.Show(" " + color2);
-            //MessageBox.Show(" " + color3);
+            MessageBox.Show(" " + color3);
 
 
             //if ((color1 > 2000000) && (color2 > 2000000)) MessageBox.Show(" больше ");
