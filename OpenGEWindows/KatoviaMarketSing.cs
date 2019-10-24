@@ -50,6 +50,6 @@ namespace OpenGEWindows
             dialog = dialogFactory.createDialog();
             this.globalParam = new GlobalParam();
         }
-
+        // ===============================  Методы ==================================================
     }
 }

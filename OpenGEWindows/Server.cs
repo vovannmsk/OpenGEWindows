@@ -166,6 +166,8 @@ namespace OpenGEWindows
         protected iPointColor pointisLiveHero3;
         protected iPointColor pointisBoxOverflow1;
         protected iPointColor pointisBoxOverflow2;
+        protected iPointColor pointisBoxOverflow3;
+        protected iPointColor pointisBoxOverflow4;
         protected iPoint pointSkillCook;
         protected iPointColor pointisBattleMode1;
         protected iPointColor pointisBattleMode2;
@@ -883,7 +885,7 @@ namespace OpenGEWindows
         {
             TopMenu(12, status);                     // Click Teleport menu
 
-            Point pointTeleportNumbertLine = new Point(405 - 5 + xx, 180 - 5 + (NumberOfLine - 1) * 15 + yy);    //              тыкаем в указанную строчку телепорта 
+            Point pointTeleportNumbertLine = new Point(405 - 5 + xx, 180 - 5 + (NumberOfLine - 1) * 15 + yy);    //    тыкаем в указанную строчку телепорта 
 
             pointTeleportNumbertLine.DoubleClickL();   // Указанная строка в списке телепортов
             Pause(500);
@@ -1248,7 +1250,8 @@ namespace OpenGEWindows
         /// <returns> true, еслм карман переполнен </returns>
         public bool isBoxOverflow()
         {
-            return (pointisBoxOverflow1.isColor() && pointisBoxOverflow2.isColor());
+            return (pointisBoxOverflow1.isColor() && pointisBoxOverflow2.isColor()) 
+                || (pointisBoxOverflow3.isColor() && pointisBoxOverflow4.isColor());          //оранжевая надпись (эта строка)
         }
 
         /// <summary>

@@ -138,6 +138,8 @@ namespace OpenGEWindows
 
             this.pointisBoxOverflow1 = new PointColor(522 - 5 + xx, 434 - 5 + yy, 7700000, 5);          //
             this.pointisBoxOverflow2 = new PointColor(522 - 5 + xx, 435 - 5 + yy, 7700000, 5);
+            this.pointisBoxOverflow3 = new PointColor(379 - 5 + xx, 497 - 5 + yy, 5600000, 5);          //проверка оранжевой надписи
+            this.pointisBoxOverflow4 = new PointColor(379 - 5 + xx, 498 - 5 + yy, 5600000, 5);
 
             this.pointisKillHero1 = new PointColor(80 - 5 + xx, 636 - 5 + yy, 1900000, 5);
             this.pointisKillHero2 = new PointColor(335 - 5 + xx, 636 - 5 + yy, 1900000, 5);

@@ -12,7 +12,7 @@ namespace Main
         private static uint NumberBlueButton = 0;       //сколько раз нажали голубую(красную) кнопку
         private const int MAX_NUMBER_OF_ACCOUNTS = 20;
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
-        private static string DataVersion = "10-07-2019";
+        private static string DataVersion = "12-10-2019";
         private int numberOfAcc;                                              // количество аккаунтов ботов
         private int startAccount;
         GlobalParam globalParam;
@@ -758,6 +758,32 @@ namespace Main
             //    Check check = new Check(j);
             //    if (check.isActive()) check.ReOpenWindow();
             //}   
+        }
+
+        #endregion
+
+        #region Загрузка Стимов
+
+        private void LoadSteams_Click(object sender, EventArgs e)
+        {
+            Thread myLoadSteams = new Thread(funcLS);
+            myLoadSteams.Start();
+        }
+
+        /// <summary>
+        /// метод задает функционал для потока, организуемого кнопкой цвета "ForestGreen" (темно-зеленая)
+        /// </summary>
+        private void funcLS()
+        {
+            for (int j = 1; j <= numberOfAcc; j++)
+            {
+                Check check = new Check(j);
+                if (check.IsActiveServer)
+                {
+                    check.YellowButton();
+                }
+            }
+
         }
 
         #endregion

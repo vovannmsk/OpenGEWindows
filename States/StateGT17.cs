@@ -61,7 +61,8 @@ namespace States
             server.Cure(4);               //лечение+патроны                          // было botwindow.Cure();
             botwindow.Pause(1000);
 
-            server.Teleport(1);                       // телепорт на работу   
+//            server.Teleport(1);                       // телепорт на работу   
+            server.Teleport(1, true); //летим по третьему телепорту с проверкой открытия меню со списком телепортов
 
             int i = 0;
             while ((!server.isWork()) && (i < 30))         //ожидание загрузки места работы

@@ -640,6 +640,15 @@ namespace States
             server.OrangeButton();
         }
 
+        /// <summary>
+        /// Желтая кнопка. Загрузка Стимов без загркзки окон ГЭ. Разные действия по серверам . не удалять
+        /// </summary>
+        public void YellowButton()
+        {
+            server.runClientSteam();
+        }
+
+
         ///// <summary>
         ///// определяет, нужно ли работать с этим окном (может быть отключено из-за профилактики на сервере)
         ///// </summary>
@@ -708,8 +717,9 @@ namespace States
             botwindow.ReOpenWindow();
             //botwindow.Pause(1000);
 
-            //Server server = new ServerSing(botwindow);
-            Server server = new ServerAmerica2(botwindow);
+            Server server = new ServerSing(botwindow);
+            MessageBox.Show(" " + server.isBoxOverflow());
+            //Server server = new ServerAmerica2(botwindow);
 
             //BHDialog BHdialog = new BHDialogSing(botwindow);
             //Dialog dialog = new DialogSing(botwindow);
@@ -794,8 +804,8 @@ namespace States
 //            PointColor point1 = new PointColor(152 - 5 + xx, 250 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в Катовии
 
             PointColor point1 = new PointColor(700 - 30 + xx, 500 - 30 + yy, 1, 1);
-            PointColor point2 = new PointColor(507 - 5 + xx, 111 - 5 + yy, 1, 1);
-            PointColor point3 = new PointColor(508 - 5 + xx, 111 - 5 + yy, 1, 1);
+            PointColor point2 = new PointColor(379 - 5 + xx, 497 - 5 + yy, 1, 1);
+            PointColor point3 = new PointColor(379 - 5 + xx, 498 - 5 + yy, 1, 1);
 
 
             color1 = point1.GetPixelColor();

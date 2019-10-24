@@ -136,8 +136,10 @@ namespace OpenGEWindows
 
             #region atWork
 
-            this.pointisBoxOverflow1 = new PointColor(522 - 5 + xx, 434 - 5 + yy, 7700000, 5);          //
+            this.pointisBoxOverflow1 = new PointColor(522 - 5 + xx, 434 - 5 + yy, 7700000, 5);        //проверка всплывающего окна
             this.pointisBoxOverflow2 = new PointColor(522 - 5 + xx, 435 - 5 + yy, 7700000, 5);
+            this.pointisBoxOverflow3 = new PointColor(379 - 5 + xx, 497 - 5 + yy, 5600000, 5);          //проверка оранжевой надписи
+            this.pointisBoxOverflow4 = new PointColor(379 - 5 + xx, 498 - 5 + yy, 5600000, 5);
 
             this.arrayOfColorsIsWork1 = new uint[12] { 11051, 1721, 7644, 2764, 16777, 4278, 5138, 3693, 66, 5068, 15824, 8756 };
             this.arrayOfColorsIsWork2 = new uint[12] { 10919, 2106, 16711, 7243, 3560, 5401, 9747, 10258, 0, 9350, 15767, 8162 };

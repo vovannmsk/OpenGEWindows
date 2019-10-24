@@ -129,6 +129,8 @@ namespace OpenGEWindows
             this.pointBuyingMitridat3 = new Point(517 + xx, 423 + yy);      //1392 - 875, 428 - 5
             this.pointisBoxOverflow1 = new PointColor(523 - 5 + xx, 438 - 5 + yy, 7100000, 5);            //     это правильные точки для определения, переполнился карман или нет
             this.pointisBoxOverflow2 = new PointColor(524 - 5 + xx, 438 - 5 + yy, 7600000, 5);
+            this.pointisBoxOverflow3 = new PointColor(379 - 5 + xx, 497 - 5 + yy, 5600000, 5);          //проверка оранжевой надписи
+            this.pointisBoxOverflow4 = new PointColor(379 - 5 + xx, 498 - 5 + yy, 5600000, 5);
             //this.pointisBoxOverflow1 = new PointColor(573 - 5 + xx, 488 - 5 + yy, 7500000, 5);          //это неправильные точки. сигнализация о наполненном кармане никогда не сработает
             //this.pointisBoxOverflow2 = new PointColor(574 - 5 + xx, 488 - 5 + yy, 7800000, 5);
             this.arrayOfColorsIsWork1 = new uint[12] { 11051, 1721, 7644, 2764, 16777, 4278, 5138, 3693, 66, 5068, 15824, 8756 };
@@ -360,23 +362,10 @@ namespace OpenGEWindows
         #region No window
 
         /// <summary>
-        /// запуск клиента Steam
+        /// запуск клиента Steam /На Европейском сервере нет стима. Ничего не делаем/
         /// </summary>
         public override void runClientSteam()
         {
-            #region для песочницы
-
-            //запускаем steam в песочнице
-            Process process = new Process();
-            process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
-            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient;
-            process.Start();
-
-            Pause(30000);
-
-
-            #endregion
-
         }
 
 
@@ -540,7 +529,7 @@ namespace OpenGEWindows
             Pause(400);
             TopMenu(12);                     // Click Teleport menu
 
-            Point pointTeleportNumbertLine = new Point(405 - 5 + xx, 198 - 5 + (NumberOfLine - 1) * 15 + yy);    //              тыкаем в указанную строчку телепорта  405 - 5 + xx, 198 - 5 + yy
+            Point pointTeleportNumbertLine = new Point(405 - 5 + xx, 180 - 5 + (NumberOfLine - 1) * 15 + yy);    //              тыкаем в указанную строчку телепорта  405 - 5 + xx, 198 - 5 + yy
 
             pointTeleportNumbertLine.DoubleClickL();   // Указанная строка в списке телепортов
             Pause(500);

@@ -57,6 +57,7 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.LoadSteams = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfAccouts)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -188,7 +189,7 @@
             // 
             this.sharpening.BackColor = System.Drawing.Color.BlueViolet;
             this.sharpening.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.sharpening.Location = new System.Drawing.Point(200, 67);
+            this.sharpening.Location = new System.Drawing.Point(202, 47);
             this.sharpening.Name = "sharpening";
             this.sharpening.Size = new System.Drawing.Size(170, 35);
             this.sharpening.TabIndex = 49;
@@ -200,7 +201,7 @@
             // 
             this.Nintendo.BackColor = System.Drawing.Color.Chocolate;
             this.Nintendo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Nintendo.Location = new System.Drawing.Point(198, 123);
+            this.Nintendo.Location = new System.Drawing.Point(202, 88);
             this.Nintendo.Name = "Nintendo";
             this.Nintendo.Size = new System.Drawing.Size(170, 35);
             this.Nintendo.TabIndex = 53;
@@ -340,6 +341,7 @@
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Bisque;
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage2.Controls.Add(this.LoadSteams);
             this.tabPage2.Controls.Add(this.alchemy);
             this.tabPage2.Controls.Add(this.labelEnchanting);
             this.tabPage2.Controls.Add(this.BH);
@@ -370,6 +372,18 @@
             this.tabPage3.Size = new System.Drawing.Size(378, 184);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Редкие функции";
+            // 
+            // LoadSteams
+            // 
+            this.LoadSteams.BackColor = System.Drawing.Color.Yellow;
+            this.LoadSteams.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LoadSteams.Location = new System.Drawing.Point(202, 129);
+            this.LoadSteams.Name = "LoadSteams";
+            this.LoadSteams.Size = new System.Drawing.Size(170, 35);
+            this.LoadSteams.TabIndex = 64;
+            this.LoadSteams.Text = "Загрузка Steam\' ов";
+            this.LoadSteams.UseVisualStyleBackColor = false;
+            this.LoadSteams.Click += new System.EventHandler(this.LoadSteams_Click);
             // 
             // MainForm
             // 
@@ -427,6 +441,7 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Button LoadSteams;
     }
 }
 
