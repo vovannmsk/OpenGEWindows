@@ -2974,12 +2974,27 @@ namespace OpenGEWindows
         /// <param name="strLog"></param>
         public void WriteToLogFileBH(string strLog)
         {
-            //StreamWriter writer = new StreamWriter(KATALOG_MY_PROGRAM + "\\BH.log", true);
+            //StreamWriter writer = new StreamWriter(globalParam.DirectoryOfMyProgram + "\\BH.log", true);
             //string timeNow = DateTime.Now.ToString("dd MMMM yyyy | HH:mm:ss | ");
 
             //writer.WriteLine(timeNow + botwindow.getNumberWindow().ToString() + " " + strLog);
             //writer.Close();
         }
+
+        /// <summary>
+        /// записываем в лог-файл инфу по прохождению программы
+        /// </summary>
+        /// <param name="strLog"></param>
+        public void WriteToLogFile(string strLog)
+        {
+            //StreamWriter writer = new StreamWriter(globalParam.DirectoryOfMyProgram + "\\Error.log", true);
+            //string timeNow = DateTime.Now.ToString("dd MMMM yyyy | HH:mm:ss | ");
+
+            //writer.WriteLine(timeNow + botwindow.getNumberWindow().ToString() + " " + strLog);
+            //writer.Close();
+        }
+
+
 
         /// <summary>
         /// нажимаем левой кнопкой мыши на точку с указанными координатами

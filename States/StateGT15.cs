@@ -1,6 +1,5 @@
 ﻿using OpenGEWindows;
 
-
 namespace States
 {
     public class StateGT15 : IState
@@ -10,14 +9,13 @@ namespace States
         private Town town;
         private ServerFactory serverFactory;
         private int tekStateInt;
-
-
+        
         public StateGT15()
         {
 
         }
 
-        public StateGT15(botWindow botwindow)   //, GotoTrade gototrade)
+        public StateGT15(botWindow botwindow)   
         {
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
@@ -61,7 +59,8 @@ namespace States
         public void run()                // переход к следующему состоянию
         {
             server.WriteToLogFileBH("Начало");
-            bool result = botwindow.Connect(); //там запоминается цвет точки на экране и, если он меняется, то значит true вошли в казарму
+            bool result = this.botwindow.Connect(); 
+                                            //там запоминается цвет точки на экране и, если он меняется, то значит true вошли в казарму
 
             if (result)   // если получилось войти, то
             {

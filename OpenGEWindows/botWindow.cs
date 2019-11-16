@@ -477,6 +477,7 @@ namespace OpenGEWindows
             iPoint pointButtonConnect = new Point(595 - 5 + databot.X, 485 - 5 + databot.Y);    // кнопка коннект в логауте (экран еще до казармы)
             pointButtonConnect.PressMouseLL();   // Кликаю в Connect
             Pause(500);
+            server.WriteToLogFileBH("Нажали на Коннект");
         }
 
         #region методы для нового варианта Connect
@@ -522,7 +523,7 @@ namespace OpenGEWindows
         #endregion
 
         /// <summary>
-        /// Нажимаем Коннект (переводим юота из состояния логаут в состояние казарма)
+        /// Нажимаем Коннект (переводим бота из состояния логаут в состояние казарма)
         /// </summary>
         /// <returns></returns>
         public bool Connect()    // возвращает true, если успешно вошли в казарму
@@ -561,6 +562,7 @@ namespace OpenGEWindows
 
             #region старый вариант
 
+            server.WriteToLogFileBH("вошли в процедуру коннект");
             server.serverSelection();          //выбираем из списка свой сервер
 
             iPointColor point5050 = new PointColor(50 - 5 + databot.X, 50 - 5 + databot.Y, 7800000, 5);  //запоминаем цвет в координатах 50, 50 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
@@ -581,12 +583,15 @@ namespace OpenGEWindows
             ColorBOOL = (Test_Color == Tek_Color1);
             int counter = 0; //счетчик
 
+            server.WriteToLogFileBH("дошли до while");
             while ((aa | (ColorBOOL)) & (counter < MAX_NUMBER_ITERATION))
             {
                 counter++;  //счетчик
 
                 Tek_Color1 = point5050.GetPixelColor();
                 ColorBOOL = (Test_Color == Tek_Color1);
+
+                server.WriteToLogFileBH("нажимаем на кнопку connect");
                 PressConnectButton();
                 //pointButtonConnect.PressMouse();   // Кликаю в Connect
                 Pause(500);

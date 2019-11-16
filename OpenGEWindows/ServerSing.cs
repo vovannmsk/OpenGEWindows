@@ -634,9 +634,11 @@ namespace OpenGEWindows
         /// </summary>
         public override void serverSelection()
         {
+            WriteToLogFileBH("выбираем сервер из списка серверов начало");
             iPoint pointserverSelection = new Point(480 - 5 + xx, 345 - 5 + yy);
             pointserverSelection.PressMouseLL();
             Pause(500);
+            WriteToLogFileBH("выбираем сервер из списка серверов конец метода");
         }
 
         #endregion

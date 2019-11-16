@@ -394,9 +394,9 @@ namespace States
         /// <returns>нпорядковый номер проблемы</returns>
         public int NumberOfProblem()
         {
-            if (server.isLogout()) return 1;                         // если окно в логауте
-            if (server.isKillAllHero()) return 2;                  // если убиты все
-            if (server.isKillHero()) return 3;                        // если убиты не все 
+            if (server.isLogout()) { server.WriteToLogFile("Логаут");  return 1; }                         // если окно в логауте
+            if (server.isKillAllHero()) { server.WriteToLogFile("Все убиты"); return 2; }                  // если убиты все
+            if (server.isKillHero())    { server.WriteToLogFile("Убиты не все"); return 3; }               // если убиты не все 
             int numberTeleport = this.botwindow.getNomerTeleport();
             if (server.isBoxOverflow())                             // если карман переполнился и нужно продавать 
             {
@@ -404,16 +404,16 @@ namespace States
                 {
                     if (server.is248Items())                       //проверяем реально ли карман переполнился
                     {
-                        if (numberTeleport >= 100)           // продажа в снежке
-                        { return 5; }
+                        if (numberTeleport >= 100)                 // продажа в снежке
+                            {  server.WriteToLogFile("Продажа в снежке"); return 5; }
                         else                                 // продажа в городах
-                        { return 6; }
+                            { server.WriteToLogFile("Продажа не в снежке"); return 6; }
 
                     }
                 }
             }
-            if (pet.isOpenMenuPet()) return 4;                //если открыто меню с петом, значит пет не выпущен
-            if (market.isSale()) return 7;                     // если бот стоит в магазине на странице входа
+            if (pet.isOpenMenuPet()) { server.WriteToLogFile("открыто меню пет"); return 4; } //если открыто меню с петом, значит пет не выпущен
+            if (market.isSale()) { server.WriteToLogFile("В магазине"); return 7; }           // если бот стоит в магазине на странице входа
             if (market.isSale2()) return 8;                         //если зависли в магазине на любой закладке
             if (kMarket.isSale()) return 12;                     // если бот стоит в магазине на странице входа
             if (kMarket.isClickSell()) return 13;                //если зависли в катовичевском магазине на закладке Sell
