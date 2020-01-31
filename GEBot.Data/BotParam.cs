@@ -1,5 +1,7 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Collections;
 
 namespace GEBot.Data
 {
@@ -13,7 +15,9 @@ namespace GEBot.Data
         private GlobalParam globalParam;
 
         private string login;
+        private string[] logins;
         private string password;
+        private string[] passwords;
         private int x;
         private int y;
         private string param;              // синг, америка или европа
@@ -25,6 +29,7 @@ namespace GEBot.Data
         private int[] triangleY;
         private int bullet;
         private int statusOfAtk;
+        private int numberOfInfinity;
 
         public string Login { get => login; }
         public string Password { get => password; }
@@ -40,6 +45,10 @@ namespace GEBot.Data
         public int Bullet { get => bullet; }
         public int StatusOfAtk { get => statusOfAtk; set { statusOfAtk = value; SetStatusAtkInFile(); } }
 
+        public string[] Logins { get => logins; }
+        public string[] Passwords { get => passwords; }
+        public int NumberOfInfinity { get => numberOfInfinity; set { numberOfInfinity = value; SetNumber(); } }
+
         /// <summary>
         /// конструктор
         /// </summary>
@@ -51,8 +60,8 @@ namespace GEBot.Data
 
             this.x = Koord_X();
             this.y = Koord_Y();
-            this.login = LoadLogin();
-            this.password = Pass();
+            this.login = LoginFromFile();
+            this.password = PasswordFromFile();
             this.hwnd = Hwnd_in_file();
             this.param = Parametr();
             this.kanal = Channal();
@@ -61,10 +70,47 @@ namespace GEBot.Data
             this.triangleX = LoadTriangleX();
             this.triangleY = LoadTriangleY();
             this.statusOfAtk = GetStatusOfAtk();
+            this.logins = LoginsFromFile();
+            this.passwords = PasswordsFromFile();
+            this.numberOfInfinity = NumberFromFile();
         }
+
+
 
         //===================================== методы ==========================================
 
+        /// <summary>
+        /// запись в файл числа Инфинити (номер строки с логином и паролем в файле Логины.txt и Пароли.txt)
+        /// </summary>
+        public void SetNumber()
+        { File.WriteAllText(directoryOfMyProgram + this.numberOfWindow + "\\Инфинити.txt", this.numberOfInfinity.ToString()); }
+
+        /// <summary>
+        /// прочитать из файла номер инфинити (номер строки с логином и паролем в файле Логины.txt и Пароли.txt)
+        /// </summary>
+        /// <returns>номер строки с логином и паролем в файле Логины.txt и Пароли.txt</returns>
+        private int NumberFromFile()   // каталог и номер окна
+        {
+            return int.Parse(File.ReadAllText(directoryOfMyProgram + this.numberOfWindow + "\\Инфинити.txt"));
+        }
+
+        /// <summary>
+        /// прочитать из файла список логинов
+        /// </summary>
+        /// <returns></returns>
+        private string[] LoginsFromFile()
+        {
+            return File.ReadAllLines(directoryOfMyProgram + this.numberOfWindow + "\\Логины.txt");
+        }
+
+        /// <summary>
+        /// прочитать из файла список паролей
+        /// </summary>
+        /// <returns></returns>
+        private string[] PasswordsFromFile()
+        {
+            return File.ReadAllLines(directoryOfMyProgram + this.numberOfWindow + "\\Пароли.txt");
+        }
 
         /// <summary>
         /// изменяем Hwnd окна и записываем в файл
@@ -109,15 +155,23 @@ namespace GEBot.Data
         /// функция возвращает логин бота
         /// </summary>
         /// <returns></returns>
-        private String LoadLogin()   // каталог и номер окна
-        { return File.ReadAllText(directoryOfMyProgram + this.numberOfWindow + "\\Логины.txt"); }
+        private string LoginFromFile()   // каталог и номер окна
+        {
+            string[] result = File.ReadAllLines(directoryOfMyProgram + this.numberOfWindow + "\\Логины.txt");
+            return result[0];
+            //return File.ReadAllText(directoryOfMyProgram + this.numberOfWindow + "\\Логины.txt");
+        }
 
         /// <summary>
         /// функция возвращает пароль от бота
         /// </summary>
         /// <returns></returns>
-        private String Pass()   // каталог и номер окна
-        { return File.ReadAllText(directoryOfMyProgram + this.numberOfWindow + "\\Пароли.txt"); }
+        private string PasswordFromFile()   // каталог и номер окна
+        {
+            string[] result = File.ReadAllLines(directoryOfMyProgram + this.numberOfWindow + "\\Пароли.txt");
+            return result[0];
+            //return File.ReadAllText(directoryOfMyProgram + this.numberOfWindow + "\\Пароли.txt");
+        }
 
         /// <summary>
         /// функция возвращает hwnd бота

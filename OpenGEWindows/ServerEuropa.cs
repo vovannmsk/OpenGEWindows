@@ -97,8 +97,8 @@ namespace OpenGEWindows
             this.pointisOpenTopMenu82 = new PointColor(554 + xx, 87 + yy, 13420000, 4);
             this.pointisOpenTopMenu91 = new PointColor(601 + xx, 74 + yy, 13420000, 4);                //проверено
             this.pointisOpenTopMenu92 = new PointColor(602 + xx, 74 + yy, 13420000, 4);
-            this.pointisOpenTopMenu12_1 = new PointColor(507 - 5 + xx, 111 - 5 + yy, 8030000, 4);      
-            this.pointisOpenTopMenu12_2 = new PointColor(508 - 5 + xx, 111 - 5 + yy, 8030000, 4);
+            this.pointisOpenTopMenu121 = new PointColor(507 - 5 + xx, 111 - 5 + yy, 8030000, 4);      
+            this.pointisOpenTopMenu122 = new PointColor(508 - 5 + xx, 111 - 5 + yy, 8030000, 4);
             this.pointisOpenTopMenu131 = new PointColor(539 - 5 + xx, 374 - 5 + yy, 16100000, 5);      //проверено
             this.pointisOpenTopMenu132 = new PointColor(540 - 5 + xx, 374 - 5 + yy, 16500000, 5);
 

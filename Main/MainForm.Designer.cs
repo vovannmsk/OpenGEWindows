@@ -56,8 +56,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.LoadSteams = new System.Windows.Forms.Button();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.ChangingAccounts = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfAccouts)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -99,7 +100,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(6, 67);
+            this.button1.Location = new System.Drawing.Point(6, 47);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(170, 35);
             this.button1.TabIndex = 5;
@@ -300,7 +301,7 @@
             // 
             this.labelEnchanting.AutoSize = true;
             this.labelEnchanting.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelEnchanting.Location = new System.Drawing.Point(16, 129);
+            this.labelEnchanting.Location = new System.Drawing.Point(22, 157);
             this.labelEnchanting.MaximumSize = new System.Drawing.Size(300, 20);
             this.labelEnchanting.Name = "labelEnchanting";
             this.labelEnchanting.Size = new System.Drawing.Size(154, 20);
@@ -341,6 +342,7 @@
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Bisque;
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage2.Controls.Add(this.ChangingAccounts);
             this.tabPage2.Controls.Add(this.LoadSteams);
             this.tabPage2.Controls.Add(this.alchemy);
             this.tabPage2.Controls.Add(this.labelEnchanting);
@@ -354,6 +356,18 @@
             this.tabPage2.Size = new System.Drawing.Size(378, 184);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Доп. функции";
+            // 
+            // LoadSteams
+            // 
+            this.LoadSteams.BackColor = System.Drawing.Color.Yellow;
+            this.LoadSteams.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LoadSteams.Location = new System.Drawing.Point(202, 129);
+            this.LoadSteams.Name = "LoadSteams";
+            this.LoadSteams.Size = new System.Drawing.Size(170, 35);
+            this.LoadSteams.TabIndex = 64;
+            this.LoadSteams.Text = "Загрузка Steam\' ов";
+            this.LoadSteams.UseVisualStyleBackColor = false;
+            this.LoadSteams.Click += new System.EventHandler(this.LoadSteams_Click);
             // 
             // tabPage3
             // 
@@ -373,17 +387,15 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Редкие функции";
             // 
-            // LoadSteams
+            // ChangingAccounts
             // 
-            this.LoadSteams.BackColor = System.Drawing.Color.Yellow;
-            this.LoadSteams.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.LoadSteams.Location = new System.Drawing.Point(202, 129);
-            this.LoadSteams.Name = "LoadSteams";
-            this.LoadSteams.Size = new System.Drawing.Size(170, 35);
-            this.LoadSteams.TabIndex = 64;
-            this.LoadSteams.Text = "Загрузка Steam\' ов";
-            this.LoadSteams.UseVisualStyleBackColor = false;
-            this.LoadSteams.Click += new System.EventHandler(this.LoadSteams_Click);
+            this.ChangingAccounts.Location = new System.Drawing.Point(6, 88);
+            this.ChangingAccounts.Name = "ChangingAccounts";
+            this.ChangingAccounts.Size = new System.Drawing.Size(170, 35);
+            this.ChangingAccounts.TabIndex = 65;
+            this.ChangingAccounts.Text = "Смена аккаунтов";
+            this.ChangingAccounts.UseVisualStyleBackColor = true;
+            this.ChangingAccounts.Click += new System.EventHandler(this.ChangingAccounts_Click);
             // 
             // MainForm
             // 
@@ -442,6 +454,7 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button LoadSteams;
+        private System.Windows.Forms.Button ChangingAccounts;
     }
 }
 

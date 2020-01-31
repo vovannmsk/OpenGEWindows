@@ -10,9 +10,9 @@ namespace Main
     public partial class MainForm : Form
     {
         private static uint NumberBlueButton = 0;       //сколько раз нажали голубую(красную) кнопку
-        private const int MAX_NUMBER_OF_ACCOUNTS = 20;
+        //private const int MAX_NUMBER_OF_ACCOUNTS = 20;
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
-        private static string DataVersion = "10-11-2019";
+        private static string DataVersion = "30-01-2020";
         private int numberOfAcc;                                              // количество аккаунтов ботов
         private int startAccount;
         GlobalParam globalParam;
@@ -711,7 +711,7 @@ namespace Main
 
         #endregion
 
-        #region Гильдия охотников
+        #region Гильдия охотников BH
 
         /// <summary>
         /// Кнопка BH
@@ -786,6 +786,35 @@ namespace Main
 
         }
 
+        #endregion
+
+        #region Смена аккаунтов для Инфинити
+        /// <summary>
+        /// кнопка "Смена аккаунтов"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ChangingAccounts_Click(object sender, EventArgs e)
+        {
+            Thread myCA = new Thread(funcCA);
+            myCA.Start();
+        }
+
+        /// <summary>
+        /// метод задает функционал для потока, организуемого кнопкой цвета "ForestGreen" (темно-зеленая)
+        /// </summary>
+        private void funcCA()
+        {
+            for (int j = 1; j <= 5; j++)
+            {
+                Check check = new Check(j);
+                if (check.IsActiveServer)
+                {
+                    check.ChangingAccounts();
+                }
+            }
+
+        }
         #endregion
 
     }// END class MainForm 

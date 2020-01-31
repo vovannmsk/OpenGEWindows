@@ -21,11 +21,8 @@ namespace OpenGEWindows
         [DllImport("user32.dll")]
         private static extern UIntPtr FindWindow(String ClassName, String WindowName);  //ищет окно с заданным именем и классом
 
-        /// <summary>
-        /// конструктор
-        /// town отвечает за методы для конкретного города (паттерн Стратегия). Все различия в действиях, зависящих от города, инкапсулированы в семействе классов Town (в т.ч. AmericaTown)
-        /// </summary>
-        /// <param name="nomerOfWindow"> номер окна по порядку </param>
+
+        //основной конструктор
         public ServerSing(botWindow botwindow)
         {
 
@@ -37,6 +34,7 @@ namespace OpenGEWindows
             this.globalParam = new GlobalParam();
             ServerParamFactory serverParamFactory = new ServerParamFactory(botwindow.getNumberWindow());
             this.serverParam = serverParamFactory.create();
+            this.botParam = new BotParam(botwindow.getNumberWindow());
 
             #endregion
 
@@ -57,6 +55,12 @@ namespace OpenGEWindows
             #region No Window
             this.pointSafeIP1 = new PointColor(941, 579, 13600000, 5);
             this.pointSafeIP2 = new PointColor(942, 579, 13600000, 5);
+            this.pointisSteam1 = new PointColor(1037, 553, 14471368, 0); //для Стима используются абсолютные координаты
+            this.pointisSteam2 = new PointColor(1038, 553, 14471368, 0);//для Стима используются абсолютные координаты
+            this.pointSteamLogin = new Point(862,455);//для Стима используются абсолютные координаты
+            this.pointSteamPassword = new Point(862, 489);//для Стима используются абсолютные координаты
+            this.pointSteamSavePassword = new Point(843, 518);//для Стима используются абсолютные координаты
+            this.pointSteamOk = new Point(902, 551);//для Стима используются абсолютные координаты
             #endregion
 
             #region Logout
@@ -88,20 +92,33 @@ namespace OpenGEWindows
 
             #region Top Menu
 
-            this.pointisOpenTopMenu21 = new PointColor(328 + xx, 74 + yy, 13420000, 4);      //333 - 5, 79 - 5, 13420000, 334 - 5, 79 - 5, 13420000, 4);            //не проверено
-            this.pointisOpenTopMenu22 = new PointColor(329 + xx, 74 + yy, 13420000, 4);
-            this.pointisOpenTopMenu61 = new PointColor(455 + xx, 87 + yy, 13420000, 4);      //460 - 5, 92 - 5, 13420000, 461 - 5, 92 - 5, 13420000, 4);            //не проверено
-            this.pointisOpenTopMenu62 = new PointColor(456 + xx, 87 + yy, 13420000, 4);
-            this.pointisOpenTopMenu81 = new PointColor(553 + xx, 87 + yy, 13420000, 4);      //558 - 5, 92 - 5, 13420000, 559 - 5, 92 - 5, 13420000, 4);            //не проверено
-            this.pointisOpenTopMenu82 = new PointColor(554 + xx, 87 + yy, 13420000, 4);
-            this.pointisOpenTopMenu91 = new PointColor(601 + xx, 74 + yy, 13420000, 4);      //606 - 5, 79 - 5, 13420000, 607 - 5, 79 - 5, 13420000, 4);            //проверено
-            this.pointisOpenTopMenu92 = new PointColor(602 + xx, 74 + yy, 13420000, 4);
-            //this.pointisOpenTopMenu12_1 = new PointColor(502 - 5 + xx, 120 - 5 + yy, 12000000, 6);            //проверено
-            //this.pointisOpenTopMenu12_2 = new PointColor(502 - 5 + xx, 121 - 5 + yy, 12000000, 6);
-            this.pointisOpenTopMenu12_1 = new PointColor(708 - 5 + xx, 118 - 5 + yy, 13000000, 6);      
-            this.pointisOpenTopMenu12_2 = new PointColor(718 - 5 + xx, 118 - 5 + yy, 13000000, 6);
+            this.pointisOpenTopMenu21 = new PointColor(337 - 5 + xx, 76 - 5 + yy, 13421721, 0);
+            this.pointisOpenTopMenu22 = new PointColor(337 - 5 + xx, 77 - 5 + yy, 13421721, 0);
+            this.pointisOpenTopMenu61 = new PointColor(464 - 5 + xx, 89 - 5 + yy, 13421721, 0);
+            this.pointisOpenTopMenu62 = new PointColor(464 - 5 + xx, 90 - 5 + yy, 13421721, 0);
+            this.pointisOpenTopMenu81 = new PointColor(562 - 5 + xx, 89 - 5 + yy, 13421721, 0);
+            this.pointisOpenTopMenu82 = new PointColor(562 - 5 + xx, 90 - 5 + yy, 13421721, 0);
+            this.pointisOpenTopMenu91 = new PointColor(580 - 5 + xx, 76 - 5 + yy, 13421721, 0);      //pet
+            this.pointisOpenTopMenu92 = new PointColor(580 - 5 + xx, 77 - 5 + yy, 13421721, 0);
+            this.pointisOpenTopMenu121 = new PointColor(708 - 5 + xx, 118 - 5 + yy, 13000000, 6);        //Warp List
+            this.pointisOpenTopMenu122 = new PointColor(718 - 5 + xx, 118 - 5 + yy, 13000000, 6);
             this.pointisOpenTopMenu131 = new PointColor(404 - 5 + xx, 278 - 5 + yy, 16000000, 6);          //Quest Name                                                         //проверено
             this.pointisOpenTopMenu132 = new PointColor(404 - 5 + xx, 279 - 5 + yy, 16000000, 6);
+            //this.pointisOpenTopMenu21 = new PointColor(328 + xx, 74 + yy, 13420000, 4);      
+            //this.pointisOpenTopMenu22 = new PointColor(329 + xx, 74 + yy, 13420000, 4);
+            //this.pointisOpenTopMenu61 = new PointColor(455 + xx, 87 + yy, 13420000, 4);      
+            //this.pointisOpenTopMenu62 = new PointColor(456 + xx, 87 + yy, 13420000, 4);
+            //this.pointisOpenTopMenu81 = new PointColor(553 + xx, 87 + yy, 13420000, 4);      
+            //this.pointisOpenTopMenu82 = new PointColor(554 + xx, 87 + yy, 13420000, 4);
+            //this.pointisOpenTopMenu91 = new PointColor(601 + xx, 74 + yy, 13420000, 4);      //pet
+            //this.pointisOpenTopMenu92 = new PointColor(602 + xx, 74 + yy, 13420000, 4);
+            //this.pointisOpenTopMenu12_1 = new PointColor(708 - 5 + xx, 118 - 5 + yy, 13000000, 6);      
+            //this.pointisOpenTopMenu12_2 = new PointColor(718 - 5 + xx, 118 - 5 + yy, 13000000, 6);
+            //this.pointisOpenTopMenu131 = new PointColor(404 - 5 + xx, 278 - 5 + yy, 16000000, 6);          //Quest Name                                                         //проверено
+            //this.pointisOpenTopMenu132 = new PointColor(404 - 5 + xx, 279 - 5 + yy, 16000000, 6);
+
+
+
             this.pointGotoEnd = new Point(685 - 5 + xx, 470 - 5 + yy);            //end
             this.pointLogout = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
             this.pointGotoBarack = new Point(685 - 5 + xx, 380 - 5 + yy);            //в барак
@@ -483,6 +500,10 @@ namespace OpenGEWindows
             #endregion
         }
 
+        /// <summary>
+        /// коструктор с другим аргументом
+        /// </summary>
+        /// <param name="numberOfWindow">номер окна по порядку</param>
         public ServerSing(int numberOfWindow) : this(new botWindow(numberOfWindow))
         {
         }
@@ -577,7 +598,7 @@ namespace OpenGEWindows
 
         }
 
-
+        
         /// <summary>
         /// запуск клиента игры
         /// </summary>
@@ -592,8 +613,15 @@ namespace OpenGEWindows
             process.Start();
 
 
-            Pause(60000);
+            Pause(10000);
 
+            if (isSteam())
+            {
+                InsertLoginPasswordOk();
+            }
+
+
+            Pause(50000);
 
 
             #endregion
@@ -726,7 +754,9 @@ namespace OpenGEWindows
             if (punkt <= numberOfPunkt[numberOfThePartitionMenu - 1])
             {
                 int x = MenukoordX[numberOfThePartitionMenu - 1] + 25;
-                int y = FirstPunktOfMenuKoordY[numberOfThePartitionMenu - 1] + 25 * (punkt - 1);
+                //int x = MenukoordX[numberOfThePartitionMenu - 1] + 10;
+                //int y = FirstPunktOfMenuKoordY[numberOfThePartitionMenu - 1] + 25 * (punkt - 1);
+                int y = FirstPunktOfMenuKoordY[numberOfThePartitionMenu - 1] + 24 * (punkt - 1);
                 iPoint pointMenu = new Point(x - 5 + xx, y - 5 + yy);
 
                 TopMenu(numberOfThePartitionMenu);   //сначала открываем раздел верхнего меню (1-14)

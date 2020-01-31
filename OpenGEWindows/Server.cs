@@ -26,6 +26,7 @@ namespace OpenGEWindows
         protected botWindow botwindow;
         protected GlobalParam globalParam;
         protected ServerParam serverParam;
+        protected BotParam botParam;
         protected int xx;
         protected int yy;
 
@@ -48,6 +49,13 @@ namespace OpenGEWindows
         #region No Window
         protected iPointColor pointSafeIP1;
         protected iPointColor pointSafeIP2;
+        protected iPointColor pointisSteam1;
+        protected iPointColor pointisSteam2;
+        protected iPoint pointSteamLogin;
+        protected iPoint pointSteamPassword;
+        protected iPoint pointSteamSavePassword;
+        protected iPoint pointSteamOk;
+
         protected const int WIDHT_WINDOW = 1024;
         protected const int HIGHT_WINDOW = 700;
 
@@ -87,15 +95,15 @@ namespace OpenGEWindows
         protected iPointColor pointisOpenTopMenu82;
         protected iPointColor pointisOpenTopMenu91;
         protected iPointColor pointisOpenTopMenu92;
-        protected iPointColor pointisOpenTopMenu12_1;
-        protected iPointColor pointisOpenTopMenu12_2;
+        protected iPointColor pointisOpenTopMenu121;
+        protected iPointColor pointisOpenTopMenu122;
         protected iPointColor pointisOpenTopMenu131;
         protected iPointColor pointisOpenTopMenu132;
         protected iPoint pointLogout;
         protected iPoint pointGotoEnd;
         protected iPoint pointGotoBarack;
         protected iPoint pointTeleportFirstLine;
-//        protected iPoint pointTeleportSecondLine;
+        //        protected iPoint pointTeleportSecondLine;
         protected iPoint pointTeleportExecute;
 
         #endregion
@@ -335,14 +343,14 @@ namespace OpenGEWindows
         #endregion
 
         #region кратер
-        
+
         protected iPoint pointGateCrater;
         protected iPoint pointSecondBookmark;
         protected iPoint pointMitridat;
         protected iPoint pointMitridatTo2;
         protected iPoint pointBookmark3;
         protected iPoint pointButtonYesPremium;
-        
+
         protected iPoint pointWorkCrater;
         protected iPoint pointButtonSaveTeleport;
         protected iPoint pointButtonOkSaveTeleport;
@@ -507,7 +515,7 @@ namespace OpenGEWindows
         protected iPointColor pointIsRoulette1;
         protected iPointColor pointIsRoulette2;
 
-//        protected uint[] arrayOfColors = new uint[17] { 0, 1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 2104613 };
+        //        protected uint[] arrayOfColors = new uint[17] { 0, 1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 2104613 };
         protected uint[] arrayOfColors;
 
 
@@ -559,16 +567,98 @@ namespace OpenGEWindows
         /// <returns></returns>
         public bool isSafeIP()
         {
-            //iPointColor pointSafeIP1 = new PointColor(941, 579, 13600000, 5);
-            //iPointColor pointSafeIP2 = new PointColor(942, 579, 13600000, 5);
             return (pointSafeIP1.isColor() && pointSafeIP2.isColor());
         }
 
+        /// <summary>
+        /// проверяем, открыто ли окно Стим для ввода логина и пароля
+        /// </summary>
+        /// <returns></returns>
+        protected bool isSteam()
+        {
+            return (pointisSteam1.isColor() && pointisSteam2.isColor());
+        }
+
+        protected string GetLogin()
+        {
+            string result = botParam.Login;
+            if (globalParam.Infinity)
+            {
+                //если ходим в Инфинити вместо обычного ботоводства, 
+                //то здесь надо написать выбор логина из списка
+                result = botParam.Logins[botParam.NumberOfInfinity];   //получили логин
+            }
+            return result;
+        }
+
+        protected string GetPassword()
+        {
+            string result = botParam.Password;
+            if (globalParam.Infinity)
+            {
+                //если ходим в Инфинити вместо обычного ботоводства, 
+                //то здесь надо написать выбор пароля из списка
+                result = botParam.Passwords[botParam.NumberOfInfinity];   //получили пароль
+            }
+            return result;
+        }
+
+        protected void EnterSteamLogin()
+        {
+            pointSteamLogin.PressMouseL();
+            SendKeys.SendWait(GetLogin());
+        }
+        protected void EnterSteamPassword()
+        {
+            pointSteamPassword.PressMouseL();
+            SendKeys.SendWait(GetPassword());
+        }
+        protected void CheckSteamSavePassword()
+        {
+            if (globalParam.Infinity)
+            {
+                //если ходим в Инфинити вместо обычного ботоводства, 
+             
+            }
+            else   //обычное ботоводство
+            {
+                pointSteamSavePassword.PressMouseL();
+            }
+        }
+        protected void PressSteamOk()
+        {
+            pointSteamOk.PressMouseL();
+            botParam.NumberOfInfinity++;   //прибавили индекс, когда нажали Ок (загрузка аккаунта Стим)
+        }
+
+
+        /// <summary>
+        /// Вводим в стим логин-пароль и нажимаем Ок
+        /// </summary>
+        protected void InsertLoginPasswordOk()
+        {
+            EnterSteamLogin();
+            EnterSteamPassword();
+            CheckSteamSavePassword();
+            PressSteamOk();
+        }
+
+
         public abstract void runClientSteam();
         public abstract void runClient();
-        //public abstract bool isActive();
         public abstract UIntPtr FindWindowGE();
         public abstract void OrangeButton();
+        //public abstract bool isActive();
+
+
+        /// <summary>
+        /// Проба. Загрузка и выгрузка аккаунтов 
+        /// </summary>
+        public void OpenWindowAndClose()
+        {
+
+
+        }
 
         #endregion
 
@@ -702,7 +792,7 @@ namespace OpenGEWindows
                     result = (pointisOpenTopMenu91.isColor() && pointisOpenTopMenu92.isColor());
                     break;
                 case 12:
-                    result = (pointisOpenTopMenu12_1.isColor() && pointisOpenTopMenu12_2.isColor());
+                    result = (pointisOpenTopMenu121.isColor() && pointisOpenTopMenu122.isColor());
                     break;
                 case 13:
                     result = (pointisOpenTopMenu131.isColor() && pointisOpenTopMenu132.isColor());

@@ -380,7 +380,7 @@ namespace OpenGEWindows
                 case 15526903:    // Elementium
                 case 1835187:     // экспертные чипы
                 case 14146476:    // solarion
-                case 16251642:    // growth booster
+                //case 16251642:    // growth booster
                 case 10992324:    // Шахматы 
                 case 7830683:     // Кожа улитки
                 case 5205119:     // Токен 1

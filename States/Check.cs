@@ -648,6 +648,13 @@ namespace States
             server.runClientSteam();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ChangingAccounts()
+        {
+            server.OpenWindowAndClose();
+        }
 
         ///// <summary>
         ///// определяет, нужно ли работать с этим окном (может быть отключено из-за профилактики на сервере)
@@ -712,13 +719,14 @@ namespace States
             int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 875, 850, 825, 800, 775, 750, 875 };
             int[] koordY = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 5, 30, 55, 80, 105, 130, 5 };
 
-            botWindow botwindow = new botWindow(i);
+            //botWindow botwindow = new botWindow(i);
+            //botwindow.ReOpenWindow();
+
             //MessageBox.Show(" " + botwindow.getNomerTeleport());
-            botwindow.ReOpenWindow();
             //botwindow.Pause(1000);
 
-            Server server = new ServerSing(botwindow);
-            MessageBox.Show(" " + server.isBoxOverflow());
+            //Server server = new ServerSing(botwindow);
+            //MessageBox.Show(" " + server.isBoxOverflow());
             //Server server = new ServerAmerica2(botwindow);
 
             //BHDialog BHdialog = new BHDialogSing(botwindow);
@@ -726,7 +734,7 @@ namespace States
             //bool ttt = dialog.isDialog();
             //MessageBox.Show(" " + ttt);
 
-            KatoviaMarket kMarket = new KatoviaMarketSing (botwindow);
+            //KatoviaMarket kMarket = new KatoviaMarketSing (botwindow);
             //Market market = new MarketSing(botwindow);
 
             //            Pet pet = new PetAmerica2(botwindow);
@@ -801,20 +809,22 @@ namespace States
 
             //int j = 12;
             //PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в городе
-//            PointColor point1 = new PointColor(152 - 5 + xx, 250 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в Катовии
+            //            PointColor point1 = new PointColor(152 - 5 + xx, 250 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в Катовии
 
-            PointColor point1 = new PointColor(700 - 30 + xx, 500 - 30 + yy, 1, 1);
-            PointColor point2 = new PointColor(379 - 5 + xx, 497 - 5 + yy, 1, 1);
-            PointColor point3 = new PointColor(379 - 5 + xx, 498 - 5 + yy, 1, 1);
+            PointColor point1 = new PointColor(1037, 553, 1, 1);
+            PointColor point2 = new PointColor(1038, 553, 1, 1);
+            //PointColor point1 = new PointColor(580 - 5 + xx, 76 - 5 + yy, 1, 1);
+            //PointColor point2 = new PointColor(580 - 5 + xx, 77 - 5 + yy, 1, 1);
+            //PointColor point3 = new PointColor(930 - 5 + xx, 703 - 5 + yy, 1, 1);
 
 
             color1 = point1.GetPixelColor();
             color2 = point2.GetPixelColor();
-            color3 = point3.GetPixelColor();
+            //color3 = point3.GetPixelColor();
 
-            //MessageBox.Show(" " + color1);
+            MessageBox.Show(" " + color1);
             MessageBox.Show(" " + color2);
-            MessageBox.Show(" " + color3);
+            //MessageBox.Show(" " + color3);
 
 
             //if ((color1 > 2000000) && (color2 > 2000000)) MessageBox.Show(" больше ");

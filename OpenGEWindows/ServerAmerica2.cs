@@ -99,8 +99,8 @@ namespace OpenGEWindows
             this.pointisOpenTopMenu92  = new PointColor(602 + xx, 74 + yy, 13420000, 4);
             //this.pointisOpenTopMenu12_1 = new PointColor(502 - 5 + xx, 120 - 5 + yy, 12000000, 6);            //проверено
             //this.pointisOpenTopMenu12_2 = new PointColor(502 - 5 + xx, 121 - 5 + yy, 12000000, 6);
-            this.pointisOpenTopMenu12_1 = new PointColor(708 - 5 + xx, 118 - 5 + yy, 13000000, 6);
-            this.pointisOpenTopMenu12_2 = new PointColor(718 - 5 + xx, 118 - 5 + yy, 13000000, 6);
+            this.pointisOpenTopMenu121 = new PointColor(708 - 5 + xx, 118 - 5 + yy, 13000000, 6);
+            this.pointisOpenTopMenu122 = new PointColor(718 - 5 + xx, 118 - 5 + yy, 13000000, 6);
             this.pointisOpenTopMenu131 = new PointColor(404 - 5 + xx, 278 - 5 + yy, 16000000, 6);          //Quest Name                                                         //проверено
             this.pointisOpenTopMenu132 = new PointColor(404 - 5 + xx, 279 - 5 + yy, 16000000, 6);
             this.pointGotoEnd =          new Point(685 - 5 + xx, 470 - 5 + yy);            //end

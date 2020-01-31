@@ -14,6 +14,8 @@ namespace GEBot.Data
         private string[] mmProduct;                     // массив товаров для продажи через рынок (MM)
         private int totalNumberOfAccounts;              // всего аккаунтов ботов
         private int statusOfSale;                       // статус продажи (для BH)
+        private bool infinity;                          // статус инфинити = false - это обычное ботоводство. 
+                                                        // статус инфинити = true - это поход одним окном в Инфинити (ГО) 
         private string directoryOfMyProgram;
         //  private const string KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
 
@@ -29,6 +31,7 @@ namespace GEBot.Data
             this.mmProduct = LoadProduct();
             this.totalNumberOfAccounts = KolvoAkk();
             this.statusOfSale = GetStatusOfSale();
+            this.infinity = isInfinity();
         }
 
         // ==================================================== Методы ============================================================
@@ -41,8 +44,9 @@ namespace GEBot.Data
         public int TotalNumberOfAccounts { get => totalNumberOfAccounts; }
         public int StatusOfSale { get => GetStatusOfSale(); set { statusOfSale = value; SetStatusInFile(); } }
         public string DirectoryOfMyProgram { get => directoryOfMyProgram; }
+        public bool Infinity { get => infinity;}
 
-        //        public int StatusOfSale { get => statusOfSale; set { statusOfSale = value; SetStatusInFile(); } }
+        
 
         // =================== прочие методы ===============================
 
@@ -118,6 +122,14 @@ namespace GEBot.Data
             return isSamara;
         }
 
+        /// <summary>
+        /// читать значение свойства Инфинити из файла
+        /// </summary>
+        /// <returns>статус инфинити = false - это обычное ботоводство.</returns>
+        private bool isInfinity()
+        {
+            return bool.Parse(File.ReadAllText(directoryOfMyProgram + "\\Инфинити.txt"));
+        }
     }
 
 }
