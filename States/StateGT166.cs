@@ -59,7 +59,7 @@ namespace States
         {
             server.GotoGM();
             botwindow.PressEscThreeTimes();
-            botwindow.Pause(11000);
+            botwindow.Pause(5000);
         }
 
         /// <summary>

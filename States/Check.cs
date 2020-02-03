@@ -652,11 +652,10 @@ namespace States
         /// </summary>
         public void ChangingAccounts()
         {
-          for (int j = botParam.NumberOfInfinity; j <= 133; j++)
-            //for (int j = 1; j <= 1; j++)
-                driver.StateInputOutput(); //вход и выход из игры
-            //for (int j = botParam.NumberOfInfinity; j <= 133; j++)
-            //    driver.StateNewAcc2(); //новые акки
+            //for (int j = botParam.NumberOfInfinity; j < botParam.Parametrs.Length; j++)
+            //    driver.StateInputOutput(); //вход и выход из игры
+            for (int j = botParam.NumberOfInfinity; j < botParam.Parametrs.Length; j++)
+                driver.StateNewAcc2(); //новые акки
         }
 
         ///// <summary>

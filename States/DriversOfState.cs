@@ -207,8 +207,7 @@ namespace States
         public void StateInputOutput()
         {
             StateDriverRun(new StateGT014(botwindow), new StateGT017(botwindow));  // заходим в ребольдо
-            StateDriverRun(new StateGT165(botwindow), new StateGT169(botwindow));  // бежим к бабе
-            StateDriverRun(new StateGT169(botwindow), new StateGT170(botwindow));  // закрываем стим
+            StateDriverRun(new StateGT165(botwindow), new StateGT170(botwindow));  // бежим к бабе + удаляем песочницу
         }
 
 

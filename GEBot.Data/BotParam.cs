@@ -49,7 +49,8 @@ namespace GEBot.Data
         public int[] TriangleY { get => triangleY; }
         //public int Bullet { get => bullet; }
         public int StatusOfAtk { get => statusOfAtk; set { statusOfAtk = value; SetStatusAtkInFile(); } }
-        public int NumberOfInfinity { get => numberOfInfinity; set { numberOfInfinity = value; SetNumber(); } }
+        public int NumberOfInfinity { get { numberOfInfinity = NumberFromFile(); return numberOfInfinity; }
+                                      set { numberOfInfinity = value; NumberToFile(); } }
 
         //********отключаем временно для проверки*********************************************************
         //public string Param { get { return parametrs[numberOfInfinity]; } } 
@@ -117,7 +118,7 @@ namespace GEBot.Data
         /// <summary>
         /// запись в файл числа Инфинити (номер строки с логином и паролем в файле Логины.txt и Пароли.txt)
         /// </summary>
-        public void SetNumber()
+        public void NumberToFile()
         { File.WriteAllText(directoryOfMyProgram + numberOfWindow + "\\Инфинити.txt", numberOfInfinity.ToString()); }
 
         /// <summary>
