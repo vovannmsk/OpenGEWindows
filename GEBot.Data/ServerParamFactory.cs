@@ -5,8 +5,9 @@
     /// </summary>
     public class ServerParamFactory
     {
+        //private GlobalParam globalParam;
         private ServerParam serverParam;
-        private BotParam botParam;
+        //private BotParam botParam;
         private string param;
 
         /// <summary>
@@ -15,12 +16,12 @@
         /// <param name="param">синг, америка или европа</param>
         public ServerParamFactory(int numberOfWindow)
         {
-            this.botParam = new BotParam(numberOfWindow);
-            this.param = botParam.Param;
+            BotParam botParam = new BotParam(numberOfWindow);
+            param = botParam.Parametrs[botParam.NumberOfInfinity];
         }
         public ServerParam create()
         {
-            switch (this.param)
+            switch (param)
             {
                 case "C:\\America\\":
                     serverParam = new ServerParamAmerica();

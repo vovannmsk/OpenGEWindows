@@ -14,7 +14,7 @@ namespace GEBot.Data
         private string[] mmProduct;                     // массив товаров для продажи через рынок (MM)
         private int totalNumberOfAccounts;              // всего аккаунтов ботов
         private int statusOfSale;                       // статус продажи (для BH)
-        private bool infinity;                          // статус инфинити = false - это обычное ботоводство. 
+        //private bool infinity;                          // статус инфинити = false - это обычное ботоводство. 
                                                         // статус инфинити = true - это поход одним окном в Инфинити (ГО) 
         private string directoryOfMyProgram;
         //  private const string KATALOG_MY_PROGRAM = "C:\\!! Суперпрограмма V&K\\";
@@ -31,24 +31,22 @@ namespace GEBot.Data
             this.mmProduct = LoadProduct();
             this.totalNumberOfAccounts = KolvoAkk();
             this.statusOfSale = GetStatusOfSale();
-            this.infinity = isInfinity();
+            //this.infinity = isInfinity();
         }
 
-        // ==================================================== Методы ============================================================
 
-        //  ====== геттеры и сеттеры =============
+        //  ============ Свойства =============
         public int Nintendo { get => nintendo; set => nintendo = value; }
         public int StartingAccount { get => startingAccount; set => startingAccount = value; }
         public bool Samara { get => samara; }
         public string[] MMProduct { get => mmProduct; }
         public int TotalNumberOfAccounts { get => totalNumberOfAccounts; }
-        public int StatusOfSale { get => GetStatusOfSale(); set { statusOfSale = value; SetStatusInFile(); } }
+//        public int StatusOfSale { get => GetStatusOfSale(); set { statusOfSale = value; SetStatusInFile(); } }
+        public int StatusOfSale { get => statusOfSale; set { statusOfSale = value; SetStatusInFile(); } }
         public string DirectoryOfMyProgram { get => directoryOfMyProgram; }
-        public bool Infinity { get => infinity;}
+        //public bool Infinity { get => infinity;}
 
-        
-
-        // =================== прочие методы ===============================
+        // ==================================================== Методы ============================================================
 
         /// <summary>
         /// возвращаем тип чиповки
@@ -62,7 +60,10 @@ namespace GEBot.Data
         /// </summary>
         /// <returns></returns>
         private int TypeOfNintendo()
-        { return int.Parse(File.ReadAllText(directoryOfMyProgram + "\\Чиповка.txt")); }
+        {
+            return int.Parse(File.ReadAllText(directoryOfMyProgram + "\\Чиповка.txt"));
+            //return 1;
+        }
 
         /// <summary>
         /// метод считывает значение статуса из файла, 1 - мы направляемся на продажу товара в магазин, 0 - нет (обычный режим работы)
@@ -96,6 +97,7 @@ namespace GEBot.Data
         private int BeginAcc()
         {
             return int.Parse(File.ReadAllText(directoryOfMyProgram + "\\СтартовыйАккаунт.txt"));
+            //return 1;
         }
 
         /// <summary>
@@ -114,6 +116,7 @@ namespace GEBot.Data
         /// <returns> true, если комп является удаленным сервером (из Самары) </returns>
         private bool IsSamara()
         {
+            string ddd = File.ReadAllText(directoryOfMyProgram + "\\Сервер.txt");
             int result = int.Parse(File.ReadAllText(directoryOfMyProgram + "\\Сервер.txt"));
 
             bool isSamara = false;
@@ -122,14 +125,14 @@ namespace GEBot.Data
             return isSamara;
         }
 
-        /// <summary>
-        /// читать значение свойства Инфинити из файла
-        /// </summary>
-        /// <returns>статус инфинити = false - это обычное ботоводство.</returns>
-        private bool isInfinity()
-        {
-            return bool.Parse(File.ReadAllText(directoryOfMyProgram + "\\Инфинити.txt"));
-        }
+        ///// <summary>
+        ///// читать значение свойства Инфинити из файла
+        ///// </summary>
+        ///// <returns>статус инфинити = false - это обычное ботоводство.</returns>
+        //private bool isInfinity()
+        //{
+        //    return bool.Parse(File.ReadAllText(directoryOfMyProgram + "\\Инфинити.txt"));
+        //}
     }
 
 }

@@ -37,6 +37,7 @@ namespace OpenGEWindows
             this.globalParam = new GlobalParam();
             ServerParamFactory serverParamFactory = new ServerParamFactory(botwindow.getNumberWindow());
             this.serverParam = serverParamFactory.create();
+            this.botParam = new BotParam(botwindow.getNumberWindow());
 
             #endregion
 
@@ -44,6 +45,8 @@ namespace OpenGEWindows
 
             TownFactory townFactory = new America2TownFactory(botwindow);                                     // здесь выбирается конкретная реализация для фабрики Town
             this.town = townFactory.createTown();
+            this.town_begin = new America2TownReboldo(botwindow);                                   //город взят по умолчанию, как Ребольдо. 
+            dialog = new DialogAmerica2(botwindow);
 
             #endregion
 
@@ -58,15 +61,25 @@ namespace OpenGEWindows
             #region No Window
             this.pointSafeIP1 = new PointColor(941, 579, 13600000, 5);
             this.pointSafeIP2 = new PointColor(942, 579, 13600000, 5);
+            this.pointisSteam1 = new PointColor(1037, 553, 14471368, 0); //для Стима используются абсолютные координаты
+            this.pointisSteam2 = new PointColor(1038, 553, 14471368, 0);//для Стима используются абсолютные координаты
+            this.pointSteamLogin = new Point(862, 455);//для Стима используются абсолютные координаты
+            this.pointSteamPassword = new Point(862, 489);//для Стима используются абсолютные координаты
+            this.pointSteamSavePassword = new Point(843, 518);//для Стима используются абсолютные координаты
+            this.pointSteamOk = new Point(902, 551);//для Стима используются абсолютные координаты
+
             #endregion
 
             #region Logout
 
-            this.pointConnect = new PointColor(696 - 5 + xx, 148 - 5 + yy, 7800000, 5);
+            pointConnect = new PointColor(696 - 5 + xx, 148 - 5 + yy, 7800000, 5);
             //this.pointisLogout1 = new PointColor(565 - 5 + xx, 532 - 5 + yy, 16000000, 6);       // проверено   слово Leave Game буква L
             //this.pointisLogout2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 16000000, 6);       // проверено
-            this.pointisLogout1 = new PointColor(930 - 5 + xx, 702 - 5 + yy, 7925494, 0);       // проверено   слово Ver буква r
-            this.pointisLogout2 = new PointColor(930 - 5 + xx, 703 - 5 + yy, 7925494, 0);       // проверено
+            pointisLogout1 = new PointColor(930 - 5 + xx, 702 - 5 + yy, 7925494, 0);        // проверено   слово Ver буква r
+            pointisLogout2 = new PointColor(930 - 5 + xx, 703 - 5 + yy, 7925494, 0);        // проверено
+            this.pointIsServerSelection1 = new PointColor(430 - 5 + xx, 370 - 5 + yy, 5848111, 0);       // проверено   слово Ver буква r
+            this.pointIsServerSelection2 = new PointColor(430 - 5 + xx, 371 - 5 + yy, 5848111, 0);       // проверено   слово Ver буква r
+            pointserverSelection = new Point(480 - 5 + xx, 370 - 5 + yy);
 
             #endregion
 
@@ -171,6 +184,8 @@ namespace OpenGEWindows
             this.pointMana1 = new Point(245 - 5 + xx, 705 - 5 + yy);                        //бутылка маны под буквой I
             this.pointMana2 = new Point(245 - 5 + 255 + xx, 705 - 5 + yy);                        //бутылка маны под буквой K
             this.pointMana3 = new Point(245 - 5 + 510 + xx, 705 - 5 + yy);                        //бутылка маны под буквой ,
+            this.pointGM = new Point(439 - 5 + xx, 413 - 5 + yy);
+            this.pointHeadGM = new Point(369 - 5 + xx, 290 - 5 + yy);
 
             this.arrayOfColorsIsTown1 = new uint[12] { 11053, 1710, 7631, 2763, 16777, 4276, 5131, 3684, 65, 5066, 15856, 8750 };
             this.arrayOfColorsIsTown2 = new uint[12] { 10921, 2105, 16711, 7237, 3552, 5395, 9737, 10263, 0, 9342, 15790, 8158 };
@@ -265,7 +280,7 @@ namespace OpenGEWindows
 
             this.pointNewName = new Point(490 - 5 + xx, 280 - 5 + yy);                             //строчка, куда надо вводить имя семьи
             this.pointButtonCreateNewName = new Point(465 - 5 + xx, 510 - 5 + yy);                 //кнопка Create для создания новой семьи
-            this.pointCreateHeroes = new Point(800 - 5 + xx, 635 - 5 + yy);                        //кнопка Create для создания нового героя (перса)
+            this.pointCreateHeroes = new Point(800 - 5 + xx, 655 - 5 + yy);                        //кнопка Create для создания нового героя (перса)
             this.pointButtonOkCreateHeroes = new Point(520 - 5 + xx, 420 - 5 + yy);                //кнопка Ok для подтверждения создания героя
             this.pointMenuSelectTypeHeroes = new Point(810 - 5 + xx, 260 - 5 + yy);                //меню выбора типа героя в казарме
             this.pointSelectTypeHeroes = new Point(800 - 5 + xx, 320 - 5 + yy);                    //выбор мушкетера в меню типо героев в казарме
@@ -277,13 +292,13 @@ namespace OpenGEWindows
             this.pointButtonSaveNewTeam = new Point(190 - 5 + xx, 660 - 5 + yy);                   //нажимаем на кнопку сохранения команды (в казарме)
 
             this.pointRunNunies = new Point(920 - 5 + xx, 170 - 5 + yy);                           //нажимаем на зеленую стрелку, чтобы бежать к Нуньесу в Стартонии
-            this.pointPressNunez = new Point(830 - 5 + xx, 340 - 5 + yy);                          //нажимаем на Нуньеса
+//            this.pointPressNunez = new Point(830 - 5 + xx, 340 - 5 + yy);                          //нажимаем на Нуньеса
+            this.pointPressNunez = new Point(848 - 5 + xx, 307 - 5 + yy);                          //нажимаем на Нуньеса
             this.ButtonOkDialog = new Point(910 - 5 + xx, 680 - 5 + yy);                           //нажимаем на Ок в диалоге
             this.PressMedal = new Point(300 - 5 + xx, 210 - 5 + yy);                               //нажимаем на медаль
             this.ButtonCloseMedal = new Point(740 - 5 + xx, 600 - 5 + yy);                         //нажимаем на кнопку Close и закрываем медали
             this.pointPressNunez2 = new Point(700 - 5 + xx, 360 - 5 + yy);                         //нажимаем на Нуньеса после надевания медали
 
-            this.town_begin = new America2TownReboldo(botwindow);                                   //город взят по умолчанию, как Ребольдо. 
             this.pointPressLindon1 = new Point(590 - 5 + xx, 210 - 5 + yy);                        //нажимаем на Линдона
             this.pointPressGMonMap = new Point(840 - 5 + xx, 235 - 5 + yy);                        //нажимаем на строчку GM на карте Alt+Z
             this.pointPressGM_1 = new Point(555 - 5 + xx, 425 - 5 + yy);                           //нажимаем на голову GM 
@@ -301,7 +316,7 @@ namespace OpenGEWindows
             this.pointSecondStringDialog = new Point(520 - 5 + xx, 640 - 5 + yy);                  //нажимаем Yes в диалоге Доминго второй раз (вторая строчка снизу)
             this.pointDomingoMiss = new Point(396 - 5 + xx, 206 - 5 + yy);                         //нажимаем правой кнопкой по карте миссии Доминго
             this.pointPressDomingo2 = new Point(572 - 5 + xx, 237 - 5 + yy);                       //нажимаем на Доминго после миссии
-            this.pointLindonOnMap = new Point(820 - 5 + xx, 370 - 5 + yy);                         //нажимаем на Линдона на карте Alt+Z
+            this.pointLindonOnMap = new Point(820 - 5 + xx, 415 - 5 + yy);                         //нажимаем на Линдона на карте Alt+Z
             this.pointPressLindon2 = new Point(652 - 5 + xx, 257 - 5 + yy);                        //нажимаем на Линдона
             this.pointPetExpert = new Point(908 - 5 + xx, 423 - 5 + yy);                           //нажимаем на петэксперта
             this.pointPetExpert2 = new Point(815 - 5 + xx, 425 - 5 + yy);                          //нажимаем на петэксперта второй раз 
@@ -503,9 +518,9 @@ namespace OpenGEWindows
 
         }
 
-        public ServerAmerica2(int numberOfWindow) : this(new botWindow(numberOfWindow))
-        {
-        }
+        //public ServerAmerica2(int numberOfWindow) : this(new botWindow(numberOfWindow))
+        //{
+        //}
 
 
         //==================================== Методы ===================================================
@@ -580,7 +595,8 @@ namespace OpenGEWindows
                 count++; if (count > 5) return (UIntPtr)0;
             }
 
-            botwindow.setHwnd(HWND);
+            botParam.Hwnd = HWND;
+            //botwindow.setHwnd(HWND);
 
             SetWindowPos(HWND, 0, xx, yy, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
             //            ShowWindow(HWND, 2);   //скрыть окно в трей
@@ -590,7 +606,7 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// проверяю белый цвет в загружающемся окне
+        /// проверяю белый цвет в загружающемся окне       //не используется
         /// </summary>
         /// <returns></returns>
         public bool isWhiteWindow()
@@ -616,45 +632,14 @@ namespace OpenGEWindows
             process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient + " -applaunch 663090 -silent";
             process.Start();
 
-            //while ((!isWhiteWindow()) && (!isSafeIP()))
-            //{
-            //    Pause(2000);
-            //}
-            //if (isSafeIP())
-            //{
-            //    pointOkSafeIP.PressMouseL();       //тыкаем в Ок и закрываем сообщение об ошибке
-            //}
-            Pause(30000);
+            Pause(10000);
 
-            //if (isSafeIP())
-            //{
-            //    pointOkSafeIP.PressMouse();       //тыкаем в Ок и закрываем сообщение об ошибке
-            //}
+            if (isSteam())
+            {
+                InsertLoginPasswordOk();
+            }
 
-            //int i = 0;
-            //while (true)
-            //{
-            //    Pause(2000);
-            //    if (this.isSafeIP())
-            //    {
-            //        pointOkSafeIP.PressMouseL();       //тыкаем в Ок и закрываем сообщение об ошибке
-            //        break;
-            //    }
-            //    i++; if (i > 50) break;
-            //}
-
-
-            //if (isReklamaSteam())
-            //{
-            //    pointOkReklamaSteam.PressMouseL();   //закрываем рекламу стим
-            //    Pause(5000);
-            //}
-
-            //pointRunGE.PressMouseL();            //нажимаем на кнопку запуска ГЭ
-            //Pause(1000);
-
-            //pointCloseSteam.PressMouseL();      //закрываем крестиком окно Steam и ждем открытия окна ГЭ
-            //Pause(60000);
+            Pause(50000);
 
             #endregion
 
@@ -690,14 +675,14 @@ namespace OpenGEWindows
         #region LogOut
 
         /// <summary>
-        /// выбираем сервер путем нажатия на первую строчку в меню
+        /// переключились ли на нужный сервер FERRUCCIO-ESPADA (в режиме логаута)
         /// </summary>
-        public override void serverSelection()
+        /// <returns></returns>
+        public override bool IsServerSelection()
         {
-            iPoint pointserverSelection = new Point(480 - 5 + xx, 370 - 5 + yy);
-            pointserverSelection.PressMouseLL();
-            Pause(500);
+            return pointIsServerSelection1.isColor() && pointIsServerSelection2.isColor();
         }
+
 
         #endregion
 
@@ -914,6 +899,26 @@ namespace OpenGEWindows
         //    pointString.PressMouse();
         //    Pause(2000);
         //}
+
+        #endregion
+
+        #region inTown
+
+        /// <summary>
+        /// идем к высокой бабе в Ребольдо GM /карта города уже открыта/
+        /// </summary>
+        public override void GotoGM()
+        {
+            pointGM.PressMouseL();
+        }
+
+        /// <summary>
+        /// тыкаем в голову GM
+        /// </summary>
+        public override void PressToHeadGM()
+        {
+            pointHeadGM.PressMouseL();
+        }
 
         #endregion
     }

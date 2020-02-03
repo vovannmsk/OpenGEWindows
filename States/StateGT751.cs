@@ -15,7 +15,7 @@ namespace States
 
         }
 
-        public StateGT751(botWindow botwindow)   //, GotoTrade gototrade)
+        public StateGT751(botWindow botwindow)   
         {
             this.botwindow = botwindow;
             OtitFactory otitFactory = new OtitFactory(botwindow);
@@ -58,7 +58,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT76(botwindow);
+            return new StateGT076(botwindow);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGT81(botwindow);
+            return new StateGT081(botwindow);
         }
 
         #region стандартные служебные методы для паттерна Состояния

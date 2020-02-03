@@ -13,7 +13,7 @@ namespace States
         private Otit otit;
         //        private Check check;
         private BotParam botParam;
-        
+
 
 
         public DriversOfState()
@@ -55,7 +55,7 @@ namespace States
         /// </summary>
         public void StateGotoTradeStep2BH()
         {
-            StateDriverRun(new StateGT03(botwindow), new StateGT09(botwindow));
+            StateDriverRun(new StateGT003(botwindow), new StateGT009(botwindow));
             server.WriteToLogFileBH("new StateGT03(botwindow), new StateGT09(botwindow)");
         }
 
@@ -64,7 +64,7 @@ namespace States
         /// </summary>
         public void StateGotoTradeStep3BH()
         {
-            StateDriverRun(new StateGT09(botwindow), new StateGT10(botwindow));
+            StateDriverRun(new StateGT009(botwindow), new StateGT010(botwindow));
             server.WriteToLogFileBH("new StateGT09(botwindow), new StateGT10(botwindow)");
         }
 
@@ -73,7 +73,7 @@ namespace States
         /// </summary>
         public void StateGotoTradeStep4BH()
         {
-            StateDriverRun(new StateGT10(botwindow), new StateGT11(botwindow));
+            StateDriverRun(new StateGT010(botwindow), new StateGT011(botwindow));
             server.WriteToLogFileBH("StateDriverRun(new StateGT10(botwindow), new StateGT11(botwindow));");
         }
 
@@ -201,7 +201,15 @@ namespace States
         #endregion
 
 
-
+        /// <summary>
+        /// идем из состояния "нет окна" до состояния "в городе", потом получаем подарок и удаляем песочницу
+        /// </summary>
+        public void StateInputOutput()
+        {
+            StateDriverRun(new StateGT014(botwindow), new StateGT017(botwindow));  // заходим в ребольдо
+            StateDriverRun(new StateGT165(botwindow), new StateGT169(botwindow));  // бежим к бабе
+            StateDriverRun(new StateGT169(botwindow), new StateGT170(botwindow));  // закрываем стим
+        }
 
 
         /// <summary>
@@ -212,7 +220,7 @@ namespace States
             botwindow.Pause(300);
             if (server.isAlchemy())
             {
-                StateDriverRun(new StateGT92(botwindow), new StateGT93(botwindow));
+                StateDriverRun(new StateGT092(botwindow), new StateGT093(botwindow));
 
             }
         }
@@ -222,10 +230,10 @@ namespace States
         /// </summary>
         public void StateGoldenEggFarm()
         {
-            StateDriverRun(new StateGT74(this.botwindow), new StateGT75(this.botwindow));  // заходим на ферму
-            StateDriverRun(new StateGT91(this.botwindow), new StateGT92(this.botwindow));  // открываем карту
+            StateDriverRun(new StateGT074(this.botwindow), new StateGT075(this.botwindow));  // заходим на ферму
+            StateDriverRun(new StateGT091(this.botwindow), new StateGT092(this.botwindow));  // открываем карту
 
-            StateDriverRun(new StateGT85(this.botwindow), new StateGT86(this.botwindow));  // бегаем по кругу и собираем GoldenEggFruit
+            StateDriverRun(new StateGT085(this.botwindow), new StateGT086(this.botwindow));  // бегаем по кругу и собираем GoldenEggFruit
         }
 
 
@@ -234,10 +242,10 @@ namespace States
         /// </summary>
         public void StateOtitRunBaron()
         {
-            StateDriverRun(new StateGT15(this.botwindow), new StateGT17(this.botwindow));  // переход из состояния "Логаут" в состояние "В городе" (Los Toldos)
-            StateDriverRun(new StateGT75(this.botwindow), new StateGT82(this.botwindow));  // до выполнения задания на мертвых землях
-            StateDriverRun(new StateGT15(this.botwindow), new StateGT17(this.botwindow));  // переход из состояния "Логаут" в состояние "В городе" (Los Toldos)
-            StateDriverRun(new StateGT82(this.botwindow), new StateGT85(this.botwindow));  // получаем отит и логаут
+            StateDriverRun(new StateGT015(this.botwindow), new StateGT017(this.botwindow));  // переход из состояния "Логаут" в состояние "В городе" (Los Toldos)
+            StateDriverRun(new StateGT075(this.botwindow), new StateGT082(this.botwindow));  // до выполнения задания на мертвых землях
+            StateDriverRun(new StateGT015(this.botwindow), new StateGT017(this.botwindow));  // переход из состояния "Логаут" в состояние "В городе" (Los Toldos)
+            StateDriverRun(new StateGT082(this.botwindow), new StateGT085(this.botwindow));  // получаем отит и логаут
         }
 
         /// <summary>
@@ -245,9 +253,9 @@ namespace States
         /// </summary>
         public void StateGotoOldMan ()
         {
-            StateDriverRun(new StateGT15(this.botwindow), new StateGT18(this.botwindow));  // переход из состояния "Логаут" в состояние "Около Мамона" 
-            StateDriverRun(new StateGT86(this.botwindow), new StateGT88(this.botwindow));  // Говорим с Мамоном и переходим в Лос Толдос 
-            StateDriverRun(new StateGT75(this.botwindow), new StateGT751(this.botwindow));  // подбегаем к старому мужику
+            StateDriverRun(new StateGT015(this.botwindow), new StateGT018(this.botwindow));  // переход из состояния "Логаут" в состояние "Около Мамона" 
+            StateDriverRun(new StateGT086(this.botwindow), new StateGT088(this.botwindow));  // Говорим с Мамоном и переходим в Лос Толдос 
+            StateDriverRun(new StateGT075(this.botwindow), new StateGT751(this.botwindow));  // подбегаем к старому мужику
         }
 
         /// <summary>
@@ -255,21 +263,21 @@ namespace States
         /// </summary>
         public void StateOtitRun2()
         {
-            StateDriverRun(new StateGT751(this.botwindow), new StateGT81(this.botwindow));  // берем задание и выполняем его на мертвых землях
+            StateDriverRun(new StateGT751(this.botwindow), new StateGT081(this.botwindow));  // берем задание и выполняем его на мертвых землях
             if (!server.isKillHero())        //если никого не убили
             {
-                StateDriverRun(new StateGT88(this.botwindow), new StateGT89(this.botwindow));  // отбегаем в сторону (на мертвых землях)
-                StateDriverRun(new StateGT89(this.botwindow), new StateGT90(this.botwindow));  // летим к Мамону
-                StateDriverRun(new StateGT86(this.botwindow), new StateGT88(this.botwindow));  // Говорим с Мамоном и переходим в Лос Толдос 
-                StateDriverRun(new StateGT82(this.botwindow), new StateGT84(this.botwindow));  // получаем отит и остаёмся в городе (Лос Толдосе) около старого мужика
+                StateDriverRun(new StateGT088(this.botwindow), new StateGT089(this.botwindow));  // отбегаем в сторону (на мертвых землях)
+                StateDriverRun(new StateGT089(this.botwindow), new StateGT090(this.botwindow));  // летим к Мамону
+                StateDriverRun(new StateGT086(this.botwindow), new StateGT088(this.botwindow));  // Говорим с Мамоном и переходим в Лос Толдос 
+                StateDriverRun(new StateGT082(this.botwindow), new StateGT084(this.botwindow));  // получаем отит и остаёмся в городе (Лос Толдосе) около старого мужика
             }
             else         //если в процессе выполнения задания кто-то из персов был убит
             {
                 otit.ChangeNumberOfRoute();  //сменить маршрут, чтобы в следующий раз не попасть в ту же ловушку
-                StateDriverRun(new StateGT81(this.botwindow), new StateGT82(this.botwindow));  // отбегаем в сторону (на случай, если кто-то выжил)  и логаут
-                StateDriverRun(new StateGT15(this.botwindow), new StateGT18(this.botwindow));  // переход из состояния "Логаут" в состояние "Около Мамона" 
-                StateDriverRun(new StateGT86(this.botwindow), new StateGT88(this.botwindow));  // Говорим с Мамоном и переходим в Лос Толдос 
-                StateDriverRun(new StateGT75(this.botwindow), new StateGT751(this.botwindow));  // подбегаем к старому мужику
+                StateDriverRun(new StateGT081(this.botwindow), new StateGT082(this.botwindow));  // отбегаем в сторону (на случай, если кто-то выжил)  и логаут
+                StateDriverRun(new StateGT015(this.botwindow), new StateGT018(this.botwindow));  // переход из состояния "Логаут" в состояние "Около Мамона" 
+                StateDriverRun(new StateGT086(this.botwindow), new StateGT088(this.botwindow));  // Говорим с Мамоном и переходим в Лос Толдос 
+                StateDriverRun(new StateGT075(this.botwindow), new StateGT751(this.botwindow));  // подбегаем к старому мужику
             }
         }
 
@@ -278,22 +286,22 @@ namespace States
         /// </summary>
         public void StateOtitRun()
         {
-            StateDriverRun(new StateGT89(this.botwindow), new StateGT90(this.botwindow));  // летим из любого города к Мамону (первая строка в телепортах)
-            StateDriverRun(new StateGT86(this.botwindow), new StateGT88(this.botwindow));  // Говорим с Мамоном и переходим в Лос Толдос 
-            StateDriverRun(new StateGT75(this.botwindow), new StateGT81(this.botwindow));  // берем задание и выполняем его на мертвых землях
+            StateDriverRun(new StateGT089(this.botwindow), new StateGT090(this.botwindow));  // летим из любого города к Мамону (первая строка в телепортах)
+            StateDriverRun(new StateGT086(this.botwindow), new StateGT088(this.botwindow));  // Говорим с Мамоном и переходим в Лос Толдос 
+            StateDriverRun(new StateGT075(this.botwindow), new StateGT081(this.botwindow));  // берем задание и выполняем его на мертвых землях
             if (!server.isKillHero())        //если никого не убили
             {
-                StateDriverRun(new StateGT88(this.botwindow), new StateGT89(this.botwindow));  // отбегаем в сторону (на мертвых землях)
-                StateDriverRun(new StateGT89(this.botwindow), new StateGT90(this.botwindow));  // летим к Мамону
-                StateDriverRun(new StateGT86(this.botwindow), new StateGT88(this.botwindow));  // Говорим с Мамоном и переходим в Лос Толдос 
-                StateDriverRun(new StateGT82(this.botwindow), new StateGT84(this.botwindow));  // получаем отит и остаёмся в городе (Лос Толдосе)
+                StateDriverRun(new StateGT088(this.botwindow), new StateGT089(this.botwindow));  // отбегаем в сторону (на мертвых землях)
+                StateDriverRun(new StateGT089(this.botwindow), new StateGT090(this.botwindow));  // летим к Мамону
+                StateDriverRun(new StateGT086(this.botwindow), new StateGT088(this.botwindow));  // Говорим с Мамоном и переходим в Лос Толдос 
+                StateDriverRun(new StateGT082(this.botwindow), new StateGT084(this.botwindow));  // получаем отит и остаёмся в городе (Лос Толдосе)
             }
             else         //если в процессе выполнения задания кто-то из персов был убит
             {
                 otit.ChangeNumberOfRoute();  //сменить маршрут, чтобы в следующий раз не попасть в ту же ловушку
-                StateDriverRun(new StateGT81(this.botwindow), new StateGT82(this.botwindow));  // отбегаем в сторону (на случай, если кто-то выжил)  и логаут
-                StateDriverRun(new StateGT15(this.botwindow), new StateGT17(this.botwindow));  // переход из состояния "Логаут" в состояние "В городе" 
-                StateDriverRun(new StateGT90(this.botwindow), new StateGT91(this.botwindow));  // лечение и патроны в городе
+                StateDriverRun(new StateGT081(this.botwindow), new StateGT082(this.botwindow));  // отбегаем в сторону (на случай, если кто-то выжил)  и логаут
+                StateDriverRun(new StateGT015(this.botwindow), new StateGT017(this.botwindow));  // переход из состояния "Логаут" в состояние "В городе" 
+                StateDriverRun(new StateGT090(this.botwindow), new StateGT091(this.botwindow));  // лечение и патроны в городе
             }
         }
 
@@ -302,7 +310,7 @@ namespace States
         /// </summary>
         public void StateActivePet()
         {
-            StateDriverRun(new StateGT20(botwindow), new StateGT01(botwindow));
+            StateDriverRun(new StateGT020(botwindow), new StateGT001(botwindow));
 //            StateDriverRun(new StateGT20(botwindow), new StateGT28(botwindow));
         }
 
@@ -313,7 +321,7 @@ namespace States
         {
             botWindow dealer = new botWindow(20);  //торговец
 
-            StateDriverRun(new StateGT60(dealer), new StateGT65(dealer));   // торговец из логаута в город  (канал 3) и далее на место передачи песо
+            StateDriverRun(new StateGT060(dealer), new StateGT065(dealer));   // торговец из логаута в город  (канал 3) и далее на место передачи песо
         }
 
         /// <summary>
@@ -323,13 +331,13 @@ namespace States
         {
             botWindow dealer = new botWindow(20);  //торговец
 
-            StateDriverRun(new StateGT60(this.botwindow), new StateGT63(this.botwindow));   // бот из логаута в город  (канал 3)
+            StateDriverRun(new StateGT060(this.botwindow), new StateGT063(this.botwindow));   // бот из логаута в город  (канал 3)
 
-            StateDriverRun(new StateGT68(this.botwindow), new StateGT69(this.botwindow));   // бот бежит на место торговли и предлагает торговлю торговцу
-            StateDriverRun(new StateGT69(dealer), new StateGT70(dealer));                   // торговец перекладывает фесо и ок-обмен
+            StateDriverRun(new StateGT068(this.botwindow), new StateGT069(this.botwindow));   // бот бежит на место торговли и предлагает торговлю торговцу
+            StateDriverRun(new StateGT069(dealer), new StateGT070(dealer));                   // торговец перекладывает фесо и ок-обмен
 
-            StateDriverRun(new StateGT70(this.botwindow), new StateGT72(this.botwindow));   // бот перекладывает песо, закрывает сделку, покупает еду и логаут
-            StateDriverRun(new StateGT72(dealer), new StateGT73(dealer));                   // торговец закрывает все лишние окна с экрана
+            StateDriverRun(new StateGT070(this.botwindow), new StateGT072(this.botwindow));   // бот перекладывает песо, закрывает сделку, покупает еду и логаут
+            StateDriverRun(new StateGT072(dealer), new StateGT073(dealer));                   // торговец закрывает все лишние окна с экрана
         }
 
         /// <summary>
@@ -344,7 +352,7 @@ namespace States
 
             if (server.isLogout())
             {
-                StateDriverRun(new StateGT60(this.botwindow), new StateGT74(this.botwindow));
+                StateDriverRun(new StateGT060(this.botwindow), new StateGT074(this.botwindow));
             }
         }
 
@@ -385,7 +393,7 @@ namespace States
         public void StateGotoTrade()
         {
             botwindow.ReOpenWindow();
-            StateDriverRun(new StateGT01(botwindow), new StateGT14(botwindow));
+            StateDriverRun(new StateGT001(botwindow), new StateGT014(botwindow));
 //            StateDriverRun(new StateGT01(botwindow), new StateGT12(botwindow));
         }
 
@@ -394,7 +402,7 @@ namespace States
         /// </summary>
         public void StateGotoWork()
         {
-            StateDriverRun(new StateGT14(botwindow), new StateGT01(botwindow)); 
+            StateDriverRun(new StateGT014(botwindow), new StateGT001(botwindow)); 
 //            StateDriverRun(new StateGT14(botwindow), new StateGT28(botwindow));
         }
 
@@ -403,7 +411,7 @@ namespace States
         /// </summary>
         public void StateRecovery()
         {
-            StateDriverRun(new StateGT15(botwindow), new StateGT01(botwindow));
+            StateDriverRun(new StateGT015(botwindow), new StateGT001(botwindow));
 //            StateDriverRun(new StateGT15(botwindow), new StateGT28(botwindow));
         }
 
@@ -412,7 +420,7 @@ namespace States
         /// </summary>
         public void StateReOpen()
         {
-            StateDriverRun(new StateGT14(botwindow), new StateGT15(botwindow));
+            StateDriverRun(new StateGT014(botwindow), new StateGT015(botwindow));
             //StateDriverRun(new StateGT14(botwindow), new StateGT14(botwindow));
         }
 
@@ -437,7 +445,7 @@ namespace States
                 Market market = marketFactory.createMarket();
 
                 if (market.isSale())                                 //проверяем, находимся ли в магазине
-                    StateDriverRun(new StateGT09(botwindow), new StateGT12(botwindow));
+                    StateDriverRun(new StateGT009(botwindow), new StateGT012(botwindow));
             }
            
         }
@@ -474,7 +482,18 @@ namespace States
         /// </summary>
         public void StateNewAcc()
         {
-            StateDriverRun(new StateGT30(botwindow), new StateGT41(botwindow));
+            StateDriverRun(new StateGT030(botwindow), new StateGT041(botwindow));
+        }
+
+        /// <summary>
+        /// создание новой семьи, выход в ребольдо, получение и надевание брони 35 лвл, выполнение квеста Доминго, разговор с Линдоном, получение Кокошки и еды 100 шт.
+        /// перевод из состояния 30 (логаут) в состояние 41 (пет Кокошка получен)          
+        /// </summary>
+        public void StateNewAcc2()
+        {
+            StateDriverRun(new StateGT030(botwindow), new StateGT041(botwindow));
+            StateDriverRun(new StateGT165(botwindow), new StateGT169(botwindow));  // бежим к бабе
+            StateDriverRun(new StateGT169(botwindow), new StateGT170(botwindow));  // закрываем стим
         }
 
         /// <summary>
@@ -482,7 +501,7 @@ namespace States
         /// </summary>
         public void StateToCrater()
         {
-            StateDriverRun(new StateGT42(botwindow), new StateGT58(botwindow));
+            StateDriverRun(new StateGT042(botwindow), new StateGT058(botwindow));
         }
 
         /// <summary>
@@ -490,7 +509,7 @@ namespace States
         /// </summary>
         public void StateExitFromShop()
         {
-            StateDriverRun(new StateGT10(botwindow), new StateGT14(botwindow));
+            StateDriverRun(new StateGT010(botwindow), new StateGT014(botwindow));
         }
 
         /// <summary>
@@ -498,7 +517,7 @@ namespace States
         /// </summary>
         public void StateExitFromShop2()
         {
-            StateDriverRun(new StateGT09(botwindow), new StateGT14(botwindow));
+            StateDriverRun(new StateGT009(botwindow), new StateGT014(botwindow));
             //StateDriverRun(new StateGT09(botwindow), new StateGT12(botwindow));
         }
 
@@ -507,7 +526,7 @@ namespace States
         /// </summary>
         public void StateExitFromTown()
         {
-            StateDriverRun(new StateGT12(botwindow), new StateGT14(botwindow));
+            StateDriverRun(new StateGT012(botwindow), new StateGT014(botwindow));
             //StateDriverRun(new StateGT12(botwindow), new StateGT12(botwindow));
         }
 

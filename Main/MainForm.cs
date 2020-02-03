@@ -12,10 +12,10 @@ namespace Main
         private static uint NumberBlueButton = 0;       //сколько раз нажали голубую(красную) кнопку
         //private const int MAX_NUMBER_OF_ACCOUNTS = 20;
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
-        private static string DataVersion = "30-01-2020";
+        private static string DataVersion = "03-02-2020";
         private int numberOfAcc;                                              // количество аккаунтов ботов
         private int startAccount;
-        GlobalParam globalParam;
+        private GlobalParam globalParam;
 
         //public UIntPtr[] arrayOfHwnd = new UIntPtr[21];   //используется в методе "Найти окна"
 
@@ -801,19 +801,18 @@ namespace Main
         }
 
         /// <summary>
-        /// метод задает функционал для потока, организуемого кнопкой цвета "ForestGreen" (темно-зеленая)
+        /// метод задает функционал для потока, организуемого кнопкой цвета 
         /// </summary>
         private void funcCA()
         {
-            for (int j = 1; j <= 5; j++)
+            for (int j = startAccount; j <= numberOfAcc; j++)
             {
-                Check check = new Check(j);
+                Check check = new Check(j);   //j-номер окна
                 if (check.IsActiveServer)
                 {
                     check.ChangingAccounts();
                 }
             }
-
         }
         #endregion
 

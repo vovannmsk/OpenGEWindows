@@ -10,9 +10,9 @@ namespace GEBot.Data
     /// </summary>
     public class BotParam
     {
+        //private GlobalParam globalParam;
         private string directoryOfMyProgram;
         private int numberOfWindow;
-        private GlobalParam globalParam;
 
         private string login;
         private string[] logins;
@@ -20,70 +20,105 @@ namespace GEBot.Data
         private string[] passwords;
         private int x;
         private int y;
-        private string param;              // синг, америка или европа
+        //********отключаем временно для проверки*********************************************************
+        //private string param;              // синг, америка или европа
+        private string[] parametrs;              // список параметров: синг, америка или европа
         private UIntPtr hwnd;
         private int kanal;
         private int nomerTeleport;
         private string nameOfFamily;
         private int[] triangleX;
         private int[] triangleY;
-        private int bullet;
+        //private int bullet;                     //пока не используется
         private int statusOfAtk;
         private int numberOfInfinity;
+        //private bool infinity;
 
         public string Login { get => login; }
+        public string[] Logins { get => logins; }
         public string Password { get => password; }
+        public string[] Passwords { get => passwords; }
         public int X { get => x; }
         public int Y { get => y; }
-        public string Param { get => param; }
+        public string[] Parametrs { get => parametrs; }
         public UIntPtr Hwnd { get => hwnd; set { hwnd = value; SetHwnd(); } }
         public int Kanal { get => kanal; }
         public int NomerTeleport { get => nomerTeleport; }
         public string NameOfFamily { get => nameOfFamily; }
         public int[] TriangleX { get => triangleX; }
         public int[] TriangleY { get => triangleY; }
-        public int Bullet { get => bullet; }
+        //public int Bullet { get => bullet; }
         public int StatusOfAtk { get => statusOfAtk; set { statusOfAtk = value; SetStatusAtkInFile(); } }
-
-        public string[] Logins { get => logins; }
-        public string[] Passwords { get => passwords; }
         public int NumberOfInfinity { get => numberOfInfinity; set { numberOfInfinity = value; SetNumber(); } }
+
+        //********отключаем временно для проверки*********************************************************
+        //public string Param { get { return parametrs[numberOfInfinity]; } } 
+        
+        //public bool Infinity { get => infinity; set => infinity = value; }
+
 
         /// <summary>
         /// конструктор
         /// </summary>
         public BotParam(int numberOfWindow)
         {
-            this.globalParam = new GlobalParam();
-            this.directoryOfMyProgram = globalParam.DirectoryOfMyProgram;
+            //globalParam = new GlobalParam();
+            //Infinity = globalParam.Infinity;
+            //directoryOfMyProgram = globalParam.DirectoryOfMyProgram;
+            this.directoryOfMyProgram = "C:\\!! Суперпрограмма V&K\\";
             this.numberOfWindow = numberOfWindow;
 
             this.x = Koord_X();
             this.y = Koord_Y();
-            this.login = LoginFromFile();
-            this.password = PasswordFromFile();
-            this.hwnd = Hwnd_in_file();
-            this.param = Parametr();
-            this.kanal = Channal();
-            this.nomerTeleport = NomerTeleporta();
-            this.nameOfFamily = LoadNameOfFamily();
-            this.triangleX = LoadTriangleX();
-            this.triangleY = LoadTriangleY();
-            this.statusOfAtk = GetStatusOfAtk();
-            this.logins = LoginsFromFile();
-            this.passwords = PasswordsFromFile();
-            this.numberOfInfinity = NumberFromFile();
+            login = LoginFromFile();
+            logins = LoginsFromFile();
+            password = PasswordFromFile();
+            passwords = PasswordsFromFile();
+            hwnd = Hwnd_in_file();
+            parametrs = ParametrsFromFile();
+            numberOfInfinity = NumberFromFile();
+            //if (infinity) { param = parametrs[numberOfInfinity]; } else { param = parametrs[0]; }
+            //********отключаем временно для проверки*********************************************************
+            //param = parametrs[numberOfInfinity];
+            kanal = Channal();
+            nomerTeleport = NomerTeleporta();
+            nameOfFamily = LoadNameOfFamily();
+            triangleX = LoadTriangleX();
+            triangleY = LoadTriangleY();
+            statusOfAtk = GetStatusOfAtk();
+            //this.bullet = NumberOfBullets();                       //пока не используется
         }
 
 
 
         //===================================== методы ==========================================
 
+        //#region global getters
+        //public int getNintendo()
+        //{
+        //    return globalParam.Nintendo;
+        //}
+        //public string getDirectory()
+        //{
+        //    return globalParam.DirectoryOfMyProgram;
+        //}
+
+        //#endregion
+
+        /// <summary>
+        /// прочитать из файла список параметров
+        /// </summary>
+        /// <returns>список параметров</returns>
+        private string[] ParametrsFromFile()
+        {
+            return File.ReadAllLines(directoryOfMyProgram + numberOfWindow + "\\Параметр.txt");
+        }
+
         /// <summary>
         /// запись в файл числа Инфинити (номер строки с логином и паролем в файле Логины.txt и Пароли.txt)
         /// </summary>
         public void SetNumber()
-        { File.WriteAllText(directoryOfMyProgram + this.numberOfWindow + "\\Инфинити.txt", this.numberOfInfinity.ToString()); }
+        { File.WriteAllText(directoryOfMyProgram + numberOfWindow + "\\Инфинити.txt", numberOfInfinity.ToString()); }
 
         /// <summary>
         /// прочитать из файла номер инфинити (номер строки с логином и паролем в файле Логины.txt и Пароли.txt)
@@ -191,12 +226,14 @@ namespace GEBot.Data
             return ff;
         }
 
-        /// <summary>
-        /// функция возвращает имя сервера (Америка, европа или Синг)
-        /// </summary>
-        /// <returns></returns>
-        private String Parametr()
-        { return File.ReadAllText(directoryOfMyProgram + this.numberOfWindow + "\\Параметр.txt"); }
+        ///// <summary>
+        ///// функция возвращает имя сервера (Америка, европа или Синг)
+        ///// </summary>
+        ///// <returns></returns>
+        //private String ParametrFromFile()
+        //{
+        //    return File.ReadAllLines(directoryOfMyProgram + this.numberOfWindow + "\\Параметр.txt")[0];
+        //}
 
         /// <summary>
         /// функция возвращает номер канала, где стоит бот

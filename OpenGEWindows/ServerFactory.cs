@@ -10,30 +10,36 @@ namespace OpenGEWindows
     {
         private Server server;
         private botWindow botwindow;
-        private string parametr;
+        private string param;
+        //private GlobalParam globalParam;
+        private int numberOfWindow;
 
         /// <summary>
         /// конструктор
         /// </summary>
-        /// <param name="botwindow"></param>
-        public ServerFactory(botWindow botwindow)
+        //public ServerFactory(int numberOfWindow)
+        //{
+        //    botwindow = new botWindow(numberOfWindow);
+        //    this.numberOfWindow = numberOfWindow;
+        //    BotParam botParam = new BotParam(numberOfWindow);
+        //    param = botParam.Parametrs[botParam.NumberOfInfinity];
+        //    botwindow = new botWindow(numberOfWindow);
+        //}
+        public ServerFactory(botWindow botwindow) 
         {
             this.botwindow = botwindow;
-            this.parametr = botwindow.getParam();
-        }
-
-        public ServerFactory(int numberOfWindow)
-        {
+            this.numberOfWindow = botwindow.getNumberWindow();
             BotParam botParam = new BotParam(numberOfWindow);
-            this.parametr = botParam.Param;
-            this.botwindow = new botWindow(numberOfWindow);
+            param = botParam.Parametrs[botParam.NumberOfInfinity];
+
         }
 
+        
 
 
         public Server create()
         { 
-            switch (parametr)    
+            switch (param)    
             {
                 case "C:\\America\\":
                     server = new ServerAmerica(botwindow);

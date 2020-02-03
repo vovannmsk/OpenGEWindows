@@ -35,6 +35,7 @@ namespace OpenGEWindows
             this.globalParam = new GlobalParam();
             ServerParamFactory serverParamFactory = new ServerParamFactory(botwindow.getNumberWindow());
             this.serverParam = serverParamFactory.create();
+            this.botParam = new BotParam(botwindow.getNumberWindow());
 
             #endregion
 
@@ -42,6 +43,8 @@ namespace OpenGEWindows
 
             TownFactory townFactory = new AmericaTownFactory(botwindow);                        // здесь выбирается конкретная реализация для фабрики Town
             this.town = townFactory.createTown();                                               // выбирается город с помощью фабрики
+            this.town_begin = new AmericaTownReboldo(botwindow);
+            dialog = new DialogAmerica(botwindow);
 
             #endregion
 
@@ -163,6 +166,8 @@ namespace OpenGEWindows
             this.pointMana1 = new Point(215 - 5 + 30 + xx, 705 - 5 + yy);                        //бутылка маны под буквой I
             this.pointMana2 = new Point(245 - 5 + 255 + xx, 705 - 5 + yy);                        //бутылка маны под буквой K
             this.pointMana3 = new Point(245 - 5 + 510 + xx, 705 - 5 + yy);                        //бутылка маны под буквой ,
+            this.pointGM = new Point(439 - 5 + xx, 413 - 5 + yy);
+            this.pointHeadGM = new Point(369 - 5 + xx, 290 - 5 + yy);
 
             this.pointisToken1 = new PointColor(478 - 5 + xx, 92 - 5 + yy, 14600000, 5);           //проверяем открыто ли окно с токенами
             this.pointisToken2 = new PointColor(478 - 5 + xx, 93 - 5 + yy, 14600000, 5);
@@ -358,9 +363,9 @@ namespace OpenGEWindows
 
         }
 
-        public ServerAmerica (int numberOfWindow) : this (new botWindow(numberOfWindow))
-        {
-        }
+        //public ServerAmerica (int numberOfWindow) : this (new botWindow(numberOfWindow))
+        //{
+        //}
 
         //==================================== Методы ===================================================
 
@@ -454,7 +459,8 @@ namespace OpenGEWindows
                 count++; if (count > 5) return (UIntPtr)0;
             }
 
-            botwindow.setHwnd(HWND);
+            botParam.Hwnd = HWND;
+            //botwindow.setHwnd(HWND);
 
             SetWindowPos(HWND, 1, xx, yy, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
             //            ShowWindow(HWND, 2);   //скрыть окно в трей
@@ -486,10 +492,12 @@ namespace OpenGEWindows
         #region LogOut
 
         /// <summary>
-        /// выбираем сервер путем нажатия на первую строчку в меню
+        /// переключились ли на нужный сервер FERRUCCIO-ESPADA (в режиме логаута)
         /// </summary>
-        public override void serverSelection()
+        /// <returns></returns>
+        public override bool IsServerSelection()
         {
+            return true;//не нужно выбирать сервер на Америке, поэтому сразу возвращаем true
         }
 
         #endregion
@@ -658,6 +666,26 @@ namespace OpenGEWindows
         //    pointString.PressMouse();
         //    Pause(2000);
         //}
+
+        #endregion
+
+        #region inTown
+
+        /// <summary>
+        /// идем к высокой бабе в Ребольдо GM /карта города уже открыта/
+        /// </summary>
+        public override void GotoGM()
+        {
+            pointGM.PressMouseL();
+        }
+
+        /// <summary>
+        /// тыкаем в голову GM
+        /// </summary>
+        public override void PressToHeadGM()
+        {
+            pointHeadGM.PressMouseL();
+        }
 
         #endregion
 

@@ -7,6 +7,7 @@ namespace States
 {
     public class Check
     {
+        private int numberOfWindow;
         private botWindow botwindow;
         private Server server;
         private Market market;
@@ -15,9 +16,9 @@ namespace States
         private Otit otit;
         private MM mm;
         private BHDialog BHdialog;
-        private int numberOfWindow;
         private GlobalParam globalParam;
         private DriversOfState driver;
+        private BotParam botParam;
 
         private bool isActiveServer;
 
@@ -47,6 +48,7 @@ namespace States
 
             this.driver = new DriversOfState(numberOfWindow);
             this.globalParam = new GlobalParam();
+            this.botParam = new BotParam(numberOfWindow);
             this.isActiveServer = server.IsActiveServer;
         }
 
@@ -188,7 +190,6 @@ namespace States
             return 0;
         }
 
-
         /// <summary>
         /// разрешение выявленных проблем в БХ
         /// </summary>
@@ -252,8 +253,6 @@ namespace States
 
 
         }
-
-
 
         /// <summary>
         /// проверяем, есть ли проблемы с ботом (убили, застряли, нужно продать)                                //старый метод. не используется
@@ -649,11 +648,15 @@ namespace States
         }
 
         /// <summary>
-        /// 
+        /// боты заходят в город, получают подарок у ГМ и окно выгружается
         /// </summary>
         public void ChangingAccounts()
         {
-            server.OpenWindowAndClose();
+          for (int j = botParam.NumberOfInfinity; j <= 133; j++)
+            //for (int j = 1; j <= 1; j++)
+                driver.StateInputOutput(); //вход и выход из игры
+            //for (int j = botParam.NumberOfInfinity; j <= 133; j++)
+            //    driver.StateNewAcc2(); //новые акки
         }
 
         ///// <summary>
@@ -719,8 +722,8 @@ namespace States
             int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 875, 850, 825, 800, 775, 750, 875 };
             int[] koordY = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 5, 30, 55, 80, 105, 130, 5 };
 
-            //botWindow botwindow = new botWindow(i);
-            //botwindow.ReOpenWindow();
+            botWindow botwindow = new botWindow(i);
+            botwindow.ReOpenWindow();
 
             //MessageBox.Show(" " + botwindow.getNomerTeleport());
             //botwindow.Pause(1000);
@@ -811,10 +814,10 @@ namespace States
             //PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в городе
             //            PointColor point1 = new PointColor(152 - 5 + xx, 250 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в Катовии
 
-            PointColor point1 = new PointColor(1037, 553, 1, 1);
-            PointColor point2 = new PointColor(1038, 553, 1, 1);
-            //PointColor point1 = new PointColor(580 - 5 + xx, 76 - 5 + yy, 1, 1);
-            //PointColor point2 = new PointColor(580 - 5 + xx, 77 - 5 + yy, 1, 1);
+            //PointColor point1 = new PointColor(1037, 553, 1, 1);
+            //PointColor point2 = new PointColor(1038, 553, 1, 1);
+            PointColor point1 = new PointColor(430 - 5 + xx, 370 - 5 + yy, 1, 1);
+            PointColor point2 = new PointColor(430 - 5 + xx, 371 - 5 + yy, 1, 1);
             //PointColor point3 = new PointColor(930 - 5 + xx, 703 - 5 + yy, 1, 1);
 
 

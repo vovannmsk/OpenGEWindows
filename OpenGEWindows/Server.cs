@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Drawing;
 using GEBot.Data;
-    
+using System.Diagnostics;
 
 namespace OpenGEWindows
 {
@@ -36,6 +36,7 @@ namespace OpenGEWindows
 
         protected Town town;
         protected Town town_begin;
+        protected Dialog dialog;
 
         #endregion
 
@@ -66,6 +67,9 @@ namespace OpenGEWindows
         protected iPointColor pointConnect;
         protected iPointColor pointisLogout1;
         protected iPointColor pointisLogout2;
+        protected iPointColor pointIsServerSelection1;
+        protected iPointColor pointIsServerSelection2;
+        protected iPoint pointserverSelection;
 
         #endregion
 
@@ -197,6 +201,8 @@ namespace OpenGEWindows
         protected iPoint pointMana1;
         protected iPoint pointMana2;
         protected iPoint pointMana3;
+        protected iPoint pointGM;
+        protected iPoint pointHeadGM;
         //protected iPointColor pointIsTown_RifleFirstDot1;   //проверка по обычному ружью
         //protected iPointColor pointIsTown_RifleFirstDot2;
         //protected iPointColor pointIsTown_RifleSecondDot1;
@@ -581,26 +587,28 @@ namespace OpenGEWindows
 
         protected string GetLogin()
         {
-            string result = botParam.Login;
-            if (globalParam.Infinity)
-            {
-                //если ходим в Инфинити вместо обычного ботоводства, 
-                //то здесь надо написать выбор логина из списка
-                result = botParam.Logins[botParam.NumberOfInfinity];   //получили логин
-            }
-            return result;
+            //string result = botParam.Login;
+            //if (globalParam.Infinity)
+            //{
+            //    //если ходим в Инфинити вместо обычного ботоводства, 
+            //    //то здесь надо написать выбор логина из списка
+            //    result = botParam.Logins[botParam.NumberOfInfinity];   //получили логин
+            //}
+            //return result;
+            return botParam.Logins[botParam.NumberOfInfinity];
         }
 
         protected string GetPassword()
         {
-            string result = botParam.Password;
-            if (globalParam.Infinity)
-            {
-                //если ходим в Инфинити вместо обычного ботоводства, 
-                //то здесь надо написать выбор пароля из списка
-                result = botParam.Passwords[botParam.NumberOfInfinity];   //получили пароль
-            }
-            return result;
+            //string result = botParam.Password;
+            //if (globalParam.Infinity)
+            //{
+            //    //если ходим в Инфинити вместо обычного ботоводства, 
+            //    //то здесь надо написать выбор пароля из списка
+            //    result = botParam.Passwords[botParam.NumberOfInfinity];   //получили пароль
+            //}
+            //return result;
+            return botParam.Passwords[botParam.NumberOfInfinity];
         }
 
         protected void EnterSteamLogin()
@@ -615,20 +623,21 @@ namespace OpenGEWindows
         }
         protected void CheckSteamSavePassword()
         {
-            if (globalParam.Infinity)
-            {
-                //если ходим в Инфинити вместо обычного ботоводства, 
+            //if (globalParam.Infinity)
+            //{
+            //    //если ходим в Инфинити вместо обычного ботоводства, 
              
-            }
-            else   //обычное ботоводство
-            {
-                pointSteamSavePassword.PressMouseL();
-            }
+            //}
+            //else   //обычное ботоводство
+            //{
+            //    pointSteamSavePassword.PressMouseL();
+            //}
+            pointSteamSavePassword.PressMouseL();
         }
         protected void PressSteamOk()
         {
             pointSteamOk.PressMouseL();
-            botParam.NumberOfInfinity++;   //прибавили индекс, когда нажали Ок (загрузка аккаунта Стим)
+            //botParam.NumberOfInfinity++;   //прибавили индекс, когда нажали Ок (загрузка аккаунта Стим)
         }
 
 
@@ -641,8 +650,31 @@ namespace OpenGEWindows
             EnterSteamPassword();
             CheckSteamSavePassword();
             PressSteamOk();
+            WriteToLogFile(botParam.NumberOfInfinity + " "+ botParam.Logins[botParam.NumberOfInfinity] + 
+                " " + botParam.Passwords[botParam.NumberOfInfinity] + " " + botParam.Parametrs[botParam.NumberOfInfinity]);
         }
 
+        /// <summary>
+        /// удаляем текущую песочницу
+        /// </summary>
+        public void RemoveSandboxie()
+        {
+            int res = botParam.NumberOfInfinity + 1; //прибавили индекс, когда удаляем песочницу 
+            botParam.NumberOfInfinity = res;
+            Pause(400);
+
+            Process process = new Process();
+            process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
+            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " /terminate";
+            process.Start();
+            Pause(2000);
+
+            process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
+            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " delete_sandbox";
+            process.Start();
+            Pause(4000);
+
+        }
 
         public abstract void runClientSteam();
         public abstract void runClient();
@@ -651,14 +683,6 @@ namespace OpenGEWindows
         //public abstract bool isActive();
 
 
-        /// <summary>
-        /// Проба. Загрузка и выгрузка аккаунтов 
-        /// </summary>
-        public void OpenWindowAndClose()
-        {
-
-
-        }
 
         #endregion
 
@@ -670,8 +694,10 @@ namespace OpenGEWindows
         /// <returns></returns>
         public bool isLogout()
         {
-            return (pointisLogout1.isColor() && pointisLogout2.isColor());
+            return pointisLogout1.isColor() && pointisLogout2.isColor();
         }
+
+ 
 
         /// <summary>
         /// проверяем, есть ли ошибки при нажатии кнопки Connect
@@ -682,7 +708,25 @@ namespace OpenGEWindows
             return pointConnect.isColor();
         }
 
-        public abstract void serverSelection();
+        /// <summary>
+        /// переключились ли на нужный сервер FERRUCCIO-ESPADA (в режиме логаута)
+        /// </summary>
+        /// <returns></returns>
+        public abstract bool IsServerSelection();
+
+        /// <summary>
+        /// выбираем сервер путем нажатия на первую строчку в меню
+        /// </summary>
+        public void serverSelection()
+        {
+            //WriteToLogFileBH("выбираем сервер из списка серверов начало");
+            while (!IsServerSelection())
+            {
+                pointserverSelection.PressMouseLL();
+                Pause(500);
+            }
+            //WriteToLogFileBH("выбираем сервер из списка серверов конец метода");
+        }
 
         /// <summary>
         /// нажимаем кооннект без проверки результатов нажатия
@@ -1435,7 +1479,6 @@ namespace OpenGEWindows
 
         #region inTown
 
-
         /// <summary>
         /// проверяем, открыто ли окно с подарочными окнами
         /// </summary>
@@ -1502,7 +1545,6 @@ namespace OpenGEWindows
             return ((this.arrayOfColorsIsTown1.Contains(color1)) && (this.arrayOfColorsIsTown2.Contains(color2)));                // проверяем, есть ли цвет контрольной точки в массивах цветов
         }
 
-
         /// <summary>
         /// лечение персов нажатием на красную бутылку и выпивание бутылок маны
         /// </summary>
@@ -1526,7 +1568,6 @@ namespace OpenGEWindows
 
         }
 
-
         /// <summary>
         /// "быстрое лечение". Применение коробок патронов в ячейках с маной
         /// </summary>
@@ -1537,6 +1578,11 @@ namespace OpenGEWindows
             //pointMana3.PressMouseL();
         }
 
+        /// <summary>
+        /// идём к высокой бабе GM
+        /// </summary>
+        public abstract void GotoGM();
+        public abstract void PressToHeadGM();
 
         #endregion
 
@@ -1681,9 +1727,11 @@ namespace OpenGEWindows
             Pause(500);
             pointPetExpert.PressMouseL();            //тыкнули в эксперта по петам
             Pause(3000);
-
-            pointPetExpert2.PressMouseL();            //тыкнули в эксперта по петам второй раз
+            pointPetExpert.PressMouseL();            //тыкнули в эксперта по петам второй раз
             Pause(3000);
+
+            //pointPetExpert2.PressMouseL();            //тыкнули в эксперта по петам второй раз
+            //Pause(3000);
 
         }
 
@@ -1692,17 +1740,20 @@ namespace OpenGEWindows
         /// </summary>
         public void DialogPetExpert()
         {
-            pointFirstStringDialog.PressMouseL();       //нижняя строчка в диалоге
-            Pause(1500);
+            //pointFirstStringDialog.PressMouseL();       //нижняя строчка в диалоге
+            //Pause(1500);
+            //ButtonOkDialog.PressMouseL();               // Нажимаем на Ok в диалоге
+            //Pause(1500);
+            dialog.PressStringDialog(2);
+            dialog.PressOkButton(1);
 
-            ButtonOkDialog.PressMouseL();               // Нажимаем на Ok в диалоге
-            Pause(1500);
+            //pointFirstStringDialog.PressMouseL();       //нижняя строчка в диалоге
+            //Pause(1500);
 
-            pointFirstStringDialog.PressMouseL();       //нижняя строчка в диалоге
-            Pause(1500);
-
-            ButtonOkDialog.PressMouseL();               // Нажимаем на Ok в диалоге
-            Pause(1500);
+            //ButtonOkDialog.PressMouseL();               // Нажимаем на Ok в диалоге
+            //Pause(1500);
+            dialog.PressStringDialog(1);
+            dialog.PressOkButton(1);
 
             pointThirdBookmark.PressMouseL();           //тыкнули в третью закладку в кармане
             Pause(1500);
@@ -1720,15 +1771,17 @@ namespace OpenGEWindows
             pointButtonNamePet.PressMouseL();          // Нажимаем на строчку, где надо написать имя пета
             Pause(1500);
 
-            pointButtonClosePet.PressMouseL();          // Нажимаем на строчку, где надо написать имя пета
+            pointButtonClosePet.PressMouseL();         // Нажимаем на строчку, где надо написать имя пета
             Pause(1500);
 
-            //жмем Ок 3 раза
-            for (int j = 1; j <= 3; j++)
-            {
-                ButtonOkDialog.PressMouse();           // Нажимаем на Ok в диалоге
-                Pause(1500);
-            }
+            ////жмем Ок 3 раза
+            //for (int j = 1; j <= 3; j++)
+            //{
+            //    ButtonOkDialog.PressMouse();           // Нажимаем на Ok в диалоге
+            //    Pause(1500);
+            //}
+            dialog.PressOkButton(3);
+
             Pause(2500);
         }
 
@@ -2055,7 +2108,7 @@ namespace OpenGEWindows
         /// </summary>
         public void RunToNunez()
         {
-            //            pointRunNunies.PressMouseL();   // Нажимаем кнопку вызова списка групп
+            
             pointRunNunies.DoubleClickL();   // Нажимаем кнопку вызова списка групп
             Pause(25000);
         }
@@ -2623,7 +2676,7 @@ namespace OpenGEWindows
         public bool isGoodChipWeapon()
         {
             bool result = false;
-            int parametr =  globalParam.Nintendo;
+            int parametr = globalParam.Nintendo;
             switch (parametr)
             {
                 case 1:
@@ -3077,11 +3130,11 @@ namespace OpenGEWindows
         /// <param name="strLog"></param>
         public void WriteToLogFile(string strLog)
         {
-            //StreamWriter writer = new StreamWriter(globalParam.DirectoryOfMyProgram + "\\Error.log", true);
-            //string timeNow = DateTime.Now.ToString("dd MMMM yyyy | HH:mm:ss | ");
+            StreamWriter writer = new StreamWriter(globalParam.DirectoryOfMyProgram + "\\Error.log", true);
+            string timeNow = DateTime.Now.ToString("dd MMMM yyyy | HH:mm:ss | ");
 
-            //writer.WriteLine(timeNow + botwindow.getNumberWindow().ToString() + " " + strLog);
-            //writer.Close();
+            writer.WriteLine(timeNow + botwindow.getNumberWindow().ToString() + " " + strLog);
+            writer.Close();
         }
 
 

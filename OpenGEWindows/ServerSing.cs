@@ -42,6 +42,8 @@ namespace OpenGEWindows
 
             TownFactory townFactory = new SingTownFactory(botwindow);                                     // здесь выбирается конкретная реализация для фабрики Town
             this.town = townFactory.createTown();
+            this.town_begin = new SingTownReboldo(botwindow);   //город взят по умолчанию, как Ребольдо. 
+            dialog = new DialogSing(botwindow);
 
             #endregion
 
@@ -70,6 +72,9 @@ namespace OpenGEWindows
             //this.pointisLogout2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 16000000, 6);       // проверено
             this.pointisLogout1 = new PointColor(930 - 5 + xx, 702 - 5 + yy, 7925494, 0);       // проверено   слово Ver буква r
             this.pointisLogout2 = new PointColor(930 - 5 + xx, 703 - 5 + yy, 7925494, 0);       // проверено
+            this.pointIsServerSelection1 = new PointColor(430 - 5 + xx, 340 - 5 + yy, 5848111, 0);       // проверено   слово Ver буква r
+            this.pointIsServerSelection2 = new PointColor(430 - 5 + xx, 341 - 5 + yy, 5848111, 0);       // проверено   слово Ver буква r
+            pointserverSelection = new Point(480 - 5 + xx, 345 - 5 + yy);
 
             #endregion
 
@@ -188,8 +193,9 @@ namespace OpenGEWindows
             this.pointMana1 = new Point(245 - 5 + xx, 705 - 5 + yy);                        //бутылка маны под буквой I
             this.pointMana2 = new Point(245 - 5 + 255 + xx, 705 - 5 + yy);                        //бутылка маны под буквой K
             this.pointMana3 = new Point(245 - 5 + 510 + xx, 705 - 5 + yy);                        //бутылка маны под буквой ,
-
-//            this.arrayOfColorsIsTown1 = new uint[13] { 0, 11053000, 1710000, 7631000, 2763000, 16777000, 4276000, 5131000, 3684000, 65000, 5066000, 15856000, 8750000 };
+            this.pointGM = new Point(439 - 5 + xx, 413 - 5 + yy);
+            this.pointHeadGM = new Point(369 - 5 + xx, 290 - 5 + yy);
+            //            this.arrayOfColorsIsTown1 = new uint[13] { 0, 11053000, 1710000, 7631000, 2763000, 16777000, 4276000, 5131000, 3684000, 65000, 5066000, 15856000, 8750000 };
             this.arrayOfColorsIsTown1 = new uint[12] { 11053, 1710, 7631, 2763, 16777, 4276, 5131, 3684, 65, 5066, 15856, 8750 };
             this.arrayOfColorsIsTown2 = new uint[12] { 10921, 2105, 16711, 7237, 3552, 5395, 9737, 10263, 0, 9342, 15790, 8158 };
 
@@ -260,10 +266,11 @@ namespace OpenGEWindows
             #endregion
 
             #region  новые боты
+            
 
             this.pointNewName = new Point(490 - 5 + xx, 280 - 5 + yy);                             //строчка, куда надо вводить имя семьи
             this.pointButtonCreateNewName = new Point(465 - 5 + xx, 510 - 5 + yy);                 //кнопка Create для создания новой семьи
-            this.pointCreateHeroes = new Point(800 - 5 + xx, 635 - 5 + yy);                        //кнопка Create для создания нового героя (перса)
+            this.pointCreateHeroes = new Point(800 - 5 + xx, 655 - 5 + yy);                        //кнопка Create для создания нового героя (перса)
             this.pointButtonOkCreateHeroes = new Point(520 - 5 + xx, 420 - 5 + yy);                //кнопка Ok для подтверждения создания героя
             this.pointMenuSelectTypeHeroes = new Point(810 - 5 + xx, 260 - 5 + yy);                //меню выбора типа героя в казарме
             this.pointSelectTypeHeroes = new Point(800 - 5 + xx, 320 - 5 + yy);                    //выбор мушкетера в меню типо героев в казарме
@@ -275,13 +282,13 @@ namespace OpenGEWindows
             this.pointButtonSaveNewTeam = new Point(190 - 5 + xx, 660 - 5 + yy);                   //нажимаем на кнопку сохранения команды (в казарме)
 
             this.pointRunNunies = new Point(920 - 5 + xx, 170 - 5 + yy);                           //нажимаем на зеленую стрелку, чтобы бежать к Нуньесу в Стартонии
-            this.pointPressNunez = new Point(830 - 5 + xx, 340 - 5 + yy);                          //нажимаем на Нуньеса
+    //      this.pointPressNunez = new Point(830 - 5 + xx, 340 - 5 + yy);                          //нажимаем на Нуньеса
+            this.pointPressNunez = new Point(848 - 5 + xx, 307 - 5 + yy);                          //нажимаем на Нуньеса
             this.ButtonOkDialog = new Point(910 - 5 + xx, 680 - 5 + yy);                           //нажимаем на Ок в диалоге
             this.PressMedal = new Point(300 - 5 + xx, 210 - 5 + yy);                               //нажимаем на медаль
             this.ButtonCloseMedal = new Point(740 - 5 + xx, 600 - 5 + yy);                         //нажимаем на кнопку Close и закрываем медали
             this.pointPressNunez2 = new Point(700 - 5 + xx, 360 - 5 + yy);                         //нажимаем на Нуньеса после надевания медали
-
-            this.town_begin = new SingTownReboldo(botwindow);                                      //город взят по умолчанию, как Ребольдо. 
+                                               
             this.pointPressLindon1 = new Point(590 - 5 + xx, 210 - 5 + yy);                        //нажимаем на Линдона
             this.pointPressGMonMap = new Point(840 - 5 + xx, 235 - 5 + yy);                        //нажимаем на строчку GM на карте Alt+Z
             this.pointPressGM_1 = new Point(555 - 5 + xx, 425 - 5 + yy);                           //нажимаем на голову GM 
@@ -299,9 +306,9 @@ namespace OpenGEWindows
             this.pointSecondStringDialog = new Point(520 - 5 + xx, 640 - 5 + yy);                  //нажимаем Yes в диалоге Доминго второй раз (вторая строчка снизу)
             this.pointDomingoMiss = new Point(396 - 5 + xx, 206 - 5 + yy);                         //нажимаем правой кнопкой по карте миссии Доминго
             this.pointPressDomingo2 = new Point(572 - 5 + xx, 237 - 5 + yy);                       //нажимаем на Доминго после миссии
-            this.pointLindonOnMap = new Point(820 - 5 + xx, 370 - 5 + yy);                         //нажимаем на Линдона на карте Alt+Z
+            this.pointLindonOnMap = new Point(820 - 5 + xx, 415 - 5 + yy);                         //нажимаем на Линдона на карте Alt+Z
             this.pointPressLindon2 = new Point(627 - 5 + xx, 274 - 5 + yy);                        //нажимаем на Линдона
-            this.pointPetExpert = new Point(910 - 5 + xx, 415 - 5 + yy);                           //нажимаем на петэксперта
+            this.pointPetExpert = new Point(818 - 5 + xx, 428 - 5 + yy);                           //нажимаем на петэксперта
             this.pointPetExpert2 = new Point(816 - 5 + xx, 415 - 5 + yy);                          //нажимаем на петэксперта второй раз 
             this.pointThirdBookmark = new Point(842 - 5 + xx, 150 - 5 + yy);                       //тыкнули в третью закладку в кармане
             this.pointNamePet = new Point(440 - 5 + xx, 440 - 5 + yy);                             //нажимаем на строку, где вводить имя пета
@@ -325,8 +332,9 @@ namespace OpenGEWindows
             this.pointWorkCrater = new Point(botwindow.getTriangleX()[0] + xx, botwindow.getTriangleY()[0] + yy);     //бежим на место работы
             this.pointButtonSaveTeleport = new Point(440 - 5 + xx, 570 - 5 + yy);                   // нажимаем на кнопку сохранения телепорта в текущей позиции
             this.pointButtonOkSaveTeleport = new Point(660 - 5 + xx, 645 - 5 + yy);               // нажимаем на кнопку OK для подтверждения сохранения телепорта 
-            this.pointPetBegin = new Point(855 + 39 - 5 + xx, 180 - 5 + yy);    // 
-            this.pointPetEnd = new Point(520 - 5 + xx, 330 - 5 + yy);    // 
+            this.pointPetBegin = new Point(895 - 5 + xx, 180 - 5 + yy);    // коробка с петом лежит здесь
+            this.pointPetEnd = new Point(520 - 5 + xx, 330 - 5 + yy);    // коробка с петом перетаскиваем сюда
+
             #endregion
 
             #region заточка Ида 
@@ -500,13 +508,13 @@ namespace OpenGEWindows
             #endregion
         }
 
-        /// <summary>
-        /// коструктор с другим аргументом
-        /// </summary>
-        /// <param name="numberOfWindow">номер окна по порядку</param>
-        public ServerSing(int numberOfWindow) : this(new botWindow(numberOfWindow))
-        {
-        }
+        ///// <summary>
+        ///// коструктор с другим аргументом
+        ///// </summary>
+        ///// <param name="numberOfWindow">номер окна по порядку</param>
+        //public ServerSing(int numberOfWindow) : this(new botWindow(numberOfWindow))
+        //{
+        //}
 
         //==================================== Методы ===================================================
 
@@ -559,7 +567,8 @@ namespace OpenGEWindows
                 count++; if (count > 5) return (UIntPtr)0;
             }
 
-            botwindow.setHwnd(HWND);
+            botParam.Hwnd = HWND;
+            //botwindow.setHwnd(HWND);
 
             SetWindowPos(HWND, 0, xx, yy, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
             //            ShowWindow(HWND, 2);   //скрыть окно в трей
@@ -658,16 +667,14 @@ namespace OpenGEWindows
         #region LogOut
 
         /// <summary>
-        /// выбираем сервер путем нажатия на первую строчку в меню
+        /// переключились ли на нужный сервер FERRUCCIO-ESPADA (в режиме логаута)
         /// </summary>
-        public override void serverSelection()
+        /// <returns></returns>
+        public override bool IsServerSelection()
         {
-            WriteToLogFileBH("выбираем сервер из списка серверов начало");
-            iPoint pointserverSelection = new Point(480 - 5 + xx, 345 - 5 + yy);
-            pointserverSelection.PressMouseLL();
-            Pause(500);
-            WriteToLogFileBH("выбираем сервер из списка серверов конец метода");
+            return pointIsServerSelection1.isColor() && pointIsServerSelection2.isColor();
         }
+
 
         #endregion
 
@@ -872,7 +879,7 @@ namespace OpenGEWindows
             pointNotToShoot.DoubleClickL();
             botwindow.Pause(4000);
         }
-        
+
         ///// <summary>
         ///// нажать указанную строку в диалоге в воротах Infinity BH. Отсчет снизу вверх
         ///// </summary>
@@ -886,6 +893,25 @@ namespace OpenGEWindows
 
         #endregion
 
+        #region inTown
+        
+        /// <summary>
+        /// идем к высокой бабе в Ребольдо GM /карта города уже открыта/
+        /// </summary>
+        public override void GotoGM()
+        {
+            pointGM.PressMouseL();
+        }
+
+        /// <summary>
+        /// тыкаем в голову GM
+        /// </summary>
+        public override void PressToHeadGM()
+        {
+            pointHeadGM.PressMouseL();
+        }
+
+        #endregion
 
     }
 }
