@@ -389,6 +389,11 @@ namespace OpenGEWindows
 
         #region No window
 
+        protected override bool isContinueRunning()
+        {
+            return false;
+        }
+
         /// <summary>
         /// запуск клиента Steam
         /// </summary>

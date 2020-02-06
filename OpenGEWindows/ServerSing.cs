@@ -59,10 +59,20 @@ namespace OpenGEWindows
             this.pointSafeIP2 = new PointColor(942, 579, 13600000, 5);
             this.pointisSteam1 = new PointColor(1037, 553, 14471368, 0); //для Стима используются абсолютные координаты
             this.pointisSteam2 = new PointColor(1038, 553, 14471368, 0);//для Стима используются абсолютные координаты
-            this.pointSteamLogin = new Point(862,455);//для Стима используются абсолютные координаты
+            this.pointSteamLogin1 = new Point(1150, 455);//для Стима используются абсолютные координаты
+            this.pointSteamLogin2 = new Point(844, 455);//для Стима используются абсолютные координаты
             this.pointSteamPassword = new Point(862, 489);//для Стима используются абсолютные координаты
             this.pointSteamSavePassword = new Point(843, 518);//для Стима используются абсолютные координаты
             this.pointSteamOk = new Point(902, 551);//для Стима используются абсолютные координаты
+            this.pointisNewSteam1 = new PointColor(998, 715, 14471368, 0); //для Стима используются абсолютные координаты
+            this.pointisNewSteam2 = new PointColor(999, 715, 14471368, 0); //для Стима используются абсолютные координаты
+            this.pointNewSteamOk = new Point(983, 712);   //кнопка "Соглашаюсь", когда входишь в новый акк
+            
+            //this.pointisContinueRunning1 = new PointColor(861, 551, 14400000, 5); //для Стима используются абсолютные координаты
+            //this.pointisContinueRunning2 = new PointColor(862, 551, 14400000, 5); //для Стима используются абсолютные координаты
+            this.pointisContinueRunning1 = new PointColor(1042, 551, 14471368, 0); //для Стима используются абсолютные координаты
+            this.pointisContinueRunning2 = new PointColor(1043, 551, 14471368, 0); //для Стима используются абсолютные координаты
+            this.pointCancelContinueRunning = new Point(1044, 554); //для Стима используются абсолютные координаты
             #endregion
 
             #region Logout
@@ -194,7 +204,8 @@ namespace OpenGEWindows
             this.pointMana2 = new Point(245 - 5 + 255 + xx, 705 - 5 + yy);                        //бутылка маны под буквой K
             this.pointMana3 = new Point(245 - 5 + 510 + xx, 705 - 5 + yy);                        //бутылка маны под буквой ,
             this.pointGM = new Point(439 - 5 + xx, 413 - 5 + yy);
-            this.pointHeadGM = new Point(369 - 5 + xx, 290 - 5 + yy);
+//            this.pointHeadGM = new Point(369 - 5 + xx, 290 - 5 + yy);
+            this.pointHeadGM = new Point(394 - 5 + xx, 394 - 5 + yy);
             //            this.arrayOfColorsIsTown1 = new uint[13] { 0, 11053000, 1710000, 7631000, 2763000, 16777000, 4276000, 5131000, 3684000, 65000, 5066000, 15856000, 8750000 };
             this.arrayOfColorsIsTown1 = new uint[12] { 11053, 1710, 7631, 2763, 16777, 4276, 5131, 3684, 65, 5066, 15856, 8750 };
             this.arrayOfColorsIsTown2 = new uint[12] { 10921, 2105, 16711, 7237, 3552, 5395, 9737, 10263, 0, 9342, 15790, 8158 };
@@ -607,7 +618,13 @@ namespace OpenGEWindows
 
         }
 
-        
+        protected override bool isContinueRunning()
+        {
+            //bool ff1 = pointisContinueRunning1.isColor();
+            //bool ff2 = pointisContinueRunning2.isColor();
+            return pointisContinueRunning1.isColor() && pointisContinueRunning2.isColor();
+        }
+
         /// <summary>
         /// запуск клиента игры
         /// </summary>
@@ -629,9 +646,23 @@ namespace OpenGEWindows
                 InsertLoginPasswordOk();
             }
 
+            for (int i = 1; i <= 10; i++)
+            {
+                Pause(5000);
+                if (isNewSteam())
+                {
+                    pointNewSteamOk.PressMouseL();
+                }
 
-            Pause(50000);
-
+                if (isContinueRunning())
+                {
+                    NextAccount();
+                }
+                else
+                {
+                    Pause(1);
+                }
+            }
 
             #endregion
 

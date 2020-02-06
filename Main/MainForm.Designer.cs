@@ -56,9 +56,9 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.ChangingAccounts = new System.Windows.Forms.Button();
             this.LoadSteams = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.ChangingAccounts = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfAccouts)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -301,7 +301,7 @@
             // 
             this.labelEnchanting.AutoSize = true;
             this.labelEnchanting.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelEnchanting.Location = new System.Drawing.Point(22, 157);
+            this.labelEnchanting.Location = new System.Drawing.Point(22, 166);
             this.labelEnchanting.MaximumSize = new System.Drawing.Size(300, 20);
             this.labelEnchanting.Name = "labelEnchanting";
             this.labelEnchanting.Size = new System.Drawing.Size(154, 20);
@@ -357,6 +357,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Доп. функции";
             // 
+            // ChangingAccounts
+            // 
+            this.ChangingAccounts.Location = new System.Drawing.Point(6, 88);
+            this.ChangingAccounts.Name = "ChangingAccounts";
+            this.ChangingAccounts.Size = new System.Drawing.Size(170, 35);
+            this.ChangingAccounts.TabIndex = 65;
+            this.ChangingAccounts.Text = "Смена аккаунтов";
+            this.ChangingAccounts.UseVisualStyleBackColor = true;
+            this.ChangingAccounts.Click += new System.EventHandler(this.ChangingAccounts_Click);
+            // 
             // LoadSteams
             // 
             this.LoadSteams.BackColor = System.Drawing.Color.Yellow;
@@ -386,16 +396,6 @@
             this.tabPage3.Size = new System.Drawing.Size(378, 184);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Редкие функции";
-            // 
-            // ChangingAccounts
-            // 
-            this.ChangingAccounts.Location = new System.Drawing.Point(6, 88);
-            this.ChangingAccounts.Name = "ChangingAccounts";
-            this.ChangingAccounts.Size = new System.Drawing.Size(170, 35);
-            this.ChangingAccounts.TabIndex = 65;
-            this.ChangingAccounts.Text = "Смена аккаунтов";
-            this.ChangingAccounts.UseVisualStyleBackColor = true;
-            this.ChangingAccounts.Click += new System.EventHandler(this.ChangingAccounts_Click);
             // 
             // MainForm
             // 

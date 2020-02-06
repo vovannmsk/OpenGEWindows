@@ -27,6 +27,7 @@ namespace States
         public Check()
         { 
         }
+
         public Check(int numberOfWindow)
         {
             this.numberOfWindow = numberOfWindow;
@@ -77,7 +78,6 @@ namespace States
         {
             botwindow.OpenWindow();
         }
-
 
         #region Гильдия охотников BH
 
@@ -652,9 +652,16 @@ namespace States
         /// </summary>
         public void ChangingAccounts()
         {
-            //for (int j = botParam.NumberOfInfinity; j < botParam.Parametrs.Length; j++)
-            //    driver.StateInputOutput(); //вход и выход из игры
-            for (int j = botParam.NumberOfInfinity; j < botParam.Parametrs.Length; j++)
+            for (int j = botParam.NumberOfInfinity; j < botParam.Logins.Length; j++)
+                driver.StateInputOutput(); //вход и выход из игры
+        }
+
+        /// <summary>
+        /// создать новые аккаунты в одном окне бота
+        /// </summary>
+        public void NewAccountsTwo()
+        {
+            for (int j = botParam.NumberOfInfinity; j < botParam.Logins.Length; j++)
                 driver.StateNewAcc2(); //новые акки
         }
 
@@ -721,8 +728,8 @@ namespace States
             int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 875, 850, 825, 800, 775, 750, 875 };
             int[] koordY = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 5, 30, 55, 80, 105, 130, 5 };
 
-            botWindow botwindow = new botWindow(i);
-            botwindow.ReOpenWindow();
+            //botWindow botwindow = new botWindow(i);
+            //botwindow.ReOpenWindow();
 
             //MessageBox.Show(" " + botwindow.getNomerTeleport());
             //botwindow.Pause(1000);
@@ -813,10 +820,10 @@ namespace States
             //PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в городе
             //            PointColor point1 = new PointColor(152 - 5 + xx, 250 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в Катовии
 
-            //PointColor point1 = new PointColor(1037, 553, 1, 1);
-            //PointColor point2 = new PointColor(1038, 553, 1, 1);
-            PointColor point1 = new PointColor(430 - 5 + xx, 370 - 5 + yy, 1, 1);
-            PointColor point2 = new PointColor(430 - 5 + xx, 371 - 5 + yy, 1, 1);
+            PointColor point1 = new PointColor(1042, 551, 1, 1);
+            PointColor point2 = new PointColor(1043, 551, 1, 1);
+            //PointColor point1 = new PointColor(998 - 5 + xx, 715 - 5 + yy, 1, 1);
+            //PointColor point2 = new PointColor(999 - 5 + xx, 715 - 5 + yy, 1, 1);
             //PointColor point3 = new PointColor(930 - 5 + xx, 703 - 5 + yy, 1, 1);
 
 
@@ -824,6 +831,7 @@ namespace States
             color2 = point2.GetPixelColor();
             //color3 = point3.GetPixelColor();
 
+            //server.WriteToLogFile(color1 + "  " + color2);
             MessageBox.Show(" " + color1);
             MessageBox.Show(" " + color2);
             //MessageBox.Show(" " + color3);

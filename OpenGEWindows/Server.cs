@@ -52,10 +52,17 @@ namespace OpenGEWindows
         protected iPointColor pointSafeIP2;
         protected iPointColor pointisSteam1;
         protected iPointColor pointisSteam2;
-        protected iPoint pointSteamLogin;
+        protected iPointColor pointisNewSteam1;
+        protected iPointColor pointisNewSteam2;
+        protected iPointColor pointisContinueRunning1;
+        protected iPointColor pointisContinueRunning2;
+        protected iPoint pointSteamLogin1;
+        protected iPoint pointSteamLogin2;
         protected iPoint pointSteamPassword;
         protected iPoint pointSteamSavePassword;
         protected iPoint pointSteamOk;
+        protected iPoint pointNewSteamOk;
+        protected iPoint pointCancelContinueRunning;
 
         protected const int WIDHT_WINDOW = 1024;
         protected const int HIGHT_WINDOW = 700;
@@ -585,6 +592,36 @@ namespace OpenGEWindows
             return (pointisSteam1.isColor() && pointisSteam2.isColor());
         }
 
+        protected bool isNewSteam()
+        {
+            return (pointisNewSteam1.isColor() && pointisNewSteam2.isColor());
+        }
+
+        ///// <summary>
+        ///// проверяем, выскочило ли сообщение, что аккаунт загружен на другом компе и кнопка "Продолжить запуск"
+        ///// </summary>
+        ///// <returns>true = выскочило сообщение</returns>
+        //protected bool isContinueRunning()
+        //{
+        //    bool ff1 = pointisContinueRunning1.isColor();
+        //    bool ff2 = pointisContinueRunning2.isColor();
+        //    return pointisContinueRunning1.isColor() && pointisContinueRunning2.isColor();
+        //}
+
+        protected abstract bool isContinueRunning();
+
+        protected void NextAccount()
+        {
+            pointCancelContinueRunning.PressMouseLL();  // жмём кнопку отмена
+
+            if (botParam.NumberOfInfinity > 0)     //если не обычный режим бота
+            {
+                RemoveSandboxie();    // удаляем текущую песочницу и к счетчику NumberOfInfinity прибавляем единицу
+                botwindow.ReOpenWindow(); //перезапускаем окно
+
+            }
+        }
+
         protected string GetLogin()
         {
             //string result = botParam.Login;
@@ -613,7 +650,8 @@ namespace OpenGEWindows
 
         protected void EnterSteamLogin()
         {
-            pointSteamLogin.PressMouseL();
+            pointSteamLogin2.Drag(pointSteamLogin1); //выделяем старый пароль, если он есть
+            Pause(1000);
             SendKeys.SendWait(GetLogin());
         }
         protected void EnterSteamPassword()
@@ -632,7 +670,7 @@ namespace OpenGEWindows
             //{
             //    pointSteamSavePassword.PressMouseL();
             //}
-            pointSteamSavePassword.PressMouseL();
+            if (botParam.NumberOfInfinity == 0)  pointSteamSavePassword.PressMouseL(); //если обычный режим бота
         }
         protected void PressSteamOk()
         {
@@ -650,8 +688,8 @@ namespace OpenGEWindows
             EnterSteamPassword();
             CheckSteamSavePassword();
             PressSteamOk();
-            WriteToLogFile(botParam.NumberOfInfinity + " "+ botParam.Logins[botParam.NumberOfInfinity] + 
-                " " + botParam.Passwords[botParam.NumberOfInfinity] + " " + botParam.Parametrs[botParam.NumberOfInfinity]);
+            //WriteToLogFile(botParam.NumberOfInfinity + " "+ botParam.Logins[botParam.NumberOfInfinity] + 
+                //" " + botParam.Passwords[botParam.NumberOfInfinity] + " " + botParam.Parametrs[botParam.NumberOfInfinity]);
         }
 
         /// <summary>
@@ -2065,8 +2103,10 @@ namespace OpenGEWindows
         /// </summary>
         public void TalkRunToNunez()
         {
-            pointPressNunez.PressMouseLL();   // Нажимаем на Нуньеса
-            Pause(2000);
+            pointPressNunez.PressMouseL();   // Нажимаем на Нуньеса
+            Pause(3000);
+            pointPressNunez.PressMouseL();   // Нажимаем на Нуньеса
+            Pause(3000);
 
             for (int j = 1; j <= 7; j++)
             {

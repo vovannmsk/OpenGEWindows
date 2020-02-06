@@ -366,6 +366,12 @@ namespace OpenGEWindows
 
         #region No window
 
+        protected override bool isContinueRunning()
+        {
+            return false;
+        }
+
+
         /// <summary>
         /// запуск клиента Steam /На Европейском сервере нет стима. Ничего не делаем/
         /// </summary>

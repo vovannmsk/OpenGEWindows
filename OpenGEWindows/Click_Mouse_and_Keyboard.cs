@@ -95,6 +95,7 @@ namespace OpenGEWindows
             Pause(500);
         }
 
+
         /// <summary>
         /// поворот 
         /// </summary>

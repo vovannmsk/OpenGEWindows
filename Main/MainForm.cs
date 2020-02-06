@@ -12,7 +12,7 @@ namespace Main
         private static uint NumberBlueButton = 0;       //сколько раз нажали голубую(красную) кнопку
         //private const int MAX_NUMBER_OF_ACCOUNTS = 20;
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
-        private static string DataVersion = "03-02-2020";
+        private static string DataVersion = "06-02-2020";
         private int numberOfAcc;                                              // количество аккаунтов ботов
         private int startAccount;
         private GlobalParam globalParam;
@@ -215,15 +215,14 @@ namespace Main
         /// </summary>
         private void funcPink()
         {
-            //int start = globalParam.StartingAccount;
             for (int j = startAccount; j <= numberOfAcc; j++)
-//            for (int j = 2; j <= 2; j++)
             {
                 Check check = new Check(j);
                 if (check.IsActiveServer)
                 {
-                    DriversOfState driver = new DriversOfState(j);
-                    driver.StateNewAcc();
+                    //DriversOfState driver = new DriversOfState(j);
+                    //driver.StateNewAcc();
+                    check.NewAccountsTwo();
                 }
             }
         }

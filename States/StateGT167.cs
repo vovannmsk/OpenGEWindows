@@ -82,7 +82,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return true;   // dialog.isDialog();
+            return dialog.isDialog();
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return this;
+            return new StateGT169(botwindow);
         }
 
         /// <summary>
