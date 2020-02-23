@@ -12,10 +12,12 @@ namespace Main
         private static uint NumberBlueButton = 0;       //сколько раз нажали голубую(красную) кнопку
         //private const int MAX_NUMBER_OF_ACCOUNTS = 20;
         static System.Windows.Forms.Timer myTimer = new System.Windows.Forms.Timer();
-        private static string DataVersion = "06-02-2020";
+        //        private static string DataVersion = "08-02-2020";
+        private static string DataVersion = DateTime.Now.ToString("D");
         private int numberOfAcc;                                              // количество аккаунтов ботов
         private int startAccount;
         private GlobalParam globalParam;
+        private BotParam botParam;
 
         //public UIntPtr[] arrayOfHwnd = new UIntPtr[21];   //используется в методе "Найти окна"
 
@@ -27,11 +29,13 @@ namespace Main
             InitializeComponent();
 
             this.globalParam = new GlobalParam();                          //сделали экземпляр класса
+            this.botParam = new BotParam(1);
             numberOfAcc = globalParam.TotalNumberOfAccounts;
             startAccount = globalParam.StartingAccount;
-            this.Text = "Программа от " + DataVersion + ".    " + numberOfAcc + " окон";
+            this.Text = "Программа от " + DataVersion + "    " + numberOfAcc + " окон";
             this.Location = new System.Drawing.Point(1315, 1080 - this.Height - 40);
             this.numberOfAccouts.Value = numberOfAcc;
+            this.labelNomer.Text = "Текущий № аккаунта " + botParam.NumberOfInfinity;
 
             string typeOfNintendo;
             switch (globalParam.Nintendo)
@@ -793,7 +797,7 @@ namespace Main
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ChangingAccounts_Click(object sender, EventArgs e)
+        private void ChangingAccounts_Click_1(object sender, EventArgs e)
         {
             Thread myCA = new Thread(funcCA);
             myCA.Start();
@@ -807,14 +811,23 @@ namespace Main
             for (int j = startAccount; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);   //j-номер окна
+                //this.labelNomer.Text = "Текущий № аккаунта " + check.NumberOfInfinity();  //botParam.NumberOfInfinity;
                 if (check.IsActiveServer)
                 {
                     check.ChangingAccounts();
                 }
             }
+            //Update();
         }
         #endregion
 
+        public void labelNomer_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        
     }// END class MainForm 
 }// END namespace OpenGEWindows
 

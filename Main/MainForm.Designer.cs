@@ -55,8 +55,9 @@
             this.labelEnchanting = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.ChangingAccounts = new System.Windows.Forms.Button();
+            this.labelNomer = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.LoadSteams = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             ((System.ComponentModel.ISupportInitialize)(this.numberOfAccouts)).BeginInit();
@@ -69,7 +70,7 @@
             // buttonReOpenWindowGE
             // 
             this.buttonReOpenWindowGE.BackColor = System.Drawing.Color.Orange;
-            this.buttonReOpenWindowGE.Location = new System.Drawing.Point(9, 15);
+            this.buttonReOpenWindowGE.Location = new System.Drawing.Point(9, 9);
             this.buttonReOpenWindowGE.Name = "buttonReOpenWindowGE";
             this.buttonReOpenWindowGE.Size = new System.Drawing.Size(170, 35);
             this.buttonReOpenWindowGE.TabIndex = 1;
@@ -90,7 +91,7 @@
             // buttonSuperSell
             // 
             this.buttonSuperSell.BackColor = System.Drawing.Color.Aqua;
-            this.buttonSuperSell.Location = new System.Drawing.Point(9, 71);
+            this.buttonSuperSell.Location = new System.Drawing.Point(9, 50);
             this.buttonSuperSell.Name = "buttonSuperSell";
             this.buttonSuperSell.Size = new System.Drawing.Size(170, 35);
             this.buttonSuperSell.TabIndex = 3;
@@ -111,7 +112,7 @@
             // button_StandUp
             // 
             this.button_StandUp.BackColor = System.Drawing.Color.PaleGreen;
-            this.button_StandUp.Location = new System.Drawing.Point(200, 71);
+            this.button_StandUp.Location = new System.Drawing.Point(200, 49);
             this.button_StandUp.Name = "button_StandUp";
             this.button_StandUp.Size = new System.Drawing.Size(170, 35);
             this.button_StandUp.TabIndex = 20;
@@ -122,7 +123,7 @@
             // buttonWarning
             // 
             this.buttonWarning.BackColor = System.Drawing.Color.SkyBlue;
-            this.buttonWarning.Location = new System.Drawing.Point(200, 15);
+            this.buttonWarning.Location = new System.Drawing.Point(200, 9);
             this.buttonWarning.Name = "buttonWarning";
             this.buttonWarning.Size = new System.Drawing.Size(170, 35);
             this.buttonWarning.TabIndex = 22;
@@ -134,7 +135,7 @@
             // 
             this.buttonGotoTradeTest.BackColor = System.Drawing.Color.White;
             this.buttonGotoTradeTest.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonGotoTradeTest.Location = new System.Drawing.Point(9, 133);
+            this.buttonGotoTradeTest.Location = new System.Drawing.Point(9, 91);
             this.buttonGotoTradeTest.Name = "buttonGotoTradeTest";
             this.buttonGotoTradeTest.Size = new System.Drawing.Size(170, 35);
             this.buttonGotoTradeTest.TabIndex = 45;
@@ -237,7 +238,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(204, 139);
+            this.label1.Location = new System.Drawing.Point(202, 102);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(100, 20);
             this.label1.TabIndex = 56;
@@ -246,7 +247,7 @@
             // numberOfAccouts
             // 
             this.numberOfAccouts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.numberOfAccouts.Location = new System.Drawing.Point(327, 137);
+            this.numberOfAccouts.Location = new System.Drawing.Point(325, 100);
             this.numberOfAccouts.Name = "numberOfAccouts";
             this.numberOfAccouts.Size = new System.Drawing.Size(43, 26);
             this.numberOfAccouts.TabIndex = 57;
@@ -301,7 +302,7 @@
             // 
             this.labelEnchanting.AutoSize = true;
             this.labelEnchanting.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelEnchanting.Location = new System.Drawing.Point(22, 166);
+            this.labelEnchanting.Location = new System.Drawing.Point(22, 144);
             this.labelEnchanting.MaximumSize = new System.Drawing.Size(300, 20);
             this.labelEnchanting.Name = "labelEnchanting";
             this.labelEnchanting.Size = new System.Drawing.Size(154, 20);
@@ -317,13 +318,15 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(386, 210);
+            this.tabControl1.Size = new System.Drawing.Size(386, 203);
             this.tabControl1.TabIndex = 64;
             // 
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.SeaShell;
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage1.Controls.Add(this.ChangingAccounts);
+            this.tabPage1.Controls.Add(this.labelNomer);
             this.tabPage1.Controls.Add(this.buttonReOpenWindowGE);
             this.tabPage1.Controls.Add(this.buttonWarning);
             this.tabPage1.Controls.Add(this.button_StandUp);
@@ -334,15 +337,36 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(378, 184);
+            this.tabPage1.Size = new System.Drawing.Size(378, 177);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Основные функции";
+            // 
+            // ChangingAccounts
+            // 
+            this.ChangingAccounts.BackColor = System.Drawing.Color.PeachPuff;
+            this.ChangingAccounts.Location = new System.Drawing.Point(9, 132);
+            this.ChangingAccounts.Name = "ChangingAccounts";
+            this.ChangingAccounts.Size = new System.Drawing.Size(170, 35);
+            this.ChangingAccounts.TabIndex = 66;
+            this.ChangingAccounts.Text = "Смена аккаунтов";
+            this.ChangingAccounts.UseVisualStyleBackColor = false;
+            this.ChangingAccounts.Click += new System.EventHandler(this.ChangingAccounts_Click_1);
+            // 
+            // labelNomer
+            // 
+            this.labelNomer.AutoSize = true;
+            this.labelNomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelNomer.Location = new System.Drawing.Point(196, 138);
+            this.labelNomer.Name = "labelNomer";
+            this.labelNomer.Size = new System.Drawing.Size(119, 17);
+            this.labelNomer.TabIndex = 58;
+            this.labelNomer.Text = "Текущий № окна";
+            this.labelNomer.Click += new System.EventHandler(this.labelNomer_Click);
             // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.Bisque;
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tabPage2.Controls.Add(this.ChangingAccounts);
             this.tabPage2.Controls.Add(this.LoadSteams);
             this.tabPage2.Controls.Add(this.alchemy);
             this.tabPage2.Controls.Add(this.labelEnchanting);
@@ -353,19 +377,9 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(378, 184);
+            this.tabPage2.Size = new System.Drawing.Size(378, 177);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Доп. функции";
-            // 
-            // ChangingAccounts
-            // 
-            this.ChangingAccounts.Location = new System.Drawing.Point(6, 88);
-            this.ChangingAccounts.Name = "ChangingAccounts";
-            this.ChangingAccounts.Size = new System.Drawing.Size(170, 35);
-            this.ChangingAccounts.TabIndex = 65;
-            this.ChangingAccounts.Text = "Смена аккаунтов";
-            this.ChangingAccounts.UseVisualStyleBackColor = true;
-            this.ChangingAccounts.Click += new System.EventHandler(this.ChangingAccounts_Click);
             // 
             // LoadSteams
             // 
@@ -393,7 +407,7 @@
             this.tabPage3.Controls.Add(this.TransferVis);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(378, 184);
+            this.tabPage3.Size = new System.Drawing.Size(378, 177);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Редкие функции";
             // 
@@ -402,7 +416,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(386, 210);
+            this.ClientSize = new System.Drawing.Size(386, 203);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.labelInformation);
             this.Cursor = System.Windows.Forms.Cursors.Default;
@@ -454,6 +468,7 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Button LoadSteams;
+        private System.Windows.Forms.Label labelNomer;
         private System.Windows.Forms.Button ChangingAccounts;
     }
 }

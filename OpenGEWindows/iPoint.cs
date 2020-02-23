@@ -2,6 +2,7 @@
 {
     public interface iPoint
     {
+        void Move();
         void PressMouseR();  
         void PressMouseL();
         void PressMouseLL();

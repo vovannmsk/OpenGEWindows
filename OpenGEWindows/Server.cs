@@ -19,7 +19,10 @@ namespace OpenGEWindows
         [DllImport("User32.dll", CharSet = CharSet.Auto)]
         public static extern UIntPtr FindWindowEx(UIntPtr hwndParent, UIntPtr hwndChildAfter, string className, string windowName);
 
-
+        /// <summary>
+        /// если окно загружено на другом компе
+        /// </summary>
+        public static bool AccountBusy;
 
         #region общие
 
@@ -54,6 +57,8 @@ namespace OpenGEWindows
         protected iPointColor pointisSteam2;
         protected iPointColor pointisNewSteam1;
         protected iPointColor pointisNewSteam2;
+        //protected iPointColor pointisError1;
+        //protected iPointColor pointisError2;
         protected iPointColor pointisContinueRunning1;
         protected iPointColor pointisContinueRunning2;
         protected iPoint pointSteamLogin1;
@@ -597,6 +602,19 @@ namespace OpenGEWindows
             return (pointisNewSteam1.isColor() && pointisNewSteam2.isColor());
         }
 
+        protected bool isSystemError()
+        {
+            iPointColor pointisError1 = new PointColor(1142, 610, 3539040, 0);
+            iPointColor pointisError2 = new PointColor(1142, 608, 3539040, 0);
+            return pointisError1.isColor() && pointisError2.isColor();
+        }
+
+        protected void OkSystemError()
+        {
+            WriteToLogFile("системная ошибка");
+            new Point(1142, 610).PressMouseL();
+        }
+
         ///// <summary>
         ///// проверяем, выскочило ли сообщение, что аккаунт загружен на другом компе и кнопка "Продолжить запуск"
         ///// </summary>
@@ -614,12 +632,15 @@ namespace OpenGEWindows
         {
             pointCancelContinueRunning.PressMouseLL();  // жмём кнопку отмена
 
-            if (botParam.NumberOfInfinity > 0)     //если не обычный режим бота
-            {
-                RemoveSandboxie();    // удаляем текущую песочницу и к счетчику NumberOfInfinity прибавляем единицу
-                botwindow.ReOpenWindow(); //перезапускаем окно
+            iPoint pointMove = new Point(1300,500);
+            pointMove.Move();  //убираем мышку в сторону
 
-            }
+            //if (botParam.NumberOfInfinity > 0)     //если не обычный режим бота
+            //{
+            //    RemoveSandboxie();    // удаляем текущую песочницу и к счетчику NumberOfInfinity прибавляем единицу
+            //    //botwindow.ReOpenWindow(); //перезапускаем окно
+
+            //}
         }
 
         protected string GetLogin()
@@ -699,17 +720,27 @@ namespace OpenGEWindows
         {
             int res = botParam.NumberOfInfinity + 1; //прибавили индекс, когда удаляем песочницу 
             botParam.NumberOfInfinity = res;
+            new Point(1597, 1060).Move();   //перемещаем мышь вниз 
             Pause(400);
 
-            Process process = new Process();
-            process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
-            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " /terminate";
-            process.Start();
-            Pause(2000);
+            //вариант с песочницей
+            //Process process = new Process();
+            //process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
+            //process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " /terminate";
+            //process.Start();
+            //Pause(2000);
 
-            process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
-            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " delete_sandbox";
+            //process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
+            //process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " delete_sandbox";
+            //process.Start();
+
+            //вариант с чистым клиентом
+            Process process = new Process();
+            process.StartInfo.FileName = this.pathClient;
+            process.StartInfo.Arguments = " -shutdown";
             process.Start();
+
+
             Pause(4000);
 
         }
@@ -1516,6 +1547,93 @@ namespace OpenGEWindows
         #endregion
 
         #region inTown
+
+        /// <summary>
+        /// проверяем, открыто ли хотя бы одно задание (список справа экрана)
+        /// </summary>
+        /// <returns></returns>
+        public bool isTask()
+        {
+            return new PointColor(1008 - 5 + xx, 509 - 5 + yy, 15335423, 0).isColor();
+        }
+
+        /// <summary>
+        /// перетаскивание коробки с подарком в ячейку Mana1
+        /// </summary>
+        public void TaskOff()
+        {
+            for (int i = 1; i <= 5; i++)
+            {
+                if (isTask())
+                {
+                    //закрываем задание
+                    new Point(1011 - 5 + xx, 512 - 5 + yy).PressMouseL();
+                    new Point(500 - 5 + xx, 300 - 5 + yy).Move();
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// перетаскивание коробки с подарком в ячейку Mana1
+        /// </summary>
+        public void MoveGiftBox()
+        {
+            iPointColor pointmovegift = new PointColor(237 - 5 + xx, 701 - 5 + yy, 16700000, 5);
+            if (!pointmovegift.isColor())    //если нет на месте коробки с подарком
+            {
+                //перекладываем коробку с подарком в ячейку Mana1
+                TopMenu(8, 1);
+                new Point(778 - 5 + xx, 152 - 5 + yy).PressMouseLL();   //вторая закладка инвентаря
+
+                for (int i = 1; i <= 5; i++)         //строки в инвентаре
+                {
+                    for (int j = 1; j <= 8; j++)        // столбцы в инвентаре
+                    {
+                        if (new PointColor(694 - 5 + xx + (j - 1) * 39, 182 - 5 + yy + (i - 1) * 38, 16700000, 5).isColor())
+                        {
+                            new Point(694 - 5 + xx + (j - 1) * 39, 182 - 5 + yy + (i - 1) * 38).Drag(new Point(237 - 5 + xx, 701 - 5 + yy));
+                            Pause(1000);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// получение подарков из журнала
+        /// </summary>
+        public void GetGifts()
+        {
+            bool result = false;
+            for (int i = 1; i <= 5; i++)
+            {
+                iPointColor pointgifts = new PointColor(709 - 5 + xx, 229 - 5 + yy + (i - 1) * 97, 16000000, 5);
+                result = result || pointgifts.isColor();
+            }
+            if (!result) botwindow.PressEsc();      //если журнал с подарками не открыт, то жмём Esc, чтобы убрать рекламу
+
+            result = true;
+            while (result)
+            {
+                result = false;
+                for (int i = 1; i <= 5; i++)
+                {
+                    iPointColor pointgifts = new PointColor(709 - 5 + xx, 229 - 5 + yy + (i - 1) * 97, 16000000, 5);
+                    result = result || pointgifts.isColor();
+
+                    if (pointgifts.isColor())
+                    {
+                        new Point(709 - 5 + xx, 229 - 5 + yy + (i - 1) * 97).PressMouseL();
+                        Pause(1000);
+                    }
+                }
+            }
+        }
 
         /// <summary>
         /// проверяем, открыто ли окно с подарочными окнами

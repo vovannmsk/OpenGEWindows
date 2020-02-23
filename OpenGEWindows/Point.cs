@@ -6,7 +6,7 @@ namespace OpenGEWindows
     {
         int x;
         int y;
-
+                
         public Point()
         { 
         }
@@ -141,6 +141,15 @@ namespace OpenGEWindows
         public void Turn(iPoint point)
         {
             Click_Mouse_and_Keyboard.MMCR(x, y, point.getX(), point.getY());
+            Pause(200);
+        }
+
+        /// <summary>
+        /// перемещение мыши в указанные координаты
+        /// </summary>
+        public void Move ()
+        {
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 5);
             Pause(200);
         }
     }

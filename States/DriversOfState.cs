@@ -142,10 +142,6 @@ namespace States
             StateDriverRun(new StateGT216(botwindow), new StateGT217(botwindow));     // Barack-->Town
         }
 
-
-
-      
-
         /// <summary>
         /// перевод из состояния 101 (BH) в состояние 102 (InfinityGate)
         /// </summary>
@@ -154,8 +150,6 @@ namespace States
             server.WriteToLogFileBH("Движок 101-102 BH-->Gate");
             //botwindow.setStatusOfAtk(0);           //обнулили статус атаки
             StateDriverRun(new StateGT101(botwindow), new StateGT102(botwindow));   // BH-->Gate
-            
-
         }
 
         /// <summary>
@@ -166,7 +160,6 @@ namespace States
             server.WriteToLogFileBH("Движок 104-108  Gate --> Mission");
             StateDriverRun(new StateGT104(botwindow), new StateGT108(botwindow));   // Gate --> Mission
         }
-
 
         /// <summary>
         /// перевод из состояния 102 (InfinityGate) в состояние 108 (миссия) 
@@ -206,8 +199,16 @@ namespace States
         /// </summary>
         public void StateInputOutput()
         {
+            //Server.rr = false;
             StateDriverRun(new StateGT014(botwindow), new StateGT017(botwindow));  // заходим в ребольдо
-            StateDriverRun(new StateGT165(botwindow), new StateGT170(botwindow));  // бежим к бабе + удаляем песочницу
+            if (Server.AccountBusy)   
+            {
+                StateDriverRun(new StateGT169(botwindow), new StateGT170(botwindow));  // удаляем песочницу
+            }
+            else
+            {
+                StateDriverRun(new StateGT165(botwindow), new StateGT170(botwindow));  // бежим к бабе + удаляем песочницу
+            }
         }
 
 
@@ -472,8 +473,6 @@ namespace States
         {
             StateDriverRun(new StateGT160(botwindow), new StateGT162(botwindow));
         }
-
-
 
         /// <summary>
         /// создание новой семьи, выход в ребольдо, получение и надевание брони 35 лвл, выполнение квеста Доминго, разговор с Линдоном, получение Кокошки и еды 100 шт.

@@ -59,7 +59,11 @@ namespace States
         {
             server.GotoGM();
             botwindow.PressEscThreeTimes();
-            botwindow.Pause(5000);
+            for (int i = 1; i <= 3; i++)
+            {
+                server.QuickCure();    //нажимаем на ячейку Mana1. пока бежим, открываем подарки
+                botwindow.Pause(1000);
+            }
         }
 
         /// <summary>

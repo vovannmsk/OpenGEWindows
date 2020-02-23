@@ -93,7 +93,10 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return this;             
+            //это сделано ТОЛЬКО для варианта работы с одним окном типа "Смена аккаунтов"
+            //и связано с server.rr
+            return new StateGT017(botwindow);        
+            //return this;             
         }
 
         /// <summary>

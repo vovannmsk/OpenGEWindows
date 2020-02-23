@@ -25,6 +25,7 @@ namespace OpenGEWindows
         //основной конструктор
         public ServerSing(botWindow botwindow)
         {
+            //rr = false;
 
             #region общие
 
@@ -573,7 +574,12 @@ namespace OpenGEWindows
             while (HWND == (UIntPtr)0)
             {
                 Pause(500);
-                HWND = FindWindow("Sandbox:" + botwindow.getNumberWindow().ToString() + ":Granado Espada", "[#] Granado Espada [#]");
+                //вариант 1. ишем окно, открытое в песочнице===========================================================
+                //HWND = FindWindow("Sandbox:" + botwindow.getNumberWindow().ToString() + ":Granado Espada", "[#] Granado Espada [#]");
+
+                //вариант 2. ищем чистое окно==========================================================================
+                HWND = FindWindow("Granado Espada", "Granado Espada");
+
 
                 count++; if (count > 5) return (UIntPtr)0;
             }
@@ -599,7 +605,7 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// запуск клиента Steam
+        /// запуск клиента Steam без запуска игры
         /// </summary>
         public override void runClientSteam()
         {
@@ -620,8 +626,6 @@ namespace OpenGEWindows
 
         protected override bool isContinueRunning()
         {
-            //bool ff1 = pointisContinueRunning1.isColor();
-            //bool ff2 = pointisContinueRunning2.isColor();
             return pointisContinueRunning1.isColor() && pointisContinueRunning2.isColor();
         }
 
@@ -632,35 +636,69 @@ namespace OpenGEWindows
         {
             #region для песочницы
 
-            //запускаем steam в песочнице
+            //AccountBusy = false;
+
+            ////запускаем steam в песочнице (вариант 1)
+            //Process process = new Process();
+            //process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
+            //process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient + " -login " + GetLogin() + " " + GetPassword() + " -applaunch 663090 -silent";
+
+            //process.Start();
+            //Pause(10000);
+
+            ////if (isSteam())         //для старого варианта ввода логина-пароля
+            ////{
+            ////    InsertLoginPasswordOk();
+            ////}
+
+            //for (int i = 1; i <= 10; i++)
+            //{
+            //    Pause(1000);
+
+            //    if (isSystemError())  //если выскакивает системная ошибка, то нажимаем "Ок"     проверка не работает
+            //    {
+            //        OkSystemError();
+            //    }
+
+            //    if (isNewSteam())
+            //    {
+            //        pointNewSteamOk.PressMouseL();
+            //    }
+
+            //    if (isContinueRunning())    //если аккаунт запущен на другом компе
+            //    {
+            //        NextAccount();
+            //        AccountBusy = true;
+            //        break;
+            //    }
+            //}
+
+            #endregion
+
+            #region для чистого окна Steam
+
+            AccountBusy = false;
+
             Process process = new Process();
-            process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
-            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient + " -applaunch 663090 -silent";
+            process.StartInfo.FileName = this.pathClient;
+            process.StartInfo.Arguments = " -login " + GetLogin() + " " + GetPassword() + " -applaunch 663090 -silent";
             process.Start();
-
-
             Pause(10000);
-
-            if (isSteam())
-            {
-                InsertLoginPasswordOk();
-            }
 
             for (int i = 1; i <= 10; i++)
             {
-                Pause(5000);
-                if (isNewSteam())
+                Pause(1000);
+
+                if (isNewSteam())           //если первый раз входим в игру, то соглашаемся с лиц. соглашением
                 {
                     pointNewSteamOk.PressMouseL();
                 }
 
-                if (isContinueRunning())
+                if (isContinueRunning())    //если аккаунт запущен на другом компе
                 {
                     NextAccount();
-                }
-                else
-                {
-                    Pause(1);
+                    AccountBusy = true;
+                    break;
                 }
             }
 
@@ -678,7 +716,6 @@ namespace OpenGEWindows
             //Pause(500);
             //Click_Mouse_and_Keyboard.Mouse_Move_and_Click(1222, 705, 1);        //нажимаем кнопку "Close" в боте
             #endregion
-
         }
 
         /// <summary>

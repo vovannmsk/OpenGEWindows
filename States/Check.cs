@@ -19,6 +19,7 @@ namespace States
         private GlobalParam globalParam;
         private DriversOfState driver;
         private BotParam botParam;
+        //public static bool rrr = false;
 
         private bool isActiveServer;
 
@@ -653,7 +654,10 @@ namespace States
         public void ChangingAccounts()
         {
             for (int j = botParam.NumberOfInfinity; j < botParam.Logins.Length; j++)
+            {
+                server.WriteToLogFile("номер окна = " + j);
                 driver.StateInputOutput(); //вход и выход из игры
+            }
         }
 
         /// <summary>
@@ -716,6 +720,14 @@ namespace States
             server.serverSelection();
         }
 
+        /// <summary>
+        /// номер аккаунта, номер логина по порядку
+        /// </summary>
+        /// <returns></returns>
+        public string NumberOfInfinity()
+        {
+            return botParam.NumberOfInfinity.ToString();
+        }
 
 
         /// <summary>
@@ -820,10 +832,10 @@ namespace States
             //PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в городе
             //            PointColor point1 = new PointColor(152 - 5 + xx, 250 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в Катовии
 
-            PointColor point1 = new PointColor(1042, 551, 1, 1);
-            PointColor point2 = new PointColor(1043, 551, 1, 1);
-            //PointColor point1 = new PointColor(998 - 5 + xx, 715 - 5 + yy, 1, 1);
-            //PointColor point2 = new PointColor(999 - 5 + xx, 715 - 5 + yy, 1, 1);
+            //PointColor point1 = new PointColor(1142, 610, 1, 1);
+            //PointColor point2 = new PointColor(1142, 608, 1, 1);
+            PointColor point1 = new PointColor(1008 - 5 + xx, 509 - 5 + yy, 1, 1);
+            PointColor point2 = new PointColor(1008 - 5 + xx, 556 - 5 + yy, 1, 1);
             //PointColor point3 = new PointColor(930 - 5 + xx, 703 - 5 + yy, 1, 1);
 
 
@@ -831,7 +843,8 @@ namespace States
             color2 = point2.GetPixelColor();
             //color3 = point3.GetPixelColor();
 
-            //server.WriteToLogFile(color1 + "  " + color2);
+            //server.WriteToLogFile("цвет " + color1);
+            //server.WriteToLogFile("цвет " + color2);
             MessageBox.Show(" " + color1);
             MessageBox.Show(" " + color2);
             //MessageBox.Show(" " + color3);

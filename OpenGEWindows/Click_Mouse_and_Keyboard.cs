@@ -169,6 +169,11 @@ namespace OpenGEWindows
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_WHEEL, 120);
                     break;
 
+                case 5:      // Перемещение мыши
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
+                    Pause(500);
+                    break;
+
                 case 6:      // Перемещение мыши и двойной клик
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
                     Pause(200);

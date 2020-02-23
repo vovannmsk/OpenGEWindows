@@ -70,7 +70,8 @@ namespace States
             //============ выход в город  ===========
             server.NewPlace();                //начинаем в ребольдо  
 
-            botwindow.ToMoveMouse();          //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
+            //botwindow.ToMoveMouse();          //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
+            new Point(500, 500).Move();
 
             botwindow.Pause(2000);
             int i = 0;
@@ -80,7 +81,11 @@ namespace States
                 i++;
                 if (server.isTown())  break;    // проверяем успешный переход в город
             }
-            botwindow.Pause(12000);       //поставил по Колиной просьбе
+            //botwindow.Pause(12000);       //поставил по Колиной просьбе
+            botwindow.Pause(1000);       //проба
+
+            server.GetGifts();
+            server.TaskOff();
 
             botwindow.PressEscThreeTimes();
             botwindow.Pause(1000);

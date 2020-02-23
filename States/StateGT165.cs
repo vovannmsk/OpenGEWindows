@@ -60,6 +60,8 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            server.MoveGiftBox();
+
             server.OpenMapForState();
         }
 

@@ -337,16 +337,17 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// эмулирует тройное нажатие кнопки "Esc", тем самым в окне бота убираются все лишние окна (в том числе реклама)
+        /// эмулирует тройное нажатие кнопки "Esc"
         /// </summary>
         public void PressEscThreeTimes()
         {
-            TextSend.SendText2(1);           // нажимаем Esc
-            Thread.Sleep(200);
-            TextSend.SendText2(1);           // нажимаем Esc
-            Thread.Sleep(200);
-            TextSend.SendText2(1);           // нажимаем Esc
-            Thread.Sleep(200);
+            for (int i = 1; i <= 3; i++) PressEsc();
+            //TextSend.SendText2(1);           // нажимаем Esc
+            //Thread.Sleep(200);
+            //TextSend.SendText2(1);           // нажимаем Esc
+            //Thread.Sleep(200);
+            //TextSend.SendText2(1);           // нажимаем Esc
+            //Thread.Sleep(200);
         }
 
         /// <summary>
@@ -387,11 +388,14 @@ namespace OpenGEWindows
 
                 OpenWindow();
 
-                ActiveWindow();
+                if (!Server.AccountBusy)
+                {
+                    ActiveWindow();
 
-                while (!server.isLogout()) Pause(1000);    //ожидание логаута        бесконечный цикл
+                    while (!server.isLogout()) Pause(1000);    //ожидание логаута        бесконечный цикл
 
-                ActiveWindow();
+                    ActiveWindow();
+                }
             }
             else
             {
@@ -407,13 +411,16 @@ namespace OpenGEWindows
         {
             server.runClient();    ///запускаем клиент игры и ждем 30 сек
 
-            while (true)
+            if (!Server.AccountBusy)           //если аккаунт не занят на другом компе
             {
+                while (true)
+                {
+                    Pause(5000);
+                    UIntPtr hwnd = server.FindWindowGE();      //ищем окно ГЭ с нужными параметрами
+                    if (hwnd != (UIntPtr)0) break;             //если найденное hwnd не равно нулю (то есть открыли ГЭ), то выходим из цикла
+                }
                 Pause(5000);
-                UIntPtr hwnd = server.FindWindowGE();      //ищем окно ГЭ с нужными параметрами
-                if (hwnd != (UIntPtr)0) break;             //если найденное hwnd не равно нулю (то есть открыли ГЭ), то выходим из цикла
             }
-            Pause(5000);
 
             #region старый вариант метода
             //UIntPtr New_HWND_GE, current_HWND_GE;
@@ -563,8 +570,8 @@ namespace OpenGEWindows
 
             #region старый вариант
 
-            server.WriteToLogFileBH("вошли в процедуру коннект");
-            server.WriteToLogFile(botParam.NumberOfInfinity + " " + botParam.Logins[botParam.NumberOfInfinity] + " " + botParam.Passwords[botParam.NumberOfInfinity] + " " + botParam.Parametrs[botParam.NumberOfInfinity]);
+            //server.WriteToLogFileBH("вошли в процедуру коннект");
+            //server.WriteToLogFile(botParam.NumberOfInfinity + " " + botParam.Logins[botParam.NumberOfInfinity] + " " + botParam.Passwords[botParam.NumberOfInfinity] + " " + botParam.Parametrs[botParam.NumberOfInfinity]);
             server.serverSelection();          //выбираем из списка свой сервер
 
             iPointColor point5050 = new PointColor(50 - 5 + botParam.X, 50 - 5 + botParam.Y, 7800000, 5);  //запоминаем цвет в координатах 50, 50 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
