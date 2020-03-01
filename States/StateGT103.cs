@@ -61,7 +61,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            //начинаем из первого состояния, т.е. isGateBH1 = true
+            //дневные попытки есть. убираем окно с этим сообщением нажатием кнопки "Ок"
             BHdialog.PressOkButton(1);
             server.WriteToLogFileBH("103 состояние ворот 1. Нажали Ок ");
 
@@ -82,7 +82,8 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return (BHdialog.isGateBH2() || BHdialog.isGateBH6());
+            //            return BHdialog.isGateBH2() || BHdialog.isGateBH6();
+            return true;
         }
 
         /// <summary>
@@ -91,17 +92,36 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            if (BHdialog.isGateBH2())
-            {
-                server.WriteToLogFileBH("103 переходим в сост 104 ");
-                return new StateGT104(botwindow);
-            }
-            else
+            if (BHdialog.isGateLevelAbove20())
             {
                 //состояние 6. надо тратить шайники
-                server.WriteToLogFileBH("103 погнали тратить шайники ");
+                server.WriteToLogFileBH("103 -> 105. погнали тратить шайники (уровень ворот 20-29)");
                 return new StateGT105(botwindow);
             }
+
+            if (BHdialog.isGateLevelLessThan11())
+            {
+                server.WriteToLogFileBH("103 переходим в сост 104a (уровень ворот меньше 11) ");
+                return new StateGT104a(botwindow);
+            }
+            else
+            //if (BHdialog.isGateLevelFrom11to19())
+            {
+                server.WriteToLogFileBH("103 переходим в сост 104 (уровень ворот от 11 до 19) ");
+                return new StateGT104(botwindow);
+            }
+
+            //if (BHdialog.isGateBH2())   //самый лучший вариант. уровень ворот от 11 до 19
+            //{
+            //    server.WriteToLogFileBH("103 переходим в сост 104 ");
+            //    return new StateGT104(botwindow);
+            //}
+            //else
+            //{
+            //    //состояние 6. надо тратить шайники
+            //    server.WriteToLogFileBH("103 погнали тратить шайники ");
+            //    return new StateGT105(botwindow);
+            //}
         }
 
         /// <summary>

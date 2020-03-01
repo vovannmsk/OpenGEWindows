@@ -63,21 +63,13 @@ namespace States
         public void run()                // переход к следующему состоянию
         {
 
-            //начинаем из второго состояния, т.е. isGateBH2 = true
-            BHdialog.PressStringDialog(1);
+            //попытки есть. уровень ворот от 11 до 19
+            BHdialog.PressStringDialog(3);       //третья строка снизу
             BHdialog.PressOkButton(1);
 
-            server.WriteToLogFileBH("104 состояние ворот 2. выбрали нижнюю строку и Ок");
-
-            ////ожидание загрузки миссии 
-            //int counter = 0;
-            //while ((!server.isWork()) && (counter < 30))
-            //{ botwindow.Pause(1000); counter++; }
-
-            //server.WriteToLogFileBH("104 дождались загрузки миссии");
+            server.WriteToLogFileBH("104 состояние ворот 2. выбрали третью строку снизу и Ок");
 
             ////далее переходим в миссию
-
         }
 
         /// <summary>
@@ -105,7 +97,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT108(botwindow);
+            return new StateGT108(botwindow);   //конец цикла
 //            return new StateGT106(botwindow);
         }
 

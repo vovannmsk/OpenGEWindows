@@ -64,6 +64,7 @@ namespace States
         {
             //ничего не выполняем на этом шаге, а только распределяем по потокам с помощью StateNext
             server.WriteToLogFileBH("102 Распределение по состояниям ворот 1 или 3");
+            botwindow.setStatusOfAtk(0);
         }
 
         /// <summary>
@@ -90,17 +91,20 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            if (BHdialog.isGateBH1())                   //если тип ворот №1
+            if (BHdialog.isGateBH1())                   //если есть попытки (можно сходить в Инфинити всего 5 раз в день)
             {
+                bool g=true;
                 return new StateGT103(botwindow);
             }
-            if (BHdialog.isGateBH3())                   //если тип ворот №3
+            if (BHdialog.isGateBH3())                   //если попытки закончились (можно сходить в Инфинити всего 5 раз в день)
             {
-                return new StateGT105(botwindow);
+                bool f = true;
+                return new StateGT103a(botwindow);
             }
             else
             {
-                return new StateGT108(botwindow);     // в конец цикла (если не понятные ворота)
+                bool gg = true;
+                return new StateGT108(botwindow);     // в конец цикла (если непонятные ворота)
             }
         }
 

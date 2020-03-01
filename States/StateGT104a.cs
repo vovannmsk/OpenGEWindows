@@ -3,24 +3,29 @@
 
 namespace States
 {
-    public class StateGT216 : IState
+    public class StateGT104a : IState
     {
         private botWindow botwindow;
         private Server server;
         private ServerFactory serverFactory;
+        private BHDialog BHdialog;
+        private BHDialogFactory dialogFactory;
+
         private int tekStateInt;
 
-        public StateGT216()
+        public StateGT104a()
         {
 
         }
 
-        public StateGT216(botWindow botwindow)   //, GotoTrade gototrade)
+        public StateGT104a(botWindow botwindow)   
         {
             this.botwindow = botwindow;
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            this.tekStateInt = 216;
+            this.dialogFactory = new BHDialogFactory(botwindow);
+            this.BHdialog = dialogFactory.create();   // создали конкретный экземпляр класса BHDialog по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            this.tekStateInt = 104;
         }
 
         /// <summary>
@@ -57,32 +62,14 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.WriteToLogFileBH("Казарма");
-            //============ выбор персонажей  ===========
-            server.TeamSelection(2);                            //вторая строчка в списке команд
-            botwindow.Pause(1000);
 
-            //============ выбор канала ===========
-            //botwindow.SelectChannel();
-            //botwindow.Pause(1000);
+            //попытки есть. уровень ворот меньше 11
+            BHdialog.PressStringDialog(1);       //первая строка снизу
+            BHdialog.PressOkButton(1);
 
-            //============ выход в город  ===========
-            server.NewPlace();                //начинаем в ребольдо  
+            server.WriteToLogFileBH("104a. выбрали первую строку снизу и Ок");
 
-            botwindow.ToMoveMouse();             //убираем мышку в сторону, чтобы она не загораживала нужную точку для isTown
-
-            //botwindow.Pause(2000);
-            //int i = 0;
-            //while (i < 50)      // ожидание загрузки города, проверка по двум стойкам
-            //{ 
-            //    botwindow.Pause(500); 
-            //    i++;
-            //    if (server.isTown())  break;    // проверяем успешный переход в город, проверка по ружью и дробовику
-            //}
-            //botwindow.Pause(7000);       //поставил по Колиной просьбе
-
-            //botwindow.PressEscThreeTimes();
-            //botwindow.Pause(1000);
+            ////далее переходим в миссию
         }
 
         /// <summary>
@@ -90,7 +77,8 @@ namespace States
         /// </summary>
         public void elseRun()
         {
-            ///???
+            botwindow.PressEscThreeTimes();
+            botwindow.Pause(500);
         }
 
         /// <summary>
@@ -99,7 +87,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-//            return !server.isBarack();
+            //return server.isWork();
             return true;
         }
 
@@ -109,7 +97,8 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-                return new StateGT217(botwindow);              //если не надо покупать патроны
+            return new StateGT108(botwindow);   //конец цикла
+//            return new StateGT106(botwindow);
         }
 
         /// <summary>
@@ -118,6 +107,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
+            server.WriteToLogFileBH("104 ELSE ");
             return this;
         }
 

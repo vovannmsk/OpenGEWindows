@@ -109,12 +109,12 @@ namespace OpenGEWindows
             botParam.StatusOfAtk = status;
         }
 
-        /// <summary>
-        /// геттер для statusOfAtk 
-        /// </summary>
-        /// <returns></returns>
-        public int getStatusOfAtk()
-        { return  botParam.StatusOfAtk; }
+        ///// <summary>
+        ///// геттер для statusOfAtk 
+        ///// </summary>
+        ///// <returns></returns>
+        //public int getStatusOfAtk()
+        //{ return  botParam.StatusOfAtk; }
 
         public int getNumberWindow()
         { return this.numberWindow; }

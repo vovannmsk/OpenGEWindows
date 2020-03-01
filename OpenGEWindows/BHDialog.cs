@@ -23,7 +23,14 @@ namespace OpenGEWindows
 
         protected iPointColor pointsGateBH5;
         protected iPointColor pointsGateBH6;
-        //        protected iPointColor pointsGateBH6;
+
+        protected iPointColor pointsIsLess11_1;
+
+        protected iPointColor pointsIsLevelfrom11to19_1;
+        protected iPointColor pointsIsLevelfrom11to19_2;
+
+        protected iPointColor pointsIsLevelAbove20_1;
+        protected iPointColor pointsIsLevelAbove20_2;
 
 
         // ============  методы  ========================
@@ -37,6 +44,33 @@ namespace OpenGEWindows
             //ворота могут находиться в разных состояниях. нужно проверить их все
             return isGateBH1() || isGateBH3();   //при переходе из BH к воротам может получиться только состояние №1 или №3.
                                                  //состояние №1 бывает при первых пяти бесплатных заходах в миссию. Состояние №3 бывает во всех остальных случаях
+        }
+
+        /// <summary>
+        /// проверить, лежит ли уровень ворот в диапозоне 1-10
+        /// </summary>
+        /// <returns></returns>
+        public bool isGateLevelLessThan11()
+        {
+            return pointsIsLess11_1.isColor(); 
+        }
+
+        /// <summary>
+        /// проверить, лежит ли уровень ворот в диапозоне 11-19
+        /// </summary>
+        /// <returns></returns>
+        public bool isGateLevelFrom11to19()
+        {
+            return pointsIsLevelfrom11to19_1.isColor() && pointsIsLevelfrom11to19_2.isColor();
+        }
+
+        /// <summary>
+        /// проверить, лежит ли уровень ворот в диапозоне выше 20
+        /// </summary>
+        /// <returns></returns>
+        public bool isGateLevelAbove20()
+        {
+            return pointsIsLevelAbove20_1.isColor() && pointsIsLevelAbove20_2.isColor();
         }
 
 
@@ -53,7 +87,7 @@ namespace OpenGEWindows
 
         /// <summary>
         /// проверяем, находимся ли в воротах в Infinity (Гильдии Охотников) 
-        /// проверяем то состояние ворот, где написано "Now. you can try N times for free" (N = 1..5)                             когда есть бесплатные проходы (действия - )
+        /// проверяем то состояние ворот, где написано "You currently have 5 tries remaining" когда есть попытки (действия - нажать Ок)
         /// </summary>
         /// <returns></returns>
         public bool isGateBH1()
@@ -63,8 +97,8 @@ namespace OpenGEWindows
 
         /// <summary>
         /// проверяем, находимся ли в воротах в Infinity (Гильдии Охотников) 
-        /// проверяем то состояние ворот, где написано "Now. you can try N times for free" (N = 1..5)                              исправть
-        /// </summary>
+        /// проверяем то состояние ворот, где написано "Now. you can try N times for free" (N = 1..5) 
+        /// /// </summary>
         /// <returns></returns>
         public bool isGateBH2()
         {
@@ -73,7 +107,8 @@ namespace OpenGEWindows
 
         /// <summary>
         /// проверяем, находимся ли в воротах в Infinity (Гильдии Охотников) 
-        /// проверяем то состояние ворот, где написано "You cannot enter for free today"                                           когда уже нет бесплатного прохода (действия - выбрать нижнюю строку и нажать Ок)
+        /// проверяем то состояние ворот, где написано "You cannot enter for free today",
+        /// когда уже нет бесплатного прохода (действия - выбрать нижнюю строку и нажать Ок)
         /// </summary>
         /// <returns></returns>
         public bool isGateBH3()
@@ -137,8 +172,6 @@ namespace OpenGEWindows
             Pause(1500);
 
         }
-
-
 
         ///// <summary>
         ///// проверяем, находимся ли мы в диалоге

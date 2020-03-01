@@ -754,6 +754,9 @@ namespace Main
                     //check.setStatusOfSale(1);
                     globalParam.StatusOfSale = 1;
                 }
+                //если всего одно окно, то пауза между циклами
+                if (startAccount == numberOfAcc) check.Pause(5000);
+
             }
             //ReOpen всех окон
             //for (int j = start; j <= numberOfAcc; j++)

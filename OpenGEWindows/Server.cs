@@ -1815,6 +1815,15 @@ namespace OpenGEWindows
         }
 
         /// <summary>
+        /// выбор команды персов из списка в казарме
+        /// </summary>
+        public void TeamSelection(int numberTeam)
+        {
+            pointTeamSelection1.PressMouse();   // Нажимаем кнопку вызова списка групп
+            new Point(70 - 5 + xx, 355 - 5 + (numberTeam - 1) * 15 + yy).PressMouseL();  // выбираем нужную группу персов 
+            pointTeamSelection3.PressMouseL();  // Нажимаем кнопку выбора группы (Select Team) 
+        }
+        /// <summary>
         /// сдвиг для правильного выбора канала
         /// </summary>
         /// <returns></returns>
@@ -3210,6 +3219,17 @@ namespace OpenGEWindows
         #region Гильдия Охотников BH
 
         /// <summary>
+        /// подбор дропа в миссии Инфинити
+        /// </summary>
+        public void GetDrop()
+        {
+            new Point(188 - 5 + xx, 526 - 5 + yy).PressMouseL();
+            Pause(1000);
+            new Point(123 - 5 + xx, 526 - 5 + yy).PressMouseL();
+            Pause(500);
+            new Point(760 - 5 + xx, 330 - 5 + yy).PressMouseL();
+        }
+        /// <summary>
         /// проверяем, крутится ли рулетка после убийства босса
         /// </summary>
         /// <returns></returns>
@@ -3294,9 +3314,7 @@ namespace OpenGEWindows
             writer.WriteLine(timeNow + botwindow.getNumberWindow().ToString() + " " + strLog);
             writer.Close();
         }
-
-
-
+        
         /// <summary>
         /// нажимаем левой кнопкой мыши на точку с указанными координатами
         /// </summary>
@@ -3376,7 +3394,7 @@ namespace OpenGEWindows
         {
             uint color = new PointColor(700 - 30 + xx, 500 - 30 + yy, 0, 0).GetPixelColor();                // проверяем номер цвета в контрольной точке
             color = color / 1000;
-            int result = Array.IndexOf(this.arrayOfColors, color);                                               // номер миссии соответствует порядковому номеру цвета в массиве arrayOfColors
+            int result = Array.IndexOf(this.arrayOfColors, color); // номер миссии соответствует порядковому номеру цвета в массиве arrayOfColors
             //if (result == 0) WriteToLogFileBH("неизвестная миссия, цвет " + color);
             return result;
         }

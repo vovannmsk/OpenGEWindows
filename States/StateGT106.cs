@@ -64,7 +64,7 @@ namespace States
             //начинаем из четвертого состояния, т.е. isGateBH4 = true
             BHdialog.WriteInitialize();      //написали слово Initialize и нажали кнопку Ок
             //botwindow.Pause(1000);
-            server.WriteToLogFileBH("106 состояние ворот 4. написали слово Initialize и нажали кнопку Ок");
+            server.WriteToLogFileBH("106. написали слово Initialize и нажали кнопку Ок");
 
         }
 

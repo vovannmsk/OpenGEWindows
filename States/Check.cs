@@ -91,14 +91,15 @@ namespace States
         {
             //            int statusOfSale = botwindow.getStatusOfSale();
             int statusOfSale = globalParam.StatusOfSale;
-            int statusOfAtk  = botwindow.getStatusOfAtk();
+            //            int statusOfAtk  = botwindow.getStatusOfAtk();
+            int statusOfAtk = botParam.StatusOfAtk;
 
             //ворота
-            if (BHdialog.isGateBH()) return 7;                 //если стоим в воротах в положении 1 или 3
-            if (BHdialog.isGateBH2()) return 8;                //ворота состояние 2
-            if (BHdialog.isGateBH4()) return 9;                //ворота состояние 4
-            if (BHdialog.isGateBH5()) return 10;               //ворота состояние 5
-            if (BHdialog.isBottonGateBH()) return 19;          //ворота прочий диалог 
+            if (BHdialog.isGateBH()) return 7;                   //если стоим в воротах, начальное состояние
+            //if (BHdialog.isGateBH2()) return 8;                //ворота состояние 2
+            //if (BHdialog.isGateBH4()) return 9;                //ворота состояние 4
+            //if (BHdialog.isGateBH5()) return 10;               //ворота состояние 5
+            //if (BHdialog.isBottonGateBH()) return 19;          //ворота прочий диалог 
 
 
             //город или БХ
@@ -136,21 +137,21 @@ namespace States
             //магазин
             if (market.isSale())
             {
-                if (!((server.isTown()) || (server.isWork()))) return 11;        //если стоим в магазине на экране входа, но не проходит проверка, что мы в городе и что мы на работе (защита от ложных срабатываний)
+                if (!server.isTown() || server.isWork()) return 11;        //если стоим в магазине на экране входа, но не проходит проверка, что мы в городе и что мы на работе (защита от ложных срабатываний)
             }
             if (market.isClickPurchase())
             {
-                if (!((server.isTown()) || (server.isWork()))) return 12;         //если стоим в магазине на закладке Purchase, но не проходит проверка, что мы в городе и что мы на работе (защита от ложных срабатываний)
+                if (!server.isTown() || server.isWork()) return 12;         //если стоим в магазине на закладке Purchase, но не проходит проверка, что мы в городе и что мы на работе (защита от ложных срабатываний)
             }
             if (market.isClickSell())
             {
-                if (!((server.isTown()) || (server.isWork()))) return 15;         //если стоим в магазине на закладке Purchase, но не проходит проверка, что мы в городе и что мы на работе (защита от ложных срабатываний)
+                if (!server.isTown() || server.isWork()) return 15;         //если стоим в магазине на закладке Purchase, но не проходит проверка, что мы в городе и что мы на работе (защита от ложных срабатываний)
             }
 
             //в миссии
             if (server.isWork())
             {
-                if (statusOfAtk == 0)                                            //еще не атаковали босса в миссии
+                if (statusOfAtk == 0)                                                 //еще не атаковали босса в миссии
                 {
                     if (server.isMissionBH())                                         //если миссия определилась
                     {
@@ -163,14 +164,15 @@ namespace States
                 }
                 else                                                                  //после начала атаки босса
                 {
-                    if (server.isRouletteBH())
+                    if (server.isRouletteBH())                                        //если крутится рулетка
                     {
-                        return 20;
+                        return 20;                                                    // подбор дропа
                     }
                     else
                     {
-                        if (!server.isAtakBH()) return 14;
-                        //если находимся в миссии, но уже не в начале и не атакуем босса и не крутится рулетка (значит бой окончен, либо заблудились и надо выходить из миссии) 
+                        if (!server.isAtakBH()) return 14;                            //идем в барак (а можем и в БХ)
+                        //если находимся в миссии, но уже не в начале и не атакуем босса и не крутится рулетка 
+                        //(значит бой окончен, либо заблудились и надо выходить из миссии) 
                     }
                 }
             }
@@ -217,12 +219,12 @@ namespace States
                     break;
                 case 7: driver.StateFromGateToMissionBH();        // Gate --> Mission
                     break;
-                case 8: driver.StateFromGate2ToMissionBH();       // Gate2 --> Mission (из состояния 2)
-                    break;
-                case 9: driver.StateFromGate4ToGate5BH();         // Gate4 --> Gate 5
-                    break;
-                case 10: driver.StateFromGate5ToBH();             // Gate5 --> BH
-                    break;
+                //case 8: driver.StateFromGate2ToMissionBH();       // Gate2 --> Mission (из состояния 2)
+                //    break;
+                //case 9: driver.StateFromGate4ToGate5BH();         // Gate4 --> Gate 5
+                //    break;
+                //case 10: driver.StateFromGate5ToBH();             // Gate5 --> BH
+                    //break;
                 case 11: driver.StateGotoTradeStep3BH();          // третий этап продажи
                     break;
                 case 12: driver.StateGotoTradeStep4BH();          // четвертый этап продажи
@@ -242,7 +244,8 @@ namespace States
                     break;
                 case 19: BHdialog.PressOkButton(1);               // в диалоге ворот нажали кнопку "Ок"
                     break;
-                case 20: //server.FightToPoint(180, 270, 0);        // бежим в сторону с атакой, чтобы не улететь в барак, пока крутится рулетка
+                case 20: server.GetDrop();                         //подбор дропа
+                        //server.FightToPoint(180, 270, 0);        // бежим в сторону с атакой, чтобы не улететь в барак, пока крутится рулетка
                     break;
                 case 21: server.MissionNotFoundBH();              // миссия не найдена. записываем в файл данные и отбегаем в сторону
                     break;
@@ -256,9 +259,9 @@ namespace States
         }
 
         /// <summary>
-        /// проверяем, есть ли проблемы с ботом (убили, застряли, нужно продать)                                //старый метод. не используется
+        /// проверяем, есть ли проблемы с ботом (убили, застряли, нужно продать)                                
         /// </summary>
-        public void checkForProblemsBH()
+        public void checkForProblemsBH()   //старый метод. не используется
         {
 
             if (isActiveServer)      //этот метод проверяет, нужно ли грузить или обрабатывать это окно (профа и прочее)
@@ -834,19 +837,19 @@ namespace States
 
             //PointColor point1 = new PointColor(1142, 610, 1, 1);
             //PointColor point2 = new PointColor(1142, 608, 1, 1);
-            PointColor point1 = new PointColor(1008 - 5 + xx, 509 - 5 + yy, 1, 1);
-            PointColor point2 = new PointColor(1008 - 5 + xx, 556 - 5 + yy, 1, 1);
+            PointColor point1 = new PointColor(675 - 5 + xx, 475 - 5 + yy, 0, 0);
+            //PointColor point2 = new PointColor(687 - 5 + xx, 259 - 5 + yy, 1, 1);
             //PointColor point3 = new PointColor(930 - 5 + xx, 703 - 5 + yy, 1, 1);
 
 
             color1 = point1.GetPixelColor();
-            color2 = point2.GetPixelColor();
+            //color2 = point2.GetPixelColor();
             //color3 = point3.GetPixelColor();
 
             //server.WriteToLogFile("цвет " + color1);
             //server.WriteToLogFile("цвет " + color2);
             MessageBox.Show(" " + color1);
-            MessageBox.Show(" " + color2);
+            //MessageBox.Show(" " + color2);
             //MessageBox.Show(" " + color3);
 
 
