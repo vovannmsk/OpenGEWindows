@@ -607,6 +607,13 @@ namespace OpenGEWindows
         #region BH
 
         /// <summary>
+        /// запуск клиента игры для Инфинити
+        /// </summary>
+        public override void runClientBH()
+        {
+        }
+
+        /// <summary>
         /// проверка миссии по цвету контрольной точки
         /// </summary>
         /// <returns> номер цвета </returns>

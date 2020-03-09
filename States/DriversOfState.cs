@@ -200,14 +200,18 @@ namespace States
         public void StateInputOutput()
         {
             //Server.rr = false;
-            StateDriverRun(new StateGT014(botwindow), new StateGT017(botwindow));  // заходим в ребольдо
+            //StateDriverRun(new StateGT014(botwindow), new StateGT017(botwindow));  // заходим в ребольдо
+            StateDriverRun(new StateGT014(botwindow), new StateGT016(botwindow));  // заходим в казарму
             if (Server.AccountBusy)   
             {
                 StateDriverRun(new StateGT169(botwindow), new StateGT170(botwindow));  // удаляем песочницу
             }
             else
             {
-                StateDriverRun(new StateGT165(botwindow), new StateGT170(botwindow));  // бежим к бабе + удаляем песочницу
+//               StateDriverRun(new StateGT165(botwindow), new StateGT170(botwindow));  // бежим к бабе ГМ + удаляем песочницу
+                StateDriverRun(new StateGT165(botwindow), new StateGT170(botwindow));   // надеваем оружие и броню
+
+
             }
         }
 

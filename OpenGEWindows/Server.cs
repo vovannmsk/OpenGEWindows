@@ -724,21 +724,21 @@ namespace OpenGEWindows
             Pause(400);
 
             //вариант с песочницей
-            //Process process = new Process();
-            //process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
-            //process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " /terminate";
-            //process.Start();
-            //Pause(2000);
-
-            //process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
-            //process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " delete_sandbox";
-            //process.Start();
-
-            //вариант с чистым клиентом
             Process process = new Process();
-            process.StartInfo.FileName = this.pathClient;
-            process.StartInfo.Arguments = " -shutdown";
+            process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
+            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " /terminate";
             process.Start();
+            Pause(2000);
+
+            process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
+            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " delete_sandbox";
+            process.Start();
+
+            ////вариант с чистым клиентом
+            //Process process = new Process();
+            //process.StartInfo.FileName = this.pathClient;
+            //process.StartInfo.Arguments = " -shutdown";
+            //process.Start();
 
 
             Pause(4000);
@@ -747,6 +747,7 @@ namespace OpenGEWindows
 
         public abstract void runClientSteam();
         public abstract void runClient();
+        public abstract void runClientBH();
         public abstract UIntPtr FindWindowGE();
         public abstract void OrangeButton();
         //public abstract bool isActive();
@@ -1549,6 +1550,116 @@ namespace OpenGEWindows
         #region inTown
 
         /// <summary>
+        /// получение оружия и брони у ГМ (уже не актуально. ивент закончился)
+        /// </summary>
+        public void GetWeoponsAndArmors()
+        {
+            dialog.PressStringDialog(2); //вторая строка снизу. Заходим в магазин
+            dialog.PressOkButton(1);
+            Pause(1500);
+
+
+            for (int i = 1; i <= 3; i++) new Point(378 - 5 + xx, 320 - 5 + yy).PressMouseL();    //выбираем 3 ружья
+
+            new Point(663 - 5 + xx, 252 - 5 + yy).Drag(new Point(663 - 5 + xx, 532 - 5 + yy));   //пролистываем список до конца
+
+            for (int i = 1; i <= 3; i++) new Point(378 - 5 + xx, 346 - 5 + yy).PressMouseL();    //выбираем 3 плаща
+            for (int i = 1; i <= 3; i++) new Point(378 - 5 + xx, 400 - 5 + yy).PressMouseL();    //выбираем 3 earnings
+            for (int i = 1; i <= 3; i++) new Point(378 - 5 + xx, 427 - 5 + yy).PressMouseL();    //выбираем 3 necklaces
+            for (int i = 1; i <= 3; i++) new Point(378 - 5 + xx, 454 - 5 + yy).PressMouseL();    //выбираем 3 belts
+            for (int i = 1; i <= 3; i++) new Point(378 - 5 + xx, 481 - 5 + yy).PressMouseL();    //выбираем 3 gloves
+            for (int i = 1; i <= 3; i++) new Point(378 - 5 + xx, 508 - 5 + yy).PressMouseL();    //выбираем 3 shoes
+
+
+            new Point(742 - 5 + xx, 590 - 5 + yy).PressMouseL();     //нажимаем кнопку "Купить"
+            Pause(1000);
+            new Point(465 - 5 + xx, 421 - 5 + yy).PressMouseL();     //нажимаем Yes
+            Pause(1000);
+
+            new Point(860 - 5 + xx, 590 - 5 + yy).PressMouseL();     //нажимаем кнопку "Close"
+            Pause(2000);
+        }
+
+        /// <summary>
+        /// открыть специнвентарь
+        /// </summary>
+        public void OpenSpecInventory()
+        {
+            TopMenu(8, 2);
+        }
+
+        /// <summary>
+        /// надеваем предмет экипировки на бота
+        /// </summary>
+        protected void PuttingItem(Item item)
+        {
+            bool result = false;   //объект в кармане пока не найден
+            for (int i = 1; i <= 5; i++)         //строки в инвентаре
+            {
+                for (int j = 1; j <= 7; j++)        // столбцы в инвентаре
+                {
+                    if (!result)
+                    {
+                        if (new PointColor(item.x - 5 + xx + (j - 1) * 39, item.y - 5 + yy + (i - 1) * 38, item.color, 0).isColor())
+                        {
+                            new Point(35 - 5 + xx + (j - 1) * 39, 209 - 5 + yy + (i - 1) * 38).DoubleClickL();
+                            new Point(1500, 800).Move();   //убираем мышь в сторону
+                            Pause(500);
+
+                            result = true;
+                        }
+                    }
+                }
+            }
+        }       
+        
+        /// <summary>
+        /// структура для поиска вещей в инвентаре
+        /// </summary>
+        protected struct Item
+        {
+            public int x;
+            public int y;
+            public uint color;
+
+            public Item (int x, int y, uint color)
+            {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+            }
+        }
+
+        /// <summary>
+        /// надеваем оружие и броню
+        /// </summary>
+        public void PuttingOnWeoponsAndArmors()
+        {
+            Item Coat = new Item (35, 209, 16645630);
+            Item Necklace = new Item(36, 219, 12179686);
+            Item Glove = new Item(26, 205, 2906307);
+            Item Shoes = new Item(33, 202, 16777215);
+            Item Belt = new Item(35, 209, 11372402);
+            Item Earring = new Item(37, 205, 11263973);
+            Item Rifle = new Item(31, 214, 12567238);
+
+            Item[] items = new Item[7] { Coat, Necklace, Glove, Shoes, Belt, Earring, Rifle };
+            
+
+            new Point(48 - 5 + xx, 181 - 5 + yy).PressMouseL();     //первая закладка инвентаря
+
+            botwindow.FirstHero();
+            for (int i = 0; i <= 6; i++) PuttingItem(items[i]);     //надеваем амуницию
+
+            botwindow.SecondHero();
+            for (int i = 0; i <= 6; i++) PuttingItem(items[i]);     //надеваем амуницию
+
+            botwindow.ThirdHero();
+            for (int i = 0; i <= 6; i++) PuttingItem(items[i]);     //надеваем амуницию
+        }
+
+
+        /// <summary>
         /// проверяем, открыто ли хотя бы одно задание (список справа экрана)
         /// </summary>
         /// <returns></returns>
@@ -1558,7 +1669,7 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// перетаскивание коробки с подарком в ячейку Mana1
+        /// закрываем задания крестиком
         /// </summary>
         public void TaskOff()
         {
@@ -3223,12 +3334,13 @@ namespace OpenGEWindows
         /// </summary>
         public void GetDrop()
         {
-            new Point(188 - 5 + xx, 526 - 5 + yy).PressMouseL();
+            new Point(188 - 5 + xx, 526 - 5 + yy).PressMouseL();    //боевой режим, чтобы боты остановились
             Pause(1000);
-            new Point(123 - 5 + xx, 526 - 5 + yy).PressMouseL();
+            new Point(123 - 5 + xx, 526 - 5 + yy).PressMouseL();    //нажимаем на сундук (иконка подбора)
             Pause(500);
-            new Point(760 - 5 + xx, 330 - 5 + yy).PressMouseL();
+            new Point(760 - 5 + xx, 330 - 5 + yy).PressMouseL();    //нажимаем в случайную точку в стороне, чтобы начать подбор
         }
+        
         /// <summary>
         /// проверяем, крутится ли рулетка после убийства босса
         /// </summary>

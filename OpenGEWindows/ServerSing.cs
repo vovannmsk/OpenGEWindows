@@ -576,10 +576,10 @@ namespace OpenGEWindows
             {
                 Pause(500);
                 //вариант 1. ишем окно, открытое в песочнице===========================================================
-                //HWND = FindWindow("Sandbox:" + botwindow.getNumberWindow().ToString() + ":Granado Espada", "[#] Granado Espada [#]");
+                HWND = FindWindow("Sandbox:" + botwindow.getNumberWindow().ToString() + ":Granado Espada", "[#] Granado Espada [#]");
 
-                //вариант 2. ищем чистое окно==========================================================================
-                HWND = FindWindow("Granado Espada", "Granado Espada");
+                ////вариант 2. ищем чистое окно==========================================================================
+                //HWND = FindWindow("Granado Espada", "Granado Espada");
 
 
                 count++; if (count > 5) return (UIntPtr)0;
@@ -637,60 +637,31 @@ namespace OpenGEWindows
         {
             #region для песочницы
 
-            //AccountBusy = false;
-
-            ////запускаем steam в песочнице (вариант 1)
-            //Process process = new Process();
-            //process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
-            //process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient + " -login " + GetLogin() + " " + GetPassword() + " -applaunch 663090 -silent";
-
-            //process.Start();
-            //Pause(10000);
-
-            ////if (isSteam())         //для старого варианта ввода логина-пароля
-            ////{
-            ////    InsertLoginPasswordOk();
-            ////}
-
-            //for (int i = 1; i <= 10; i++)
-            //{
-            //    Pause(1000);
-
-            //    if (isSystemError())  //если выскакивает системная ошибка, то нажимаем "Ок"     проверка не работает
-            //    {
-            //        OkSystemError();
-            //    }
-
-            //    if (isNewSteam())
-            //    {
-            //        pointNewSteamOk.PressMouseL();
-            //    }
-
-            //    if (isContinueRunning())    //если аккаунт запущен на другом компе
-            //    {
-            //        NextAccount();
-            //        AccountBusy = true;
-            //        break;
-            //    }
-            //}
-
-            #endregion
-
-            #region для чистого окна Steam
-
             AccountBusy = false;
 
+            //запускаем steam в песочнице (вариант 1)
             Process process = new Process();
-            process.StartInfo.FileName = this.pathClient;
-            process.StartInfo.Arguments = " -login " + GetLogin() + " " + GetPassword() + " -applaunch 663090 -silent";
+            process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
+            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient + " -login " + GetLogin() + " " + GetPassword() + " -applaunch 663090 -silent";
+
             process.Start();
             Pause(10000);
+
+            //if (isSteam())         //для старого варианта ввода логина-пароля
+            //{
+            //    InsertLoginPasswordOk();
+            //}
 
             for (int i = 1; i <= 10; i++)
             {
                 Pause(1000);
 
-                if (isNewSteam())           //если первый раз входим в игру, то соглашаемся с лиц. соглашением
+                if (isSystemError())  //если выскакивает системная ошибка, то нажимаем "Ок"     проверка не работает
+                {
+                    OkSystemError();
+                }
+
+                if (isNewSteam())
                 {
                     pointNewSteamOk.PressMouseL();
                 }
@@ -702,6 +673,36 @@ namespace OpenGEWindows
                     break;
                 }
             }
+
+
+            #endregion
+
+            #region для чистого окна Steam
+
+            //AccountBusy = false;
+
+            //Process process = new Process();
+            //process.StartInfo.FileName = this.pathClient;
+            //process.StartInfo.Arguments = " -login " + GetLogin() + " " + GetPassword() + " -applaunch 663090 -silent";
+            //process.Start();
+            //Pause(10000);
+
+            //for (int i = 1; i <= 10; i++)
+            //{
+            //    Pause(1000);
+
+            //    if (isNewSteam())           //если первый раз входим в игру, то соглашаемся с лиц. соглашением
+            //    {
+            //        pointNewSteamOk.PressMouseL();
+            //    }
+
+            //    if (isContinueRunning())    //если аккаунт запущен на другом компе
+            //    {
+            //        NextAccount();
+            //        AccountBusy = true;
+            //        break;
+            //    }
+            //}
 
             #endregion
 
@@ -928,6 +929,27 @@ namespace OpenGEWindows
         #endregion
 
         #region BH
+
+        /// <summary>
+        /// запуск клиента игры для Инфинити
+        /// </summary>
+        public override void runClientBH()
+        {
+            #region для песочницы
+
+            AccountBusy = false;
+
+            //запускаем steam в песочнице (вариант 1)
+            Process process = new Process();
+            process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
+            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient + " -login " + GetLogin() + " " + GetPassword() + " -applaunch 663090 -silent";
+
+            process.Start();
+            //Pause(10000);
+
+            #endregion
+        }
+
 
         /// <summary>
         /// проверка миссии по цвету контрольной точки

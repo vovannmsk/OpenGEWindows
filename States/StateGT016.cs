@@ -84,8 +84,8 @@ namespace States
             //botwindow.Pause(12000);       //поставил по Колиной просьбе
             botwindow.Pause(1000);       //проба
 
-            server.GetGifts();
-            server.TaskOff();
+            //server.GetGifts();
+            //server.TaskOff();
 
             botwindow.PressEscThreeTimes();
             botwindow.Pause(1000);

@@ -60,9 +60,9 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.MoveGiftBox();
-
-            server.OpenMapForState();
+            //server.OpenSpecInventory();    //открываем кэш карман
+            int t = 1;
+            //server.PuttingOnWeoponsAndArmors();  //надеваем броню, оружие и аксессуары
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return town.isOpenMap();
+            return true;  //town.isOpenMap();
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT166(botwindow);
+            return new StateGT169(botwindow);
         }
 
         /// <summary>

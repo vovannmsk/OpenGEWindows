@@ -94,6 +94,20 @@ namespace States
             //            int statusOfAtk  = botwindow.getStatusOfAtk();
             int statusOfAtk = botParam.StatusOfAtk;
 
+            //если нет окна с hwnd таким как в файле HWND.txt
+            if (!botwindow.isHwnd())
+            {
+                if (server.FindWindowGE() == (UIntPtr)0)
+                {
+                    return 22;    //если нет окна с нужным HWND и, если не найдено окно с любым другим hwnd не равным нулю
+                }
+                else
+                {
+                    return 23;  //нашли другое окно с заданными параметрами (открыли новое окно на предыдущем этапе программы)
+                }
+            }
+                
+
             //ворота
             if (BHdialog.isGateBH()) return 7;                   //если стоим в воротах, начальное состояние
             //if (BHdialog.isGateBH2()) return 8;                //ворота состояние 2
@@ -198,8 +212,8 @@ namespace States
         /// </summary>
         public void problemResolutionBH()
         {
-            ReOpenWindow();
-            Pause(500);
+            //ReOpenWindow();
+            //Pause(500);
 
             int numberOfProblem = NumberOfProblemBH();             //проверили, какие есть проблемы (на какой стадии находится бот)
 
@@ -249,6 +263,13 @@ namespace States
                     break;
                 case 21: server.MissionNotFoundBH();              // миссия не найдена. записываем в файл данные и отбегаем в сторону
                     break;
+                case 22:
+                    server.runClientBH();                     // если нет окна
+                    break;
+                case 23:
+                                         // если новое коно открыто, но еще не поставлено на своё место
+                    break;
+
                 case 29: botwindow.CureOneWindow();               // logout
                     break;
                 case 30: botwindow.CureOneWindow2();              // отбегаем в сторону и логаут
@@ -835,21 +856,21 @@ namespace States
             //PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в городе
             //            PointColor point1 = new PointColor(152 - 5 + xx, 250 - 5 + yy + (j - 1) * 27, 1, 1);       // новый товар в магазине в Катовии
 
-            //PointColor point1 = new PointColor(1142, 610, 1, 1);
-            //PointColor point2 = new PointColor(1142, 608, 1, 1);
-            PointColor point1 = new PointColor(675 - 5 + xx, 475 - 5 + yy, 0, 0);
-            //PointColor point2 = new PointColor(687 - 5 + xx, 259 - 5 + yy, 1, 1);
-            //PointColor point3 = new PointColor(930 - 5 + xx, 703 - 5 + yy, 1, 1);
+            PointColor point1 = new PointColor(1042, 551, 1, 1);
+            PointColor point2 = new PointColor(1043, 551, 1, 1);
+            //PointColor point1 = new PointColor(31 - 5 + xx, 214 - 5 + yy, 0, 0);
+            //PointColor point2 = new PointColor(70 - 5 + xx, 214 - 5 + yy, 1, 1);
+            //PointColor point3 = new PointColor(113- 5 + xx, 209 - 5 + yy, 1, 1);
 
 
             color1 = point1.GetPixelColor();
-            //color2 = point2.GetPixelColor();
+            color2 = point2.GetPixelColor();
             //color3 = point3.GetPixelColor();
 
             //server.WriteToLogFile("цвет " + color1);
             //server.WriteToLogFile("цвет " + color2);
             MessageBox.Show(" " + color1);
-            //MessageBox.Show(" " + color2);
+            MessageBox.Show(" " + color2);
             //MessageBox.Show(" " + color3);
 
 

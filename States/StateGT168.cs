@@ -61,9 +61,12 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            dialog.PressStringDialog(4); //четвертая строка
-            dialog.PressOkButton(2);   //два раза нажимаем на Ок
-            botwindow.Pause(2000);
+            //получение подарка
+            //dialog.PressStringDialog(4); //четвертая строка
+            //dialog.PressOkButton(2);   //два раза нажимаем на Ок
+            //botwindow.Pause(2000);
+
+            server.GetWeoponsAndArmors();
         }
 
         /// <summary>
@@ -82,6 +85,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
+            //int g = 1;
             return server.isTown();
         }
 

@@ -315,19 +315,6 @@ namespace OpenGEWindows
         #region Общие методы
 
         /// <summary>
-        /// Перемещает окно с ботом в заданные координаты. Если окно есть, то result = true, а если вылетело окно, то result = false.
-        /// </summary>
-        /// <returns></returns>
-        public bool isHwnd()
-        {
-            //не учитываются ширина и высота окна
-            return SetWindowPos(botParam.Hwnd, 0, botParam.X, botParam.Y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);  //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
-            
-
-            //return SetWindowPos(databot.hwnd, 0, databot.X, databot.Y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0040);  //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
-        }
-
-        /// <summary>
         /// Останавливает поток на некоторый период
         /// </summary>
         /// <param name="ms"> ms - период в милисекундах </param>
@@ -342,12 +329,6 @@ namespace OpenGEWindows
         public void PressEscThreeTimes()
         {
             for (int i = 1; i <= 3; i++) PressEsc();
-            //TextSend.SendText2(1);           // нажимаем Esc
-            //Thread.Sleep(200);
-            //TextSend.SendText2(1);           // нажимаем Esc
-            //Thread.Sleep(200);
-            //TextSend.SendText2(1);           // нажимаем Esc
-            //Thread.Sleep(200);
         }
 
         /// <summary>
@@ -362,6 +343,19 @@ namespace OpenGEWindows
         #endregion
 
         #region No Window
+
+        /// <summary>
+        /// Перемещает окно с ботом в заданные координаты. Если окно есть, то result = true, а если вылетело окно, то result = false.
+        /// </summary>
+        /// <returns></returns>
+        public bool isHwnd()
+        {
+            //не учитываются ширина и высота окна
+            return SetWindowPos(botParam.Hwnd, 0, botParam.X, botParam.Y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);  //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
+
+
+            //return SetWindowPos(databot.hwnd, 0, databot.X, databot.Y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0040);  //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
+        }
 
         /// <summary>
         /// активируем окно
