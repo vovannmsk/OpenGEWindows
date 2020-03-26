@@ -87,9 +87,17 @@ namespace States
                     (getTekStateInt() != 73) && 
                     (getTekStateInt() != 80) &&
                     (getTekStateInt() != 85) &&
-                    (getTekStateInt() != 92))
+                    (getTekStateInt() != 92) &&
+                    (getTekStateInt() != 224) &&
+                    (getTekStateInt() != 232) &&
+                    (getTekStateInt() != 236) &&
+                    (getTekStateInt() != 239))
                     //(на состоянии 72 и 73 не делать ничего (там долгая чиповка и бьем отит и кукурузу)) 
                     // состояние 92 - алхимия 
+                    // 224 - применяем карточки опыта
+                    // 232 - применяем карточки опыта
+                    // 236 - применяем подарки
+                    // 239 - ищем флинтлок в списке
 
                     result = this.endState;                 // тогда присваиваем движку конечное состояние, чтобы остановить его
             return result;

@@ -11,8 +11,6 @@
         protected iPointColor pointisActivePet2;
         protected iPointColor pointisActivePet3;  //3 и 4 сделаны для европы для проверки корма на месяц
         protected iPointColor pointisActivePet4;
-        //protected iPointColor pointisActivePet5;
-        //protected iPointColor pointisActivePet6;
         protected iPointColor pointisOpenMenuPet1;
         protected iPointColor pointisOpenMenuPet2;
         protected iPoint pointCancelSummonPet;
@@ -36,6 +34,7 @@
             Pause(500);
             pointSummonPet2.PressMouseL();      //Click кнопку "Summon"
             pointSummonPet2.PressMouseL();
+            new Point(500 - 5 + xx, 500 - 5 + yy).Move();
             Pause(1000);
         }
 
@@ -83,7 +82,7 @@
         /// <returns> true, если призван </returns>
         public bool isSummonPet()
         {
-            return (pointisSummonPet1.isColor() && pointisSummonPet2.isColor());
+            return pointisSummonPet1.isColor() && pointisSummonPet2.isColor();
         }
 
         #endregion

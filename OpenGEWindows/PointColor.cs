@@ -15,10 +15,15 @@ namespace OpenGEWindows
         [DllImport("gdi32.dll")]
         static extern uint GetPixel(IntPtr hdc, int nXPos, int nYPos);
 
-        int x;
-        int y;
-        uint color;
-        int accuracy;
+        private int x;
+        private int y;
+        private uint color;
+        private int accuracy;
+
+        public int X { get => x; set => x = value; }
+        public int Y { get => y; set => y = value; }
+        public uint Color { get => color; set => color = value; }
+        public int Accuracy { get => accuracy; set => accuracy = value; }
 
         /// <summary>
         /// конструктор без арументов
@@ -36,10 +41,10 @@ namespace OpenGEWindows
         /// <param name="accuracy"> точность округления цвета </param>
         public PointColor(int x, int y,uint color, int accuracy)
         {
-            this.x = x;
-            this.y = y;
-            this.color = color;
-            this.accuracy = accuracy;
+            this.X = x;
+            this.Y = y;
+            this.Color = color;
+            this.Accuracy = accuracy;
         }
 
         /// <summary>
@@ -66,7 +71,7 @@ namespace OpenGEWindows
         public uint GetPixelColor()
         {
             IntPtr hwnd = GetDC(IntPtr.Zero);
-            uint pixel = GetPixel(hwnd, x, y);
+            uint pixel = GetPixel(hwnd, X, Y);
             ReleaseDC(IntPtr.Zero, hwnd);
             return pixel;
         }
@@ -77,8 +82,8 @@ namespace OpenGEWindows
         /// <returns> true, если цвет совпадает с указанной точностью </returns>
         public bool isColor()
         {
-            uint currentColor = Okruglenie(GetPixelColor(), accuracy);
-            return (currentColor == color);
+            uint currentColor = Okruglenie(GetPixelColor(), Accuracy);
+            return (currentColor == Color);
         }
 
         /// <summary>
@@ -87,7 +92,7 @@ namespace OpenGEWindows
         /// <returns> true, если цвет совпадает с указанной точностью </returns>
         public bool isColor2()
         {
-            return (GetPixelColor() > color);
+            return (GetPixelColor() > Color);
         }
 
 

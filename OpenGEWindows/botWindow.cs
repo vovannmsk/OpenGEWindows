@@ -104,8 +104,6 @@ namespace OpenGEWindows
         /// <param name="status"></param>
         public void setStatusOfAtk(int status)
         {
-            //this.statusOfAtk = status;                   // обновили переменную класса
-            //SetStatusAtkInFile();                          //записали в файл
             botParam.StatusOfAtk = status;
         }
 
@@ -168,149 +166,6 @@ namespace OpenGEWindows
         }
 
         #endregion
-
-        //#region методы для перекладывания песо в торговца
-        
-        ///// <summary>
-        ///// открыть фесо шоп
-        ///// </summary>
-        //public void OpenFesoShop()
-        //{
-        //    server.TopMenu(2, 2);
-        //    Pause(1000);
-        //}
-
-        ///// <summary>
-        ///// для передачи песо торговцу. Идем на место и предложение персональной торговли                                          ////////////// перенести в Server
-        ///// </summary>
-        //public void ChangeVis1()
-        //{
-        //    iPoint pointTrader = new Point(472 - 5 + databot.X, 175 - 5 + databot.Y);    
-        //    iPoint pointPersonalTrade = new Point(536 - 5 + databot.X, 203 - 5 + databot.Y);
-        //    iPoint pointMap = new Point(405 - 5 + databot.X, 220 - 5 + databot.Y);    
-
-        //    //идем на место передачи песо
-        //    PressEscThreeTimes();
-        //    Pause(1000);
-
-        //    town.MaxHeight();             //с учетом города и сервера
-        //    Pause(500);
-
-        //    server.OpenMapForState();                  //открываем карту города
-        //    Pause(500);
-
-        //    pointMap.DoubleClickL();   //тыкаем в карту, чтобы добежать до нужного места
-
-        //    PressEscThreeTimes();       // закрываем карту
-        //    Pause(25000);               // ждем пока добежим
-
-        //    iPointColor pointMenuTrade = new PointColor(588 - 5 + databot.X, 230 - 5 + databot.Y, 1710000 , 4);
-        //    while (!pointMenuTrade.isColor())
-        //    {
-        //        //жмем правой на торговце
-        //        pointTrader.PressMouseR();
-        //        Pause(1000);
-        //    }
-
-        //    //жмем левой  на пункт "Personal Trade"
-        //    pointPersonalTrade.PressMouseL();
-        //    Pause(500);
-        //}
-
-        ///// <summary>
-        ///// обмен песо (часть 2) закрываем сделку со стороны бота
-        ///// </summary>
-        //public void ChangeVis2()
-        //{
-        //    iPoint pointVis1 = new Point(903 - 5 + databot.X, 151 - 5 + databot.Y);    
-        //    iPoint pointVisMove1 = new Point(701 - 5 + databot.X, 186 - 5 + databot.Y);
-        //    iPoint pointVisMove2 = new Point(395 - 5 + databot.X, 361 - 5 + databot.Y);
-        //    iPoint pointVisOk = new Point(611 - 5 + databot.X, 397 - 5 + databot.Y);   
-        //    iPoint pointVisOk2 = new Point(442 - 5 + databot.X, 502 - 5 + databot.Y);  
-        //    iPoint pointVisTrade = new Point(523 - 5 + databot.X, 502 - 5 + databot.Y);  
-
-        //    // открываем инвентарь
-        //    server.TopMenu(8, 1);
-
-        //    // открываем закладку кармана, там где песо
-        //    pointVis1.DoubleClickL();
-        //    Pause(500);
-
-        //    // перетаскиваем песо
-        //    pointVisMove1.Drag(pointVisMove2);                                             // песо берется из первой ячейки на 4-й закладке  
-        //    Pause(500);
-
-        //    // нажимаем Ок для подтверждения передаваемой суммы песо
-        //    pointVisOk.DoubleClickL();
-
-        //    // нажимаем ок
-        //    pointVisOk2.DoubleClickL();
-        //    Pause(500);
-
-        //    // нажимаем обмен
-        //    pointVisTrade.DoubleClickL();
-        //    Pause(500);
-        //}
-
-        ///// <summary>
-        ///// купить 400 еды в фесо шопе                    вообще-то метод должен находится в ServerInterface
-        ///// </summary>
-        //public void Buy44PetFood()
-        //{
-        //    iPoint pointFood = new Point(361 - 5 + databot.X, 331 - 5 + databot.Y);     //шаг = 27 пикселей на одну строчку магазина (на случай если добавят новые строчки)
-        //    iPoint pointButtonBUY = new Point(730 - 5 + databot.X, 625 - 5 + databot.Y);   //725, 620);
-
-        //    // тыкаем два раза в стрелочку вверх
-        //    pointFood.DoubleClickL();
-        //    Pause(500);
-
-        //    //нажимаем 125
-        //    SendKeys.SendWait("125");
-
-        //    // жмем кнопку купить
-        //    pointButtonBUY.DoubleClickL();
-        //    Pause(1500);
-
-        //    //нажимаем кнопку Close
-        //    pointButtonClose.DoubleClickL();
-        //    Pause(1500);
-        //}                                                                        
-
-        ///// <summary>
-        ///// продать 3 ВК (GS) в фесо шопе 
-        ///// </summary>
-        //public void SellGrowthStone3pcs()
-        //{
-        //    iPoint pointArrowUp2 = new Point(379 - 5 + databot.X, 250 - 5 + databot.Y); 
-        //    iPoint pointButtonSell = new Point(730 - 5 + databot.X, 625 - 5 + databot.Y);   
-
-        //    // 3 раза нажимаем на стрелку вверх, чтобы отсчитать 3 ВК
-        //    for (int i = 1; i <= 3; i++)
-        //    {
-        //        pointArrowUp2.PressMouseL();
-        //        Pause(700);
-        //    }
-
-        //    //нажимаем кнопку Sell
-        //    pointButtonSell.PressMouseL();
-        //    Pause(1000);
-
-        //    //нажимаем кнопку Close
-        //    pointButtonClose.PressMouseL();
-        //    Pause(2500);
-        //}                                 
-
-        ///// <summary>
-        ///// открыть вкладку Sell в фесо шопе
-        ///// </summary>
-        //public void OpenBookmarkSell()
-        //{
-        //    iPoint pointBookmarkSell = new Point(245 - 5 + databot.X, 201 - 5 + databot.Y); 
-        //    pointBookmarkSell.DoubleClickL();
-        //    Pause(1500);
-        //}                                 
-
-        //#endregion
 
         #region Общие методы
 
@@ -376,24 +231,25 @@ namespace OpenGEWindows
         public void ReOpenWindow()
         {
             bool result = isHwnd();   //Перемещает в заданные координаты. Если окно есть, то result=true, а если вылетело окно, то result=false.
-            if (!result)           
+            if (!result)  //нет окна с нужным HWND
             {
-                //нет окна
-
-                OpenWindow();
-
-                if (!Server.AccountBusy)
+                if (server.FindWindowGE() == (UIntPtr)0)   //если поиск окна тоже не дал результатов
                 {
-                    ActiveWindow();
+                    OpenWindow();                 //то загружаем новое окно
 
-                    while (!server.isLogout()) Pause(1000);    //ожидание логаута        бесконечный цикл
+                    if (!Server.AccountBusy)
+                    {
+                        ActiveWindow();
 
-                    ActiveWindow();
+                        while (!server.isLogout()) Pause(1000);    //ожидание логаута        бесконечный цикл
+
+                        ActiveWindow();
+                    }
                 }
-            }
-            else
-            {
-                ActiveWindow();
+                else 
+                {
+                    ActiveWindow();                      //сдвигаем окно на своё место и активируем его
+                }
             }
         }
 
@@ -409,11 +265,11 @@ namespace OpenGEWindows
             {
                 while (true)
                 {
-                    Pause(5000);
-                    UIntPtr hwnd = server.FindWindowGE();      //ищем окно ГЭ с нужными параметрами
+                    Pause(3000);
+                    UIntPtr hwnd = server.FindWindowGE();      //ищем окно ГЭ с нужными параметрами(сразу запись в файл HWND.txt)
                     if (hwnd != (UIntPtr)0) break;             //если найденное hwnd не равно нулю (то есть открыли ГЭ), то выходим из цикла
                 }
-                Pause(5000);
+                //Pause(5000);
             }
 
             #region старый вариант метода
@@ -481,48 +337,6 @@ namespace OpenGEWindows
             Pause(500);
             server.WriteToLogFileBH("Нажали на Коннект");
         }
-
-        #region методы для нового варианта Connect
-        ///// <summary>
-        ///// исправление ошибок при нажатии кнопки Connect (бот в логауте)
-        ///// </summary>
-        //private void BugFixes()
-        //{
-        //    iPoint pointButtonOk = new Point(525 - 5 + databot.X, 410 - 5 + databot.Y);    // кнопка Ok в логауте
-        //    iPoint pointButtonOk2 = new Point(525 - 5 + databot.X, 445 - 5 + databot.Y);    // кнопка Ok в логауте
-
-        //    pointButtonOk.PressMouse();   //кликаю в кнопку  "ОК"
-        //    Pause(500);
-
-        //    pointButtonOk.PressMouseL();  //кликаю в кнопку  "ОК"  второй раз (их может быть две)
-        //    Pause(500);
-
-        //    pointButtonOk2.PressMouseL();  //кликаю в кнопку  "ОК" другой формы (где написано про 3 min)
-
-        //    EnterLoginAndPasword();        //вводим логин и пароль заново
-        //}
-
-        ///// <summary>
-        ///// проверяем, есть ли проблемы после нажатия кнопки Connect (выскачила форма с кнопкой ОК)
-        ///// </summary>
-        ///// <returns></returns>
-        //private bool isCheckBugs()
-        //{  return server.isPointConnect(); }
-
-        ///// <summary>
-        ///// проверяем, сменилось ли изображение на экране
-        ///// </summary>
-        ///// <param name="testColor">тестовая точка</param>
-        ///// <returns>true, если сменился экран</returns>
-        //private bool isChangeDisplay(uint testColor)
-        //{
-        //    iPointColor currentColor = new PointColor(65 - 5 + databot.X, 55 - 5 + databot.Y, 7800000, 5);
-        //    uint color = currentColor.GetPixelColor();
-        //    bool result = (color == testColor);
-        //    return !result;
-        //}
-
-        #endregion
 
         /// <summary>
         /// Нажимаем Коннект (переводим бота из состояния логаут в состояние казарма)
@@ -596,7 +410,11 @@ namespace OpenGEWindows
 
                 server.WriteToLogFileBH("нажимаем на кнопку connect");
                 PressConnectButton();
-                //pointButtonConnect.PressMouse();   // Кликаю в Connect
+                Pause(1500);
+
+                pointButtonOk.PressMouseL();  //кликаю в кнопку  "ОК"
+                Pause(500);
+                pointButtonOk2.PressMouseL();  //кликаю в кнопку  "ОК" 3 min
                 Pause(500);
 
                 //если есть ошибки в логине-пароле, то возникает сообщение с кнопкой "OK". 
@@ -639,6 +457,87 @@ namespace OpenGEWindows
             #endregion
 
         }
+
+        #region методы для нового варианта Connect
+
+        /// <summary>
+        /// исправление ошибок при нажатии кнопки Connect (бот в логауте)
+        /// </summary>
+        private void BugFixes()
+        {
+            iPoint pointButtonOk = new Point(525 - 5 + botParam.X, 410 - 5 + botParam.Y);    // кнопка Ok в логауте
+            iPoint pointButtonOk2 = new Point(525 - 5 + botParam.X, 445 - 5 + botParam.Y);    // кнопка Ok в логауте
+
+            pointButtonOk.PressMouse();   //кликаю в кнопку  "ОК"
+            Pause(500);
+
+            pointButtonOk.PressMouseL();  //кликаю в кнопку  "ОК"  второй раз (их может быть две)
+            Pause(500);
+
+            pointButtonOk2.PressMouseL();  //кликаю в кнопку  "ОК" другой формы (где написано про 3 min)
+
+            EnterLoginAndPasword();        //вводим логин и пароль заново
+        }
+
+        /// <summary>
+        /// проверяем, есть ли проблемы после нажатия кнопки Connect (выскачила форма с кнопкой ОК)
+        /// </summary>
+        /// <returns></returns>
+        private bool isCheckBugs()
+        { return server.isPointConnect(); }
+
+        /// <summary>
+        /// проверяем, сменилось ли изображение на экране
+        /// </summary>
+        /// <param name="testColor">тестовая точка</param>
+        /// <returns>true, если сменился экран</returns>
+        private bool isChangeDisplay(uint testColor)
+        {
+            iPointColor currentColor = new PointColor(65 - 5 + botParam.X, 55 - 5 + botParam.Y, 7800000, 5);
+            uint color = currentColor.GetPixelColor();
+            bool result = (color == testColor);
+            return !result;
+        }
+
+        #endregion
+
+        /// <summary>
+        /// Нажимаем Коннект (переводим бота из состояния логаут в состояние казарма)
+        /// </summary>
+        /// <returns></returns>
+        public bool ConnectBH()    // возвращает true, если успешно вошли в казарму
+        {
+
+            bool result = true;
+            const int MAX_NUMBER_ITERATION = 4;    //максимальное количество итераций
+            uint count = 0;
+
+            iPointColor testColor = new PointColor(65 - 5 + botParam.X, 55 - 5 + botParam.Y, 7800000, 5);  //запоминаем цвет в координатах 55, 55 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
+            Pause(500);
+
+            do
+            {
+                PressConnectButton();
+                Pause(10000);
+                if (isCheckBugs()) BugFixes();
+
+                count++;
+                if (count > MAX_NUMBER_ITERATION)
+                {
+                    result = false;
+                    break;
+                }
+                //if (server.isBarack())
+                //{
+                //    result = true;
+                //    break;
+                //}
+            } while (!isChangeDisplay(testColor.GetPixelColor()));
+
+            return result;
+
+        }
+
 
 
         #endregion
@@ -968,6 +867,20 @@ namespace OpenGEWindows
         #region Personal Trade 
         #endregion
 
+        #region BH
 
+        /// <summary>
+        /// активируем окно для БХ
+        /// </summary>
+        public void ActiveWindowBH()
+        {
+            ShowWindow(botParam.Hwnd, 9);                                       // Разворачивает окно если свернуто  было 9
+            SetForegroundWindow(botParam.Hwnd);                                 // Перемещает окно в верхний список Z порядка     
+            //перемещаем окно в заданные для него координаты. не учитываются ширина и высота окна
+            SetWindowPos(botParam.Hwnd, 0, botParam.X, botParam.Y, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
+        }
+
+
+        #endregion
     }
 }

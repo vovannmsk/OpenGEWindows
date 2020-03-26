@@ -26,6 +26,8 @@ namespace OpenGEWindows
         /// <param name="nomerOfWindow"> номер окна по порядку </param>
         public ServerAmerica(botWindow botwindow) 
         {
+            isLoadedGEBH = false;   //?????????????? может не ставить сюда ??????????????????
+            isLoadedSteamBH = false;
 
             #region общие
 
@@ -61,49 +63,81 @@ namespace OpenGEWindows
 
             #region Logout
 
-            this.pointisLogout1 = new PointColor(126 - 5 + xx, 66 - 5 + yy, 7460000, 4);      //121, 62, 7460000, 135, 61, 7590000, 4)
-            this.pointisLogout2 = new PointColor(126 - 5 + xx, 67 - 5 + yy, 7460000, 4);      //121, 62, 7460000, 135, 61, 7590000, 4)
-            this.pointConnect = new PointColor(522 - 5 + xx, 418 - 5 + yy, 7800000, 5);
+            this.pointisLogout1 = new PointColor(914 - 5 + xx, 698 - 5 + yy, 7920000, 4);
+            this.pointisLogout2 = new PointColor(914 - 5 + xx, 699 - 5 + yy, 7920000, 4);
+            this.pointConnect = new PointColor(511 - 5 + xx, 418 - 5 + yy, 7920000, 4);
 
             #endregion
 
             #region Pet
 
-            this.pointisOpenMenuPet1 = new PointColor(466 + xx, 214 + yy, 12500000, 5);      //471 - 5, 219 - 5, 12500000, 472 - 5, 219 - 5, 12500000, 5);
-            this.pointisOpenMenuPet2 = new PointColor(467 + xx, 214 + yy, 12500000, 5);
-            this.pointisSummonPet1 = new PointColor(401 - 5 + xx, 362 - 5 + yy, 7630000, 4);      //401 - 5, 362 - 5, 7630000, 401 - 5, 364 - 5, 7560000, 4);
-            this.pointisSummonPet2 = new PointColor(401 - 5 + xx, 364 - 5 + yy, 7560000, 4);
-            this.pointisActivePet1 = new PointColor(495 - 5 + xx, 310 - 5 + yy, 13200000, 5);      //495 - 5, 310 - 5, 13200000, 496 - 5, 308 - 5, 13600000, 5);
-            this.pointisActivePet2 = new PointColor(496 - 5 + xx, 308 - 5 + yy, 13600000, 5);
-            this.pointisActivePet3 = new PointColor(828 - 5 + xx, 186 - 5 + yy, 13000000, 5);     //для америки пока не нужно
-            this.pointisActivePet4 = new PointColor(829 - 5 + xx, 185 - 5 + yy, 13100000, 5);     //для америки пока не нужно. еда на месяц
-            this.pointCancelSummonPet = new Point(408 + xx, 390 + yy);  //400, 190 
-            this.pointSummonPet1 = new Point(569 + xx, 375 + yy);                   // 569, 375   //Click Pet
-            this.pointSummonPet2 = new Point(408 + xx, 360 + yy);                   // 408, 360   //Click кнопку "Summon"
-            this.pointActivePet = new Point(408 + xx, 405 + yy);                   // 408, 405);  //Click Button Active Pet
+            //this.pointisOpenMenuPet1 = new PointColor(466 + xx, 214 + yy, 12500000, 5);      //471 - 5, 219 - 5, 12500000, 472 - 5, 219 - 5, 12500000, 5);
+            //this.pointisOpenMenuPet2 = new PointColor(467 + xx, 214 + yy, 12500000, 5);
+            //this.pointisSummonPet1 = new PointColor(401 - 5 + xx, 362 - 5 + yy, 7630000, 4);      //401 - 5, 362 - 5, 7630000, 401 - 5, 364 - 5, 7560000, 4);
+            //this.pointisSummonPet2 = new PointColor(401 - 5 + xx, 364 - 5 + yy, 7560000, 4);
+            //this.pointisActivePet1 = new PointColor(495 - 5 + xx, 310 - 5 + yy, 13200000, 5);      //495 - 5, 310 - 5, 13200000, 496 - 5, 308 - 5, 13600000, 5);
+            //this.pointisActivePet2 = new PointColor(496 - 5 + xx, 308 - 5 + yy, 13600000, 5);
+            //this.pointisActivePet3 = new PointColor(828 - 5 + xx, 186 - 5 + yy, 13000000, 5);     //для америки пока не нужно
+            //this.pointisActivePet4 = new PointColor(829 - 5 + xx, 185 - 5 + yy, 13100000, 5);     //для америки пока не нужно. еда на месяц
+            //this.pointCancelSummonPet = new Point(408 + xx, 390 + yy);  //400, 190 
+            //this.pointSummonPet1 = new Point(569 + xx, 375 + yy);                   // 569, 375   //Click Pet
+            //this.pointSummonPet2 = new Point(408 + xx, 360 + yy);                   // 408, 360   //Click кнопку "Summon"
+            //this.pointActivePet = new Point(408 + xx, 405 + yy);                   // 408, 405);  //Click Button Active Pet
+
+            this.pointisSummonPet1 = new PointColor(424 - 5 + xx, 364 - 5 + yy, 7000000, 6);
+            this.pointisSummonPet2 = new PointColor(424 - 5 + xx, 365 - 5 + yy, 7000000, 6);
+            this.pointisActivePet1 = new PointColor(496 - 5 + xx, 307 - 5 + yy, 13000000, 6);
+            this.pointisActivePet2 = new PointColor(496 - 5 + xx, 308 - 5 + yy, 13000000, 6);
+            this.pointisActivePet3 = new PointColor(829 - 5 + xx, 186 - 5 + yy, 12000000, 6); // для проверки периодической еды на месяц                                      //не проверено
+            this.pointisActivePet4 = new PointColor(829 - 5 + xx, 185 - 5 + yy, 12000000, 6); // для проверки периодической еды на месяц
+            this.pointisOpenMenuPet1 = new PointColor(474 - 5 + xx, 219 - 5 + yy, 12000000, 6);      //834 - 5, 98 - 5, 12400000, 835 - 5, 98 - 5, 12400000, 5);             //проверено
+            this.pointisOpenMenuPet2 = new PointColor(474 - 5 + xx, 220 - 5 + yy, 12000000, 6);
+            this.pointCancelSummonPet = new Point(410 - 5 + xx, 390 - 5 + yy);   //750, 265                    //проверено
+            this.pointSummonPet1 = new Point(540 - 5 + xx, 380 - 5 + yy);                   // 868, 258   //Click Pet
+            this.pointSummonPet2 = new Point(410 - 5 + xx, 360 - 5 + yy);                   // 748, 238   //Click кнопку "Summon"
+            this.pointActivePet = new Point(410 - 5 + xx, 410 - 5 + yy);                   // //Click Button Active Pet                            //проверено
+
 
             #endregion
 
             #region Top menu
 
-//            this.pointGotoEnd = new Point(680 + xx, 442 - 5 + yy);          //логаут
-            this.pointGotoEnd = new Point(680 + xx, 472 - 5 + yy);          //end
+            ////            this.pointGotoEnd = new Point(680 + xx, 442 - 5 + yy);          //логаут
+            //            this.pointGotoEnd = new Point(680 + xx, 472 - 5 + yy);          //end
+            //            this.pointLogout = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
+            //            this.pointTeleportFirstLine = new Point(400 + xx, 190 + yy);  //400, 190 
+            //            this.pointisOpenTopMenu21 = new PointColor(328 + xx, 74 + yy, 13420000, 4);      //333 - 5, 79 - 5, 13420000, 334 - 5, 79 - 5, 13420000, 4);  //проверено
+            //            this.pointisOpenTopMenu22 = new PointColor(329 + xx, 74 + yy, 13420000, 4);
+            //            this.pointisOpenTopMenu61 = new PointColor(455 + xx, 87 + yy, 13420000, 4);      //460 - 5, 92 - 5, 13420000, 461 - 5, 92 - 5, 13420000, 4);  //проверено
+            //            this.pointisOpenTopMenu62 = new PointColor(456 + xx, 87 + yy, 13420000, 4);
+            //            this.pointisOpenTopMenu81 = new PointColor(553 + xx, 87 + yy, 13420000, 4);      //558 - 5, 92 - 5, 13420000, 559 - 5, 92 - 5, 13420000, 4);  //проверено
+            //            this.pointisOpenTopMenu82 = new PointColor(554 + xx, 87 + yy, 13420000, 4);
+            //            this.pointisOpenTopMenu91 = new PointColor(601 + xx, 74 + yy, 13420000, 4);      //606 - 5, 79 - 5, 13420000, 607 - 5, 79 - 5, 13420000, 4);  //проверено
+            //            this.pointisOpenTopMenu92 = new PointColor(602 + xx, 74 + yy, 13420000, 4);
+            //            this.pointisOpenTopMenu121 = new PointColor(406 + xx, 166 + yy, 7590000, 4);      //411 - 5, 171 - 5, 7590000, 412 - 5, 171 - 5, 7850000, 4);  //проверено
+            //            this.pointisOpenTopMenu122 = new PointColor(407 + xx, 166 + yy, 7850000, 4);
+            //            this.pointisOpenTopMenu131 = new PointColor(366 + xx, 273 + yy, 16310000, 4);      //371 - 5, 278 - 5, 16310000, 372 - 5, 278 - 5, 16510000, 4);  //проверено
+            //            this.pointisOpenTopMenu132 = new PointColor(367 + xx, 273 + yy, 16510000, 4);
+
+            this.pointisOpenTopMenu21 = new PointColor(337 - 5 + xx, 76 - 5 + yy, 13421721, 0);
+            this.pointisOpenTopMenu22 = new PointColor(337 - 5 + xx, 77 - 5 + yy, 13421721, 0);
+            this.pointisOpenTopMenu61 = new PointColor(464 - 5 + xx, 89 - 5 + yy, 13421721, 0);
+            this.pointisOpenTopMenu62 = new PointColor(464 - 5 + xx, 90 - 5 + yy, 13421721, 0);
+            this.pointisOpenTopMenu81 = new PointColor(562 - 5 + xx, 89 - 5 + yy, 13421721, 0);
+            this.pointisOpenTopMenu82 = new PointColor(562 - 5 + xx, 90 - 5 + yy, 13421721, 0);
+            this.pointisOpenTopMenu91 = new PointColor(606 - 5 + xx, 80 - 5 + yy, 13421721, 0);      //pet
+            this.pointisOpenTopMenu92 = new PointColor(606 - 5 + xx, 81 - 5 + yy, 13421721, 0);
+            this.pointisOpenTopMenu121 = new PointColor(708 - 5 + xx, 118 - 5 + yy, 13000000, 6);        //Warp List
+            this.pointisOpenTopMenu122 = new PointColor(718 - 5 + xx, 118 - 5 + yy, 13000000, 6);
+            this.pointisOpenTopMenu131 = new PointColor(404 - 5 + xx, 278 - 5 + yy, 16000000, 6);          //Quest Name                                                         //проверено
+            this.pointisOpenTopMenu132 = new PointColor(404 - 5 + xx, 279 - 5 + yy, 16000000, 6);
+            this.pointGotoEnd = new Point(685 - 5 + xx, 470 - 5 + yy);            //end
             this.pointLogout = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
-            this.pointTeleportFirstLine = new Point(400 + xx, 190 + yy);  //400, 190 
-            //this.pointTeleportSecondLine = new Point(400 + xx, 205 + yy);   //              тыкаем во вторую строчку телепорта                          //проверено
-            this.pointTeleportExecute = new Point(355 + xx, 570 + yy);   //355, 570
-            this.pointisOpenTopMenu21 = new PointColor(328 + xx, 74 + yy, 13420000, 4);      //333 - 5, 79 - 5, 13420000, 334 - 5, 79 - 5, 13420000, 4);  //проверено
-            this.pointisOpenTopMenu22 = new PointColor(329 + xx, 74 + yy, 13420000, 4);
-            this.pointisOpenTopMenu61 = new PointColor(455 + xx, 87 + yy, 13420000, 4);      //460 - 5, 92 - 5, 13420000, 461 - 5, 92 - 5, 13420000, 4);  //проверено
-            this.pointisOpenTopMenu62 = new PointColor(456 + xx, 87 + yy, 13420000, 4);
-            this.pointisOpenTopMenu81 = new PointColor(553 + xx, 87 + yy, 13420000, 4);      //558 - 5, 92 - 5, 13420000, 559 - 5, 92 - 5, 13420000, 4);  //проверено
-            this.pointisOpenTopMenu82 = new PointColor(554 + xx, 87 + yy, 13420000, 4);
-            this.pointisOpenTopMenu91 = new PointColor(601 + xx, 74 + yy, 13420000, 4);      //606 - 5, 79 - 5, 13420000, 607 - 5, 79 - 5, 13420000, 4);  //проверено
-            this.pointisOpenTopMenu92 = new PointColor(602 + xx, 74 + yy, 13420000, 4);
-            this.pointisOpenTopMenu121 = new PointColor(406 + xx, 166 + yy, 7590000, 4);      //411 - 5, 171 - 5, 7590000, 412 - 5, 171 - 5, 7850000, 4);  //проверено
-            this.pointisOpenTopMenu122 = new PointColor(407 + xx, 166 + yy, 7850000, 4);
-            this.pointisOpenTopMenu131 = new PointColor(366 + xx, 273 + yy, 16310000, 4);      //371 - 5, 278 - 5, 16310000, 372 - 5, 278 - 5, 16510000, 4);  //проверено
-            this.pointisOpenTopMenu132 = new PointColor(367 + xx, 273 + yy, 16510000, 4);
+            this.pointGotoBarack = new Point(685 - 5 + xx, 380 - 5 + yy);            //в барак
+            this.pointTeleportExecute = new Point(360 - 5 + xx, 588 - 5 + yy);   //355, 570
+
+            this.pointTeleportFirstLine = new Point(400 + xx, 178 + yy);    //              тыкаем в первую строчку телепорта                          //проверено
+
 
             #endregion
 
@@ -127,35 +161,41 @@ namespace OpenGEWindows
 
             #region atWork
 
-            this.pointisBoxOverflow1 = new PointColor(518 + xx, 432 + yy, 7800000, 5);      //548 - 30, 462 - 30, 7800000, 547 - 30, 458 - 30, 7600000, 5);
-            this.pointisBoxOverflow2 = new PointColor(517 + xx, 428 + yy, 7600000, 5);
-            this.pointisBoxOverflow3 = new PointColor(379 - 5 + xx, 497 - 5 + yy, 5600000, 5);          //проверка оранжевой надписи
-            this.pointisBoxOverflow4 = new PointColor(379 - 5 + xx, 498 - 5 + yy, 5600000, 5);
-            this.pointBuyingMitridat1 = new Point(360 + xx, 537 + yy);
-            this.pointBuyingMitridat2 = new Point(517 + xx, 433 + yy);
-            this.pointBuyingMitridat3 = new Point(517 + xx, 423 + yy);
-            //this.pointisWork_RifleDot1 = new PointColor(24 + xx, 692 + yy, 11051000, 3);               //проверка по стойке с ружьем
-            //this.pointisWork_RifleDot2 = new PointColor(25 + xx, 692 + yy, 10919000, 3);
-            //this.pointisWork_DrobDot1 = new PointColor(24 + xx, 692 + yy, 7644000, 3);              //проверка по обычной стойке с дробашем
-            //this.pointisWork_DrobDot2 = new PointColor(25 + xx, 692 + yy, 16711000, 3);
-            //this.pointisWork_VetDrobDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);              //проверка по вет стойке с дробашем          не проверено
-            //this.pointisWork_VetDrobDot2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
-            //this.pointisWork_ExpDrobDot1 = new PointColor(24 + xx, 692 + yy, 16777000, 3);              //проверка по эксп стойке с дробашем
-            //this.pointisWork_ExpDrobDot2 = new PointColor(25 + xx, 692 + yy, 3560000, 3);
-            //this.pointisWork_ExpSwordDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 3693000, 3);           //проверка по стойке с мечом Дарья
-            //this.pointisWork_ExpSwordDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 10258000, 3);
-            this.pointisKillHero1 = new PointColor(75 + xx, 631 + yy, 1900000, 4);
-            this.pointisKillHero2 = new PointColor(330 + xx, 631 + yy, 1900000, 4);
-            this.pointisKillHero3 = new PointColor(585 + xx, 631 + yy, 1900000, 4);
-            //this.pointisWork_VetPistolDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 13086000, 3);           //проверка по стойке с вет пистолетом Outrange
-            //this.pointisWork_VetPistolDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 12954000, 3);
-            //this.pointisWork_UnlimPistolDot1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 15824000, 3);      //проверка по стойке с эксп пистолетом Unlimited Shot
-            //this.pointisWork_UnlimPistolDot2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 15767000, 3);
+            //this.pointisBoxOverflow1 = new PointColor(518 + xx, 432 + yy, 7800000, 5);      //548 - 30, 462 - 30, 7800000, 547 - 30, 458 - 30, 7600000, 5);
+            //this.pointisBoxOverflow2 = new PointColor(517 + xx, 428 + yy, 7600000, 5);
+            //this.pointisBoxOverflow3 = new PointColor(379 - 5 + xx, 497 - 5 + yy, 5600000, 5);          //проверка оранжевой надписи
+            //this.pointisBoxOverflow4 = new PointColor(379 - 5 + xx, 498 - 5 + yy, 5600000, 5);
+            //this.pointBuyingMitridat1 = new Point(360 + xx, 537 + yy);
+            //this.pointBuyingMitridat2 = new Point(517 + xx, 433 + yy);
+            //this.pointBuyingMitridat3 = new Point(517 + xx, 423 + yy);
+            //this.pointisKillHero1 = new PointColor(75 + xx, 631 + yy, 1900000, 4);
+            //this.pointisKillHero2 = new PointColor(330 + xx, 631 + yy, 1900000, 4);
+            //this.pointisKillHero3 = new PointColor(585 + xx, 631 + yy, 1900000, 4);
+            //this.arrayOfColorsIsWork1 = new uint[12] { 11051, 1721, 7644, 2764, 16777, 4278, 5138, 3693, 66, 5068, 15824, 8756 };
+            //this.arrayOfColorsIsWork2 = new uint[12] { 10919, 2106, 16711, 7243, 3560, 5401, 9747, 10258, 0, 9350, 15767, 8162 };
 
-            //this.arrayOfColorsIsWork1 = new uint[13] { 0, 11051000, 1721000, 7644000, 2764000, 16777000, 4278000, 5138000, 3693000, 66000, 5068000, 15824000, 8756000 };
-            //this.arrayOfColorsIsWork2 = new uint[13] { 0, 10919000, 2106000, 16711000, 7243000, 3560000, 5401000, 9747000, 10258000, 0, 9350000, 15767000, 8162000 };
+            this.pointisBoxOverflow1 = new PointColor(482 - 5 + xx, 298 - 5 + yy, 8000000, 5);        //проверка всплывающего окна
+            this.pointisBoxOverflow2 = new PointColor(483 - 5 + xx, 298 - 5 + yy, 8000000, 5);
+            this.pointisBoxOverflow3 = new PointColor(379 - 5 + xx, 497 - 5 + yy, 5600000, 5);         //проверка оранжевой надписи
+            this.pointisBoxOverflow4 = new PointColor(379 - 5 + xx, 498 - 5 + yy, 5600000, 5);         //не сделано на америке
+
             this.arrayOfColorsIsWork1 = new uint[12] { 11051, 1721, 7644, 2764, 16777, 4278, 5138, 3693, 66, 5068, 15824, 8756 };
             this.arrayOfColorsIsWork2 = new uint[12] { 10919, 2106, 16711, 7243, 3560, 5401, 9747, 10258, 0, 9350, 15767, 8162 };
+
+            this.pointisKillHero1 = new PointColor(81 - 5 + xx, 636 - 5 + yy, 1900000, 5);
+            this.pointisKillHero2 = new PointColor(336 - 5 + xx, 636 - 5 + yy, 1900000, 5);
+            this.pointisKillHero3 = new PointColor(591 - 5 + xx, 636 - 5 + yy, 1900000, 5);
+            this.pointisLiveHero1 = new PointColor(81 - 5 + xx, 636 - 5 + yy, 4300000, 5);
+            this.pointisLiveHero2 = new PointColor(336 - 5 + xx, 636 - 5 + yy, 4300000, 5);
+            this.pointisLiveHero3 = new PointColor(591 - 5 + xx, 636 - 5 + yy, 4300000, 5);
+            this.pointSkillCook = new Point(183 - 5 + xx, 700 - 5 + yy);
+            this.pointisBattleMode1 = new PointColor(173 - 5 + xx, 511 - 5 + yy, 8900000, 5);
+            this.pointisBattleMode2 = new PointColor(200 - 5 + xx, 511 - 5 + yy, 8900000, 5);
+
+            this.pointisBulletHalf = new PointColor(227 - 5 + xx, 621 - 5 + yy, 5500000, 5);
+            this.pointisBulletOff = new PointColor(227 - 5 + xx, 621 - 5 + yy, 5700000, 5);
+
+
             #endregion
 
             #region inTown
@@ -235,17 +275,17 @@ namespace OpenGEWindows
 
             this.pointButtonLogoutFromBarack = new Point(955 - 5 + xx, 700 - 5 + yy);                        //кнопка логаут в казарме
             this.sdvigY = 0;
-            this.pointisBarack1 = new PointColor(56 + xx, 146 + yy, 2420000, 4);      //61 - 5, 151 - 5, 2420000, 61 - 5, 154 - 5, 2420000, 4);
-            this.pointisBarack2 = new PointColor(56 + xx, 149 + yy, 2420000, 4);
-            this.pointisBarack3 = new PointColor(81 - 5 + xx, 63 - 5 + yy, 7700000, 5);       //проверено
-            this.pointisBarack4 = new PointColor(81 - 5 + xx, 64 - 5 + yy, 7700000, 5);
-            this.pointChooseChannel = new Point(680 - 5 + xx, 285 - 5 + yy);                       //выбор канала в меню Alt+Q
+            this.pointisBarack1 = new PointColor(65 - 5 + xx, 149 - 5 + yy, 2350000, 4);      
+            this.pointisBarack2 = new PointColor(65 - 5 + xx, 150 - 5 + yy, 2280000, 4);
+            this.pointisBarack3 = new PointColor(18 - 5 + xx, 63 - 5 + yy, 7900000, 5);       //проверено
+            this.pointisBarack4 = new PointColor(18 - 5 + xx, 64 - 5 + yy, 7900000, 5);
+            //this.pointChooseChannel = new Point(680 - 5 + xx, 285 - 5 + yy);                       //выбор канала в меню Alt+Q
             this.pointEnterChannel = new Point(460 - 5 + xx, 309 - 5 + yy + (botwindow.getKanal() - 2) * 15);                        //выбор канала в меню Alt+F2
             this.pointMoveNow = new Point(445 - 5 + xx, 490 - 5 + yy);                             //выбор канала в меню Alt+F2
-            this.pointTeamSelection1 = new Point(135 + xx, 450 + yy);    //кнопка выбора групп в бараке
-            this.pointTeamSelection2 = new Point(65 + xx, 355 + yy);
-            this.pointTeamSelection3 = new Point(65 + xx, 620 + yy);
-            this.pointNewPlace = new Point(85 + xx, 670 + yy);
+            this.pointTeamSelection1 = new Point(135 - 5 + xx, 498 - 5 + yy);    //кнопка выбора групп в бараке
+            this.pointTeamSelection2 = new Point(65 + xx, 355 + yy);  //первая группа
+            this.pointTeamSelection3 = new Point(36 + xx, 620 + yy);  //select team
+            this.pointNewPlace = new Point(59 - 5 + xx, 681 - 5 + yy);
 
             #endregion
 
@@ -397,7 +437,7 @@ namespace OpenGEWindows
         /// <summary>
         /// запуск клиента Steam
         /// </summary>
-        public override void runClientSteam()
+        public override void runClientSteamBH()
         {
             #region для песочницы
 
@@ -420,6 +460,7 @@ namespace OpenGEWindows
         public override void runClient()
         {
             Process.Start(this.pathClient);
+            Pause(40000);
         }                                
 
         /// <summary>
@@ -435,18 +476,7 @@ namespace OpenGEWindows
             }
         }
 
-        ///// <summary>
-        ///// Определяет, надо ли грузить данное окно с ботом
-        ///// </summary>
-        ///// <returns> true означает, что это окно (данный бот) должно быть активно и его надо грузить </returns>
-        //public override bool isActive()
-        //{
-        //    bool result = false;
-        //    if (AmericaActive() == 1) result = true;
-        //    return result;
-        //}
-
-
+   
         /// <summary>
         /// поиск новых окон с игрой для кнопки "Найти окна"
         /// </summary>
@@ -465,29 +495,10 @@ namespace OpenGEWindows
             }
 
             botParam.Hwnd = HWND;
-            //botwindow.setHwnd(HWND);
 
-            SetWindowPos(HWND, 1, xx, yy, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
-            //            ShowWindow(HWND, 2);   //скрыть окно в трей
+            SetWindowPos(HWND, 0, xx, yy, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
 
             Pause(500);
-
-
-            #region старый вариант метода
-            //Click_Mouse_and_Keyboard.Mouse_Move_and_Click(350, 700, 8);
-            //Pause(200);
-            //while (New_HWND_GE == (UIntPtr)0)                
-            //{
-            //    Pause(500);
-            //    New_HWND_GE = FindWindow("Granado Espada", "Granado Espada Online");
-            //}
-            //setHwnd(New_HWND_GE);
-            //hwnd_to_file();
-            ////Перемещает вновь открывшиеся окно в заданные координаты, игнорирует размеры окна
-            ////SetWindowPos(New_HWND_GE, 1, getX(), getY(), WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
-            //SetWindowPos(New_HWND_GE, 1, 825, 5, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);
-            //Pause(500);
-            #endregion
 
             return HWND;
         }
@@ -554,17 +565,42 @@ namespace OpenGEWindows
         }    //нужен
 
 
+        ///// <summary>
+        ///// телепортируемся в город продажи по Alt+W (Америка)
+        ///// </summary>
+        //public override void TeleportToTownAltW(int nomerTeleport)
+        //{
+        //    iPoint pointTeleportToTownAltW = new Point(801 + xx, 564 + yy + (nomerTeleport - 1) * 17);
+
+        //    TopMenu(6, 1);
+        //    Pause(1000);
+        //    pointTeleportToTownAltW.PressMouse();           //было два нажатия левой, решил попробовать RRL
+        //    Pause(2000);
+        //}
+
         /// <summary>
         /// телепортируемся в город продажи по Alt+W (Америка)
         /// </summary>
         public override void TeleportToTownAltW(int nomerTeleport)
         {
-            iPoint pointTeleportToTownAltW = new Point(801 + xx, 564 + yy + (nomerTeleport - 1) * 17);
+            iPoint pointTeleportToTownAltW;
+            if (botwindow.getNomerTeleport() < 14)
+            {
+                pointTeleportToTownAltW = new Point(800 + xx, 517 + yy + (nomerTeleport - 1) * 17);
+            }
+            else
+            {
+                pointTeleportToTownAltW = new Point(800 + xx, 517 + yy);   //ребольдо
+            }
+
+            // отбегаю в сторону. чтобы бот не стрелял 
+            //runAway();
+
 
             TopMenu(6, 1);
             Pause(1000);
             pointTeleportToTownAltW.PressMouse();           //было два нажатия левой, решил попробовать RRL
-            Pause(2000);
+            botwindow.Pause(2000);
         }
 
         /// <summary>
@@ -641,11 +677,72 @@ namespace OpenGEWindows
         #region BH
 
         /// <summary>
+        /// найдены ли окна с ГЭ ??
+        /// </summary>
+        /// <returns></returns>
+        public override bool FindWindowGEforBHBool()
+        {
+            bool result = false;
+            UIntPtr HWND = FindWindow("Sandbox:" + botwindow.getNumberWindow().ToString() + ":Granado Espada", "[#] Granado Espada [#]");
+
+            if (HWND != (UIntPtr)0)
+            {
+                botParam.Hwnd = HWND;  //если окно найдено, то запись в файл HWND.txt
+                isLoadedGEBH = false;     //если нашли загружаемое окно, значит уже можно грузить другие окна
+                result = true;  //нашли окно
+            }
+            return result;
+        }
+
+
+        /// <summary>
+        /// поиск новых окон Steam
+        /// </summary>
+        /// <returns>true, если стим найден</returns>
+        public override bool FindWindowSteamBool()
+        {
+            bool result = false;
+            UIntPtr HWND = FindWindow("Sandbox:" + botwindow.getNumberWindow().ToString() + ":vguiPopupWindow", "Steam");
+            if (HWND != (UIntPtr)0)
+            {
+                result = true;
+                isLoadedGEBH = false;     //если нашли загружаемое окно, значит уже можно грузить другие окна
+            }
+            return result;
+        }
+
+        /// <summary>
         /// запуск клиента игры для Инфинити
         /// </summary>
         public override void runClientBH()
         {
         }
+        
+        ///// <summary>
+        ///// поиск нового окна с игрой для миссий Инфинити в БХ
+        ///// </summary>
+        ///// <returns></returns>
+        //public override UIntPtr FindWindowGEforBH()
+        //{
+        //    UIntPtr HWND = FindWindow("Sandbox:" + botwindow.getNumberWindow().ToString() + ":Granado Espada", "[#] Granado Espada [#]");
+
+        //    if (HWND != (UIntPtr)0)
+        //    {
+        //        botParam.Hwnd = HWND;  //если окно найдено, то запись в файл HWND.txt
+        //        SetWindowPos(HWND, 0, xx, yy, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);  //перемещение окна в заданные координаты
+        //    }
+
+        //    return HWND;
+        //}
+
+        ///// <summary>
+        ///// поиск новых окон Steam
+        ///// </summary>
+        ///// <returns>номер hwnd найденного Steam</returns>
+        //public override UIntPtr FindWindowSteam()
+        //{
+        //    return (UIntPtr)0;
+        //}
 
         /// <summary>
         /// проверка миссии по цвету контрольной точки

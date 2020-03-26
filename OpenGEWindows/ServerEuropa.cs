@@ -23,6 +23,8 @@ namespace OpenGEWindows
         /// <param name="botwindow"></param>
         public ServerEuropa(botWindow botwindow)
         {
+            isLoadedGEBH = false;   //?????????????? может не ставить сюда ??????????????????
+            isLoadedSteamBH = false;
 
             #region общие
 
@@ -225,7 +227,7 @@ namespace OpenGEWindows
             this.pointTeamSelection2 = new Point(70 - 5 + xx, 355 - 5 + yy);                   //проверено
             this.pointTeamSelection3 = new Point(50 - 5 + xx, 620 - 5 + yy);                   //проверено
             this.sdvigY = 15;
-            this.pointChooseChannel = new Point(820 - 5 + xx, 382 - 5 + yy);                       //переход из меню Alt+Q в меню Alt+F2 (нажатие кнопки Choose a channel)
+            //this.pointChooseChannel = new Point(820 - 5 + xx, 382 - 5 + yy);                       //переход из меню Alt+Q в меню Alt+F2 (нажатие кнопки Choose a channel)
             this.pointEnterChannel = new Point(646 - 5 + xx, 409 - 5 + yy + (botwindow.getKanal() - 2) * 15);                        //выбор канала в меню Alt+F2
             this.pointMoveNow = new Point(651 - 5 + xx, 591 - 5 + yy);                        //выбор канала в меню Alt+F2
             this.pointNewPlace = new Point(85 + xx, 670 + yy);
@@ -375,7 +377,7 @@ namespace OpenGEWindows
         /// <summary>
         /// запуск клиента Steam /На Европейском сервере нет стима. Ничего не делаем/
         /// </summary>
-        public override void runClientSteam()
+        public override void runClientSteamBH()
         {
         }
 
@@ -607,11 +609,72 @@ namespace OpenGEWindows
         #region BH
 
         /// <summary>
+        /// найдены ли окна с ГЭ ??
+        /// </summary>
+        /// <returns></returns>
+        public override bool FindWindowGEforBHBool()
+        {
+            bool result = false;
+            UIntPtr HWND = FindWindow("Sandbox:" + botwindow.getNumberWindow().ToString() + ":Granado Espada", "[#] Granado Espada [#]");
+
+            if (HWND != (UIntPtr)0)
+            {
+                botParam.Hwnd = HWND;  //если окно найдено, то запись в файл HWND.txt
+                isLoadedGEBH = false;     //если нашли загружаемое окно, значит уже можно грузить другие окна
+                result = true;  //нашли окно
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// поиск новых окон Steam
+        /// </summary>
+        /// <returns>true, если стим найден</returns>
+        public override bool FindWindowSteamBool()
+        {
+            bool result = false;
+            UIntPtr HWND = FindWindow("Sandbox:" + botwindow.getNumberWindow().ToString() + ":vguiPopupWindow", "Steam");
+            if (HWND != (UIntPtr)0)
+            {
+                result = true;
+                isLoadedGEBH = false;     //если нашли загружаемое окно, значит уже можно грузить другие окна
+            }
+            return result;
+        }
+
+        /// <summary>
         /// запуск клиента игры для Инфинити
         /// </summary>
         public override void runClientBH()
         {
         }
+
+        ///// <summary>
+        ///// поиск нового окна с игрой для миссий Инфинити в БХ
+        ///// </summary>
+        ///// <returns></returns>
+        //public override UIntPtr FindWindowGEforBH()
+        //{
+        //    UIntPtr HWND = FindWindow("Sandbox:" + botwindow.getNumberWindow().ToString() + ":Granado Espada", "[#] Granado Espada [#]");
+
+        //    if (HWND != (UIntPtr)0)
+        //    {
+        //        botParam.Hwnd = HWND;  //если окно найдено, то запись в файл HWND.txt
+        //        SetWindowPos(HWND, 0, xx, yy, WIDHT_WINDOW, HIGHT_WINDOW, 0x0001);  //перемещение окна в заданные координаты
+        //    }
+
+        //    return HWND;
+        //}
+
+        ///// <summary>
+        ///// поиск новых окон Steam
+        ///// </summary>
+        ///// <returns>номер hwnd найденного Steam</returns>
+        //public override UIntPtr FindWindowSteam()
+        //{
+        //    return (UIntPtr)0;
+        //}
+
 
         /// <summary>
         /// проверка миссии по цвету контрольной точки

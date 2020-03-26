@@ -184,8 +184,20 @@ namespace OpenGEWindows
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, 0);
                     Pause(50);
                     runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP, 0);
-
                     break;
+                case 7:      // Перемещение мыши и БЫСТРЫЙ левый клик
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
+                    Pause(50);
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTDOWN, 0);
+                    Pause(50);
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_LEFTUP, 0);
+                    Pause(50);
+                    break;
+                case 8:      // БЫСТРОЕ Перемещение мыши
+                    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);
+                    Pause(50);
+                    break;
+
 
                 //case 7:     // Кликаем правой кнопкой в указанных координатах (правую кнопку не отпускаем)
                 //    runMouse(dx, dy, MOUSEEVENTF_ABSOLUTE | MOUSEEVENTF_MOVE, 0);

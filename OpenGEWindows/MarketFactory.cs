@@ -1,9 +1,13 @@
-﻿namespace OpenGEWindows
+﻿using GEBot.Data;
+
+namespace OpenGEWindows
 {
     public class MarketFactory
     {
         private Market market;
         private botWindow botwindow;
+        private string param;
+        private int numberOfWindow;
 
         public MarketFactory()
         { }
@@ -11,11 +15,15 @@
         public MarketFactory(botWindow botwindow)
         {
             this.botwindow = botwindow;
+            this.numberOfWindow = botwindow.getNumberWindow();
+            BotParam botParam = new BotParam(numberOfWindow);
+            param = botParam.Parametrs[botParam.NumberOfInfinity];
         }
 
         public Market createMarket()
         {
-            switch (botwindow.getParam())
+            //switch (botwindow.getParam())
+            switch (param)
             {
                 case "C:\\America\\":
                     market = new MarketAmerica(botwindow);

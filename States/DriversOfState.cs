@@ -38,7 +38,48 @@ namespace States
 
 
 
-        #region Гилльдия Охотников
+        #region Гильдия Охотников
+
+        /// <summary>
+        /// вводим слово Initialize и ок
+        /// </summary>
+        public void StateInitialize()
+        {
+            StateDriverRun(new StateGT106(botwindow), new StateGT108(botwindow));
+        }
+
+
+        /// <summary>
+        /// уровень миссии больше 20
+        /// </summary>
+        public void StateLevelAbove20()
+        {
+            StateDriverRun(new StateGT105(botwindow), new StateGT108(botwindow));
+        }
+
+        /// <summary>
+        /// уровень миссии от 10 до 19
+        /// </summary>
+        public void StateLevelFrom11to19()
+        {
+            StateDriverRun(new StateGT104(botwindow), new StateGT108(botwindow));
+        }
+
+        /// <summary>
+        /// уровень миссии меньше 10 
+        /// </summary>
+        public void StateLevelLessThan11()
+        {
+            StateDriverRun(new StateGT104a(botwindow), new StateGT108(botwindow));
+        }
+
+        /// <summary>
+        /// если лимит дневных миссий закончился, то нажимаем Ок и удаляем песочницу
+        /// </summary>
+        public void StateLimitOff()
+        {
+            StateDriverRun(new StateGT103a(botwindow), new StateGT108(botwindow));
+        }
 
 
         /// <summary>
@@ -193,6 +234,23 @@ namespace States
 
         #endregion
 
+        /// <summary>
+        /// идем из состояния "нет окна" до состояния "в бараке", потом идем в город
+        /// </summary>
+        public void ChangingAccounts2()
+        {
+            StateDriverRun(new StateGT014(botwindow), new StateGT016(botwindow));  // заходим в казарму
+            StateDriverRun(new StateGT220(botwindow), new StateGT235(botwindow));
+        }
+
+        /// <summary>
+        /// идем из состояния "нет окна" до состояния "в бараке", потом идем в город
+        /// </summary>
+        public void ChangingAccounts3()
+        {
+            StateDriverRun(new StateGT014(botwindow), new StateGT017(botwindow));  // заходим в казарму
+            StateDriverRun(new StateGT235(botwindow), new StateGT250(botwindow));
+        }
 
         /// <summary>
         /// идем из состояния "нет окна" до состояния "в городе", потом получаем подарок и удаляем песочницу
@@ -200,8 +258,8 @@ namespace States
         public void StateInputOutput()
         {
             //Server.rr = false;
-            //StateDriverRun(new StateGT014(botwindow), new StateGT017(botwindow));  // заходим в ребольдо
-            StateDriverRun(new StateGT014(botwindow), new StateGT016(botwindow));  // заходим в казарму
+            StateDriverRun(new StateGT014(botwindow), new StateGT017(botwindow));  // заходим в ребольдо
+            //StateDriverRun(new StateGT014(botwindow), new StateGT016(botwindow));  // заходим в казарму
             if (Server.AccountBusy)   
             {
                 StateDriverRun(new StateGT169(botwindow), new StateGT170(botwindow));  // удаляем песочницу
@@ -209,7 +267,7 @@ namespace States
             else
             {
 //               StateDriverRun(new StateGT165(botwindow), new StateGT170(botwindow));  // бежим к бабе ГМ + удаляем песочницу
-                StateDriverRun(new StateGT165(botwindow), new StateGT170(botwindow));   // надеваем оружие и броню
+                StateDriverRun(new StateGT169(botwindow), new StateGT170(botwindow));   // надеваем оружие и броню
 
 
             }

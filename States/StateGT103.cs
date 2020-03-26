@@ -110,18 +110,6 @@ namespace States
                 server.WriteToLogFileBH("103 переходим в сост 104 (уровень ворот от 11 до 19) ");
                 return new StateGT104(botwindow);
             }
-
-            //if (BHdialog.isGateBH2())   //самый лучший вариант. уровень ворот от 11 до 19
-            //{
-            //    server.WriteToLogFileBH("103 переходим в сост 104 ");
-            //    return new StateGT104(botwindow);
-            //}
-            //else
-            //{
-            //    //состояние 6. надо тратить шайники
-            //    server.WriteToLogFileBH("103 погнали тратить шайники ");
-            //    return new StateGT105(botwindow);
-            //}
         }
 
         /// <summary>

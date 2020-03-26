@@ -24,24 +24,11 @@
             //проверяем то состояние ворот, где написано "You currently have N tries remaining" (N = 1..5)
             this.pointsGateBH1 = new PointColor(891 - 5 + xx, 313 - 5 + yy, 4210914, 0);            //буква i в times
 
-            //проверяем то состояние ворот, где написано ""
-            this.pointsGateBH2 = new PointColor(683 - 5 + xx, 265 - 5 + yy, 12000000, 6);           
-
             //проверяем то состояние ворот, где написано "You have used up your daily entry count."
             this.pointsGateBH3 = new PointColor(860 - 5 + xx, 335 - 5 + yy, 4210914, 0);           //буква i в слове daily
 
-            //проверяем то состояние ворот, где написано "Please input Initialize"
-            this.pointsGateBH4_1 = new PointColor(932 - 30 + xx, 700 - 30 + yy, 7700000, 5);            //Ok
-//            this.pointsGateBH4_2 = new PointColor(932 - 30 + xx, 701 - 30 + yy, 7700000, 5);            //Ok
-            this.pointsGateBH4_2 = new PointColor(163 - 30 + xx, 641 - 30 + yy, 13752023, 0);            //If
             pointInputBox = new Point(310 - 30 + xx, 675 - 30 + yy);                                    //нажимаем на поле ввода
             pointInputBoxBottonOk = new Point(933 - 30 + xx, 704 - 30 + yy);                            //нажимаем на Ок в диалоге (Initialize)
-
-            //проверяем то состояние ворот, где написано "The difficulty level has been reset normaly"
-            this.pointsGateBH5 = new PointColor(670 - 30 + xx, 356 - 30 + yy, 13000000, 6);           //The
-
-            //проверяем то состояние ворот, где написано "Reset difficulty by using Shiny Crystal 200 piece(s)"
-            this.pointsGateBH6 = new PointColor(659 - 30 + xx, 359 - 30 + yy, 12900000, 5);           //Reset
 
             //уровень ворот меньше 10 ???
             this.pointsIsLess11_1 = new PointColor(687 - 5 + xx, 259 - 5 + yy, 12700000, 5);               // буква Y в слове Your
@@ -52,9 +39,9 @@
             this.pointsIsLevelAbove20_1 = new PointColor(682 - 5 + xx, 221 - 5 + yy, 12700000, 5);         // буква Y в слове Your
             this.pointsIsLevelAbove20_2 = new PointColor(860 - 5 + xx, 233 - 5 + yy, 4670000, 4);          // красная цифра 2 
 
-            //проверяем то состояние ворот, где написано "You cannot ener for free today. Next Challenge..."
-            //this.pointsGateBH6 = new PointColor(716 - 30 + xx, 263 - 30 + yy, 13000000, 6);           //Next
-
+            //проверяем экран, на котором надо вводить слово Initialize
+            this.pointIsInitialize1 = new PointColor(673 - 5 + xx, 613 - 5 + yy, 4671486, 0);         // буква I в слове Initialize
+            this.pointIsInitialize2 = new PointColor(673 - 5 + xx, 614 - 5 + yy, 4671486, 0);         // буква I в слове Initialize
         }
 
         // ===============================  Методы ==================================================

@@ -1,9 +1,13 @@
-﻿namespace OpenGEWindows
+﻿using GEBot.Data;
+
+namespace OpenGEWindows
 {
     public class PetFactory
     {
         private Pet pet;
         private botWindow botwindow;
+        private string param;
+        private int numberOfWindow;
 
         public PetFactory()
         { }
@@ -11,11 +15,15 @@
         public PetFactory(botWindow botwindow)
         {
             this.botwindow = botwindow;
+            this.numberOfWindow = botwindow.getNumberWindow();
+            BotParam botParam = new BotParam(numberOfWindow);
+            param = botParam.Parametrs[botParam.NumberOfInfinity];
         }
 
         public Pet createPet()
         {
-            switch (botwindow.getParam())
+            //switch (botwindow.getParam())
+            switch (param)
             {
                 case "C:\\America\\":
                     pet = new PetAmerica(botwindow);

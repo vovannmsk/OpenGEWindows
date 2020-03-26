@@ -81,7 +81,10 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return (pet.isSummonPet() && !server.isKillHero());     //пет призван и никто не убит
+            //bool pet1 = pet.isSummonPet();
+            //bool kill = server.isKillHero();
+            //botwindow.Pause(1);
+            return pet.isSummonPet() && !server.isKillHero();     //пет призван и никто не убит
         }
 
         /// <summary>

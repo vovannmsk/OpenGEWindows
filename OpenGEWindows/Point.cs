@@ -4,9 +4,12 @@ namespace OpenGEWindows
 {
     public class Point : iPoint
     {
-        int x;
-        int y;
-                
+        private int x;
+        private int y;
+
+        public int X { get => x; set => x = value; }
+        public int Y { get => y; set => y = value; }
+
         public Point()
         { 
         }
@@ -18,17 +21,17 @@ namespace OpenGEWindows
         /// <param name="y"> координата Y </param>
         public Point(int x, int y)
         {
-            this.x = x;
-            this.y = y;
+            this.X = x;
+            this.Y = y;
         }
 
         public int getX()
         {
-            return this.x;
+            return this.X;
         }
         public int getY()
         {
-            return this.y;
+            return this.Y;
         }
 
 
@@ -48,7 +51,7 @@ namespace OpenGEWindows
         /// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
         public void PressMouseR()
         {
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 2);
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(X, Y, 2);
             Pause(200);
         }
 
@@ -59,7 +62,7 @@ namespace OpenGEWindows
         /// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
         public void PressMouseL()
         {
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 1);
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(X, Y, 1);
             Pause(200);
         }
          
@@ -70,9 +73,9 @@ namespace OpenGEWindows
         /// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
         public void PressMouseLL()
         {
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 1);
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(X, Y, 1);
             Pause(500);
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 1);
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(X, Y, 1);
             Pause(200);
         }
 
@@ -96,7 +99,7 @@ namespace OpenGEWindows
         /// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
         public void PressMouseWheelUp()
         {
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 9);
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(X, Y, 9);
             Pause(400);   //было 200. сделал для Лаврово
         }
 
@@ -107,7 +110,7 @@ namespace OpenGEWindows
         /// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
         public void PressMouseWheelDown()
         {
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 3);
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(X, Y, 3);
             //Pause(200);
         }
 
@@ -119,7 +122,7 @@ namespace OpenGEWindows
             //Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 1);
             //Pause(50);
             //Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 1);
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 6);
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(X, Y, 6);
             Pause(200);
 
         }
@@ -130,7 +133,7 @@ namespace OpenGEWindows
         /// <param name="point"></param>
         public void Drag(iPoint point)
         {
-            Click_Mouse_and_Keyboard.MMC(x, y, point.getX(), point.getY());
+            Click_Mouse_and_Keyboard.MMC(X, Y, point.getX(), point.getY());
             Pause(200);
         }
 
@@ -140,7 +143,7 @@ namespace OpenGEWindows
         /// <param name="point"></param>
         public void Turn(iPoint point)
         {
-            Click_Mouse_and_Keyboard.MMCR(x, y, point.getX(), point.getY());
+            Click_Mouse_and_Keyboard.MMCR(X, Y, point.getX(), point.getY());
             Pause(200);
         }
 
@@ -149,8 +152,28 @@ namespace OpenGEWindows
         /// </summary>
         public void Move ()
         {
-            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(x, y, 5);
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(X, Y, 5);
             Pause(200);
         }
+
+        /// <summary>
+        /// нажать мышью в конкретную точку только левой кнопкой
+        /// </summary>
+        /// <param name="x"> x - первая координата точки, куда нужно ткнуть мышью </param>
+        /// <param name="y"> y - вторая координата точки, куда нужно ткнуть мышью </param>
+        public void FastPressMouseL()
+        {
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(X, Y, 7);
+        }
+
+        /// <summary>
+        /// перемещение мыши в указанные координаты
+        /// </summary>
+        public void FastMove()
+        {
+            Click_Mouse_and_Keyboard.Mouse_Move_and_Click(X, Y, 8);
+//            Pause(200);
+        }
+
     }
 }

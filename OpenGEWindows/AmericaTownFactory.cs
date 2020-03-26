@@ -1,4 +1,6 @@
-﻿namespace OpenGEWindows
+﻿using GEBot.Data;
+
+namespace OpenGEWindows
 {
     /// <summary>
     /// реализация паттерна "Фабрика" (семейство классов AmericaTown)
@@ -7,10 +9,15 @@
     {
   
         private botWindow botwindow;
+        private int param;
+        private int numberOfWindow;
 
         public AmericaTownFactory(botWindow botwindow)
         {
             this.botwindow = botwindow;
+            this.numberOfWindow = botwindow.getNumberWindow();
+            BotParam botParam = new BotParam(numberOfWindow);
+            param = botParam.NomerTeleport;
         }
 
         /// <summary>
@@ -20,7 +27,8 @@
         public override Town createTown()
         {
             Town town = null;
-            switch (botwindow.getNomerTeleport())
+            //switch (botwindow.getNomerTeleport())
+            switch (param)
             {
                 case 1:
                     //=================== ребольдо =======================================
@@ -43,6 +51,10 @@
                     town = new AmericaTownBagama(botwindow);
                     break;
                 case 10:
+                    //=================== Армония=======================================
+                    town = new AmericaTownArmonia(botwindow);
+                    break;
+                case 13:
                     //=================== Кастилия=======================================
                     town = new AmericaTownCastilia(botwindow);
                     break;

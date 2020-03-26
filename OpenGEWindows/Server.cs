@@ -19,10 +19,24 @@ namespace OpenGEWindows
         [DllImport("User32.dll", CharSet = CharSet.Auto)]
         public static extern UIntPtr FindWindowEx(UIntPtr hwndParent, UIntPtr hwndChildAfter, string className, string windowName);
 
+        #region статические переменные
+
         /// <summary>
         /// если окно загружено на другом компе
         /// </summary>
         public static bool AccountBusy;
+
+        /// <summary>
+        /// если сейчас происходит загрузка нового окна ГЭ, то true. Переменная нужна, чтобы не грузить одновременно два окна для BH
+        /// </summary>
+        public static bool isLoadedGEBH;
+
+        /// <summary>
+        /// если сейчас происходит загрузка нового стима, то true. Переменная нужна, чтобы не грузить одновременно два окна для BH
+        /// </summary>
+        public static bool isLoadedSteamBH;
+
+        #endregion
 
         #region общие
 
@@ -51,6 +65,7 @@ namespace OpenGEWindows
         #endregion
 
         #region No Window
+        
         protected iPointColor pointSafeIP1;
         protected iPointColor pointSafeIP2;
         protected iPointColor pointisSteam1;
@@ -210,9 +225,9 @@ namespace OpenGEWindows
         protected iPoint pointCure1;
         protected iPoint pointCure2;
         protected iPoint pointCure3;
-        protected iPoint pointMana1;
-        protected iPoint pointMana2;
-        protected iPoint pointMana3;
+        protected Point pointMana1;
+        protected Point pointMana2;
+        protected Point pointMana3;
         protected iPoint pointGM;
         protected iPoint pointHeadGM;
         //protected iPointColor pointIsTown_RifleFirstDot1;   //проверка по обычному ружью
@@ -288,7 +303,7 @@ namespace OpenGEWindows
         protected iPoint pointTeamSelection2;
         protected iPoint pointTeamSelection3;
         protected iPoint pointButtonLogoutFromBarack;
-        protected iPoint pointChooseChannel;
+        //protected iPoint pointChooseChannel;
         protected iPoint pointEnterChannel;
         protected iPoint pointMoveNow;
         protected int sdvigY;
@@ -527,7 +542,8 @@ namespace OpenGEWindows
 
         protected iPoint pointGateInfinityBH;
         protected iPointColor pointisBH1;           //правильное место в бх
-        protected iPointColor pointisBH2;           //неправильное место в бх
+        protected iPointColor pointisBH2;           //неправильное место в бх №1
+        protected iPointColor pointisBH3;           //неправильное место в бх №2
         protected iPointColor pointIsAtak1;
         protected iPointColor pointIsAtak2;
         protected iPointColor pointIsRoulette1;
@@ -719,20 +735,23 @@ namespace OpenGEWindows
         public void RemoveSandboxie()
         {
             int res = botParam.NumberOfInfinity + 1; //прибавили индекс, когда удаляем песочницу 
+            if (res >= botParam.LengthOfList) res = 0;
             botParam.NumberOfInfinity = res;
             new Point(1597, 1060).Move();   //перемещаем мышь вниз 
             Pause(400);
 
             //вариант с песочницей
             Process process = new Process();
+            //закрываем программы
             process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
             process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " /terminate";
             process.Start();
-            Pause(2000);
+            Pause(5000);
 
-            process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
-            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " delete_sandbox";
-            process.Start();
+            //удаляем содержимое песочницы
+            //process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
+            //process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " delete_sandbox";
+            //process.Start();
 
             ////вариант с чистым клиентом
             //Process process = new Process();
@@ -745,10 +764,11 @@ namespace OpenGEWindows
 
         }
 
-        public abstract void runClientSteam();
+        public abstract void runClientSteamBH();
         public abstract void runClient();
-        public abstract void runClientBH();
         public abstract UIntPtr FindWindowGE();
+        //public abstract UIntPtr FindWindowSteam();
+        public abstract bool FindWindowSteamBool();
         public abstract void OrangeButton();
         //public abstract bool isActive();
 
@@ -803,6 +823,12 @@ namespace OpenGEWindows
         /// </summary>
         public void QuickConnect()
         {
+            //нажимаем на кнопки, которые могут появиться из-за сбоев входа в игру
+            new Point(525 - 5 + xx, 410 - 5 + yy).PressMouseL();    // кнопка Ok в логауте
+            Pause(500);
+            new Point(525 - 5 + xx, 445 - 5 + yy).PressMouseL();    // кнопка Ok в логауте
+            Pause(500);
+
             serverSelection();
             PressConnectButton();
         }
@@ -1616,7 +1642,7 @@ namespace OpenGEWindows
         /// <summary>
         /// структура для поиска вещей в инвентаре
         /// </summary>
-        protected struct Item
+        public struct Item
         {
             public int x;
             public int y;
@@ -3329,6 +3355,10 @@ namespace OpenGEWindows
 
         #region Гильдия Охотников BH
 
+        public abstract void runClientBH();
+        //public abstract UIntPtr FindWindowGEforBH();
+        public abstract bool FindWindowGEforBHBool();
+
         /// <summary>
         /// подбор дропа в миссии Инфинити
         /// </summary>
@@ -3365,7 +3395,6 @@ namespace OpenGEWindows
         //{
         //    File.WriteAllText(globalParam.DirectoryOfMyProgram + "\\StatusOfSale.txt", status.ToString());
         //}
-
 
         /// <summary>
         /// проверяем, атакуем ли сейчас босса
@@ -3407,11 +3436,11 @@ namespace OpenGEWindows
         /// <param name="strLog"></param>
         public void WriteToLogFileBH(string strLog)
         {
-            //StreamWriter writer = new StreamWriter(globalParam.DirectoryOfMyProgram + "\\BH.log", true);
-            //string timeNow = DateTime.Now.ToString("dd MMMM yyyy | HH:mm:ss | ");
+            StreamWriter writer = new StreamWriter(globalParam.DirectoryOfMyProgram + "\\BH.log", true);
+            string timeNow = DateTime.Now.ToString("dd MMMM yyyy | HH:mm:ss | ");
 
-            //writer.WriteLine(timeNow + botwindow.getNumberWindow().ToString() + " " + strLog);
-            //writer.Close();
+            writer.WriteLine(timeNow + botwindow.getNumberWindow().ToString() + " " + strLog);
+            writer.Close();
         }
 
         /// <summary>
@@ -3527,10 +3556,8 @@ namespace OpenGEWindows
         /// <returns></returns>
         public bool isBH2()
         {
-            return (pointisBH2.isColor());
+            return pointisBH2.isColor() || pointisBH3.isColor();    //именно оператор "или"
         }
-
-
 
         /// <summary>
         /// тыкаем в ворота Infinity (Гильдии Охотников)
@@ -3677,28 +3704,721 @@ namespace OpenGEWindows
 
         #endregion
 
+        #region подготовка новых ботов для БХ
+
+        /// <summary>
+        /// структура для поиска вещей в инвентаре по двум точкам
+        /// </summary>
+        public struct Thing   //вещь
+        {
+            public PointColor point1;
+            public PointColor point2;
+
+            public Thing(PointColor point1, PointColor point2)
+            {
+                this.point1 = point1;
+                this.point2 = point2;
+            }
+        }
+
+        /// <summary>
+        /// создание новой команды в бараке
+        /// </summary>
+        public void CreateNewTeam()
+        {
+            TeamSelection(1);   //выбираем первую группу персов
+
+            pointNameOfTeam.PressMouseL();      //тыкаем в строку, где надо вводить имя группы героев
+            Pause(1500);
+
+            SendKeys.SendWait("HighMasters");
+            Pause(1500);
+            pointButtonSaveNewTeam.PressMouseL();
+            Pause(2500);
+
+        }
+
+        /// <summary>
+        /// открыт ли инвентарь?
+        /// </summary>
+        /// <returns></returns>
+        public bool isOpenInventory ()
+        {
+            return new PointColor(731 - 5 + xx, 86 - 5 + yy, 8036794, 0).isColor() && 
+                   new PointColor(745 - 5 + xx, 86 - 5 + yy, 8036794, 0).isColor();
+        }
+
+        /// <summary>
+        /// открываем инвентарь на нужной закладке
+        /// </summary>
+        /// <param name="numberOfbookmark">номер закладки</param>
+        public void OpenInventory(int numberOfbookmark)
+        {
+            if (!isOpenInventory()) TopMenu(8, 1);
+            Pause(1500);
+            switch (numberOfbookmark)
+            {
+                case 1:
+                    new Point(713 - 5 + xx, 152 - 5 + yy).PressMouseL();     //первая - Equip
+                    break;
+                case 2:
+                    new Point(782 - 5 + xx, 152 - 5 + yy).PressMouseL();     //вторая - Expand
+                    break;
+                case 3:
+                    new Point(843 - 5 + xx, 152 - 5 + yy).PressMouseL();     //третья - Misk
+                    break;
+                case 4:
+                    new Point(902 - 5 + xx, 152 - 5 + yy).PressMouseL();     //четвертая - Quest
+                    break;
+                case 5:
+                    new Point(871 - 5 + xx, 133 - 5 + yy).PressMouseL();     //пятая - костюмы
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// проверяем, лежит ли вещь thing в инвентаре в ячейке i,j
+        /// </summary>
+        /// <param name="i">строка</param>
+        /// <param name="j">столбец</param>
+        /// <param name="thing">вещь</param>
+        /// <returns></returns>
+        protected bool CheckThingInCell(int i, int j, Thing thing)
+        {
+            return new PointColor(thing.point1.X - 5 + xx + (j - 1) * 39, thing.point1.Y - 5 + yy + (i - 1) * 38, thing.point1.Color, 0).isColor() &&
+                   new PointColor(thing.point2.X - 5 + xx + (j - 1) * 39, thing.point2.Y - 5 + yy + (i - 1) * 38, thing.point2.Color, 0).isColor();
+        }
+
+        /// <summary>
+        /// использовать предмет в указанной ячейве инвентаря
+        /// </summary>
+        /// <param name="i">строка</param>
+        /// <param name="j">столбец</param>
+        protected void UseThingInCell(int i, int j)
+        {
+            new Point(702 - 5 + xx + (j - 1) * 39, 183 - 5 + yy + (i - 1) * 38).DoubleClickL();
+        }
+
+        /// <summary>
+        /// перекладываем указанную вещь во все слоты (инвентарь должене быть открыт на нужной закладке)
+        /// </summary>
+        protected bool DragItemToManaslot(Thing thing)
+        {
+            bool result = false;   //объект в кармане пока не найден
+            for (int i = 1; i <= 5; i++)         //строки в инвентаре
+            {
+                for (int j = 1; j <= 8; j++)        // столбцы в инвентаре
+                {
+                    if (!result)
+                    {
+                        if (CheckThingInCell(i, j, thing))
+                        {
+                            DragItemToSlot(i, j, 1);
+                            DragItemToSlot(i, j, 2);
+                            DragItemToSlot(i, j, 3);
+                            new Point(1500, 800).Move();   //убираем мышь в сторону
+                            result = true;
+                            Pause(500);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// перетащить вещь из ячейки инвентаря (строка i столбец j) в слот Slot
+        /// </summary>
+        /// <param name="i">строка</param>
+        /// <param name="j">столбец</param>
+        /// <param name="Slot">номер слота маны</param>
+        protected void DragItemToSlot (int i, int j, int Slot)
+        {
+            iPoint pointSlot;
+
+            switch (Slot)
+            {
+                case 1:
+                    pointSlot = new Point(244,702);
+                    break;
+                case 2:
+                    pointSlot = new Point(495, 702);
+                    break;
+                case 3:
+                    pointSlot = new Point(754, 702);
+                    break;
+                default:
+                    pointSlot = new Point(244, 702);
+                    break;
+            }
+
+            iPoint pointBegin = new Point(700 - 5 + xx + (j - 1) * 39, 182 - 5 + yy + (i - 1) * 38);
+            pointBegin.Drag(pointSlot);
+            Pause(1000);
+        }
+
+        /// <summary>
+        /// перетащить мастер свиток в слоты маны
+        /// </summary>
+        public bool DragMasterCardToManaslots()
+        {
+            Thing masterScroll = new Thing(new PointColor(703, 187, 461065, 0), new PointColor(704, 174, 1317005, 0));
+            return DragItemToManaslot(masterScroll);
+        }
+
+        /// <summary>
+        /// перетащить любую карту опыта в слоты маны
+        /// </summary>
+        public bool DragExpCardToManaslots()
+        {
+            Thing expCard = new Thing(new PointColor(704, 174, 1317005, 0), new PointColor(705, 174, 1317005, 0));
+            return DragItemToManaslot(expCard);
+        }
+
+        /// <summary>
+        /// есть ли свиток во всех слотах манны?
+        /// </summary>
+        /// <returns>true, если свиток во всех слотах </returns>
+        public bool isScrollinAllManaSlots()
+        {
+            return new PointColor(236 - 5 + xx, 709 - 5 + yy, 11335674, 0).isColor() && 
+                   new PointColor(491 - 5 + xx, 709 - 5 + yy, 11335674, 0).isColor() && 
+                   new PointColor(746 - 5 + xx, 709 - 5 + yy, 11335674, 0).isColor();
+        }
+
+        /// <summary>
+        /// есть ли свитки хоть в каком-нибудь слоте маны?
+        /// </summary>
+        /// <returns>true, если свитков в слотах нет </returns>
+        public bool isOutScrollinAllManaSlots()
+        {
+            return new PointColor(236 - 5 + xx, 709 - 5 + yy, 11335674, 0).isColor() ||
+                   new PointColor(491 - 5 + xx, 709 - 5 + yy, 11335674, 0).isColor() ||
+                   new PointColor(746 - 5 + xx, 709 - 5 + yy, 11335674, 0).isColor();
+        }
+
+        /// <summary>
+        /// есть ли свиток в указанном слоте манны?
+        /// </summary>
+        /// <param name="Slot"></param>
+        /// <returns></returns>
+        public bool isScrollinManaslot(int Slot)
+        {
+            bool result;
+
+            iPointColor pointSlot;
+
+            switch (Slot)
+            {
+                case 1:
+                    pointSlot = new PointColor(236 - 5 + xx, 709 - 5 + yy, 11335674, 0);
+                    break;
+                case 2:
+                    pointSlot = new PointColor(491 - 5 + xx, 709 - 5 + yy, 11335674, 0);
+                    break;
+                case 3:
+                    pointSlot = new PointColor(746 - 5 + xx, 709 - 5 + yy, 11335674, 0);
+                    break;
+                default:
+                    pointSlot = new PointColor(236 - 5 + xx, 709 - 5 + yy, 11335674, 0);
+                    break;
+            }
+
+            result = pointSlot.isColor();
+            return result;
+        }
+
+        /// <summary>
+        /// применить вещи, лежащие в слотах маны 
+        /// </summary>
+        public void ApplyItems()
+        {
+            pointMana1.PressMouseL();
+            Pause(500);
+            AnswerYesOrNo(true);
+            Pause(500);
+            pointMana2.PressMouseL();
+            Pause(500);
+            AnswerYesOrNo(true);
+            Pause(500);
+            pointMana3.PressMouseL();
+            Pause(500);
+            AnswerYesOrNo(true);
+            Pause(500);
+        }
+
+        /// <summary>
+        /// применить вещи, лежащие в слотах маны 
+        /// </summary>
+        public void ApplyItems(bool confirmation)
+        {
+            pointMana1.FastPressMouseL();
+            pointMana2.FastPressMouseL();
+            pointMana3.FastPressMouseL();
+            new Point(500 - 5 + xx, 500 - 5 + yy).FastMove();
+        }
+
+        /// <summary>
+        /// если в середине экрана возникает запрос на подтверждение, то ответить
+        /// </summary>
+        /// <param name="answer">если true, то ответить положительно</param>
+        protected void AnswerYesOrNo (bool answer)
+        {
+            if (new PointColor(559 - 5 + xx, 420 - 5 + yy, 7727344, 0).isColor() ||
+                new PointColor(559 - 5 + xx, 426 - 5 + yy, 7727344, 0).isColor())  //проверка, есть ли запрос на экране
+                if (answer)
+                    new Point(465, 422).PressMouseL();   //да
+                else
+                    new Point(565, 422).PressMouseL();   //нет
+        }
+
+        /// <summary>
+        /// проверяем, докачались ли все три персонажа до Мастера 10лвл 100%  (можно ли уже продвигать до Хаймастера)
+        /// </summary>
+        /// <returns></returns>
+        public bool isHighMaster()
+        {
+            return  new PointColor(126 - 5 + xx, 722 - 5 + yy, 15000000, 6).isColor() &&
+                    new PointColor(150 - 5 + xx, 722 - 5 + yy, 15000000, 6).isColor() &&
+                    new PointColor(381 - 5 + xx, 722 - 5 + yy, 15000000, 6).isColor() &&
+                    new PointColor(405 - 5 + xx, 722 - 5 + yy, 15000000, 6).isColor() &&
+                    new PointColor(636 - 5 + xx, 722 - 5 + yy, 15000000, 6).isColor() &&
+                    new PointColor(660 - 5 + xx, 722 - 5 + yy, 15000000, 6).isColor();
+        }
+
+        /// <summary>
+        /// проверяем, докачались ли все три персонажа до ХайМастера 10лвл 100%, т.е. 140лвл
+        /// </summary>
+        /// <returns></returns>
+        public bool isHighMaster140Lvl()
+        {
+            return new PointColor(137 - 5 + xx, 722 - 5 + yy, 15000000, 6).isColor() &&
+                    new PointColor(161 - 5 + xx, 722 - 5 + yy, 15000000, 6).isColor() &&
+                    new PointColor(392 - 5 + xx, 722 - 5 + yy, 15000000, 6).isColor() &&
+                    new PointColor(416 - 5 + xx, 722 - 5 + yy, 15000000, 6).isColor() &&
+                    new PointColor(647 - 5 + xx, 722 - 5 + yy, 15000000, 6).isColor() &&
+                    new PointColor(671 - 5 + xx, 722 - 5 + yy, 15000000, 6).isColor();
+        }
+
+        /// <summary>
+        /// бежим к линдону
+        /// </summary>
+        public void RunToLindon()
+        {
+            botwindow.FirstHero();
+
+            OpenMapForState();                         //открыли карту Alt+Z
+            Pause(1500);
+
+            pointLindonOnMap.PressMouseL();            //выбрали Линдона
+            Pause(1000);
+
+            town_begin.ClickMoveMap();                 //нажимаем на кнопку Move на карте
+            Pause(10000);
+
+            botwindow.PressEscThreeTimes();
+            Pause(1000);
+
+            new Point(454 - 5 + xx, 161 - 5 + yy).PressMouseL();           //нажимаем на голову Master Guardian
+            Pause(3000);
+        }
+
+        /// <summary>
+        /// находимся на странице распределения очков семьи (Family Attribute)
+        /// </summary>
+        /// <returns></returns>
+        public bool isFamilyAttribute()
+        {
+            return new PointColor(253 - 5 + xx, 98 - 5 + yy, 15132648, 0).isColor() &&
+                   new PointColor(253 - 5 + xx, 99 - 5 + yy, 15132648, 0).isColor();
+        }
+
+        /// <summary>
+        /// потратить очки семьи на странице распределения очков семьи (Family Attribute)
+        /// </summary>
+        public void FamilyAttributeAdded()
+        {
+            for (int i = 1; i <= 5; i++) new Point(280 - 5 + xx, 142 - 5 + yy).PressMouseL();  //атака
+
+            FamilyAttributeBookmark(2);
+            new Point(280 - 5 + xx, 142 - 5 + yy).PressMouseLL();  //атака
+            new Point(500 - 5 + xx, 214 - 5 + yy).PressMouseLL();  //норм атака
+
+            FamilyAttributeBookmark(1);
+            for (int i = 1; i <= 5; i++) new Point(351 - 5 + xx, 142 - 5 + yy).PressMouseL();  //скорость
+
+            new Point(709 - 5 + xx, 625 - 5 + yy).PressMouseL();   //Save
+            new Point(798 - 5 + xx, 69 - 5 + yy).PressMouseL();    //закрыть крестиком
+        }
+
+        /// <summary>
+        /// распределяем оставшиеся очки семьи на странице распределения очков семьи (Family Attribute)
+        /// </summary>
+        public void FamilyAttributeAdded2()
+        {
+            TopMenu(9, 8);  //открываем Ctrl+T
+            FamilyAttributeBookmark(3);
+            for (int i = 1; i <= 5; i++) new Point(572 - 5 + xx, 142 - 5 + yy).PressMouseL();  //атака по мобам
+
+            FamilyAttributeBookmark(1);
+            for (int i = 1; i <= 5; i++) new Point(280 - 5 + xx, 142 - 5 + yy).PressMouseL();  //атака
+            for (int i = 1; i <= 5; i++) new Point(351 - 5 + xx, 142 - 5 + yy).PressMouseL();  //скорость
+
+            new Point(709 - 5 + xx, 625 - 5 + yy).PressMouseL();   //Save
+            new Point(798 - 5 + xx, 69 - 5 + yy).PressMouseL();    //закрыть крестиком
+        }
+
+        /// <summary>
+        /// потратить очки семьи на странице распределения очков семьи (Family Attribute)
+        /// </summary>
+        public void FamilyAttributeBookmark(int bookmark)
+        {
+            switch (bookmark)
+            {
+                case 1:
+                    new Point(286 - 5 + xx, 100 - 5 + yy).PressMouseL();
+                    break;
+                case 2:
+                    new Point(378 - 5 + xx, 100 - 5 + yy).PressMouseL();
+                    break;
+                case 3:
+                    new Point(458 - 5 + xx, 100 - 5 + yy).PressMouseL();
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// голова Master Guardian
+        /// </summary>
+        public void HeadMasterGuardian()
+        {
+            botwindow.PressEscThreeTimes();
+            Pause(500);
+
+            new Point(446 - 5 + xx, 194 - 5 + yy).PressMouseL();           //нажимаем на голову Master Guardian
+            Pause(3000);
+        }
+
+        /// <summary>
+        /// голова Master Guardian
+        /// </summary>
+        public void HeadMasterGuardian2()
+        {
+            botwindow.PressEscThreeTimes();
+            Pause(500);
+
+            botwindow.SecondHero();
+            Pause(1000);
+
+            new Point(413 - 5 + xx, 188 - 5 + yy).PressMouseL();           //нажимаем на голову Master Guardian
+            Pause(3000);
+        }
+
+        /// <summary>
+        /// голова Master Guardian
+        /// </summary>
+        public void HeadMasterGuardian3()
+        {
+            botwindow.PressEscThreeTimes();
+            Pause(1000);
+
+            botwindow.ThirdHero();
+            Pause(1000);
+
+            new Point(413 - 5 + xx, 188 - 5 + yy).PressMouseL();           //нажимаем на голову Master Guardian
+            Pause(3000);
+        }
+
+        /// <summary>
+        /// получить подарки за уровень семьи (Alt+L)
+        /// </summary>
+        public void GiveGiftsAltL()
+        {
+            TopMenu(9, 9);
+
+            while (new PointColor (937 - 5 + xx, 175 - 5 + yy, 15986174, 0).isColor() )
+            {
+                new Point(937 - 5 + xx, 175 - 5 + yy).PressMouseL();
+                new Point(500 - 5 + xx, 500 - 5 + yy).FastMove();
+                Pause(1500);
+            }
+
+            while (new PointColor(937 - 5 + xx, 211 - 5 + yy, 15986174, 0).isColor())
+            {
+                new Point(937 - 5 + xx, 211 - 5 + yy).PressMouseL();
+                new Point(500 - 5 + xx, 500 - 5 + yy).FastMove();
+                Pause(1500);
+            }
+
+            botwindow.PressEscThreeTimes();
+            //new Point(1007 - 5 + xx, 99 - 5 + yy).PressMouseL();  //закрыли крестиком
+
+        }
+
+        /// <summary>
+        /// используем указанную вещь в инвентаре (инвентарь должен быть открыт на нужной закладке)
+        /// </summary>
+        protected bool UseItem (Thing thing)
+        {
+            bool result = false;   //объект в кармане пока не найден
+            for (int i = 1; i <= 5; i++)         //строки в инвентаре
+            {
+                for (int j = 1; j <= 8; j++)        // столбцы в инвентаре
+                {
+                    if (!result)         //если вещь уже найдена, то дальше не ищем
+                    {
+                        if (CheckThingInCell(i, j, thing))
+                        {
+                            UseThingInCell(i, j);
+                            new Point(1000 - 5 + xx, 500 - 5 + yy).Move();   //убираем мышь в сторону
+                            result = true;
+                            Pause(500);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// использовать все levelUpGiftBox в инвентаре
+        /// </summary>
+        /// <returns></returns>
+        public bool UseGiftBoxes()
+        {
+            Thing levelUpGiftBox = new Thing(new PointColor(698, 176, 13238257, 0), new PointColor(701, 176, 13500159, 0));
+            bool result = UseItem(levelUpGiftBox);
+            return result;
+        }
+
+        /// <summary>
+        /// проверяем флинтлок в магазине стоек
+        /// </summary>
+        /// <returns></returns>
+        public bool isFlintlock()
+        {
+            return new PointColor(155 - 5 + xx, 538 - 5 + yy, 12048866, 0).isColor() &&
+                   new PointColor(155 - 5 + xx, 530 - 5 + yy, 12048866, 0).isColor();
+        }
+
+        /// <summary>
+        /// нажимаем на стрелку прокрутки списка в магазине стоек
+        /// </summary>
+        public void ArrowDown()
+        {
+            new Point(662 - 5 + xx, 542 - 5 + yy).PressMouseL();
+        }
+
+        //купить флинтлок 2 штуки в магазине стоек
+        public void BuyingFlintlocks()
+        {
+            for (int i = 1; i <= 2; i++) new Point(378 - 5 + xx, 535 - 5 + yy).PressMouseL();  //кол-во
+
+            new Point(742 - 5 + xx, 589 - 5 + yy).PressMouseL();   //кнопка купить
+            Pause(2000);
+            new Point(863 - 5 + xx, 589 - 5 + yy).DoubleClickL();   //кнопка закрыть
+            Pause(2000);
+        }
+
+        /// <summary>
+        /// ищем указанную вещь в инвентаре (инвентарь должен быть открыт на нужной закладке)
+        /// </summary>
+        /// <param name="thing">искомая вещь</param>
+        /// <param name="ii">строка с найденной вещью</param>
+        /// <param name="jj">столбец с найденной вещью</param>
+        /// <returns></returns>
+        protected bool FindItem(Thing thing , out int ii, out int jj)
+        {
+            ii = 1;
+            jj = 1;
+            bool result = false;   //объект в кармане пока не найден
+            for (int i = 1; i <= 5; i++)         //строки в инвентаре
+            {
+                for (int j = 1; j <= 8; j++)        // столбцы в инвентаре
+                {
+                    if (!result)         //если вещь уже найдена, то дальше не ищем
+                    {
+                        if (CheckThingInCell(i, j, thing))
+                        {
+                            ii = i;
+                            jj = j;
+                            result = true;
+                            Pause(500);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// использовать флинтлоки
+        /// </summary>
+        public bool UseStanceBooks()
+        {
+            Thing StanceBook = new Thing(new PointColor(707, 184, 11335674, 0), new PointColor(703, 192, 12904947, 0));
+
+            int ii = 0;
+            int jj = 0;
+            bool result = FindItem(StanceBook, out ii, out jj);
+
+            botwindow.FirstHero();
+            UseThingInCell(ii, jj);
+
+            botwindow.SecondHero();
+            UseThingInCell(ii, jj);
+
+            return result;
+        }
+
+        /// <summary>
+        /// включить стойку Флинтлок у первых двух персов
+        /// </summary>
+        public void FlintlockIsOn()
+        {
+            new Point(110 - 5 + xx, 670 - 5 + yy).PressMouseLL();
+            new Point(365 - 5 + xx, 670 - 5 + yy).PressMouseLL();
+        }
+
+        /// <summary>
+        /// открыт ли специнвентарь
+        /// </summary>
+        /// <returns></returns>
+        public bool isOpenSpecInventory()
+        {
+            return new PointColor(109 - 5 + xx, 116 - 5 + yy, 8036794, 0).isColor() &&
+                   new PointColor(118 - 5 + xx, 116 - 5 + yy, 8036794, 0).isColor();
+        }
+
+        /// <summary>
+        /// открыть специнвентарь на указанной закладке
+        /// </summary>
+        public void OpenSpecInventory(int bookmark)
+        {
+            if (!isOpenSpecInventory()) TopMenu(8, 2);
+            Pause(1500);
+            switch (bookmark)
+            {
+                case 1:
+                    new Point( 47 - 5 + xx, 182 - 5 + yy).PressMouseL();     //первая - Equip
+                    break;
+                case 2:
+                    new Point(114 - 5 + xx, 182 - 5 + yy).PressMouseL();     //вторая - Expand
+                    break;
+                case 3:
+                    new Point(177 - 5 + xx, 182 - 5 + yy).PressMouseL();     //третья - Misk
+                    break;
+                case 4:
+                    new Point(247 - 5 + xx, 182 - 5 + yy).PressMouseL();     //четвертая - Costume
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// надеть крылья
+        /// </summary>
+        public void PutWings()
+        {
+            botwindow.FirstHero();
+            new Point(36 - 5 + xx, 211 - 5 + yy).DoubleClickL();
+            Pause(500);
+            AnswerYesOrNo(true);
+            Pause(500);
+
+            botwindow.SecondHero();
+            new Point(36 - 5 + xx, 211 - 5 + yy).DoubleClickL();
+            Pause(500);
+            AnswerYesOrNo(true);
+            Pause(500);
+
+            botwindow.ThirdHero();
+            new Point(36 - 5 + xx, 211 - 5 + yy).DoubleClickL();
+            Pause(500);
+            AnswerYesOrNo(true);
+            Pause(500);
+        }
+
+        /// <summary>
+        /// увеличиваем всем персам характеристику DEX
+        /// </summary>
+        public void AddDex()
+        {
+            new Point(219 - 5 + xx, 672 - 5 + yy).PressMouseL();
+            Pause(1000);
+            new Point(247 - 5 + xx, 186 - 5 + yy).PressMouseL();    //прибавляем Декс у первого перса
+            Pause(1000);
+            AnswerYesOrNo(true);
+
+            new Point(474 - 5 + xx, 672 - 5 + yy).PressMouseL();
+            Pause(1000);
+            new Point(502 - 5 + xx, 186 - 5 + yy).PressMouseL();    //прибавляем Декс у 2-го перса
+            Pause(1000);
+            AnswerYesOrNo(true);
+
+            new Point(730 - 5 + xx, 672 - 5 + yy).PressMouseL();
+            Pause(1000);
+            new Point(757 - 5 + xx, 186 - 5 + yy).PressMouseL();    //прибавляем Декс у 3-го перса
+            Pause(1000);
+            AnswerYesOrNo(true);
+
+        }
+
+        /// <summary>
+        /// ищем указанную кэшевую вещь в кэш инвентаре (кэш инвентарь должен быть открыт на нужной закладке)
+        /// </summary>
+        /// <param name="thing">искомая вещь</param>
+        /// <param name="ii">строка с найденной вещью</param>
+        /// <param name="jj">столбец с найденной вещью</param>
+        /// <returns></returns>
+        protected bool FindCashItem(Thing thing, out int ii, out int jj)
+        {
+            ii = 1;
+            jj = 1;
+            bool result = false;   //объект в кармане пока не найден
+            for (int i = 1; i <= 5; i++)         //строки в инвентаре
+            {
+                for (int j = 1; j <= 7; j++)        // столбцы в инвентаре
+                {
+                    if (!result)         //если вещь уже найдена, то дальше не ищем
+                    {
+                        if (CheckThingInCell(i, j, thing))
+                        {
+                            ii = i;
+                            jj = j;
+                            result = true;
+                            Pause(500);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// переложить вещь из кэш инвентаря в быстрый слот
+        /// </summary>
+        /// <param name="thing">вещь</param>
+        /// <param name="slot"></param>
+        protected void DragCashItemInCell(Thing thing, int slot)
+        {
+            int ii = 0;
+            int jj = 0;
+            if (FindCashItem(thing, out ii, out jj))
+            {
+
+            }
+        }
+
+        protected void DragCashItem(int i, int j, int slot)
+        {
+            Point beginPoint = new Point();
 
 
-        ///// <summary>
-        ///// переход на нужный канал после телепорта на работу 
-        ///// </summary>
-        //public void GoToChannel()
-        //{
-        //    if (botwindow.getKanal() > 1)
-        //    {
-        //        TopMenu(13);
-        //        Pause(1000);
+        }
+        #endregion
 
-        //        pointChooseChannel.PressMouse();
-        //        Pause(1000);
 
-        //        pointEnterChannel.PressMouse();
-        //        Pause(1000);
 
-        //        pointMoveNow.PressMouse();
-        //        Pause(15000);
-        //    }
-        //}
 
     }
 }

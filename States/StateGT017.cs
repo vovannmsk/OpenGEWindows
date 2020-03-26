@@ -58,7 +58,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            server.Cure(4);               //лечение+патроны                          // было botwindow.Cure();
+            server.Cure(3);               //лечение+патроны                         
             botwindow.Pause(1000);
 
 //            server.Teleport(1);                       // телепорт на работу   

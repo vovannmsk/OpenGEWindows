@@ -66,7 +66,7 @@ namespace States
             BHdialog.PressOkButton(1);      //нажимаем на кнопку Ок один раз
             server.WriteToLogFileBH("105. уровень ворот больше 20 лвл. выбрали 2-ю строку снизу и Ок");
 
-            //надо вводить слово Initialize
+            //теперь надо вводить слово Initialize
         }
 
         /// <summary>

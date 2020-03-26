@@ -18,6 +18,8 @@
             this.ButtonOkDialog = new Point(978 - 30 + xx, 394 - 30 + yy);                           //кнопка Ок в диалоге
             this.pointDialog1 = new PointColor(979 - 30 + xx, 390 - 30 + yy, 7700000, 5);
             this.pointDialog2 = new PointColor(979 - 30 + xx, 391 - 30 + yy, 7700000, 5);
+
+
         }
 
         // ===============================  Методы ==================================================

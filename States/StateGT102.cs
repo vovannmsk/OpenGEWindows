@@ -93,17 +93,14 @@ namespace States
         {
             if (BHdialog.isGateBH1())                   //если есть попытки (можно сходить в Инфинити всего 5 раз в день)
             {
-                bool g=true;
                 return new StateGT103(botwindow);
             }
             if (BHdialog.isGateBH3())                   //если попытки закончились (можно сходить в Инфинити всего 5 раз в день)
             {
-                bool f = true;
                 return new StateGT103a(botwindow);
             }
             else
             {
-                bool gg = true;
                 return new StateGT108(botwindow);     // в конец цикла (если непонятные ворота)
             }
         }

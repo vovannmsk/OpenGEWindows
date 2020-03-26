@@ -25,7 +25,10 @@ namespace GEBot.Data
         private string[] parametrs;              // список параметров: синг, америка или европа
         private UIntPtr hwnd;
         private int kanal;
-        private int nomerTeleport;
+        /// <summary>
+        /// номер телепорта, где продаваться
+        /// </summary>
+        private int nomerTeleport;          
         private string nameOfFamily;
         private int[] triangleX;
         private int[] triangleY;
@@ -33,6 +36,8 @@ namespace GEBot.Data
         private int statusOfAtk;
         private int numberOfInfinity;
         //private bool infinity;
+        private int howManyCyclesToSkip;           //сколько пропустить циклов. Для БХ 
+        private int lengthOfList;
 
         public string Login { get => login; }
         public string[] Logins { get => logins; }
@@ -41,20 +46,25 @@ namespace GEBot.Data
         public int X { get => x; }
         public int Y { get => y; }
         public string[] Parametrs { get => parametrs; }
-        public UIntPtr Hwnd { get => hwnd; set { hwnd = value; SetHwnd(); } }
+//        public UIntPtr Hwnd { get => hwnd; set { hwnd = value; SetHwnd(); } }
+        public UIntPtr Hwnd { get { hwnd = Hwnd_in_file(); return hwnd; }        set { hwnd = value; SetHwnd(); } }
         public int Kanal { get => kanal; }
         public int NomerTeleport { get => nomerTeleport; }
         public string NameOfFamily { get => nameOfFamily; }
         public int[] TriangleX { get => triangleX; }
         public int[] TriangleY { get => triangleY; }
         //public int Bullet { get => bullet; }
-        public int StatusOfAtk { get => statusOfAtk; set { statusOfAtk = value; SetStatusAtkInFile(); } }
+//        public int StatusOfAtk { get => statusOfAtk; set { statusOfAtk = value; SetStatusAtkInFile(); } }
+        public int StatusOfAtk { get { statusOfAtk = GetStatusOfAtk(); return statusOfAtk;} set { statusOfAtk = value; SetStatusAtkInFile(); } }
         public int NumberOfInfinity { get { numberOfInfinity = NumberFromFile(); return numberOfInfinity; }
                                       set { numberOfInfinity = value; NumberToFile(); } }
 
+        public int HowManyCyclesToSkip { get => howManyCyclesToSkip; set => howManyCyclesToSkip = value; }
+        public int LengthOfList { get => lengthOfList; }
+
         //********отключаем временно для проверки*********************************************************
         //public string Param { get { return parametrs[numberOfInfinity]; } } 
-        
+
         //public bool Infinity { get => infinity; set => infinity = value; }
 
 
@@ -82,12 +92,14 @@ namespace GEBot.Data
             //********отключаем временно для проверки*********************************************************
             //param = parametrs[numberOfInfinity];
             kanal = Channal();
-            nomerTeleport = NomerTeleporta();
+            nomerTeleport = NomerTeleporta();     
             nameOfFamily = LoadNameOfFamily();
             triangleX = LoadTriangleX();
             triangleY = LoadTriangleY();
             statusOfAtk = GetStatusOfAtk();
             //this.bullet = NumberOfBullets();                       //пока не используется
+            lengthOfList = logins.Length;
+            howManyCyclesToSkip = 0;
         }
 
 
@@ -105,6 +117,27 @@ namespace GEBot.Data
         //}
 
         //#endregion
+
+        ///// <summary>
+        ///// прочитать из файла список логинов
+        ///// </summary>
+        ///// <returns></returns>
+        //private int LengthOfFileLogin()
+        //{
+        //    return File.length    (directoryOfMyProgram + this.numberOfWindow + "\\Логины.txt");
+        //}
+
+
+        /// <summary>
+        /// закончился ли список ботов для данного окна?
+        /// </summary>
+        /// <returns>true, если закончился</returns>
+        public bool EndOfList()
+        {
+            bool result = false;
+            if (NumberOfInfinity >= LengthOfList)    result = true;
+            return result;
+        }
 
         /// <summary>
         /// прочитать из файла список параметров

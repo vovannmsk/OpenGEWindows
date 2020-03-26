@@ -41,8 +41,11 @@ namespace GEBot.Data
         public bool Samara { get => samara; }
         public string[] MMProduct { get => mmProduct; }
         public int TotalNumberOfAccounts { get => totalNumberOfAccounts; }
-//        public int StatusOfSale { get => GetStatusOfSale(); set { statusOfSale = value; SetStatusInFile(); } }
-        public int StatusOfSale { get => statusOfSale; set { statusOfSale = value; SetStatusInFile(); } }
+        //        public int StatusOfSale { get => GetStatusOfSale(); set { statusOfSale = value; SetStatusInFile(); } }
+        //        public int StatusOfSale { get => statusOfSale; set { statusOfSale = value; SetStatusInFile(); } }
+        public int StatusOfSale { get { statusOfSale = GetStatusOfSale(); return statusOfSale; }
+                                  set { statusOfSale = value; SetStatusInFile(); }
+                                }
         public string DirectoryOfMyProgram { get => directoryOfMyProgram; }
         //public bool Infinity { get => infinity;}
 

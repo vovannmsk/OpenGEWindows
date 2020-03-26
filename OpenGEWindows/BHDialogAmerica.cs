@@ -17,8 +17,7 @@
             #endregion
 
             this.ButtonOkDialog = new Point(953 - 5 + xx, 369 - 5 + yy);                           //нажимаем на Ок в диалоге
-            this.pointDialog1 = new PointColor(954 - 5 + xx, 365 - 5 + yy, 7700000, 5);            //isDialog
-            this.pointDialog2 = new PointColor(954 - 5 + xx, 366 - 5 + yy, 7700000, 5);
+
         }
 
         // ======================  методы  ========================

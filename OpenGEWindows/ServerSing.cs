@@ -25,7 +25,8 @@ namespace OpenGEWindows
         //основной конструктор
         public ServerSing(botWindow botwindow)
         {
-            //rr = false;
+            isLoadedGEBH = false;   
+            isLoadedSteamBH = false;
 
             #region общие
 
@@ -78,7 +79,8 @@ namespace OpenGEWindows
 
             #region Logout
 
-            this.pointConnect = new PointColor(696 - 5 + xx, 148 - 5 + yy, 7800000, 5);
+//            this.pointConnect = new PointColor(696 - 5 + xx, 148 - 5 + yy, 7800000, 5);
+            this.pointConnect = new PointColor(547 - 30 + xx, 441 - 5 + yy, 7800000, 5);
             //this.pointisLogout1 = new PointColor(565 - 5 + xx, 532 - 5 + yy, 16000000, 6);       // проверено   слово Leave Game буква L
             //this.pointisLogout2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 16000000, 6);       // проверено
             this.pointisLogout1 = new PointColor(930 - 5 + xx, 702 - 5 + yy, 7925494, 0);       // проверено   слово Ver буква r
@@ -120,20 +122,6 @@ namespace OpenGEWindows
             this.pointisOpenTopMenu122 = new PointColor(718 - 5 + xx, 118 - 5 + yy, 13000000, 6);
             this.pointisOpenTopMenu131 = new PointColor(404 - 5 + xx, 278 - 5 + yy, 16000000, 6);          //Quest Name                                                         //проверено
             this.pointisOpenTopMenu132 = new PointColor(404 - 5 + xx, 279 - 5 + yy, 16000000, 6);
-            //this.pointisOpenTopMenu21 = new PointColor(328 + xx, 74 + yy, 13420000, 4);      
-            //this.pointisOpenTopMenu22 = new PointColor(329 + xx, 74 + yy, 13420000, 4);
-            //this.pointisOpenTopMenu61 = new PointColor(455 + xx, 87 + yy, 13420000, 4);      
-            //this.pointisOpenTopMenu62 = new PointColor(456 + xx, 87 + yy, 13420000, 4);
-            //this.pointisOpenTopMenu81 = new PointColor(553 + xx, 87 + yy, 13420000, 4);      
-            //this.pointisOpenTopMenu82 = new PointColor(554 + xx, 87 + yy, 13420000, 4);
-            //this.pointisOpenTopMenu91 = new PointColor(601 + xx, 74 + yy, 13420000, 4);      //pet
-            //this.pointisOpenTopMenu92 = new PointColor(602 + xx, 74 + yy, 13420000, 4);
-            //this.pointisOpenTopMenu12_1 = new PointColor(708 - 5 + xx, 118 - 5 + yy, 13000000, 6);      
-            //this.pointisOpenTopMenu12_2 = new PointColor(718 - 5 + xx, 118 - 5 + yy, 13000000, 6);
-            //this.pointisOpenTopMenu131 = new PointColor(404 - 5 + xx, 278 - 5 + yy, 16000000, 6);          //Quest Name                                                         //проверено
-            //this.pointisOpenTopMenu132 = new PointColor(404 - 5 + xx, 279 - 5 + yy, 16000000, 6);
-
-
 
             this.pointGotoEnd = new Point(685 - 5 + xx, 470 - 5 + yy);            //end
             this.pointLogout = new Point(685 - 5 + xx, 440 - 5 + yy);            //логаут
@@ -202,8 +190,8 @@ namespace OpenGEWindows
             this.pointCure2 = new Point(215 - 5 + 255 + xx, 705 - 5 + yy);                        //бутылка лечения под буквой J
             this.pointCure3 = new Point(215 - 5 + 255 * 2 + xx, 705 - 5 + yy);                        //бутылка лечения под буквой M
             this.pointMana1 = new Point(245 - 5 + xx, 705 - 5 + yy);                        //бутылка маны под буквой I
-            this.pointMana2 = new Point(245 - 5 + 255 + xx, 705 - 5 + yy);                        //бутылка маны под буквой K
-            this.pointMana3 = new Point(245 - 5 + 510 + xx, 705 - 5 + yy);                        //бутылка маны под буквой ,
+            this.pointMana2 = new Point(245 - 5 + 255 + xx, 705 - 5 + yy);                  //бутылка маны под буквой K
+            this.pointMana3 = new Point(245 - 5 + 510 + xx, 705 - 5 + yy);                  //бутылка маны под буквой ,
             this.pointGM = new Point(439 - 5 + xx, 413 - 5 + yy);
 //            this.pointHeadGM = new Point(369 - 5 + xx, 290 - 5 + yy);
             this.pointHeadGM = new Point(394 - 5 + xx, 394 - 5 + yy);
@@ -264,11 +252,11 @@ namespace OpenGEWindows
             this.pointisBarack4 = new PointColor(36 - 5 + xx, 57 - 5 + yy, 15100000, 5);             //проверено
             this.pointisBarackTeamSelection1 = new PointColor(15 - 5 + xx, 60 - 5 + yy, 7900000, 5);            //Team Selection
             this.pointisBarackTeamSelection2 = new PointColor(16 - 5 + xx, 60 - 5 + yy, 7900000, 5);            //
-            this.pointTeamSelection1 = new Point(140 - 5 + xx, 496 - 5 + yy);                   //проверено
+            this.pointTeamSelection1 = new Point(140 - 5 + xx, 510 - 5 + yy);                   //проверено
             this.pointTeamSelection2 = new Point(70 - 5 + xx, 355 - 5 + yy);                   //проверено
             this.pointTeamSelection3 = new Point(50 - 5 + xx, 620 - 5 + yy);                   //проверено
             this.pointButtonLogoutFromBarack = new Point(785 - 5 + xx, 700 - 5 + yy);               //кнопка логаут в казарме
-            this.pointChooseChannel = new Point(820 - 5 + xx, 382 - 5 + yy);                       //переход из меню Alt+Q в меню Alt+F2 (нажатие кнопки Choose a channel)
+            //this.pointChooseChannel = new Point(820 - 5 + xx, 382 - 5 + yy);                       //переход из меню Alt+Q в меню Alt+F2 (нажатие кнопки Choose a channel)
             this.pointEnterChannel = new Point(646 - 5 + xx, 409 - 5 + yy + (botwindow.getKanal() - 2) * 15);                        //выбор канала в меню Alt+F2
             this.pointNewPlace = new Point(85 + xx, 670 + yy);
             this.pointLastPoint = new Point(210 - 5 + xx, 670 - 5 + yy);
@@ -318,7 +306,7 @@ namespace OpenGEWindows
             this.pointSecondStringDialog = new Point(520 - 5 + xx, 640 - 5 + yy);                  //нажимаем Yes в диалоге Доминго второй раз (вторая строчка снизу)
             this.pointDomingoMiss = new Point(396 - 5 + xx, 206 - 5 + yy);                         //нажимаем правой кнопкой по карте миссии Доминго
             this.pointPressDomingo2 = new Point(572 - 5 + xx, 237 - 5 + yy);                       //нажимаем на Доминго после миссии
-            this.pointLindonOnMap = new Point(820 - 5 + xx, 415 - 5 + yy);                         //нажимаем на Линдона на карте Alt+Z
+            this.pointLindonOnMap = new Point(820 - 5 + xx, 412 - 5 + yy);                         //нажимаем на Линдона на карте Alt+Z
             this.pointPressLindon2 = new Point(627 - 5 + xx, 274 - 5 + yy);                        //нажимаем на Линдона
             this.pointPetExpert = new Point(818 - 5 + xx, 428 - 5 + yy);                           //нажимаем на петэксперта
             this.pointPetExpert2 = new Point(816 - 5 + xx, 415 - 5 + yy);                          //нажимаем на петэксперта второй раз 
@@ -499,17 +487,17 @@ namespace OpenGEWindows
 
                 this.pointGateInfinityBH = new Point(410 - 5 + xx, 430 - 5 + yy);
                 //this.pointGateInfinityBH = new Point(892 - 30 + xx, 573 - 30 + yy);
-                this.pointisBH1 = new PointColor(985 - 30 + xx, 91 - 30 + yy, 10353000, 3);              // желтый ободок на миникарте (в BH миникарты нет)
-                this.pointisBH2 = new PointColor(963 - 5 + xx, 47 - 5 + yy, 6600000, 5);                 // верхняя желтая часть колонны
+                this.pointisBH1 = new PointColor(985 - 30 + xx, 91 - 30 + yy, 10353000, 3);             // желтый ободок на миникарте (в BH миникарты нет)
+                this.pointisBH3 = new PointColor(963 - 5 + xx, 47 - 5 + yy, 6600000, 5);                // верхняя желтая часть колонны
+                this.pointisBH2 = new PointColor(1020 - 5 + xx, 216 - 5 + yy, 5744852, 0);              //
 
-                //int[] aa = new int[16] {1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 2104613};
-                //bool ff = aa.Contains(725272);
-                //int tt = Array.IndexOf(aa, 725272);
+            //int[] aa = new int[16] {1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 2104613};
+            //bool ff = aa.Contains(725272);
+            //int tt = Array.IndexOf(aa, 725272);
 
-               // this.arrayOfColors = new uint[19] { 0, 1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 1842730, 3955550, 1250584 };
-                this.arrayOfColors = new uint[38] { 0, 1644, 725, 6123, 3088, 1715, 1452, 6608, 14190, 1319, 2302, 5275, 2830, 1577, 525, 2635, 1842, 3955, 1250, 5144, 460, 1584,7236, 5198, 7160, 2108, 526, 15043, 1971, 15306, 2899, 1118, 1713, 5275, 921, 1447, 5074, 5663};
-                //this.arrayOfColors = new uint[38] { 0, 1644, 725, 6123, 3088, 1715, 924, 6608, 14190, 1319, 2302, 5275, 2830, 658, 658, 2635, 1842, 3955, 1250, 5275, 460, 1584, 7236, 5198, 7160, 2108, 526, 15043, 1971, 15306, 2899, 1118, 1713, 5275, 921, 1447, 5074, 5663 };
-            //                                      0   1*    2*     3    4     5*   6*   7*      8     9     10*    11    12   13   14*   15    16*   17    18*    19*   20    21   22    23    24    25    26   27     28    29     30    31    32    33    34   35    36    37
+            // this.arrayOfColors = new uint[19] { 0, 1644051, 725272, 6123117, 3088711, 1715508, 1452347, 6608314, 14190184, 1319739, 2302497, 5275256, 2830124, 1577743, 525832, 2635325, 1842730, 3955550, 1250584 };
+            this.arrayOfColors = new uint[38] { 0, 1644, 725, 6123, 3088, 1715, 1452, 6608, 14190, 1319, 2302, 5275, 2830, 1577, 525, 2635, 1842, 3955, 1250, 5144, 460, 1584,7370, 7304, 2105, 6806, 1711, 15043, 1971, 15306, 2899, 1118, 1713, 5275, 921, 1447, 5074, 5663};
+            //                                  0   1*    2*     3    4     5*   6*   7*      8     9     10*   11    12    13   14*   15    16*   17    18    19   20    21   22    23    24    25    26   27     28    29     30    31    32    33    34   35    36    37
             //this.pointIsAtak1 = new PointColor(101 - 30 + xx, 541 - 30 + yy, 4000000, 6);                // проверяем, атакует ли бот босса (есть ли зеленый ободок вокруг сабли)
             //this.pointIsAtak2 = new PointColor(101 - 30 + xx, 542 - 30 + yy, 3000000, 6);
             //this.pointIsAtak3 = new PointColor(101 - 30 + xx, 542 - 30 + yy, 5000000, 6);
@@ -605,26 +593,6 @@ namespace OpenGEWindows
             return pointisWhiteWindow.isColor();
         }
 
-        /// <summary>
-        /// запуск клиента Steam без запуска игры
-        /// </summary>
-        public override void runClientSteam()
-        {
-            #region для песочницы
-
-            //запускаем steam в песочнице
-            Process process = new Process();
-            process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
-            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient;
-            process.Start();
-
-            Pause(30000);
-
-
-            #endregion
-
-        }
-
         protected override bool isContinueRunning()
         {
             return pointisContinueRunning1.isColor() && pointisContinueRunning2.isColor();
@@ -643,7 +611,7 @@ namespace OpenGEWindows
             Process process = new Process();
             process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
             process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient + " -login " + GetLogin() + " " + GetPassword() + " -applaunch 663090 -silent";
-
+            //steam://rungameid/319730
             process.Start();
             Pause(10000);
 
@@ -820,20 +788,15 @@ namespace OpenGEWindows
         /// <param name="punkt"></param>
         public override void TopMenu(int numberOfThePartitionMenu, int punkt)
         {
-            //          int[] numberOfPunkt = { 0, 8, 4, 5, 0, 3, 2, 6, 9, 0, 0, 0, 0, 0 };
             int[] numberOfPunkt = { 0, 8, 4, 2, 0, 3, 2, 6, 9, 0, 0, 0, 0, 0 };
-            //          int[] MenukoordX = { 300, 333, 365, 398, 431, 470, 518, 565, 606, 637, 669, 700, 733 };
-//            int[] MenukoordX = { 283, 316, 349, 382, 415, 453, 500, 547, 588, 620, 653, 683, 715, 748 };
             int[] MenukoordX = { 305, 339, 371, 402, 435, 475, 522, 570, 610, 642, 675, 705, 738 };
 
-            int[] FirstPunktOfMenuKoordY = { 0, 85, 85, 85, 0, 97, 97, 97, 85, 0, 0, 0, 0 };
+            int[] FirstPunktOfMenuKoordY = { 0, 83, 83, 83, 0, 97, 97, 97, 83, 0, 0, 0, 0 };
 
             if (punkt <= numberOfPunkt[numberOfThePartitionMenu - 1])
             {
                 int x = MenukoordX[numberOfThePartitionMenu - 1] + 25;
-                //int x = MenukoordX[numberOfThePartitionMenu - 1] + 10;
-                //int y = FirstPunktOfMenuKoordY[numberOfThePartitionMenu - 1] + 25 * (punkt - 1);
-                int y = FirstPunktOfMenuKoordY[numberOfThePartitionMenu - 1] + 24 * (punkt - 1);
+                int y = FirstPunktOfMenuKoordY[numberOfThePartitionMenu - 1] + 25 * (punkt - 1);
                 iPoint pointMenu = new Point(x - 5 + xx, y - 5 + yy);
 
                 TopMenu(numberOfThePartitionMenu);   //сначала открываем раздел верхнего меню (1-14)
@@ -931,23 +894,168 @@ namespace OpenGEWindows
         #region BH
 
         /// <summary>
+        /// запуск клиента Steam без запуска игры
+        /// </summary>
+        public override void runClientSteamBH()
+        {
+            //if (!isLoadedSteamBH && !isLoadedGEBH)   //если в данный момент не грузится другой стим и другие окна ГЭ
+
+            if (!isLoadedSteamBH)   //если в данный момент не грузится другой стим и другие окна ГЭ
+            {
+                if (!FindWindowSteamBool())
+                {
+                    #region для песочницы
+
+                    isLoadedSteamBH = true;
+
+                    //запускаем steam в песочнице
+                    Process process = new Process();
+                    process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
+                    process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient + " -login " + GetLogin() + " " + GetPassword() + " -silent";
+                    process.Start();
+
+
+                    //for (int i = 1; i <= 5; i++)
+                    //{
+                    //    Pause(1000);
+
+                    //    //if (isSystemError())  //если выскакивает системная ошибка, то нажимаем "Ок"     проверка не работает
+                    //    //{
+                    //    //    OkSystemError();
+                    //    //}
+
+                    //    if (isNewSteam())
+                    //    {
+                    //        pointNewSteamOk.PressMouseL();
+                    //    }
+
+                    //    if (isContinueRunning())    //если аккаунт запущен на другом компе
+                    //    {
+                    //        NextAccount();
+                    //        AccountBusy = true;
+                    //        RemoveSandboxie();
+                    //        break;
+                    //    }
+                    //}
+                    #endregion
+                }
+            }
+        }
+
+        /// <summary>
         /// запуск клиента игры для Инфинити
         /// </summary>
         public override void runClientBH()
         {
-            #region для песочницы
+            if (!isLoadedGEBH)   //если в данный момент не грузится другой стим и другие окна ГЭ
+            {
+                if (!FindWindowGEforBHBool())
+                {
+                    #region для песочницы
 
-            AccountBusy = false;
+                    isLoadedGEBH = true;
+                    AccountBusy = false;
 
-            //запускаем steam в песочнице (вариант 1)
-            Process process = new Process();
-            process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
-            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient + " -login " + GetLogin() + " " + GetPassword() + " -applaunch 663090 -silent";
+                    //запускаем steam в песочнице (вариант 1)
+                    Process process = new Process();
+                    process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
+                    process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient + " -applaunch 663090";
+                    //process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient + " -login " + GetLogin() + " " + GetPassword() + " -applaunch 663090 -silent";
 
-            process.Start();
-            //Pause(10000);
+                    process.Start();
 
-            #endregion
+
+                    for (int i = 1; i <= 10; i++)
+                    {
+                        Pause(1000);
+
+                        //if (isSystemError())  //если выскакивает системная ошибка, то нажимаем "Ок"     проверка не работает
+                        //{
+                        //    OkSystemError();
+                        //}
+
+                        if (isNewSteam())
+                        {
+                            pointNewSteamOk.PressMouseL();
+                        }
+
+                        if (isContinueRunning())    //если аккаунт запущен на другом компе
+                        {
+                            NextAccount();
+                            AccountBusy = true;
+                            RemoveSandboxie();
+                            break;
+                        }
+                    }
+
+                    #endregion
+                }
+            }
+        }
+
+        ///// <summary>
+        ///// поиск новых окон с игрой для кнопки "Найти окна"
+        ///// </summary>
+        ///// <returns></returns>
+        //public override UIntPtr FindWindowGEforBH()
+        //{
+        //    UIntPtr HWND = FindWindow("Sandbox:" + botwindow.getNumberWindow().ToString() + ":Granado Espada", "[#] Granado Espada [#]");
+
+        //    if (HWND != (UIntPtr)0)
+        //    {
+        //        botParam.Hwnd = HWND;  //если окно найдено, то запись в файл HWND.txt
+        //        isLoadedGEBH = false;     //если нашли загружаемое окно, значит уже можно грузить другие окна
+        //    }
+
+        //    return HWND;
+        //}
+
+        /// <summary>
+        /// найдены ли окна с ГЭ ??
+        /// </summary>
+        /// <returns></returns>
+        public override bool FindWindowGEforBHBool()
+        {
+            bool result = false;
+            UIntPtr HWND = FindWindow("Sandbox:" + botwindow.getNumberWindow().ToString() + ":Granado Espada", "[#] Granado Espada [#]");
+
+            if (HWND != (UIntPtr)0)
+            {
+                botParam.Hwnd = HWND;  //если окно найдено, то запись в файл HWND.txt
+                isLoadedGEBH = false;     //если нашли загружаемое окно, значит уже можно грузить другие окна
+                result = true;  //нашли окно
+            }
+            return result;
+        }
+
+        ///// <summary>
+        ///// поиск новых окон Steam
+        ///// </summary>
+        ///// <returns>номер hwnd найденного Steam</returns>
+        //public override UIntPtr FindWindowSteam()
+        //{
+        //    UIntPtr HWND = FindWindow("Sandbox:" + botwindow.getNumberWindow().ToString() + ":vguiPopupWindow", "Steam");
+        //    if (HWND != (UIntPtr)0)
+        //    {
+        //        isLoadedSteamBH = false;     //если нашли загружаемое окно, значит уже можно грузить другие окна
+        //    }
+        //    return HWND;
+        //}
+
+        /// <summary>
+        /// поиск новых окон Steam
+        /// </summary>
+        /// <returns>true, если стим найден</returns>
+        public override bool FindWindowSteamBool()
+        {
+            bool result = false;
+            UIntPtr HWND = FindWindow("Sandbox:" + botwindow.getNumberWindow().ToString() + ":vguiPopupWindow", "Steam");
+            if (HWND != (UIntPtr)0)
+            {
+                result = true;
+                isLoadedSteamBH = false;     //если нашли загружаемое окно, значит уже можно грузить другие окна
+            }
+            return result;
         }
 
 

@@ -29,7 +29,7 @@
         /// <param name="number"></param>
         public override void PressStringDialog(int number)
         {
-            iPoint pointString = new Point(520 - 5 + xx, 660 - 5 + yy - (number - 1) * 20);
+            iPoint pointString = new Point(520 - 5 + xx, 659 - 5 + yy - (number - 1) * 19);
             pointString.PressMouseLL();
             Pause(1000);
         }

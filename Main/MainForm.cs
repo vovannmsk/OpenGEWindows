@@ -148,19 +148,26 @@ namespace Main
         /// </summary>
         private void funcOrange()
         {
+            Check[] check = new Check[numberOfAcc + 1];
+            for (int j = 1; j <= numberOfAcc; j++) check[j] = new Check(j);   //проинициализировали check[j]. Сработал конструктор
+
             for (int j = 1; j <= numberOfAcc; j++)
-            {
-                Check check = new Check(j);
-                if (check.IsActiveServer)
-                {
-                    check.OrangeButton();
-                    //check.serverSelection();
-                }
-            }   
+                if (check[j].IsActiveServer) check[j].OrangeButton();
+
+
+            //for (int j = 1; j <= numberOfAcc; j++)
+            //{
+            //    Check check = new Check(j);
+            //    if (check.IsActiveServer)
+            //    {
+            //        check.OrangeButton();
+            //        //check.serverSelection();
+            //    }
+            //}   
         }
 
         #endregion
-        
+
         #region ЛАЙМ КНОПКА (бежим до кратера)
 
         /// <summary>
@@ -729,41 +736,29 @@ namespace Main
         }
 
         /// <summary>
-        /// метод задает функционал для потока, организуемого кнопкой цвета "ForestGreen" (темно-зеленая)
+        /// метод задает функционал для потока, организуемого кнопкой цвета "ForestGreen" (темно-зеленая) Infinity в BH
         /// </summary>
         private void funcBH()
         {
-            //int start =  globalParam.StartingAccount;
-            Check check;
-            //for (int i = 1; i <= 20; i++)
-            int counter = 0;
-            while(true)
+            Check[] check = new Check[numberOfAcc + 1];
+            for (int j = startAccount; j <= numberOfAcc; j++) check[j] = new Check(j);   //проинициализировали check[j]. Сработал конструктор
+
+            DateTime Data1 = DateTime.Now;
+            bool EndOfLists = false;  //False, когда списки ботов исчерпаются по всем окнам
+            while(!EndOfLists)              //если боты закончатся, то цикл завершится
             {
-                
+                EndOfLists = true;
                 for (int j = startAccount; j <= numberOfAcc; j++)
                 {
-                    check = new Check(j);
-                    //if (check.isActive()) check.checkForProblemsBH();
-                    if (check.IsActiveServer) check.problemResolutionBH();
+                    if (check[j].IsActiveServer && !check[j].EndOfList())
+                        check[j].problemResolutionBH();
+                    EndOfLists = EndOfLists && check[j].EndOfList();
                 }
-                counter++;
-                check = new Check(1);
-                if (counter >= 500)
-                {
-                    counter = 0;
-                    //check.setStatusOfSale(1);
-                    globalParam.StatusOfSale = 1;
-                }
-                //если всего одно окно, то пауза между циклами
-                if (startAccount == numberOfAcc) check.Pause(5000);
-
+                DateTime Data2 = DateTime.Now;
+                int dd = (Data2 - Data1).Milliseconds;
+                if ((Data2 - Data1).Seconds < 5)   check[1].Pause(5000 - (Data2 - Data1).Milliseconds);
+                Data1 = Data2;
             }
-            //ReOpen всех окон
-            //for (int j = start; j <= numberOfAcc; j++)
-            //{
-            //    Check check = new Check(j);
-            //    if (check.isActive()) check.ReOpenWindow();
-            //}   
         }
 
         #endregion
@@ -795,6 +790,7 @@ namespace Main
         #endregion
 
         #region Смена аккаунтов для Инфинити
+
         /// <summary>
         /// кнопка "Смена аккаунтов"
         /// </summary>
@@ -811,17 +807,16 @@ namespace Main
         /// </summary>
         private void funcCA()
         {
+            Check[] check = new Check[numberOfAcc + 1];
+            for (int j = startAccount; j <= numberOfAcc; j++) check[j] = new Check(j);   //проинициализировали check[j]. Сработал конструктор
+
             for (int j = startAccount; j <= numberOfAcc; j++)
             {
-                Check check = new Check(j);   //j-номер окна
-                //this.labelNomer.Text = "Текущий № аккаунта " + check.NumberOfInfinity();  //botParam.NumberOfInfinity;
-                if (check.IsActiveServer)
-                {
-                    check.ChangingAccounts();
-                }
+                if (check[j].IsActiveServer) check[j].ChangingAccounts(); 
             }
-            //Update();
+            
         }
+
         #endregion
 
         public void labelNomer_Click(object sender, EventArgs e)
