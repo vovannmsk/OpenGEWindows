@@ -38,6 +38,7 @@ namespace GEBot.Data
         //private bool infinity;
         private int howManyCyclesToSkip;           //сколько пропустить циклов. Для БХ 
         private int lengthOfList;
+        private int statusOfSale;                       // статус продажи (для BH)
 
         public string Login { get => login; }
         public string[] Logins { get => logins; }
@@ -61,6 +62,11 @@ namespace GEBot.Data
 
         public int HowManyCyclesToSkip { get => howManyCyclesToSkip; set => howManyCyclesToSkip = value; }
         public int LengthOfList { get => lengthOfList; }
+        public int StatusOfSale
+        {
+            get { statusOfSale = GetStatusOfSale(); return statusOfSale; }
+            set { statusOfSale = value; SetStatusInFile(); }
+        }
 
         //********отключаем временно для проверки*********************************************************
         //public string Param { get { return parametrs[numberOfInfinity]; } } 
@@ -105,6 +111,24 @@ namespace GEBot.Data
 
 
         //===================================== методы ==========================================
+
+        /// <summary>
+        /// метод считывает значение статуса из файла, 1 - мы направляемся на продажу товара в магазин, 0 - нет (обычный режим работы)
+        /// </summary>
+        /// <returns></returns>
+        private int GetStatusOfSale()
+        { return int.Parse(File.ReadAllText(directoryOfMyProgram + numberOfWindow + "\\StatusOfSale.txt")); }
+
+        /// <summary>
+        /// метод записывает значение статуса в файл, 1 - мы направляемся на продажу товара в магазин, 0 - нет (обычный режим работы)
+        /// </summary>
+        /// <returns></returns>
+        private void SetStatusInFile()
+        {
+            File.WriteAllText(directoryOfMyProgram + numberOfWindow + "\\StatusOfSale.txt", this.statusOfSale.ToString());
+        }
+
+
 
         //#region global getters
         //public int getNintendo()

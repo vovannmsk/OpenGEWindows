@@ -306,7 +306,8 @@ namespace OpenGEWindows
             this.pointSecondStringDialog = new Point(520 - 5 + xx, 640 - 5 + yy);                  //нажимаем Yes в диалоге Доминго второй раз (вторая строчка снизу)
             this.pointDomingoMiss = new Point(396 - 5 + xx, 206 - 5 + yy);                         //нажимаем правой кнопкой по карте миссии Доминго
             this.pointPressDomingo2 = new Point(572 - 5 + xx, 237 - 5 + yy);                       //нажимаем на Доминго после миссии
-            this.pointLindonOnMap = new Point(820 - 5 + xx, 412 - 5 + yy);                         //нажимаем на Линдона на карте Alt+Z
+//            this.pointLindonOnMap = new Point(820 - 5 + xx, 430 - 5 + yy);                         //нажимаем на Линдона на карте Alt+Z
+            this.pointLindonOnMap = new Point(523 - 5 + xx, 405 - 5 + yy);                         //нажимаем на Линдона на карте Alt+Z
             this.pointPressLindon2 = new Point(627 - 5 + xx, 274 - 5 + yy);                        //нажимаем на Линдона
             this.pointPetExpert = new Point(818 - 5 + xx, 428 - 5 + yy);                           //нажимаем на петэксперта
             this.pointPetExpert2 = new Point(816 - 5 + xx, 415 - 5 + yy);                          //нажимаем на петэксперта второй раз 

@@ -412,10 +412,10 @@ namespace OpenGEWindows
                 PressConnectButton();
                 Pause(1500);
 
-                pointButtonOk.PressMouseL();  //кликаю в кнопку  "ОК"
-                Pause(500);
-                pointButtonOk2.PressMouseL();  //кликаю в кнопку  "ОК" 3 min
-                Pause(500);
+                //pointButtonOk.PressMouseL();  //кликаю в кнопку  "ОК"
+                //Pause(500);
+                //pointButtonOk2.PressMouseL();  //кликаю в кнопку  "ОК" 3 min
+                //Pause(500);
 
                 //если есть ошибки в логине-пароле, то возникает сообщение с кнопкой "OK". 
 

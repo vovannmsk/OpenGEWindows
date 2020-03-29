@@ -101,7 +101,8 @@ namespace States
         public int NumberOfProblemBH()
         {
             
-            int statusOfSale = globalParam.StatusOfSale;          //не отлажено
+//            int statusOfSale = globalParam.StatusOfSale;          //не отлажено
+            int statusOfSale = botParam.StatusOfSale;          //не отлажено
             int statusOfAtk = botParam.StatusOfAtk;
 
 
@@ -654,6 +655,17 @@ namespace States
             for (int j = botParam.NumberOfInfinity; j < botParam.Logins.Length; j++)
             {
                 driver.ChangingAccounts3(); //вход и выход из игры
+            }
+        }
+
+        /// <summary>
+        /// боты заходят в город, 
+        /// </summary>
+        public void ChangingAccounts4()
+        {
+            for (int j = botParam.NumberOfInfinity; j < botParam.Logins.Length; j++)
+            {
+                driver.ChangingAccounts4(); //вход и выход из игры
             }
         }
 

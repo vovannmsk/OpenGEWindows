@@ -61,7 +61,7 @@ namespace States
         {
             dialog.PressStringDialog(2);
             dialog.PressOkButton(1);
-            dialog.PressStringDialog(3);
+            dialog.PressStringDialog(4);
             dialog.PressOkButton(1);
             dialog.PressStringDialog(5);
             dialog.PressOkButton(1);

@@ -812,7 +812,7 @@ namespace Main
 
             for (int j = startAccount; j <= numberOfAcc; j++)
             {
-                if (check[j].IsActiveServer) check[j].ChangingAccounts(); 
+                if (check[j].IsActiveServer) check[j].ChangingAccounts2(); 
             }
             
         }

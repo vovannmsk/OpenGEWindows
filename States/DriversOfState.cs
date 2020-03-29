@@ -253,6 +253,16 @@ namespace States
         }
 
         /// <summary>
+        /// идем из состояния "нет окна" до состояния "в бараке", потом идем в город
+        /// </summary>
+        public void ChangingAccounts4()
+        {
+            StateDriverRun(new StateGT014(botwindow), new StateGT015(botwindow));  // загружаем окно ГЭ
+            StateDriverRun(new StateGT169(botwindow), new StateGT170(botwindow));  // удаляем песочницу
+        }
+
+
+        /// <summary>
         /// идем из состояния "нет окна" до состояния "в городе", потом получаем подарок и удаляем песочницу
         /// </summary>
         public void StateInputOutput()
