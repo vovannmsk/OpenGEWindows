@@ -27,6 +27,9 @@
                 case "C:\\Europa\\":
                     otit = new OtitEuropa(botwindow);
                     break;
+                case "C:\\Europa2\\":
+                    otit = new OtitEuropa2(botwindow);
+                    break;
                 case "C:\\SINGA\\":
                     otit = new OtitSing(botwindow);
                     break;

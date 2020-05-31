@@ -27,6 +27,9 @@
                 case "C:\\Europa\\":
                     goldenEgg = new GoldenEggEuropa(botwindow);
                     break;
+                case "C:\\Europa2\\":
+                    goldenEgg = new GoldenEggEuropa2(botwindow);
+                    break;
                 case "C:\\SINGA\\":
                     goldenEgg = new GoldenEggSing(botwindow);
                     break;

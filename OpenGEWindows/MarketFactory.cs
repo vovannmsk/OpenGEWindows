@@ -31,6 +31,9 @@ namespace OpenGEWindows
                 case "C:\\Europa\\":
                     market = new MarketEuropa(botwindow);
                     break;
+                case "C:\\Europa2\\":
+                    market = new MarketEuropa2(botwindow);
+                    break;
                 case "C:\\SINGA\\":
                     market = new MarketSing(botwindow);
                     break;

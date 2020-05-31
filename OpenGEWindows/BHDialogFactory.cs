@@ -28,6 +28,9 @@
                 case "C:\\Europa\\":
                     dialog = new BHDialogEuropa(botwindow);
                     break;
+                case "C:\\Europa2\\":
+                    dialog = new BHDialogEuropa(botwindow);
+                    break;
                 case "C:\\SINGA\\":
                     dialog = new BHDialogSing(botwindow);
                     break;

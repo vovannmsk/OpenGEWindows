@@ -23,6 +23,9 @@
                 case "C:\\Europa\\":
                     mm = new MMEuropa(botwindow);
                     break;
+                case "C:\\Europa2\\":
+                    mm = new MMEuropa2(botwindow);
+                    break;
                 case "C:\\SINGA\\":
                     mm = new MMSing(botwindow);
                     break;

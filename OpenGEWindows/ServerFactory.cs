@@ -47,6 +47,9 @@ namespace OpenGEWindows
                 case "C:\\Europa\\":
                     server = new ServerEuropa(botwindow);
                     break;
+                case "C:\\Europa2\\":
+                    server = new ServerEuropa2(botwindow);
+                    break;
                 case "C:\\SINGA\\":
                     server = new ServerSing(botwindow);
                     break;
@@ -54,7 +57,7 @@ namespace OpenGEWindows
                     server = new ServerAmerica2(botwindow);
                     break;
                 default:
-                    server = new ServerAmerica(botwindow);
+                    server = new ServerSing(botwindow);
                     break;
             }
             return server;

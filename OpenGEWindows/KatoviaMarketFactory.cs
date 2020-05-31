@@ -23,6 +23,9 @@
                 case "C:\\Europa\\":
                     market = new KatoviaMarketEuropa(botwindow);
                     break;
+                case "C:\\Europa2\\":
+                    market = new KatoviaMarketEuropa2(botwindow);
+                    break;
                 case "C:\\SINGA\\":
                     market = new KatoviaMarketSing(botwindow);
                     break;
