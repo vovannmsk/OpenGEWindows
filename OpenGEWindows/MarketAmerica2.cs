@@ -47,6 +47,7 @@ namespace OpenGEWindows
             DialogFactory dialogFactory = new DialogFactory(this.botwindow);
             dialog = dialogFactory.createDialog();
             this.globalParam = new GlobalParam();
+            this.botParam = new BotParam(botwindow.getNumberWindow());
 
         }
 

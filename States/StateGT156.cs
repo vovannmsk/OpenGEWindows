@@ -66,7 +66,7 @@ namespace States
             // ============= тыкаем в голову торговца, чтобы войти в магазин  ===================================================
             botwindow.Pause(3000);         //ждем пока подгрузятся все объекты на карте
 
-            town.Click_ToHeadTrader();
+             town.Click_ToHeadTrader(); //
 
             botwindow.Pause(5000);
 

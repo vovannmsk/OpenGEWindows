@@ -69,7 +69,7 @@ namespace OpenGEWindows
 
         protected Dialog dialog;
         protected GlobalParam globalParam;
-
+        protected BotParam botParam;
 
         // ============  методы  ========================
 
@@ -491,7 +491,7 @@ namespace OpenGEWindows
             pointButtonSell.PressMouseL();
             pointButtonSell.PressMouseL();
             //botwindow.setStatusOfSale(0);
-            globalParam.StatusOfSale = 0;
+            botParam.StatusOfSale = 0;
             Pause(2000);
         }
 

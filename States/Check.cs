@@ -91,6 +91,7 @@ namespace States
         {
             return botParam.EndOfList();
         }
+
         #region Гильдия охотников BH
 
      
@@ -145,7 +146,7 @@ namespace States
                     if (statusOfSale == 1)
                     {
                         // если нужно бежать продаваться
-                        return 3;
+                        return 3;                                              ///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     }
                     else
                     {
@@ -158,7 +159,7 @@ namespace States
                     if (statusOfSale == 1)
                     {
                         // если нужно бежать продаваться
-                        return 5;
+                        return 5;                                              ///!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                     }
                     else
                     {
@@ -265,8 +266,12 @@ namespace States
                         botParam.HowManyCyclesToSkip = 2;
                         break;
                     case 3:
-                        driver.StateGotoTradeStep1BH();             // BH-->Town (первый этап продажи)
-                        botParam.HowManyCyclesToSkip = 2;
+                        //временная заплатка
+                        botParam.StatusOfSale = 0;
+                        server.RemoveSandboxie();
+
+                        //driver.StateGotoTradeStep1BH();             // BH-->Town (первый этап продажи)
+                        //botParam.HowManyCyclesToSkip = 2;
                         break;
                     case 4:
                         driver.StateFromBHToGateBH();               // BH --> Gate
@@ -366,7 +371,7 @@ namespace States
         /// <summary>
         /// проверяем, есть ли проблемы с ботом (убили, застряли, нужно продать)
         /// </summary>
-        /// <returns>нпорядковый номер проблемы</returns>
+        /// <returns>порядковый номер проблемы</returns>
         public int NumberOfProblem()
         {
             if (server.isLogout()) { server.WriteToLogFile("Логаут");  return 1; }                         // если окно в логауте
@@ -412,6 +417,21 @@ namespace States
 
             int numberOfProblem = NumberOfProblem();             //проверили, какие есть проблемы (на какой стадии находится бот)
 
+            if (numberOfProblem == prevProblem && numberOfProblem == prevPrevProblem)  //если зависли в каком-либо состоянии, то особые действия
+            {
+                switch (numberOfProblem)
+                {
+                    case 2:  //в логауте
+                        //numberOfProblem = 16;
+                        numberOfProblem = 17;
+                        break;
+                    case 9:  //в бараках
+                        numberOfProblem = 17;
+                        break;
+                }
+            }
+            else { prevPrevProblem = prevProblem; prevProblem = numberOfProblem; }
+
             switch (numberOfProblem)
             {
                 case 1: driver.StateRecovery();
@@ -432,7 +452,9 @@ namespace States
                     break;
                 case 9: server.buttonExitFromBarack();          //StateExitFromBarack();
                     break;
-                case 10: driver.StateExitFromTown();          // 12-14 (GotoEnd)
+                case 10: //driver.StateExitFromTown();          
+                    server.GoToEnd();
+                    //botwindow.Pause(8000);
                     break;
                 case 11: SellProduct();                     // выставление товаров на рынок
                     break;
@@ -445,6 +467,13 @@ namespace States
                 case 15:
                     server.AddBullet10000();              //открываем коробку с патронами 10 000 штук
                     break;
+                case 16:
+                    botwindow.LeaveGame();                  //если окно три прохода подряд в логауте, значит зависло
+                    break;
+                case 17:
+                    server.CloseSandboxie();              //закрываем все проги в песочнице
+                    break;
+
             }
         }
 
@@ -631,7 +660,7 @@ namespace States
             for (int j = botParam.NumberOfInfinity; j < botParam.Logins.Length; j++)
             {
                 server.WriteToLogFile("номер окна = " + j);
-                driver.StateInputOutput(); //вход и выход из игры
+                driver.StateInputOutput2(); //вход и выход из игры
             }
         }
 
@@ -745,19 +774,24 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            int i = 1;   //номер проверяемого окна
+            int i = 3;   //номер проверяемого окна
 
             int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 875, 850, 825, 800, 775, 750, 875 };
             int[] koordY = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 5, 30, 55, 80, 105, 130, 5 };
 
-            //botWindow botwindow = new botWindow(i);
-            //botwindow.ReOpenWindow();
+            botWindow botwindow = new botWindow(i);
+            botwindow.ReOpenWindow();
 
             //MessageBox.Show(" " + botwindow.getNomerTeleport());
             //botwindow.Pause(1000);
 
-            //Server server = new ServerSing(botwindow);
-            //MessageBox.Show(" " + server.isHighMaster());
+            Server server = new ServerSing(botwindow);
+            MessageBox.Show("Lifeless " + server.isLifeless());
+            MessageBox.Show("Undead " + server.isUndead());
+            MessageBox.Show("Wild " + server.isWild());
+            MessageBox.Show("Demon " + server.isDemon());
+            MessageBox.Show("Human " + server.isHuman());
+
             //Server server = new ServerAmerica2(botwindow);
 
             //BHDialog BHdialog = new BHDialogSing(botwindow);
@@ -844,8 +878,8 @@ namespace States
 
             //PointColor point1 = new PointColor(1042, 551, 1, 1);
             //PointColor point2 = new PointColor(1043, 551, 1, 1);
-            PointColor point1 = new PointColor(81 - 5 + xx, 636 - 5 + yy, 0, 0);
-            PointColor point2 = new PointColor(336 - 5 + xx, 636 - 5 + yy, 0, 0);
+            PointColor point1 = new PointColor(397 - 5 + xx, 324 - 5 + yy, 0, 0);
+            PointColor point2 = new PointColor(397 - 5 + xx, 323 - 5 + yy, 0, 0);
             PointColor point3 = new PointColor(591 - 5 + xx, 636 - 5 + yy, 0, 0);
 
 
@@ -855,9 +889,10 @@ namespace States
 
             //server.WriteToLogFile("цвет " + color1);
             //server.WriteToLogFile("цвет " + color2);
+
             MessageBox.Show(" " + color1);
             MessageBox.Show(" " + color2);
-            MessageBox.Show(" " + color3);
+            //MessageBox.Show(" " + color3);
 
 
             //if ((color1 > 2000000) && (color2 > 2000000)) MessageBox.Show(" больше ");

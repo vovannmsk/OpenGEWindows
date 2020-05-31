@@ -7,7 +7,8 @@ namespace States
     {
         private botWindow botwindow;
         private Server server;
-        private ServerFactory serverFactory;
+        private Dialog dialog;
+        
         private int tekStateInt;
 
         public StateGT130()
@@ -18,8 +19,11 @@ namespace States
         public StateGT130(botWindow botwindow)   
         {
             this.botwindow = botwindow;
-            this.serverFactory = new ServerFactory(botwindow);
+            ServerFactory serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
+            DialogFactory dialogFactory = new DialogFactory(botwindow);
+            this.dialog = dialogFactory.createDialog();
+
             this.tekStateInt = 130;
         }
 
@@ -57,6 +61,10 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            botwindow.ReOpenWindow();
+            dialog.PressStringDialog(1);
+            dialog.PressOkButton(1);
+            botwindow.Pause(10000);
         }
 
         /// <summary>
@@ -74,7 +82,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return true;
+            return server.isWork();
         }
 
         /// <summary>
@@ -83,7 +91,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT130(botwindow);
+            return new StateGT131(botwindow);
         }
 
         /// <summary>

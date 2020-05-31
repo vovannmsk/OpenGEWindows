@@ -235,6 +235,17 @@ namespace States
         #endregion
 
         /// <summary>
+        /// Алхимия на ферме. Яблоки и мед
+        /// </summary>
+        public void Farm()
+        {
+            StateDriverRun(new StateGT130(this.botwindow), new StateGT150(this.botwindow));  // заходим на ферму
+            //StateDriverRun(new StateGT132(this.botwindow), new StateGT150(this.botwindow));  // заходим на ферму
+            StateDriverRun(new StateGT091(this.botwindow), new StateGT092(this.botwindow));  // открываем карту
+
+        }
+
+        /// <summary>
         /// идем из состояния "нет окна" до состояния "в бараке", потом идем в город
         /// </summary>
         public void ChangingAccounts2()
@@ -268,8 +279,9 @@ namespace States
         public void StateInputOutput()
         {
             //Server.rr = false;
-            StateDriverRun(new StateGT014(botwindow), new StateGT017(botwindow));  // заходим в ребольдо
-            //StateDriverRun(new StateGT014(botwindow), new StateGT016(botwindow));  // заходим в казарму
+//            StateDriverRun(new StateGT014(botwindow), new StateGT017(botwindow));  // заходим в ребольдо
+
+            StateDriverRun(new StateGT014(botwindow), new StateGT016(botwindow));  // заходим в казарму
             if (Server.AccountBusy)   
             {
                 StateDriverRun(new StateGT169(botwindow), new StateGT170(botwindow));  // удаляем песочницу
@@ -282,6 +294,25 @@ namespace States
 
             }
         }
+
+        /// <summary>
+        /// идем из состояния "нет окна" до состояния "в стартонии", потом закрываем прогу в песочнице
+        /// </summary>
+        public void StateInputOutput2()
+        {
+            StateDriverRun(new StateGT014a(botwindow), new StateGT016(botwindow));  // reOpen + connect
+            
+            if (Server.AccountBusy)
+            {
+                StateDriverRun(new StateGT169(botwindow), new StateGT170(botwindow));  // закрываем проги в песочнице
+            }
+            else
+            {
+                StateDriverRun(new StateGT032(botwindow), new StateGT035(botwindow));   // создаем семью и идем в стартонию
+                StateDriverRun(new StateGT169(botwindow), new StateGT170(botwindow));   // закрываем проги в песочнице
+            }
+        }
+
 
 
         /// <summary>
@@ -554,7 +585,7 @@ namespace States
         {
             StateDriverRun(new StateGT030(botwindow), new StateGT041(botwindow));
         }
-
+        
         /// <summary>
         /// создание новой семьи, выход в ребольдо, получение и надевание брони 35 лвл, выполнение квеста Доминго, разговор с Линдоном, получение Кокошки и еды 100 шт.
         /// перевод из состояния 30 (логаут) в состояние 41 (пет Кокошка получен)          
@@ -613,8 +644,8 @@ namespace States
 
                 if (botParam.NomerTeleport != 0 )           // если нужно продаваться
                 {
-                    if (server.is248Items())
-                    {
+                    //if (server.is248Items())
+                    //{
                         if (botParam.NomerTeleport >= 100)           // продажа в снежке
                         {
                             StateGotoTradeKatovia();
@@ -625,9 +656,9 @@ namespace States
                             StateGotoTrade();                       // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
                             botwindow.Pause(2000);
                         }
-                        StateGotoWork();            // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
-                        botwindow.Pause(2000);
-                    }
+                        //StateGotoWork();            // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
+                        //botwindow.Pause(2000);
+                    //}
                 }
             }
 

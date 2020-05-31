@@ -23,8 +23,11 @@ namespace OpenGEWindows
 
 
         // ================ переменные класса =================
-        
-        private int numberWindow;       //номер окна
+
+        /// <summary>
+        /// номер окна
+        /// </summary>
+        private int numberWindow;       
         private const int WIDHT_WINDOW = 1024;
         private const int HIGHT_WINDOW = 700;
 
@@ -114,6 +117,9 @@ namespace OpenGEWindows
         //public int getStatusOfAtk()
         //{ return  botParam.StatusOfAtk; }
 
+        /// <summary>
+        /// номер окна
+        /// </summary>
         public int getNumberWindow()
         { return this.numberWindow; }
 
@@ -251,6 +257,10 @@ namespace OpenGEWindows
                     ActiveWindow();                      //сдвигаем окно на своё место и активируем его
                 }
             }
+            else
+            {
+                ActiveWindow();                      //сдвигаем окно на своё место и активируем его
+            }
         }
 
         /// <summary>
@@ -376,11 +386,11 @@ namespace OpenGEWindows
 
             #endregion
 
-            #region старый вариант
+            #region старый вариант (но рабочий)
 
             //server.WriteToLogFileBH("вошли в процедуру коннект");
             //server.WriteToLogFile(botParam.NumberOfInfinity + " " + botParam.Logins[botParam.NumberOfInfinity] + " " + botParam.Passwords[botParam.NumberOfInfinity] + " " + botParam.Parametrs[botParam.NumberOfInfinity]);
-            server.serverSelection();          //выбираем из списка свой сервер
+            //server.serverSelection();          //выбираем из списка свой сервер
 
             iPointColor point5050 = new PointColor(50 - 5 + botParam.X, 50 - 5 + botParam.Y, 7800000, 5);  //запоминаем цвет в координатах 50, 50 для проверки того, сменился ли экран (т.е. принят ли логин-пароль)
             iPoint pointButtonOk = new Point(525 - 5 + botParam.X, 410 - 5 + botParam.Y);    // кнопка Ok в логауте
@@ -400,6 +410,13 @@ namespace OpenGEWindows
             ColorBOOL = (Test_Color == Tek_Color1);
             int counter = 0; //счетчик
 
+            pointButtonOk.PressMouseL();  //кликаю в кнопку  "ОК"
+            Pause(500);
+            pointButtonOk2.PressMouseL();  //кликаю в кнопку  "ОК" 3 min
+            Pause(500);
+
+            server.serverSelection();          //выбираем из списка свой сервер
+
             server.WriteToLogFileBH("дошли до while");
             while ((aa | (ColorBOOL)) & (counter < MAX_NUMBER_ITERATION))
             {
@@ -409,6 +426,12 @@ namespace OpenGEWindows
                 ColorBOOL = (Test_Color == Tek_Color1);
 
                 server.WriteToLogFileBH("нажимаем на кнопку connect");
+
+                //pointButtonOk.PressMouseL();  //кликаю в кнопку  "ОК"
+                //Pause(500);
+                //pointButtonOk2.PressMouseL();  //кликаю в кнопку  "ОК" 3 min
+                //Pause(500);
+                //server.serverSelection();          //выбираем из списка свой сервер
                 PressConnectButton();
                 Pause(1500);
 
@@ -538,6 +561,10 @@ namespace OpenGEWindows
 
         }
 
+        public void LeaveGame()
+        {
+            new Point(605 - 5 + botParam.X, 535 - 5 + botParam.Y).PressMouseLL();    // кнопка LeaveGame в логауте
+        }
 
 
         #endregion

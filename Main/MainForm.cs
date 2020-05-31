@@ -149,9 +149,9 @@ namespace Main
         private void funcOrange()
         {
             Check[] check = new Check[numberOfAcc + 1];
-            for (int j = 1; j <= numberOfAcc; j++) check[j] = new Check(j);   //проинициализировали check[j]. Сработал конструктор
+            for (int j = startAccount; j <= numberOfAcc; j++) check[j] = new Check(j);   //проинициализировали check[j]. Сработал конструктор
 
-            for (int j = 1; j <= numberOfAcc; j++)
+            for (int j = startAccount; j <= numberOfAcc; j++)
                 if (check[j].IsActiveServer) check[j].OrangeButton();
 
 
@@ -423,44 +423,20 @@ namespace Main
         /// </summary>*
         private void funcNewWhite()
         {
-            //int start = globalParam.StartingAccount;
             for (int j = startAccount; j <= numberOfAcc; j++)
             {
                 DriversOfState driver = new DriversOfState(j);
                 driver.StateGotoTradeAndWork();
-                //Check check = new Check(j);
-                //if (check.IsActiveServer)
-                //{
-                //    check.ReOpenWindow();
-                //    check.Pause(1000);
-                //    DriversOfState driver = new DriversOfState(j);
-                //    //driver.StateGotoTradeAndWork();
-
-                //    if (check.getNumberTeleport() != 0)           // не нужно продаваться
-                //    {
-                //        if (check.getNumberTeleport() >= 100)           // продажа в снежке
-                //        {
-                //            driver.StateGotoTradeKatovia();
-                //            check.Pause(2000);
-                //        }
-                //        else                                               // продажа в городах
-                //        {
-
-                //            driver.StateGotoTrade();                                          // по паттерну "Состояние".  01-14       (работа-продажа-выгрузка окна)
-                //            check.Pause(2000);
-                //        }
-                //        driver.StateGotoWork();            // по паттерну "Состояние".  14-28       (нет окна - логаут - казарма - город - работа)
-                //    }
-                //}
+                
             }
         }
         
         #endregion
 
-        #region золотая кнопка (открыть окна ге)
+        #region золотая кнопка (ФЕРМА)
 
         /// <summary>
-        /// Золотая кнопка
+        /// Золотая кнопка. Алхимия на ферме
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -479,18 +455,20 @@ namespace Main
         /// </summary>
         private void funcGold()
         {
-            for (int j = 1; j <= numberOfAcc; j++)
+
+            Check[] check = new Check[numberOfAcc + 1];
+            DriversOfState[] driver = new DriversOfState[numberOfAcc + 1];
+
+            for (int j = startAccount; j <= numberOfAcc; j++)
             {
-                Check check = new Check(j);
-                if (check.IsActiveServer) check.OpenWindow();
-                check.Pause(5000);
+                check[j] = new Check(j);   //проинициализировали check[j]. Сработал конструктор
+                driver[j] = new DriversOfState(j);
             }
-            
-            for (int j = 1; j <= numberOfAcc; j++)
-            {
-                Check check = new Check(j);
-                if (check.IsActiveServer) check.ReOpenWindow();
-            }
+
+            for (int j = startAccount; j <= numberOfAcc; j++)
+                if (check[j].IsActiveServer) driver[j].Farm();
+
+
         }
 
         #endregion
@@ -510,17 +488,19 @@ namespace Main
 
         /// <summary>
         /// метод задает функционал для потока, организуемого Magenta Button (Sharpening)
-        /// </summary>*
+        /// </summary>
         private void funcMagenta()
         {
-            for (int j = 1; j <= numberOfAcc; j++)
+            Check[] check = new Check[numberOfAcc + 1];
+            for (int j = startAccount; j <= numberOfAcc; j++) check[j] = new Check(j);   //проинициализировали check[j]. Сработал конструктор
+
+            for (int j = startAccount; j <= numberOfAcc; j++)
             {
-                Check check = new Check(j);
-                if (check.IsActiveServer)
+                if (check[j].IsActiveServer)
                 {
-                    check.ReOpenWindow();
-                    check.Pause(1000);
-                    if (check.isIda())   //если окно находится в магазине Иды
+                    check[j].ReOpenWindow();
+                    check[j].Pause(1000);
+                    if (check[j].isIda())   //если окно находится в магазине Иды
                     {
                         DriversOfState drive = new DriversOfState(j);
                         drive.StateSharpening();
@@ -549,14 +529,17 @@ namespace Main
         /// </summary>
         private void funcChoco()
         {
-            for (int j = 1; j <= numberOfAcc; j++)
+            Check[] check = new Check[numberOfAcc + 1];
+            for (int j = startAccount; j <= numberOfAcc; j++) check[j] = new Check(j);   //проинициализировали check[j]. Сработал конструктор
+
+            for (int j = startAccount; j <= numberOfAcc; j++)
             {
-                Check check = new Check(j);
-                if (check.IsActiveServer)
+                
+                if (check[j].IsActiveServer)
                 {
-                    check.ReOpenWindow();
-                    check.Pause(1000);
-                    if (check.isEnchant())   //если окно находится в магазине чиповки
+                    check[j].ReOpenWindow();
+                    check[j].Pause(1000);
+                    if (check[j].isEnchant())   //если окно находится в магазине чиповки
                     {
                         DriversOfState drive = new DriversOfState(j);
                         drive.StateNintendo();
@@ -730,9 +713,12 @@ namespace Main
         /// <param name="e"></param>
         private void BH_Click(object sender, EventArgs e)
         {
+            BH.Visible = false;
+
             Thread myBH = new Thread(funcBH);
             myBH.Start();
 
+            BH.Visible = true;
         }
 
         /// <summary>
@@ -744,19 +730,34 @@ namespace Main
             for (int j = startAccount; j <= numberOfAcc; j++) check[j] = new Check(j);   //проинициализировали check[j]. Сработал конструктор
 
             DateTime Data1 = DateTime.Now;
-            bool EndOfLists = false;  //False, когда списки ботов исчерпаются по всем окнам
-            while(!EndOfLists)              //если боты закончатся, то цикл завершится
+ 
+            //вариант 1. неожиданные остановки программы
+            //bool EndOfLists = false;  //False, когда списки ботов исчерпаются по всем окнам
+            //while(!EndOfLists)              //если боты закончатся, то цикл завершится
+            //{
+            //    EndOfLists = true;
+            //    for (int j = startAccount; j <= numberOfAcc; j++)
+            //    {
+            //        if (check[j].IsActiveServer && !check[j].EndOfList())
+            //            check[j].problemResolutionBH();
+            //        EndOfLists = EndOfLists && check[j].EndOfList();
+            //    }
+            //    DateTime Data2 = DateTime.Now;
+            //    int dd = (Data2 - Data1).Milliseconds;
+            //    if ((Data2 - Data1).Seconds < 5)   check[1].Pause(5000 - (Data2 - Data1).Milliseconds);
+            //    Data1 = Data2;
+            //}
+
+            //вариант 2. упрощенный
+            while (true)              
             {
-                EndOfLists = true;
                 for (int j = startAccount; j <= numberOfAcc; j++)
                 {
-                    if (check[j].IsActiveServer && !check[j].EndOfList())
-                        check[j].problemResolutionBH();
-                    EndOfLists = EndOfLists && check[j].EndOfList();
+                    check[j].problemResolutionBH();
                 }
                 DateTime Data2 = DateTime.Now;
                 int dd = (Data2 - Data1).Milliseconds;
-                if ((Data2 - Data1).Seconds < 5)   check[1].Pause(5000 - (Data2 - Data1).Milliseconds);
+                if ((Data2 - Data1).Seconds < 5) check[1].Pause(5000 - (Data2 - Data1).Milliseconds);
                 Data1 = Data2;
             }
         }
@@ -812,7 +813,7 @@ namespace Main
 
             for (int j = startAccount; j <= numberOfAcc; j++)
             {
-                if (check[j].IsActiveServer) check[j].ChangingAccounts2(); 
+                if (check[j].IsActiveServer) check[j].ChangingAccounts(); 
             }
             
         }

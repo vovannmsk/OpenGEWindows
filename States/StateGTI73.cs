@@ -81,7 +81,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return server.isGoodChipWeapon();         //если получился хороший чип, то идём далее 
+            return server.isGoodChipWeapon() || server.isTown();         //если получился хороший чип либо вышли в город, то идём далее 
         }
 
         /// <summary>

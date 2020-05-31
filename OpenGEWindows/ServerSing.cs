@@ -85,9 +85,12 @@ namespace OpenGEWindows
             //this.pointisLogout2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 16000000, 6);       // проверено
             this.pointisLogout1 = new PointColor(930 - 5 + xx, 702 - 5 + yy, 7925494, 0);       // проверено   слово Ver буква r
             this.pointisLogout2 = new PointColor(930 - 5 + xx, 703 - 5 + yy, 7925494, 0);       // проверено
-            this.pointIsServerSelection1 = new PointColor(430 - 5 + xx, 340 - 5 + yy, 5848111, 0);       // проверено   слово Ver буква r
-            this.pointIsServerSelection2 = new PointColor(430 - 5 + xx, 341 - 5 + yy, 5848111, 0);       // проверено   слово Ver буква r
-            pointserverSelection = new Point(480 - 5 + xx, 345 - 5 + yy);
+            //this.pointIsServerSelection1 = new PointColor(430 - 5 + xx, 340 - 5 + yy, 5848111, 0);    // проверено
+            //this.pointIsServerSelection2 = new PointColor(430 - 5 + xx, 341 - 5 + yy, 5848111, 0);    // проверено
+            //pointserverSelection = new Point(480 - 5 + xx, 344 - 5 + yy); //синг. первая строка
+            this.pointIsServerSelection1 = new PointColor(430 - 5 + xx, 390 - 5 + yy, 5848111, 0);    // проверено
+            this.pointIsServerSelection2 = new PointColor(430 - 5 + xx, 391 - 5 + yy, 5848111, 0);    // проверено
+            pointserverSelection = new Point(480 - 5 + xx, 394 - 5 + yy); //европа. третья строка
 
             #endregion
 
@@ -418,14 +421,14 @@ namespace OpenGEWindows
             this.pointisDemon71 = new PointColor(398 - 5 + xx, 337 - 5 + yy, 7900000, 5);   //проверено
             this.pointisDemon72 = new PointColor(399 - 5 + xx, 337 - 5 + yy, 7900000, 5);   //проверено
 
-            this.pointisUndead41 = new PointColor(397 - 5 + xx, 292 - 5 + yy, 7100000, 5);   //проверено
-            this.pointisUndead42 = new PointColor(397 - 5 + xx, 293 - 5 + yy, 7400000, 5);   //проверено
-            this.pointisUndead51 = new PointColor(397 - 5 + xx, 307 - 5 + yy, 7100000, 5);   //проверено
-            this.pointisUndead52 = new PointColor(397 - 5 + xx, 308 - 5 + yy, 7400000, 5);   //проверено
-            this.pointisUndead61 = new PointColor(397 - 5 + xx, 322 - 5 + yy, 7100000, 5);   //проверено
-            this.pointisUndead62 = new PointColor(397 - 5 + xx, 323 - 5 + yy, 7400000, 5);   //проверено
-            this.pointisUndead71 = new PointColor(397 - 5 + xx, 337 - 5 + yy, 7100000, 5);   //проверено
-            this.pointisUndead72 = new PointColor(397 - 5 + xx, 338 - 5 + yy, 7400000, 5);   //проверено
+            this.pointisUndead41 = new PointColor(397 - 5 + xx, 293 - 5 + yy, 7400000, 5);   //проверено
+            this.pointisUndead42 = new PointColor(397 - 5 + xx, 294 - 5 + yy, 7400000, 5);   //проверено
+            this.pointisUndead51 = new PointColor(397 - 5 + xx, 308 - 5 + yy, 7400000, 5);   //проверено
+            this.pointisUndead52 = new PointColor(397 - 5 + xx, 309 - 5 + yy, 7400000, 5);   //проверено
+            this.pointisUndead61 = new PointColor(397 - 5 + xx, 323 - 5 + yy, 7400000, 5);   //проверено
+            this.pointisUndead62 = new PointColor(397 - 5 + xx, 324 - 5 + yy, 7400000, 5);   //проверено
+            this.pointisUndead71 = new PointColor(397 - 5 + xx, 338 - 5 + yy, 7400000, 5);   //проверено
+            this.pointisUndead72 = new PointColor(397 - 5 + xx, 339 - 5 + yy, 7400000, 5);   //проверено
 
             this.pointisLifeless41 = new PointColor(398 - 5 + xx, 292 - 5 + yy, 7500000, 5);   //проверено
             this.pointisLifeless42 = new PointColor(398 - 5 + xx, 301 - 5 + yy, 7600000, 5);   //проверено
@@ -594,7 +597,11 @@ namespace OpenGEWindows
             return pointisWhiteWindow.isColor();
         }
 
-        protected override bool isContinueRunning()
+        /// <summary>
+        /// загружен ли данный клиент на другом компе
+        /// </summary>
+        /// <returns></returns>
+        public override bool isContinueRunning()
         {
             return pointisContinueRunning1.isColor() && pointisContinueRunning2.isColor();
         }
@@ -614,7 +621,7 @@ namespace OpenGEWindows
             process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " " + this.pathClient + " -login " + GetLogin() + " " + GetPassword() + " -applaunch 663090 -silent";
             //steam://rungameid/319730
             process.Start();
-            Pause(10000);
+            Pause(15000);
 
             //if (isSteam())         //для старого варианта ввода логина-пароля
             //{
@@ -624,6 +631,8 @@ namespace OpenGEWindows
             for (int i = 1; i <= 10; i++)
             {
                 Pause(1000);
+
+                new Point(963 - 5 + xx, 717 - 5 + yy).PressMouseL();
 
                 if (isSystemError())  //если выскакивает системная ошибка, то нажимаем "Ок"     проверка не работает
                 {
@@ -763,7 +772,7 @@ namespace OpenGEWindows
         /// <summary>
         /// нажмает на выбранный раздел верхнего меню 
         /// </summary>
-        /// <param name="numberOfThePartitionMenu"> ноиер раздела верхнего меню </param>
+        /// <param name="numberOfThePartitionMenu"> номер раздела верхнего меню </param>
         public override void TopMenu(int numberOfThePartitionMenu)
         {
             //int[] MenukoordX = { 300, 333, 365, 398, 431, 470, 518, 565, 606, 637, 669, 700, 733 };

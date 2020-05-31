@@ -11,7 +11,8 @@ namespace States
         private ServerFactory serverFactory;
         private int tekStateInt;
         private GlobalParam globalParam;
-
+        private BotParam botParam;
+        
         public StateGT250()
         {
 
@@ -24,7 +25,9 @@ namespace States
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             this.town = server.getTown();
             globalParam = new GlobalParam();
+            botParam = new BotParam(botwindow.getNumberWindow());
             this.tekStateInt = 250;
+
         }
 
         /// <summary>
@@ -61,7 +64,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
-            if (server.isBoxOverflow())      globalParam.StatusOfSale = 1;
+            if (server.isBoxOverflow())      botParam.StatusOfSale = 1;
 
             server.WriteToLogFileBH("250 Идем в барак");
 
@@ -71,10 +74,10 @@ namespace States
                 server.GotoBarack(false);                       //если не в кого стрелять, уходим в барак
             //}
 
-            if (server.isBoxOverflow())    globalParam.StatusOfSale = 1;
+            if (server.isBoxOverflow()) botParam.StatusOfSale = 1;
 
 
-            if (server.isBoxOverflow())    globalParam.StatusOfSale = 1;
+            if (server.isBoxOverflow()) botParam.StatusOfSale = 1;
 
         }
 

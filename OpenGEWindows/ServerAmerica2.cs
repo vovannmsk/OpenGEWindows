@@ -629,7 +629,7 @@ namespace OpenGEWindows
             return pointisWhiteWindow.isColor();
         }
 
-        protected override bool isContinueRunning()
+        public override bool isContinueRunning()
         {
             return pointisContinueRunning1.isColor() && pointisContinueRunning2.isColor();
         }

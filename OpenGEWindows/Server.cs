@@ -642,7 +642,7 @@ namespace OpenGEWindows
         //    return pointisContinueRunning1.isColor() && pointisContinueRunning2.isColor();
         //}
 
-        protected abstract bool isContinueRunning();
+        public abstract bool isContinueRunning();
 
         protected void NextAccount()
         {
@@ -763,6 +763,32 @@ namespace OpenGEWindows
             Pause(4000);
 
         }
+
+        /// <summary>
+        /// закрываем программы в конкретной песочнице
+        /// </summary>
+        public void CloseSandboxie()
+        {
+            new Point(1597, 1060).Move();   //перемещаем мышь вниз 
+            Pause(400);
+
+            //вариант с песочницей
+            Process process = new Process();
+            //закрываем программы
+            process.StartInfo.FileName = @"C:\Program Files\Sandboxie\Start.exe";
+            process.StartInfo.Arguments = @"/box:" + botwindow.getNumberWindow() + " /terminate";
+            process.Start();
+            Pause(5000);
+
+            ////вариант с чистым клиентом
+            //Process process = new Process();
+            //process.StartInfo.FileName = this.pathClient;
+            //process.StartInfo.Arguments = " -shutdown";
+            //process.Start();
+
+            //Pause(4000);
+        }
+
 
         public abstract void runClientSteamBH();
         public abstract void runClient();
@@ -3010,7 +3036,7 @@ namespace OpenGEWindows
                 case 10:
                     if ((isAtk40() || isAtk39() || isAtk38() || isAtk37()) &&
                         (isAtkSpeed30() || isAtkSpeed29() || isAtkSpeed28() || isAtkSpeed27()) && 
-                        (isHuman() || (isWild()) || (isLifeless()) || (isUndead()) || (isDemon()) )) result = true;
+                        (isHuman() || isWild() || isLifeless() || isUndead() || isDemon()))  result = true;
                     break;
             }
             return result;
@@ -4209,7 +4235,9 @@ namespace OpenGEWindows
             new Point(662 - 5 + xx, 542 - 5 + yy).PressMouseL();
         }
 
-        //купить флинтлок 2 штуки в магазине стоек
+        /// <summary>
+        /// купить флинтлок 2 штуки в магазине стоек
+        /// </summary>
         public void BuyingFlintlocks()
         {
             for (int i = 1; i <= 2; i++) new Point(378 - 5 + xx, 535 - 5 + yy).PressMouseL();  //кол-во
@@ -4417,7 +4445,156 @@ namespace OpenGEWindows
         }
         #endregion
 
+        #region Ферма
 
+        /// <summary>
+        /// поднимаем камеру в верхнюю точку
+        /// </summary>
+        public void MaxHeight(int n)
+        {
+            new Point(555 - 5 + xx, 430 - 5 + yy).Move();
+            for (int i = 1; i <= n; i++)
+            {
+                new Point(555 - 5 + xx, 430 - 5 + yy).PressMouseWheelUp();
+                Pause(500);
+            }
+        }
+
+        /// <summary>
+        /// тыкаем в аппарат на ферме
+        /// </summary>
+        public void PressApparate()
+        {
+            new Point(100 - 5 + xx, 100 - 5 + yy).PressMouseL();
+        }
+
+        /// <summary>
+        /// положить яблоки в первый аппарат
+        /// </summary>
+        public void PutAppleToFirstStorage()
+        {
+            Thing Apple = new Thing(new PointColor(697 - 5 + xx, 180 - 5 + yy, 7465471, 0), 
+                                    new PointColor(704 - 5 + xx, 180 - 5 + yy, 42495, 0));
+            DragItemToXY(Apple, 529 - 5 + xx, 181 - 5 + yy);  //перекладываем яблоки на аппарат
+            Pause(2000);
+
+            new Point(612 - 5 + xx, 398 - 5 + yy).PressMouseL();  //ок. подтверждаем количество
+            Pause(3000);
+
+            new Point(812 - 5 + xx, 339 - 5 + yy).PressMouseL();    //нажимаем "Insert"
+            Pause(1500);
+            new Point(950 - 5 + xx, 369 - 5 + yy).PressMouseL();    //нажимаем  "Ok"
+            Pause(1500);
+
+            botwindow.PressEscThreeTimes();
+            Pause(500);
+
+        }
+
+        /// <summary>
+        /// положить мед во второй аппарат
+        /// </summary>
+        public void PutHoneyToSecondStorage()
+        {
+            Thing Honey = new Thing(new PointColor(697 - 5 + xx, 180 - 5 + yy, 4289893, 0),
+                                    new PointColor(703 - 5 + xx, 180 - 5 + yy, 4487011, 0));
+
+            DragItemToXY(Honey, 492 - 5 + xx, 112 - 5 + yy);
+            Pause(1000);
+
+            new Point(612 - 5 + xx, 398 - 5 + yy).PressMouseL();
+            Pause(2000);
+
+            new Point(814 - 5 + xx, 339 - 5 + yy).PressMouseL();
+            Pause(500);
+            new Point(954 - 5 + xx, 369 - 5 + yy).PressMouseL();
+            Pause(500);
+
+            botwindow.PressEscThreeTimes();
+            Pause(500);
+
+        }
+
+
+
+        /// <summary>
+        /// перетащить вещь из ячейки инвентаря (строка i столбец j) в координаты x,y
+        /// </summary>
+        /// <param name="i">строка</param>
+        /// <param name="j">столбец</param>
+        /// <param name="Slot">номер слота маны</param>
+        protected void DragItemToXY(int i, int j, int x, int y)
+        {
+            iPoint pointResult = new Point(x - 5 + xx, y - 5 + yy);
+            iPoint pointBegin = new Point(700 - 5 + xx + (j - 1) * 39, 182 - 5 + yy + (i - 1) * 38);
+
+            pointBegin.Drag(pointResult);
+            Pause(1000);
+        }
+
+
+        /// <summary>
+        /// перекладываем указанную вещь по указанным координатам (инвентарь должене быть открыт на нужной закладке)
+        /// </summary>
+        protected bool DragItemToXY(Thing thing, int x, int y)
+        {
+            bool result = false;   //объект в кармане пока не найден
+            for (int i = 1; i <= 5; i++)         //строки в инвентаре
+            {
+                for (int j = 1; j <= 8; j++)        // столбцы в инвентаре
+                {
+                    if (!result)
+                    {
+                        if (CheckThingInCell(i, j, thing))
+                        {
+                            DragItemToXY(i, j, x, y);
+                            new Point(1500, 800).Move();   //убираем мышь в сторону
+                            result = true;
+                            Pause(500);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+
+        /// <summary>
+        /// нажать OK в форме о ежедневной награде
+        /// </summary>
+        public void PressOkDailyReward()
+        {
+            new Point(520 - 5 + xx, 444 - 5 + yy).PressMouseL();
+        }
+
+        /// <summary>
+        /// выскочила ли форма о ежедневной награде на ферме
+        /// </summary>
+        /// <returns></returns>
+        public bool IsDailyReward()
+        {
+            return new PointColor(522 - 5 + xx, 440 - 5 + yy, 7727344, 0).isColor() && 
+                   new PointColor(522 - 5 + xx, 441 - 5 + yy, 7727344, 0).isColor();
+        }
+
+        /// <summary>
+        /// нажать на карте на точку #1, близкую к аппарату
+        /// </summary>
+        public void PressPointNearlyApparatus1()
+        {
+            new Point(437 - 5 + xx, 470 - 5 + yy).PressMouseL();
+        }
+        
+        /// <summary>
+        /// нажать на карте на точку #2, близкую к аппарату
+        /// </summary>
+        public void PressPointNearlyApparatus2()
+        {
+            new Point(437 - 5 + xx, 501 - 5 + yy).PressMouseL();
+        }
+
+
+        #endregion
 
 
     }

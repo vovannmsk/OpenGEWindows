@@ -183,7 +183,7 @@
             this.ButtonOpenWindow.Name = "ButtonOpenWindow";
             this.ButtonOpenWindow.Size = new System.Drawing.Size(170, 35);
             this.ButtonOpenWindow.TabIndex = 52;
-            this.ButtonOpenWindow.Text = "Открыть окна ГЭ";
+            this.ButtonOpenWindow.Text = "ФЕРМА";
             this.ButtonOpenWindow.UseVisualStyleBackColor = false;
             this.ButtonOpenWindow.Click += new System.EventHandler(this.ButtonOpenWindow_Click);
             // 

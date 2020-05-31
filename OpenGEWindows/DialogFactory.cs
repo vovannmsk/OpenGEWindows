@@ -19,7 +19,7 @@
         /// <returns></returns>
         public Dialog createDialog()
         {
-            dialog = new DialogSing(botwindow);
+            //dialog = new DialogSing(botwindow);
             switch (botwindow.getParam())
             {
                 case "C:\\America\\":

@@ -24,8 +24,8 @@ namespace OpenGEWindows
             this.pointButtonMoveOnMap = new Point(832 - 5 + xx, 637 - 5 + yy);                //кнопка Move на карте     //проверено
 //            this.pointHeadTrader = new Point(561 - 5 + xx, 282 - 5 + yy);                     //голова торговца          // проверено
             //this.pointHeadTrader = new Point(739 - 130 + xx, 338 - 130 + yy);                     //голова торговца          //проверено
-            this.pointHeadTrader = new Point(736 - 130 + xx, 352 - 130 + yy);                     //голова торговца          //проверено
-            //            this.pointHeadTrader = new Point(595 - 5 + xx, 212 - 5 + yy);                     //голова торговца          //проверено
+            //this.pointHeadTrader = new Point(736 - 130 + xx, 352 - 130 + yy);                     //голова торговца          //проверено
+              this.pointHeadTrader = new Point(595 - 5 + xx, 212 - 5 + yy);                     //голова торговца          //проверено
 
             this.pointTownTeleport = new Point(115 - 5 + xx, 333 - 5 + (TELEPORT_N - 1) * 30 + yy);    //сюда тыкаем, чтобы улететь на торговую улицу   //не нужно
             //точки для проверки цвета

@@ -10,6 +10,7 @@ namespace States
         private Server server;
         private ServerFactory serverFactory;
         private GlobalParam globalParam;
+        private BotParam botParam;
         private int tekStateInt;
 
         public StateGT129()
@@ -23,6 +24,7 @@ namespace States
             this.serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();   // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
             globalParam = new GlobalParam();
+            botParam = new BotParam(botwindow.getNumberWindow());
             this.tekStateInt = 129;
         }
 
@@ -63,7 +65,7 @@ namespace States
             if (server.isBoxOverflow())
             {
                 //botwindow.setStatusOfSale(1);
-                globalParam.StatusOfSale = 1;
+                botParam.StatusOfSale = 1;
 
             }
 
@@ -74,7 +76,7 @@ namespace States
             if (server.isBoxOverflow())
             {
                 //botwindow.setStatusOfSale(1);
-                globalParam.StatusOfSale = 1;
+                botParam.StatusOfSale = 1;
             }
 
 
@@ -84,7 +86,7 @@ namespace States
             if (server.isBoxOverflow())
             {
                 //botwindow.setStatusOfSale(1);
-                globalParam.StatusOfSale = 1;
+                botParam.StatusOfSale = 1;
             }
 
             botwindow.PressEscThreeTimes();   // ================= убирает все лишние окна с экрана =================================
@@ -92,7 +94,7 @@ namespace States
             if (server.isBoxOverflow())
             {
                 //botwindow.setStatusOfSale(1);
-                globalParam.StatusOfSale = 1;
+                botParam.StatusOfSale = 1;
             }
 
             ////ожидание загрузки BH

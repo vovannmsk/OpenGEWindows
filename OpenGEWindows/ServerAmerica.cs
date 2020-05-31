@@ -429,7 +429,7 @@ namespace OpenGEWindows
 
         #region No window
 
-        protected override bool isContinueRunning()
+        public override bool isContinueRunning()
         {
             return false;
         }

@@ -70,7 +70,7 @@ namespace OpenGEWindows
 
         protected Dialog dialog;
         protected GlobalParam globalParam;
-
+        protected BotParam botParam;
 
         // ============  методы  ========================
 
@@ -248,7 +248,7 @@ namespace OpenGEWindows
                 case 8486756:     // Ice Crystal                  **
                 case 4143156:     // bulk of Coal                   **
                 case 9472397:     // Steel piece                 **
-                case 7187897:     // Mustang ore
+                //case 7187897:     // Mustang ore
                 case 1381654:     // стрелы эксп
                 case 11258069:    // пули эксп
                 case 2569782:     // дробь эксп
@@ -342,7 +342,7 @@ namespace OpenGEWindows
                 case 15575073:    // Blue sap               
                 case 4143156:     // bulk of Coal                **
 //                case 9472397:     // Steel piece                 **
-                case 7187897:     // Mustang ore
+                //case 7187897:     // Mustang ore
                 //=================== пули ===========================
                 case 1381654:     // стрелы эксп
                 case 11258069:    // пули эксп Steel Bullet
@@ -351,7 +351,7 @@ namespace OpenGEWindows
                 case 14404589:    // Large Calliber Bullet
                 //=================== пули конец =====================
                 case 5137276:     // сундук деревянный как у сфер древней звезды
-                case 3031912:     // Reinforced Lether
+                //case 3031912:     // Reinforced Lether
                 case 13667914:    // 600 SP
                 case 2831927:     // Sign G, D
                 case 2828377:     // Ancient Orb
@@ -505,7 +505,8 @@ namespace OpenGEWindows
             pointButtonSell.PressMouseL();
             pointButtonSell.PressMouseL();
 //            botwindow.setStatusOfSale(0);
-            globalParam.StatusOfSale = 0;
+            //globalParam.StatusOfSale = 0;
+            botParam.StatusOfSale = 0;
             Pause(2000);
         }
 
