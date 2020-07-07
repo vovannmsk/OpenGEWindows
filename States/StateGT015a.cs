@@ -64,7 +64,8 @@ namespace States
 
             if (result)   // если получилось войти, то
             {
-                botwindow.Pause(3000);
+                botwindow.Pause(500);
+//                botwindow.Pause(3000);
             }
         }
 
@@ -91,7 +92,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT016(botwindow);
+            return new StateGT016new(botwindow);
         }
 
         /// <summary>
@@ -100,8 +101,8 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGT001(botwindow);
-            //return this;  //, gototrade);    //состояние из которого осуществляется End Programm
+            
+            return this;  
         }
 
         /// <summary>

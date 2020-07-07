@@ -279,9 +279,9 @@ namespace States
         public void StateInputOutput()
         {
             //Server.rr = false;
-//            StateDriverRun(new StateGT014(botwindow), new StateGT017(botwindow));  // заходим в ребольдо
+            StateDriverRun(new StateGT014(botwindow), new StateGT017(botwindow));  // заходим в ребольдо
 
-            StateDriverRun(new StateGT014(botwindow), new StateGT016(botwindow));  // заходим в казарму
+            //StateDriverRun(new StateGT014(botwindow), new StateGT016(botwindow));  // заходим в казарму
             if (Server.AccountBusy)   
             {
                 StateDriverRun(new StateGT169(botwindow), new StateGT170(botwindow));  // удаляем песочницу
@@ -289,14 +289,14 @@ namespace States
             else
             {
 //               StateDriverRun(new StateGT165(botwindow), new StateGT170(botwindow));  // бежим к бабе ГМ + удаляем песочницу
-                StateDriverRun(new StateGT169(botwindow), new StateGT170(botwindow));   // надеваем оружие и броню
+                StateDriverRun(new StateGT169(botwindow), new StateGT170(botwindow));   // удаляем песочницу
 
 
             }
         }
 
         /// <summary>
-        /// идем из состояния "нет окна" до состояния "в стартонии", потом закрываем прогу в песочнице
+        /// идем из состояния "нет окна" до состояния "в стартонии", потом закрываем прогу в песочнице (для Европы)
         /// </summary>
         public void StateInputOutput2()
         {
@@ -313,7 +313,59 @@ namespace States
             }
         }
 
+        /// <summary>
+        /// ЭТО ЕВРОКВЕСТЫ от Стартонии до получения 100 еды с Кокошкой
+        /// идем из состояния "нет окна" до состояния "пет Коко взят у Петмастера", потом закрываем прогу в песочнице (для Европы)
+        /// </summary>
+        public void StateInputOutput3()
+        {
+            //StateDriverRun(new StateGT014a(botwindow), new StateGT016new(botwindow));  // reOpen + connect
+            StateDriverRun(new StateGT030(botwindow), new StateGT031(botwindow)); //reopen
 
+            if (Server.AccountBusy)
+            {
+                StateDriverRun(new StateGT169(botwindow), new StateGT170(botwindow));  // закрываем проги в песочнице
+            }
+            else
+            {
+                //StateDriverRun(new StateGT016new(botwindow), new StateGT017(botwindow));  // Barack. New Place
+
+                StateDriverRun(new StateGT031(botwindow), new StateGT041(botwindow));   // делаем квесты для новичков
+                StateDriverRun(new StateGT169(botwindow), new StateGT170(botwindow));   // закрываем проги в песочнице
+            }
+        }
+
+        /// <summary>
+        /// получение журнала по ивенту на фонтане для всех серверов
+        /// </summary>
+        public void StateInputOutput4()
+        {
+            StateDriverRun(new StateGT014a(botwindow), new StateGT016new(botwindow));  // reOpen + connect
+
+            if (Server.AccountBusy)
+            {
+                StateDriverRun(new StateGT169(botwindow), new StateGT170(botwindow));  // закрываем проги в песочнице
+            }
+            else
+            {
+                StateDriverRun(new StateGT016new2(botwindow), new StateGT017(botwindow));  // Barack. New Place
+                if (server.isPioneerJournal())
+                {
+                    //получаем ежедневную награду
+                    server.GetGifts();
+                }
+                //else 
+                //{
+                //    //получаем журнал
+                //    StateDriverRun(new StateGT093(botwindow), new StateGT099(botwindow));   // идем на фонтан и получаем вкусняшки
+                //    StateDriverRun(new StateGT099(botwindow), new StateGT100(botwindow));   // применить журнал
+                //    botwindow.Pause(1000);
+                //    if (server.isPioneerJournal()) server.GetGifts();
+                //}
+                StateDriverRun(new StateGT169(botwindow), new StateGT170(botwindow));  // закрываем проги в песочнице
+                
+            }
+        }
 
         /// <summary>
         ///                // коралл кнопка (алхимия)
@@ -514,8 +566,13 @@ namespace States
         /// </summary>
         public void StateRecovery()
         {
-            StateDriverRun(new StateGT015(botwindow), new StateGT001(botwindow));
-//            StateDriverRun(new StateGT15(botwindow), new StateGT28(botwindow));
+            StateDriverRun(new StateGT015(botwindow), new StateGT001(botwindow)); 
+
+            //только на время ивента
+            //StateDriverRun(new StateGT015(botwindow), new StateGT017(botwindow));   // доходим до ребольдо, получаем подарки
+            //StateDriverRun(new StateGT093(botwindow), new StateGT096(botwindow));   // идем на фонтан, тыкаем в Лорайн
+            //StateDriverRun(new StateGT096a(botwindow), new StateGT097(botwindow));  // получаем бафф
+            //StateDriverRun(new StateGT017(botwindow), new StateGT001(botwindow));
         }
 
         /// <summary>

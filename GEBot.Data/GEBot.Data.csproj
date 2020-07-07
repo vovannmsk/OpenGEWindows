@@ -77,6 +77,7 @@
     <Compile Include="ScriptDataBotText.cs" />
     <Compile Include="ServerParamAmerica.cs" />
     <Compile Include="ServerParamAmerica2.cs" />
+    <Compile Include="ServerParamEuropa2.cs" />
     <Compile Include="ServerParamEuropa.cs" />
     <Compile Include="ServerParamSing.cs" />
     <Compile Include="ServerParam.cs" />

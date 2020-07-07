@@ -85,12 +85,12 @@ namespace OpenGEWindows
             //this.pointisLogout2 = new PointColor(565 - 5 + xx, 531 - 5 + yy, 16000000, 6);       // проверено
             this.pointisLogout1 = new PointColor(930 - 5 + xx, 702 - 5 + yy, 7925494, 0);       // проверено   слово Ver буква r
             this.pointisLogout2 = new PointColor(930 - 5 + xx, 703 - 5 + yy, 7925494, 0);       // проверено
-            //this.pointIsServerSelection1 = new PointColor(430 - 5 + xx, 340 - 5 + yy, 5848111, 0);    // проверено
-            //this.pointIsServerSelection2 = new PointColor(430 - 5 + xx, 341 - 5 + yy, 5848111, 0);    // проверено
-            //pointserverSelection = new Point(480 - 5 + xx, 344 - 5 + yy); //синг. первая строка
-            this.pointIsServerSelection1 = new PointColor(430 - 5 + xx, 390 - 5 + yy, 5848111, 0);    // проверено
-            this.pointIsServerSelection2 = new PointColor(430 - 5 + xx, 391 - 5 + yy, 5848111, 0);    // проверено
-            pointserverSelection = new Point(480 - 5 + xx, 394 - 5 + yy); //европа. третья строка
+            this.pointIsServerSelection1 = new PointColor(430 - 5 + xx, 340 - 5 + yy, 5848111, 0);    // проверено
+            this.pointIsServerSelection2 = new PointColor(430 - 5 + xx, 341 - 5 + yy, 5848111, 0);    // проверено
+            pointserverSelection = new Point(480 - 5 + xx, 344 - 5 + yy); //синг. первая строка
+            //this.pointIsServerSelection1 = new PointColor(430 - 5 + xx, 390 - 5 + yy, 5848111, 0);    // европа. проверено
+            //this.pointIsServerSelection2 = new PointColor(430 - 5 + xx, 391 - 5 + yy, 5848111, 0);    // европа. проверено
+            //pointserverSelection = new Point(480 - 5 + xx, 394 - 5 + yy); //европа. третья строка
 
             #endregion
 
@@ -165,8 +165,10 @@ namespace OpenGEWindows
             this.pointisBoxOverflow3 = new PointColor(379 - 5 + xx, 497 - 5 + yy, 5600000, 5);          //проверка оранжевой надписи
             this.pointisBoxOverflow4 = new PointColor(379 - 5 + xx, 498 - 5 + yy, 5600000, 5);
 
-            this.arrayOfColorsIsWork1 = new uint[12] { 11051, 1721, 7644, 2764, 16777, 4278, 5138, 3693, 66, 5068, 15824, 8756 };
-            this.arrayOfColorsIsWork2 = new uint[12] { 10919, 2106, 16711, 7243, 3560, 5401, 9747, 10258, 0, 9350, 15767, 8162 };
+            //this.arrayOfColorsIsWork1 = new uint[13] { 11051, 1721, 7644, 2764, 16777, 4278, 5138, 3693, 66, 5068, 15824, 8756, 3291 };
+            //this.arrayOfColorsIsWork2 = new uint[13] { 10919, 2106, 16711, 7243, 3560, 5401, 9747, 10258, 0, 9350, 15767, 8162, 1910 };
+            this.arrayOfColorsIsWork1 = new uint[16] { 11051, 1721, 7644, 2764, 16777, 4278, 5138, 3693, 66, 5068, 15824, 8756, 3291, 5400, 2569, 3291 };
+            this.arrayOfColorsIsWork2 = new uint[16] { 10919, 2106, 16711, 7243, 3560, 5401, 9747, 10258, 0, 9350, 15767, 8162, 1910, 3624, 3616, 1910 };
 
             this.pointisKillHero1 = new PointColor(80 - 5 + xx, 636 - 5 + yy, 1900000, 5);
             this.pointisKillHero2 = new PointColor(335 - 5 + xx, 636 - 5 + yy, 1900000, 5);
@@ -178,8 +180,15 @@ namespace OpenGEWindows
             this.pointisBattleMode1 = new PointColor(173 - 5 + xx, 511 - 5 + yy, 8900000, 5);
             this.pointisBattleMode2 = new PointColor(200 - 5 + xx, 511 - 5 + yy, 8900000, 5);
 
-            this.pointisBulletHalf = new PointColor(227 - 5 + xx, 621 - 5 + yy, 5500000, 5);
-            this.pointisBulletOff  = new PointColor(227 - 5 + xx, 621 - 5 + yy, 5700000, 5);
+//            this.pointisBulletHalf = new PointColor(227 - 5 + xx, 621 - 5 + yy, 5500000, 5);
+            this.pointisBulletHalf1 = new PointColor(229 - 5 + xx, 622 - 5 + yy, 8245488, 0);
+            this.pointisBulletHalf2 = new PointColor(484 - 5 + xx, 622 - 5 + yy, 8245488, 0);
+            this.pointisBulletHalf3 = new PointColor(739 - 5 + xx, 622 - 5 + yy, 8245488, 0);
+//            this.pointisBulletOff  = new PointColor(227 - 5 + xx, 621 - 5 + yy, 5700000, 5);
+            this.pointisBulletOff1 = new PointColor(229 - 5 + xx, 622 - 5 + yy, 401668, 0);
+            this.pointisBulletOff2 = new PointColor(484 - 5 + xx, 622 - 5 + yy, 401668, 0);
+            this.pointisBulletOff3 = new PointColor(739 - 5 + xx, 622 - 5 + yy, 401668, 0);
+
 
 
             #endregion
@@ -199,8 +208,10 @@ namespace OpenGEWindows
 //            this.pointHeadGM = new Point(369 - 5 + xx, 290 - 5 + yy);
             this.pointHeadGM = new Point(394 - 5 + xx, 394 - 5 + yy);
             //            this.arrayOfColorsIsTown1 = new uint[13] { 0, 11053000, 1710000, 7631000, 2763000, 16777000, 4276000, 5131000, 3684000, 65000, 5066000, 15856000, 8750000 };
-            this.arrayOfColorsIsTown1 = new uint[12] { 11053, 1710, 7631, 2763, 16777, 4276, 5131, 3684, 65, 5066, 15856, 8750 };
-            this.arrayOfColorsIsTown2 = new uint[12] { 10921, 2105, 16711, 7237, 3552, 5395, 9737, 10263, 0, 9342, 15790, 8158 };
+            //this.arrayOfColorsIsTown1 = new uint[13] { 11053, 1710, 7631, 2763, 16777, 4276, 5131, 3684, 65, 5066, 15856, 8750, 3291 };
+            //this.arrayOfColorsIsTown2 = new uint[13] { 10921, 2105, 16711, 7237, 3552, 5395, 9737, 10263, 0, 9342, 15790, 8158, 1910 };
+            this.arrayOfColorsIsTown1 = new uint[16] { 11053, 1710, 7631, 2763, 16777, 4276, 5131, 3684, 65, 5066, 15856, 8750, 3291, 5395, 3291, 2565 };
+            this.arrayOfColorsIsTown2 = new uint[16] { 10921, 2105, 16711, 7237, 3552, 5395, 9737, 10263, 0, 9342, 15790, 8158, 1910, 3618, 1910, 3618 };
 
             //this.pointIsTown_RifleFirstDot1 = new PointColor(24 + xx, 692 + yy, 11053000, 3);        //точки для проверки обычной стойки с ружьем
             //this.pointIsTown_RifleFirstDot2 = new PointColor(25 + xx, 692 + yy, 10921000, 3);
@@ -733,6 +744,10 @@ namespace OpenGEWindows
         /// </summary>
         public override void AddBullet10000()
         {
+            pointMana1.PressMouseL();
+            pointMana2.PressMouseL();
+            pointMana3.PressMouseL();
+            new Point(1500, 500).Move();
         }
 
         /// <summary>
@@ -824,11 +839,11 @@ namespace OpenGEWindows
             iPoint pointTeleportToTownAltW;
             if (botwindow.getNomerTeleport() < 14)
             {
-                pointTeleportToTownAltW = new Point(800 + xx, 517 + yy + (nomerTeleport - 1) * 17);
+                pointTeleportToTownAltW = new Point(800 + xx, 500 + yy + (nomerTeleport - 1) * 17);
             }
             else
             {
-                pointTeleportToTownAltW = new Point(800 + xx, 517 + yy);   //ребольдо
+                pointTeleportToTownAltW = new Point(800 + xx, 500 + yy);   //ребольдо
             }
 
             // отбегаю в сторону. чтобы бот не стрелял  

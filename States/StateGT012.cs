@@ -60,8 +60,9 @@ namespace States
         public void run()                // переход к следующему состоянию
         {
             server.WriteToLogFileBH("12");
+            server.CloseSandboxie();
             //server.GoToEnd();
-            server.Logout();
+            //server.Logout();
             botwindow.Pause(8000);
         }
 
@@ -84,8 +85,8 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            //return !botwindow.isHwnd();   // проверяет, есть ли окно или выгружено (если нет такого hwnd, то значит окно выгружено)
-            return server.isLogout();      // проверяем вышло ли окно в логаут
+            return !botwindow.isHwnd();   // для GotoEnd и server.CloseSandboxie();
+            //return server.isLogout();      // для Logout
         }
 
         /// <summary>

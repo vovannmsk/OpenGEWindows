@@ -437,8 +437,10 @@ namespace States
                 case 1: driver.StateRecovery();
                     break;
                 case 2: botwindow.CureOneWindow();              //logout
+                    //server.CloseSandboxie();              //закрываем все проги в песочнице
                     break;
                 case 3: botwindow.CureOneWindow2();              // отбегаем в сторону и логаут
+                    //server.CloseSandboxie();              //закрываем все проги в песочнице
                     break;
                 case 4: driver.StateActivePet();
                     break;
@@ -454,7 +456,7 @@ namespace States
                     break;
                 case 10: //driver.StateExitFromTown();          
                     server.GoToEnd();
-                    //botwindow.Pause(8000);
+                    //server.CloseSandboxie();              //закрываем все проги в песочнице
                     break;
                 case 11: SellProduct();                     // выставление товаров на рынок
                     break;
@@ -469,6 +471,7 @@ namespace States
                     break;
                 case 16:
                     botwindow.LeaveGame();                  //если окно три прохода подряд в логауте, значит зависло
+                    //server.CloseSandboxie();              //закрываем все проги в песочнице
                     break;
                 case 17:
                     server.CloseSandboxie();              //закрываем все проги в песочнице
@@ -659,8 +662,16 @@ namespace States
         {
             for (int j = botParam.NumberOfInfinity; j < botParam.Logins.Length; j++)
             {
-                server.WriteToLogFile("номер окна = " + j);
-                driver.StateInputOutput2(); //вход и выход из игры
+                //server.WriteToLogFile("номер окна = " + j);
+
+
+                //if (!server.IsActiveServer)     //если не активный сервер
+                //    Server.AccountBusy = true;  // то пропускаем аккаунт
+                driver.StateInputOutput4(); //вход и выход из игры
+
+                //if (server.IsActiveServer) driver.StateInputOutput4(); //вход и выход из игры
+                //else botParam.NumberOfInfinity = botParam.NumberOfInfinity + 1;
+                //else server.RemoveSandboxie();  //переходим к следующему аккаунту
             }
         }
 
@@ -774,7 +785,7 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            int i = 3;   //номер проверяемого окна
+            int i = 1;   //номер проверяемого окна
 
             int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 875, 850, 825, 800, 775, 750, 875 };
             int[] koordY = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 5, 30, 55, 80, 105, 130, 5 };
@@ -785,12 +796,18 @@ namespace States
             //MessageBox.Show(" " + botwindow.getNomerTeleport());
             //botwindow.Pause(1000);
 
+            //Dialog dialog = new DialogSing(botwindow);
+            //MessageBox.Show(" " + dialog.isDialog());
+
             Server server = new ServerSing(botwindow);
-            MessageBox.Show("Lifeless " + server.isLifeless());
-            MessageBox.Show("Undead " + server.isUndead());
-            MessageBox.Show("Wild " + server.isWild());
-            MessageBox.Show("Demon " + server.isDemon());
-            MessageBox.Show("Human " + server.isHuman());
+            //Server server = new ServerEuropa2(botwindow);
+
+
+            //MessageBox.Show("Награда " + server.isPioneerJournal());
+            //MessageBox.Show("Undead " + server.isUndead());
+            //MessageBox.Show("Wild " + server.isWild());
+            //MessageBox.Show("Demon " + server.isDemon());
+            //MessageBox.Show("Human " + server.isHuman());
 
             //Server server = new ServerAmerica2(botwindow);
 
@@ -878,9 +895,9 @@ namespace States
 
             //PointColor point1 = new PointColor(1042, 551, 1, 1);
             //PointColor point2 = new PointColor(1043, 551, 1, 1);
-            PointColor point1 = new PointColor(397 - 5 + xx, 324 - 5 + yy, 0, 0);
-            PointColor point2 = new PointColor(397 - 5 + xx, 323 - 5 + yy, 0, 0);
-            PointColor point3 = new PointColor(591 - 5 + xx, 636 - 5 + yy, 0, 0);
+            PointColor point1 = new PointColor(29 - 5 + xx, 697 - 5 + yy,  0, 0);
+            PointColor point2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 0, 0);
+            PointColor point3 = new PointColor(739 - 5 + xx, 622 - 5 + yy, 0, 0);
 
 
             color1 = point1.GetPixelColor();

@@ -7,7 +7,7 @@ namespace States
     {
         private botWindow botwindow;
         private Server server;
-        private Otit otit;
+        private Town town;
         private int tekStateInt;
 
         public StateGT093()
@@ -20,9 +20,7 @@ namespace States
             this.botwindow = botwindow;
             ServerFactory serverFactory = new ServerFactory(botwindow);
             this.server = serverFactory.create();                 // создали конкретный экземпляр класса server по паттерну "простая Фабрика" (Америка, Европа или Синг)
-            OtitFactory otitFactory = new OtitFactory(botwindow);
-            this.otit = otitFactory.createOtit();
-
+            this.town = server.getTownBegin();   // Ребольдо. 
             this.tekStateInt = 93;
         }
 
@@ -32,6 +30,7 @@ namespace States
         /// </summary>
         public void run()                // переход к следующему состоянию
         {
+            server.OpenTownTeleportForState();
         }
 
         /// <summary>
@@ -47,7 +46,7 @@ namespace States
         /// <returns> true, если получилось перейти к следующему состоянию </returns>
         public bool isAllCool()
         {
-            return true;
+            return town.isOpenTownTeleport();
         }
 
         /// <summary>
@@ -56,7 +55,7 @@ namespace States
         /// <returns> следующее состояние </returns>
         public IState StateNext()         // возвращает следующее состояние, если переход осуществился
         {
-            return new StateGT093(botwindow);
+            return new StateGT094(botwindow);
         }
 
         /// <summary>
@@ -65,7 +64,7 @@ namespace States
         /// <returns> запасное состояние </returns>
         public IState StatePrev()         // возвращает запасное состояние, если переход не осуществился
         {
-            return new StateGT093(botwindow);
+            return this;
         }
 
         #region стандартные служебные методы для паттерна Состояния

@@ -59,7 +59,7 @@ namespace States
         {
             server.WriteToLogFileBH("Казарма");
             //============ выбор персонажей  ===========
-            //botwindow.TeamSelection();
+            
             server.TeamSelection();
             botwindow.Pause(1000);
 
@@ -75,11 +75,11 @@ namespace States
 
             botwindow.Pause(2000);
             int i = 0;
-            while (i < 50)      // ожидание загрузки города, проверка по двум стойкам
+            while ((i < 50) && (!server.isTown()))      // ожидание загрузки города, проверка по двум стойкам
             { 
                 botwindow.Pause(500); 
                 i++;
-                if (server.isTown())  break;    // проверяем успешный переход в город
+                //if (server.isTown())  break;    // проверяем успешный переход в город
             }
             //botwindow.Pause(12000);       //поставил по Колиной просьбе
             botwindow.Pause(1000);       //проба
@@ -87,7 +87,18 @@ namespace States
             //server.GetGifts();
             //server.TaskOff();
 
+            //botwindow.PressEscThreeTimes();    на время ивента замаркерено
+
+            //новый текст на время ивента 
+            if (!server.isPioneerJournal())
+            {
+                botwindow.PressEsc();
+                botwindow.Pause(1000);
+            }
+            if (server.isPioneerJournal()) server.GetGifts();
             botwindow.PressEscThreeTimes();
+            //конец нового квеста
+
             botwindow.Pause(1000);
         }
 

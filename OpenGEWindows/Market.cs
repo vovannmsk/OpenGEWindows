@@ -186,85 +186,6 @@ namespace OpenGEWindows
         /// </summary>
         /// <param name="color"> цвет полностью определяет товар, который поступает на анализ </param>
         /// <returns> true, если анализируемый товар нужный и его нельзя продавать </returns>
-        public bool NeedToSellProduct(uint color)
-        {
-            bool result = true;
-            iPointColor pointMega = new PointColor();
-
-            switch (color)                                             // Хорошая вещь или нет, сверяем по картотеке
-            {
-                case 394901:      // soul crystal                **
-                case 3947742:     // красная бутылка 1200HP      **
-                case 2634708:     // красная бутылка 2500HP      **
-                case 7171437:     // devil whisper               **
-                case 5933520:     // маленькая красная бутылка   **
-                case 1714255:     // митридат                    **
-                case 7303023:     // чугун                       **
-                case 4487528:     // honey                       **
-                case 1522446:     // green leaf                  **
-                case 2112641:     // red leaf                    **
-                case 1533304:     // yelow leaf                  **
-                case 13408291:    // shiny                       **
-                case 3303827:     // карта перса                 **
-                case 6569293:     // warp                        **
-                case 662558:      // head of Mantis              **
-                case 4497887:     // Mana Stone                  **
-                case 7305078:     // Ящики для джеков            **
-                case 15420103:    // Бутылка хрина               **
-                case 9868940:     // композитная сталь           **
-                case 5334831:     // магическая сфера            **
-                case 13164006:    // свекла                      **
-                case 16777215:    // Wheat flour                 **
-                case 13565951:    // playtoken                   **
-                case 10986144:    // Hinge                       **
-                case 3481651:     // Tube                        **
-                case 6593716:     // Clock                       **
-                case 13288135:    // Spring                      **
-                case 7233629:     // Cogwheel                    **
-                case 13820159:    // Family Support Token        **
-                case 4222442:     // Wolf meat                   **
-                case 4435935:     // Yellow ore                  **
-                case 5072004:     // Bone Stick                   **
-                case 3559777:     // Dragon Lether                   **
-                case 1712711:     // Dragon Horn                   **
-                case 6719975:     // Wild Boar Meat                   **
-                case 4448154:     // Green ore                   **
-                case 13865807:    // blue ore                   **
-                case 4670431:     // Red ore                 **
-                case 13291199:    // Diamond Ore                   **
-                case 1063140:     // Stone of Philos                   **
-                case 8486756:     // Ice Crystal                  **
-                case 4143156:     // bulk of Coal                   **
-                case 9472397:     // Steel piece                 **
-                case 7187897:     // Mustang ore
-                case 1381654:     // стрелы эксп
-                case 11258069:    // пули эксп
-                case 2569782:     // дробь эксп
-                case 5137276:     // сундук деревянный как у сфер древней звезды
-                case 656906:      // magocal orb
-                case 13748687:    // Ressurection Potion
-                case 15595262:    // Small Stew обед
-                case 3164547:     // Portable Greate обед
-
-
-
-                    result = false;
-                    break;
-                case 14210771:     // Mega Etr, Io Talt
-                case 9803667:     // Mega A
-                case 7645105:     // Mega Qu
-                    result = true;
-                    break;
-            }
-
-            return result;
-        }                                            //временно не используется (старая версия)
-
-        /// <summary>
-        /// определяет, анализируется ли нужный товар либо данный товар можно продавать
-        /// </summary>
-        /// <param name="color"> цвет полностью определяет товар, который поступает на анализ </param>
-        /// <returns> true, если анализируемый товар нужный и его нельзя продавать </returns>
         public bool NeedToSellProduct(uint color, int numberOfString)
         {
             bool result = true;   //по умолчанию вещь надо продавать, поэтому true
@@ -395,6 +316,8 @@ namespace OpenGEWindows
                 case 5002080:     // Карточка кэш персонажа 1
                 case 5001823:     // Карточка кэш персонажа 2
                 case 16515071:    // Devil Dream
+                case 3156778:     // Gift Made (по ивенту)
+                case 47612:       // Triumph Fillers
 
                     result = false;
                     break;

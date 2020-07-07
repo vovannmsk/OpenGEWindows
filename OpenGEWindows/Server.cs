@@ -212,8 +212,14 @@ namespace OpenGEWindows
         protected iPointColor pointisBattleMode2;
         protected uint[] arrayOfColorsIsWork1;
         protected uint[] arrayOfColorsIsWork2;
-        protected iPointColor pointisBulletHalf;      //если патронов половина (желтый значок)
-        protected iPointColor pointisBulletOff;       //если патронов почти нет (красный значок)
+        //protected iPointColor pointisBulletHalf;      //если патронов половина (желтый значок)
+        protected iPointColor pointisBulletHalf1;      //если патронов половина (желтый значок) первый перс
+        protected iPointColor pointisBulletHalf2;      //если патронов половина (желтый значок) второй перс
+        protected iPointColor pointisBulletHalf3;      //если патронов половина (желтый значок) третий перс
+        //protected iPointColor pointisBulletOff;       //если патронов почти нет (красный значок)
+        protected iPointColor pointisBulletOff1;       //если патронов почти нет (красный значок) первый перс
+        protected iPointColor pointisBulletOff2;       //если патронов почти нет (красный значок) второй перс
+        protected iPointColor pointisBulletOff3;       //если патронов почти нет (красный значок) третий перс
 
         #endregion
 
@@ -734,9 +740,9 @@ namespace OpenGEWindows
         /// </summary>
         public void RemoveSandboxie()
         {
-            int res = botParam.NumberOfInfinity + 1; //прибавили индекс, когда удаляем песочницу 
-            if (res >= botParam.LengthOfList) res = 0;
-            botParam.NumberOfInfinity = res;
+            int result = botParam.NumberOfInfinity + 1; //прибавили индекс, когда удаляем песочницу 
+            if (result >= botParam.LengthOfList) result = 0;
+            botParam.NumberOfInfinity = result;
             new Point(1597, 1060).Move();   //перемещаем мышь вниз 
             Pause(400);
 
@@ -1488,7 +1494,7 @@ namespace OpenGEWindows
         /// <returns> true, если красный значок </returns>
         public bool isBulletOff()
         {
-            return (pointisBulletOff.isColor());
+            return pointisBulletOff1.isColor() || pointisBulletOff2.isColor() || pointisBulletOff3.isColor();
         }
 
         /// <summary>
@@ -1497,7 +1503,7 @@ namespace OpenGEWindows
         /// <returns> true, если желтый значок </returns>
         public bool isBulletHalf()
         {
-            return (pointisBulletHalf.isColor());
+            return pointisBulletHalf1.isColor() || pointisBulletHalf2.isColor() || pointisBulletHalf3.isColor();
         }
 
         /// <summary>
@@ -1566,7 +1572,7 @@ namespace OpenGEWindows
             uint color1 = new PointColor(29 - 5 + xx, 697 - 5 + yy, 0, 0).GetPixelColor() / 1000;                 // проверяем номер цвета в контрольной точке и округляем
             uint color2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 0, 0).GetPixelColor() / 1000;                 // проверяем номер цвета в контрольной точке и округляем
 
-            return ((this.arrayOfColorsIsWork1.Contains(color1)) && (this.arrayOfColorsIsWork2.Contains(color2)));                // проверяем, есть ли цвет контрольной точки в массивах цветов
+            return this.arrayOfColorsIsWork1.Contains(color1) && this.arrayOfColorsIsWork2.Contains(color2);                // проверяем, есть ли цвет контрольной точки в массивах цветов
         }
 
 
@@ -1600,6 +1606,22 @@ namespace OpenGEWindows
         #endregion
 
         #region inTown
+
+        /// <summary>
+        /// нажимаем на голову Лорэйн
+        /// </summary>
+        public void PressLoraine()
+        {
+            new Point(276 - 5 + xx, 262 - 5 + yy).PressMouseL();
+        }
+
+        /// <summary>
+        /// нажимаем на голову Лорэйн
+        /// </summary>
+        public void PressDolores()
+        {
+            new Point(623 - 5 + xx, 240 - 5 + yy).PressMouseL();
+        }
 
         /// <summary>
         /// получение оружия и брони у ГМ (уже не актуально. ивент закончился)
@@ -1641,7 +1663,7 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// надеваем предмет экипировки на бота
+        /// применяем вещь в специнвентаре
         /// </summary>
         protected void PuttingItem(Item item)
         {
@@ -1685,7 +1707,7 @@ namespace OpenGEWindows
         /// <summary>
         /// надеваем оружие и броню
         /// </summary>
-        public void PuttingOnWeoponsAndArmors()
+        public void PuttingOnWeaponsAndArmors()
         {
             Item Coat = new Item (35, 209, 16645630);
             Item Necklace = new Item(36, 219, 12179686);
@@ -1698,7 +1720,8 @@ namespace OpenGEWindows
             Item[] items = new Item[7] { Coat, Necklace, Glove, Shoes, Belt, Earring, Rifle };
             
 
-            new Point(48 - 5 + xx, 181 - 5 + yy).PressMouseL();     //первая закладка инвентаря
+            //new Point(48 - 5 + xx, 181 - 5 + yy).PressMouseL();     //первая закладка инвентаря
+            SpecInventoryBookmark(1);
 
             botwindow.FirstHero();
             for (int i = 0; i <= 6; i++) PuttingItem(items[i]);     //надеваем амуницию
@@ -1710,6 +1733,28 @@ namespace OpenGEWindows
             for (int i = 0; i <= 6; i++) PuttingItem(items[i]);     //надеваем амуницию
         }
 
+        /// <summary>
+        /// открываем указанную закладку в уже открытом спец инвентаре
+        /// </summary>
+        /// <param name="n">номер закладки</param>
+        public void SpecInventoryBookmark(int n)
+        {
+            new Point(48 - 5 + xx + (n-1) * 60, 181 - 5 + yy).PressMouseL();     //первая закладка инвентаря
+        }
+
+        /// <summary>
+        /// применяем журнал в уже открытом специнвентаре
+        /// </summary>
+        public void ApplyingJournal()
+        {
+            Item Journal = new Item(38, 209, 4390911);
+
+            SpecInventoryBookmark(3);
+
+            PuttingItem(Journal);     //применяем журнал
+
+            AnswerYesOrNo(true);
+        }
 
         /// <summary>
         /// проверяем, открыто ли хотя бы одно задание (список справа экрана)
@@ -1768,11 +1813,20 @@ namespace OpenGEWindows
         }
 
         /// <summary>
+        /// проверяем, открыт ли журнал с подарками
+        /// </summary>
+        /// <returns></returns>
+        public bool isPioneerJournal()
+        {
+            return new PointColor(361 - 5 + xx, 82 - 5 + yy, 8549475, 0).isColor() && new PointColor(362 - 5 + xx, 82 - 5 + yy, 8549475, 0).isColor();
+        }
+
+        /// <summary>
         /// получение подарков из журнала
         /// </summary>
         public void GetGifts()
         {
-            bool result = false;
+            bool result = false;  //изначально считаем, что нет готовых подарков для получения
             for (int i = 1; i <= 5; i++)
             {
                 iPointColor pointgifts = new PointColor(709 - 5 + xx, 229 - 5 + yy + (i - 1) * 97, 16000000, 5);
@@ -2055,7 +2109,7 @@ namespace OpenGEWindows
             Pause(500);
             pointPetExpert.PressMouseL();            //тыкнули в эксперта по петам
             Pause(3000);
-            pointPetExpert.PressMouseL();            //тыкнули в эксперта по петам второй раз
+            pointPetExpert2.PressMouseL();            //тыкнули в эксперта по петам второй раз
             Pause(3000);
 
             //pointPetExpert2.PressMouseL();            //тыкнули в эксперта по петам второй раз
@@ -2120,11 +2174,12 @@ namespace OpenGEWindows
         public void LindonDialog2()
         {
             //жмем Ок 30 раз
-            for (int j = 1; j <= 30; j++)
-            {
-                ButtonOkDialog.PressMouse();           // Нажимаем на Ok в диалоге
-                Pause(1500);
-            }
+            //for (int j = 1; j <= 30; j++)
+            //{
+            //    ButtonOkDialog.PressMouse();           // Нажимаем на Ok в диалоге
+            //    Pause(1500);
+            //}
+            dialog.PressOkButton(30);
         }
 
 
@@ -2133,6 +2188,12 @@ namespace OpenGEWindows
         /// </summary>
         public void RunToLindon2()
         {
+            botwindow.FirstHero();
+            Pause(500);
+
+            MaxHeight(7);
+            Pause(500);
+
             OpenMapForState();                         //открыли карту Alt+Z
             Pause(1500);
 
@@ -2174,18 +2235,18 @@ namespace OpenGEWindows
 
         }
 
-
         /// <summary>
         /// диалог с Доминго после миссии
         /// </summary>
         public void DomingoDialog2()
         {
             //жмем Ок 9 раз
-            for (int j = 1; j <= 9; j++)
-            {
-                ButtonOkDialog.PressMouse();           // Нажимаем на Ok в диалоге
-                Pause(1500);
-            }
+            //for (int j = 1; j <= 9; j++)
+            //{
+            //    ButtonOkDialog.PressMouse();           // Нажимаем на Ok в диалоге
+            //    Pause(1500);
+            //}
+            dialog.PressOkButton(9);
         }
 
         /// <summary>
@@ -2211,22 +2272,30 @@ namespace OpenGEWindows
         public void DomingoDialog()
         {
             //жмем Ок 3 раза
-            for (int j = 1; j <= 3; j++)
-            {
-                ButtonOkDialog.PressMouse();    // Нажимаем на Ok в диалоге
-                Pause(1500);
-            }
+            //for (int j = 1; j <= 3; j++)
+            //{
+            //    ButtonOkDialog.PressMouse();    // Нажимаем на Ok в диалоге
+            //    Pause(1500);
+            //}
+            dialog.PressOkButton(3);
 
-            pointFirstStringDialog.PressMouse();   //YES
-            Pause(1000);
+            //pointFirstStringDialog.PressMouse();   //YES
+            //Pause(1000);
 
-            ButtonOkDialog.PressMouse();    // Нажимаем на Ok в диалоге
-            Pause(1000);
+            dialog.PressStringDialog(1);
+            
 
-            pointSecondStringDialog.PressMouse();   //YES во второй раз
-            Pause(1000);
+            dialog.PressOkButton(1);
+//            ButtonOkDialog.PressMouse();    // Нажимаем на Ok в диалоге
+            //Pause(1000);
 
-            ButtonOkDialog.PressMouse();    // Нажимаем на Ok в диалоге
+            dialog.PressStringDialog(2);
+            //pointSecondStringDialog.PressMouse();   //YES во второй раз
+            //Pause(1000);
+
+            dialog.PressOkButton(1);
+
+            //ButtonOkDialog.PressMouse();    // Нажимаем на Ok в диалоге
             Pause(10000);
 
 
@@ -2253,6 +2322,7 @@ namespace OpenGEWindows
             Pause(2000);
 
         }
+
         /// <summary>
         /// надеваем оружие и броню
         /// </summary>
@@ -2398,11 +2468,13 @@ namespace OpenGEWindows
             pointPressNunez.PressMouseL();   // Нажимаем на Нуньеса
             Pause(3000);
 
-            for (int j = 1; j <= 7; j++)
-            {
-                ButtonOkDialog.PressMouse();    // Нажимаем на Ok в диалоге
-                Pause(2000);
-            }
+            //for (int j = 1; j <= 7; j++)
+            //{
+            //    ButtonOkDialog.PressMouse();    // Нажимаем на Ok в диалоге
+            //    Pause(2000);
+            //}
+
+            dialog.PressOkButton(7);
 
             PressMedal.DoubleClickL();        //нажимаем на медаль 1 (медаль новичка)  двойной щелчок
             Pause(1500);
@@ -2415,11 +2487,13 @@ namespace OpenGEWindows
             pointPressNunez2.PressMouseL();   // Нажимаем на Нуньеса
             Pause(5000);
 
-            for (int j = 1; j <= 5; j++)
-            {
-                ButtonOkDialog.PressMouse();    // Нажимаем на Ok в диалоге
-                Pause(2500);
-            }
+            //for (int j = 1; j <= 5; j++)
+            //{
+            //    ButtonOkDialog.PressMouse();    // Нажимаем на Ok в диалоге
+            //    Pause(2500);
+            //}
+
+            dialog.PressOkButton(5);
 
             Pause(1500);
 
@@ -2444,7 +2518,7 @@ namespace OpenGEWindows
         }
 
         /// <summary>
-        /// 
+        /// создаем Team в казарме
         /// </summary>
         public void CreateOfTeam()
         {

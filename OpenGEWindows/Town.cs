@@ -134,14 +134,24 @@ namespace OpenGEWindows
                 pointTownTeleport.PressMouse();
             }
 
+        /// <summary>
+        /// перелететь по городскому телепорту в указанное место
+        /// </summary>
+        /// <param name="NumberOfString">номер строки телепорта</param>
+        public void TownTeleport(int NumberOfString)
+        {
+            new Point(115 - 5 + xx, 333 - 5 + (NumberOfString - 1) * 30 + yy).PressMouseL();
+        }
+
+
         #endregion
 
         #region Bullet
 
-            /// <summary>
-            /// Делаем паузу, чтобы бот успел добежать до торговца           
-            /// </summary>
-            public void PauseToBullet()
+        /// <summary>
+        /// Делаем паузу, чтобы бот успел добежать до торговца           
+        /// </summary>
+        public void PauseToBullet()
             {
                 Pause(PAUSE_TIME_Bullet);
             }

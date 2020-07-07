@@ -179,8 +179,9 @@ namespace OpenGEWindows
             this.pointisBoxOverflow3 = new PointColor(379 - 5 + xx, 497 - 5 + yy, 5600000, 5);         //проверка оранжевой надписи
             this.pointisBoxOverflow4 = new PointColor(379 - 5 + xx, 498 - 5 + yy, 5600000, 5);         //не сделано на америке
 
-            this.arrayOfColorsIsWork1 = new uint[12] { 11051, 1721, 7644, 2764, 16777, 4278, 5138, 3693, 66, 5068, 15824, 8756 };
-            this.arrayOfColorsIsWork2 = new uint[12] { 10919, 2106, 16711, 7243, 3560, 5401, 9747, 10258, 0, 9350, 15767, 8162 };
+            this.arrayOfColorsIsWork1 = new uint[13] { 11051, 1721, 7644, 2764, 16777, 4278, 5138, 3693, 66, 5068, 15824, 8756, 3291 };
+            this.arrayOfColorsIsWork2 = new uint[13] { 10919, 2106, 16711, 7243, 3560, 5401, 9747, 10258, 0, 9350, 15767, 8162, 1910 };
+
 
             this.pointisKillHero1 = new PointColor(81 - 5 + xx, 636 - 5 + yy, 1900000, 5);
             this.pointisKillHero2 = new PointColor(336 - 5 + xx, 636 - 5 + yy, 1900000, 5);
@@ -192,8 +193,14 @@ namespace OpenGEWindows
             this.pointisBattleMode1 = new PointColor(173 - 5 + xx, 511 - 5 + yy, 8900000, 5);
             this.pointisBattleMode2 = new PointColor(200 - 5 + xx, 511 - 5 + yy, 8900000, 5);
 
-            this.pointisBulletHalf = new PointColor(227 - 5 + xx, 621 - 5 + yy, 5500000, 5);
-            this.pointisBulletOff = new PointColor(227 - 5 + xx, 621 - 5 + yy, 5700000, 5);
+            //            this.pointisBulletHalf = new PointColor(227 - 5 + xx, 621 - 5 + yy, 5500000, 5);
+            this.pointisBulletHalf1 = new PointColor(229 - 5 + xx, 622 - 5 + yy, 5500000, 5);
+            this.pointisBulletHalf2 = new PointColor(484 - 5 + xx, 622 - 5 + yy, 5500000, 5);
+            this.pointisBulletHalf3 = new PointColor(739 - 5 + xx, 622 - 5 + yy, 5500000, 5);
+            //            this.pointisBulletOff  = new PointColor(227 - 5 + xx, 621 - 5 + yy, 5700000, 5);
+            this.pointisBulletOff1 = new PointColor(229 - 5 + xx, 622 - 5 + yy, 5700000, 5);
+            this.pointisBulletOff2 = new PointColor(484 - 5 + xx, 622 - 5 + yy, 5700000, 5);
+            this.pointisBulletOff3 = new PointColor(739 - 5 + xx, 622 - 5 + yy, 5700000, 5);
 
 
             #endregion
@@ -213,8 +220,8 @@ namespace OpenGEWindows
             this.pointisToken2 = new PointColor(478 - 5 + xx, 93 - 5 + yy, 14600000, 5);
             this.pointToken = new Point(755 - 5 + xx, 94 - 5 + yy);                                //крестик в углу окошка с токенами
 
-            this.arrayOfColorsIsTown1 = new uint[12] { 11053, 1710, 7631, 2763, 16777, 4276, 5131, 3684, 65, 5066, 15856, 8750 };
-            this.arrayOfColorsIsTown2 = new uint[12] { 10921, 2105, 16711, 7237, 3552, 5395, 9737, 10263, 0, 9342, 15790, 8158 };
+            this.arrayOfColorsIsTown1 = new uint[13] { 11053, 1710, 7631, 2763, 16777, 4276, 5131, 3684, 65, 5066, 15856, 8750, 3291 };
+            this.arrayOfColorsIsTown2 = new uint[13] { 10921, 2105, 16711, 7237, 3552, 5395, 9737, 10263, 0, 9342, 15790, 8158, 1910 };
 
             //this.pointIsTown_RifleFirstDot1 = new PointColor(24 + xx, 692 + yy, 11053000, 3);        //точки для проверки стойки с ружьем
             //this.pointIsTown_RifleFirstDot2 = new PointColor(25 + xx, 692 + yy, 10921000, 3);

@@ -328,13 +328,15 @@ namespace Main
         /// </summary>
         private void funcGreen()
         {
-            for (int j = 1; j <= numberOfAcc; j++)
+            //Check[] check = new Check[numberOfAcc + 1];
+            //for (int j = startAccount; j <= numberOfAcc; j++) check[j] = new Check(j);   //проинициализировали check[j]. Сработал конструктор
+
+            for (int j = startAccount; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
-//                if (check.isActive())  check.checkForProblems();
                 if (check.IsActiveServer) check.problemResolution();
             }
-            for (int j = 1; j <= numberOfAcc; j++)
+            for (int j = startAccount; j <= numberOfAcc; j++)
             {
                 Check check = new Check(j);
                 if (check.IsActiveServer)   check.ReOpenWindow();
@@ -813,7 +815,7 @@ namespace Main
 
             for (int j = startAccount; j <= numberOfAcc; j++)
             {
-                if (check[j].IsActiveServer) check[j].ChangingAccounts(); 
+                check[j].ChangingAccounts(); 
             }
             
         }

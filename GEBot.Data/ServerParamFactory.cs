@@ -29,6 +29,9 @@
                 case "C:\\Europa\\":
                     serverParam = new ServerParamEuropa();
                     break;
+                case "C:\\Europa2\\":
+                    serverParam = new ServerParamEuropa2();
+                    break;
                 case "C:\\SINGA\\":
                     serverParam = new ServerParamSing();
                     break;
@@ -36,7 +39,7 @@
                     serverParam = new ServerParamAmerica2();
                     break;
                 default:
-                    serverParam = new ServerParamAmerica();
+                    serverParam = new ServerParamSing();
                     break;
             }
             return serverParam;
