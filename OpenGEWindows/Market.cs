@@ -317,6 +317,9 @@ namespace OpenGEWindows
                 case 5001823:     // Карточка кэш персонажа 2
                 case 16515071:    // Devil Dream
                 case 3156778:     // Gift Made (по ивенту)
+                case 2040097:     // Gift Made (по ивенту)
+                case 1644826:     // Gift Made (по ивенту)
+
                 case 47612:       // Triumph Fillers
 
                     result = false;

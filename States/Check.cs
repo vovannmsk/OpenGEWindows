@@ -785,7 +785,7 @@ namespace States
         /// </summary>
         public void TestButton()
         {
-            int i = 1;   //номер проверяемого окна
+            int i = 2;   //номер проверяемого окна
 
             int[] koordX = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 875, 850, 825, 800, 775, 750, 875 };
             int[] koordY = { 5, 30, 55, 80, 105, 130, 155, 180, 205, 230, 255, 280, 305, 5, 30, 55, 80, 105, 130, 5 };
@@ -895,7 +895,7 @@ namespace States
 
             //PointColor point1 = new PointColor(1042, 551, 1, 1);
             //PointColor point2 = new PointColor(1043, 551, 1, 1);
-            PointColor point1 = new PointColor(29 - 5 + xx, 697 - 5 + yy,  0, 0);
+            PointColor point1 = new PointColor(149 - 5 + xx, 219 - 5 + yy + (12 - 1) * 27,  0, 0);
             PointColor point2 = new PointColor(30 - 5 + xx, 697 - 5 + yy, 0, 0);
             PointColor point3 = new PointColor(739 - 5 + xx, 622 - 5 + yy, 0, 0);
 
